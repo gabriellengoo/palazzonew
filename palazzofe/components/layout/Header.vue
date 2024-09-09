@@ -1,7 +1,7 @@
 <template>
 <div>
   <header
-    class="header fixed top-[1rem] md:top-4 lg:top-[2rem] w-screen flex justify-center items-center p-6"
+    class="header absolute top-[1rem] md:top-4 lg:top-[2rem] w-screen flex justify-center items-center p-6"
   >
     <div class="flex w-[95%] justify-center md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
       <div class="headbar w-[10vw] md:w-[3vw] lg:w-[3vw]" @click="toggleMenu">
@@ -35,7 +35,7 @@
             class="hover-image-display"
           />
 
-          <a href="link-here" target="_blank" rel="noopener noreferrer" class="hover-area hover-image-display"></a>
+          <a href="./weddings" target="_self" rel="noopener noreferrer" class="hover-area hover-image-display"></a>
         </div>
 
       
@@ -63,7 +63,7 @@
         <nav class="link-container">
           <ul>
             <li class="toplink pointer-events-none "><a class="toplink" href="#">space</a></li>
-            <li><a href="#weddings">WEDDINGS</a></li>
+            <li><a href="./weddings">WEDDINGS</a></li>
             <li><a href="#events">EVENTS</a></li>
             <li><a href="#services">SERVICES</a></li>
             <li><a href="#about">ABOUT</a></li>

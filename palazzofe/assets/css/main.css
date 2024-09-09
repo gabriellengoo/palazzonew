@@ -29,3 +29,41 @@ html {
 .maintext{
   font-family: 'TAN-PEARL-Regular';
 }
+
+
+.headingspages{
+  font-family: 'RomainHeadlineTrial';
+  font-size: 2vw;
+}
+
+.headingspagesb{
+  font-family: 'RomainHeadlineTrial';
+  font-size: 2vw;
+ font-weight: bold;
+}
+
+
+@media (min-width: 1440px) and (max-width: 1544px) {
+  .headingspages{
+    font-family: 'RomainHeadlineTrial';
+    font-size: 1.7vw;
+  }
+  
+  .headingspagesb{
+    font-family: 'RomainHeadlineTrial';
+    font-size: 1.7vw;
+   font-weight: bold;
+  }
+}
+
+
+  .headingspages{
+    font-family: 'RomainHeadlineTrial';
+    font-size: 1.5vw;
+  }
+  
+  .headingspagesb{
+    font-family: 'RomainHeadlineTrial';
+    font-size: 1.5vw;
+   font-weight: bold;
+  }
