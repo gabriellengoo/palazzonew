@@ -9,6 +9,8 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/sanity": "^1.12.1",
+    "@sanity/client": "^6.21.3",
     "consola": "^3.2.3",
     "core-js": "^3.25.3",
     "lottie-web": "^5.12.2",
