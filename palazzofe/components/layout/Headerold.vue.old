@@ -1,0 +1,221 @@
+<template>
+  <header class="header fixed top-4 w-screen flex justify-center items-center p-6">
+    <div class=" flex w-[95%] justify-between" ref="headerDiv">
+      <div class="headbar w-[2vw] lg:w-[3vw]" @click="toggleMenu">
+        <!-- <transition name="svg-transition"> -->
+          <SvgMenu class="headbar hover:cursor-pointer"/>
+          <!-- <component :is="isMenuOpen ? 'SvgClose' : 'SvgMenu'" class="headbar hover:cursor-pointer" /> -->
+        <!-- </transition> -->
+      </div>
+      <div class="w-[2vw]"></div>
+    </div>
+
+    <transition name="slide-down" @after-enter="fadeInAllImg">
+      <nav v-if="isMenuOpen" class="nav-menu fixed left-0 w-full h-screen z-50 flex justify-center items-center">
+        <div 
+          class="image-container absolute inset-0 w-full h-full object-cover"
+          @mouseenter="isHovered = true" 
+          @mouseleave="isHovered = false">
+          <img :src="defaultImage" alt="Default Image" class="default-image-display" :class="{ 'faded-out': isHovered }" />
+          <img :src="hoverImage" alt="Hover Image" class="hover-image-display" />
+        </div>
+
+        <div class="allimg relative w-[100vw] h-[100vh] z-50"></div>
+      </nav>
+    </transition>
+  </header>
+</template>
+
+<script>
+
+
+export default {
+  data() {
+    return {
+      isMenuOpen: false,
+      isHovered: false,
+      defaultImage: '/navb1.png',
+      hoverImage: '/navb2.png',
+      menuTopPosition: '0',
+    };
+  },
+  mounted() {
+    this.updateNavMenuPosition();
+    window.addEventListener('resize', this.updateNavMenuPosition);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.updateNavMenuPosition);
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+      this.$emit('menu-toggled', this.isMenuOpen);
+    },
+    fadeInAllImg() {
+      this.fadeInAllImgClass = true;
+    },
+    updateNavMenuPosition() {
+      const headerDiv = this.$refs.headerDiv;
+      if (headerDiv) {
+        const headerBottom = headerDiv.getBoundingClientRect().bottom;
+        this.menuTopPosition = `calc(${headerBottom}px + 3.5vh)`;
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+.svg-transition-enter-active,
+.svg-transition-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.svg-transition-enter,
+.svg-transition-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.headbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+}
+
+.default-image-display, .hover-image-display {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.default-image-display {
+  transition: opacity 2s ease-in-out;
+  opacity: 1;
+}
+
+.default-image-display.faded-out {
+  opacity: 0;
+}
+
+.hover-image-display {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.image-container:hover .hover-image-display {
+  opacity: 1;
+}
+
+.nav-menu {
+  top: v-bind(menuTopPosition);
+  transition: top 0.5s ease;
+}
+
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: max-height 0.5s ease-in-out;
+}
+
+.slide-down-enter,
+.slide-down-leave-to {
+  max-height: 0;
+}
+
+.slide-down-enter-to,
+.slide-down-leave {
+  max-height: 100vh;
+}
+
+.allimg {
+  z-index: 90 !important;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.allimg.fade-in {
+  opacity: 1;
+}
+
+.fade-transition {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.fade-transition.is-hovered {
+  opacity: 0;
+}
+
+#one-wrapper {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+}
+
+#one-wrapper img {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.icons {
+  z-index: 10000 !important;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.icons:hover {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.icons2 {
+  z-index: 1000 !important;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.icons2:hover {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.image-display {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+.borders {
+  top: 6.7vh;
+}
+
+@media only screen and (min-width: 1440px) and (min-height: 1560px) {
+  .header {
+    top: 1.5vh;
+  }
+
+  .borders {
+    top: 2.2vh;
+  }
+}
+
+@media only screen and (min-width: 2560px) and (min-height: 1560px) {
+  .header {
+    top: 2vh;
+  }
+
+  .borders {
+    top: 3.7vh;
+  }
+}
+</style>

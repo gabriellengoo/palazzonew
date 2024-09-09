@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ /* img{
+      max-width: auto !important;
+      height: auto !important;
+ } */
+
+/* Hide vertical scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Hide horizontal scrollbar */
+::-webkit-scrollbar {
+  height: 0;
+}
+
+#__nuxt,
+#__layout,
+body,
+html {
+  height: auto;
+  min-height: 100vh !important;
+  overflow-x: hidden;
+}
+
+.maintext{
+  font-family: 'TAN-PEARL-Regular';
+}

@@ -1,0 +1,43 @@
+/* @font-face {
+  font-family: 'Owners';
+  src: 
+    url('~assets/fonts/Owners-Normal.woff2') format('woff2'),
+    url('~assets/fonts/Owners-Normal.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+@font-face {
+  font-family: 'RomainHeadlineTrial';
+  src: url('~assets/fonts/RomainHeadlineTrial.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MinionPro-Regular';
+  src: url('~assets/fonts/MinionPro-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TAN-PEARL-Regular';
+  src: url('~assets/fonts/TAN-PEARL-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TAN-PEARL-Regular */
+ 
+  body {
+    /* font-family: 'Owners', sans-serif; */
+    font-family: 'MinionPro-Regular', sans-serif;
+    /* font-family: 'RomainHeadlineTrial' , sans-serif; */
+    /* font-family: 'TAN-PEARL-Regular', sans-serif; */
+  } 
+
+  
