@@ -5,5 +5,7 @@ import grid from "./components/grid";
 // import gride from "./components/gride";
 // import gridl from "./components/gridl";
 import blockContent from "./components/blockContent";
+import project from "./project";
+import work from './work';
 
-export const schemaTypes = [home,blockContent,grid]
+export const schemaTypes = [home,blockContent,grid,project,work]

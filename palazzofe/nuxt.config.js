@@ -37,11 +37,22 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     // '@nuxtjs/tailwindcss',
+    '@nuxtjs/sanity/module',
+    // '@nuxtjs/tailwindcss',
+    '@nuxt/image',
+    // 'nuxt-gsap-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
   ],
+
+  sanity: {
+    // module options
+    projectId: '0i1cdi6a',
+    apiVersion: '2023-09-05',
+    useCdn: false, 
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -67,5 +78,17 @@ export default {
         },
       },
     },
-  }
+  },
+
+  image: {
+    sanity: {
+      projectId: '0i1cdi6a',
+      dataset: 'production',
+    },
+  },
+
+  // sanity: {
+  //   withCredentials: true,
+  //   useCdn: false,
+  // },
 }

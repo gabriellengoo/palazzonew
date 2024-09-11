@@ -30,6 +30,7 @@ export default {
           hidden: ({ parent, value }) =>
             (!value && parent?.spacer) || (!value && parent?.video),
         },
+     
         // {
         //   name: "video",
         //   title: "Video",
@@ -37,26 +38,26 @@ export default {
         //   hidden: ({ parent, value }) =>
         //     (!value && parent?.spacer) || (!value && parent?.image),
         // },
-        {
-          name: 'youtubeUrl',
-          title: 'YouTube Video URL',
-          type: 'url',
-        },
-        {
-          name: 'vimeoUrl',
-          title: 'Vimeo Video URL',
-          type: 'url',
-        },
         // {
-        //   name: "reference",
-        //   title: "Reference",
-        //   type: "reference", 
-        //   to: {
-        //     type: "project",
-        //   },
-        //   hidden: ({ parent, value }) =>
-        //     !value && (parent?.spacer || parent?.link),
+        //   name: 'youtubeUrl',
+        //   title: 'YouTube Video URL',
+        //   type: 'url',
         // },
+        // {
+        //   name: 'vimeoUrl',
+        //   title: 'Vimeo Video URL',
+        //   type: 'url',
+        // },
+        {
+          name: "reference",
+          title: "Reference",
+          type: "reference", 
+          to: {
+            type: "project",
+          },
+          hidden: ({ parent, value }) =>
+            !value && (parent?.spacer || parent?.link),
+        },
         // {
         //   name: "double",
         //   title: "Double",
@@ -68,6 +69,12 @@ export default {
           type: "string",
           hidden: ({ parent, value }) =>
             !value && (parent?.spacer || parent?.reference),
+        },
+
+        {
+          name: "year",
+          title: "Year",
+          type: "string",
         },
       ],
       preview: {
