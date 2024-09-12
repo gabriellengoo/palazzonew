@@ -31,7 +31,7 @@
     <!-- item.double ? 'double h-fit' : '', vid height?  --> 
       <div
         v-masonry-tile
-        class="relative image-item  transition-opacity duration-300 item"
+        class="allsvga relative image-item  transition-opacity duration-300 item"
         v-for="item in items"
         :key="item._key"
         :class="[
@@ -69,7 +69,7 @@
         >
        <!-- <div> -->
             <div class="relative">
-              <div>
+              <div >
 
 <img src="/archframe.png" alt="Arch Frame" class="arch-frame" />
 
@@ -85,7 +85,7 @@
                 : 'items-start',
             ]"
             v-if="item.reference.slug"
-            :to="`/project/${item.reference.slug}`"
+            :to="`/work/${item.reference.slug}`"
             @mouseenter.native="hover(item)"
             @mouseleave.native="leave()"
           >
@@ -93,9 +93,11 @@
               class="flex flex-col items-start h-full max-w-full"
               :class="size == 'small' ? 'w-full' : 'w-auto'"
             >
-         
+            <!-- square-rounded -->
               <figure
-              class="inner-image "
+                    @mouseenter="hover"
+        @mouseleave="leave"
+              class="figsvgall inner-image "
                 :class="size == 'small' ? 'block w-full' : 'h-full w-auto'"
                 :style="
                   item.video && item.video.aspect && size == 'small'
@@ -103,39 +105,19 @@
                     : ''
                 "
               >
-              <div class="svg-container">
-    <svg
-      class="svgsize"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 314 478"
-      width="314"
-      height="478"
-    >
-      <defs>
-        <!-- Define the mask -->
-        <mask id="image-mask">
-          <path
-            d="M154.5 0.0117052C40.9 1.21171 4.16667 91.1784 0 136.012V477.512H313.5V136.012C307.833 90.1784 268.1 -1.18829 154.5 0.0117052Z"
-            fill="white"
-          />
-        </mask>
-      </defs>
-      <!-- Use the mask for an image -->
-      <rect
-        width="314"
-        height="478"
-        fill="url(#image-pattern)"
-        mask="url(#image-mask)"
-      />
+   
+              <!-- filled image svg here -->
+              <div class="svgall relative svg-container">
+    <!-- SVG as background -->
+    <svg  fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-background">
+      <!-- <path d="M154.5 0.0117052C40.9 1.21171 4.16667 91.1784 0 136.012V477.512H313.5V136.012C307.833 90.1784 268.1 -1.18829 154.5 0.0117052Z" fill="none"/> -->
     </svg>
 
-    <!-- Place the MediaImage component inside the container -->
+    <!-- Image overlay -->
     <MediaImage
-      v-if="item.image.image"
       :src="item.image.image"
-      @load="onImageLoad"
-      ref="imageLoader"
-      class="overlay-image hidden"
+      v-if="item.image.image"
+       class="overlay-image hover-show-right"
     />
   </div>
 
@@ -193,15 +175,17 @@
             "
             @mouseleave="SET_ACTIVE_PROJECT(false)"
           >
+          
             <span class="flex flex-col items-start w-auto h-full max-w-full">
-              <MediaImage
+              <!-- <MediaImage
                 :size="item.image.size"
                 :aspect="item.image.aspect"
                 :src="item.image.image"
                 v-if="item.image.image"
                 class="contain-image"
                
-              ></MediaImage>
+              ></MediaImage> -->
+              
               <!-- <MediaVideo
                 :id="item.video.id"
                 :style="`aspect-ratio: ${item.video.aspect.replace(':', '/')}`"
@@ -273,7 +257,6 @@ export default {
       containerClass: 'flex flex-col w-full h-full',
       imageClass: 'contain-image',
       isDesktop: false,
-      imageLoaded: false,
     }
   },
   computed: {
@@ -293,49 +276,25 @@ export default {
 
   methods: {
     ...mapMutations(['SET_ACTIVE_PROJECT', 'SET_ACTIVE_TALENT']),
-    
+
+    hover() {
+      const image = document.querySelector('.hover-show-right');
+      if (image) {
+        image.classList.add('show-on-right');
+      }
+    },
+    leave() {
+      const image = document.querySelector('.hover-show-right');
+      if (image) {
+        image.classList.remove('show-on-right');
+      }
+    },
+
     redraw() {
       if (typeof this.$redrawVueMasonry === 'function') {
         this.$redrawVueMasonry()
       }
     },
-
- 
-    onImageLoad() {
-      // Wait until the image is loaded
-      this.$nextTick(() => {
-        const imageUrl = this.$refs.imageLoader.$el.src;
-
-        // Create SVG pattern for the image
-        const svg = this.$el.querySelector('svg');
-        const defs = svg.querySelector('defs');
-
-        // Create the pattern element
-        const imagePattern = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'pattern'
-        );
-        imagePattern.setAttribute('id', 'image-pattern');
-        imagePattern.setAttribute('patternUnits', 'userSpaceOnUse');
-        imagePattern.setAttribute('width', 314);
-        imagePattern.setAttribute('height', 478);
-
-        // Create image element for the pattern
-        const image = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'image'
-        );
-        image.setAttributeNS(null, 'href', imageUrl); // Use the image URL
-        image.setAttribute('width', 314);
-        image.setAttribute('height', 478);
-
-        imagePattern.appendChild(image);
-        defs.appendChild(imagePattern);
-      });
-    },
-
-
-  
     beforeDestroy() {
     // Remove the resize event listener when the component is destroyed
     window.removeEventListener('resize', this.handleResize);
@@ -360,9 +319,36 @@ export default {
 }
 </script>
 <style scoped>
+/* Default styling */
+.overlay-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, right 0.3s ease;
+}
+
+/* Show the image on the right when hovered */
+.show-on-right {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 50%; /* Adjust as needed */
+  transform: translateY(-50%);
+}
+
+/* .allsvga{
+  width: 20vw;
+} */
+a{
+  z-index: 10000000 !important;
+}
 .image-item {
   position: relative;
   flex: 0 0 calc(50% - 20px);
+  /* flex: 0 1 auto; */
   margin-bottom: 20px;
   padding: 2vw;
 }
@@ -374,6 +360,7 @@ export default {
   border-radius: 10px; /* Optional: Add rounded corners to images */
   position: relative;
   z-index: 1;
+  opacity: .2;
 }
 
 /* .inner-image {
@@ -395,23 +382,193 @@ export default {
     align-items: center;
 } */
 
-
 .svg-container {
   position: relative;
-  width: 314px;
-  height: 478px;
-  max-width: 100%;
+  width: 100%; /* Adjust as needed */
+  height: 0;
+  padding-top: 150%; /* Aspect ratio of SVG (height/width * 100%) */
+}
+
+.svg-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .overlay-image {
   position: absolute;
   top: 0;
   left: 0;
-  width: 314px;
-  height: 478px;
-  object-fit: cover;
-  display: none; /* Hide the MediaImage itself */
+  /* left: .5vw; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers the SVG area without distortion */
+  clip-path: path("m155.5,1.01171c-113.6,1.2,-150.333,91.167,-154.5,136v341.5h313.5v-341.5c-5.667,-45.833,-45.4,-137.2,-159,-136z");
+  /* clip-path: path('M 0 200 L 0,75 A 5,5 0,0,1 150,75 L 200 200 z'); */
 }
+
+@media (max-width: 1440px) {
+  .overlay-image {
+    clip-path: path("m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z");
+
+  }
+
+  .image-item {
+  position: relative;
+  flex: 0 0 calc(50% - 20px);
+  /* flex: 0 1 auto; */
+  margin-bottom: 20px;
+  padding: 2vw;
+}
+
+.image-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    gap: 20px;
+}
+
+.figsvgall {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: auto;
+    -o-object-fit: contain;
+    object-fit: contain;
+    transform: translate(-50%, -50%);
+    transform: translate(-48%, -54%) !important;
+}
+
+}
+
+
+@media (max-width: 1024px) {
+  .overlay-image {
+    clip-path: path("m78.3732,1.00586c-56.891,0.601,-75.287,45.63,-77.373,68.07v170.924h157v-170.924c-2.838,-22.941,-22.736,-68.671,-79.627,-68.07z");
+    /* clip-path: path("m155.5,1.01171c-113.6,1.2,-150.333,91.167,-154.5,136v341.5h313.5v-341.5c-5.667,-45.833,-45.4,-137.2,-159,-136z"); */
+  }
+
+  /* .image-item {
+  position: relative;
+  flex: 0 1 auto;
+  margin-bottom: 20px;
+  padding: 2vw;
+} */
+.figsvgall {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: auto;
+    -o-object-fit: contain;
+    object-fit: contain;
+    transform: translate(-50%, -50%);
+    transform: translate(-50%, -59%) !important;
+}
+}
+
+
+@media (max-width: 768px) {
+  .overlay-image {
+    /* clip-path: path("m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z") !important; */
+    clip-path: path("m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z");
+  }
+  .image-item {
+  position: relative;
+  /* flex: 0 0 calc(50% - 20px); */
+  flex: 0 1 auto;
+  margin-bottom: 20px;
+  padding: 2vw;
+}
+.image-grid {
+        display: flex !important;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .svg-container {
+    transform: scale(1.2);
+}
+
+.figsvgall {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: auto;
+    -o-object-fit: contain;
+    object-fit: contain;
+    transform: translate(-50%, -50%);
+    transform: translate(-34%, -39%) !important;
+}
+}
+
+@media (max-width: 425px) {
+  .overlay-image {
+    /* clip-path: path("m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z") !important; */
+    clip-path: path("m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z");
+  }
+  .image-item {
+  position: relative;
+  /* flex: 0 0 calc(50% - 20px); */
+  flex: 0 1 auto;
+  margin-bottom: 20px;
+  padding: 2vw;
+}
+.image-grid {
+        display: flex !important;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        gap: 20px;
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 1902px) {
+  .overlay-image {
+    /* clip-path: path("m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z"); */
+    /* clip-path: path("m155.5,1.01171c-113.6,1.2,-150.333,91.167,-154.5,136v341.5h313.5v-341.5c-5.667,-45.833,-45.4,-137.2,-159,-136z"); */
+  }
+  .image-item {
+  position: relative;
+  /* flex: 0 0 calc(50% - 20px); */
+  flex: 0 1 auto;
+  margin-bottom: 20px;
+  padding: 2vw;
+}
+}
+
+/* 1902 */
+
+.figsvgall{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: auto;
+    object-fit: contain;
+    transform: translate(-50%, -50%);
+    transform: translate(-50%, -54%);
+}
+
+/* <svg width="315" height="480" viewBox="0 0 315 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M155.5 1.01171C41.9 2.21171 5.16667 92.1784 1 137.012V478.512H314.5V137.012C308.833 91.1784 269.1 -0.188295 155.5 1.01171Z" stroke="black"/>
+</svg> */
+
+
+/* @media (max-width: 1440px) {
+  .overlay-image {
+    clip-path: m154.5 0c-113.6 1.2-150.3 91.2-154.5 135.999v341.5h313.5v-341.5c-5.7-45.8-45.4-136.2-159-135.99z
+    ;
+  }} */
+
+
 
 
 
@@ -431,21 +588,34 @@ export default {
 }
 
 .image-grid {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Ensures the images have equal spacing */
-  gap: 20px; /* Adjust the gap between images */
+  justify-content: space-between; */
+   /* Ensures the images have equal spacing */
+  /* gap: 20px;  */
+  /* Adjust the gap between images */
 }
 
 .image-item {
-  flex: 0 0 calc(50% - 20px); /* 50% width, minus the gap */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px;
   padding: 2vw;
-  box-sizing: border-box; /* Ensures padding is included in the width calculation */
+  box-sizing: border-box;  */
+  /* Ensures padding is included in the width calculation */
 }
 
-.image-grid div{ 
-/* width: 40%; */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
+  gap: 20px; /* Adjust the gap between grid items */
+}
+
+.image-item {
+  position: relative;
+  overflow: hidden; /* Hide any overflow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+      /* width: 20vw; */
 }
 
 /* Add a bottom border after every two images */
