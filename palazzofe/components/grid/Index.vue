@@ -93,8 +93,9 @@
               class="flex flex-col items-start h-full max-w-full"
               :class="size == 'small' ? 'w-full' : 'w-auto'"
             >
+         
               <figure
-              class="inner-image"
+              class="inner-image "
                 :class="size == 'small' ? 'block w-full' : 'h-full w-auto'"
                 :style="
                   item.video && item.video.aspect && size == 'small'
@@ -102,7 +103,43 @@
                     : ''
                 "
               >
-                <MediaImage
+              <div class="svg-container">
+    <svg
+      class="svgsize"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 314 478"
+      width="314"
+      height="478"
+    >
+      <defs>
+        <!-- Define the mask -->
+        <mask id="image-mask">
+          <path
+            d="M154.5 0.0117052C40.9 1.21171 4.16667 91.1784 0 136.012V477.512H313.5V136.012C307.833 90.1784 268.1 -1.18829 154.5 0.0117052Z"
+            fill="white"
+          />
+        </mask>
+      </defs>
+      <!-- Use the mask for an image -->
+      <rect
+        width="314"
+        height="478"
+        fill="url(#image-pattern)"
+        mask="url(#image-mask)"
+      />
+    </svg>
+
+    <!-- Place the MediaImage component inside the container -->
+    <MediaImage
+      v-if="item.image.image"
+      :src="item.image.image"
+      @load="onImageLoad"
+      ref="imageLoader"
+      class="overlay-image hidden"
+    />
+  </div>
+
+                <!-- <MediaImage
                   :size="item.image.size"
                   :aspect="item.image.aspect"
                   :src="item.image.image"
@@ -111,7 +148,7 @@
                   :sizes="
                     size == 'sm' ? 'sm:60vw md:150vw' : 'sm:150vw md:150vw'
                   "
-                ></MediaImage>
+                ></MediaImage> -->
                 <!-- :style="{ backgroundColor: item.double ? 'red' : 'blue', }"  -->
                 <!-- <MediaVideo 
                   :id="item.video.id"
@@ -236,6 +273,7 @@ export default {
       containerClass: 'flex flex-col w-full h-full',
       imageClass: 'contain-image',
       isDesktop: false,
+      imageLoaded: false,
     }
   },
   computed: {
@@ -255,11 +293,49 @@ export default {
 
   methods: {
     ...mapMutations(['SET_ACTIVE_PROJECT', 'SET_ACTIVE_TALENT']),
+    
     redraw() {
       if (typeof this.$redrawVueMasonry === 'function') {
         this.$redrawVueMasonry()
       }
     },
+
+ 
+    onImageLoad() {
+      // Wait until the image is loaded
+      this.$nextTick(() => {
+        const imageUrl = this.$refs.imageLoader.$el.src;
+
+        // Create SVG pattern for the image
+        const svg = this.$el.querySelector('svg');
+        const defs = svg.querySelector('defs');
+
+        // Create the pattern element
+        const imagePattern = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'pattern'
+        );
+        imagePattern.setAttribute('id', 'image-pattern');
+        imagePattern.setAttribute('patternUnits', 'userSpaceOnUse');
+        imagePattern.setAttribute('width', 314);
+        imagePattern.setAttribute('height', 478);
+
+        // Create image element for the pattern
+        const image = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'image'
+        );
+        image.setAttributeNS(null, 'href', imageUrl); // Use the image URL
+        image.setAttribute('width', 314);
+        image.setAttribute('height', 478);
+
+        imagePattern.appendChild(image);
+        defs.appendChild(imagePattern);
+      });
+    },
+
+
+  
     beforeDestroy() {
     // Remove the resize event listener when the component is destroyed
     window.removeEventListener('resize', this.handleResize);
@@ -300,24 +376,45 @@ export default {
   z-index: 1;
 }
 
-.inner-image {
+/* .inner-image {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 90%; /* Adjust size of the inner image */
+  width: 90%; 
   height: auto;
   object-fit: contain;
-  transform: translate(-50%, -50%); /* Center the image inside the arch frame */
-  z-index: 2; /* Make sure it's on top of the arch frame */
-}
+  transform: translate(-50%, -50%); 
+  z-index: 2; 
+} */
 
-.inner-image img {
+/* .inner-image img {
     position: relative;
     top: -2.5vh;
     display: flex;
     width: 100vw;
     align-items: center;
+} */
+
+
+.svg-container {
+  position: relative;
+  width: 314px;
+  height: 478px;
+  max-width: 100%;
 }
+
+.overlay-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 314px;
+  height: 478px;
+  object-fit: cover;
+  display: none; /* Hide the MediaImage itself */
+}
+
+
+
 
 /* Styles for text inside the frame */
 .textframe {
@@ -353,9 +450,27 @@ export default {
 
 /* Add a bottom border after every two images */
 .image-item:nth-child(1n) {
-  border-bottom: 2px solid #000000; /* Adjust color and thickness */
+  border-bottom: .5px solid #000000; /* Adjust color and thickness */
   margin-bottom: 40px; /* Add space after the border */
 }
+
+.square-rounded {
+  width: 200px;
+    height: 350px;
+    border-radius: 100px 100px 0 0;
+    overflow: hidden; /* Ensures children elements don't overflow the rounded corners */
+  position: relative; /* Required for absolute positioning of children */
+}
+
+.square-rounded img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 /* @media (min-width: 768px){
   .masonry.large .item.double {
     height: 55vh;
