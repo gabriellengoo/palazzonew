@@ -1,7 +1,13 @@
 <template>
   <div>
     <transition name="screen-transition" mode="out-in">
-      <div v-if="isTransitionActive" class="black-screen"></div>
+      <div v-if="isTransitionActive" class="black-screen">
+        <!-- <div class="flex h-screen w-screen justify-center align-middle items-center mx-auto">
+          <h1 :class="{ 'active': isTextVisible }" class=" text-[1rem] leading-[1rem] md:text-[1rem] md:leading-[1.5rem] text-center uppercase">
+            Loading..
+          </h1> 
+        </div> -->
+      </div>
     </transition>
 
     <!-- Text content outside the black-screen div -->
@@ -13,6 +19,9 @@
             Coralie rose
             
           </h1> -->
+          <!-- <h1 :class="{ 'active': isTextVisible }" class="titleText text-[2rem] leading-[2rem] md:text-[2rem] md:leading-[2.5rem] text-center uppercase">
+            Loading..
+          </h1>  -->
         </div>
       </div>
     </div>
@@ -69,10 +78,11 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  visibility: hidden;
+  /* visibility: hidden; */
   color: #1d1d1b;
   z-index: 100003;
   transition: opacity 1s ease; /* Add transition for opacity */
+pointer-events: none;
 }
 
 .text-content.active {
@@ -90,8 +100,13 @@ export default {
   height: 100%;
   transition: opacity 3.5s ease; /* Adjust the duration to match the transition */
   background-color: #fff; 
+  background-image: url("./static/bggif.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   /* background: rgba(255, 255, 255, 0.752); */
   z-index: 1000000002;
+  pointer-events: none;
 }
 
 .white-screen {
@@ -100,7 +115,11 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 3.5s ease; /* Adjust the duration to match the transition */
   z-index: 1000000001;
