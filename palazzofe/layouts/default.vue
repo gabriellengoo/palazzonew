@@ -14,6 +14,7 @@
 </template>
 <script>
 import { mapActions, mapMutations } from "vuex";
+// import LenisComponent from "~/components/LenisComponent.vue";
 
 export default {
   methods: {

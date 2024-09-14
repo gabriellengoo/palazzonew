@@ -5,7 +5,7 @@ import React from "react";
 
 export default {
   name: "project",
-  title: "Projects Archive",
+  title: "Weddings Pages Archive",
   type: "document",
   // liveEdit: true,
   // icon: Project,
@@ -50,6 +50,11 @@ export default {
     {
       name: "location",
       title: "Location",
+      type: "string",
+    },
+    {
+      name: "locationlink",
+      title: "Location Link",
       type: "string",
     },
     // {

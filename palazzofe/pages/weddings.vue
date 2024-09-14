@@ -105,9 +105,10 @@ export default {
 
 /* Flexbox layout for the image grid */
 .image-grid {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Adjust the gap between images */
+  gap: 20px;  */
+  /* Adjust the gap between images */
 }
 
 .bgmobile {
