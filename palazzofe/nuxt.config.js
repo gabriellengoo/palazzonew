@@ -27,9 +27,15 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  // plugins: [
+  // ],
 
+  plugins: [
+    { src: '@plugins/masonry', mode: 'client' },
+    { src: '@plugins/lazy', mode: 'client' },
+    { src: '@plugins/slider', mode: 'client' },
+    '~/plugins/preview.client.js',
+  ],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -44,8 +50,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-  ],
+  modules: ['vue-scrollto/nuxt'],
 
   sanity: {
     // module options
@@ -56,6 +61,19 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules\/@studio-freight\/lenis/,
+        type: 'javascript/auto',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      });
+    },
         // loaders: {
     //   sass: {
     //     implementation: require('sass'),
@@ -64,12 +82,10 @@ export default {
     //     implementation: require('sass'),
     //   },
     // },
-    extend(config, { isDev, isClient }) {
-      // Check if the IGNORE_BUILD_ERRORS environment variable is set to true
-      if (process.env.IGNORE_BUILD_ERRORS === 'true') {
-        // Skip some build steps or perform custom logic here
-      }
-    },
+    // extend(config, { isDev, isClient }) {
+    //   if (process.env.IGNORE_BUILD_ERRORS === 'true') {
+    //   }
+    // },
     postcss: {
       postcssOptions: {
         plugins: {

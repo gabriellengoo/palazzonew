@@ -57,6 +57,10 @@ export default {
 </script>
 
 <style scoped>
+.headingspagesb{
+  font-family: 'GT-Bold';
+}
+
 .image-item {
   position: relative;
   flex: 0 0 calc(50% - 20px);

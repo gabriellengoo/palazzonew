@@ -127,7 +127,8 @@ leave() {
 .hover-show-right{
   position: absolute;
     width: 43vw;
-    left: 54vw;
+    width: 47vw;
+    left: 51vw;
     top: 15vh;
 }
 
@@ -460,7 +461,7 @@ display: none;
 
 /* Add a bottom border after every two images */
 .image-item:nth-child(1n) {
-  border-bottom: 0.5px solid #000000; /* Adjust color and thickness */
+  border-bottom: 0.5px solid #00000054; /* Adjust color and thickness */
   margin-bottom: 40px; /* Add space after the border */
 }
 

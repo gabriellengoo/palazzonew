@@ -67,13 +67,51 @@
         </div>
 
         <!-- Right Static Content -->
-        <div class="right-content overflow-hidden flex-1 p-8">
+        <div class="right-content overflow-hidden flex-1 ">
           <!-- <h1 class="headingspagesb text-center text-4xl mb-6 uppercase">
           palazzo eventi
         </h1> -->
           <div class="static-box w-full h-full">
             <!-- Static Content (e.g., Image, Text, etc.) -->
-
+            <div class="close-button">
+              <!-- <button
+                v-if="isGalleryExpanded"
+                @click="closeImageModal"
+                class="close-buttons"
+              >
+                Exit
+              </button> -->
+              <!-- <button
+                v-if="isGalleryExpanded"
+                class="previous close-buttons"
+                :class="back ? '' : 'disabled'"
+                @click="prev"
+                ref="prev"
+                aria-label="Previous"
+              >
+                previous
+              </button>
+              <button
+                v-if="isGalleryExpanded"
+                class="next close-buttons"
+                @click="next"
+                aria-label="Next"
+              >
+                next
+              </button> -->
+            </div>
+            <button
+          class="absolute top-0 left-0 z-30 w-1/2 h-full previous"
+          :class="back ? '' : 'disabled'"
+          @click="prev"
+          ref="prev"
+          aria-label="Previous"
+        ></button>
+        <button
+          class="absolute top-0 right-0 z-30 w-1/2 h-full next"
+          @click="next"
+          aria-label="Next"
+        ></button>
             <div class="gallery-images">
               <section
                 class="top-0 left-0 hidden w-full md:block cursor-grab slider"
@@ -92,7 +130,7 @@
                       <figure
                         v-for="image in slide.images"
                         :key="image._key"
-                        class="overlaydiv flex flex-col flex-1 h-full"
+                        class="overlaydiv flex flex-col flex-1  h-full"
                         :class="
                           image.padding
                             ? image.padding == 'medium'
@@ -128,7 +166,7 @@
                             pointerEvents: 'auto',
                           }"
                           @click="handleVideoClick(image.video.id)"
-                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
+                          class="gallery-imagevid relative  object-center z-[10000000] h-auto p-4 my-auto"
                         ></MediaVideoPlay>
                         <!-- Display YouTube Video -->
                         <iframe
@@ -137,7 +175,7 @@
                           frameborder="0"
                           :style="{}"
                           allowfullscreen
-                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
+                          class="gallery-imagevid relative object-center z-[10000000]  h-auto p-4 my-auto"
                         ></iframe>
                         <!-- Display Vimeo Video -->
                         <iframe
@@ -146,38 +184,46 @@
                           frameborder="0"
                           allowfullscreen
                           :style="{}"
-                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
+                          class="gallery-imagevid relative  object-center z-[10000000]  h-auto p-4 my-auto"
                         ></iframe>
                       </figure>
                     </div>
+
+  
                   </div>
                 </div>
+
+
+     
               </section>
 
               <div class="footcon" v-if="isGalleryExpanded">
-                <div class="w-full flex justify-center">
-                  <div
-                    class="copyrtex items-baseline w-[96.5vw] justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
+          <div class=" w-full flex justify-center">
+            <div
+              class="copyrtex items-baseline  w-[96.5vw]  justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
+            >
+              <div
+                class="titleTextt flex  items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
+              >
+              <!-- md:text-[1.2rem] text-[1rem] -->
+              <div class="animate-hover text-[1.2rem] pr-5">   
+                 <p
+                 v-if="project"
+                    >{{ project.title }}</p
                   >
-                    <div
-                      class="titleTextt flex items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
-                    >
-                      <!-- md:text-[1.2rem] text-[1rem] -->
-                      <div class="animate-hover text-[1.2rem] pr-5">
-                        <p v-if="project">{{ project.title }}</p>
-                      </div>
-                      <!-- <span class="hover-move">Rose.co</span> -->
-                      <!-- <p class="crtext text-[1.2rem]">
+                  </div
+                >
+                <!-- <span class="hover-move">Rose.co</span> -->
+                <!-- <p class="crtext text-[1.2rem]">
                   COPYRIGHT ©2024
                 </p> -->
-                    </div>
-
-                    <p class="text-[1.2rem] text-end titleTextt">
-                      ©2024 Coralie Rose Casting
-                    </p>
-                  </div>
-                </div>
               </div>
+           
+              <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p>
+            </div>
+          </div>
+        </div>
+
             </div>
           </div>
         </div>
@@ -240,14 +286,14 @@ export default {
       isBackNavigation: false,
       imageNumberPosition: { top: 0, left: 0 }, // Initialize position
       isImageModalOpen: false,
-      isGalleryExpanded: false,
+      isGalleryExpanded: true,
       isBlueBoxActive: false,
       clickedImageIndex: null, // Initially set to null
       swiperOptions: {
         slidesPerView: "auto",
-        keyboard: {
-          enabled: true,
-        },
+        // keyboard: {
+        //   enabled: true,
+        // },
       },
       imageOpacity: 1, // Add this property
       scrolled: false,
@@ -419,13 +465,13 @@ export default {
         transform: `translateY(${offset})`,
       };
     },
-    handleKeyDown(event) {
-      if (event.key === "ArrowLeft" && this.mySwiper.slidePrev()) {
-        this.prev();
-      } else if (event.key === "ArrowRight") {
-        this.next();
-      }
-    },
+    // handleKeyDown(event) {
+    //   if (event.key === "ArrowLeft" && this.mySwiper.slidePrev()) {
+    //     this.prev();
+    //   } else if (event.key === "ArrowRight") {
+    //     this.next();
+    //   }
+    // },
 
     // pev btn
 
@@ -466,6 +512,97 @@ export default {
 
 <style scoped>
 
+.overlaydiv{
+  padding-top: 6vh;
+}
+
+.overlay-gallery {
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease;
+}
+
+.overlay-gallery.active {
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.overlay-gallery {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255);
+  /* background-color: rgb(255 255 255 / 45%); */
+  /* backdrop-filter: blur(10px);  */
+  transition: backdrop-filter 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* z-index: 9; */
+  /* z-index: 100; */
+  /* cursor: crosshair; */
+}
+
+.gallery-content {
+  text-align: center;
+  color: white;
+}
+
+.nextbtn {
+  /* cursor: crosshair;
+  padding-left: 55vw;
+  position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: inherit;
+  width: fit-content; */
+
+  /* cursor: crosshair; */
+  padding-left: 15vw;
+  /* position: relative; */
+  margin-top: auto;
+  margin-bottom: auto;
+  height: inherit;
+  width: -moz-fit-content;
+  width: fit-content;
+
+  position: absolute;
+  left: 65vw;
+}
+
+
+.gallery-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gallery-image {
+
+  /* cursor: grab !important;
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  max-width: 100vw;
+  width: calc(55.33vw - 20px);
+  width: auto;
+  align-items: center;
+  height: 90vh;
+  pointer-events: none !important; */
+
+  cursor: grab !important;
+    /* padding-top: 20vh; */
+    padding-bottom: 20vh;
+    /* max-width: 100vw; */
+    /* width: calc(55.33vw - 20px); */
+    width: auto;
+    align-items: center;
+    height: 90vh;
+    pointer-events: none !important;
+
+}
+
 /* Define the keyframes for the animation */
 /* @keyframes revealFromTop {
   0% {
@@ -496,6 +633,7 @@ export default {
   left: 0;
   /* width: 100%; */
   width: 49vw;
+  width: 53vw;
   padding: 2vw;
   z-index: 1000;
 }
