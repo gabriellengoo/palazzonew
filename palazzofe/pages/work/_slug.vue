@@ -241,7 +241,7 @@
             <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
           </div>
 
-          <div class="static-box w-full h-full">
+          <div class="nomb static-box w-full h-full">
             <!-- Static Content (e.g., Image, Text, etc.) -->
 
             <button
@@ -974,6 +974,8 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     height: 100%;
+    height: auto;
+    height: 40vh;
     flex: none;
   }
 
