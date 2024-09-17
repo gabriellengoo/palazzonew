@@ -10,111 +10,25 @@
 
       <div class="bgmobile relative min-h-screen flex">
         <!-- Left Scrollable Content -->
-        <div class="left-content flex-1  overflow-y-scroll p-8">
-         
-         
- 
-    <div class="content flex w-full justify-between">
-            <h1 class="w-[2vw]">
-            <!-- weddings -->
-            <a href="../weddings"><SvgClose class="headbar hover:cursor-pointer" /></a>
-          </h1>
-            <p
-              class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
-              v-if="project"
-            >
-              {{ project.title }}
-            </p>
-            <p
-              class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
-              v-if="project"
-            >
-              {{ project.year }}
-            </p>
-          </div>
+        <div class="left-content flex-1 overflow-y-scroll p-8">
 
-          <div class="bottom">
-          <div class="w-[20vw] pt-[10vh]">
-        <img src="/indiangels.png" alt="Arch Frame" class="arch-frame" />
-          </div>
 
-          <!-- footer -->
-           <div class="pt-[6vh]">
-            <div class="footerstuff">
-            <div v-if="project.content" class="pt-3">
-              <Richtext
-                class="contactinner"
-                :blocks="project.content"
-              ></Richtext>
-            </div>
-            <div
-              v-if="project.location"
-              class="w-full flex items-center text-center flex-col pt-10 md:pt-5"
-            >
-            <p class="loctext">Location,</p>
-              <div class="flex flex-col normal-case italic loctextlink">
-                <a
-                :href="project.locationlink"
-                target="_blank"
-                rel="noopener noreferrer"
-                >{{ project.location }}</a>
-              </div>
-            </div>
-          </div>
-           </div>
-   </div>
-        
-        </div>
 
-        <!-- Right Static Content -->
-        <div class="right-content overflow-hidden flex-1 ">
-          <!-- <h1 class="headingspagesb text-center text-4xl mb-6 uppercase">
-          palazzo eventi
-        </h1> -->
-          <div class="static-box w-full h-full">
-            <!-- Static Content (e.g., Image, Text, etc.) -->
-            <div class="close-button">
-              <!-- <button
-                v-if="isGalleryExpanded"
-                @click="closeImageModal"
-                class="close-buttons"
-              >
-                Exit
-              </button> -->
-              <!-- <button
-                v-if="isGalleryExpanded"
-                class="previous close-buttons"
-                :class="back ? '' : 'disabled'"
-                @click="prev"
-                ref="prev"
-                aria-label="Previous"
-              >
-                previous
-              </button>
-              <button
-                v-if="isGalleryExpanded"
-                class="next close-buttons"
-                @click="next"
-                aria-label="Next"
-              >
-                next
-              </button> -->
-            </div>
+          <button
+              class="nodes absolute top-0 left-[0] z-30 w-[50%] h-[60vh] previous"
+              :class="back ? '' : 'disabled'"
+              @click="prev"
+              ref="prev"
+              aria-label="Previous"
+            ></button>
             <button
-          class="absolute top-0 left-0 z-30 w-1/2 h-full previous"
-          :class="back ? '' : 'disabled'"
-          @click="prev"
-          ref="prev"
-          aria-label="Previous"
-        ></button>
-        <button
-          class="absolute top-0 right-0 z-30 w-1/2 h-full next"
-          @click="next"
-          aria-label="Next"
-        ></button>
-            <div class="gallery-images">
+              class="nodes absolute top-0 right-0 z-30 w-[50%] h-[60vh] next"
+              @click="next"
+              aria-label="Next"
+            ></button>
+            <div class="nodes nodesgal ">
               <section
-                class="top-0 left-0 hidden w-full md:block cursor-grab slider"
+                class="top-0 left-0  w-full md:block cursor-grab slider"
                 v-swiper:mySwiper="swiperOptions"
                 @slideChange="onSlideChange"
                 ref="slider"
@@ -130,7 +44,7 @@
                       <figure
                         v-for="image in slide.images"
                         :key="image._key"
-                        class="overlaydiv flex flex-col flex-1  h-full"
+                        class="overlaydiv flex flex-col flex-1 h-full"
                         :class="
                           image.padding
                             ? image.padding == 'medium'
@@ -166,7 +80,7 @@
                             pointerEvents: 'auto',
                           }"
                           @click="handleVideoClick(image.video.id)"
-                          class="gallery-imagevid relative  object-center z-[10000000] h-auto p-4 my-auto"
+                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
                         ></MediaVideoPlay>
                         <!-- Display YouTube Video -->
                         <iframe
@@ -175,7 +89,7 @@
                           frameborder="0"
                           :style="{}"
                           allowfullscreen
-                          class="gallery-imagevid relative object-center z-[10000000]  h-auto p-4 my-auto"
+                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
                         ></iframe>
                         <!-- Display Vimeo Video -->
                         <iframe
@@ -184,46 +98,267 @@
                           frameborder="0"
                           allowfullscreen
                           :style="{}"
-                          class="gallery-imagevid relative  object-center z-[10000000]  h-auto p-4 my-auto"
+                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
                         ></iframe>
                       </figure>
                     </div>
-
-  
                   </div>
                 </div>
-
-
-     
               </section>
 
-              <div class="footcon" v-if="isGalleryExpanded">
-          <div class=" w-full flex justify-center">
-            <div
-              class="copyrtex items-baseline  w-[96.5vw]  justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
-            >
-              <div
-                class="titleTextt flex  items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
-              >
-              <!-- md:text-[1.2rem] text-[1rem] -->
-              <div class="animate-hover text-[1.2rem] pr-5">   
-                 <p
-                 v-if="project"
-                    >{{ project.title }}</p
+              <div class="footcon">
+                <div class="w-full flex justify-center">
+                  <div
+                    class="copyrtex copyrtexd items-baseline w-[96.5vw] justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
                   >
-                  </div
-                >
-                <!-- <span class="hover-move">Rose.co</span> -->
-                <!-- <p class="crtext text-[1.2rem]">
+                    <div
+                      class="titleTextt flex items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
+                    >
+                      <!-- md:text-[1.2rem] text-[1rem] -->
+                      <div class="animate-hover text-[1.2rem] pr-5">
+                        <p v-if="project">{{ project.title }}</p>
+                      </div>
+
+                      <!-- <span class="hover-move">Rose.co</span> -->
+                      <!-- <p class="crtext text-[1.2rem]">
                   COPYRIGHT ©2024
                 </p> -->
+                    </div>
+
+                    <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
+                  </div>
+                </div>
               </div>
-           
-              <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p>
+            </div>
+
+
+          <div class="headera content flex w-full justify-between">
+            <h1 class="w-[2vw]">
+              <!-- weddings -->
+              <a href="../weddings"
+                ><SvgClose class="headbar hover:cursor-pointer"
+              /></a>
+            </h1>
+            <p
+              class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+              v-if="project"
+            >
+              {{ project.title }}
+            </p>
+            <p
+              class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+              v-if="project"
+            >
+              {{ project.year }}
+            </p>
+          </div>
+
+          <div class="bottom">
+            <div class="archimg w-[20vw] pt-[10vh]">
+              <img src="/indiangels.png" alt="Arch Frame" class="arch-frame" />
+            </div>
+
+            <!-- footer -->
+            <div class="nomb pt-[6vh] footout">
+              <div class="footerstuff">
+                <div v-if="project.content" class="pt-3">
+                  <Richtext
+                    class="contactinner"
+                    :blocks="project.content"
+                  ></Richtext>
+                </div>
+                <div
+                  v-if="project.location"
+                  class="w-full flex items-center text-center flex-col pt-10 md:pt-5 locationtext"
+                >
+                  <p class="loctext">Location,</p>
+                  <div class="flex flex-col normal-case italic loctextlink">
+                    <a
+                      :href="project.locationlink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >{{ project.location }}</a
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
+        <!-- Right Static Content -->
+        <div class="right-content overflow-hidden flex-1">
+          <!-- <h1 class="headingspagesb text-center text-4xl mb-6 uppercase">
+          palazzo eventi
+        </h1> -->
+
+          <div
+            class="copyrtex copyrtexmb items-baseline w-[96.5vw] justify-between flex pt-10  md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
+          >
+            <div
+              class="titleTextt flex flex-col items-baseline justify-between md:text-6xl text-2xl align-baseline "
+            >
+              <!-- md:text-[1.2rem] text-[1rem] -->
+              <div class="ttmb uppercase animate-hover text-[1.2rem] pr-[1vw] pl-[1vw]">
+                <p v-if="project">{{ project.title }}</p>
+                <p
+                  class="yeart mb-6 uppercase"
+                  v-if="project"
+                >
+                  {{ project.year }}
+                </p>
+              </div>
+
+              <div class="nodes mbfootout pt-[6vh] footout">
+            <div class="footerstuff ">
+            <div v-if="project.content" class="pt-5">
+              <Richtext
+                class="contactinner"
+                :blocks="project.content"
+              ></Richtext>
+            </div>
+            <div
+              v-if="project.location"
+              class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
+            >
+            <p class="loctext">Location,</p>
+              <div class="flex flex-col normal-case italic loctextlink">
+                <a
+                :href="project.locationlink"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{ project.location }}</a>
+              </div>
+            </div>
+          </div>
+           </div>
+              <!-- <span class="hover-move">Rose.co</span> -->
+              <!-- <p class="crtext text-[1.2rem]">
+                  COPYRIGHT ©2024
+                </p> -->
+            </div>
+
+            <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
+          </div>
+
+          <div class="static-box w-full h-full">
+            <!-- Static Content (e.g., Image, Text, etc.) -->
+
+            <button
+              class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
+              :class="back ? '' : 'disabled'"
+              @click="prev"
+              ref="prev"
+              aria-label="Previous"
+            ></button>
+            <button
+              class="nomb absolute top-0 right-0 z-30 w-[25%] h-full next"
+              @click="next"
+              aria-label="Next"
+            ></button>
+            <div class="nomb gallery-images">
+              <section
+                class="top-0 left-0 hidden w-full md:block cursor-grab slider"
+                v-swiper:mySwiper="swiperOptions"
+                @slideChange="onSlideChange"
+                ref="slider"
+              >
+                <div class="relative z-40 w-full h-full swiper-wrapper">
+                  <div
+                    v-for="(slide, index) in project.slider"
+                    :key="slide._key"
+                    class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
+                    :class="realIndex == 0 ? '' : ''"
+                  >
+                    <div class="overlaycont flex h-full p-2 pb-0 w-13/16">
+                      <figure
+                        v-for="image in slide.images"
+                        :key="image._key"
+                        class="overlaydiv flex flex-col flex-1 h-full"
+                        :class="
+                          image.padding
+                            ? image.padding == 'medium'
+                              ? 'p-12 pr-10'
+                              : image.padding == 'large'
+                              ? 'p-20 pr-18'
+                              : 'p-8 pr-6'
+                            : ''
+                        "
+                      >
+                        <MediaImage
+                          :src="image.image.asset._ref"
+                          v-if="image.image"
+                          class="gallery-image w-auto h-full"
+                          :class="
+                            image.padding
+                              ? 'object-contain'
+                              : 'object-contain max-w-full'
+                          "
+                          :style="{
+                            pointerEvents: 'auto',
+                          }"
+                          :sizes="'sm:200vw md:150vw lg:200vw'"
+                        ></MediaImage>
+                        <MediaVideoPlay
+                          :id="image.video.id"
+                          :active="realIndex == index ? true : false"
+                          v-else-if="image.video.id"
+                          :poster="`https://image.mux.com/${
+                            image.video.id
+                          }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
+                          :style="{
+                            pointerEvents: 'auto',
+                          }"
+                          @click="handleVideoClick(image.video.id)"
+                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
+                        ></MediaVideoPlay>
+                        <!-- Display YouTube Video -->
+                        <iframe
+                          v-else-if="image.youtubeUrl"
+                          :src="getYouTubeEmbedUrl(image.youtubeUrl)"
+                          frameborder="0"
+                          :style="{}"
+                          allowfullscreen
+                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
+                        ></iframe>
+                        <!-- Display Vimeo Video -->
+                        <iframe
+                          v-else-if="image.vimeoUrl"
+                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          :style="{}"
+                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
+                        ></iframe>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <div class="footcon">
+                <div class="w-full flex justify-center">
+                  <div
+                    class="copyrtex copyrtexd items-baseline w-[96.5vw] justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
+                  >
+                    <div
+                      class="titleTextt flex items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
+                    >
+                      <!-- md:text-[1.2rem] text-[1rem] -->
+                      <div class="animate-hover text-[1.2rem] pr-5">
+                        <p v-if="project">{{ project.title }}</p>
+                      </div>
+
+                      <!-- <span class="hover-move">Rose.co</span> -->
+                      <!-- <p class="crtext text-[1.2rem]">
+                  COPYRIGHT ©2024
+                </p> -->
+                    </div>
+
+                    <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -325,8 +460,8 @@ export default {
       // Wait for animation to finish
       setTimeout(() => {
         window.scrollTo({
-          top: document.querySelector('.reveal-container').offsetHeight,
-          behavior: 'smooth'
+          top: document.querySelector(".reveal-container").offsetHeight,
+          behavior: "smooth",
         });
       }, 1000); // Adjust timeout to match the duration of your animation
     });
@@ -511,8 +646,23 @@ export default {
 </script>
 
 <style scoped>
+.headera {
+  display: flex;
+}
 
-.overlaydiv{
+.archimg {
+  display: inherit;
+}
+
+.footout {
+  display: inherit;
+}
+
+.archimg {
+  display: inherit;
+}
+
+.overlaydiv {
   padding-top: 6vh;
 }
 
@@ -571,7 +721,6 @@ export default {
   left: 65vw;
 }
 
-
 .gallery-images {
   display: flex;
   justify-content: center;
@@ -580,7 +729,6 @@ export default {
 }
 
 .gallery-image {
-
   /* cursor: grab !important;
   padding-top: 20vh;
   padding-bottom: 20vh;
@@ -592,15 +740,14 @@ export default {
   pointer-events: none !important; */
 
   cursor: grab !important;
-    /* padding-top: 20vh; */
-    padding-bottom: 20vh;
-    /* max-width: 100vw; */
-    /* width: calc(55.33vw - 20px); */
-    width: auto;
-    align-items: center;
-    height: 90vh;
-    pointer-events: none !important;
-
+  /* padding-top: 20vh; */
+  padding-bottom: 20vh;
+  /* max-width: 100vw; */
+  /* width: calc(55.33vw - 20px); */
+  width: auto;
+  align-items: center;
+  height: 90vh;
+  pointer-events: none !important;
 }
 
 /* Define the keyframes for the animation */
@@ -626,7 +773,6 @@ export default {
   overflow: hidden;
 }
 
-
 .bottom {
   position: fixed;
   bottom: 0;
@@ -638,19 +784,17 @@ export default {
   z-index: 1000;
 }
 
-
-a{
-color: black;
-text-decoration: underline;
+a {
+  color: black;
+  text-decoration: underline;
 }
 
 .headingspages {
   font-family: "GT-Bold";
 }
 
-.yeart{
-  font-family: 'MinionPro-Regular';
-
+.yeart {
+  font-family: "MinionPro-Regular";
 }
 
 .footerstuff {
@@ -663,10 +807,9 @@ text-decoration: underline;
   border-top-width: 0.5px;
 }
 
-.loctextlink{
+.loctextlink {
   font-size: small;
   font-size: 1.7rem;
-
 }
 
 .loctext {
@@ -675,30 +818,27 @@ text-decoration: underline;
   font-family: "GT-Bold";
   text-transform: uppercase;
 }
-
 
 @media (max-width: 1440px) {
+  .yeart {
+    font-family: "MinionPro-Regular";
+    font-size: medium;
+  }
 
-  .yeart{
-  font-family: 'MinionPro-Regular';
-  font-size: medium;
-}
+  .footerstuff {
+    font-size: medium;
+  }
 
-.footerstuff {
+  .loctextlink {
+    font-size: smaller;
+  }
 
-  font-size: medium;
- 
-}
-
-.loctextlink{
-  font-size: smaller;
-}
-
-.loctext {
-  font-size: smaller;
-  font-family: "GT-Bold";
-  text-transform: uppercase;
-}
+  .loctext {
+    font-size: smaller;
+    font-family: "GT-Bold";
+    text-transform: uppercase;
+    
+  }
 }
 
 .image-item {
@@ -780,20 +920,146 @@ text-decoration: underline;
   height: 100vh;
 }
 
+.copyrtexd {
+  display: inherit;
+}
 
+.copyrtexmb {
+  display: none;
+}
+
+.archimg {
+  display: inherit;
+}
+
+.nomb {
+  display: inherit;
+}
+
+.nodes{
+  display: none;
+}
 
 @media only screen and (max-width: 768px) {
+  .nomb {
+    display: none;
+  }
+
+  .nodes {
+  display: inherit;
+}
+
+.nodesgal {
+  display: flex;
+  height: 60vh;
+  width: 100vw;
+        left: 0;
+        position: absolute;
+}
+  .left-content {
+    background-image: url("./static/LeftBG.png");
+    background-image: url("./static/PINKBG.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 60vh;
+    overflow-y: scroll;
+    flex: none;
+  }
+
+  .right-content {
+    background-image: url("./static/PINKBG.png");
+    background-image: url("./static/LeftBG.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    flex: none;
+  }
+
+  .footout {
+    padding-top: 0;
+  }
+
+  .contactinner{
+    line-height: normal;
+  }
+
+  .mbfootout{
+/* text-transform:unset; */
+  }
+
+  .ttmb {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    font-family: "GT-Bold";
+    font-size: large;
+  }
+
+  .titleTextt {
+    padding: 1vh;
+  }
+
+  .footerstuff {
+    border: none;
+    padding: 1vh;
+    padding-bottom: 4vh;
+  }
+
+  .locationtext {
+    padding-top: 3vh;
+  }
+
+  .copyrtex {
+    padding: 1vh;
+  }
+
+  .copyrtexd {
+    display: none;
+  }
+
+  .copyrtexmb {
+    display: contents;
+  }
+
+  .archimg {
+    padding-top: 0;
+  }
+
   .bgmobile {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
 
-  .left-content,
+  /* .left-content,
   .right-content {
     height: auto;
+  } */
+
+  .bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* width: 49vw;
+  width: 53vw; */
+    padding: 2vw;
+    z-index: 1000;
+  }
+
+  .headera {
+    display: none;
+  }
+
+  .archimg {
+    display: none;
+  }
+
+  .loctext{
+    line-height: normal;
   }
 }
-
-
 
 /* .swiper-slide{
   pointer-events: none !important;
