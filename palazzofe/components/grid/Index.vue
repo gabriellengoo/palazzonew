@@ -306,11 +306,13 @@ a {
 
 @media (max-width: 768px) {
   .overlay-image {
-    /* clip-path: path("m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z") !important; */
-    clip-path: path(
+    clip-path: path("m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z") !important;
+    /* clip-path: path(
       "m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z"
-    );
+    ); */
   }
+
+
 
   .leftimg{
 display: none;
@@ -521,9 +523,15 @@ display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .image-grid {
+@media only screen and (max-width: 768px) {
+  /* .image-grid {
     grid-template-columns: repeat(1, 1fr);
-  }
+  } */
+
+  .headingspages {
+    font-family: 'RomainHeadlineTrial';
+    font-size: 5vw;
+    padding-top: 2vh;
+}
 }
 </style>

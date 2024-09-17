@@ -155,9 +155,14 @@ a:hover {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
 
-  .left-content,
+  /* .left-content,
   .right-content {
     height: auto;
+  } */
+
+
+  .right-content {
+  display: none;
   }
 }
 </style>
