@@ -10,7 +10,7 @@
 
       <div class="bgmobile relative min-h-screen flex">
         <!-- Left Scrollable Content -->
-        <div class="left-content flex-1 overflow-y-scroll p-8">
+        <div class="left-content flex-1 overflow-y-scroll md:p-8">
 
 
 
@@ -256,7 +256,7 @@
               @click="next"
               aria-label="Next"
             ></button>
-            <div class="nomb gallery-images">
+            <div class="nomb nombgal gallery-images">
               <section
                 class="top-0 left-0 hidden w-full md:block cursor-grab slider"
                 v-swiper:mySwiper="swiperOptions"
@@ -336,7 +336,7 @@
                 </div>
               </section>
 
-              <div class="footcon">
+              <div class="footcon nodes">
                 <div class="w-full flex justify-center">
                   <div
                     class="copyrtex copyrtexd items-baseline w-[96.5vw] justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
@@ -626,6 +626,8 @@ export default {
         this.mySwiper.slidePrev();
       }
     },
+
+    
     async searchProjects() {
       const searchQuery = this.searchQuery.trim(); // Remove leading and trailing spaces
       if (searchQuery.length === 0) {
@@ -936,6 +938,10 @@ a {
   display: inherit;
 }
 
+.nombgal {
+  display: flex;
+}
+
 .nodes{
   display: none;
 }
@@ -963,7 +969,7 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     height: 60vh;
-    overflow-y: scroll;
+    overflow-y: none;
     flex: none;
   }
 
