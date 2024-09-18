@@ -2,9 +2,9 @@
   <client-only>
 
 <div>
-      <div v-for="(item, index) in items" :key="item._key" class="leftimg">
+      <!-- <div v-for="(item, index) in items" :key="item._key" class="leftimg">
   <MediaImage :src="item.image.image" v-if="item.image.image" class="hover-show-right" />
-    </div>
+    </div> -->
   
     <div class="image-grid">
       <div v-for="(item, index) in items" :key="item._key" class="item-wrapper">
@@ -20,7 +20,9 @@
         >
           <figure class="flex flex-col">
             <div class="relative">
-              <img src="/archframe.png" alt="Arch Frame" class="arch-frame" />
+
+
+              <!-- <img src="/archframe.png" alt="Arch Frame" class="arch-frame" /> -->
               <NuxtLink
                 v-if="item.reference.slug"
                 :to="`/work/${item.reference.slug}`"
@@ -28,13 +30,12 @@
                 @mouseleave="leave()"
                 class="flex flex-col items-end h-full"
               >
-                <figure class="inner-image figsvgall">
-                  <div class="svg-container">
-                    <svg fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-background"></svg>
-                    <!-- Original MediaImage -->
-                    <MediaImage :src="item.image.image" v-if="item.image.image" class="overlay-image hover-show-right" />
+                <figure class="inner-image">
+                  <!-- <div class="svg-container"> -->
+                    <!-- <svg fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-background"></svg> -->
+                    <MediaImage :src="item.image.image" v-if="item.image.image" class="" />
                     
-                  </div>
+                  <!-- </div> -->
                 </figure>
 
                 <figcaption class="textsum block text-center uppercase w-full pt-2 text-xs">
@@ -463,8 +464,10 @@ display: none;
 
 /* Add a bottom border after every two images */
 .image-item:nth-child(1n) {
-  border-bottom: 0.5px solid #00000054; /* Adjust color and thickness */
-  margin-bottom: 40px; /* Add space after the border */
+  /* border-bottom: 0.5px solid #00000054;  */
+  /* Adjust color and thickness */
+  /* margin-bottom: 40px;  */
+  /* Add space after the border */
 }
 
 .square-rounded {
@@ -521,6 +524,20 @@ display: none;
   .image-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+}
+
+@media only screen and (max-width: 2560px) {
+  /* .image-grid {
+    grid-template-columns: repeat(1, 1fr);
+  } */
+
+  .textsum {
+    font-family: 'RomainHeadlineTrial';
+    font-size: 1.2vw;
+    line-height: normal;
+    padding-top: 2vh;
+}
 }
 
 @media only screen and (max-width: 768px) {
