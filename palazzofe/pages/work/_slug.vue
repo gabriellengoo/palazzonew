@@ -13,8 +13,8 @@
         <div class="left-content flex-1 overflow-y-scroll md:p-8">
 
 
-
-          <button
+<!-- mobile  -->
+          <!-- <button
               class="nodes absolute top-0 left-[0] z-30 w-[50%] h-[60vh] previous"
               :class="back ? '' : 'disabled'"
               @click="prev"
@@ -25,12 +25,12 @@
               class="nodes absolute top-0 right-0 z-30 w-[50%] h-[60vh] next"
               @click="next"
               aria-label="Next"
-            ></button>
+            ></button> -->
             <div class="nodes nodesgal ">
-              <section
+              <!-- <section
                 class="top-0 left-0  w-full md:block cursor-grab slider"
-                v-swiper:mySwiper="swiperOptions"
-                @slideChange="onSlideChange"
+                v-swiper:mySwiper="swiperOptions2"
+                @slideChange="onSlideChange2"
                 ref="slider"
               >
                 <div class="relative z-40 w-full h-full swiper-wrapper">
@@ -69,42 +69,13 @@
                           }"
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
-                        <MediaVideoPlay
-                          :id="image.video.id"
-                          :active="realIndex == index ? true : false"
-                          v-else-if="image.video.id"
-                          :poster="`https://image.mux.com/${
-                            image.video.id
-                          }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
-                          :style="{
-                            pointerEvents: 'auto',
-                          }"
-                          @click="handleVideoClick(image.video.id)"
-                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
-                        ></MediaVideoPlay>
-                        <!-- Display YouTube Video -->
-                        <iframe
-                          v-else-if="image.youtubeUrl"
-                          :src="getYouTubeEmbedUrl(image.youtubeUrl)"
-                          frameborder="0"
-                          :style="{}"
-                          allowfullscreen
-                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
-                        ></iframe>
-                        <!-- Display Vimeo Video -->
-                        <iframe
-                          v-else-if="image.vimeoUrl"
-                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
-                          frameborder="0"
-                          allowfullscreen
-                          :style="{}"
-                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
-                        ></iframe>
+                  
+                   
                       </figure>
                     </div>
                   </div>
                 </div>
-              </section>
+              </section> -->
 
               <div class="footcon">
                 <div class="w-full flex justify-center">
@@ -243,7 +214,7 @@
 
           <div class="nomb static-box w-full h-full">
             <!-- Static Content (e.g., Image, Text, etc.) -->
-
+<!-- desktop -->
             <button
               class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
               :class="back ? '' : 'disabled'"
@@ -430,6 +401,12 @@ export default {
         //   enabled: true,
         // },
       },
+      swiperOptions2: {
+        slidesPerView: "auto",
+        // keyboard: {
+        //   enabled: true,
+        // },
+      },
       imageOpacity: 1, // Add this property
       scrolled: false,
       back: false,
@@ -531,6 +508,21 @@ export default {
         gsap.to(this.$refs["skew"], { x: "0%" });
       }
     },
+    onSlideChange2(swiper) {
+      this.index = swiper.activeIndex + 1;
+      this.realIndex = swiper.activeIndex;
+      const gsap = this.$gsap;
+      if (swiper.activeIndex == 0 && !this.back) {
+        this.$refs["prev"].classList.add("disabled");
+      } else {
+        this.$refs["prev"].classList.remove("disabled");
+      }
+      if (this.index > 1) {
+        gsap.to(this.$refs["skew"], { x: "-150%" });
+      } else {
+        gsap.to(this.$refs["skew"], { x: "0%" });
+      }
+    },
     handleVideoClick(videoId) {
       // Call the playVideo() method of your MediaVideoPlayPlay component
       this.$refs.mediaVideoPlayPlay.playVideo(videoId);
@@ -547,6 +539,12 @@ export default {
     openImageModal(index) {
       this.clickedImageIndex = index;
       this.swiperOptions = { ...this.swiperOptions, initialSlide: index };
+      this.isGalleryExpanded = true;
+    },
+
+    openImageModal2(index) {
+      this.clickedImageIndex = index;
+      this.swiperOptions2 = { ...this.swiperOptions2, initialSlide: index };
       this.isGalleryExpanded = true;
     },
 
@@ -568,6 +566,7 @@ export default {
       this.isGalleryExpanded = !this.isGalleryExpanded;
     },
     onSlideChange(swiper) {},
+    onSlideChange2(swiper) {},
     scroll() {},
     toggleBlueBox() {
       // Toggle the blue box visibility
@@ -600,13 +599,13 @@ export default {
         transform: `translateY(${offset})`,
       };
     },
-    // handleKeyDown(event) {
-    //   if (event.key === "ArrowLeft" && this.mySwiper.slidePrev()) {
-    //     this.prev();
-    //   } else if (event.key === "ArrowRight") {
-    //     this.next();
-    //   }
-    // },
+    handleKeyDown(event) {
+      if (event.key === "ArrowLeft" && this.mySwiper.slidePrev()) {
+        this.prev();
+      } else if (event.key === "ArrowRight") {
+        this.next();
+      }
+    },
 
     // pev btn
 
@@ -731,15 +730,7 @@ export default {
 }
 
 .gallery-image {
-  /* cursor: grab !important;
-  padding-top: 20vh;
-  padding-bottom: 20vh;
-  max-width: 100vw;
-  width: calc(55.33vw - 20px);
-  width: auto;
-  align-items: center;
-  height: 90vh;
-  pointer-events: none !important; */
+ 
 
   cursor: grab !important;
   /* padding-top: 20vh; */
@@ -752,17 +743,7 @@ export default {
   pointer-events: none !important;
 }
 
-/* Define the keyframes for the animation */
-/* @keyframes revealFromTop {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-} */
+
 
 /* Apply the animation to the main container */
 .reveal-container {
@@ -869,19 +850,12 @@ a {
   transform: translate(-50%, -50%); /* Center the image inside the arch frame */
   z-index: 2; /* Make sure it's on top of the arch frame */
   padding: 10px; /* Padding around the inner image */
-  /* background-image: url("./static/PINKBG.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
+
 }
 
 /* Styles for text inside the frame */
 .textframe {
-  /* text-align: center; */
-  /* position: absolute; */
-  /* bottom: 10%;
-  left: 0;
-  width: 100%; */
+
   z-index: 3; /* Ensure text appears on top */
 }
 
@@ -1040,10 +1014,7 @@ a {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
 
-  /* .left-content,
-  .right-content {
-    height: auto;
-  } */
+
 
   .bottom {
     position: fixed;
@@ -1069,19 +1040,5 @@ a {
   }
 }
 
-/* .swiper-slide{
-  pointer-events: none !important;
-}
 
-.swiper-wrapper{
-  pointer-events: none !important;
-}
-
-.slider{
-  pointer-events: none !important;
-}
-
-.gallery-imagevid{
-  pointer-events: none !important;
-} */
 </style>
