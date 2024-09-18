@@ -100,10 +100,10 @@ pointer-events: none;
   height: 100%;
   transition: opacity 3.5s ease; /* Adjust the duration to match the transition */
   background-color: #fff; 
-  background-image: url("./static/bggif.gif");
+  /* background-image: url("./static/bggif.gif");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   /* background: rgba(255, 255, 255, 0.752); */
   z-index: 1000000002;
   pointer-events: none;
@@ -115,11 +115,11 @@ pointer-events: none;
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-color: #fff; */
-  background-image: url("./static/background.jpg");
+  background-color: #fff;
+  /* background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   opacity: 0;
   transition: opacity 3.5s ease; /* Adjust the duration to match the transition */
   z-index: 1000000001;
