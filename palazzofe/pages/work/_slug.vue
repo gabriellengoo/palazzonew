@@ -7,6 +7,38 @@
     <div>
       <!-- Header (optional) -->
       <HeaderComponent />
+      <div class="headera content flex w-full justify-between">
+            <h1 class="w-[2vw]">
+              <!-- weddings -->
+              <a href="../weddings"
+                ><SvgClose class="headbar hover:cursor-pointer"
+              /></a>
+            </h1>
+            <p
+              class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+              v-if="project"
+            >
+              {{ project.title }}
+            </p>
+            <p
+              class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+              v-if="project"
+            >
+              {{ project.year }}
+            </p>
+            <p
+              class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+           
+            >
+             Weddings
+            </p>
+            <h1 class="w-[2vw]">
+              <!-- weddings -->
+              <!-- <a href="../weddings"
+                ><SvgClose class="headbar hover:cursor-pointer"
+              /></a> -->
+            </h1>
+          </div>
 
       <div class="bgmobile relative min-h-screen flex">
         <!-- Left Scrollable Content -->
@@ -103,29 +135,10 @@
             </div>
 
 
-          <div class="headera content flex w-full justify-between">
-            <h1 class="w-[2vw]">
-              <!-- weddings -->
-              <a href="../weddings"
-                ><SvgClose class="headbar hover:cursor-pointer"
-              /></a>
-            </h1>
-            <p
-              class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
-              v-if="project"
-            >
-              {{ project.title }}
-            </p>
-            <p
-              class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
-              v-if="project"
-            >
-              {{ project.year }}
-            </p>
-          </div>
-
-          <div class="bottom">
-            <div class="archimg w-[20vw] pt-[10vh]">
+         
+<div class="allbotindi">
+  <div class="bottom">
+            <div class="archimg w-[20vw] ">
               <img src="/indiangels.png" alt="Arch Frame" class="arch-frame" />
             </div>
 
@@ -140,7 +153,7 @@
                 </div>
                 <div
                   v-if="project.location"
-                  class="w-full flex items-center text-center flex-col pt-10 md:pt-5 locationtext"
+                  class="w-full flex items-center text-center flex-col pt-10 md:pt-[4vh] locationtext"
                 >
                   <p class="loctext">Location,</p>
                   <div class="flex flex-col normal-case italic loctextlink">
@@ -155,6 +168,8 @@
               </div>
             </div>
           </div>
+</div>
+       
         </div>
 
         <!-- Right Static Content -->
@@ -241,7 +256,7 @@
                     class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
                     :class="realIndex == 0 ? '' : ''"
                   >
-                    <div class="overlaycont flex h-full p-2 pb-0 w-13/16">
+                    <div class="overlaycont flex h-full  pb-0 w-13/16">
                       <figure
                         v-for="image in slide.images"
                         :key="image._key"
@@ -260,47 +275,16 @@
                           :src="image.image.asset._ref"
                           v-if="image.image"
                           class="gallery-image w-auto h-full"
-                          :class="
-                            image.padding
-                              ? 'object-contain'
-                              : 'object-contain max-w-full'
-                          "
+                          :class="{
+                            portrait: image.portrait,
+                            landscape: !image.portrait
+                          }"
                           :style="{
                             pointerEvents: 'auto',
                           }"
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
-                        <MediaVideoPlay
-                          :id="image.video.id"
-                          :active="realIndex == index ? true : false"
-                          v-else-if="image.video.id"
-                          :poster="`https://image.mux.com/${
-                            image.video.id
-                          }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
-                          :style="{
-                            pointerEvents: 'auto',
-                          }"
-                          @click="handleVideoClick(image.video.id)"
-                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
-                        ></MediaVideoPlay>
-                        <!-- Display YouTube Video -->
-                        <iframe
-                          v-else-if="image.youtubeUrl"
-                          :src="getYouTubeEmbedUrl(image.youtubeUrl)"
-                          frameborder="0"
-                          :style="{}"
-                          allowfullscreen
-                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
-                        ></iframe>
-                        <!-- Display Vimeo Video -->
-                        <iframe
-                          v-else-if="image.vimeoUrl"
-                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
-                          frameborder="0"
-                          allowfullscreen
-                          :style="{}"
-                          class="gallery-imagevid relative object-center z-[10000000] h-auto p-4 my-auto"
-                        ></iframe>
+                    
                       </figure>
                     </div>
                   </div>
@@ -647,8 +631,34 @@ export default {
 </script>
 
 <style scoped>
+.portrait {
+  height: auto;
+    width: 34vw;
+    left: 25%;
+    /* display: flex; */
+    position: relative;
+  }
+
+  .landscape {
+    height: auto;
+    width: auto;
+    max-width: 46.5vw;
+  }
+
+
+  .swiper-wrapper{
+    align-items: center;
+  }
 .headera {
   display: flex;
+  align-items: center;
+  padding-left: .5rem;
+    padding-right: .5rem;
+    border-bottom: .5px solid black;
+    background-image: url("./static/background.jpg");
+    background-size: cover;
+    background-position: initial;
+    background-repeat: no-repeat;
 }
 
 .archimg {
@@ -664,7 +674,7 @@ export default {
 }
 
 .overlaydiv {
-  padding-top: 6vh;
+  /* padding-top: 6vh; */
 }
 
 .overlay-gallery {
@@ -727,23 +737,34 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  height: 98vh;
+  width: 48vw;
 }
 
 .gallery-image {
  
 
-  cursor: grab !important;
+  /* cursor: grab !important; */
   /* padding-top: 20vh; */
-  padding-bottom: 20vh;
+  /* padding-bottom: 20vh; */
   /* max-width: 100vw; */
   /* width: calc(55.33vw - 20px); */
-  width: auto;
+  /* width: auto; */
   align-items: center;
-  height: 90vh;
+  /* height: 90vh; */
+  padding: 2vh;
   pointer-events: none !important;
 }
 
-
+.allbotindi{
+  display: flex;
+  display: flex;
+    width: 100%;
+    height: 100%;
+    height: 95%;
+    justify-content: center;
+    align-items: flex-end;
+}
 
 /* Apply the animation to the main container */
 .reveal-container {
@@ -763,6 +784,7 @@ export default {
   /* width: 100%; */
   width: 49vw;
   width: 53vw;
+  width: 49vw;
   padding: 2vw;
   z-index: 1000;
 }
@@ -774,10 +796,18 @@ a {
 
 .headingspages {
   font-family: "GT-Bold";
+  font-size: medium;
+  font-size: 3rem;
 }
 
 .yeart {
   font-family: "MinionPro-Regular";
+  font-size: medium;
+  font-size: 3rem;
+}
+
+.headera {
+    padding: .9vw;
 }
 
 .footerstuff {
@@ -785,6 +815,7 @@ a {
   /* top: 70vh; */
   font-size: medium;
   font-size: 1.7rem;
+  font-size: 1.3vw;
   width: 100%;
   border-top: solid;
   border-top-width: 0.5px;
@@ -793,11 +824,13 @@ a {
 .loctextlink {
   font-size: small;
   font-size: 1.7rem;
+  font-size: 1.3vw;
 }
 
 .loctext {
   font-size: small;
   font-size: 1.7rem;
+  font-size: 1.1vw;
   font-family: "GT-Bold";
   text-transform: uppercase;
 }
@@ -807,6 +840,15 @@ a {
     font-family: "MinionPro-Regular";
     font-size: medium;
   }
+
+  .headera {
+    padding: 0;
+}
+
+  .headingspages {
+  font-family: "GT-Bold";
+  font-size: medium;
+}
 
   .footerstuff {
     font-size: medium;

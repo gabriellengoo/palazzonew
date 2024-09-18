@@ -1,59 +1,70 @@
 <template>
   <client-only>
-
-<div>
-      <!-- <div v-for="(item, index) in items" :key="item._key" class="leftimg">
-  <MediaImage :src="item.image.image" v-if="item.image.image" class="hover-show-right" />
-    </div> -->
-  
-    <div class="image-grid">
-      <div v-for="(item, index) in items" :key="item._key" class="item-wrapper">
-        
+    <div>
+      <!-- images section -->
+      <div class="image-grid pt-[9vh]">
+        <!-- Loop through the items array in chunks of two -->
         <div
-          class="relative image-item transition-opacity duration-300"
-          :class="[
-            item.double ? 'double h-fit' : '',
-            item.spacer ? 'p-2' : '',
-            activeTalent && activeTalent != item.reference.talentId && activeTalent != item.reference
-              ? 'hidden' : '',
-          ]"
+          v-for="(chunk, chunkIndex) in chunkedItems"
+          :key="chunkIndex"
+          class="image-row"
         >
-          <figure class="flex flex-col">
-            <div class="relative">
+          <div
+            v-for="(item, index) in chunk"
+            :key="item._key"
+            class="item-wrapper"
+          >
+            <!-- Image Item -->
+            <div
+              class="relative image-item transition-opacity duration-300"
+              :class="[
+                item.double ? 'double h-fit' : '',
+                item.spacer ? 'p-2' : '',
+                activeTalent &&
+                activeTalent != item.reference.talentId &&
+                activeTalent != item.reference
+                  ? 'hidden'
+                  : '',
+              ]"
+            >
+              <figure class="flex flex-col">
+                <div class="relative">
+                  <NuxtLink
+                    v-if="item.reference.slug"
+                    :to="`/work/${item.reference.slug}`"
+                    @mouseenter="hover(item)"
+                    @mouseleave="leave()"
+                    class="flex flex-col items-end h-full"
+                  >
+                    <figure class="inner-image">
+                      <MediaImage
+                        :src="item.image.image"
+                        v-if="item.image.image"
+                        class=""
+                      />
+                    </figure>
 
-
-              <!-- <img src="/archframe.png" alt="Arch Frame" class="arch-frame" /> -->
-              <NuxtLink
-                v-if="item.reference.slug"
-                :to="`/work/${item.reference.slug}`"
-                @mouseenter="hover(item)"
-                @mouseleave="leave()"
-                class="flex flex-col items-end h-full"
-              >
-                <figure class="inner-image">
-                  <!-- <div class="svg-container"> -->
-                    <!-- <svg fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-background"></svg> -->
-                    <MediaImage :src="item.image.image" v-if="item.image.image" class="" />
-                    
-                  <!-- </div> -->
-                </figure>
-
-                <figcaption class="textsum block text-center uppercase w-full pt-2 text-xs">
-                  <span class="textsumf">{{ item.title || item.reference.title }}</span>
-                  <span>{{ item.year || item.reference.year }}</span>
-                </figcaption>
-              </NuxtLink>
+                    <figcaption
+                      class="textsum block text-center uppercase w-full pt-2 "
+                    >
+                      <span class="textsumf">{{ item.title || item.reference.title }}</span>
+                      <span class="pt-[.7vh]">{{ item.year || item.reference.year }}</span>
+                    </figcaption>
+                  </NuxtLink>
+                </div>
+              </figure>
             </div>
-          </figure>
+          </div>
         </div>
-
-        <!-- Full-width horizontal rule after every second image -->
-        <!-- <hr v-if="(index + 1) % 2 === 0" class="my-4 full-width-hr border-black" /> -->
+        <!-- Horizontal rule after the row of two items -->
+        <!-- <hr class="my-4 border-black full-row-hr" /> -->
       </div>
     </div>
-</div>
   </client-only>
 </template>
+
+
+
 
 
 
@@ -71,6 +82,20 @@ export default {
   },
   computed: {
     ...mapState(["activeProject", "activeTalent"]),
+
+    chunkedItems() {
+      return this.items.reduce((resultArray, item, index) => {
+        const chunkIndex = Math.floor(index / 2);
+
+        if (!resultArray[chunkIndex]) {
+          resultArray[chunkIndex] = [];
+        }
+
+        resultArray[chunkIndex].push(item);
+
+        return resultArray;
+      }, []);
+    },
   },
   mounted() {
     this.redraw();
@@ -110,45 +135,83 @@ export default {
       window.removeEventListener("resize", this.handleResize);
     },
     hover(item) {
-   const image = document.querySelector(".hover-show-right");
-   if (image) {
-     image.classList.add("show-on-right");
-   }
-},
-leave() {
-   const image = document.querySelector(".hover-show-right");
-   if (image) {
-     image.classList.remove("show-on-right");
-   }
-}
+      const image = document.querySelector(".hover-show-right");
+      if (image) {
+        image.classList.add("show-on-right");
+      }
+    },
+    leave() {
+      const image = document.querySelector(".hover-show-right");
+      if (image) {
+        image.classList.remove("show-on-right");
+      }
+    },
   },
 };
 </script>
 <style scoped>
-.hover-show-right{
+
+.image-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-row {
+  display: flex; /* Make the row horizontal */
+  justify-content: space-between; /* Add space between the two items */
+  width: 90%; /* Ensure the row spans the full width */
+  border-bottom: .05vw solid black;
+  display: flex;
+  justify-content: space-around;
+}
+
+.image-row:last-child{
+  border-bottom: 0;
+}
+
+.item-wrapper {
+  /* flex: 1;  */
+  /* Ensure the items take equal space */
+  /* margin: 0 10px;  */
+  /* Optional: add some margin between items */
+}
+
+.full-row-hr {
+  width: 100%;
+  border: 1px solid black;
+}
+
+
+
+
+
+
+
+.hover-show-right {
   position: absolute;
-    width: 43vw;
-    width: 47vw;
-    left: 51vw;
-    top: 15vh;
+  width: 43vw;
+  width: 47vw;
+  left: 51vw;
+  top: 15vh;
 }
 
-.leftimg{
-display: none;
+.leftimg {
+  display: none;
 }
 
-.leftimg:nth-child(1){
-display:contents;
+.leftimg:nth-child(1) {
+  display: contents;
 }
 
-.textsum{
+.textsum {
   display: flex;
   flex-direction: column;
   /* font-family: 'GT-Bold'; */
 }
 
-.textsumf{
-  font-family: 'GT-Bold';
+.textsumf {
+  font-family: "GT-Bold";
 }
 
 /* Default styling */
@@ -182,7 +245,7 @@ a {
   flex: 0 0 calc(50% - 20px);
   /* flex: 0 1 auto; */
   margin-bottom: 20px;
-  padding: 2vw;
+  padding: 1vw;
 }
 
 .arch-frame {
@@ -195,24 +258,7 @@ a {
   opacity: 0.2;
 }
 
-/* .inner-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90%; 
-  height: auto;
-  object-fit: contain;
-  transform: translate(-50%, -50%); 
-  z-index: 2; 
-} */
 
-/* .inner-image img {
-    position: relative;
-    top: -2.5vh;
-    display: flex;
-    width: 100vw;
-    align-items: center;
-} */
 
 .svg-container {
   position: relative;
@@ -255,14 +301,14 @@ a {
     flex: 0 0 calc(50% - 20px);
     /* flex: 0 1 auto; */
     margin-bottom: 20px;
-    padding: 2vw;
+    /* padding: 2vw; */
   }
 
   .image-grid {
-    display: grid !important;
+    /* display: grid !important;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
-    gap: 20px;
+    gap: 20px; */
   }
 
   .figsvgall {
@@ -307,37 +353,34 @@ a {
 
 @media (max-width: 768px) {
   .overlay-image {
-    clip-path: path("m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z") !important;
+    clip-path: path(
+      "m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z"
+    ) !important;
     /* clip-path: path(
       "m111.885,1.00841c-81.531,0.862,-107.895,65.486,-110.885,97.69v245.302h225v-245.302c-4.067,-32.923,-32.584,-98.552,-114.115,-97.69z"
     ); */
   }
 
+  .leftimg {
+    display: none;
+  }
 
-
-  .leftimg{
-display: none;
-}
-
-.leftimg:nth-child(1){
-  display: none;
-}
-
+  .leftimg:nth-child(1) {
+    display: none;
+  }
 
   .image-item {
     position: relative;
     /* flex: 0 0 calc(50% - 20px); */
     flex: 0 1 auto;
     margin-bottom: 20px;
-    padding: 2vw;
+    /* padding: 2vw; */
   }
   .image-grid {
-    /* display: flex !important; */
-    flex: 0 1 auto;
-    /* grid-template-columns: repeat(2, 1fr); */
+    /* flex: 0 1 auto;
     grid-gap: 20px;
     gap: 20px;
-    justify-content: center;
+    justify-content: center; */
   }
 
   .svg-container {
@@ -369,14 +412,12 @@ display: none;
     /* flex: 0 0 calc(50% - 20px); */
     flex: 0 1 auto;
     margin-bottom: 20px;
-    padding: 2vw;
+    /* padding: 2vw; */
   }
   .image-grid {
-    /* display: flex !important; */
-    /* grid-template-columns: repeat(2, 1fr); */
-    grid-gap: 20px;
+    /* grid-gap: 20px;
     gap: 20px;
-    justify-content: center;
+    justify-content: center; */
   }
 }
 
@@ -390,7 +431,7 @@ display: none;
     /* flex: 0 0 calc(50% - 20px); */
     flex: 0 1 auto;
     margin-bottom: 20px;
-    padding: 2vw;
+    /* padding: 2vw; */
   }
 }
 
@@ -407,23 +448,10 @@ display: none;
   transform: translate(-50%, -54%);
 }
 
-/* <svg width="315" height="480" viewBox="0 0 315 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M155.5 1.01171C41.9 2.21171 5.16667 92.1784 1 137.012V478.512H314.5V137.012C308.833 91.1784 269.1 -0.188295 155.5 1.01171Z" stroke="black"/>
-</svg> */
 
-/* @media (max-width: 1440px) {
-  .overlay-image {
-    clip-path: m154.5 0c-113.6 1.2-150.3 91.2-154.5 135.999v341.5h313.5v-341.5c-5.7-45.8-45.4-136.2-159-135.99z
-    ;
-  }} */
 
 /* Styles for text inside the frame */
 .textframe {
-  /* text-align: center; */
-  /* position: absolute; */
-  /* bottom: 10%;
-  left: 0;
-  width: 100%; */
   z-index: 3; /* Ensure text appears on top */
 }
 
@@ -448,9 +476,9 @@ display: none;
 }
 
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
-  gap: 20px; /* Adjust the gap between grid items */
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px;  */
 }
 
 .image-item {
@@ -459,7 +487,7 @@ display: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 20vw; */
+  width: 20vw;
 }
 
 /* Add a bottom border after every two images */
@@ -499,7 +527,7 @@ display: none;
   width: 25vw;
 } */
 
- /* Ensure full width for the hr */
+/* Ensure full width for the hr */
 .full-width-hr {
   width: 100%;
   border: none;
@@ -509,22 +537,21 @@ display: none;
 
 /* Adjust the layout for the grid */
 .image-grid {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 20px; */
 }
 
 .image-item {
   position: relative;
-  padding: 2vw;
+  /* padding: 2vw; */
   margin-bottom: 20px;
 }
 
 @media (max-width: 1024px) {
   .image-grid {
-    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-columns: repeat(2, 1fr); */
   }
-
 }
 
 @media only screen and (max-width: 2560px) {
@@ -533,11 +560,11 @@ display: none;
   } */
 
   .textsum {
-    font-family: 'RomainHeadlineTrial';
+    font-family: "RomainHeadlineTrial";
     font-size: 1.2vw;
     line-height: normal;
     padding-top: 2vh;
-}
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -546,9 +573,9 @@ display: none;
   } */
 
   .headingspages {
-    font-family: 'RomainHeadlineTrial';
+    font-family: "RomainHeadlineTrial";
     font-size: 5vw;
     padding-top: 2vh;
-}
+  }
 }
 </style>

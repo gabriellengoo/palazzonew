@@ -1,12 +1,12 @@
 <template>
 <div>
   <header
-    class="header absolute top-[1rem] md:top-4 lg:top-[2rem] w-screen flex justify-center items-center p-6"
+    class="header  top-[1rem] md:top-4 lg:top-[2rem]  flex  items-center p-6"
   >
-    <div class="flex w-[95%] justify-center md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
-      <div class="headbar w-[10vw] md:w-[3vw] lg:w-[3vw]" @click="toggleMenu">
-        <SvgMenu v-if="!isMenuOpen" class="headbar hover:cursor-pointer" />
-        <SvgClose v-else class="headbar hover:cursor-pointer" />
+    <div class="flex  md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
+      <div class="headbar w-[2vw] md:w-[3vw] lg:w-[3vw]" @click="toggleMenu">
+        <SvgMenu v-if="!isMenuOpen" class="headbar w-[2vw] hover:cursor-pointer" />
+        <SvgClose v-else class="headbar w-[2vw] hover:cursor-pointer" />
       </div>
       <!-- <div class="w-[2vw]"></div> -->
     </div>

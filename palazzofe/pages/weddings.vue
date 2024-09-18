@@ -1,45 +1,62 @@
 <template>
   <div>
     <!-- Header (optional) -->
-    <HeaderComponent />
+    <!-- <HeaderComponent /> -->
+    <div class="headera content flex w-full justify-between">
+      <h1 class="w-[2vw]">
+        <!-- weddings -->
+        <!-- <a href="../weddings">
+          <SvgClose class="headbar hover:cursor-pointer"/>
+        </a> -->
+        <HeaderComponent />
+      </h1>
+      <p class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2">
+        Weddings
+      </p>
+      <p
+        class="yeart w-[5vw] text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+      ></p>
+      <p class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2">
+        palazzo eventi
+      </p>
+      <h1 class="w-[2vw]">
+        <!-- weddings -->
+        <!-- <a href="../weddings"
+                ><SvgClose class="headbar hover:cursor-pointer"
+              /></a> -->
+      </h1>
+    </div>
 
     <div class="bgmobile relative min-h-screen flex">
       <!-- Left Scrollable Content -->
       <div class="left-content flex-1 overflow-y-scroll p-8">
         <div class="content">
-          <h1 class="headingspages text-center text-4xl mb-6 uppercase">
+          <!-- <h1 class="headingspages text-center text-4xl mb-6 uppercase">
             weddings
-          </h1>
-
-
+          </h1> -->
 
           <div v-if="grid.grid" class="">
-      <Grid class="" :items="grid.grid" size="small"></Grid>
-    </div>
-
-
-        
+            <Grid class="" :items="grid.grid" size="small"></Grid>
+          </div>
         </div>
       </div>
 
       <!-- Right Static Content -->
       <div class="right-content overflow-hidden flex-1 p-8">
-        <h1 class="headingspagesb text-center text-4xl mb-6 uppercase">
+        <!-- <h1 class="headingspagesb text-center text-4xl mb-6 uppercase">
           palazzo eventi
-        </h1>
+        </h1> -->
         <div class="static-box w-full h-full">
           <!-- Static Content (e.g., Image, Text, etc.) -->
         </div>
       </div>
-
-
     </div>
   </div>
 </template>
 
 <script>
 import HeaderComponent from "@/components/layout/Header.vue";
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 
 export default {
   name: "IndexPage",
@@ -49,16 +66,14 @@ export default {
   },
 
   computed: {
-    ...mapState(['grid']),
+    ...mapState(["grid"]),
   },
-
-  
 };
 </script>
 
 <style scoped>
-.headingspagesb{
-  font-family: 'GT-Bold';
+.headingspagesb {
+  font-family: "GT-Bold";
 }
 
 .image-item {
@@ -160,9 +175,8 @@ a:hover {
     height: auto;
   } */
 
-
   .right-content {
-  display: none;
+    display: none;
   }
 }
 </style>

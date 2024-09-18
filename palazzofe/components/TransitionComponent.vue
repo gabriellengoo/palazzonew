@@ -51,7 +51,7 @@ export default {
       setTimeout(() => {
         this.isTextVisible = false;
         this.isTransitionActive = false;
-      }, 5000); // Adjust the duration of text visibility as needed
+      }, 1500); // Adjust the duration of text visibility as needed
     }
   },
 

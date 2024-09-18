@@ -31,42 +31,87 @@ html {
 }
 
 
-.headingspages{
+/* .headingspages{
   font-family: 'RomainHeadlineTrial';
   font-size: 2vw;
-}
+} */
 
-.headingspagesb{
+/* .headingspagesb{
   font-family: 'RomainHeadlineTrial';
   font-size: 2vw;
  font-weight: bold;
+} */
+
+/* .headingspages {
+  font-family: "GT-Bold";
+  font-size: medium;
+} */
+
+/* .yeart {
+  font-family: "MinionPro-Regular";
+  font-size: medium;
+} */
+
+
+.textsum {
+  font-size: 2.2rem;
+  line-height: normal;
 }
 
+.yeart {
+  font-family: "MinionPro-Regular";
+  font-size: medium;
+  font-size: 3rem;
+}
+
+.headingspages {
+  font-family: "GT-Bold";
+  font-size: medium;
+  font-size: 3rem;
+}
+
+.headera {
+  display: flex;
+  align-items: center;
+  
+  padding-left: .5rem;
+    padding-right: .5rem;
+    border-bottom: .5px solid black;
+    border-bottom: .05vw solid black;
+    background-image: url("./static/background.jpg");
+    background-size: cover;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: .9vw;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
 
 @media (min-width: 1440px) and (max-width: 1544px) {
-  .headingspages{
+  /* .headingspages{
     font-family: 'RomainHeadlineTrial';
     font-size: 1.7vw;
-  }
+  } */
   
-  .headingspagesb{
+  /* .headingspagesb{
     font-family: 'RomainHeadlineTrial';
     font-size: 1.7vw;
    font-weight: bold;
-  }
+  } */
 }
 
 
-  .headingspages{
+  /* .headingspages{
     font-family: 'RomainHeadlineTrial';
     font-size: 1.5vw;
-  }
+  } */
   
-  .headingspagesb{
+  /* .headingspagesb{
     font-family: 'RomainHeadlineTrial';
     font-size: 1.5vw;
    font-weight: bold;
-  }
+  } */
 
 
   @media only screen and (max-width: 768px) {
@@ -74,9 +119,9 @@ html {
       grid-template-columns: repeat(1, 1fr);
     } */
   
-    .headingspages {
+    /* .headingspages {
       font-family: 'RomainHeadlineTrial';
       font-size: 5vw;
       padding-top: 2vh;
-  }
+  } */
   }

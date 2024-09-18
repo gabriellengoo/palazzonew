@@ -139,6 +139,12 @@ export default {
                       hidden: ({ parent, value }) =>
                         (!value && parent?.spacer) || (!value && parent?.video),
                     },
+                    {
+                      name: "portrait",
+                      title: "portrait img",
+                      type: "boolean",
+                      description: "Is the img portrait?",
+                    },
                
                     // {
                     //   name: "video",
