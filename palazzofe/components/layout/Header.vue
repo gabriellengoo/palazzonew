@@ -11,6 +11,8 @@
       <!-- <div class="w-[2vw]"></div> -->
     </div>
 
+    
+
 
     <!-- desktop -->
     <transition name="slide-down" @after-enter="fadeInAllImg">

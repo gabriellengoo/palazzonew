@@ -40,7 +40,34 @@ import { groq } from '@nuxtjs/sanity'
 export const actions = {
   async nuxtServerInit({ commit }) {
     // Home Grid
-    const gridQuery = groq`*[_type == "works" ] {grid[] {_key, double, spacer, "video" : {"id" : video.asset->playbackId, "aspect" : video.asset->data.aspect_ratio , "thumbTime" : video.asset->thumbTime }, "image" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "size" : {"width" : image.asset->metadata.dimensions.width, "height" : image.asset->metadata.dimensions.height}, "position" : position}, link, title, year,"reference" : {"key" : reference._ref, "title" : reference->title, "clients" : reference->client[].label, "slug" : reference->slug.current, "talent" : reference->talent->title, "talentId" : reference->talent._ref, "team" : reference->team, "meta" : reference->meta}}} | order(_updatedAt desc)[0]`
+    const gridQuery = groq`*[_type == "works" ] 
+    {grid[] {
+    _key, double, spacer, 
+    "video" : {"id" : video.asset->playbackId, 
+    "aspect" : video.asset->data.aspect_ratio , 
+    "thumbTime" : video.asset->thumbTime }, 
+    "image" : 
+      {"image" : image.asset._ref, 
+      "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+      "size" : {"width" : image.asset->metadata.dimensions.width, 
+      "height" : image.asset->metadata.dimensions.height}, 
+      "position" : position }, 
+      link, title, year,
+    "reference": reference->{
+        _id,
+        title,
+        "slug" : slug.current,
+        "slider": slider[] {
+          _key,
+          images[] {
+            _key,
+            portrait,
+            "imageUrl": image.asset->url
+          }
+        }
+      }
+         }
+  } | order(_updatedAt desc)[0]`
     const grid = await this.$sanity.fetch(gridQuery)
     commit('SET_GRID', grid)
 

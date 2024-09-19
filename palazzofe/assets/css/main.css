@@ -54,28 +54,28 @@ html {
 
 
 .textsum {
-  font-size: 2.2rem;
+  font-size: .8vw;
   line-height: normal;
 }
 
 .yeart {
   font-family: "MinionPro-Regular";
   font-size: medium;
-  font-size: 3rem;
+  font-size: 1.3vw;
 }
 
 .headingspages {
   font-family: "GT-Bold";
   font-size: medium;
-  font-size: 3rem;
+  font-size: 1.3vw;
 }
 
 .headera {
   display: flex;
   align-items: center;
   
-  padding-left: .5rem;
-    padding-right: .5rem;
+  padding-left: .7vw;
+    padding-right: .7vw;
     border-bottom: .5px solid black;
     border-bottom: .05vw solid black;
     background-image: url("./static/background.jpg");
@@ -86,6 +86,19 @@ html {
     position: absolute;
     top: 0;
     z-index: 1;
+}
+
+.headera {
+  padding: 0.9vw;
+}
+
+@media (max-width: 1440px) {
+  .headera {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 0.5vw;
+      padding-right: 0.5vw;
+  }
 }
 
 @media (min-width: 1440px) and (max-width: 1544px) {

@@ -2,7 +2,7 @@
   <client-only>
     <div>
       <!-- images section -->
-      <div class="image-grid pt-[9vh]">
+      <div class="image-grid pt-[7vh]">
         <!-- Loop through the items array in chunks of two -->
         <div
           v-for="(chunk, chunkIndex) in chunkedItems"
@@ -42,7 +42,11 @@
                         v-if="item.image.image"
                         class=""
                       />
+
+<!-- v-if="item.reference.slider" -->
+
                     </figure>
+
 
                     <figcaption
                       class="textsum block text-center uppercase w-full pt-2 "
@@ -51,6 +55,14 @@
                       <span class="pt-[.7vh]">{{ item.year || item.reference.year }}</span>
                     </figcaption>
                   </NuxtLink>
+
+                  <div class="sliderimg" v-if="item.reference.slider && item.reference.slider.length">
+      <li  v-for="(slide, slideIndex) in item.reference.slider" :key="slide._key">
+        <div class="" v-for="(img, imgIndex) in slide.images" :key="img._key">
+          <img class="sliderimgin" :src="img.imageUrl" :alt="`Image ${imgIndex}`" />
+        </div>
+      </li>
+    </div>
                 </div>
               </figure>
             </div>
@@ -150,6 +162,23 @@ export default {
 };
 </script>
 <style scoped>
+
+.sliderimg li{
+display: none ;
+}
+
+.sliderimg li:nth-child(1){
+ display: block !important;
+ position: fixed;
+    left: 60vw;
+    top: 8vh;
+    width: 35vw;
+}
+
+.sliderimg li{
+  text-decoration: none;
+padding: 2vw;
+}
 
 .image-grid {
   display: flex;
@@ -544,7 +573,7 @@ a {
 
 .image-item {
   position: relative;
-  /* padding: 2vw; */
+  padding: 2vw;
   margin-bottom: 20px;
 }
 
@@ -555,13 +584,10 @@ a {
 }
 
 @media only screen and (max-width: 2560px) {
-  /* .image-grid {
-    grid-template-columns: repeat(1, 1fr);
-  } */
 
   .textsum {
     font-family: "RomainHeadlineTrial";
-    font-size: 1.2vw;
+    /* font-size: 1.2vw; */
     line-height: normal;
     padding-top: 2vh;
   }

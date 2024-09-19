@@ -8,44 +8,41 @@
       <!-- Header (optional) -->
       <HeaderComponent />
       <div class="headera content flex w-full justify-between">
-            <h1 class="w-[2vw]">
-              <!-- weddings -->
-              <a href="../weddings"
-                ><SvgClose class="headbar hover:cursor-pointer"
-              /></a>
-            </h1>
-            <p
-              class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
-              v-if="project"
-            >
-              {{ project.title }}
-            </p>
-            <p
-              class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
-              v-if="project"
-            >
-              {{ project.year }}
-            </p>
-            <p
-              class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
-           
-            >
-             Weddings
-            </p>
-            <h1 class="w-[2vw]">
-              <!-- weddings -->
-              <!-- <a href="../weddings"
+        <h1 class="w-[2vw]">
+          <!-- weddings -->
+          <a href="../weddings"
+            ><SvgClose class="headbar hover:cursor-pointer"
+          /></a>
+        </h1>
+        <p
+          class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+          v-if="project"
+        >
+          {{ project.title }}
+        </p>
+        <p
+          class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+          v-if="project"
+        >
+          {{ project.year }}
+        </p>
+        <p
+          class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+        >
+          Weddings
+        </p>
+        <h1 class="w-[2vw]">
+          <!-- weddings -->
+          <!-- <a href="../weddings"
                 ><SvgClose class="headbar hover:cursor-pointer"
               /></a> -->
-            </h1>
-          </div>
+        </h1>
+      </div>
 
       <div class="bgmobile relative min-h-screen flex">
         <!-- Left Scrollable Content -->
         <div class="left-content flex-1 overflow-y-scroll md:p-8">
-
-
-<!-- mobile  -->
+          <!-- mobile  -->
           <!-- <button
               class="nodes absolute top-0 left-[0] z-30 w-[50%] h-[60vh] previous"
               :class="back ? '' : 'disabled'"
@@ -58,8 +55,8 @@
               @click="next"
               aria-label="Next"
             ></button> -->
-            <div class="nodes nodesgal ">
-              <!-- <section
+          <div class="nodes nodesgal">
+            <!-- <section
                 class="top-0 left-0  w-full md:block cursor-grab slider"
                 v-swiper:mySwiper="swiperOptions2"
                 @slideChange="onSlideChange2"
@@ -109,67 +106,68 @@
                 </div>
               </section> -->
 
-              <div class="footcon">
-                <div class="w-full flex justify-center">
+            <div class="footcon">
+              <div class="w-full flex justify-center">
+                <div
+                  class="copyrtex copyrtexd items-baseline w-[96.5vw] justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
+                >
                   <div
-                    class="copyrtex copyrtexd items-baseline w-[96.5vw] justify-between flex pt-10 uppercase md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
+                    class="titleTextt flex items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
                   >
-                    <div
-                      class="titleTextt flex items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
-                    >
-                      <!-- md:text-[1.2rem] text-[1rem] -->
-                      <div class="animate-hover text-[1.2rem] pr-5">
-                        <p v-if="project">{{ project.title }}</p>
-                      </div>
-
-                      <!-- <span class="hover-move">Rose.co</span> -->
-                      <!-- <p class="crtext text-[1.2rem]">
-                  COPYRIGHT ©2024
-                </p> -->
+                    <!-- md:text-[1.2rem] text-[1rem] -->
+                    <div class="animate-hover text-[1.2rem] pr-5">
+                      <p v-if="project">{{ project.title }}</p>
                     </div>
 
-                    <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
+                    <!-- <span class="hover-move">Rose.co</span> -->
+                    <!-- <p class="crtext text-[1.2rem]">
+                  COPYRIGHT ©2024
+                </p> -->
                   </div>
+
+                  <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
                 </div>
               </div>
             </div>
+          </div>
 
+          <div class="allbotindi">
+            <div class="bottom">
+              <div class="archimg w-[20vw]">
+                <img
+                  src="/indiangels.png"
+                  alt="Arch Frame"
+                  class="arch-frame"
+                />
+              </div>
 
-         
-<div class="allbotindi">
-  <div class="bottom">
-            <div class="archimg w-[20vw] ">
-              <img src="/indiangels.png" alt="Arch Frame" class="arch-frame" />
-            </div>
-
-            <!-- footer -->
-            <div class="nomb pt-[6vh] footout">
-              <div class="footerstuff">
-                <div v-if="project.content" class="pt-3">
-                  <Richtext
-                    class="contactinner"
-                    :blocks="project.content"
-                  ></Richtext>
-                </div>
-                <div
-                  v-if="project.location"
-                  class="w-full flex items-center text-center flex-col pt-10 md:pt-[4vh] locationtext"
-                >
-                  <p class="loctext">Location,</p>
-                  <div class="flex flex-col normal-case italic loctextlink">
-                    <a
-                      :href="project.locationlink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >{{ project.location }}</a
-                    >
+              <!-- footer -->
+              <div class="nomb pt-[6vh] footout">
+                <div class="footerstuff">
+                  <div v-if="project.content" class="pt-3">
+                    <Richtext
+                      class="contactinner"
+                      :blocks="project.content"
+                    ></Richtext>
+                  </div>
+                  <div
+                    v-if="project.location"
+                    class="w-full flex items-center text-center flex-col pt-10 md:pt-[4vh] locationtext"
+                  >
+                    <p class="loctext">Location,</p>
+                    <div class="flex flex-col normal-case italic loctextlink">
+                      <a
+                        :href="project.locationlink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{{ project.location }}</a
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-</div>
-       
         </div>
 
         <!-- Right Static Content -->
@@ -179,45 +177,45 @@
         </h1> -->
 
           <div
-            class="copyrtex copyrtexmb items-baseline w-[96.5vw] justify-between flex pt-10  md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
+            class="copyrtex copyrtexmb items-baseline w-[96.5vw] justify-between flex pt-10 md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
           >
             <div
-              class="titleTextt flex flex-col items-baseline justify-between md:text-6xl text-2xl align-baseline "
+              class="titleTextt flex flex-col items-baseline justify-between md:text-6xl text-2xl align-baseline"
             >
               <!-- md:text-[1.2rem] text-[1rem] -->
-              <div class="ttmb uppercase animate-hover text-[1.2rem] pr-[1vw] pl-[1vw]">
+              <div
+                class="ttmb uppercase animate-hover text-[1.2rem] pr-[1vw] pl-[1vw]"
+              >
                 <p v-if="project">{{ project.title }}</p>
-                <p
-                  class="yeart mb-6 uppercase"
-                  v-if="project"
-                >
+                <p class="yeart mb-6 uppercase" v-if="project">
                   {{ project.year }}
                 </p>
               </div>
 
               <div class="nodes mbfootout pt-[6vh] footout">
-            <div class="footerstuff ">
-            <div v-if="project.content" class="pt-5">
-              <Richtext
-                class="contactinner"
-                :blocks="project.content"
-              ></Richtext>
-            </div>
-            <div
-              v-if="project.location"
-              class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
-            >
-            <p class="loctext">Location,</p>
-              <div class="flex flex-col normal-case italic loctextlink">
-                <a
-                :href="project.locationlink"
-                target="_blank"
-                rel="noopener noreferrer"
-                >{{ project.location }}</a>
+                <div class="footerstuff">
+                  <div v-if="project.content" class="pt-5">
+                    <Richtext
+                      class="contactinner"
+                      :blocks="project.content"
+                    ></Richtext>
+                  </div>
+                  <div
+                    v-if="project.location"
+                    class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
+                  >
+                    <p class="loctext">Location,</p>
+                    <div class="flex flex-col normal-case italic loctextlink">
+                      <a
+                        :href="project.locationlink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{{ project.location }}</a
+                      >
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-           </div>
               <!-- <span class="hover-move">Rose.co</span> -->
               <!-- <p class="crtext text-[1.2rem]">
                   COPYRIGHT ©2024
@@ -229,7 +227,7 @@
 
           <div class="nomb static-box w-full h-full">
             <!-- Static Content (e.g., Image, Text, etc.) -->
-<!-- desktop -->
+            <!-- desktop -->
             <button
               class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
               :class="back ? '' : 'disabled'"
@@ -256,7 +254,7 @@
                     class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
                     :class="realIndex == 0 ? '' : ''"
                   >
-                    <div class="overlaycont flex h-full  pb-0 w-13/16">
+                    <div class="overlaycont flex h-full pb-0 w-13/16">
                       <figure
                         v-for="image in slide.images"
                         :key="image._key"
@@ -277,14 +275,13 @@
                           class="gallery-image w-auto h-full"
                           :class="{
                             portrait: image.portrait,
-                            landscape: !image.portrait
+                            landscape: !image.portrait,
                           }"
                           :style="{
                             pointerEvents: 'auto',
                           }"
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
-                    
                       </figure>
                     </div>
                   </div>
@@ -610,7 +607,6 @@ export default {
       }
     },
 
-    
     async searchProjects() {
       const searchQuery = this.searchQuery.trim(); // Remove leading and trailing spaces
       if (searchQuery.length === 0) {
@@ -631,34 +627,50 @@ export default {
 </script>
 
 <style scoped>
+  .previous:hover {
+    cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e") 16 16, pointer;
+    cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(-45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e") 16 16, pointer;
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="), auto !important; 
+    /* cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto; */
+  }
+
+  .next {
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+'), auto !important; 
+  }
+
+  /* Fallback for non-custom cursors */
+  /* .previous:hover {
+    cursor: pointer;
+  }
+
+  .next:hover {
+    cursor: pointer;
+  } */
+  
 .portrait {
   height: auto;
-    width: 34vw;
-    left: 25%;
-    /* display: flex; */
-    position: relative;
-  }
+  width: 34vw;
+  left: 25%;
+  /* display: flex; */
+  position: relative;
+}
 
-  .landscape {
-    height: auto;
-    width: auto;
-    max-width: 46.5vw;
-  }
+.landscape {
+  height: auto;
+  width: auto;
+  max-width: 46.5vw;
+}
 
-
-  .swiper-wrapper{
-    align-items: center;
-  }
+.swiper-wrapper {
+  align-items: center;
+}
 .headera {
   display: flex;
-  align-items: center;
-  padding-left: .5rem;
-    padding-right: .5rem;
-    border-bottom: .5px solid black;
-    background-image: url("./static/background.jpg");
-    background-size: cover;
-    background-position: initial;
-    background-repeat: no-repeat;
+  border-bottom: 0.5px solid black;
+  background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: initial;
+  background-repeat: no-repeat;
 }
 
 .archimg {
@@ -734,16 +746,17 @@ export default {
 
 .gallery-images {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  height: 98vh;
-  width: 48vw;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 48vw;
+    left: 50vw;
+    position: sticky;
+    /* align-content: center; */
 }
 
 .gallery-image {
- 
-
   /* cursor: grab !important; */
   /* padding-top: 20vh; */
   /* padding-bottom: 20vh; */
@@ -756,14 +769,14 @@ export default {
   pointer-events: none !important;
 }
 
-.allbotindi{
+.allbotindi {
   display: flex;
   display: flex;
-    width: 100%;
-    height: 100%;
-    height: 95%;
-    justify-content: center;
-    align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  height: 95%;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 /* Apply the animation to the main container */
@@ -786,7 +799,7 @@ export default {
   width: 53vw;
   width: 49vw;
   padding: 2vw;
-  z-index: 1000;
+  /* z-index: 1000; */
 }
 
 a {
@@ -806,9 +819,7 @@ a {
   font-size: 3rem;
 }
 
-.headera {
-    padding: .9vw;
-}
+
 
 .footerstuff {
   position: relative;
@@ -841,14 +852,12 @@ a {
     font-size: medium;
   }
 
-  .headera {
-    padding: 0;
-}
+
 
   .headingspages {
-  font-family: "GT-Bold";
-  font-size: medium;
-}
+    font-family: "GT-Bold";
+    font-size: medium;
+  }
 
   .footerstuff {
     font-size: medium;
@@ -862,7 +871,6 @@ a {
     font-size: smaller;
     font-family: "GT-Bold";
     text-transform: uppercase;
-    
   }
 }
 
@@ -892,12 +900,10 @@ a {
   transform: translate(-50%, -50%); /* Center the image inside the arch frame */
   z-index: 2; /* Make sure it's on top of the arch frame */
   padding: 10px; /* Padding around the inner image */
-
 }
 
 /* Styles for text inside the frame */
 .textframe {
-
   z-index: 3; /* Ensure text appears on top */
 }
 
@@ -958,7 +964,7 @@ a {
   display: flex;
 }
 
-.nodes{
+.nodes {
   display: none;
 }
 
@@ -968,16 +974,16 @@ a {
   }
 
   .nodes {
-  display: inherit;
-}
+    display: inherit;
+  }
 
-.nodesgal {
-  display: flex;
-  height: 60vh;
-  width: 100vw;
-        left: 0;
-        position: absolute;
-}
+  .nodesgal {
+    display: flex;
+    height: 60vh;
+    width: 100vw;
+    left: 0;
+    position: absolute;
+  }
   .left-content {
     background-image: url("./static/LeftBG.png");
     background-image: url("./static/PINKBG.png");
@@ -1005,12 +1011,12 @@ a {
     padding-top: 0;
   }
 
-  .contactinner{
+  .contactinner {
     line-height: normal;
   }
 
-  .mbfootout{
-/* text-transform:unset; */
+  .mbfootout {
+    /* text-transform:unset; */
   }
 
   .ttmb {
@@ -1056,8 +1062,6 @@ a {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
 
-
-
   .bottom {
     position: fixed;
     bottom: 0;
@@ -1077,10 +1081,8 @@ a {
     display: none;
   }
 
-  .loctext{
+  .loctext {
     line-height: normal;
   }
 }
-
-
 </style>

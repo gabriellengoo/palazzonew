@@ -20,6 +20,8 @@ export default {
       title: "Year",
       type: "string",
     },
+
+    
     // {
     //   name: "filmtype",
     //   title: "Feature film or Short film",
@@ -111,7 +113,7 @@ export default {
         {
           name: "slide",
           title: "Slide",
-          type: "object",
+          type: "object", 
           fields: [
             // {
             //   name: "fullWidth",
