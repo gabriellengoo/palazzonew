@@ -1,29 +1,23 @@
 <template>
   <div>
-    <!-- Header (optional) -->
+
     <!-- <HeaderComponent /> -->
     <div class="headera content flex w-full justify-between">
       <h1 class="w-[2vw]">
-        <!-- weddings -->
-        <!-- <a href="../weddings">
-          <SvgClose class="headbar hover:cursor-pointer"/>
-        </a> -->
+ 
         <HeaderComponent />
       </h1>
-      <p class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2">
+      <p class="yeart text-center text-4xl  uppercase ">
         Weddings
       </p>
       <p
-        class="yeart w-[5vw] text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+        class="yeart w-[5vw] text-center text-4xl  uppercase "
       ></p>
-      <p class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2">
+      <p class="headingspages text-center text-4xl uppercase">
         palazzo eventi
       </p>
       <h1 class="w-[2vw]">
-        <!-- weddings -->
-        <!-- <a href="../weddings"
-                ><SvgClose class="headbar hover:cursor-pointer"
-              /></a> -->
+   
       </h1>
     </div>
 
@@ -31,9 +25,7 @@
       <!-- Left Scrollable Content -->
       <div class="left-content flex-1 overflow-y-scroll p-8">
         <div class="content">
-          <!-- <h1 class="headingspages text-center text-4xl mb-6 uppercase">
-            weddings
-          </h1> -->
+      
 
           <div v-if="grid.grid" class="">
             <Grid class="" :items="grid.grid" size="small"></Grid>
@@ -43,9 +35,7 @@
 
       <!-- Right Static Content -->
       <div class="right-content overflow-hidden flex-1 p-8">
-        <!-- <h1 class="headingspagesb text-center text-4xl mb-6 uppercase">
-          palazzo eventi
-        </h1> -->
+      
         <div class="static-box w-full h-full">
           <!-- Static Content (e.g., Image, Text, etc.) -->
         </div>

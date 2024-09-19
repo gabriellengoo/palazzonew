@@ -52,6 +52,12 @@ export const actions = {
       "size" : {"width" : image.asset->metadata.dimensions.width, 
       "height" : image.asset->metadata.dimensions.height}, 
       "position" : position }, 
+      "imageh" : 
+      { "imageh" : imageh.asset._ref,
+      "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+      "size" : {"width" : image.asset->metadata.dimensions.width, 
+      "height" : image.asset->metadata.dimensions.height}, 
+      "position" : position }, 
       link, title, year,
     "reference": reference->{
         _id,

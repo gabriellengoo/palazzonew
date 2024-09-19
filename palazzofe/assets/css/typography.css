@@ -8,6 +8,14 @@
 } */
 
 @font-face {
+  font-family: 'GT-SuperBook';
+  src: url('~assets/fonts/GT-SuperBook.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'GT-Bold';
   src: url('~assets/fonts/GT-Bold.woff') format('woff');
   font-weight: normal;

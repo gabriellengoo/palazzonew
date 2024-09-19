@@ -4,9 +4,9 @@
     class="header  top-[1rem] md:top-4 lg:top-[2rem]  flex  items-center p-6"
   >
     <div class="flex  md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
-      <div class="headbar w-[2vw] md:w-[3vw] lg:w-[3vw]" @click="toggleMenu">
-        <SvgMenu v-if="!isMenuOpen" class="headbar w-[2vw] hover:cursor-pointer" />
-        <SvgClose v-else class="headbar w-[2vw] hover:cursor-pointer" />
+      <div class="headbar " @click="toggleMenu">
+        <SvgMenu v-if="!isMenuOpen" class="headbar w-[1.4vw] hover:cursor-pointer" />
+        <SvgClose v-else class="headbar w-[1.4vw] hover:cursor-pointer" />
       </div>
       <!-- <div class="w-[2vw]"></div> -->
     </div>
@@ -92,8 +92,8 @@ export default {
     return {
       isMenuOpen: false,
       isHovered: false,
-      defaultImage: "/menutest.png",
-      hoverImage: "/texttest.png",
+      defaultImage: "/newnav.png",
+      hoverImage: "/newnavt.png",
       menuTopPosition: "0",
     };
   },
@@ -297,7 +297,7 @@ display: unset;
 }
 
 .default-image-display.faded-out {
-  opacity: 0;
+  opacity: .4;
 }
 
 .hover-image-display {

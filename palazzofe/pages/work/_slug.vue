@@ -8,26 +8,26 @@
       <!-- Header (optional) -->
       <HeaderComponent />
       <div class="headera content flex w-full justify-between">
-        <h1 class="w-[2vw]">
+        <h1 class="w-[1.4vw]">
           <!-- weddings -->
           <a href="../weddings"
             ><SvgClose class="headbar hover:cursor-pointer"
           /></a>
         </h1>
         <p
-          class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+          class="yeart text-center text-4xl uppercase "
           v-if="project"
         >
           {{ project.title }}
         </p>
         <p
-          class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+          class="yeart opacity-0 text-center text-4xl  uppercase "
           v-if="project"
         >
           {{ project.year }}
         </p>
         <p
-          class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+          class="headingspages text-center text-4xl  uppercase "
         >
           Weddings
         </p>
@@ -133,7 +133,7 @@
 
           <div class="allbotindi">
             <div class="bottom">
-              <div class="archimg w-[20vw]">
+              <div class="archimg w-[18vw]">
                 <!-- <img
                   src="/indiangels.png"
                   alt="Arch Frame"
@@ -248,7 +248,7 @@
             ></button>
             <div class="nomb nombgal gallery-images">
               <section
-                class="top-0 left-0 hidden w-full md:block cursor-grab slider"
+                class="top-0 left-0 hidden w-full h-full md:block cursor-grab slider"
                 v-swiper:mySwiper="swiperOptions"
                 @slideChange="onSlideChange"
                 ref="slider"
@@ -658,17 +658,37 @@ export default {
   } */
   
 .portrait {
-  height: auto;
+  /* height: auto;
   width: 34vw;
   left: 25%;
-  /* display: flex; */
-  position: relative;
+  position: relative; */
+  height: auto;
+    width: 34vw;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 1vw;
+    margin-right: 2vw;
+    /* display: flex; */
+    position: absolute;
+
+    height: 90vh;
+    width: auto;
 }
 
 .landscape {
   height: auto;
-  width: auto;
-  max-width: 46.5vw;
+    width: auto;
+    /* max-width: 46.5vw; */
+    height: auto;
+    width: 44vw;
+    position: relative;
+    top: 20vh;
+    /* right: 0; */
+    /* bottom: 0; */
+    /* margin-bottom: 1vw; */
+    margin-right: auto;
+    margin-left: auto;
+    /* right: auto;
 }
 
 .swiper-wrapper {
@@ -761,6 +781,7 @@ export default {
     flex-wrap: wrap;
     height: 100vh;
     width: 48vw;
+    /* width: 50vw; */
     left: 50vw;
     position: sticky;
     /* align-content: center; */
@@ -775,7 +796,7 @@ export default {
   /* width: auto; */
   align-items: center;
   /* height: 90vh; */
-  padding: 2vh;
+  /* padding: 2vh; */
   pointer-events: none !important;
 }
 
@@ -801,7 +822,7 @@ export default {
 }
 
 .bottom {
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   left: 0;
   /* width: 100%; */
@@ -809,7 +830,7 @@ export default {
   width: 53vw;
   width: 49vw;
   padding: 2vw;
-  /* z-index: 1000; */
+  z-index: 0;
 }
 
 a {
@@ -818,13 +839,13 @@ a {
 }
 
 .headingspages {
-  font-family: "GT-Bold";
+  /* font-family: "GT-Bold"; */
   /* font-size: medium;
   font-size: 3rem; */
 }
 
 .yeart {
-  font-family: "MinionPro-Regular";
+  /* font-family: "MinionPro-Regular"; */
   /* font-size: medium;
   font-size: 3rem; */
 }
@@ -858,15 +879,15 @@ a {
 
 @media (max-width: 1440px) {
   .yeart {
-    font-family: "MinionPro-Regular";
-    font-size: medium;
+    /* font-family: "MinionPro-Regular"; */
+    /* font-size: medium; */
   }
 
 
 
   .headingspages {
-    font-family: "GT-Bold";
-    font-size: medium;
+    /* font-family: "GT-Bold"; */
+    /* font-size: medium; */
   }
 
   .footerstuff {

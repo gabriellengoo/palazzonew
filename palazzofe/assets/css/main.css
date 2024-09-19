@@ -56,18 +56,24 @@ html {
 .textsum {
   font-size: .8vw;
   line-height: normal;
+  font-family: 'GT-SuperBook';
 }
 
 .yeart {
   font-family: "MinionPro-Regular";
+  /* font-family: 'GT-SuperBook'; */
   font-size: medium;
   font-size: 1.3vw;
+  line-height: normal;
 }
 
 .headingspages {
   font-family: "GT-Bold";
+  font-family: "MinionPro-Regular";
+  /* font-family: 'GT-SuperBook'; */
   font-size: medium;
   font-size: 1.3vw;
+  line-height: normal;
 }
 
 .headera {
@@ -82,20 +88,20 @@ html {
     background-size: cover;
     background-position: initial;
     background-repeat: no-repeat;
-    padding: .9vw;
+    padding: .4vw;
     position: absolute;
     top: 0;
     z-index: 1;
 }
 
 .headera {
-  padding: 0.9vw;
+  padding: 0.4vw;
 }
 
 @media (max-width: 1440px) {
   .headera {
-      padding-top: 0;
-      padding-bottom: 0;
+      padding-top: .5vw;
+      padding-bottom: .5vw;
       padding-left: 0.5vw;
       padding-right: 0.5vw;
   }
