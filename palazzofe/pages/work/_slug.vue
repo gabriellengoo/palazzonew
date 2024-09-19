@@ -134,11 +134,17 @@
           <div class="allbotindi">
             <div class="bottom">
               <div class="archimg w-[20vw]">
-                <img
+                <!-- <img
                   src="/indiangels.png"
                   alt="Arch Frame"
                   class="arch-frame"
-                />
+                /> -->
+                <MediaImage
+                          :src="project.image"
+                          v-if="project.image"
+                               class="arch-frame"
+                        
+                        ></MediaImage>
               </div>
 
               <!-- footer -->
@@ -341,6 +347,10 @@ export default {
         }
       }, 
       
+
+      image[],
+      "image" : image.asset._ref,
+
       "talent" : talent->title, "talentSlug" : talent->slug.current,
       "footer" : footer,
       "talentBio" : talent->shortBio,
@@ -809,14 +819,14 @@ a {
 
 .headingspages {
   font-family: "GT-Bold";
-  font-size: medium;
-  font-size: 3rem;
+  /* font-size: medium;
+  font-size: 3rem; */
 }
 
 .yeart {
   font-family: "MinionPro-Regular";
-  font-size: medium;
-  font-size: 3rem;
+  /* font-size: medium;
+  font-size: 3rem; */
 }
 
 

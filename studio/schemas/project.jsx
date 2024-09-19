@@ -101,7 +101,14 @@ export default {
     //       },
     //     },
     //   ], 
-    // },
+    // }, 
+
+    {
+      name: "image",
+      title: "Arch image",
+      type: "image",
+    },
+
     {
       name: "slider",
       title: "Slider",
