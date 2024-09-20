@@ -181,7 +181,7 @@ export default {
   height: auto;
   width: 44vw;
   position: relative;
-  top: 20vh;
+  top: 20vh; 
   margin: 0 auto;
 }
 
