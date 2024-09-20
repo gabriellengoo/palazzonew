@@ -57,8 +57,8 @@
                         :src="item.imageh.imageh"
                         v-if="item.imageh.imageh"
                         :class="{
-                            portrait: item.portrait,
-                            landscape: !item.portrait,
+                            portraitw: item.portrait,
+                            landscapew: !item.portrait,
                           }"
                       />
                     </figure>
@@ -158,9 +158,10 @@ export default {
 }
 
 
-.portrait {
+.portraitw {
   height: auto;
     width: 34vw;
+    width: 37vw;
     right: 0;
     bottom: 0;
     margin-bottom: 1vw;
@@ -176,7 +177,7 @@ export default {
   margin: 0 auto; */
 }
 
-.landscape {
+.landscapew {
   height: auto;
   width: 44vw;
   position: relative;
