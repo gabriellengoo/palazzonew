@@ -56,23 +56,27 @@ html {
 .textsum {
   font-size: .8vw;
   line-height: normal;
-  font-family: 'GT-SuperBook';
+  font-family: 'GT-SuperBook'; 
 }
 
 .yeart {
   font-family: "MinionPro-Regular";
+  font-family: 'RomainHeadlineTrial';
   /* font-family: 'GT-SuperBook'; */
   font-size: medium;
-  font-size: 1.3vw;
+  font-size: 1vw;
   line-height: normal;
+
+  padding: .1vw;
 }
 
 .headingspages {
   font-family: "GT-Bold";
   font-family: "MinionPro-Regular";
+  font-family: 'RomainHeadlineTrial';
   /* font-family: 'GT-SuperBook'; */
   font-size: medium;
-  font-size: 1.3vw;
+  font-size: 1vw;
   line-height: normal;
 }
 
@@ -105,6 +109,21 @@ html {
       padding-left: 0.5vw;
       padding-right: 0.5vw;
   }
+
+  .portrait{
+    margin-right: 2vw !important;
+}
+
+.landscape {
+  width: auto;
+  height: auto;
+  width: 45vw !important;
+  position: absolute  !important;
+  top: 20vh;
+  left: 1.5vw  !important;
+  margin-right: auto;
+  margin-left: auto;
+}
 }
 
 @media (min-width: 1440px) and (max-width: 1544px) {

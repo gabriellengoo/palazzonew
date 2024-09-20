@@ -30,11 +30,18 @@ export default {
           hidden: ({ parent, value }) =>
             (!value && parent?.spacer) || (!value && parent?.video),
         },
-
+      
         {
           name: "imageh",
           title: "Hover Image",
           type: "image",
+        },
+
+        {
+          name: "portrait",
+          title: "portrait img",
+          type: "boolean",
+          description: "Is the hover img portrait?",
         },
      
         // {

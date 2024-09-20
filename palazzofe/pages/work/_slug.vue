@@ -148,7 +148,7 @@
               </div>
 
               <!-- footer -->
-              <div class="nomb pt-[6vh] footout">
+              <div class="nomb pt-[8vh] footout">
                 <div class="footerstuff">
                   <div v-if="project.content" class="pt-3">
                     <Richtext
@@ -158,7 +158,7 @@
                   </div>
                   <div
                     v-if="project.location"
-                    class="w-full flex items-center text-center flex-col pt-10 md:pt-[4vh] locationtext"
+                    class="w-full flex items-center text-center flex-col pt-10 md:pt-[6vh] locationtext"
                   >
                     <p class="loctext">Location,</p>
                     <div class="flex flex-col normal-case italic loctextlink">
@@ -667,7 +667,7 @@ export default {
     right: 0;
     bottom: 0;
     margin-bottom: 1vw;
-    margin-right: 2vw;
+    margin-right: 1vw;
     /* display: flex; */
     position: absolute;
 
@@ -678,17 +678,23 @@ export default {
 .landscape {
   height: auto;
     width: auto;
-    /* max-width: 46.5vw; */
     height: auto;
     width: 44vw;
+    width: 47vw;
     position: relative;
     top: 20vh;
-    /* right: 0; */
-    /* bottom: 0; */
-    /* margin-bottom: 1vw; */
     margin-right: auto;
     margin-left: auto;
-    /* right: auto;
+
+
+    /* width: auto;
+    height: auto;
+    width: 45vw;
+    position: absolute;
+    top: 20vh;
+    left: 1.5vw;
+    margin-right: auto;
+    margin-left: auto; */
 }
 
 .swiper-wrapper {
@@ -781,9 +787,20 @@ export default {
     flex-wrap: wrap;
     height: 100vh;
     width: 48vw;
-    /* width: 50vw; */
+    width: 49vw;
     left: 50vw;
+    left: 49vw;
     position: sticky;
+
+
+    /* display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 49vw;
+    left: 51vw;
+    position: fixed;
+    overflow: hidden; */
     /* align-content: center; */
 }
 
@@ -801,13 +818,22 @@ export default {
 }
 
 .allbotindi {
-  display: flex;
+  /* display: flex;
   display: flex;
   width: 100%;
   height: 100%;
   height: 95%;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-end; */
+
+
+  display: flex;
+    top: 2vh;
+    position: relative;
+    width: 100%;
+    height: 95%;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 /* Apply the animation to the main container */
@@ -829,7 +855,7 @@ export default {
   width: 49vw;
   width: 53vw;
   width: 49vw;
-  padding: 2vw;
+  /* padding: 2vw; */
   z-index: 0;
 }
 
@@ -1100,7 +1126,7 @@ a {
     width: 100%;
     /* width: 49vw;
   width: 53vw; */
-    padding: 2vw;
+    /* padding: 2vw; */
     z-index: 1000;
   }
 

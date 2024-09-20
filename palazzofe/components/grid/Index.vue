@@ -13,8 +13,8 @@
             v-for="(item, index) in chunk"
             :key="item._key"
             class="item-wrapper"
-            @mouseenter="hoveredIndex = item._key"
-            @mouseleave="hoveredIndex = null"
+            @mouseenter="hoveredIndex = item._key; isDefaultActive = false"
+            @mouseleave="hoveredIndex = null; isDefaultActive = true"
           >
             <!-- Image Item -->
             <div
@@ -42,20 +42,24 @@
                     </figure>
                     <figcaption class="textsum block text-center uppercase w-full pt-2">
                       <span class="textsumf">{{ item.title || item.reference.title }}</span>
-                      <span class="pt-[.7vh]">{{ item.year || item.reference.year }}</span>
+                      <span class="pt-[.5vh]">{{ item.year || item.reference.year }}</span>
                     </figcaption>
                   </NuxtLink>
 
                   <!-- Conditionally show sideim div on hover with fade effect -->
                   <div 
-                    v-show="hoveredIndex === item._key" 
+                    v-show="hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0)" 
                     class="sideim"
-                    :class="{ 'fade-in': hoveredIndex === item._key, 'fade-out': hoveredIndex !== item._key }"
+                    :class="{ 'fade-in': hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0), 'fade-out': hoveredIndex !== item._key && !(isDefaultActive && chunkIndex === 0 && index === 0) }"
                   >
                     <figure>
                       <MediaImage
                         :src="item.imageh.imageh"
                         v-if="item.imageh.imageh"
+                        :class="{
+                            portrait: item.portrait,
+                            landscape: !item.portrait,
+                          }"
                       />
                     </figure>
                   </div>
@@ -71,6 +75,8 @@
 
 
 
+
+
 <script>
 import { mapMutations, mapState } from "vuex";
 
@@ -81,6 +87,7 @@ export default {
       project: false,
       isDesktop: false,
       hoveredIndex: null, // Track the hovered image item
+      isDefaultActive: true, // Controls the visibility of the default image
     };
   },
   computed: {
@@ -99,6 +106,12 @@ export default {
   mounted() {
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener("resize", this.handleResize);
+
+    // Set the first item's _key to hoveredIndex by default
+    if (this.items.length > 0) {
+      this.hoveredIndex = this.items[0]._key;
+      this.isDefaultActive = true;
+    }
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);
@@ -111,6 +124,8 @@ export default {
   },
 };
 </script>
+
+
 
 <style scoped>
 .sideim {
@@ -134,6 +149,34 @@ export default {
 }
 
 .sideim img {
+  cursor:pointer !important;
+  /* height: auto;
+  width: 44vw;
+  position: relative;
+  top: 20vh;
+  margin: 0 auto; */
+}
+
+
+.portrait {
+  height: auto;
+    width: 34vw;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 1vw;
+    margin-right: 2vw;
+    position: absolute;
+    height: 90vh;
+    width: auto;
+
+    /* height: 44vh;
+  width:  auto;
+  position: relative;
+  top: 20vh;
+  margin: 0 auto; */
+}
+
+.landscape {
   height: auto;
   width: 44vw;
   position: relative;
@@ -151,7 +194,7 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 90%;
-  border-bottom: 0.05vw solid black;
+  border-bottom: 0.07vw solid black;
 }
 
 .image-row:last-child {

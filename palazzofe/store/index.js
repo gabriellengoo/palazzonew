@@ -58,6 +58,7 @@ export const actions = {
       "size" : {"width" : image.asset->metadata.dimensions.width, 
       "height" : image.asset->metadata.dimensions.height}, 
       "position" : position }, 
+      portrait,
       link, title, year,
     "reference": reference->{
         _id,
