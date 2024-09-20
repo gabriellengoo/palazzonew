@@ -886,7 +886,7 @@ a {
   font-size: 1.3vw;
   width: 100%;
   border-top: solid;
-  border-top-width: 0.5px;
+  border-top-width: 0.7px;
 }
 
 .loctextlink {

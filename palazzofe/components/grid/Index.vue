@@ -195,7 +195,7 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 90%;
-  border-bottom: 0.07vw solid black;
+  /* border-bottom: 0.07vw solid black; */
 }
 
 .image-row:last-child {
