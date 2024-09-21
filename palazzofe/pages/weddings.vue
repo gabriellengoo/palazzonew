@@ -3,20 +3,20 @@
 
     <!-- <HeaderComponent /> -->
     <div class="headera content flex w-full justify-between">
-      <h1 class="w-[2vw]">
+      <h1 class="navmb w-[2vw]">
  
         <HeaderComponent />
       </h1>
-      <p class="yeart text-center text-4xl  uppercase ">
+      <p class="navmbno yeart text-center text-4xl  uppercase ">
         Weddings
       </p>
       <p
-        class="yeart w-[5vw] text-center text-4xl  uppercase "
+        class="navmbno yeart w-[5vw] text-center text-4xl  uppercase "
       ></p>
-      <p class="headingspages text-center text-4xl uppercase">
+      <p class="navmbno headingspages text-center text-4xl uppercase">
         palazzo eventi
       </p>
-      <h1 class="w-[2vw]">
+      <h1 class="navmbno w-[2vw]">
    
       </h1>
     </div>
@@ -167,6 +167,11 @@ a:hover {
 
   .right-content {
     display: none;
+  }
+
+
+  .left-content{
+    padding: 0 !important;
   }
 }
 </style>

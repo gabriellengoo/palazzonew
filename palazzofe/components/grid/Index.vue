@@ -3,6 +3,16 @@
     <div>
       <!-- Images Section -->
       <div class="image-grid pt-[7vh]">
+
+        <div class="nodes">
+          <!-- <p>d</p> -->
+          <p
+          class="headingspages text-center text-4xl  uppercase "
+        >
+          Weddings
+        </p>
+        </div>
+   
         <!-- Loop through the items array in chunks of two -->
         <div
           v-for="(chunk, chunkIndex) in chunkedItems"
@@ -165,7 +175,7 @@ export default {
     right: 0;
     bottom: 0;
     margin-bottom: 1vw;
-    margin-right: 2vw;
+    margin-right: 1vw;
     position: absolute;
     height: 90vh;
     width: auto;
@@ -180,6 +190,7 @@ export default {
 .landscapew {
   height: auto;
   width: 44vw;
+  width: 47vw;
   position: relative;
   top: 20vh; 
   margin: 0 auto;
@@ -226,6 +237,23 @@ export default {
 
 .textsumf {
   font-family: "GT-Bold";
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+  .sideim img{
+    display: none !important;
+  }
+
+  .sideim{
+    display: none !important;
+  }
+
+  /* .left-content{
+    padding: 0 !important;
+  } */
 }
 
 </style>

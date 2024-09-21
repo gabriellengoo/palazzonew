@@ -102,6 +102,11 @@ html {
   padding: 0.4vw;
 }
 
+.nodes{
+  display:none;
+}
+
+
 @media (max-width: 1440px) {
   .headera {
       padding-top: .5vw;
@@ -153,6 +158,35 @@ html {
 
 
   @media only screen and (max-width: 768px) {
+        .headera {
+              padding-top: 2.5vw;
+        padding-bottom: 2.5vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+      flex-direction: column;
+    }
+
+    .navmbno{
+      display: none !important;
+    }
+
+    .textsum {
+    font-size: 1.8vw;
+}
+
+.nodes{
+  display: contents; 
+}
+
+.headingspages {
+    font-size: 3.5vw;
+}
+
+.yeart{
+      font-size: inherit !important;
+}
+
+
     /* .image-grid {
       grid-template-columns: repeat(1, 1fr);
     } */

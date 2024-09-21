@@ -41,7 +41,7 @@
 
       <div class="bgmobile relative min-h-screen flex">
         <!-- Left Scrollable Content -->
-        <div class="left-content flex-1 overflow-y-scroll md:p-8">
+        <div class="left-content flex-1 overflow-y-scroll ">
           <!-- mobile  -->
           <!-- <button
               class="nodes absolute top-0 left-[0] z-30 w-[50%] h-[60vh] previous"
@@ -131,7 +131,7 @@
             </div>
           </div>
 
-          <div class="allbotindi">
+          <div class="allbotindi md:p-8">
             <div class="bottom">
               <div class="archimg w-[18vw]">
                 <!-- <img

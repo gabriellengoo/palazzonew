@@ -193,9 +193,8 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-  .link-container a {
-    /* font-size: 1.5rem;  */
-    /* Adjust font-size for smaller screens */
+  .headbar{
+    width: 4.4vw;
   }
 }
 
