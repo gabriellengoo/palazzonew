@@ -3,7 +3,7 @@
 
     <!-- <HeaderComponent /> -->
     <div class="headera content flex w-full justify-between">
-      <h1 class="navmb w-[2vw]">
+      <h1 class="navmb">
  
         <HeaderComponent />
       </h1>

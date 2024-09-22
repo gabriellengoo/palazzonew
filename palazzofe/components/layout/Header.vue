@@ -192,11 +192,7 @@ export default {
   color: #33333300 !important; 
 }
 
-@media only screen and (max-width: 768px) {
-  .headbar{
-    width: 4.4vw;
-  }
-}
+
 
 /* mobile nav end--------- */
 

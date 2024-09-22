@@ -2,7 +2,7 @@
   <client-only>
     <div>
       <!-- Images Section -->
-      <div class="image-grid pt-[7vh]">
+      <div class="image-grid pt-[1vh]">
 
         <div class="nodes">
           <!-- <p>d</p> -->

@@ -7,31 +7,31 @@
     <div>
       <!-- Header (optional) -->
       <HeaderComponent />
-      <div class="headera content flex w-full justify-between">
-        <h1 class="w-[1.4vw]">
+      <div class="headera  mbpad content flex w-full justify-between">
+        <h1 class="md:w-[1.4vw] w-auto">
           <!-- weddings -->
-          <a href="../weddings"
-            ><SvgClose class="headbar hover:cursor-pointer"
+          <a class="headbar" href="../weddings"
+            ><SvgClose class="svgmb hover:cursor-pointer"
           /></a>
         </h1>
         <p
-          class="yeart text-center text-4xl uppercase "
+          class="yeart navmbno text-center text-4xl uppercase "
           v-if="project"
         >
           {{ project.title }}
         </p>
         <p
-          class="yeart opacity-0 text-center text-4xl  uppercase "
+          class="yeart navmbno opacity-0 text-center text-4xl  uppercase "
           v-if="project"
         >
           {{ project.year }}
         </p>
         <p
-          class="headingspages text-center text-4xl  uppercase "
+          class="headingspages navmbno text-center text-4xl  uppercase "
         >
           Weddings
         </p>
-        <h1 class="w-[2vw]">
+        <h1 class="w-[2vw] navmbno">
           <!-- weddings -->
           <!-- <a href="../weddings"
                 ><SvgClose class="headbar hover:cursor-pointer"
@@ -39,9 +39,20 @@
         </h1>
       </div>
 
+
+
+
+
       <div class="bgmobile relative min-h-screen flex">
         <!-- Left Scrollable Content -->
         <div class="left-content flex-1 overflow-y-scroll ">
+          <div>
+        <p
+          class="headingspages pt-[2vw] nodes text-center text-4xl  uppercase "
+        >
+          Weddings
+        </p>
+      </div>
           <!-- mobile  -->
           <!-- <button
               class="nodes absolute top-0 left-[0] z-30 w-[50%] h-[60vh] previous"
@@ -56,11 +67,11 @@
               aria-label="Next"
             ></button> -->
           <div class="nodes nodesgal">
-            <!-- <section
+            <section
                 class="top-0 left-0  w-full md:block cursor-grab slider"
-                v-swiper:mySwiper="swiperOptions2"
-                @slideChange="onSlideChange2"
-                ref="slider"
+                v-swiper:mySwiper2="swiperOptions2"
+                @slideChange2="onSlideChange2"
+                ref="slider2"
               >
                 <div class="relative z-40 w-full h-full swiper-wrapper">
                   <div
@@ -69,7 +80,7 @@
                     class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
                     :class="realIndex == 0 ? '' : ''"
                   >
-                    <div class="overlaycont flex h-full p-2 pb-0 w-13/16">
+                    <div class="overlaycont flex h-full p-2 w-13/16">
                       <figure
                         v-for="image in slide.images"
                         :key="image._key"
@@ -104,7 +115,7 @@
                     </div>
                   </div>
                 </div>
-              </section> -->
+              </section>
 
             <div class="footcon">
               <div class="w-full flex justify-center">
@@ -119,19 +130,14 @@
                       <p v-if="project">{{ project.title }}</p>
                     </div>
 
-                    <!-- <span class="hover-move">Rose.co</span> -->
-                    <!-- <p class="crtext text-[1.2rem]">
-                  COPYRIGHT ©2024
-                </p> -->
                   </div>
 
-                  <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="allbotindi md:p-8">
+          <div class="allbotindi nomballbot md:p-8">
             <div class="bottom">
               <div class="archimg w-[18vw]">
                 <!-- <img
@@ -598,6 +604,14 @@ export default {
       }
     },
 
+    handleKeyDown(event) {
+      if (event.key === "ArrowLeft" && this.mySwiper2.slidePrev()) {
+        this.prev();
+      } else if (event.key === "ArrowRight") {
+        this.next();
+      }
+    },
+
     // pev btn
 
     next() {
@@ -616,6 +630,24 @@ export default {
         this.mySwiper.slidePrev();
       }
     },
+
+
+    // next2() {
+    //   if (this.mySwiper2.isEnd) {
+    //     if (this.project.nextProject) {
+    //       this.mySwiper2.slideTo(0);
+    //     }
+    //   } else {
+    //     this.mySwiper2.slideNext();
+    //   }
+    // },
+    // prev2() {
+    //   if (this.mySwiper2.isBeginning && this.back) {
+    //     this.$router.go(-1);
+    //   } else {
+    //     this.mySwiper2.slidePrev();
+    //   }
+    // },
 
     async searchProjects() {
       const searchQuery = this.searchQuery.trim(); // Remove leading and trailing spaces
@@ -1025,6 +1057,13 @@ a {
   display: none;
 }
 
+
+  .headmb{
+    display: contents;
+    display: none;
+  }
+
+
 @media only screen and (max-width: 768px) {
   .nomb {
     display: none;
@@ -1035,11 +1074,15 @@ a {
   }
 
   .nodesgal {
-    display: flex;
+    /* display: flex;
     height: 60vh;
     width: 100vw;
     left: 0;
-    position: absolute;
+    position: absolute; */
+
+    display: flex;
+        height: 56vh;
+        width: 100vw;
   }
   .left-content {
     background-image: url("./static/LeftBG.png");
@@ -1130,9 +1173,30 @@ a {
     z-index: 1000;
   }
 
-  .headera {
+  /* .headera {
     display: none;
-  }
+  } */
+
+  .headera {
+        padding-top: 2.5vw;
+        padding-bottom: 2.5vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        flex-direction: column;
+        z-index: 100;
+        
+    }
+
+  /* .headmb{
+    display: contents;
+    display: flex;
+  border-bottom: 0.5px solid black;
+  background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: initial;
+  background-repeat: no-repeat;
+  } */
+
 
   .archimg {
     display: none;
