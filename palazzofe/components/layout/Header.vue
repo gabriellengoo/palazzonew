@@ -57,10 +57,10 @@
         v-if="isMenuOpen"
         class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center"
       >
-      <!-- h-[90vh]  pt-[2.25vh] pt-[5.25rem]  -->
-      <div class=" pt-[5.25rem] ">
-        <div class="headerr">
-        <h1>PALAZZO EVENTI</h1>
+      <!-- h-[90vh] pt-[8.25vh]  pt-[2.25vh] pt-[5.25rem]  -->
+      <div class="  ">
+        <div class="headerr pt-[2.9vh] flex justify-center">
+        <h1 class="border-t-[1px] border-[#0000004f] pt-[0.5vh] w-[90vw]">PALAZZO EVENTI</h1>
       </div>
         <nav class="link-container">
           <ul>
@@ -183,7 +183,8 @@ export default {
   /* Create the rounded top */
   /* width: 80%; */
   width: 90vw;
-  max-width: 90vw;
+  width: 84vw;
+  /* max-width: 70vw; */
   margin: auto;
   font-family: 'RomainHeadlineTrial';
   /* font-family: 'TAN-PEARL-Regular'; */
@@ -474,6 +475,10 @@ display: unset;
     background-position: initial;
     background-repeat: no-repeat;
     overflow: hidden;
+  }
+
+  .headerr{
+    font-size: 2vh;
   }
 }
 </style>

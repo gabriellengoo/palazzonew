@@ -7,7 +7,7 @@
 
 
   <div class="headera nodesnav content flex w-full justify-between">
-      <h1 class="navmb">
+      <h1 class="navmb navmbbord">
  
         <HeaderComponent />
       </h1>
@@ -89,12 +89,12 @@
       <div class="nodes h-screen w-screen">
         <img
           src="flowero.png"
-          class="p-[10vw]"
+          class="p-[16vw] pb-[10vw]"
           alt="Cherubs"
         />
         <img
           src="angelss.png"
-          class="p-[10vw] pt-[0vw]"
+          class="p-[16vw] pt-[0vw]"
           alt="Cherubs"
         />
       </div>
@@ -246,6 +246,14 @@ export default {
     flex-direction: column;
   }
 
+  .navmbbord{
+    width: 90vw;
+    border-bottom: .05vw solid #0000004f;
+    padding: 2vw;
+    display: flex;
+    justify-content: center;
+  }
+
 
   .textmainpg{
     position: absolute;
@@ -273,7 +281,7 @@ export default {
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: cover;
-    border-bottom: .05vw solid #000;
+    /* border-bottom: .05vw solid #000; */
     display: flex;
     padding: .4vw;
     position: absolute;
