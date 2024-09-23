@@ -139,7 +139,7 @@
 
           <div class="allbotindi nomballbot md:p-8">
             <div class="bottom">
-              <div class="archimg w-[18vw]">
+              <div class="archimg">
                 <!-- <img
                   src="/indiangels.png"
                   alt="Arch Frame"
@@ -977,6 +977,15 @@ a {
   border-radius: 10px; /* Optional: Add rounded corners to images */
   position: relative;
   z-index: 1;
+
+
+  width: auto;
+    height: auto;
+    -o-object-fit: cover;
+    object-fit: contain;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .inner-image {
@@ -1043,6 +1052,11 @@ a {
 
 .archimg {
   display: inherit;
+
+  height: 47.6vh;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .nomb {
