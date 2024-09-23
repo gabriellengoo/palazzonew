@@ -946,10 +946,13 @@ a {
   .headingspages {
     /* font-family: "GT-Bold"; */
     /* font-size: medium; */
+    /* padding-top: 5.8vh; */
   }
 
   .footerstuff {
     font-size: medium;
+    font-size: 2vh;
+    font-size: 1.95vh;
   }
 
   .loctextlink {
@@ -1031,6 +1034,7 @@ a {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  height: max-content;
   overflow-y: scroll;
 }
 
@@ -1116,8 +1120,8 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     height: 100%;
-    height: auto;
-    height: 40vh;
+    /* height: auto;
+    height: 40vh; */
     flex: none;
   }
 
@@ -1140,6 +1144,7 @@ a {
     align-items: center;
     font-family: "GT-Bold";
     font-size: large;
+    font-size: 2.2vh;
   }
 
   .titleTextt {
@@ -1173,7 +1178,7 @@ a {
   }
 
   .bgmobile {
-    padding-top: 2.8vh;
+    /* padding-top: 2.8vh; */
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
 

@@ -173,6 +173,12 @@ html {
 
 
   @media only screen and (max-width: 768px) {
+
+    .yeart {
+      font-family: 'GT-SuperBook';
+      /* font-family: 'GT-SuperBook'; */
+    }
+
     .headbar{
       width: 4.4vw;
       display: block;
@@ -196,7 +202,7 @@ html {
         padding-right: 2.5vw;
       flex-direction: column;
       position: relative;
-      position: absolute;
+      /* position: absolute; */
     }
 
     .navmbno{

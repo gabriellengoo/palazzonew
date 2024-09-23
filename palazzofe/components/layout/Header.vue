@@ -57,8 +57,8 @@
         v-if="isMenuOpen"
         class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center"
       >
-      <!-- h-[90vh] -->
-      <div class=" pt-[5.25rem]">
+      <!-- h-[90vh]  pt-[2.25vh] pt-[5.25rem]  -->
+      <div class=" pt-[5.25rem] ">
         <div class="headerr">
         <h1>PALAZZO EVENTI</h1>
       </div>
@@ -161,6 +161,7 @@ export default {
 .link-container a {
   text-decoration: none;
   font-size: 9.2vw;
+  font-size: 4.2vh;
   /* Adjust based on how large you want the text */
   /* color: black; */
   font-weight: 100;
