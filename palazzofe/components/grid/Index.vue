@@ -62,7 +62,7 @@
                     class="sideim"
                     :class="{ 'fade-in': hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0), 'fade-out': hoveredIndex !== item._key && !(isDefaultActive && chunkIndex === 0 && index === 0) }"
                   >
-                    <figure>
+                    <figure class="deskimgl">
                       <MediaImage
                         :src="item.imageh.imageh"
                         v-if="item.imageh.imageh"
@@ -187,13 +187,26 @@ export default {
   margin: 0 auto; */
 }
 
+.deskimgl{
+  object-fit: cover;
+    height: 100vh;
+}
+
 .landscapew {
-  height: auto;
+  /* height: auto;
   width: 44vw;
   width: 47vw;
   position: relative;
   top: 20vh; 
-  margin: 0 auto;
+  margin: 0 auto; */
+
+  height: 100%;
+    width: 100%;
+    position: relative;
+    /* top: 20vh; */
+    left: 1vw;
+    margin: 0 auto;
+    object-fit: cover;
 }
 
 .image-grid {
