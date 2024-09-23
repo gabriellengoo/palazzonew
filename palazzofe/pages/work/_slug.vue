@@ -1034,7 +1034,7 @@ a {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
-  height: max-content;
+  /* height: max-content; */
   overflow-y: scroll;
 }
 
@@ -1109,6 +1109,7 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     height: 60vh;
+    height: max-content;
     overflow-y: none; 
     flex: none;
   }
