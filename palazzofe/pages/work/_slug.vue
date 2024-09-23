@@ -1173,6 +1173,7 @@ a {
   }
 
   .bgmobile {
+    padding-top: 2.8vh;
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
 

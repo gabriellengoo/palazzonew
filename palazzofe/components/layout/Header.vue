@@ -52,7 +52,7 @@
 
     <!-- mobile -->
      <!-- name="slide-down" -->
-    <transition class="mobilemenu"  @after-enter="fadeInAllImg">
+    <transition class="mobilemenu" name="slide-down"  @after-enter="fadeInAllImg">
       <div
         v-if="isMenuOpen"
         class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center"
@@ -274,6 +274,10 @@ display: unset;
 .image-container {
   width: 100%;
   height: 100%;
+  background-image: url("./static/background.jpg");
+    background-size: cover;
+    background-position: initial;
+    background-repeat: no-repeat;
 }
 
 .default-image-display,
@@ -446,6 +450,8 @@ display: unset;
   .borders {
     top: 2.2vh;
   }
+
+
 }
 
 @media only screen and (min-width: 2560px) and (min-height: 1560px) {
@@ -455,6 +461,18 @@ display: unset;
 
   .borders {
     top: 3.7vh;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mobilemenu{
+    height: 100vh;
+    transition: max-height 0.5s ease-in-out;
+    background-image: url("./static/background.jpg");
+    background-size: cover;
+    background-position: initial;
+    background-repeat: no-repeat;
+    overflow: hidden;
   }
 }
 </style>

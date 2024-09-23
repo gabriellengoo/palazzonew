@@ -66,8 +66,9 @@ html {
   font-size: medium;
   font-size: 1vw;
   line-height: normal;
-
   padding: .2vw;
+  top: .5vh;
+  position: relative;
 }
 
 .headingspages {
@@ -77,6 +78,8 @@ html {
   /* font-family: 'GT-SuperBook'; */
   font-size: medium;
   font-size: 1vw;
+  top: .5vh;
+  position: relative;
   line-height: normal;
 }
 
@@ -106,8 +109,16 @@ html {
   display:none;
 }
 
+.nodesnav{
+  display:none !important;
+}
+
 .nomballbot{
   display: flex; 
+}
+
+.nomb{
+  display: inherit !important;
 }
 
 
@@ -185,6 +196,7 @@ html {
         padding-right: 2.5vw;
       flex-direction: column;
       position: relative;
+      position: absolute;
     }
 
     .navmbno{
@@ -192,11 +204,15 @@ html {
     }
 
     .textsum {
-    font-size: 1.8vw;
+    font-size: 2.1vw;
 }
 
 .nodes{
-  display: contents; 
+  display: contents;
+}
+
+.nodesnav{
+  display: flex !important;
 }
 
 .nomballbot{
@@ -211,6 +227,9 @@ html {
       font-size: inherit !important;
 }
 
+.nomb{
+display: none !important;
+}
 
     /* .image-grid {
       grid-template-columns: repeat(1, 1fr);

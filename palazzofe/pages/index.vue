@@ -6,9 +6,28 @@
   >
 
 
+  <div class="headera nodesnav content flex w-full justify-between">
+      <h1 class="navmb">
+ 
+        <HeaderComponent />
+      </h1>
+      <p class="navmbno yeart text-center text-4xl  uppercase ">
+        Weddings
+      </p>
+      <p
+        class="navmbno yeart w-[5vw] text-center text-4xl  uppercase "
+      ></p>
+      <p class="navmbno headingspages text-center text-4xl uppercase">
+        palazzo eventi
+      </p>
+      <h1 class="navmbno w-[2vw]">
+   
+      </h1>
+    </div>
+
  
 
-    <div class="headera content flex w-full justify-between">
+    <div class="headera nomb content flex w-full justify-between">
         <h1  class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2">
           <!-- <a href="../weddings"
             ><SvgClose class="headbar hover:cursor-pointer"
@@ -43,7 +62,7 @@
 
 
     <!-- transform translate-y-[50vh] -->
-    <div :class="{ 'hidden-content': isMenuOpen }" id="main-content2">
+    <div class="nomb":class="{ 'hidden-content': isMenuOpen }" id="main-content2">
       <transition name="fade">
         <img
           :src="currentImage"
@@ -57,14 +76,27 @@
     <div
       :class="{ 'hidden-content': isMenuOpen }"
       id="main-content"
-      class="flex justify-center pt-[20vh] md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen"
+      class="md:flex mbmain justify-center md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen"
     >
-      <div class="relative text-center">
+      <div class="textmainpg text-center">
         <h1
-          class="maintext text-5xl lg:text-[6rem] xl:text-[13rem] text-black leading-tight relative z-0"
+          class="maintext text-[14vw] lg:text-[6rem] xl:text-[13rem] text-black leading-tight relative z-0"
         >
           PALAZZO EVENTI
         </h1>
+      </div>
+
+      <div class="nodes h-screen w-screen">
+        <img
+          src="flowero.png"
+          class="p-[10vw]"
+          alt="Cherubs"
+        />
+        <img
+          src="angelss.png"
+          class="p-[10vw] pt-[0vw]"
+          alt="Cherubs"
+        />
       </div>
     </div>
   </div>
@@ -207,10 +239,50 @@ export default {
 } */
 
 @media only screen and (max-width: 768px) {
+
+  .mbmain{
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .textmainpg{
+    position: absolute;
+    top: 23vh;
+  }
+
+
   .bgmobile {
     background-size: contain;
     background-position: center top;
     min-height: 50vh; /* Optional: Adjust the height */
+
+    background-size: contain;
+        background-position: center top;
+        background-repeat: repeat-y;
+        /* min-height: 100vh; */
+        height: max-content;
+        overflow: hidden;
+        position: absolute;
+  }
+
+  .headera {
+    align-items: center;
+    background-image: url("./static/background.jpg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: .05vw solid #000;
+    display: flex;
+    padding: .4vw;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    top: 0;
+        z-index: 1;
+        flex-direction: column;
+        padding: 2.5vw;
   }
 }
 
