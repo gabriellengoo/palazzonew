@@ -1109,7 +1109,7 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     height: 60vh;
-    overflow-y: none;
+    overflow-y: none; 
     flex: none;
   }
 
