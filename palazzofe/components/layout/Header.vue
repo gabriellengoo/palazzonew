@@ -175,20 +175,20 @@ export default {
 .link-container {
   background-color: rgb(255 255 255 / 14%);
   background-color: rgb(255 255 255 / 25%);
-   /* Transparent white background */
-  /* padding: 1rem 2rem; */
   border: 1px solid rgba(0, 0, 0, 0.257);
-   /* Optional border similar to the one in the image */
-  /* border-radius: 25px;  */
   border-radius: 150px 150px 2px 2px;
-  /* Create the rounded top */
-  /* width: 80%; */
   width: 90vw;
   width: 84vw;
-  /* max-width: 70vw; */
   margin: auto;
   font-family: 'RomainHeadlineTrial';
-  /* font-family: 'TAN-PEARL-Regular'; */
+
+    background-color: rgba(255, 255, 255, 0.14);
+    background-color: rgb(255 255 255 / 25%);
+    border: 1px solid rgba(0, 0, 0, 0.257);
+    border-radius: 190px 190px 2px 2px;
+    width: 75vw;
+    margin: auto;
+    font-family: 'RomainHeadlineTrial';
 }
 
 .toplink{
