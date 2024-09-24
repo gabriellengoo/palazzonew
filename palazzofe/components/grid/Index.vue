@@ -194,6 +194,7 @@ export default {
     object-fit: cover;
 }
 
+
 .deskimgl{
   object-fit: cover;
     height: 100vh;

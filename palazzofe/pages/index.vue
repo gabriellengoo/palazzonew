@@ -266,13 +266,18 @@ export default {
     background-position: center top;
     min-height: 50vh; /* Optional: Adjust the height */
 
-    background-size: contain;
+    /* background-size: contain;
         background-position: center top;
-        background-repeat: repeat-y;
+        background-repeat: repeat-y; */
         /* min-height: 100vh; */
         height: max-content;
         overflow: hidden;
         position: absolute;
+        top: 0;
+        background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
   }
 
   .headera {
