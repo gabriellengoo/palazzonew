@@ -60,7 +60,7 @@
       <!-- h-[90vh] pt-[8.25vh]  pt-[2.25vh] pt-[5.25rem]  -->
       <div class="  ">
         <div class="headerr pt-[2.9vh] flex justify-center">
-        <h1 class="border-t-[1px] border-[#0000004f] pt-[0.5vh] w-[90vw]">PALAZZO EVENTI</h1>
+        <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[90vw]">PALAZZO EVENTI</h1>
       </div>
         <nav class="link-container">
           <ul>
@@ -174,6 +174,7 @@ export default {
 
 .link-container {
   background-color: rgb(255 255 255 / 14%);
+  background-color: rgb(255 255 255 / 25%);
    /* Transparent white background */
   /* padding: 1rem 2rem; */
   border: 1px solid rgba(0, 0, 0, 0.257);
@@ -479,6 +480,7 @@ display: unset;
 
   .headerr{
     font-size: 2vh;
+    margin-top: 2rem;
   }
 }
 </style>

@@ -169,7 +169,7 @@ export default {
 
 
 .portraitw {
-  height: auto;
+  /* height: auto;
     width: 34vw;
     width: 37vw;
     right: 0;
@@ -178,13 +178,20 @@ export default {
     margin-right: 1vw;
     position: absolute;
     height: 90vh;
-    width: auto;
+    width: auto; */
 
     /* height: 44vh;
   width:  auto;
   position: relative;
   top: 20vh;
   margin: 0 auto; */
+  height: 100%;
+    width: 100%;
+    position: relative;
+    top: 5vh;
+    left: 1vw;
+    margin: 0 auto;
+    object-fit: cover;
 }
 
 .deskimgl{

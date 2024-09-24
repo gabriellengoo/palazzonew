@@ -67,7 +67,7 @@ html {
   font-size: 1vw;
   line-height: normal;
   padding: .2vw;
-  top: .5vh;
+  top: .35vh !important;
   position: relative;
 }
 
@@ -78,7 +78,7 @@ html {
   /* font-family: 'GT-SuperBook'; */
   font-size: medium;
   font-size: 1vw;
-  top: .5vh;
+  top: .35vh;
   position: relative;
   line-height: normal;
 }
@@ -182,6 +182,7 @@ html {
     .headbar{
       width: 4.4vw;
       width: 2.4vh;
+      width: 3.4vh;
       display: block;
     }
 
@@ -232,7 +233,9 @@ html {
 
 .yeart{
       font-size: inherit !important;
+      top: 0 !important;
 }
+
 
 .nomb{
 display: none !important;
