@@ -60,7 +60,7 @@
       <!-- h-[90vh] pt-[8.25vh]  pt-[2.25vh] pt-[5.25rem]  -->
       <div class="  ">
         <div class="headerr pt-[2.9vh] flex justify-center">
-        <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[90vw]">PALAZZO EVENTI</h1>
+        <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[100vw]">PALAZZO EVENTI</h1>
       </div>
         <nav class="link-container">
           <ul>

@@ -248,6 +248,7 @@ export default {
 
   .navmbbord{
     width: 90vw;
+    width: 100vw;
     border-bottom: .05vw solid #0000004f;
     padding: 2vw;
     display: flex;
@@ -273,6 +274,7 @@ export default {
         height: max-content;
         overflow: hidden;
         position: absolute;
+
         top: 0;
         background-size: cover;
     background-position: 0 0;
@@ -296,6 +298,7 @@ export default {
         z-index: 1;
         flex-direction: column;
         padding: 2.5vw;
+        padding-bottom: 0vw;
   }
 }
 
