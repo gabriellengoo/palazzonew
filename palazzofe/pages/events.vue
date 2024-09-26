@@ -17,8 +17,8 @@
       <!-- Left Scrollable Content -->
       <div class="left-content flex-1 overflow-y-scroll p-8">
         <div class="content">
-          <div v-if="gridd.grid2" class="">
-            <Gridevents class="" :items="gridd.grid2" size="small"></Gridevents>
+          <div v-if="gridd.grid3" class="">
+            <Gridevents2 class="" :items="gridd.grid3" size="small"></Gridevents2>
           </div>
         </div>
       </div>
@@ -33,8 +33,8 @@
       <div class="right-content overflow-y-scroll flex-1 p-8">
         <!-- <div class="static-box w-full h-full">
         </div> -->
-        <div v-if="gridd.grid3" class="">
-          <Gridevents2 class="" :items="gridd.grid3" size="small"></Gridevents2>
+        <div v-if="gridd.grid2" class="">
+          <Gridevents class="" :items="gridd.grid2" size="small"></Gridevents>
         </div>
       </div>
     </div>
