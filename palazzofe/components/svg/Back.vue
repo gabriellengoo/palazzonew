@@ -43,4 +43,12 @@ width="40"
 width: 1vw;
 height: auto;
 }
+
+@media only screen and (max-width: 768px) {
+.svgg {
+    width: 4.5vw;
+    height: auto;
+    left: 1vw;
+}
+}
 </style>
