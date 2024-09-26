@@ -1,5 +1,6 @@
 export const state = () => ({
   grid: [],
+  grid2: [],
   title: false,
   activeProject: false,
   activeTalent: false,
@@ -12,6 +13,9 @@ export const mutations = {
   SET_GRID(state, grid) {
     state.grid = grid
   },
+  SET_GRIDD(state, grid2) {
+    state.grid = grid2
+  },  
   SET_TITLE(state, title) {
     state.title = title
   },
@@ -39,7 +43,7 @@ import { groq } from '@nuxtjs/sanity'
 
 export const actions = {
   async nuxtServerInit({ commit }) {
-    // Home Grid
+    // weddings Grid
     const gridQuery = groq`*[_type == "works" ] 
     {grid[] {
     _key, double, spacer, 
@@ -75,9 +79,92 @@ export const actions = {
       }
          }
   } | order(_updatedAt desc)[0]`
-    const grid = await this.$sanity.fetch(gridQuery)
+    
+  
+
+  const gridQuery2 = groq`*[_type == "events" ] 
+  {
+    grid3[] {
+  _key, double, spacer, 
+  "video" : {"id" : video.asset->playbackId, 
+  "aspect" : video.asset->data.aspect_ratio , 
+  "thumbTime" : video.asset->thumbTime }, 
+  "image" : 
+    {"image" : image.asset._ref, 
+    "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+    "size" : {"width" : image.asset->metadata.dimensions.width, 
+    "height" : image.asset->metadata.dimensions.height}, 
+    "position" : position }, 
+    "imageh" : 
+    { "imageh" : imageh.asset._ref,
+    "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+    "size" : {"width" : image.asset->metadata.dimensions.width, 
+    "height" : image.asset->metadata.dimensions.height}, 
+    "position" : position }, 
+    portrait,
+    link, title, year, private,
+  "reference": reference->{
+      _id,
+      title,
+      "slug" : slug.current,
+      "slider": slider[] {
+        _key,
+        images[] {
+          _key,
+          portrait,
+          "imageUrl": image.asset->url
+        }
+      }
+    }
+       },
+
+    grid2[] {
+  _key, double, spacer, 
+  "video" : {"id" : video.asset->playbackId, 
+  "aspect" : video.asset->data.aspect_ratio , 
+  "thumbTime" : video.asset->thumbTime }, 
+  "image" : 
+    {"image" : image.asset._ref, 
+    "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+    "size" : {"width" : image.asset->metadata.dimensions.width, 
+    "height" : image.asset->metadata.dimensions.height}, 
+    "position" : position }, 
+    "imageh" : 
+    { "imageh" : imageh.asset._ref,
+    "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+    "size" : {"width" : image.asset->metadata.dimensions.width, 
+    "height" : image.asset->metadata.dimensions.height}, 
+    "position" : position }, 
+    portrait,
+    link, title, year, private,
+  "reference": reference->{
+      _id,
+      title,
+      "slug" : slug.current,
+      "slider": slider[] {
+        _key,
+        images[] {
+          _key,
+          portrait,
+          "imageUrl": image.asset->url
+        }
+      }
+    }
+       }
+} | order(_updatedAt desc)[0]`
+
+
+  const grid = await this.$sanity.fetch(gridQuery)
+  // console.log('Grid Query Result:', grid) 
     commit('SET_GRID', grid)
 
+
+    const grid2 = await this.$sanity.fetch(gridQuery2)
+    // console.log('Grid2 Query Result:', grid2)
+    commit('SET_GRIDD', grid2)
+    // commit('SET_GRID3', grid2.grid3);
+
+  
     // Contact
     // const contactQuery = groq`*[_type == "about" ] {contactDetails} | order(_updatedAt desc)[0]`
     // const contact = await this.$sanity.fetch(contactQuery)

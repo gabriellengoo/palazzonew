@@ -18,7 +18,7 @@
     <transition name="slide-down" @after-enter="fadeInAllImg">
       <nav
         v-if="isMenuOpen"
-        class="nav-menu fixed left-0 w-full h-screen z-50 flex justify-center items-center"
+        class="nav-menu fixed left-0 w-full h-screen z-[500] flex justify-center items-center"
       >
         <div
           class="image-container absolute inset-0 w-full h-full object-cover"
@@ -37,9 +37,18 @@
             class="hover-image-display"
           />
 
-          <a href="./weddings" target="_self" rel="noopener noreferrer" class="hover-area hover-image-display"></a>
+
+              <!-- Invisible 3x3 Grid -->
+              <div class="grid-container">
+            <div v-for="i in 9" :key="i" class="grid-item">
+              <a :href="getLink(i)" class="hover-areal"></a>
+            </div>
+          </div>
+          <!-- <a href="./weddings" target="_self" rel="noopener noreferrer" class="hover-area hover-image-display"></a> -->
         </div>
 
+
+        
       
 
         <!-- <div class="allimg relative w-[100vw] h-[100vh] z-50">
@@ -66,7 +75,7 @@
           <ul>
             <li class="toplink pointer-events-none "><a class="toplink" href="#">space</a></li>
             <li><a href="./weddings">WEDDINGS</a></li>
-            <li><a href="#events">EVENTS</a></li>
+            <li><a href="./events">EVENTS</a></li>
             <li><a href="#services">SERVICES</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#press">PRESS</a></li>
@@ -112,6 +121,15 @@ export default {
     fadeInAllImg() {
       this.fadeInAllImgClass = true;
     },
+    getLink(index) {
+      // Return different URLs based on the grid item index
+      const links = [
+        './weddings', './events', '/link3',
+        '/link4', './', '/link6',
+        '/link7', '/link8', '/link9',
+      ];
+      return links[index - 1]; // Adjust index for 1-based loop
+    },
     // updateNavMenuPosition() {
     //   const headerDiv = this.$refs.headerDiv;
     //   if (headerDiv) {
@@ -125,6 +143,31 @@ export default {
 
 <style scoped>
 
+.nav-menu{
+  z-index: 10000;
+}
+
+/* Styling for the invisible 3x3 grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none; /* Prevent grid from blocking other interactions */
+}
+
+.grid-item {
+  pointer-events: auto; /* Make each grid area clickable */
+}
+
+.hover-areal {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
 
 /* mobile nav end--------- */ 
 

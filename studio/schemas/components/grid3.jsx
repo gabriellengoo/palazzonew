@@ -1,17 +1,17 @@
 import React from "react";
 
-import { RiNumber0 } from "react-icons/Ri";
-import { RiNumber1 } from "react-icons/Ri";
-import { RiNumber2 } from "react-icons/Ri";
-import { RiNumber3 } from "react-icons/Ri";
-import { RiNumber4 } from "react-icons/Ri";
-import { RiNumber5 } from "react-icons/Ri";
-import { RiNumber6 } from "react-icons/Ri";
-import { RiNumber7 } from "react-icons/Ri";
+// import { RiNumber0 } from "react-icons/Ri";
+// import { RiNumber1 } from "react-icons/Ri";
+// import { RiNumber2 } from "react-icons/Ri";
+// import { RiNumber3 } from "react-icons/Ri";
+// import { RiNumber4 } from "react-icons/Ri";
+// import { RiNumber5 } from "react-icons/Ri";
+// import { RiNumber6 } from "react-icons/Ri";
+// import { RiNumber7 } from "react-icons/Ri";
 
 export default {
-  name: "gride",
-  title: "Gride",
+  name: "grid3",
+  title: "Grid",
   type: "array",
   liveEdit: true,
   options: {
@@ -22,7 +22,7 @@ export default {
       name: "item",
       title: "Item",
       type: "object",
-      fields: [
+      fields: [ 
         {
           name: "image",
           title: "Image",
@@ -30,29 +30,44 @@ export default {
           hidden: ({ parent, value }) =>
             (!value && parent?.spacer) || (!value && parent?.video),
         },
-        {
-          name: "video",
-          title: "Video",
-          type: "mux.video",
-          hidden: ({ parent, value }) =>
-            (!value && parent?.spacer) || (!value && parent?.image),
-        },
-        {
-          name: 'youtubeUrl',
-          title: 'YouTube Video URL',
-          type: 'url',
-        },
-        {
-          name: 'vimeoUrl',
-          title: 'Vimeo Video URL',
-          type: 'url',
-        },
+      
+        // {
+        //   name: "imageh",
+        //   title: "Hover Image",
+        //   type: "image",
+        // },
+
+        // {
+        //   name: "portrait",
+        //   title: "portrait img",
+        //   type: "boolean",
+        //   description: "Is the hover img portrait?",
+        // },
+     
+        // {
+        //   name: "video",
+        //   title: "Video",
+        //   type: "mux.video",
+        //   hidden: ({ parent, value }) =>
+        //     (!value && parent?.spacer) || (!value && parent?.image),
+        // },
+        // {
+        //   name: 'youtubeUrl',
+        //   title: 'YouTube Video URL',
+        //   type: 'url',
+        // },
+        // {
+        //   name: 'vimeoUrl',
+        //   title: 'Vimeo Video URL',
+        //   type: 'url',
+        // },
+      
         {
           name: "reference",
           title: "Reference",
-          type: "reference",
+          type: "reference", 
           to: {
-            type: "project",
+            type: "projectevents",
           },
           hidden: ({ parent, value }) =>
             !value && (parent?.spacer || parent?.link),
@@ -63,11 +78,23 @@ export default {
         //   type: "boolean",
         // },
         {
+          name: "private",
+          title: "Is the project type Private or Corporate",
+          type: "boolean",
+          description: "If its Corporate dont toggle on",
+        },
+        {
           name: "title",
           title: "Title",
           type: "string",
           hidden: ({ parent, value }) =>
             !value && (parent?.spacer || parent?.reference),
+        },
+
+        {
+          name: "year",
+          title: "Sub-title",
+          type: "string",
         },
       ],
       preview: {

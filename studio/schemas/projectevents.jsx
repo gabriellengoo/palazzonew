@@ -4,11 +4,11 @@ import React from "react";
 
 
 export default {
-  name: "project", 
-  title: "Weddings Pages Archive",
+  name: "projectevents",
+  title: "Events Pages Archive",
   type: "document",
   // liveEdit: true,
-  // icon: Project,
+  // icon: Project, 
   fields: [
     {
       name: "title",
