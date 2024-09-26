@@ -1,6 +1,6 @@
 export const state = () => ({
   grid: [],
-  grid2: [],
+  gridd: [],
   title: false,
   activeProject: false,
   activeTalent: false,
@@ -14,7 +14,7 @@ export const mutations = {
     state.grid = grid
   },
   SET_GRIDD(state, grid2) {
-    state.grid = grid2
+    state.gridd = grid2
   },  
   SET_TITLE(state, title) {
     state.title = title
@@ -159,9 +159,9 @@ export const actions = {
     commit('SET_GRID', grid)
 
 
-    const grid2 = await this.$sanity.fetch(gridQuery2)
+    const gridd = await this.$sanity.fetch(gridQuery2)
     // console.log('Grid2 Query Result:', grid2)
-    commit('SET_GRIDD', grid2)
+    commit('SET_GRIDD', gridd)
     // commit('SET_GRID3', grid2.grid3);
 
   
