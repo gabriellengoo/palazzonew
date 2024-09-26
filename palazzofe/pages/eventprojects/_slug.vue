@@ -1086,7 +1086,7 @@ a {
   .nomb {
     display: none;
   }
-
+ 
   .nodes {
     display: inherit;
   }
