@@ -80,8 +80,8 @@
                 </div>
               </figure>
             </div>
-            <span v-if="item.private" class="eventtype">Private</span>
-            <span v-if="!item.private" class="eventtype">Corporate</span>
+            <!-- <span v-if="item.private" class="eventtype">Private</span>
+            <span v-if="!item.private" class="eventtype">Corporate</span> -->
 
           </div>
         </div>
@@ -155,10 +155,10 @@ export default {
   display: none;
 }
 
-.image-item:nth-child(1){
+/* .image-item:nth-child(1){
   padding: .5vw;
   padding-right: 2vw;
-}
+} */
 
 
 /* .item-wrapper.image-item:nth-child(1){
@@ -284,7 +284,9 @@ font-size: .8vw;
   position: relative;
   /* flex: 0 0 calc(50% - 20px); */
   margin-bottom: 20px;
+    margin-bottom: 5vh;
   padding: 1vw;
+  padding-top: 2vw;
 }
 
 .overlay-image {

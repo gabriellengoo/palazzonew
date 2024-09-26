@@ -11,7 +11,7 @@
         <h1 class="md:w-[1.4vw] w-auto">
           <!-- weddings -->
           <a class="headbar" href="../weddings"
-            ><SvgClose class="svgmb hover:cursor-pointer"
+            ><SvgBack class="svgmb hover:cursor-pointer"
           /></a>
         </h1>
         <p

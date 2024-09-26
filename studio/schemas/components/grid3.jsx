@@ -77,12 +77,12 @@ export default {
         //   title: "Double",
         //   type: "boolean",
         // },
-        {
-          name: "private",
-          title: "Is the project type Private or Corporate",
-          type: "boolean",
-          description: "If its Corporate dont toggle on",
-        },
+        // {
+        //   name: "private",
+        //   title: "Is the project type Private or Corporate",
+        //   type: "boolean",
+        //   description: "If its Corporate dont toggle on",
+        // },
         {
           name: "title",
           title: "Title",
