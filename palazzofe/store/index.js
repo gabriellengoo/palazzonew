@@ -1,6 +1,7 @@
 export const state = () => ({
   grid: [],
   gridd: [],
+  gridpub: [],
   title: false,
   activeProject: false,
   activeTalent: false,
@@ -15,6 +16,9 @@ export const mutations = {
   },
   SET_GRIDD(state, grid2) {
     state.gridd = grid2
+  },  
+  SET_GRIDPUB(state, grid3) {
+    state.gridpub = grid3
   },  
   SET_TITLE(state, title) {
     state.title = title
@@ -154,6 +158,79 @@ export const actions = {
 } | order(_updatedAt desc)[0]`
 
 
+
+const gridQuery3 = groq`*[_type == "publications" ] 
+{
+  grid4[] {
+_key, double, spacer, 
+"video" : {"id" : video.asset->playbackId, 
+"aspect" : video.asset->data.aspect_ratio , 
+"thumbTime" : video.asset->thumbTime }, 
+"image" : 
+  {"image" : image.asset._ref, 
+  "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+  "size" : {"width" : image.asset->metadata.dimensions.width, 
+  "height" : image.asset->metadata.dimensions.height}, 
+  "position" : position }, 
+  "imageh" : 
+  { "imageh" : imageh.asset._ref,
+  "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+  "size" : {"width" : image.asset->metadata.dimensions.width, 
+  "height" : image.asset->metadata.dimensions.height}, 
+  "position" : position }, 
+  portrait,
+  link, title, year, private, month,
+"reference": reference->{
+    _id,
+    title,
+    "slug" : slug.current,
+    "slider": slider[] {
+      _key,
+      images[] {
+        _key,
+        portrait,
+        "imageUrl": image.asset->url
+      }
+    }
+  }
+     },
+
+  grid5[] {
+_key, double, spacer, 
+"video" : {"id" : video.asset->playbackId, 
+"aspect" : video.asset->data.aspect_ratio , 
+"thumbTime" : video.asset->thumbTime }, 
+"image" : 
+  {"image" : image.asset._ref, 
+  "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+  "size" : {"width" : image.asset->metadata.dimensions.width, 
+  "height" : image.asset->metadata.dimensions.height}, 
+  "position" : position }, 
+  "imageh" : 
+  { "imageh" : imageh.asset._ref,
+  "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+  "size" : {"width" : image.asset->metadata.dimensions.width, 
+  "height" : image.asset->metadata.dimensions.height}, 
+  "position" : position }, 
+  portrait,
+  link, title, year, private, month,
+"reference": reference->{
+    _id,
+    title,
+    "slug" : slug.current,
+    "slider": slider[] {
+      _key,
+      images[] {
+        _key,
+        portrait,
+        "imageUrl": image.asset->url
+      }
+    }
+  }
+     }
+} | order(_updatedAt desc)[0]`
+
+
   const grid = await this.$sanity.fetch(gridQuery)
   // console.log('Grid Query Result:', grid) 
     commit('SET_GRID', grid)
@@ -162,6 +239,12 @@ export const actions = {
     const gridd = await this.$sanity.fetch(gridQuery2)
     // console.log('Grid2 Query Result:', grid2)
     commit('SET_GRIDD', gridd)
+    // commit('SET_GRID3', grid2.grid3);
+
+
+    const gridpub = await this.$sanity.fetch(gridQuery3)
+    // console.log('Grid2 Query Result:', grid2)
+    commit('SET_GRIDPUB', gridpub)
     // commit('SET_GRID3', grid2.grid3);
 
   

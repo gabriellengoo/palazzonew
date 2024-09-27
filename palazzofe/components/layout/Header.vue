@@ -78,7 +78,7 @@
             <li><a href="./events">EVENTS</a></li>
             <li><a href="#services">SERVICES</a></li>
             <li><a href="#about">ABOUT</a></li>
-            <li><a href="#press">PRESS</a></li>
+            <li><a href="./press">PRESS</a></li>
             <li><a href="#team">TEAM</a></li>
             <li><a href="#contact">CONTACT</a></li>
             <li><a href="#awards">AWARDS</a></li>
@@ -125,7 +125,7 @@ export default {
       // Return different URLs based on the grid item index
       const links = [
         './weddings', './events', '/link3',
-        '/link4', './', '/link6',
+        '/link4', './', './press',
         '/link7', '/link8', '/link9',
       ];
       return links[index - 1]; // Adjust index for 1-based loop
