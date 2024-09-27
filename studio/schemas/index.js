@@ -13,7 +13,8 @@ import events from './events';
 import publications from "./publications";
 import grid4 from "./components/grid4";
 import grid5 from "./components/grid5";
+import services from "./services";
 
 // home,
 
-export const schemaTypes = [blockContent,grid,grid2,grid3,project,work,projectevents,events, publications, grid4, grid5]
+export const schemaTypes = [blockContent,grid,grid2,grid3,project,work,projectevents,events, publications, grid4, grid5, services]

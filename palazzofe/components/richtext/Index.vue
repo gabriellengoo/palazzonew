@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-[2vw]">
     <PortableText :blocks="blocks" :serializers="serializers" />
   </div>
 </template>
@@ -50,6 +50,18 @@ export default {
   text-indent: 1rem;
 } */
 
+
+div p{
+padding-bottom: 2.5vh;
+/* font-family: 'MinionPro-Regular'; */
+}
+
+@media only screen and (max-width: 768px) {
+  div p{
+padding-bottom: 1.5vh;
+/* font-family: 'MinionPro-Regular'; */
+}
+}
 
 p{
   /* font-family: 'GTWalsheimcr'; */

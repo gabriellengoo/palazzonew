@@ -76,7 +76,7 @@
             <li class="toplink pointer-events-none "><a class="toplink" href="#">space</a></li>
             <li><a href="./weddings">WEDDINGS</a></li>
             <li><a href="./events">EVENTS</a></li>
-            <li><a href="#services">SERVICES</a></li>
+            <li><a href="./services">SERVICES</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="./press">PRESS</a></li>
             <li><a href="#team">TEAM</a></li>
@@ -124,7 +124,7 @@ export default {
     getLink(index) {
       // Return different URLs based on the grid item index
       const links = [
-        './weddings', './events', '/link3',
+        './weddings', './events', './services',
         '/link4', './', './press',
         '/link7', '/link8', '/link9',
       ];
