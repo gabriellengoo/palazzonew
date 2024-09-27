@@ -482,7 +482,7 @@ a {
 }
 
 .left-content {
-  background-image: url(/_nuxt/static/background.jpg);
+  background-image: url("./static/background.jpg");
   background-size: initial;
   background-position: unset;
   background-repeat: no-repeat;
@@ -491,7 +491,7 @@ a {
 }
 
 .right-content {
-  background-image: url(/_nuxt/static/LeftBG.png);
+  background-image:  url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
   /* background-size: auto auto; */
