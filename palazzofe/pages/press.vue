@@ -140,8 +140,12 @@ export default {
   background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: center;
+  background-size: initial;
   background-repeat: no-repeat;
   height: 100vh;
+
+  background-position: unset;
+    background-size: auto auto;
 }
 
 a {
@@ -165,6 +169,7 @@ a:hover {
 
   .right-content {
     display: none;
+    background-size: cover;
   }
 
   .left-content {
