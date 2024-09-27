@@ -178,5 +178,5 @@ a:hover {
     background-size: auto;
     background-image: url("./static/background.jpg");
   }
-}
+} 
 </style>
