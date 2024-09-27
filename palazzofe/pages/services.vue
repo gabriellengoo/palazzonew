@@ -138,7 +138,10 @@
         <div class="allrcont" v-if="services && activeSection === 'production'">
           <div class="sevcont">
             <div class="titcont titmb">
-              <a href=""><SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" @click="setActiveSection('')"  /></a>               <h1 class="loctext pt-2">Production</h1>
+              <!-- <a href=""> -->
+                <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" @click="closeSection"  />
+              <!-- </a>               -->
+               <h1 class="loctext pt-2">Production</h1>
             </div>
             <div class="sevimcon">
               <img
@@ -189,14 +192,29 @@ export default {
 
   data() {
     return {
-      activeSection: "design", 
+      // activeSection: "design", 
       // Set the default section, e.g., 'design'
-      // activeSection: false, 
+      activeSection: false, 
+      isMobile: false, 
       // Track the active section state
     };
   },
 
+  mounted() {
+    this.checkViewport(); // Set the initial value based on viewport
+    window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.checkViewport); // Clean up event listener
+  },
+
   methods: {
+    checkViewport() {
+      this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
+      this.activeSection = this.isMobile ? false : "design"; // Set activeSection based on isMobile
+    },
+
     setActiveSection(section) {
       this.activeSection = section;
     },
