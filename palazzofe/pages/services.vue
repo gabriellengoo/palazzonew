@@ -18,13 +18,9 @@
       <div
         class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
       >
-      <div class="nodes">
+        <div class="nodes">
           <!-- <p>d</p> -->
-          <p
-          class="headingspages text-center text-4xl  uppercase "
-        >
-        Services
-        </p>
+          <p class="headingspages text-center text-4xl uppercase">Services</p>
         </div>
         <transition name="slide-down" @after-enter="fadeInAllImg">
           <div
@@ -38,9 +34,19 @@
                   </li>
                   <!-- <li><a href=""><SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" @click="setActiveSection('')"  /></a> -->
                   <!-- </li> -->
-                  <li><a @click="setActiveSection('design')" href="#">Design</a></li>
-              <li><a @click="setActiveSection('location')" href="#">Location</a></li>
-              <li><a @click="setActiveSection('production')" href="#">Production</a></li>
+                  <li>
+                    <a @click="setActiveSection('design')" href="#">Design</a>
+                  </li>
+                  <li>
+                    <a @click="setActiveSection('location')" href="#"
+                      >Location</a
+                    >
+                  </li>
+                  <li>
+                    <a @click="setActiveSection('production')" href="#"
+                      >Production</a
+                    >
+                  </li>
                   <li><a href="#concirerge">concirerge</a></li>
                   <li><a href="#activity">activity</a></li>
                   <li><a href="#celebrities">Celebrities</a></li>
@@ -58,79 +64,95 @@
       </div>
 
       <!-- Right Static Content -->
-      <div :class="{ 'slide-in': activeSection }" class="right-content overflow-y-scroll flex-1">
+      <div
+        :class="{ 'slide-in': activeSection, 'slide-out': !activeSection }"
+        class="right-content overflow-y-scroll flex-1"
+      >
         <!-- design -->
         <div class="allrcont" v-if="services && activeSection === 'design'">
           <div class="sevcont">
-
             <div class="titcont titmb">
-              <a href=""><SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" @click="setActiveSection('')"  /></a> 
+              <!-- <a href=""> -->
+              <button @click="closeSection">
+                <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+              </button>
+              <!-- </a>  -->
               <h1 class="loctext pt-2">Design</h1>
             </div>
             <div class="sevimcon">
               <img
                 :src="services.designContent.designImageUrl"
                 alt="Design Image"
-                class="servimg"
+                class="servimg pointer-events-none"
               />
             </div>
             <div class="flex texta pb-[3vh]">
               <Richtext
-                      class="contactinner pr-[1vw] pb-0  w-[50%]"
-                      :blocks="services.designContent.dcontent"
-                    ></Richtext>
-                    <Richtext
-                      class="contactinner pr-[3vw] w-[50%] pb-0"
-                      :blocks="services.designContent.dcontent2"
-                    ></Richtext>
+                class="contactinner pr-[1vw] pb-0 w-[50%]"
+                :blocks="services.designContent.dcontent"
+              ></Richtext>
+              <Richtext
+                class="contactinner pr-[3vw] w-[50%] pb-0"
+                :blocks="services.designContent.dcontent2"
+              ></Richtext>
             </div>
 
             <div class="flex justify-end locmb">
-              <div class="mbspace w-[50vw] p-[2vw]  pt-0"><p class=" text-[#00000000]">space</p></div>
+              <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                <p class="text-[#00000000]">space</p>
+              </div>
               <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-              <h1 class="loctext">Location</h1>
-            <a class="loctextlink" :href="services.designContent.dlocationlink">{{ services.designContent.dlocation }}</a>
+                <h1 class="loctext">Location</h1>
+                <a
+                  class="loctextlink"
+                  :href="services.designContent.dlocationlink"
+                  >{{ services.designContent.dlocation }}</a
+                >
+              </div>
             </div>
-
-            </div>
-         
           </div>
         </div>
-
 
         <!-- loc -->
         <div class="allrcont" v-if="services && activeSection === 'location'">
           <div class="sevcont">
             <div class="titcont titmb">
-              <a href=""><SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" @click="setActiveSection('')"  /></a>               <h1 class="loctext pt-2">Location</h1>
+              <button @click="closeSection">
+                <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+              </button>
+              <h1 class="loctext pt-2">Location</h1>
             </div>
             <div class="sevimcon">
               <img
                 :src="services.locationContent.locationImageUrl"
                 alt="Design Image"
-                class="servimg"
+                class="servimg pointer-events-none"
               />
             </div>
             <div class="flex texta pb-[3vh]">
               <Richtext
-                      class="contactinner pr-[1vw] pb-0  w-[50%]"
-                      :blocks="services.locationContent.lcontent"
-                    ></Richtext>
-                    <Richtext
-                      class="contactinner pr-[2vw] w-[50%] pb-0"
-                      :blocks="services.locationContent.lcontent2"
-                    ></Richtext>
+                class="contactinner pr-[1vw] pb-0 w-[50%]"
+                :blocks="services.locationContent.lcontent"
+              ></Richtext>
+              <Richtext
+                class="contactinner pr-[2vw] w-[50%] pb-0"
+                :blocks="services.locationContent.lcontent2"
+              ></Richtext>
             </div>
 
-            <div class="locmb flex justify-end ">
-              <div class="mbspace w-[50vw] p-[2vw]  pt-0"><p class=" text-[#00000000]">space</p></div>
+            <div class="locmb flex justify-end">
+              <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                <p class="text-[#00000000]">space</p>
+              </div>
               <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-              <h1 class="loctext">Location</h1>
-            <a class="loctextlink" :href="services.locationContent.llocationlink">{{ services.designContent.dlocation }}</a>
+                <h1 class="loctext">Location</h1>
+                <a
+                  class="loctextlink"
+                  :href="services.locationContent.llocationlink"
+                  >{{ services.designContent.dlocation }}</a
+                >
+              </div>
             </div>
-
-            </div>
-         
           </div>
         </div>
 
@@ -139,39 +161,46 @@
           <div class="sevcont">
             <div class="titcont titmb">
               <!-- <a href=""> -->
-                <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" @click="closeSection"  />
+                <button @click="closeSection">
+                <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+              </button>
               <!-- </a>               -->
-               <h1 class="loctext pt-2">Production</h1>
+              <h1 class="loctext pt-2">Production</h1>
             </div>
             <div class="sevimcon">
               <img
                 :src="services.productionContent.productionImageUrl"
                 alt="Design Image"
-                class="servimg"
+                class="servimg pointer-events-none"
               />
             </div>
             <div class="flex texta pb-[3vh]">
               <Richtext
-                      class="contactinner pr-[1vw] pb-0  w-[50%]"
-                      :blocks="services.productionContent.prcontent"
-                    ></Richtext>
-                    <Richtext
-                      class="contactinner pr-[2vw] w-[50%] pb-0"
-                      :blocks="services.productionContent.prcontent2"
-                    ></Richtext>
+                class="contactinner pr-[1vw] pb-0 w-[50%]"
+                :blocks="services.productionContent.prcontent"
+              ></Richtext>
+              <Richtext
+                class="contactinner pr-[2vw] w-[50%] pb-0"
+                :blocks="services.productionContent.prcontent2"
+              ></Richtext>
             </div>
 
             <div class="flex justify-end locmb">
-              <div class="mbspace w-[50vw] p-[2vw]  pt-0"><p class=" text-[#00000000]">space</p></div>
+              <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                <p class="text-[#00000000]">space</p>
+              </div>
               <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-              <h1 class="loctext">Location</h1>
-            <a class="loctextlink" :href="services.productionContent.prlocationlink">{{ services.productionContent.prlocation }}</a>
+                <h1 class="loctext">Location</h1>
+                <a
+                  class="loctextlink"
+                  :href="services.productionContent.prlocationlink"
+                  >{{ services.productionContent.prlocation }}</a
+                >
+              </div>
             </div>
-
-            </div>
-         
           </div>
         </div>
+
 
       </div>
     </div>
@@ -192,10 +221,11 @@ export default {
 
   data() {
     return {
-      // activeSection: "design", 
+      // activeSection: "design",
       // Set the default section, e.g., 'design'
-      activeSection: false, 
-      isMobile: false, 
+      // activeSection: false,
+      isMobile: false,
+      activeSection: null,
       // Track the active section state
     };
   },
@@ -214,18 +244,21 @@ export default {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
       this.activeSection = this.isMobile ? false : "design"; // Set activeSection based on isMobile
     },
-
     setActiveSection(section) {
-      this.activeSection = section;
+    if (this.activeSection === section) {
+      this.activeSection = null; // Close the section if clicked again
+    } else {
+      this.activeSection = section; // Open the new section
+    }
+  },
+  closeSection() {
+    this.activeSection = null; // Close the section when the close button is clicked
+  },
+
+    toggleActiveSection() {
+      // Toggle between open and closed states
+      this.activeSection = !this.activeSection;
     },
-
-    closeSection() {
-      this.activeSection = false;  // Or any logic to close/reset the section
-},
-
-toggleActiveSection() {
-    this.activeSection = !this.activeSection; // Toggle the class on click
-  }
   },
 
   async asyncData({ params, $sanity, store }) {
@@ -275,8 +308,7 @@ toggleActiveSection() {
 </script>
 
 <style scoped>
-
-.locationtext{
+.locationtext {
   /* padding-top: 3vh; */
   text-align: center;
   align-items: center;
@@ -285,79 +317,78 @@ toggleActiveSection() {
   display: flex;
 }
 
-.texta{
+.texta {
   /* padding-top: 8vh; */
   font-size: 1.95vh;
 }
 
-.loctextlink a{
+.loctextlink a {
   color: black;
 }
 
-.loctext{
+.loctext {
   font-size: smaller;
   font-size: 1vw;
-        /* font-family: "GT-Bold"; */
-        font-family: 'MinionPro-Regular';
-        text-transform: uppercase;
+  /* font-family: "GT-Bold"; */
+  font-family: "MinionPro-Regular";
+  text-transform: uppercase;
 }
 
-.loctextlink{
+.loctextlink {
   font-size: smaller;
   font-size: 1vw;
   font-style: italic;
   text-transform: none;
   text-align: left;
   text-decoration: underline;
-  font-family: 'MinionPro-Regular';
+  font-family: "MinionPro-Regular";
   -webkit-text-decoration: underline;
 }
 
-
-.allrcont{
+.allrcont {
   display: flex;
-    top: 2vh;
-    top: 7vh;
-    position: relative;
-    width: 100%;
-    /* height: 95%; */
-    justify-content: center;
-    align-items: flex-end;
-    padding: 2rem;
-    overflow-y: hidden;
-}
-
-.sevcont{
-    bottom: 0;
-    left: 0;
-    width: 49vw;
-    z-index: 0;
-}
-
- .sevimcon{
-  height: 31.6vh;
-    display: flex;
-    width: 100%;
-    justify-content: center;
- }
-
-.servimg{
+  top: 2vh;
+  top: 7vh;
+  position: relative;
   width: 100%;
-    object-fit: cover;
-    width: auto;
-    height: auto;
-    -o-object-fit: cover;
-    object-fit: contain;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1;
+  /* height: 95%; */
+  justify-content: center;
+  align-items: flex-end;
+  padding: 2rem;
+  overflow-y: hidden;
 }
 
-.contactinner div p{
-padding-bottom: 1vh;
+.sevcont {
+  bottom: 0;
+  left: 0;
+  width: 49vw;
+  z-index: 0;
 }
 
-.contactinner{
+.sevimcon {
+  height: 31.6vh;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.servimg {
+  width: 100%;
+  object-fit: cover;
+  width: auto;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: contain;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.contactinner div p {
+  padding-bottom: 1vh;
+}
+
+.contactinner {
   font-size: 1.1vw;
 }
 
@@ -389,7 +420,7 @@ padding-bottom: 1vh;
   font-weight: 100;
   padding-left: 4vw;
   padding-right: 4vw;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 .link-container a:hover {
@@ -509,7 +540,7 @@ a {
 }
 
 .right-content {
-  background-image:  url("./static/LeftBG.png");
+  background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
   /* background-size: auto auto; */
@@ -520,118 +551,148 @@ a {
   background-position: initial;
 }
 
-
-.titmb{
-      display: none;
-    }
-
-
-@media only screen and (max-width: 768px) {
-
-  .container {
-  display: flex;
+.titmb {
+  display: none;
 }
 
-.right-content {
+@media only screen and (max-width: 768px) {
+  .container {
+    display: flex;
+  }
+
+  .right-content {
     position: absolute;
     bottom: -100%; /* Start hidden at the bottom */
     right: 0;
     width: 100%;
     transition: bottom 0.5s ease-in-out;
+    /* display: none; */
+  }
+
+  .right-content {
+    background-size: cover;
+    overflow-y: scroll;
+    height: 65vh;
+    height: max-content;
+    z-index: 90;
+  }
+
+  .bgmobile {
+    overflow: hidden;
   }
 
   /* Slide-in effect when the class is active */
   .right-content.slide-in {
     bottom: 0; /* Slide into view */
+    display: flex;
   }
 
+  .slide-in {
+    bottom: 0; 
+  }
+  .slide-out {
+    transform: translateY(-100%);
+    /* bottom: -100vh; */
+  }
+
+  .right-content.slide-out {
+    /* transform: translateY(-100%); */
+    transition: max-height 0.5s ease-in-out;
+  }
+
+
+.right-content.slide-in {
+  max-height: 100vh; 
+  /* Expand to full height */
+}
+
+.right-content.slide-out {
+  max-height: 0vh; 
+  /* Collapse to zero height */
+  /* bottom: -100vh; */
+  transition: max-height 0.5s ease-in-out;
+}
 
   .bgmobile {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
-  
-  .titcont{
+
+  .titcont {
     width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
   }
 
   /* .left-content,
   .right-content {
     height: auto;
   } */
-  .right-content{
+  .right-content {
     padding: 0.5rem;
-
   }
 
-  .mobilemenu{
-margin-top: 0;
+  .mobilemenu {
+    margin-top: 0;
   }
 
   .allrcont {
     padding: 0rem;
     top: 0vh;
-}
+  }
 
-.sevcont{
-  width: 100%;
-  top: 0;
+  .sevcont {
+    width: 100%;
+    top: 0;
     /* display: inline-flex; */
-    position: absolute;
-}
+    position: relative;
+  }
 
-.texta{
-  padding-bottom: 0vh;
-  padding-top: 8vh;
-}
+  .texta {
+    padding-bottom: 0vh;
+    padding-top: 0vh;
+  }
 
-.sevimcon {
+  .sevimcon {
     height: 14.6vh;
-    position: absolute;
-    top: 2vh;
-}
+    /* position: absolute; */
+    /* top: 2vh; */
+  }
 
-.contactinner {
+  .allrcont{
+    height: max-content;
+  }
+
+  .contactinner {
     font-size: 3.1vw;
-}
+  }
 
-.loctext {
+  .loctext {
     font-size: 3vw;
     font-family: "GT-Bold";
-}
+  }
 
+  .loctextlink {
+    font-size: 3vw;
+  }
 
-.loctextlink{
-  font-size: 3vw;
-}
+  .mbspace {
+    width: 30vw;
+    display: none;
+  }
 
-.mbspace{
-  width: 30vw;
-  display:none;
-}
+  .locmb {
+    justify-content: start;
+  }
 
-  .right-content {
-    display: flex;
-        background-size: cover;
-        overflow-y: scroll;
-        height: 65vh;
-        z-index: 90;
-    }
-
-    .locmb{
-justify-content: start;
-    }
-
-    /* .titmb{
+  /* .titmb{
       display: contents;
     } */
-    .locationtext{
-      width: 100%;
-    }
+  .locationtext {
+    width: 100%;
+  }
 
   .right-content {
     /* display: none; */
