@@ -1112,7 +1112,9 @@ a {
     height: max-content;
     overflow-y: none; 
     flex: none;
+    padding-top: 6vh !important;
   }
+
 
   .right-content {
     background-image: url("./static/PINKBG.png");
