@@ -22,7 +22,7 @@
           <!-- <p>d</p> -->
           <p class="headingspages text-center text-4xl uppercase">Services</p>
         </div>
-        <transition name="slide-down" @after-enter="fadeInAllImg">
+        <transition name="slide-out" @after-enter="fadeInAllImg">
           <div
             class="mobilemenu relative my-auto z-50 flex flex-col justify-center items-center"
           >
@@ -47,12 +47,12 @@
                       >Production</a
                     >
                   </li>
-                  <li><a href="#concirerge">concirerge</a></li>
-                  <li><a href="#activity">activity</a></li>
-                  <li><a href="#celebrities">Celebrities</a></li>
-                  <li><a href="#music">music</a></li>
-                  <li><a href="#products">products</a></li>
-                  <li><a href="#more">more</a></li>
+                  <li><a @click="setActiveSection('concirerge')" href="#concirerge">Concirerge</a></li>
+                  <li><a @click="setActiveSection('activity')" href="#activity">Activity</a></li>
+                  <li><a @click="setActiveSection('celebrities')" href="#celebrities">Celebrities</a></li>
+                  <li><a @click="setActiveSection('music')" href="#music">Music</a></li>
+                  <li><a @click="setActiveSection('products')" href="#products">Products</a></li>
+                  <li><a @click="setActiveSection('more')" href="#more">More</a></li>
                 </ul>
               </nav>
             </div>
@@ -113,7 +113,7 @@
           </div>
         </div>
 
-        <!-- loc -->
+        <!-- Location -->
         <div class="allrcont" v-if="services && activeSection === 'location'">
           <div class="sevcont">
             <div class="titcont titmb">
@@ -156,7 +156,7 @@
           </div>
         </div>
 
-        <!-- prod -->
+        <!-- Production -->
         <div class="allrcont" v-if="services && activeSection === 'production'">
           <div class="sevcont">
             <div class="titcont titmb">
@@ -200,6 +200,259 @@
             </div>
           </div>
         </div>
+
+<!-- Products -->
+<div class="allrcont" v-if="services && activeSection === 'products'">
+  <div class="sevcont">
+    <div class="titcont titmb">
+      <button @click="closeSection">
+        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+      </button>
+      <h1 class="loctext pt-2">Products</h1>
+    </div>
+    <div class="sevimcon">
+      <img
+        :src="services.productsContent.productsImageUrl"
+        alt="Products Image"
+        class="servimg pointer-events-none"
+      />
+    </div>
+    <div class="flex texta pb-[3vh]">
+      <Richtext
+        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        :blocks="services.productsContent.pdcontent"
+      ></Richtext>
+      <Richtext
+        class="contactinner pr-[2vw] w-[50%] pb-0"
+        :blocks="services.productsContent.pdcontent2"
+      ></Richtext>
+    </div>
+    <div class="flex justify-end locmb">
+      <div class="mbspace w-[50vw] p-[2vw] pt-0">
+        <p class="text-[#00000000]">space</p>
+      </div>
+      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
+        <h1 class="loctext">Location</h1>
+        <a
+          class="loctextlink"
+          :href="services.concirergeContent.pdlocationlink"
+          >{{ services.concirergeContent.pdlocation }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- More -->
+<div class="allrcont" v-if="services && activeSection === 'more'">
+  <div class="sevcont">
+    <div class="titcont titmb">
+      <button @click="closeSection">
+        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+      </button>
+      <h1 class="loctext pt-2">More</h1>
+    </div>
+    <div class="sevimcon">
+      <img
+        :src="services.moreContent.moreImageUrl"
+        alt="More Image"
+        class="servimg pointer-events-none"
+      />
+    </div>
+    <div class="flex texta pb-[3vh]">
+      <Richtext
+        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        :blocks="services.moreContent.mocontent"
+      ></Richtext>
+      <Richtext
+        class="contactinner pr-[2vw] w-[50%] pb-0"
+        :blocks="services.moreContent.mocontent2"
+      ></Richtext>
+    </div>
+    <div class="flex justify-end locmb">
+      <div class="mbspace w-[50vw] p-[2vw] pt-0">
+        <p class="text-[#00000000]">space</p>
+      </div>
+      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
+        <h1 class="loctext">Location</h1>
+        <a
+          class="loctextlink"
+          :href="services.concirergeContent.molocationlink"
+          >{{ services.concirergeContent.molocation }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+      
+  <!-- Concirerge -->
+<div class="allrcont" v-if="services && activeSection === 'concirerge'">
+  <div class="sevcont">
+    <div class="titcont titmb">
+      <button @click="closeSection">
+        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+      </button>
+      <h1 class="loctext pt-2">Concirerge</h1>
+    </div>
+    <div class="sevimcon">
+      <img
+        :src="services.concirergeContent.concirergeImageUrl"
+        alt="Concirerge Image"
+        class="servimg pointer-events-none"
+      />
+    </div>
+    <div class="flex texta pb-[3vh]">
+      <Richtext
+        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        :blocks="services.concirergeContent.ccontent"
+      ></Richtext>
+      <Richtext
+        class="contactinner pr-[2vw] w-[50%] pb-0"
+        :blocks="services.concirergeContent.ccontent2"
+      ></Richtext>
+    </div>
+    <div class="flex justify-end locmb">
+      <div class="mbspace w-[50vw] p-[2vw] pt-0">
+        <p class="text-[#00000000]">space</p>
+      </div>
+      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
+        <h1 class="loctext">Location</h1>
+        <a
+          class="loctextlink"
+          :href="services.concirergeContent.clocationlink"
+          >{{ services.concirergeContent.clocation }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Activity -->
+<div class="allrcont" v-if="services && activeSection === 'activity'">
+  <div class="sevcont">
+    <div class="titcont titmb">
+      <button @click="closeSection">
+        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+      </button>
+      <h1 class="loctext pt-2">Activity</h1>
+    </div>
+    <div class="sevimcon">
+      <img
+        :src="services.activityContent.activityImageUrl"
+        alt="Activity Image"
+        class="servimg pointer-events-none"
+      />
+    </div>
+    <div class="flex texta pb-[3vh]">
+      <Richtext
+        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        :blocks="services.activityContent.acontent"
+      ></Richtext>
+      <Richtext
+        class="contactinner pr-[2vw] w-[50%] pb-0"
+        :blocks="services.activityContent.aontent2"
+      ></Richtext>
+    </div>
+    <div class="flex justify-end locmb">
+      <div class="mbspace w-[50vw] p-[2vw] pt-0">
+        <p class="text-[#00000000]">space</p>
+      </div>
+      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
+        <h1 class="loctext">Location</h1>
+        <a
+          class="loctextlink"
+          :href="services.activityContent.alocationlink"
+          >{{ services.activityContent.alocation }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Celebrities -->
+<div class="allrcont" v-if="services && activeSection === 'celebrities'">
+  <div class="sevcont">
+    <div class="titcont titmb">
+      <button @click="closeSection">
+        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+      </button>
+      <h1 class="loctext pt-2">Celebrities</h1>
+    </div>
+    <div class="sevimcon">
+      <img
+        :src="services.celebritiesContent.celebritiesImageUrl"
+        alt="Celebrities Image"
+        class="servimg pointer-events-none"
+      />
+    </div>
+    <div class="flex texta pb-[3vh]">
+      <Richtext
+        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        :blocks="services.celebritiesContent.clcontent"
+      ></Richtext>
+      <Richtext
+        class="contactinner pr-[2vw] w-[50%] pb-0"
+        :blocks="services.celebritiesContent.clcontent2"
+      ></Richtext>
+    </div>
+    <div class="flex justify-end locmb">
+      <div class="mbspace w-[50vw] p-[2vw] pt-0">
+        <p class="text-[#00000000]">space</p>
+      </div>
+      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
+        <h1 class="loctext">Location</h1>
+        <a
+          class="loctextlink"
+          :href="services.celebritiesContent.cllocationlink"
+          >{{ services.celebritiesContent.cllocation }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Music -->
+<div class="allrcont" v-if="services && activeSection === 'music'">
+  <div class="sevcont">
+    <div class="titcont titmb">
+      <button @click="closeSection">
+        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+      </button>
+      <h1 class="loctext pt-2">Music</h1>
+    </div>
+    <div class="sevimcon">
+      <img
+        :src="services.musicContent.musicImageUrl"
+        alt="Music Image"
+        class="servimg pointer-events-none"
+      />
+    </div>
+    <div class="flex texta pb-[3vh]">
+      <Richtext
+        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        :blocks="services.musicContent.mucontent"
+      ></Richtext>
+      <Richtext
+        class="contactinner pr-[2vw] w-[50%] pb-0"
+        :blocks="services.musicContent.mucontent2"
+      ></Richtext>
+    </div>
+    <div class="flex justify-end locmb">
+      <div class="mbspace w-[50vw] p-[2vw] pt-0">
+        <p class="text-[#00000000]">space</p>
+      </div>
+      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
+        <h1 class="loctext">Location</h1>
+        <a
+          class="loctextlink"
+          :href="services.musicContent.mulocationlink"
+          >{{ services.musicContent.mulocation }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
       </div>
@@ -285,6 +538,65 @@ export default {
     prlocationlink,
     "productionImageUrl": primage.asset->url
   },
+
+    "concirergeContent": {
+    ccontent,
+    ccontent2,
+    clocation,
+    clocationlink,
+    "concirergeImageUrl": cimage.asset->url
+  },
+
+
+    "activityContent": {
+    acontent,
+    acontent2,
+    alocation,
+    alocationlink,
+    "activityImageUrl": aimage.asset->url
+  },
+  
+
+  
+    "celebritiesContent": {
+    clcontent,
+    clcontent2,
+    cllocation,
+    cllocationlink,
+    "celebritiesImageUrl": climage.asset->url
+  },
+  
+
+  
+    "musicContent": {
+    mucontent,
+    mucontent2,
+    mulocation,
+    mulocationlink,
+    "musicImageUrl": muimage.asset->url
+  },
+  
+
+  
+    "productsContent": {
+    pdcontent,
+    pdcontent2,
+    pdlocation,
+    pdlocationlink,
+    "productsImageUrl": pdimage.asset->url
+  },
+  
+
+  
+    "moreContent": {
+    mocontent,
+    mocontent2,
+    molocation,
+    molocationlink,
+    "moreImageUrl": moimage.asset->url
+  },
+  
+
     }
      | order(_updatedAt desc)[0]`;
 
@@ -310,11 +622,24 @@ export default {
 <style scoped>
 .locationtext {
   /* padding-top: 3vh; */
-  text-align: center;
+  /* text-align: center;
   align-items: center;
   align-items: flex-start;
   flex-direction: column;
-  display: flex;
+  display: flex; */
+}
+
+
+.locationtext {
+    /* padding-top: 3vh; */
+    text-align: center;
+    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 77vw;
 }
 
 .texta {
@@ -390,6 +715,8 @@ export default {
 
 .contactinner {
   font-size: 1.1vw;
+  /* font-size: 1.4vw; */
+    line-height: normal;
 }
 
 .link-container {
@@ -596,6 +923,7 @@ a {
   }
 
   .right-content.slide-out {
+    max-height: 0vh; 
     /* transform: translateY(-100%); */
     transition: max-height 0.5s ease-in-out;
   }
@@ -607,7 +935,6 @@ a {
 }
 
 .right-content.slide-out {
-  max-height: 0vh; 
   /* Collapse to zero height */
   /* bottom: -100vh; */
   transition: max-height 0.5s ease-in-out;
@@ -657,6 +984,7 @@ a {
 
   .sevimcon {
     height: 14.6vh;
+    /* height: 35.6vh; */
     /* position: absolute; */
     /* top: 2vh; */
   }
@@ -692,6 +1020,9 @@ a {
     } */
   .locationtext {
     width: 100%;
+    position: relative;
+    bottom: auto;
+    left: unset;
   }
 
   .right-content {
@@ -702,7 +1033,7 @@ a {
   .left-content {
     flex-direction: column;
     padding: 0 !important;
-    padding-top: 4vh !important;
+    padding-top: 6vh !important;
     background-size: auto;
     background-image: url("./static/background.jpg");
   }

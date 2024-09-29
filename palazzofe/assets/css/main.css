@@ -213,6 +213,7 @@ html {
         padding-right: 2.5vw;
       flex-direction: column;
       position: relative;
+      position: fixed;
       /* position: absolute; */
     }
 

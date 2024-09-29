@@ -173,6 +173,7 @@ a:hover {
   .left-content{
     padding: 0 !important;
     padding-top: 4vh !important;
+    padding-top: 6vh !important;
   }
 }
 </style>

@@ -98,6 +98,164 @@ export default {
       title: "Production Main image",
       type: "image",
     },
+      
+    
+    // -------
+       {
+        name: "ccontent",
+        title: "Concirerge Left Text Content",
+        type: "blockContent",
+      },
+      {
+        name: "ccontent2",
+        title: "Concirerge Right Text Content",
+        type: "blockContent",
+      },
+      {
+        name: "clocation",
+        title: "Concirerge Location",
+        type: "string",
+      },
+      {
+        name: "clocationlink",
+        title: "Concirerge Location Link",
+        type: "string",
+      },
+      {
+        name: "cimage",
+        title: "Concirerge Main image",
+        type: "image",
+      },
+         // -------
+    {
+      name: "acontent",
+      title: "Activity Left Text Content",
+      type: "blockContent",
+    },
+    {
+      name: "acontent2",
+      title: "Activity Right Text Content",
+      type: "blockContent",
+    },
+    {
+      name: "alocation",
+      title: "Activity Location",
+      type: "string",
+    },
+    {
+      name: "alocationlink",
+      title: "Activity Location Link",
+      type: "string",
+    },
+    {
+      name: "aimage",
+      title: "Activity Main image",
+      type: "image",
+    },
+       // -------
+       {
+        name: "clcontent",
+        title: "Celebrities Left Text Content",
+        type: "blockContent",
+      },
+      {
+        name: "clcontent2",
+        title: "Celebrities Right Text Content",
+        type: "blockContent",
+      },
+      {
+        name: "cllocation",
+        title: "Celebrities Location",
+        type: "string",
+      },
+      {
+        name: "cllocationlink",
+        title: "Celebrities Location Link",
+        type: "string",
+      },
+      {
+        name: "climage",
+        title: "Celebrities Main image",
+        type: "image",
+      },
+         // -------
+    {
+      name: "mucontent",
+      title: "Music Left Text Content",
+      type: "blockContent",
+    },
+    {
+      name: "mucontent2",
+      title: "Music Right Text Content",
+      type: "blockContent",
+    },
+    {
+      name: "mulocation",
+      title: "Music Location",
+      type: "string",
+    },
+    {
+      name: "mulocationlink",
+      title: "Music Location Link",
+      type: "string",
+    },
+    {
+      name: "muimage",
+      title: "Music Main image",
+      type: "image",
+    },
+       // -------
+       {
+        name: "pdcontent",
+        title: "Products Left Text Content",
+        type: "blockContent",
+      },
+      {
+        name: "pdcontent2",
+        title: "Products Right Text Content",
+        type: "blockContent",
+      },
+      {
+        name: "pdlocation",
+        title: "Products Location",
+        type: "string",
+      },
+      {
+        name: "pdlocationlink",
+        title: "Products Location Link",
+        type: "string",
+      },
+      {
+        name: "pdimage",
+        title: "Products Main image",
+        type: "image",
+      },
+         // -------
+    {
+      name: "mocontent",
+      title: "More Left Text Content",
+      type: "blockContent",
+    },
+    {
+      name: "mocontent2",
+      title: "More Right Text Content",
+      type: "blockContent",
+    },
+    {
+      name: "molocation",
+      title: "More Location",
+      type: "string",
+    },
+    {
+      name: "molocationlink",
+      title: "More Location Link",
+      type: "string",
+    },
+    {
+      name: "moimage",
+      title: "More Main image",
+      type: "image",
+    },
 
   ],
   preview: {
