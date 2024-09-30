@@ -48,7 +48,7 @@
         <div class="left-content flex-1 overflow-y-scroll ">
           <div>
         <p
-          class="headingspages pt-[2vw] nodes text-center text-4xl  uppercase "
+          class="headingspagesslug pt-[2vw] nodes text-center text-4xl  uppercase "
         >
           Weddings
         </p>
@@ -156,6 +156,14 @@
               <!-- footer -->
               <div class="nomb pt-[8vh] footout">
                 <div class="footerstuff">
+                  <div
+                class="textnewardesk ttdesk uppercase animate-hover text-[1.2rem] "
+              >
+                <p v-if="project">{{ project.title }}</p>
+                <p class="yeartdesk mb-6 uppercase" v-if="project">
+                  {{ project.year }}
+                </p>
+              </div>
                   <div v-if="project.content" class="pt-3">
                     <Richtext
                       class="contactinner"
@@ -206,6 +214,7 @@
 
               <div class="nodes mbfootout pt-[6vh] footout">
                 <div class="footerstuff">
+            
                   <div v-if="project.content" class="pt-5">
                     <Richtext
                       class="contactinner"
@@ -1112,7 +1121,7 @@ a {
     height: max-content;
     overflow-y: none; 
     flex: none;
-    padding-top: 6vh !important;
+    padding-top: 6vh;
   }
 
 

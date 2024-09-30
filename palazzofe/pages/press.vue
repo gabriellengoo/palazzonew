@@ -131,6 +131,7 @@ export default {
   background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
+
   background-repeat: no-repeat;
   height: 100vh;
   overflow-y: scroll;
@@ -140,12 +141,12 @@ export default {
   background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: center;
-  background-size: initial;
+  background-position: left;
+  /* background-size: initial; */
   background-repeat: no-repeat;
   height: 100vh;
-
-  background-position: unset;
-    background-size: auto auto;
+  /* background-position: unset; */
+    /* background-size: auto auto; */
 }
 
 a {
@@ -177,6 +178,11 @@ a:hover {
     padding-top: 4vh !important;
     padding-top: 6vh !important;
     background-size: auto;
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow-y: scroll;
     background-image: url("./static/background.jpg");
   }
 } 

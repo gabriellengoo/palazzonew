@@ -1,5 +1,6 @@
 <template>
-  <div class="p-[2vw]">
+  <!-- p-[2vw] -->
+  <div class="">
     <PortableText :blocks="blocks" :serializers="serializers" />
   </div>
 </template>
@@ -52,7 +53,7 @@ export default {
 
 
 div p{
-padding-bottom: 2.5vh;
+/* padding-bottom: 2.5vh; */
 /* font-family: 'MinionPro-Regular'; */
 }
 

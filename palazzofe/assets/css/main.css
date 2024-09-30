@@ -30,6 +30,10 @@ html {
   font-family: 'TAN-PEARL-Regular';
 }
 
+.contactinner div p {
+  padding-bottom: 2.5vh !important;
+  font-family: 'MinionPro-Regular';
+}
 
 /* .headingspages{
   font-family: 'RomainHeadlineTrial';
@@ -67,7 +71,7 @@ html {
   font-size: 1vw;
   line-height: normal;
   padding: .2vw;
-  top: .35vh !important;
+  top: .15vh !important;
   position: relative;
 }
 
@@ -78,11 +82,38 @@ html {
   /* font-family: 'GT-SuperBook'; */
   font-size: medium;
   font-size: 1vw;
-  top: .35vh;
+  top: .15vh !important;
   position: relative;
   line-height: normal;
 }
 
+.fontsubpub{
+  font-family: 'NHaas';
+}
+
+.textnewardesk{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.yeartdesk{
+  font-size: 1.485vw;
+  font-size: smaller;
+  font-family: 'RomainHeadlineTrial';
+}
+
+.ttdesk{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      font-family: "GT-Bold";
+      font-size: large;
+      font-size: 2.2vh;
+  }
+
+  
 .headera {
   display: flex;
   align-items: center;
@@ -214,6 +245,7 @@ html {
       flex-direction: column;
       position: relative;
       position: fixed;
+      align-items: flex-start;
       /* position: absolute; */
     }
 
@@ -239,6 +271,28 @@ html {
 
 .headingspages {
     font-size: 3.5vw;
+    top: 1.2vh !important;
+    z-index: 1000;
+    position: absolute;
+    line-height: normal;
+}
+
+.headingspagesslug{
+  font-family: "GT-Bold";
+  font-family: "MinionPro-Regular";
+  font-family: 'RomainHeadlineTrial';
+  /* font-family: 'GT-SuperBook'; */
+  font-size: medium;
+  font-size: 1vw;
+  top: .15vh !important;
+  position: relative;
+  line-height: normal;
+  font-size: 3.5vw;
+  /* top: 1.vh !important; */
+  z-index: 1000;
+  position: absolute;
+  line-height: normal;
+  width: 100%;
 }
 
 .yeart{

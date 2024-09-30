@@ -52,7 +52,7 @@
                     </figure>
                     <figcaption class="textsum block text-center uppercase w-full pt-2">
                       <span class="textsumf">{{ item.title || item.reference.title }}</span>
-                      <span class="pt-[.5vh]">{{ item.year || item.reference.year }}</span>
+                      <span class="pt-[.1vh]">{{ item.year || item.reference.year }}</span>
                     </figcaption>
                   </NuxtLink>
 

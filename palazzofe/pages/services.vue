@@ -18,6 +18,7 @@
       <div
         class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
       >
+      <!-- <button @click="closeSection"> -->
         <div class="nodes">
           <!-- <p>d</p> -->
           <p class="headingspages text-center text-4xl uppercase">Services</p>
@@ -61,6 +62,7 @@
         </div> -->
           </div>
         </transition>
+      <!-- </button> -->
       </div>
 
       <!-- Right Static Content -->
@@ -86,7 +88,7 @@
                 class="servimg pointer-events-none"
               />
             </div>
-            <div class="flex texta pb-[3vh]">
+            <div class="flex texta pl-[5vw] pb-[3vh]">
               <Richtext
                 class="contactinner pr-[1vw] pb-0 w-[50%]"
                 :blocks="services.designContent.dcontent"
@@ -1037,5 +1039,20 @@ a {
     background-size: auto;
     background-image: url("./static/background.jpg");
   }
+
+
+  .link-container a {
+  text-decoration: none;
+  font-size: 9.2vw;
+  font-size: 5vh;
+  font-size: 4.2vh;
+  /* font-size: 4vw; */
+  color: black;
+  font-weight: 100;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  transition-duration: 0.5s;
+}
+
 }
 </style>

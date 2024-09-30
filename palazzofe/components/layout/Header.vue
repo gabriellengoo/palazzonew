@@ -208,6 +208,8 @@ export default {
   /* Adjust based on how large you want the text */
   /* color: black; */
   font-weight: 100;
+  padding-left: 7vw;
+    padding-right: 7vw;
   /* letter-spacing: 2px; */
 }
 
@@ -220,8 +222,8 @@ export default {
   background-color: rgb(255 255 255 / 25%);
   border: 1px solid rgba(0, 0, 0, 0.257);
   border-radius: 150px 150px 2px 2px;
-  width: 90vw;
-  width: 84vw;
+  /* width: 90vw;
+  width: 84vw; */
   margin: auto;
   font-family: 'RomainHeadlineTrial';
 
@@ -229,7 +231,7 @@ export default {
     background-color: rgb(255 255 255 / 25%);
     border: 1px solid rgba(0, 0, 0, 0.257);
     border-radius: 190px 190px 2px 2px;
-    width: 75vw;
+    width: max-content;
     margin: auto;
     font-family: 'RomainHeadlineTrial';
 }

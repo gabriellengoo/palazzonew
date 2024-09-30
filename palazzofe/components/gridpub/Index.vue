@@ -55,8 +55,8 @@
                     </figure>
                     <figcaption class="textsum block text-center uppercase w-full pt-2">
                       <span class="textsumf">{{ item.title || item.reference.title }}</span>
-                      <span class="pt-[.5vh] capitalize">{{ item.month || item.reference.month }}</span>
-                      <span class=" capitalize">{{ item.year || item.reference.year }}</span>
+                      <span class="fontsubpub pt-[.5vh] capitalize">{{ item.month || item.reference.month }}</span>
+                      <span class="fontsubpub capitalize">{{ item.year || item.reference.year }}</span>
                     </figcaption>
                   <!-- </NuxtLink> -->
 

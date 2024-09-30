@@ -4,7 +4,6 @@
     <!-- <HeaderComponent /> -->
     <div class="headera content flex w-full justify-between">
       <h1 class="navmb">
- 
         <HeaderComponent />
       </h1>
       <p class="navmbno yeart text-center text-4xl  uppercase ">
