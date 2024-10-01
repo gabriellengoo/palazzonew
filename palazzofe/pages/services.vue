@@ -16,6 +16,7 @@
     <div class="bgmobile relative min-h-screen flex">
       <!-- Left Scrollable Content -->
       <div
+      @click.stop
         class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
       >
       <!-- <button @click="closeSection"> -->
@@ -30,11 +31,12 @@
             <div class="  ">
               <nav class="link-container uppercase">
                 <ul>
-                  <li class="toplink pointer-events-none">
+                  <!-- <li class="toplink pointer-events-none">
                     <a class="toplink" href="#">space</a>
+                  </li> -->
+                  <li @click="closeSection">
+                    <a class="svgleft pointer-events-none" href="" ><SvgArchstar class="" @click="setActiveSection('')"  /></a>
                   </li>
-                  <!-- <li><a href=""><SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" @click="setActiveSection('')"  /></a> -->
-                  <!-- </li> -->
                   <li>
                     <a @click="setActiveSection('design')" href="#">Design</a>
                   </li>
@@ -69,6 +71,7 @@
       <div
         :class="{ 'slide-in': activeSection, 'slide-out': !activeSection }"
         class="right-content overflow-y-scroll flex-1"
+        @click.stop
       >
         <!-- design -->
         <div class="allrcont" v-if="services && activeSection === 'design'">
@@ -90,11 +93,11 @@
             </div>
             <div class="flex texta pl-[5vw] pb-[3vh]">
               <Richtext
-                class="contactinner pr-[1vw] pb-0 w-[50%]"
+                class="contactinner pr-[4vw] pb-0 w-[50%]"
                 :blocks="services.designContent.dcontent"
               ></Richtext>
               <Richtext
-                class="contactinner pr-[3vw] w-[50%] pb-0"
+                class="contactinner pr-[4vw] w-[50%] pb-0"
                 :blocks="services.designContent.dcontent2"
               ></Richtext>
             </div>
@@ -133,11 +136,11 @@
             </div>
             <div class="flex texta pb-[3vh]">
               <Richtext
-                class="contactinner pr-[1vw] pb-0 w-[50%]"
+                class="contactinner pr-[4vw] pb-0 w-[50%]"
                 :blocks="services.locationContent.lcontent"
               ></Richtext>
               <Richtext
-                class="contactinner pr-[2vw] w-[50%] pb-0"
+                class="contactinner pr-[4vw] w-[50%] pb-0"
                 :blocks="services.locationContent.lcontent2"
               ></Richtext>
             </div>
@@ -178,11 +181,11 @@
             </div>
             <div class="flex texta pb-[3vh]">
               <Richtext
-                class="contactinner pr-[1vw] pb-0 w-[50%]"
+                class="contactinner pr-[4vw] pb-0 w-[50%]"
                 :blocks="services.productionContent.prcontent"
               ></Richtext>
               <Richtext
-                class="contactinner pr-[2vw] w-[50%] pb-0"
+                class="contactinner pr-[4vw] w-[50%] pb-0"
                 :blocks="services.productionContent.prcontent2"
               ></Richtext>
             </div>
@@ -221,11 +224,11 @@
     </div>
     <div class="flex texta pb-[3vh]">
       <Richtext
-        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        class="contactinner pr-[4vw] pb-0 w-[50%]"
         :blocks="services.productsContent.pdcontent"
       ></Richtext>
       <Richtext
-        class="contactinner pr-[2vw] w-[50%] pb-0"
+        class="contactinner pr-[4vw] w-[50%] pb-0"
         :blocks="services.productsContent.pdcontent2"
       ></Richtext>
     </div>
@@ -263,11 +266,11 @@
     </div>
     <div class="flex texta pb-[3vh]">
       <Richtext
-        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        class="contactinner pr-[4vw] pb-0 w-[50%]"
         :blocks="services.moreContent.mocontent"
       ></Richtext>
       <Richtext
-        class="contactinner pr-[2vw] w-[50%] pb-0"
+        class="contactinner pr-[4vw] w-[50%] pb-0"
         :blocks="services.moreContent.mocontent2"
       ></Richtext>
     </div>
@@ -305,11 +308,11 @@
     </div>
     <div class="flex texta pb-[3vh]">
       <Richtext
-        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        class="contactinner pr-[4vw] pb-0 w-[50%]"
         :blocks="services.concirergeContent.ccontent"
       ></Richtext>
       <Richtext
-        class="contactinner pr-[2vw] w-[50%] pb-0"
+        class="contactinner pr-[4vw] w-[50%] pb-0"
         :blocks="services.concirergeContent.ccontent2"
       ></Richtext>
     </div>
@@ -347,11 +350,11 @@
     </div>
     <div class="flex texta pb-[3vh]">
       <Richtext
-        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        class="contactinner pr-[4vw] pb-0 w-[50%]"
         :blocks="services.activityContent.acontent"
       ></Richtext>
       <Richtext
-        class="contactinner pr-[2vw] w-[50%] pb-0"
+        class="contactinner pr-[4vw] w-[50%] pb-0"
         :blocks="services.activityContent.aontent2"
       ></Richtext>
     </div>
@@ -389,11 +392,11 @@
     </div>
     <div class="flex texta pb-[3vh]">
       <Richtext
-        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        class="contactinner pr-[4vw] pb-0 w-[50%]"
         :blocks="services.celebritiesContent.clcontent"
       ></Richtext>
       <Richtext
-        class="contactinner pr-[2vw] w-[50%] pb-0"
+        class="contactinner pr-[4vw] w-[50%] pb-0"
         :blocks="services.celebritiesContent.clcontent2"
       ></Richtext>
     </div>
@@ -431,11 +434,11 @@
     </div>
     <div class="flex texta pb-[3vh]">
       <Richtext
-        class="contactinner pr-[1vw] pb-0 w-[50%]"
+        class="contactinner pr-[4vw] pb-0 w-[50%]"
         :blocks="services.musicContent.mucontent"
       ></Richtext>
       <Richtext
-        class="contactinner pr-[2vw] w-[50%] pb-0"
+        class="contactinner pr-[4vw] w-[50%] pb-0"
         :blocks="services.musicContent.mucontent2"
       ></Richtext>
     </div>
@@ -509,6 +512,15 @@ export default {
   closeSection() {
     this.activeSection = null; // Close the section when the close button is clicked
   },
+
+    
+  handleClick() {
+    if (this.isMobile && this.activeSection) {
+      this.closeSection(); // Close the active section when clicked outside
+    }
+  },
+
+  
 
     toggleActiveSection() {
       // Toggle between open and closed states
@@ -645,8 +657,9 @@ export default {
 }
 
 .texta {
-  /* padding-top: 8vh; */
+  padding-top: 4vh;
   font-size: 1.95vh;
+  padding-left: 3vw;
 }
 
 .loctextlink a {
@@ -696,6 +709,7 @@ export default {
   height: 31.6vh;
   display: flex;
   width: 100%;
+  padding-bottom: 2vw;
   justify-content: center;
 }
 
@@ -740,6 +754,20 @@ export default {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.link-container li:hover{
+  background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: initial;
+  background-repeat: no-repeat;
+  transition-duration: 0.5s;
+}
+
+.svgleft{
+  height: 7vh !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
 .link-container a {
   text-decoration: none;
   font-size: 9.2vw;
@@ -748,13 +776,16 @@ export default {
   color: black;
   font-weight: 100;
   padding-left: 4vw;
+  height: max-content;
+  display: inline-block;
   padding-right: 4vw;
   transition-duration: 0.5s;
 }
 
 .link-container a:hover {
   text-decoration: none;
-  color: #3333333c; /* Optional hover effect */
+  /* color: #3333333c;  */
+  /* Optional hover effect */
   transition-duration: 0.5s;
 }
 
@@ -981,11 +1012,12 @@ a {
 
   .texta {
     padding-bottom: 0vh;
-    padding-top: 0vh;
+    padding-top: 2vh;
   }
 
   .sevimcon {
     height: 14.6vh;
+    padding-bottom: 0vw;
     /* height: 35.6vh; */
     /* position: absolute; */
     /* top: 2vh; */
@@ -993,6 +1025,7 @@ a {
 
   .allrcont{
     height: max-content;
+    height: 52vh;
   }
 
   .contactinner {
