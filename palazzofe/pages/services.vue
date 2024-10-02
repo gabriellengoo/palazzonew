@@ -1473,6 +1473,16 @@ a {
 
   .sevimcon {
     height: 14.6vh;
+    /* height: max-content; */
+    padding-bottom: 0vw;
+    /* height: 35.6vh; */
+    /* position: absolute; */
+    /* top: 2vh; */
+  }
+
+  .allrcontb .sevimcon {
+    height: 14.6vh;
+    height: max-content;
     padding-bottom: 0vw;
     /* height: 35.6vh; */
     /* position: absolute; */
@@ -1505,6 +1515,7 @@ a {
     height: 54.2vh;
     padding: 0.5rem;
     height: max-content;
+    height: 76.2vh;
   }
 
   .contactinner {
