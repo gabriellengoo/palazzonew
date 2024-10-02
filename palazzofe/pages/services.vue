@@ -1405,7 +1405,8 @@ a {
 
     height: max-content;
     /* height: 52.2vh; */
-    background-image: url(/_nuxt/static/LeftBG.png);
+    /* background-image: url(/_nuxt/static/LeftBG.png); */
+    background-image: url("./static/LeftBG.png");
     background-size: cover;
     background-position: center;
     /* background-size: auto auto; */
