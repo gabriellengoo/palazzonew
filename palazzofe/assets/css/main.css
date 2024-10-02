@@ -292,6 +292,7 @@ html {
   /* top: 1.vh !important; */
   z-index: 1000;
   position: absolute;
+  position: fixed;
   line-height: normal;
   width: 100%;
 }

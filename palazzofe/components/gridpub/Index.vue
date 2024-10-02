@@ -330,6 +330,7 @@ font-size: .8vw;
 
   .image-row {
   border-bottom: 0.000vw solid black;
+  border-bottom: 0.07vw solid black;
 }
 
 .image-item{

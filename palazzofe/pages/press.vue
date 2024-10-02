@@ -184,6 +184,7 @@ a:hover {
     height: 100vh;
     overflow-y: scroll;
     background-image: url("./static/background.jpg");
+    background-image: url("./static/PINKBG.png");
   }
 } 
 </style>
