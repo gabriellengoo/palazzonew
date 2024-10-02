@@ -50,7 +50,7 @@
                       >Production</a
                     >
                   </li>
-                  <li><a @click="setActiveSection('concirerge')" href="#concirerge">Concirerge</a></li>
+                  <li><a @click="setActiveSection('concirerge')" href="#Concierge">Concierge</a></li>
                   <li><a @click="setActiveSection('activity')" href="#activity">Activity</a></li>
                   <li><a @click="setActiveSection('celebrities')" href="#celebrities">Celebrities</a></li>
                   <li><a @click="setActiveSection('music')" href="#music">Music</a></li>
@@ -784,7 +784,7 @@ export default {
 
 .link-container a:hover {
   text-decoration: none;
-  /* color: #3333333c;  */
+  color: #3333331f; 
   /* Optional hover effect */
   transition-duration: 0.5s;
 }
@@ -916,6 +916,22 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
+  .link-container li:hover{
+  /* background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: initial;
+  background-repeat: no-repeat;
+  transition-duration: 0.5s; */
+  background-image: none;
+}
+
+  .link-container a:hover {
+  text-decoration: none;
+  color: #333333; 
+  /* Optional hover effect */
+  transition-duration: 0.5s;
+}
+
   .container {
     display: flex;
   }

@@ -73,7 +73,10 @@
       </div>
         <nav class="link-container">
           <ul>
-            <li class="toplink pointer-events-none "><a class="toplink" href="#">space</a></li>
+            <!-- <li class="toplink pointer-events-none "><a class="toplink" href="#">space</a></li> -->
+            <li>
+                    <a class="svgleft pointer-events-none" href="" ><SvgArchstar class=""  /></a>
+                  </li>
             <li><a href="./weddings">WEDDINGS</a></li>
             <li><a href="./events">EVENTS</a></li>
             <li><a href="./services">SERVICES</a></li>
@@ -210,6 +213,8 @@ export default {
   font-weight: 100;
   padding-left: 7vw;
     padding-right: 7vw;
+    padding-left: 13vw;
+    padding-right: 13vw;
   /* letter-spacing: 2px; */
 }
 
@@ -527,5 +532,11 @@ display: unset;
     font-size: 2vh;
     margin-top: 2rem;
   }
+
+  .svgleft {
+    height: 7vh !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
 }
 </style>

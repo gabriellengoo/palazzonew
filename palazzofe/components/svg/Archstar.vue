@@ -47,7 +47,7 @@
 
 @media only screen and (max-width: 768px) {
   .svgsize{
-  width: 8vw;
+  width: 6.9vw;
 }
 
 }

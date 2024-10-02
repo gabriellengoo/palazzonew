@@ -247,12 +247,13 @@ export default {
   }
 
   .navmbbord{
-    width: 90vw;
+    /* width: 90vw;
     width: 100vw;
+    width: 100%;
     border-bottom: .05vw solid #0000004f;
     padding: 2vw;
-    display: flex;
-    justify-content: center;
+    display: flex; */
+    /* justify-content: center; */
   }
 
 
@@ -284,6 +285,7 @@ export default {
 
   .headera {
     align-items: center;
+    align-items: flex-start;
     background-image: url("./static/background.jpg");
     background-position: 0 0;
     background-repeat: no-repeat;
@@ -299,6 +301,27 @@ export default {
         flex-direction: column;
         padding: 2.5vw;
         padding-bottom: 0vw;
+
+
+
+        align-items: center;
+        align-items: flex-start;
+        background-image: url(/_nuxt/static/background.jpg);
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-bottom: .05vw solid #000;
+        display: flex;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        flex-direction: column;
+        padding: 2.5vw;
+        padding-bottom: 0vw;
+        padding-top: 2.5vw;
+        padding-bottom: 2.5vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
   }
 }
 

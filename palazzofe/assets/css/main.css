@@ -101,6 +101,7 @@ html {
   font-size: 1.485vw;
   font-size: smaller;
   font-family: 'RomainHeadlineTrial';
+  font-family: 'GT-SuperBook';
 }
 
 .ttdesk{
@@ -110,7 +111,7 @@ html {
       align-items: center;
       font-family: "GT-Bold";
       font-size: large;
-      font-size: 2.2vh;
+      font-size: 2vh;
   }
 
   
