@@ -68,10 +68,11 @@
       </div>
 
       <!-- Right Static Content -->
+      <transition name="slide" @before-enter="beforeEnter" @enter="enter" @leave="leave">
       <div
         :class="{ 'slide-in': activeSection, 'slide-out': !activeSection }"
         class="right-content overflow-y-scroll flex-1"
-        @click.stop
+        @click="closeSection" v-if="activeSection"
       >
         <!-- design -->
         <div class="allrcont" v-if="services && activeSection === 'design'">
@@ -461,6 +462,7 @@
 
 
       </div>
+    </transition>
     </div>
   </div>
 </template>
@@ -488,6 +490,21 @@ export default {
     };
   },
 
+  directives: {
+    clickOutside: {
+      bind(el, binding, vnode) {
+        el.clickOutsideEvent = function (event) {
+          if (!(el === event.target || el.contains(event.target))) {
+            vnode.context[binding.expression](event);
+          }
+        };
+        document.body.addEventListener('click', el.clickOutsideEvent);
+      },
+      unbind(el) {
+        document.body.removeEventListener('click', el.clickOutsideEvent);
+      },
+    },
+  },
   mounted() {
     this.checkViewport(); // Set the initial value based on viewport
     window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
@@ -942,15 +959,19 @@ a {
     right: 0;
     width: 100%;
     transition: bottom 0.5s ease-in-out;
+    
     /* display: none; */
   }
 
   .right-content {
     background-size: cover;
+    background-image: none;
     overflow-y: scroll;
     height: 65vh;
     height: max-content;
+    height: 100vh;
     z-index: 90;
+    padding: 0;
   }
 
   .bgmobile {
@@ -961,6 +982,7 @@ a {
   .right-content.slide-in {
     bottom: 0; /* Slide into view */
     display: flex;
+    align-items: flex-end;
   }
 
   .slide-in {
@@ -973,7 +995,7 @@ a {
 
   .right-content.slide-out {
     max-height: 0vh; 
-    /* transform: translateY(-100%); */
+    transform: translateY(-100%);
     transition: max-height 0.5s ease-in-out;
   }
 
@@ -987,6 +1009,20 @@ a {
   /* Collapse to zero height */
   /* bottom: -100vh; */
   transition: max-height 0.5s ease-in-out;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.slide-enter, .slide-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.slide-enter-to, .slide-leave {
+  transform: translateY(0);
+  opacity: 1;
 }
 
   .bgmobile {
@@ -1007,7 +1043,8 @@ a {
     height: auto;
   } */
   .right-content {
-    padding: 0.5rem;
+    max-height: 100vh;
+    /* padding: 0.5rem; */
   }
 
   .mobilemenu {
@@ -1017,6 +1054,18 @@ a {
   .allrcont {
     padding: 0rem;
     top: 0vh;
+
+    height: max-content;
+        /* height: 52.2vh; */
+        background-image: url(/_nuxt/static/LeftBG.png);
+        background-size: cover;
+        background-position: center;
+        /* background-size: auto auto; */
+        /* background-size: initial; */
+        background-repeat: no-repeat;
+        /* height: 100vh; */
+        background-position: 0 0;
+        background-position: initial;
   }
 
   .sevcont {
@@ -1040,8 +1089,9 @@ a {
   }
 
   .allrcont{
-    height: max-content;
-    height: 52vh;
+    min-height: max-content;
+    height:54.2vh;
+    padding: 0.5rem;
   }
 
   .contactinner {
@@ -1100,6 +1150,8 @@ a {
   font-weight: 100;
   padding-left: 4vw;
   padding-right: 4vw;
+  padding-left: 7vw;
+        padding-right: 7vw;
   transition-duration: 0.5s;
 }
 
