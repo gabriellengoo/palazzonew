@@ -1442,7 +1442,7 @@ a {
     /* min-height: max-content; */
     height: 54.2vh;
     padding: 0.5rem;
-    min-height: max-content !important;
+    height: max-content;
   }
 
   .contactinner {
