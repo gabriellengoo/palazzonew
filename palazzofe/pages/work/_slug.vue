@@ -432,23 +432,27 @@ export default {
   },
 
   mounted() {
-    const previousScrollPosition = sessionStorage.getItem(
-      "previousScrollPosition"
-    );
-    if (previousScrollPosition && this.$router.isBackNavigation) {
-      window.scrollTo(0, 0);
-    }
+  const previousScrollPosition = sessionStorage.getItem(
+    "previousScrollPosition"
+  );
+  if (previousScrollPosition && this.$router.isBackNavigation) {
+    window.scrollTo(0, 0);
+  }
 
-    this.$nextTick(() => {
-      // Wait for animation to finish
-      setTimeout(() => {
+  this.$nextTick(() => {
+    // Wait for animation to finish
+    setTimeout(() => {
+      // Add a check for screen width
+      if (window.innerWidth > 768) { // Adjust the width threshold as needed
         window.scrollTo({
           top: document.querySelector(".reveal-container").offsetHeight,
           behavior: "smooth",
         });
-      }, 1000); // Adjust timeout to match the duration of your animation
-    });
-  },
+      }
+    }, 1000); // Adjust timeout to match the duration of your animation
+  });
+},
+
   watch: {
     $route() {
       if (this.isBackNavigation) {
