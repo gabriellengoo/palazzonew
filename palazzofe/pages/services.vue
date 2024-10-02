@@ -1439,9 +1439,10 @@ a {
   }
 
   .allrcont {
-    min-height: max-content;
+    /* min-height: max-content; */
     height: 54.2vh;
     padding: 0.5rem;
+    min-height: max-content !important;
   }
 
   .contactinner {
