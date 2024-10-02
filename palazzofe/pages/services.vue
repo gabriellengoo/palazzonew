@@ -107,7 +107,10 @@
           v-if="activeSection"
         >
           <!-- Design -->
-          <div class="allrcont" v-if="services && activeSection === 'design'">
+          <div :class="[
+                  'allrcont',
+                  { allrcontb: !services.moreContent.mocontent },
+                ]"  v-if="services && activeSection === 'design'">
             <div class="sevcont">
               <div class="titcont titmb">
                 <button @click="closeSection">
@@ -188,7 +191,10 @@
           </div>
 
           <!-- Location -->
-          <div class="allrcont" v-if="services && activeSection === 'location'">
+          <div :class="[
+                  'allrcont',
+                  { allrcontb: !services.moreContent.mocontent },
+                ]"  v-if="services && activeSection === 'location'">
             <div class="sevcont">
               <div class="titcont titmb">
                 <button @click="closeSection">
@@ -263,7 +269,10 @@
 
           <!-- Production -->
           <div
-            class="allrcont"
+            :class="[
+                  'allrcont',
+                  { allrcontb: !services.moreContent.mocontent },
+                ]" 
             v-if="services && activeSection === 'production'"
           >
             <div class="sevcont">
@@ -338,7 +347,10 @@
           </div>
 
           <!-- Products -->
-          <div class="allrcont" v-if="services && activeSection === 'products'">
+          <div :class="[
+                  'allrcont',
+                  { allrcontb: !services.moreContent.mocontent },
+                ]"  v-if="services && activeSection === 'products'">
             <div class="sevcont">
               <div class="titcont titmb">
                 <button @click="closeSection">
@@ -413,7 +425,11 @@
           </div>
 
           <!-- More -->
-          <div class="allrcont" v-if="services && activeSection === 'more'">
+          
+          <div :class="[
+                  'allrcont',
+                  { allrcontb: !services.moreContent.mocontent },
+                ]"  v-if="services && activeSection === 'more'">
             <div class="sevcont">
               <div class="titcont titmb">
                 <button @click="closeSection">
@@ -487,7 +503,10 @@
 
           <!-- Concirerge -->
           <div
-            class="allrcont"
+            :class="[
+                  'allrcont',
+                  { allrcontb: !services.moreContent.mocontent },
+                ]" 
             v-if="services && activeSection === 'concirerge'"
           >
             <div class="sevcont">
@@ -562,7 +581,10 @@
           </div>
 
           <!-- Activity -->
-          <div class="allrcont" v-if="services && activeSection === 'activity'">
+          <div :class="[
+                  'allrcont',
+                  { allrcontb: !services.moreContent.mocontent },
+                ]"  v-if="services && activeSection === 'activity'">
             <div class="sevcont">
               <div class="titcont titmb">
                 <button @click="closeSection">
@@ -636,7 +658,10 @@
 
           <!-- Celebrities -->
           <div
-            class="allrcont"
+            :class="[
+                  'allrcont',
+                  { allrcontb: !services.moreContent.mocontent },
+                ]" 
             v-if="services && activeSection === 'celebrities'"
           >
             <div class="sevcont">
@@ -714,7 +739,10 @@
 
           <!-- Music -->
        
-          <div class="allrcont" v-if="services && activeSection === 'music'">
+          <div :class="[
+                  'allrcont',
+                  { allrcontb: !services.moreContent.mocontent },
+                ]"  v-if="services && activeSection === 'music'">
             <div class="sevcont">
               <div class="titcont titmb">
                 <button @click="closeSection">
@@ -1019,6 +1047,19 @@ export default {
 }
 
 .allrcont {
+  display: flex;
+  top: 2vh;
+  top: 7vh;
+  position: relative;
+  width: 100%;
+  /* height: 95%; */
+  justify-content: center;
+  align-items: flex-end;
+  padding: 2rem;
+  overflow-y: hidden;
+}
+
+.allrcontb {
   display: flex;
   top: 2vh;
   top: 7vh;
@@ -1439,6 +1480,27 @@ a {
   }
 
   .allrcont {
+    min-height: max-content;
+    height: 54.2vh;
+    padding: 0.5rem;
+    /* height: max-content; */
+  }
+  .allrcontb {
+    padding: 0rem;
+    top: 0vh;
+
+    height: max-content;
+    /* height: 52.2vh; */
+    /* background-image: url(/_nuxt/static/LeftBG.png); */
+    background-image: url("./static/LeftBG.png");
+    background-size: cover;
+    background-position: center;
+    /* background-size: auto auto; */
+    /* background-size: initial; */
+    background-repeat: no-repeat;
+    /* height: 100vh; */
+    background-position: 0 0;
+    background-position: initial;
     /* min-height: max-content; */
     height: 54.2vh;
     padding: 0.5rem;
