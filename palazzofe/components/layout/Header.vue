@@ -69,10 +69,13 @@
       <!-- h-[90vh] pt-[8.25vh]  pt-[2.25vh] pt-[5.25rem]  -->
       <div class="  ">
         <div class="headerr pt-[2.9vh] flex justify-center">
-        <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[100vw]">PALAZZO EVENTI</h1>
+        <!-- <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[100vw]">PALAZZO EVENTI</h1> -->
+        <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[100vw]"></h1>
+
       </div>
         <nav class="link-container">
           <ul>
+          <!-- <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[100vw]">PALAZZO EVENTI</h1> -->
             <!-- <li class="toplink pointer-events-none "><a class="toplink" href="#">space</a></li> -->
             <li>
                     <a class="svgleft pointer-events-none" href="" ><SvgArchstar class=""  /></a>

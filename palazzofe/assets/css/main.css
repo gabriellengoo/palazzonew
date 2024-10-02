@@ -264,6 +264,7 @@ html {
 
 .nodesnav{
   display: flex !important;
+  /* flex-direction: flex-column !important; */
 }
 
 .nomballbot{

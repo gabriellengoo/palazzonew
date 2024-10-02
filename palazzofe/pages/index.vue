@@ -11,6 +11,9 @@
  
         <HeaderComponent />
       </h1>
+
+      <h1 class="nodesk textmbhead">PALAZZO EVENTI</h1>
+
       <p class="navmbno yeart text-center text-4xl  uppercase ">
         Weddings
       </p>
@@ -239,6 +242,15 @@ export default {
 } */
 
 @media only screen and (max-width: 768px) {
+  .textmbhead{
+    font-size: 4.4vw;
+        top: 1.2vh !important;
+        z-index: 1000;
+        position: absolute;
+        line-height: normal;
+        left: 32.9vw;
+        left: 32.2vw;
+  }
 
   .mbmain{
     overflow: scroll;
