@@ -2,28 +2,20 @@ import React from "react";
 // import Emoji from "a11y-react-emoji";
 // const Project = () => <Emoji style={{ fontSize: "2rem" }} symbol="📽️" />;
 
-
 export default {
   name: "services", 
   title: "Services Page",
   type: "document",
-  // liveEdit: true,
-  // icon: Project,
   fields: [
     {
       name: "title",
       title: "Title",
       type: "string",
     },
-    // {
-    //   name: "slug",
-    //   title: "Slug",
-    //   type: "slug",
-    //   options: { source: "title" },
-    // },
+    // Design Section
     {
       name: "dcontent",
-      title: "Design Left Text Content",
+      title: "Design Left Text Content Layout A",
       type: "blockContent",
     },
     {
@@ -43,13 +35,19 @@ export default {
     },
     {
       name: "dimage",
-      title: "Design Main image",
+      title: "Design Main Image Layout A",
       type: "image",
     },
-// -------
+    {
+      name: "dimageLayoutB",
+      title: "Design Right Main Image Layout B",
+      type: "image",
+    },
+    // -------
+    // Location Section
     {
       name: "lcontent",
-      title: "Location Left Text Content",
+      title: "Location Left Text Content Layout A",
       type: "blockContent",
     },
     {
@@ -69,13 +67,19 @@ export default {
     },
     {
       name: "limage",
-      title: "Location Main image",
+      title: "Location Main Image",
+      type: "image",
+    },
+    {
+      name: "limageLayoutB",
+      title: "Location Right Main Image Layout B",
       type: "image",
     },
     // -------
+    // Production Section
     {
       name: "prcontent",
-      title: "Production Left Text Content",
+      title: "Production Left Text Content Layout A",
       type: "blockContent",
     },
     {
@@ -95,41 +99,51 @@ export default {
     },
     {
       name: "primage",
-      title: "Production Main image",
+      title: "Production Main Image",
       type: "image",
     },
-      
-    
+    {
+      name: "primageLayoutB",
+      title: "Production Right Main Image Layout B",
+      type: "image",
+    },
     // -------
-       {
-        name: "ccontent",
-        title: "Concirerge Left Text Content",
-        type: "blockContent",
-      },
-      {
-        name: "ccontent2",
-        title: "Concirerge Right Text Content",
-        type: "blockContent",
-      },
-      {
-        name: "clocation",
-        title: "Concirerge Location",
-        type: "string",
-      },
-      {
-        name: "clocationlink",
-        title: "Concirerge Location Link",
-        type: "string",
-      },
-      {
-        name: "cimage",
-        title: "Concirerge Main image",
-        type: "image",
-      },
-         // -------
+    // Concierge Section
+    {
+      name: "ccontent",
+      title: "Concierge Left Text Content Layout A",
+      type: "blockContent",
+    },
+    {
+      name: "ccontent2",
+      title: "Concierge Right Text Content",
+      type: "blockContent",
+    },
+    {
+      name: "clocation",
+      title: "Concierge Location",
+      type: "string",
+    },
+    {
+      name: "clocationlink",
+      title: "Concierge Location Link",
+      type: "string",
+    },
+    {
+      name: "cimage",
+      title: "Concierge Main Image",
+      type: "image",
+    },
+    {
+      name: "cimageLayoutB",
+      title: "Concierge Right Main Image Layout B",
+      type: "image",
+    },
+    // -------
+    // Activity Section
     {
       name: "acontent",
-      title: "Activity Left Text Content",
+      title: "Activity Left Text Content Layout A",
       type: "blockContent",
     },
     {
@@ -149,39 +163,51 @@ export default {
     },
     {
       name: "aimage",
-      title: "Activity Main image",
+      title: "Activity Main Image",
       type: "image",
     },
-       // -------
-       {
-        name: "clcontent",
-        title: "Celebrities Left Text Content",
-        type: "blockContent",
-      },
-      {
-        name: "clcontent2",
-        title: "Celebrities Right Text Content",
-        type: "blockContent",
-      },
-      {
-        name: "cllocation",
-        title: "Celebrities Location",
-        type: "string",
-      },
-      {
-        name: "cllocationlink",
-        title: "Celebrities Location Link",
-        type: "string",
-      },
-      {
-        name: "climage",
-        title: "Celebrities Main image",
-        type: "image",
-      },
-         // -------
+    {
+      name: "aimageLayoutB",
+      title: "Activity Right Main Image Layout B",
+      type: "image",
+    },
+    // -------
+    // Celebrities Section
+    {
+      name: "clcontent",
+      title: "Celebrities Left Text Content Layout A",
+      type: "blockContent",
+    },
+    {
+      name: "clcontent2",
+      title: "Celebrities Right Text Content",
+      type: "blockContent",
+    },
+    {
+      name: "cllocation",
+      title: "Celebrities Location",
+      type: "string",
+    },
+    {
+      name: "cllocationlink",
+      title: "Celebrities Location Link",
+      type: "string",
+    },
+    {
+      name: "climage",
+      title: "Celebrities Main Image",
+      type: "image",
+    },
+    {
+      name: "climageLayoutB",
+      title: "Celebrities Right Main Image Layout B",
+      type: "image",
+    },
+    // -------
+    // Music Section
     {
       name: "mucontent",
-      title: "Music Left Text Content",
+      title: "Music Left Text Content Layout A",
       type: "blockContent",
     },
     {
@@ -201,39 +227,51 @@ export default {
     },
     {
       name: "muimage",
-      title: "Music Main image",
+      title: "Music Main Image",
       type: "image",
     },
-       // -------
-       {
-        name: "pdcontent",
-        title: "Products Left Text Content",
-        type: "blockContent",
-      },
-      {
-        name: "pdcontent2",
-        title: "Products Right Text Content",
-        type: "blockContent",
-      },
-      {
-        name: "pdlocation",
-        title: "Products Location",
-        type: "string",
-      },
-      {
-        name: "pdlocationlink",
-        title: "Products Location Link",
-        type: "string",
-      },
-      {
-        name: "pdimage",
-        title: "Products Main image",
-        type: "image",
-      },
-         // -------
+    {
+      name: "muimageLayoutB",
+      title: "Music Right Main Image Layout B",
+      type: "image",
+    },
+    // -------
+    // Products Section
+    {
+      name: "pdcontent",
+      title: "Products Left Text Content Layout A",
+      type: "blockContent",
+    },
+    {
+      name: "pdcontent2",
+      title: "Products Right Text Content",
+      type: "blockContent",
+    },
+    {
+      name: "pdlocation",
+      title: "Products Location",
+      type: "string",
+    },
+    {
+      name: "pdlocationlink",
+      title: "Products Location Link",
+      type: "string",
+    },
+    {
+      name: "pdimage",
+      title: "Products Main Image",
+      type: "image",
+    },
+    {
+      name: "pdimageLayoutB",
+      title: "Products Right Main Image Layout B",
+      type: "image",
+    },
+    // -------
+    // More Section
     {
       name: "mocontent",
-      title: "More Left Text Content",
+      title: "More Left Text Content Layout A",
       type: "blockContent",
     },
     {
@@ -253,10 +291,14 @@ export default {
     },
     {
       name: "moimage",
-      title: "More Main image",
+      title: "More Main Image",
       type: "image",
     },
-
+    {
+      name: "moimageLayoutB",
+      title: "More Right Main Image Layout B",
+      type: "image",
+    },
   ],
   preview: {
     select: {
@@ -280,11 +322,6 @@ export default {
             }}
           />
         );
-        // media = document.createElement("img");
-        // media.src = `https://image.mux.com/${video}/animated.gif`;
-        // media.style.objectFit = "cover";
-        // media.style.height = "100%";
-        // media.style.width = "100%";
       } else if (image) {
         media = image;
       }

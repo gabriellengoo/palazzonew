@@ -16,10 +16,10 @@
     <div class="bgmobile relative min-h-screen flex">
       <!-- Left Scrollable Content -->
       <div
-      @click.stop
+        @click.stop
         class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
       >
-      <!-- <button @click="closeSection"> -->
+        <!-- <button @click="closeSection"> -->
         <div class="nodes">
           <!-- <p>d</p> -->
           <p class="headingspages text-center text-4xl uppercase">Services</p>
@@ -35,7 +35,9 @@
                     <a class="toplink" href="#">space</a>
                   </li> -->
                   <li @click="closeSection">
-                    <a class="svgleft pointer-events-none" href="" ><SvgArchstar class="" @click="setActiveSection('')"  /></a>
+                    <a class="svgleft pointer-events-none" href=""
+                      ><SvgArchstar class="" @click="setActiveSection('')"
+                    /></a>
                   </li>
                   <li>
                     <a @click="setActiveSection('design')" href="#">Design</a>
@@ -50,12 +52,36 @@
                       >Production</a
                     >
                   </li>
-                  <li><a @click="setActiveSection('concirerge')" href="#Concierge">Concierge</a></li>
-                  <li><a @click="setActiveSection('activity')" href="#activity">Activity</a></li>
-                  <li><a @click="setActiveSection('celebrities')" href="#celebrities">Celebrities</a></li>
-                  <li><a @click="setActiveSection('music')" href="#music">Music</a></li>
-                  <li><a @click="setActiveSection('products')" href="#products">Products</a></li>
-                  <li><a @click="setActiveSection('more')" href="#more">More</a></li>
+                  <li>
+                    <a @click="setActiveSection('concirerge')" href="#Concierge"
+                      >Concierge</a
+                    >
+                  </li>
+                  <li>
+                    <a @click="setActiveSection('activity')" href="#activity"
+                      >Activity</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      @click="setActiveSection('celebrities')"
+                      href="#celebrities"
+                      >Celebrities</a
+                    >
+                  </li>
+                  <li>
+                    <a @click="setActiveSection('music')" href="#music"
+                      >Music</a
+                    >
+                  </li>
+                  <li>
+                    <a @click="setActiveSection('products')" href="#products"
+                      >Products</a
+                    >
+                  </li>
+                  <li>
+                    <a @click="setActiveSection('more')" href="#more">More</a>
+                  </li>
                 </ul>
               </nav>
             </div>
@@ -64,405 +90,704 @@
         </div> -->
           </div>
         </transition>
-      <!-- </button> -->
+        <!-- </button> -->
       </div>
 
       <!-- Right Static Content -->
-      <transition name="slide" @before-enter="beforeEnter" @enter="enter" @leave="leave">
-      <div
-        :class="{ 'slide-in': activeSection, 'slide-out': !activeSection }"
-        class="right-content overflow-y-scroll flex-1"
-        @click="closeSection" v-if="activeSection"
+      <transition
+        name="slide"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @leave="leave"
       >
-        <!-- design -->
-        <div class="allrcont" v-if="services && activeSection === 'design'">
-          <div class="sevcont">
-            <div class="titcont titmb">
-              <!-- <a href=""> -->
-              <button @click="closeSection">
-                <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
-              </button>
-              <!-- </a>  -->
-              <h1 class="loctext pt-2">Design</h1>
-            </div>
-            <div class="sevimcon">
-              <img
-                :src="services.designContent.designImageUrl"
-                alt="Design Image"
-                class="servimg pointer-events-none"
-              />
-            </div>
-            <div class="flex texta pl-[5vw] pb-[3vh]">
-              <Richtext
-                class="contactinner pr-[4vw] pb-0 w-[50%]"
-                :blocks="services.designContent.dcontent"
-              ></Richtext>
-              <Richtext
-                class="contactinner pr-[4vw] w-[50%] pb-0"
-                :blocks="services.designContent.dcontent2"
-              ></Richtext>
-            </div>
-
-            <div class="flex justify-end locmb">
-              <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                <p class="text-[#00000000]">space</p>
-              </div>
-              <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-                <h1 class="loctext">Location</h1>
-                <a
-                  class="loctextlink"
-                  :href="services.designContent.dlocationlink"
-                  >{{ services.designContent.dlocation }}</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Location -->
-        <div class="allrcont" v-if="services && activeSection === 'location'">
-          <div class="sevcont">
-            <div class="titcont titmb">
-              <button @click="closeSection">
-                <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
-              </button>
-              <h1 class="loctext pt-2">Location</h1>
-            </div>
-            <div class="sevimcon">
-              <img
-                :src="services.locationContent.locationImageUrl"
-                alt="Design Image"
-                class="servimg pointer-events-none"
-              />
-            </div>
-            <div class="flex texta pb-[3vh]">
-              <Richtext
-                class="contactinner pr-[4vw] pb-0 w-[50%]"
-                :blocks="services.locationContent.lcontent"
-              ></Richtext>
-              <Richtext
-                class="contactinner pr-[4vw] w-[50%] pb-0"
-                :blocks="services.locationContent.lcontent2"
-              ></Richtext>
-            </div>
-
-            <div class="locmb flex justify-end">
-              <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                <p class="text-[#00000000]">space</p>
-              </div>
-              <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-                <h1 class="loctext">Location</h1>
-                <a
-                  class="loctextlink"
-                  :href="services.locationContent.llocationlink"
-                  >{{ services.designContent.dlocation }}</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Production -->
-        <div class="allrcont" v-if="services && activeSection === 'production'">
-          <div class="sevcont">
-            <div class="titcont titmb">
-              <!-- <a href=""> -->
+        <div
+          :class="{ 'slide-in': activeSection, 'slide-out': !activeSection }"
+          class="right-content overflow-y-scroll flex-1"
+          @click="closeSection"
+          v-if="activeSection"
+        >
+          <!-- Design -->
+          <div class="allrcont" v-if="services && activeSection === 'design'">
+            <div class="sevcont">
+              <div class="titcont titmb">
                 <button @click="closeSection">
-                <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
-              </button>
-              <!-- </a>               -->
-              <h1 class="loctext pt-2">Production</h1>
-            </div>
-            <div class="sevimcon">
-              <img
-                :src="services.productionContent.productionImageUrl"
-                alt="Design Image"
-                class="servimg pointer-events-none"
-              />
-            </div>
-            <div class="flex texta pb-[3vh]">
-              <Richtext
-                class="contactinner pr-[4vw] pb-0 w-[50%]"
-                :blocks="services.productionContent.prcontent"
-              ></Richtext>
-              <Richtext
-                class="contactinner pr-[4vw] w-[50%] pb-0"
-                :blocks="services.productionContent.prcontent2"
-              ></Richtext>
-            </div>
-
-            <div class="flex justify-end locmb">
-              <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                <p class="text-[#00000000]">space</p>
+                  <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+                </button>
+                <h1 class="loctext pt-2">Design</h1>
               </div>
-              <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-                <h1 class="loctext">Location</h1>
-                <a
-                  class="loctextlink"
-                  :href="services.productionContent.prlocationlink"
-                  >{{ services.productionContent.prlocation }}</a
+
+              <!-- Add class like production here -->
+              <div
+                :class="[
+                  'sevimcon',
+                  { laybimsize: !services.designContent.dcontent },
+                ]"
+              >
+                <!-- Add v-if for design image like in production -->
+                <img
+                  v-if="services.designContent.designImageUrl"
+                  :src="services.designContent.designImageUrl"
+                  alt="Design Image"
+                  :class="[
+                    'servimg',
+                    'pointer-events-none',
+                    { laybimsizein: !services.designContent.dcontent },
+                  ]"
+                />
+              </div>
+              <div class="flex texta pl-[5vw] pb-[3vh]">
+                <!-- Add div and img and v-if statement like production here -->
+            
+                  <Richtext
+                    v-if="services.designContent.dcontent"
+                    class="contactinner pr-[4vw] pb-0 w-[50%]"
+                    :blocks="services.designContent.dcontent"
+                  ></Richtext>
+
+                  <!-- If no dcontent, show alternative image like production -->
+                  <img
+                    v-else
+                    :src="services.designContent.designImageLayoutBUrl"
+                    alt="Design Image Layout B"
+                    class="laybimg pointer-events-none"
+                  />
+               
+
+                <!-- Add class like production here -->
+                <Richtext
+                  class="contactinner pr-[4vw] w-[50%] pb-0"
+                  :class="[
+                    'contactinner',
+                    { 'pt-[7vh]': !services.designContent.dcontent },
+                  ]"
+                  :blocks="services.designContent.dcontent2"
+                ></Richtext>
+              </div>
+
+              <div class="flex justify-end locmb">
+                <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                  <p class="text-[#00000000]">space</p>
+                </div>
+                <!-- Add class like production here -->
+                <div
+                  :class="[
+                    'locationtext',
+                    { locationtextb: !services.designContent.dcontent },
+                  ]"
+                  class=" w-[50vw] p-[2vw] pr-[3vw] pt-0"
                 >
+                  <h1 class="loctext">Location</h1>
+                  <a
+                    class="loctextlink"
+                    :href="services.designContent.dlocationlink"
+                    >{{ services.designContent.dlocation }}</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="allrcont" v-if="services && activeSection === 'location'">
+            <div class="sevcont">
+              <div class="titcont titmb">
+                <button @click="closeSection">
+                  <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+                </button>
+                <h1 class="loctext pt-2">Location</h1>
+              </div>
+              <div
+                :class="[
+                  'sevimcon',
+                  { laybimsize: !services.locationContent.lcontent },
+                ]"
+              >
+                <img
+                  v-if="services.locationContent.locationImageUrl"
+                  :src="services.locationContent.locationImageUrl"
+                  alt="Location Image"
+                  :class="[
+                    'servimg',
+                    'pointer-events-none',
+                    { laybimsizein: !services.locationContent.lcontent },
+                  ]"
+                />
+              </div>
+              <div class="flex texta pb-[3vh]">
+                
+                  <Richtext
+                    v-if="services.locationContent.lcontent"
+                    class="contactinner pr-[4vw] pb-0 w-[50%]"
+                    :blocks="services.locationContent.lcontent"
+                  ></Richtext>
+
+                  <!-- If no lcontent, show alternative image like production -->
+                  <img
+                    v-else
+                    :src="services.locationContent.locationImageLayoutBUrl"
+                    alt="Location Image Layout B"
+                    class="laybimg pointer-events-none"
+                  />
+             
+                <Richtext
+                  class="contactinner pr-[4vw] w-[50%] pb-0"
+                  :class="[
+                    'contactinner',
+                    { 'pt-[7vh]': !services.locationContent.lcontent },
+                  ]"
+                  :blocks="services.locationContent.lcontent2"
+                ></Richtext>
+              </div>
+
+              <div class="locmb flex justify-end">
+                <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                  <p class="text-[#00000000]">space</p>
+                </div>
+                <div
+                  :class="[
+                    'locationtext',
+                    { locationtextb: !services.locationContent.lcontent },
+                  ]"
+                  class=" w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                >
+                  <h1 class="loctext">Location</h1>
+                  <a
+                    class="loctextlink"
+                    :href="services.locationContent.llocationlink"
+                    >{{ services.locationContent.llocation }}</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Production -->
+          <div
+            class="allrcont"
+            v-if="services && activeSection === 'production'"
+          >
+            <div class="sevcont">
+              <div class="titcont titmb">
+                <!-- <a href=""> -->
+                <button @click="closeSection">
+                  <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+                </button>
+                <!-- </a>               -->
+                <h1 class="loctext pt-2">Production</h1>
+              </div>
+              <div
+                :class="[
+                  'sevimcon',
+                  { laybimsize: !services.productionContent.prcontent },
+                ]"
+              >
+                <img
+                  :src="services.productionContent.productionImageUrl"
+                  alt="Design Image"
+                  :class="[
+                    'servimg',
+                    'pointer-events-none',
+                    { laybimsizein: !services.productionContent.prcontent },
+                  ]"
+                />
+              </div>
+              <div class="flex texta pb-[3vh]">
+               
+                  <Richtext
+                    v-if="services.productionContent.prcontent"
+                    :blocks="services.productionContent.prcontent"
+                    class="contactinner pr-[4vw] pb-0 w-[50%]"
+                  ></Richtext>
+                  <img
+                    v-else
+                    :src="services.productionContent.productionImageLayoutBUrl"
+                    alt="Production Image Layout B"
+                    class="laybimg pointer-events-none"
+                  />
+               
+                <Richtext
+                  class="contactinner pr-[4vw] w-[50%] pb-0"
+                  :class="[
+                    'contactinner',
+                    { 'pt-[7vh]': !services.productionContent.prcontent },
+                  ]"
+                  :blocks="services.productionContent.prcontent2"
+                ></Richtext>
+              </div>
+
+              <div class="flex justify-end locmb">
+                <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                  <p class="text-[#00000000]">space</p>
+                </div>
+                <div
+                  :class="[
+                    'locationtext',
+                    { locationtextb: !services.productionContent.prcontent },
+                  ]"
+                  class=" w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                >
+                  <h1 class="loctext">Location</h1>
+                  <a
+                    class="loctextlink"
+                    :href="services.productionContent.prlocationlink"
+                    >{{ services.productionContent.prlocation }}</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products -->
+          <div class="allrcont" v-if="services && activeSection === 'products'">
+            <div class="sevcont">
+              <div class="titcont titmb">
+                <button @click="closeSection">
+                  <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+                </button>
+                <h1 class="loctext pt-2">Products</h1>
+              </div>
+              <div
+                :class="[
+                  'sevimcon',
+                  { laybimsize: !services.productsContent.pdcontent },
+                ]"
+              >
+                <img
+                  v-if="services.productsContent.productsImageUrl"
+                  :src="services.productsContent.productsImageUrl"
+                  alt="Products Image"
+                  :class="[
+                    'servimg',
+                    'pointer-events-none',
+                    { laybimsizein: !services.productsContent.pdcontent },
+                  ]"
+                />
+              </div>
+              <div class="flex texta pb-[3vh]">
+            
+                  <Richtext
+                    v-if="services.productsContent.pdcontent"
+                    class="contactinner pr-[4vw] pb-0 w-[50%]"
+                    :blocks="services.productsContent.pdcontent"
+                  ></Richtext>
+
+                  <!-- If no pdcontent, show alternative image -->
+                  <img
+                    v-else
+                    :src="services.productsContent.productsImageLayoutBUrl"
+                    alt="Products Image Layout B"
+                    class="laybimg pointer-events-none"
+                  />
+              
+                <Richtext
+                  class="contactinner pr-[4vw] w-[50%] pb-0"
+                  :class="[
+                    'contactinner',
+                    { 'pt-[7vh]': !services.productsContent.pdcontent },
+                  ]"
+                  :blocks="services.productsContent.pdcontent2"
+                ></Richtext>
+              </div>
+              <div class="flex justify-end locmb">
+                <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                  <p class="text-[#00000000]">space</p>
+                </div>
+                
+
+                <div
+                  :class="[
+                    'locationtext',
+                    { locationtextb: !services.productsContent.pdcontent },
+                  ]"
+                  class=" w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                >
+                  <h1 class="loctext">Location</h1>
+                  <a
+                    class="loctextlink"
+                    :href="services.productsContent.pdlocationlink"
+                    >{{ services.productsContent.pdlocation }}</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- More -->
+          <div class="allrcont" v-if="services && activeSection === 'more'">
+            <div class="sevcont">
+              <div class="titcont titmb">
+                <button @click="closeSection">
+                  <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+                </button>
+                <h1 class="loctext pt-2">More</h1>
+              </div>
+              <div
+                :class="[
+                  'sevimcon',
+                  { laybimsize: !services.moreContent.mocontent },
+                ]"
+              >
+                <img
+                  v-if="services.moreContent.moreImageUrl"
+                  :src="services.moreContent.moreImageUrl"
+                  alt="More Image"
+                  :class="[
+                    'servimg',
+                    'pointer-events-none',
+                    { laybimsizein: !services.moreContent.mocontent },
+                  ]"
+                />
+              </div>
+              <div class="flex texta pb-[3vh]">
+                
+                  <Richtext
+                    v-if="services.moreContent.mocontent"
+                    class="contactinner pr-[4vw] pb-0 w-[50%]"
+                    :blocks="services.moreContent.mocontent"
+                  ></Richtext>
+
+                  <!-- If no mocontent, show alternative image -->
+                  <img
+                    v-else
+                    :src="services.moreContent.moreImageLayoutBUrl"
+                    alt="More Image Layout B"
+                    class="laybimg pointer-events-none"
+                  />
+                
+                <Richtext
+                  class="contactinner pr-[4vw] w-[50%] pb-0"
+                  :class="[
+                    'contactinner',
+                    { 'pt-[7vh]': !services.moreContent.mocontent },
+                  ]"
+                  :blocks="services.moreContent.mocontent2"
+                ></Richtext>
+              </div>
+              <div class="flex justify-end locmb">
+                <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                  <p class="text-[#00000000]">space</p>
+                </div>
+                <div
+                  :class="[
+                    'locationtext',
+                    { locationtextb: !services.moreContent.mocontent },
+                  ]"
+                  class=" w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                >
+                  <h1 class="loctext">Location</h1>
+                  <a
+                    class="loctextlink"
+                    :href="services.moreContent.molocationlink"
+                    >{{ services.moreContent.molocation }}</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concirerge -->
+          <div
+            class="allrcont"
+            v-if="services && activeSection === 'concirerge'"
+          >
+            <div class="sevcont">
+              <div class="titcont titmb">
+                <button @click="closeSection">
+                  <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+                </button>
+                <h1 class="loctext pt-2">Concirerge</h1>
+              </div>
+              <div
+                :class="[
+                  'sevimcon',
+                  { laybimsize: !services.conciergeContent.ccontent },
+                ]"
+              >
+                <img
+                  v-if="services.conciergeContent.conciergeImageUrl"
+                  :src="services.conciergeContent.conciergeImageUrl"
+                  alt="Concirerge Image"
+                  :class="[
+                    'servimg',
+                    'pointer-events-none',
+                    { laybimsizein: !services.conciergeContent.ccontent },
+                  ]"
+                />
+              </div>
+              <div class="flex texta pb-[3vh]">
+                
+                  <Richtext
+                    v-if="services.conciergeContent.ccontent"
+                    class="contactinner pr-[4vw] pb-0 w-[50%]"
+                    :blocks="services.conciergeContent.ccontent"
+                  ></Richtext>
+
+                  <!-- If no ccontent, show alternative image -->
+                  <img
+                    v-else
+                    :src="services.conciergeContent.concirergeImageLayoutBUrl"
+                    alt="Concirerge Image Layout B"
+                    class="laybimg pointer-events-none"
+                  />
+                
+                <Richtext
+                  class="contactinner pr-[4vw] w-[50%] pb-0"
+                  :class="[
+                    'contactinner',
+                    { 'pt-[7vh]': !services.conciergeContent.ccontent },
+                  ]"
+                  :blocks="services.conciergeContent.ccontent2"
+                ></Richtext>
+              </div>
+              <div class="flex justify-end locmb">
+                <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                  <p class="text-[#00000000]">space</p>
+                </div>
+                <div
+                  :class="[
+                    'locationtext',
+                    { locationtextb: !services.conciergeContent.ccontent },
+                  ]"
+                  class=" w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                >
+                  <h1 class="loctext">Location</h1>
+                  <a
+                    class="loctextlink"
+                    :href="services.conciergeContent.clocationlink"
+                    >{{ services.conciergeContent.clocation }}</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity -->
+          <div class="allrcont" v-if="services && activeSection === 'activity'">
+            <div class="sevcont">
+              <div class="titcont titmb">
+                <button @click="closeSection">
+                  <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+                </button>
+                <h1 class="loctext pt-2">Activity</h1>
+              </div>
+              <div
+                :class="[
+                  'sevimcon',
+                  { laybimsize: !services.activityContent.acontent },
+                ]"
+              >
+                <img
+                  v-if="services.activityContent.activityImageUrl"
+                  :src="services.activityContent.activityImageUrl"
+                  alt="Activity Image"
+                  :class="[
+                    'servimg',
+                    'pointer-events-none',
+                    { laybimsizein: !services.activityContent.acontent },
+                  ]"
+                />
+              </div>
+              <div class="flex texta pb-[3vh]">
+                
+                  <Richtext
+                    v-if="services.activityContent.acontent"
+                    class="contactinner pr-[4vw] pb-0 w-[50%]"
+                    :blocks="services.activityContent.acontent"
+                  ></Richtext>
+
+                  <!-- If no acontent, show alternative image -->
+                  <img
+                    v-else
+                    :src="services.activityContent.activityImageLayoutBUrl"
+                    alt="Activity Image Layout B"
+                    class="laybimg pointer-events-none"
+                  />
+                
+                <Richtext
+                  class="contactinner pr-[4vw] w-[50%] pb-0"
+                  :class="[
+                    'contactinner',
+                    { 'pt-[7vh]': !services.activityContent.acontent },
+                  ]"
+                  :blocks="services.activityContent.acontent2"
+                ></Richtext>
+              </div>
+              <div class="flex justify-end locmb">
+                <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                  <p class="text-[#00000000]">space</p>
+                </div>
+                <div
+                  :class="[
+                    'locationtext',
+                    { locationtextb: !services.activityContent.acontent },
+                  ]"
+                  class=" w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                >
+                  <h1 class="loctext">Location</h1>
+                  <a
+                    class="loctextlink"
+                    :href="services.activityContent.alocationlink"
+                    >{{ services.activityContent.alocation }}</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Celebrities -->
+          <div
+            class="allrcont"
+            v-if="services && activeSection === 'celebrities'"
+          >
+            <div class="sevcont">
+              <div class="titcont titmb">
+                <button @click="closeSection">
+                  <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+                </button>
+                <h1 class="loctext pt-2">Celebrities</h1>
+              </div>
+              <div
+                :class="[
+                  'sevimcon',
+                  { laybimsize: !services.celebritiesContent.clcontent },
+                ]"
+              >
+                <img
+                  v-if="services.celebritiesContent.celebritiesImageUrl"
+                  :src="services.celebritiesContent.celebritiesImageUrl"
+                  alt="Celebrities Image"
+                  :class="[
+                    'servimg',
+                    'pointer-events-none',
+                    { laybimsizein: !services.celebritiesContent.clcontent },
+                  ]"
+                />
+              </div>
+              <div class="flex texta pb-[3vh]">
+                
+                  <Richtext
+                    v-if="services.celebritiesContent.clcontent"
+                    class="contactinner pr-[4vw] pb-0 w-[50%]"
+                    :blocks="services.celebritiesContent.clcontent"
+                  ></Richtext>
+
+                  <!-- If no cecontent, show alternative image -->
+                  <img
+                    v-else
+                    :src="
+                      services.celebritiesContent.celebritiesImageLayoutBUrl
+                    "
+                    alt="Celebrities Image Layout B"
+                    class="laybimg pointer-events-none"
+                  />
+                
+                <Richtext
+                  class="contactinner pr-[4vw] w-[50%] pb-0"
+                  :class="[
+                    'contactinner',
+                    { 'pt-[7vh]': !services.celebritiesContent.clcontent },
+                  ]"
+                  :blocks="services.celebritiesContent.clcontent2"
+                ></Richtext>
+              </div>
+              <div class="flex justify-end locmb">
+                <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                  <p class="text-[#00000000]">space</p>
+                </div>
+                <div
+                  :class="[
+                    'locationtext',
+                    { locationtextb: !services.celebritiesContent.clcontent },
+                  ]"
+                  class=" w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                >
+                  <h1 class="loctext">Location</h1>
+                  <a
+                    class="loctextlink"
+                    :href="services.celebritiesContent.clocationlink"
+                    >{{ services.celebritiesContent.cllocation }}</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Music -->
+       
+          <div class="allrcont" v-if="services && activeSection === 'music'">
+            <div class="sevcont">
+              <div class="titcont titmb">
+                <button @click="closeSection">
+                  <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
+                </button>
+                <h1 class="loctext pt-2">Music</h1>
+              </div>
+              <div
+                :class="[
+                  'sevimcon',
+                  { laybimsize: !services.musicContent.mucontent },
+                ]"
+              >
+                <img
+                  v-if="services.musicContent.musicImageUrl"
+                  :src="services.musicContent.musicImageUrl"
+                  alt="Music Image"
+                  :class="[
+                    'servimg',
+                    'pointer-events-none',
+                    { laybimsizein: !services.musicContent.mucontent },
+                  ]"
+                />
+              </div>
+              <div class="flex texta pb-[3vh]">
+              
+                  <Richtext
+                    v-if="services.musicContent.mucontent"
+                    class="contactinner pr-[4vw] pb-0 w-[50%]"
+                    :blocks="services.musicContent.mucontent"
+                  ></Richtext>
+
+                  <!-- If no mcontent, show alternative image -->
+                  <img
+                    v-else
+                    :src="services.musicContent.musicImageLayoutBUrl"
+                    alt="Music Image Layout B"
+                    class="laybimg pointer-events-none"
+                  />
+             
+                <Richtext
+                  class="contactinner pr-[4vw] w-[50%] pb-0"
+                  :class="[
+                    'contactinner',
+                    { 'pt-[7vh]': !services.musicContent.mucontent },
+                  ]"
+                  :blocks="services.musicContent.mucontent2"
+                ></Richtext>
+              </div>
+              <div class="flex justify-end locmb">
+                <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                  <p class="text-[#00000000]">space</p>
+                </div>
+                <div
+                  c
+                  :class="[
+                    'locationtext',
+                    { locationtextb: !services.musicContent.mucontent },
+                  ]"
+                  class=" w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                >
+                  <h1 class="loctext">Location</h1>
+                  <a
+                    class="loctextlink"
+                    :href="services.musicContent.mulocationlink"
+                    >{{ services.musicContent.mulocation }}</a
+                  >
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-<!-- Products -->
-<div class="allrcont" v-if="services && activeSection === 'products'">
-  <div class="sevcont">
-    <div class="titcont titmb">
-      <button @click="closeSection">
-        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
-      </button>
-      <h1 class="loctext pt-2">Products</h1>
-    </div>
-    <div class="sevimcon">
-      <img
-        :src="services.productsContent.productsImageUrl"
-        alt="Products Image"
-        class="servimg pointer-events-none"
-      />
-    </div>
-    <div class="flex texta pb-[3vh]">
-      <Richtext
-        class="contactinner pr-[4vw] pb-0 w-[50%]"
-        :blocks="services.productsContent.pdcontent"
-      ></Richtext>
-      <Richtext
-        class="contactinner pr-[4vw] w-[50%] pb-0"
-        :blocks="services.productsContent.pdcontent2"
-      ></Richtext>
-    </div>
-    <div class="flex justify-end locmb">
-      <div class="mbspace w-[50vw] p-[2vw] pt-0">
-        <p class="text-[#00000000]">space</p>
-      </div>
-      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-        <h1 class="loctext">Location</h1>
-        <a
-          class="loctextlink"
-          :href="services.concirergeContent.pdlocationlink"
-          >{{ services.concirergeContent.pdlocation }}</a
-        >
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- More -->
-<div class="allrcont" v-if="services && activeSection === 'more'">
-  <div class="sevcont">
-    <div class="titcont titmb">
-      <button @click="closeSection">
-        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
-      </button>
-      <h1 class="loctext pt-2">More</h1>
-    </div>
-    <div class="sevimcon">
-      <img
-        :src="services.moreContent.moreImageUrl"
-        alt="More Image"
-        class="servimg pointer-events-none"
-      />
-    </div>
-    <div class="flex texta pb-[3vh]">
-      <Richtext
-        class="contactinner pr-[4vw] pb-0 w-[50%]"
-        :blocks="services.moreContent.mocontent"
-      ></Richtext>
-      <Richtext
-        class="contactinner pr-[4vw] w-[50%] pb-0"
-        :blocks="services.moreContent.mocontent2"
-      ></Richtext>
-    </div>
-    <div class="flex justify-end locmb">
-      <div class="mbspace w-[50vw] p-[2vw] pt-0">
-        <p class="text-[#00000000]">space</p>
-      </div>
-      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-        <h1 class="loctext">Location</h1>
-        <a
-          class="loctextlink"
-          :href="services.concirergeContent.molocationlink"
-          >{{ services.concirergeContent.molocation }}</a
-        >
-      </div>
-    </div>
-  </div>
-</div>
-      
-  <!-- Concirerge -->
-<div class="allrcont" v-if="services && activeSection === 'concirerge'">
-  <div class="sevcont">
-    <div class="titcont titmb">
-      <button @click="closeSection">
-        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
-      </button>
-      <h1 class="loctext pt-2">Concirerge</h1>
-    </div>
-    <div class="sevimcon">
-      <img
-        :src="services.concirergeContent.concirergeImageUrl"
-        alt="Concirerge Image"
-        class="servimg pointer-events-none"
-      />
-    </div>
-    <div class="flex texta pb-[3vh]">
-      <Richtext
-        class="contactinner pr-[4vw] pb-0 w-[50%]"
-        :blocks="services.concirergeContent.ccontent"
-      ></Richtext>
-      <Richtext
-        class="contactinner pr-[4vw] w-[50%] pb-0"
-        :blocks="services.concirergeContent.ccontent2"
-      ></Richtext>
-    </div>
-    <div class="flex justify-end locmb">
-      <div class="mbspace w-[50vw] p-[2vw] pt-0">
-        <p class="text-[#00000000]">space</p>
-      </div>
-      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-        <h1 class="loctext">Location</h1>
-        <a
-          class="loctextlink"
-          :href="services.concirergeContent.clocationlink"
-          >{{ services.concirergeContent.clocation }}</a
-        >
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Activity -->
-<div class="allrcont" v-if="services && activeSection === 'activity'">
-  <div class="sevcont">
-    <div class="titcont titmb">
-      <button @click="closeSection">
-        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
-      </button>
-      <h1 class="loctext pt-2">Activity</h1>
-    </div>
-    <div class="sevimcon">
-      <img
-        :src="services.activityContent.activityImageUrl"
-        alt="Activity Image"
-        class="servimg pointer-events-none"
-      />
-    </div>
-    <div class="flex texta pb-[3vh]">
-      <Richtext
-        class="contactinner pr-[4vw] pb-0 w-[50%]"
-        :blocks="services.activityContent.acontent"
-      ></Richtext>
-      <Richtext
-        class="contactinner pr-[4vw] w-[50%] pb-0"
-        :blocks="services.activityContent.aontent2"
-      ></Richtext>
-    </div>
-    <div class="flex justify-end locmb">
-      <div class="mbspace w-[50vw] p-[2vw] pt-0">
-        <p class="text-[#00000000]">space</p>
-      </div>
-      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-        <h1 class="loctext">Location</h1>
-        <a
-          class="loctextlink"
-          :href="services.activityContent.alocationlink"
-          >{{ services.activityContent.alocation }}</a
-        >
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Celebrities -->
-<div class="allrcont" v-if="services && activeSection === 'celebrities'">
-  <div class="sevcont">
-    <div class="titcont titmb">
-      <button @click="closeSection">
-        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
-      </button>
-      <h1 class="loctext pt-2">Celebrities</h1>
-    </div>
-    <div class="sevimcon">
-      <img
-        :src="services.celebritiesContent.celebritiesImageUrl"
-        alt="Celebrities Image"
-        class="servimg pointer-events-none"
-      />
-    </div>
-    <div class="flex texta pb-[3vh]">
-      <Richtext
-        class="contactinner pr-[4vw] pb-0 w-[50%]"
-        :blocks="services.celebritiesContent.clcontent"
-      ></Richtext>
-      <Richtext
-        class="contactinner pr-[4vw] w-[50%] pb-0"
-        :blocks="services.celebritiesContent.clcontent2"
-      ></Richtext>
-    </div>
-    <div class="flex justify-end locmb">
-      <div class="mbspace w-[50vw] p-[2vw] pt-0">
-        <p class="text-[#00000000]">space</p>
-      </div>
-      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-        <h1 class="loctext">Location</h1>
-        <a
-          class="loctextlink"
-          :href="services.celebritiesContent.cllocationlink"
-          >{{ services.celebritiesContent.cllocation }}</a
-        >
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Music -->
-<div class="allrcont" v-if="services && activeSection === 'music'">
-  <div class="sevcont">
-    <div class="titcont titmb">
-      <button @click="closeSection">
-        <SvgClose class="headbar w-[1.4vw] hover:cursor-pointer" />
-      </button>
-      <h1 class="loctext pt-2">Music</h1>
-    </div>
-    <div class="sevimcon">
-      <img
-        :src="services.musicContent.musicImageUrl"
-        alt="Music Image"
-        class="servimg pointer-events-none"
-      />
-    </div>
-    <div class="flex texta pb-[3vh]">
-      <Richtext
-        class="contactinner pr-[4vw] pb-0 w-[50%]"
-        :blocks="services.musicContent.mucontent"
-      ></Richtext>
-      <Richtext
-        class="contactinner pr-[4vw] w-[50%] pb-0"
-        :blocks="services.musicContent.mucontent2"
-      ></Richtext>
-    </div>
-    <div class="flex justify-end locmb">
-      <div class="mbspace w-[50vw] p-[2vw] pt-0">
-        <p class="text-[#00000000]">space</p>
-      </div>
-      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
-        <h1 class="loctext">Location</h1>
-        <a
-          class="loctextlink"
-          :href="services.musicContent.mulocationlink"
-          >{{ services.musicContent.mulocation }}</a
-        >
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-      </div>
-    </transition>
+      </transition>
     </div>
   </div>
 </template>
@@ -498,10 +823,10 @@ export default {
             vnode.context[binding.expression](event);
           }
         };
-        document.body.addEventListener('click', el.clickOutsideEvent);
+        document.body.addEventListener("click", el.clickOutsideEvent);
       },
       unbind(el) {
-        document.body.removeEventListener('click', el.clickOutsideEvent);
+        document.body.removeEventListener("click", el.clickOutsideEvent);
       },
     },
   },
@@ -520,24 +845,21 @@ export default {
       this.activeSection = this.isMobile ? false : "design"; // Set activeSection based on isMobile
     },
     setActiveSection(section) {
-    if (this.activeSection === section) {
-      this.activeSection = null; // Close the section if clicked again
-    } else {
-      this.activeSection = section; // Open the new section
-    }
-  },
-  closeSection() {
-    this.activeSection = null; // Close the section when the close button is clicked
-  },
+      if (this.activeSection === section) {
+        this.activeSection = null; // Close the section if clicked again
+      } else {
+        this.activeSection = section; // Open the new section
+      }
+    },
+    closeSection() {
+      this.activeSection = null; // Close the section when the close button is clicked
+    },
 
-    
-  handleClick() {
-    if (this.isMobile && this.activeSection) {
-      this.closeSection(); // Close the active section when clicked outside
-    }
-  },
-
-  
+    handleClick() {
+      if (this.isMobile && this.activeSection) {
+        this.closeSection(); // Close the active section when clicked outside
+      }
+    },
 
     toggleActiveSection() {
       // Toggle between open and closed states
@@ -547,89 +869,80 @@ export default {
 
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "services"]{
-  title,
-  "designContent": {
-    dcontent,
-    dcontent2,
-    dlocation,
-    dlocationlink,
-    "designImageUrl": dimage.asset->url
-  },
-  "locationContent": {
-    lcontent,
-    lcontent2,
-    llocation,
-    llocationlink,
-    "locationImageUrl": limage.asset->url
-  },
-  "productionContent": {
-    prcontent,
-    prcontent2,
-    prlocation,
-    prlocationlink,
-    "productionImageUrl": primage.asset->url
-  },
-
-    "concirergeContent": {
-    ccontent,
-    ccontent2,
-    clocation,
-    clocationlink,
-    "concirergeImageUrl": cimage.asset->url
-  },
-
-
+    title,
+    "designContent": {
+      dcontent,
+      dcontent2,
+      dlocation,
+      dlocationlink,
+      "designImageUrl": dimage.asset->url,
+      "designImageLayoutBUrl": dimageLayoutB.asset->url
+    },
+    "locationContent": {
+      lcontent,
+      lcontent2,
+      llocation,
+      llocationlink,
+      "locationImageUrl": limage.asset->url,
+      "locationImageLayoutBUrl": limageLayoutB.asset->url
+    },
+    "productionContent": {
+      prcontent,
+      prcontent2,
+      prlocation,
+      prlocationlink,
+      "productionImageUrl": primage.asset->url,
+      "productionImageLayoutBUrl": primageLayoutB.asset->url
+    },
+    "conciergeContent": {
+      ccontent,
+      ccontent2,
+      clocation,
+      clocationlink,
+      "conciergeImageUrl": cimage.asset->url,
+      "conciergeImageLayoutBUrl": cimageLayoutB.asset->url
+    },
     "activityContent": {
-    acontent,
-    acontent2,
-    alocation,
-    alocationlink,
-    "activityImageUrl": aimage.asset->url
-  },
-  
-
-  
+      acontent,
+      acontent2,
+      alocation,
+      alocationlink,
+      "activityImageUrl": aimage.asset->url,
+      "activityImageLayoutBUrl": aimageLayoutB.asset->url
+    },
     "celebritiesContent": {
-    clcontent,
-    clcontent2,
-    cllocation,
-    cllocationlink,
-    "celebritiesImageUrl": climage.asset->url
-  },
-  
-
-  
+      clcontent,
+      clcontent2,
+      cllocation,
+      cllocationlink,
+      "celebritiesImageUrl": climage.asset->url,
+      "celebritiesImageLayoutBUrl": climageLayoutB.asset->url
+    },
     "musicContent": {
-    mucontent,
-    mucontent2,
-    mulocation,
-    mulocationlink,
-    "musicImageUrl": muimage.asset->url
-  },
-  
-
-  
+      mucontent,
+      mucontent2,
+      mulocation,
+      mulocationlink,
+      "musicImageUrl": muimage.asset->url,
+      "musicImageLayoutBUrl": muimageLayoutB.asset->url
+    },
     "productsContent": {
-    pdcontent,
-    pdcontent2,
-    pdlocation,
-    pdlocationlink,
-    "productsImageUrl": pdimage.asset->url
-  },
-  
-
-  
+      pdcontent,
+      pdcontent2,
+      pdlocation,
+      pdlocationlink,
+      "productsImageUrl": pdimage.asset->url,
+      "productsImageLayoutBUrl": pdimageLayoutB.asset->url
+    },
     "moreContent": {
-    mocontent,
-    mocontent2,
-    molocation,
-    molocationlink,
-    "moreImageUrl": moimage.asset->url
-  },
-  
-
-    }
-     | order(_updatedAt desc)[0]`;
+      mocontent,
+      mocontent2,
+      molocation,
+      molocationlink,
+      "moreImageUrl": moimage.asset->url,
+      "moreImageLayoutBUrl": moimageLayoutB.asset->url
+    },
+  } | order(_updatedAt desc)[0]`;
 
     const services = await $sanity.fetch(query);
 
@@ -660,17 +973,16 @@ export default {
   display: flex; */
 }
 
-
 .locationtext {
-    /* padding-top: 3vh; */
-    text-align: center;
-    align-items: center;
-    align-items: flex-start;
-    flex-direction: column;
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 77vw;
+  /* padding-top: 3vh; */
+  text-align: center;
+  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 77vw;
 }
 
 .texta {
@@ -700,6 +1012,10 @@ export default {
   text-decoration: underline;
   font-family: "MinionPro-Regular";
   -webkit-text-decoration: underline;
+}
+
+.locationtextb {
+  left: 53vw;
 }
 
 .allrcont {
@@ -742,6 +1058,24 @@ export default {
   z-index: 1;
 }
 
+.laybimsize {
+  width: 100%;
+  height: 18.6vh;
+}
+
+.laybimsizein {
+  width: 25vw;
+}
+
+.laybimg {
+  padding: 2vw;
+  padding-left: 0;
+  padding-top: 0vh;
+  top: -8vh;
+  position: relative;
+  width: 20vw;
+}
+
 .contactinner div p {
   padding-bottom: 1vh;
 }
@@ -749,7 +1083,7 @@ export default {
 .contactinner {
   font-size: 1.1vw;
   /* font-size: 1.4vw; */
-    line-height: normal;
+  line-height: normal;
 }
 
 .link-container {
@@ -771,7 +1105,7 @@ export default {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.link-container li:hover{
+.link-container li:hover {
   background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: initial;
@@ -779,10 +1113,10 @@ export default {
   transition-duration: 0.5s;
 }
 
-.svgleft{
+.svgleft {
   height: 7vh !important;
-    display: inline-flex !important;
-    align-items: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
 .link-container a {
@@ -801,7 +1135,7 @@ export default {
 
 .link-container a:hover {
   text-decoration: none;
-  color: #3333331f; 
+  color: #3333331f;
   /* Optional hover effect */
   transition-duration: 0.5s;
 }
@@ -933,21 +1267,33 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-  .link-container li:hover{
-  /* background-image: url("./static/background.jpg");
+
+  .laybimg {
+    height: 32vh;
+    top: 0vh;
+  width: auto;
+}
+
+.laybimsizein {
+    width: 54vw;
+}
+
+
+  .link-container li:hover {
+    /* background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: initial;
   background-repeat: no-repeat;
   transition-duration: 0.5s; */
-  background-image: none;
-}
+    background-image: none;
+  }
 
   .link-container a:hover {
-  text-decoration: none;
-  color: #333333; 
-  /* Optional hover effect */
-  transition-duration: 0.5s;
-}
+    text-decoration: none;
+    color: #333333;
+    /* Optional hover effect */
+    transition-duration: 0.5s;
+  }
 
   .container {
     display: flex;
@@ -959,7 +1305,7 @@ a {
     right: 0;
     width: 100%;
     transition: bottom 0.5s ease-in-out;
-    
+
     /* display: none; */
   }
 
@@ -986,7 +1332,7 @@ a {
   }
 
   .slide-in {
-    bottom: 0; 
+    bottom: 0;
   }
   .slide-out {
     transform: translateY(-100%);
@@ -994,36 +1340,38 @@ a {
   }
 
   .right-content.slide-out {
-    max-height: 0vh; 
+    max-height: 0vh;
     transform: translateY(-100%);
     transition: max-height 0.5s ease-in-out;
   }
 
+  .right-content.slide-in {
+    max-height: 100vh;
+    /* Expand to full height */
+  }
 
-.right-content.slide-in {
-  max-height: 100vh; 
-  /* Expand to full height */
-}
+  .right-content.slide-out {
+    /* Collapse to zero height */
+    /* bottom: -100vh; */
+    transition: max-height 0.5s ease-in-out;
+  }
 
-.right-content.slide-out {
-  /* Collapse to zero height */
-  /* bottom: -100vh; */
-  transition: max-height 0.5s ease-in-out;
-}
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
 
-.slide-enter-active, .slide-leave-active {
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
+  .slide-enter,
+  .slide-leave-to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 
-.slide-enter, .slide-leave-to {
-  transform: translateY(100%);
-  opacity: 0;
-}
-
-.slide-enter-to, .slide-leave {
-  transform: translateY(0);
-  opacity: 1;
-}
+  .slide-enter-to,
+  .slide-leave {
+    transform: translateY(0);
+    opacity: 1;
+  }
 
   .bgmobile {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
@@ -1056,16 +1404,16 @@ a {
     top: 0vh;
 
     height: max-content;
-        /* height: 52.2vh; */
-        background-image: url(/_nuxt/static/LeftBG.png);
-        background-size: cover;
-        background-position: center;
-        /* background-size: auto auto; */
-        /* background-size: initial; */
-        background-repeat: no-repeat;
-        /* height: 100vh; */
-        background-position: 0 0;
-        background-position: initial;
+    /* height: 52.2vh; */
+    background-image: url(/_nuxt/static/LeftBG.png);
+    background-size: cover;
+    background-position: center;
+    /* background-size: auto auto; */
+    /* background-size: initial; */
+    background-repeat: no-repeat;
+    /* height: 100vh; */
+    background-position: 0 0;
+    background-position: initial;
   }
 
   .sevcont {
@@ -1078,6 +1426,7 @@ a {
   .texta {
     padding-bottom: 0vh;
     padding-top: 2vh;
+    padding-top: 2.5vh;
   }
 
   .sevimcon {
@@ -1088,9 +1437,9 @@ a {
     /* top: 2vh; */
   }
 
-  .allrcont{
+  .allrcont {
     min-height: max-content;
-    height:54.2vh;
+    height: 54.2vh;
     padding: 0.5rem;
   }
 
@@ -1139,21 +1488,19 @@ a {
     background-image: url("./static/background.jpg");
   }
 
-
   .link-container a {
-  text-decoration: none;
-  font-size: 9.2vw;
-  font-size: 5vh;
-  font-size: 4.2vh;
-  /* font-size: 4vw; */
-  color: black;
-  font-weight: 100;
-  padding-left: 4vw;
-  padding-right: 4vw;
-  padding-left: 7vw;
-        padding-right: 7vw;
-  transition-duration: 0.5s;
-}
-
+    text-decoration: none;
+    font-size: 9.2vw;
+    font-size: 5vh;
+    font-size: 4.2vh;
+    /* font-size: 4vw; */
+    color: black;
+    font-weight: 100;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    padding-left: 7vw;
+    padding-right: 7vw;
+    transition-duration: 0.5s;
+  }
 }
 </style>
