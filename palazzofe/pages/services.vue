@@ -109,7 +109,7 @@
           <!-- Design -->
           <div :class="[
                   'allrcont',
-                  { allrcontb: !services.moreContent.mocontent },
+                  { allrcontb: !services.designContent.dcontent },
                 ]"  v-if="services && activeSection === 'design'">
             <div class="sevcont">
               <div class="titcont titmb">
@@ -193,7 +193,7 @@
           <!-- Location -->
           <div :class="[
                   'allrcont',
-                  { allrcontb: !services.moreContent.mocontent },
+                  { allrcontb: !services.locationContent.lcontent },
                 ]"  v-if="services && activeSection === 'location'">
             <div class="sevcont">
               <div class="titcont titmb">
@@ -271,7 +271,7 @@
           <div
             :class="[
                   'allrcont',
-                  { allrcontb: !services.moreContent.mocontent },
+                  { allrcontb: !services.productionContent.prcontent },
                 ]" 
             v-if="services && activeSection === 'production'"
           >
@@ -349,7 +349,7 @@
           <!-- Products -->
           <div :class="[
                   'allrcont',
-                  { allrcontb: !services.moreContent.mocontent },
+                  { allrcontb: !services.productsContent.pdcontent },
                 ]"  v-if="services && activeSection === 'products'">
             <div class="sevcont">
               <div class="titcont titmb">
@@ -505,7 +505,7 @@
           <div
             :class="[
                   'allrcont',
-                  { allrcontb: !services.moreContent.mocontent },
+                  { allrcontb: !services.conciergeContent.ccontent },
                 ]" 
             v-if="services && activeSection === 'concirerge'"
           >
@@ -583,7 +583,7 @@
           <!-- Activity -->
           <div :class="[
                   'allrcont',
-                  { allrcontb: !services.moreContent.mocontent },
+                  { allrcontb: !services.activityContent.acontent },
                 ]"  v-if="services && activeSection === 'activity'">
             <div class="sevcont">
               <div class="titcont titmb">
@@ -660,7 +660,7 @@
           <div
             :class="[
                   'allrcont',
-                  { allrcontb: !services.moreContent.mocontent },
+                  { allrcontb: !services.celebritiesContent.clcontent },
                 ]" 
             v-if="services && activeSection === 'celebrities'"
           >
@@ -741,7 +741,7 @@
        
           <div :class="[
                   'allrcont',
-                  { allrcontb: !services.moreContent.mocontent },
+                  { allrcontb: !services.musicContent.mucontent },
                 ]"  v-if="services && activeSection === 'music'">
             <div class="sevcont">
               <div class="titcont titmb">
