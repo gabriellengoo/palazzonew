@@ -1144,7 +1144,7 @@ export default {
       }
     },
     onHoverLeave() {
-      this.hoveredSection = "production"; // Clear hovered section when mouse leaves
+      this.hoveredSection = "design"; // Clear hovered section when mouse leaves
     },
 
     resetActiveSection() {
