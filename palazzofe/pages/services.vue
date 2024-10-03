@@ -1144,7 +1144,7 @@ export default {
       }
     },
     onHoverLeave() {
-      this.hoveredSection = "design"; // Clear hovered section when mouse leaves
+      this.hoveredSection = "production"; // Clear hovered section when mouse leaves
     },
 
     resetActiveSection() {
@@ -1420,11 +1420,17 @@ export default {
 .laybimg {
   padding: 2vw;
   padding-left: 0;
+  margin-right: .5vw;
   padding-top: 0vh;
   top: -8vh;
   position: relative;
   width: 20vw;
-  width: 23vw;
+  width: 22.5vw;
+}
+
+.pte{
+  top: -8vh;
+  position: relative;
 }
 
 .contactinner div p {
@@ -1435,6 +1441,8 @@ export default {
   font-size: 1.1vw;
   /* font-size: 1.4vw; */
   line-height: normal;
+  top: 5vw;
+    position: relative;
 }
 
 .link-container {
@@ -1831,7 +1839,10 @@ a {
 
   .contactinner {
     font-size: 3.1vw;
+    top: 0vw;
+    position: relative;
   }
+ 
 
   .loctext {
     font-size: 3vw;
