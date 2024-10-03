@@ -1318,6 +1318,7 @@ export default {
   position: fixed;
   bottom: 0;
   left: 77vw;
+  padding-left: .85vw;
 }
 
 .texta {
@@ -1350,13 +1351,14 @@ export default {
 }
 
 .locationtextb {
-  left: 53vw;
+  left: 54vw;
 }
 
 .allrcont {
   display: flex;
   top: 2vh;
   top: 7vh;
+  top: 15vh;
   position: relative;
   width: 100%;
   /* height: 95%; */
@@ -1858,6 +1860,7 @@ a {
     bottom: auto;
     left: unset;
     display: none;
+    padding-left: 0;
   }
 
   .right-content {
