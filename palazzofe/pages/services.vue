@@ -222,7 +222,7 @@
                   />
                 </div>
 
-                <div class="flex texta pl-[5vw] pb-[3vh]">
+                <div class="flex pl-[5vw] pb-[3vh]">
                   <!-- Add div and img and v-if statement like production here -->
 
                   <Richtext
@@ -340,7 +340,10 @@
                     ]"
                   />
                 </div>
-                <div class="flex texta pb-[3vh]">
+                <div :class="[
+                    'textaup',
+                    { texta: !services.productionContent.prcontent },
+                  ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="
                       services.locationContent.lcontent &&
@@ -449,7 +452,11 @@
                     ]"
                   />
                 </div>
-                <div class="flex texta pb-[3vh]">
+                
+                <div :class="[
+                    'textaup',
+                    { texta: !services.productionContent.prcontent },
+                  ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="services.productionContent.prcontent"
                     :blocks="services.productionContent.prcontent"
@@ -550,7 +557,10 @@
                     ]"
                   />
                 </div>
-                <div class="flex texta pb-[3vh]">
+                <div :class="[
+                    'textaup',
+                    { texta: !services.productionContent.prcontent },
+                  ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="services.productsContent.pdcontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -648,7 +658,10 @@
                     ]"
                   />
                 </div>
-                <div class="flex texta pb-[3vh]">
+                <div :class="[
+                    'textaup',
+                    { texta: !services.productionContent.prcontent },
+                  ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="services.moreContent.mocontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -745,7 +758,10 @@
                     ]"
                   />
                 </div>
-                <div class="flex texta pb-[3vh]">
+                <div :class="[
+                    'textaup',
+                    { texta: !services.productionContent.prcontent },
+                  ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="services.conciergeContent.ccontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -841,7 +857,10 @@
                     ]"
                   />
                 </div>
-                <div class="flex texta pb-[3vh]">
+                <div :class="[
+                    'textaup',
+                    { texta: !services.productionContent.prcontent },
+                  ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="services.activityContent.acontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -941,7 +960,10 @@
                     ]"
                   />
                 </div>
-                <div class="flex texta pb-[3vh]">
+                <div :class="[
+                    'textaup',
+                    { texta: !services.productionContent.prcontent },
+                  ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="services.celebritiesContent.clcontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -1038,7 +1060,10 @@
                     ]"
                   />
                 </div>
-                <div class="flex texta pb-[3vh]">
+                <div :class="[
+                    'textaup',
+                    { texta: !services.productionContent.prcontent },
+                  ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="services.musicContent.mucontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -1105,8 +1130,8 @@ export default {
 
   data() {
     return {
-      activeSection: "design",
-      // activeSection: false,
+      // activeSection: "design",
+      activeSection: false,
       isMobile: false,
       // activeSection: null,
       hoveredSection: null,
@@ -1144,7 +1169,9 @@ export default {
       }
     },
     onHoverLeave() {
-      this.hoveredSection = "design"; // Clear hovered section when mouse leaves
+      if (!this.isMobile) {
+        this.hoveredSection = "design"; // Only reset for non-mobile devices
+      }
     },
 
     resetActiveSection() {
@@ -1636,6 +1663,12 @@ a {
     width: 54vw;
   }
 
+  .laybimsize {
+    position:relative !important;
+    top: 0vh !important;
+    height: 24.6vw !important;
+  }
+
   .link-container li:hover {
     /* background-image: url("./static/background.jpg");
   background-size: cover;
@@ -1791,12 +1824,17 @@ a {
   }
 
   .sevimcon {
-    height: 14.6vh;
+    height: 13.6vh;
     /* height: max-content; */
     padding-bottom: 0vw;
     /* height: 35.6vh; */
-    /* position: absolute; */
-    /* top: 2vh; */
+    position: relative;
+    top: -2vh;
+  }
+
+  .textaup{
+    position: relative;
+    top: -2vh;
   }
 
   .allrcontb .sevimcon {
