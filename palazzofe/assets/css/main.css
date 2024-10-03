@@ -228,6 +228,11 @@ html {
       display: block;
     }
 
+    .headbarc{
+      width: 3vh;
+      display: block;
+    }
+
     .svgmb{
     top: -1vw;
     position: relative;
