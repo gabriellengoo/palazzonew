@@ -8,6 +8,7 @@ export const state = () => ({
   footer: false,
   contact: false,
   menu: false,
+  isMenuOpen: false,
 })
 
 export const mutations = {
@@ -41,7 +42,19 @@ export const mutations = {
   CLOSE_MENU(state) {
     state.menu = false
   },
+  toggleMenu(state) {
+    state.isMenuOpen = !state.isMenuOpen;
+  },
+  setMenuState(state, status) {
+    state.isMenuOpen = status;
+  },
 }
+
+
+export const getters = {
+  isMenuOpen: (state) => state.isMenuOpen,
+};
+
 
 import { groq } from '@nuxtjs/sanity'
 

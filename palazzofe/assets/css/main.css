@@ -98,8 +98,8 @@ html {
 }
 
 .yeartdesk{
-  font-size: 1.485vw;
-  font-size: smaller;
+  font-size: 0.985vw;
+  /* font-size: smaller; */
   font-family: 'RomainHeadlineTrial';
   font-family: 'GT-SuperBook';
 }
@@ -276,8 +276,21 @@ html {
     font-size: 3.5vw;
     top: 1.2vh !important;
     z-index: 1000;
+    z-index: 100;
     position: fixed;
     line-height: normal;
+    /* display: none; */
+}
+
+.sheadera{
+  /* display: unset;  */
+  opacity: 1;
+}
+
+.sheaderaopen{
+  /* z-index: 1000 !important; */
+  /* display: none;  */
+  opacity: 0;
 }
 
 .headingspagesslug{

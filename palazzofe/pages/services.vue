@@ -2,7 +2,7 @@
   <div>
     <!-- <HeaderComponent /> -->
     <div class="headera content flex w-full justify-between">
-      <h1 class="navmb">
+      <h1 class="navmb"> 
         <HeaderComponent />
       </h1>
       <p class="navmbno yeart text-center text-4xl uppercase">services</p>
@@ -22,7 +22,11 @@
         <!-- <button @click="closeSection"> -->
         <div class="nodes">
           <!-- <p>d</p> -->
-          <p class="headingspages text-center text-4xl uppercase">Services</p>
+          <p :class="[
+                  '',
+                  { sheadera: !isMenuOpen },
+                  { sheaderaopen: isMenuOpen },
+                ]" class="headingspages text-center text-4xl uppercase">Services</p>
         </div>
         <transition name="slide-out" @after-enter="fadeInAllImg">
           <div
@@ -31,58 +35,103 @@
             <div class="  ">
               <nav class="link-container uppercase">
                 <ul>
-                  <!-- <li class="toplink pointer-events-none">
-                    <a class="toplink" href="#">space</a>
-                  </li> -->
-                  <li @click="closeSection">
-                    <a class="svgleft pointer-events-none" href=""
-                      ><SvgArchstar class="" @click="setActiveSection('')"
-                    /></a>
-                  </li>
-                  <li>
-                    <a @click="setActiveSection('design')" href="#">Design</a>
-                  </li>
-                  <li>
-                    <a @click="setActiveSection('location')" href="#"
-                      >Location</a
-                    >
-                  </li>
-                  <li>
-                    <a @click="setActiveSection('production')" href="#"
-                      >Production</a
-                    >
-                  </li>
-                  <li>
-                    <a @click="setActiveSection('concirerge')" href="#Concierge"
-                      >Concierge</a
-                    >
-                  </li>
-                  <li>
-                    <a @click="setActiveSection('activity')" href="#activity"
-                      >Activity</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      @click="setActiveSection('celebrities')"
-                      href="#celebrities"
-                      >Celebrities</a
-                    >
-                  </li>
-                  <li>
-                    <a @click="setActiveSection('music')" href="#music"
-                      >Music</a
-                    >
-                  </li>
-                  <li>
-                    <a @click="setActiveSection('products')" href="#products"
-                      >Products</a
-                    >
-                  </li>
-                  <li>
-                    <a @click="setActiveSection('more')" href="#more">More</a>
-                  </li>
-                </ul>
+  <li class="pointer-events-none">
+    <a class="svgleft pointer-events-none" href=""
+      ><SvgArchstar class="" @click="setActiveSection('')"
+    /></a>
+  </li>
+  <li>
+    <a
+      @click="setActiveSection('design')"
+      @mouseover="onHover('design')"
+      @mouseleave="onHoverLeave"
+      href="#"
+    >
+      Design
+    </a>
+  </li>
+  <li>
+    <a
+      @click="setActiveSection('location')"
+      @mouseover="onHover('location')"
+      @mouseleave="onHoverLeave"
+      href="#"
+    >
+      Location
+    </a>
+  </li>
+  <li>
+    <a
+      @click="setActiveSection('production')"
+      @mouseover="onHover('production')"
+      @mouseleave="onHoverLeave"
+      href="#"
+    >
+      Production
+    </a>
+  </li>
+  <li>
+    <a
+      @click="setActiveSection('concierge')"
+      @mouseover="onHover('concierge')"
+      @mouseleave="onHoverLeave"
+      href="#Concierge"
+    >
+      Concierge
+    </a>
+  </li>
+  <li>
+    <a
+      @click="setActiveSection('activity')"
+      @mouseover="onHover('activity')"
+      @mouseleave="onHoverLeave"
+      href="#activity"
+    >
+      Activity
+    </a>
+  </li>
+  <li>
+    <a
+      @click="setActiveSection('celebrities')"
+      @mouseover="onHover('celebrities')"
+      @mouseleave="onHoverLeave"
+      href="#celebrities"
+    >
+      Celebrities
+    </a>
+  </li>
+  <li>
+    <a
+      @click="setActiveSection('music')"
+      @mouseover="onHover('music')"
+      @mouseleave="onHoverLeave"
+      href="#music"
+    >
+      Music
+    </a>
+  </li>
+  <li>
+    <a
+      @click="setActiveSection('products')"
+      @mouseover="onHover('products')"
+      @mouseleave="onHoverLeave"
+      href="#products"
+    >
+      Products
+    </a>
+  </li>
+  <li>
+    <a
+      @click="setActiveSection('more')"
+      @mouseover="onHover('more')"
+      @mouseleave="onHoverLeave"
+      href="#more"
+    >
+      More
+    </a>
+  </li>
+</ul>
+
               </nav>
             </div>
 
@@ -834,12 +883,11 @@ export default {
 
   data() {
     return {
-      // activeSection: "design",
-      // Set the default section, e.g., 'design'
+      activeSection: "design",
       // activeSection: false,
       isMobile: false,
-      activeSection: null,
-      // Track the active section state
+      // activeSection: null,
+      hoveredSection: null, 
     };
   },
 
@@ -868,20 +916,38 @@ export default {
   },
 
   methods: {
+
+    onHover(section) {
+    if (!this.isMobile) {
+      this.hoveredSection = section; // Set hovered section for non-mobile devices
+    }
+  },
+  onHoverLeave() {
+    this.hoveredSection = null; // Clear hovered section when mouse leaves
+  },
+  
+    resetActiveSection() {
+    if (!this.isMobile) {
+      this.activeSection = 'design'; // Only reset for non-mobile devices
+    }
+  },
+    toggleMenu() {
+      this.$store.commit('toggleMenu');
+    },
     checkViewport() {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
       this.activeSection = this.isMobile ? false : "design"; // Set activeSection based on isMobile
     },
     setActiveSection(section) {
       if (this.activeSection === section) {
-        this.activeSection = null; // Close the section if clicked again
+        this.activeSection = "design"; // Close the section if clicked again
       } else {
         this.activeSection = section; // Open the new section
       }
     },
     closeSection() {
-      this.activeSection = null; // Close the section when the close button is clicked
-    },
+    this.activeSection = null; // Close the active section
+  },
 
     handleClick() {
       if (this.isMobile && this.activeSection) {
@@ -985,13 +1051,31 @@ export default {
     return { services };
   },
 
+  // computed: {
+  //   ...mapState(["gridpub"]),
+  // },
+
   computed: {
     ...mapState(["gridpub"]),
+    isMenuOpen() {
+      return this.$store.getters.isMenuOpen;
+    },
   },
 };
 </script>
 
 <style scoped>
+.sheadera{
+  /* display: unset;  */
+  opacity: 1;
+}
+
+.sheader{
+  /* z-index: 1000 !important; */
+  /* display: none;  */
+  opacity: 0;
+}
+
 .locationtext {
   /* padding-top: 3vh; */
   /* text-align: center;
@@ -1456,6 +1540,8 @@ a {
     /* height: 100vh; */
     background-position: 0 0;
     background-position: initial;
+    border-top: .05vw solid black;
+    box-shadow: none;
   }
 
   .sevcont {
@@ -1548,6 +1634,7 @@ a {
     position: relative;
     bottom: auto;
     left: unset;
+    display: none;
   }
 
   .right-content {
@@ -1571,10 +1658,10 @@ a {
     /* font-size: 4vw; */
     color: black;
     font-weight: 100;
-    padding-left: 4vw;
-    padding-right: 4vw;
     padding-left: 7vw;
     padding-right: 7vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
     transition-duration: 0.5s;
   }
 }

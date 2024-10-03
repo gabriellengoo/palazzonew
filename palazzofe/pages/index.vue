@@ -250,6 +250,7 @@ export default {
         line-height: normal;
         left: 32.9vw;
         left: 32.2vw;
+        display:none;
   }
 
   .mbmain{

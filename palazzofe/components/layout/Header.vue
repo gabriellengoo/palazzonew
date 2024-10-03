@@ -226,8 +226,6 @@ export default {
 }
 
 .link-container {
-  background-color: rgb(255 255 255 / 14%);
-  background-color: rgb(255 255 255 / 25%);
   border: 1px solid rgba(0, 0, 0, 0.257);
   border-radius: 150px 150px 2px 2px;
   /* width: 90vw;
@@ -235,8 +233,10 @@ export default {
   margin: auto;
   font-family: 'RomainHeadlineTrial';
 
-    background-color: rgba(255, 255, 255, 0.14);
-    background-color: rgb(255 255 255 / 25%);
+    /* background-color: rgba(255, 255, 255, 0.14);
+    background-color: rgb(255 255 255 / 25%); */
+    background-color: rgb(255 255 255 / 13%);
+
     border: 1px solid rgba(0, 0, 0, 0.257);
     border-radius: 190px 190px 2px 2px;
     width: max-content;
@@ -264,6 +264,17 @@ display: none;
 .mobilemenu{
 display: unset;
 }
+
+.link-container a {
+  text-decoration: none;
+    font-size: 9.2vw;
+    /* font-size: 5.2vh; */
+    /* color: black; */
+    font-weight: 100;
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+
 }
 
 /* .hover-area {
