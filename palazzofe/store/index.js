@@ -42,7 +42,7 @@ export const mutations = {
   CLOSE_MENU(state) {
     state.menu = false
   },
-  toggleMenu(state) {
+  toggleMenu(state) { 
     state.isMenuOpen = !state.isMenuOpen;
   },
   setMenuState(state, status) {

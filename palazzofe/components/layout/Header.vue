@@ -7,7 +7,7 @@
       <div class="headbar " @click="toggleMenu">
         <SvgMenu v-if="!isMenuOpen" class="headbar w-[1.4vw] hover:cursor-pointer" />
         <SvgClose v-else class="headbar w-[1.4vw] hover:cursor-pointer" />
-      </div>
+      </div> 
       <!-- <div class="w-[2vw]"></div> -->
     </div>
 

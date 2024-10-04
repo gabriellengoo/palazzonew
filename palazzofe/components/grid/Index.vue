@@ -7,6 +7,8 @@
         <div class="nodes">
           <!-- <p>d</p> -->
           <p
+           v-if="!isMenuOpen"
+         
           class="headingspages text-center text-4xl  uppercase "
         >
           Weddings
@@ -89,6 +91,7 @@
 
 <script>
 import { mapMutations, mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   props: ["items", "size"],
@@ -101,6 +104,9 @@ export default {
     };
   },
   computed: {
+    ...mapGetters({
+      isMenuOpen: "isMenuOpen", // This will map to the Vuex getter
+    }),
     ...mapState(["activeProject", "activeTalent"]),
     chunkedItems() {
       return this.items.reduce((resultArray, item, index) => {
