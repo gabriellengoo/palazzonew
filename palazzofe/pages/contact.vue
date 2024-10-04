@@ -13,66 +13,210 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
-    <div  class="bgcream nomb relative min-h-screen flex">
-    </div>
+    <!-- desktop -->
+    <div class="bgcream nomb relative min-h-screen flex"></div>
 
-<div class="nomballbot flex p-[5vw] pl-[3vw] min-h-screen">
-   <!-- Left Content: Address and Contact Info -->
-   <div class="left-content w-1/2 p-[3vw] pl-[0vw]">
+    <div class="nomballbot flex p-[5vw] pl-[3vw] min-h-screen">
+      <!-- Left Content: Address and Contact Info -->
+      <div class="left-content w-1/2 p-[3vw] pl-[0vw]">
         <div class="address text-left flex">
           <div>
             <p class="italic underline">Address</p>
             <p class="w-[6vw]">10 Cromwell Road, Hove East</p>
           </div>
-            <div class="ml-[7vw]">
-              <p>For more comprehensive conversation with one of our expert advisors, please fill in the form opposite and we will contact you asap. Pallazo Eventi Consultant Team.</p>
-            </div>
-        </div>
-       <div class="flex">
-        <div class="contact text-left mt-[2vh]">
-          <p class="italic underline">Contact</p>
-          <div class="w-[8vw]">
-            <p>Natalya Zelentsova</p>
-          <p>+39 347 6999121</p>
+          <div class="ml-[7vw]">
+            <p>
+              For more comprehensive conversation with one of our expert
+              advisors, please fill in the form opposite and we will contact you
+              asap. Pallazo Eventi Consultant Team.
+            </p>
           </div>
         </div>
-        <div class="email ml-[5vw] text-left mt-[2vh]">
-          <p class="italic underline">Email</p>
-          <p>natalya@palazzoeventi.com</p>
+        <div class="flex">
+          <div class="contact text-left mt-[2vh]">
+            <p class="italic underline">Contact</p>
+            <div class="w-[8vw]">
+              <p>Natalya Zelentsova</p>
+              <p>+39 347 6999121</p>
+            </div>
+            <a href="#" class="instagram-icona w-[31vw]">
+              <!-- Instagram SVG Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="instagram-icon mr-2"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37a4 4 0 1 1-4.63-4.63 4 4 0 0 1 4.63 4.63z"
+                ></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+          <div class="email ml-[5vw] text-left mt-[2vh]">
+            <p class="italic underline">Email</p>
+            <p>natalya@palazzoeventi.com</p>
+          </div>
         </div>
-       </div>
       </div>
 
       <!-- Right Content: Form Section -->
       <div class="right-content w-1/2 p-[5vw] pl-[20vw] pt-[4vw]">
         <form class="contact-form grid grid-cols-2 gap-4">
           <input class="col-span-1" type="text" placeholder="Name *" />
-          <input class="col-span-1" type="text" placeholder="Date of Celebration *" />
+          <input
+            class="col-span-1"
+            type="text"
+            placeholder="Date of Celebration *"
+          />
           <input class="col-span-1" type="text" placeholder="Telephone *" />
-          <input class="col-span-1" type="text" placeholder="No. of Days of Celebration *" />
+          <input
+            class="col-span-1"
+            type="text"
+            placeholder="No. of Days of Celebration *"
+          />
           <input class="col-span-1" type="email" placeholder="Email *" />
           <input class="col-span-1" type="text" placeholder="No. of Guests *" />
           <input class="col-span-1" type="text" placeholder="Country *" />
-          <input class="col-span-1" type="text" placeholder="Estimated Budget *" />
+          <input
+            class="col-span-1"
+            type="text"
+            placeholder="Estimated Budget *"
+          />
         </form>
         <div class="send-button text-center mt-[10vh]">
           <button class="border border-black px-6 py-2">SEND</button>
         </div>
       </div>
-</div>
+    </div>
 
-
-       <!-- Central Artwork Image (Angel) -->
-       <div  class="nomb absolute bottom-[27vh] left-[47vw] transform -translate-x-1/2 z-10">
+    <!-- Central Artwork Image (Angel) -->
+    <div
+      class="nomb absolute bottom-[27vh] left-[47vw] transform -translate-x-1/2 z-10"
+    >
       <img src="anglecon.png" alt="Angel Artwork" class="w-auto h-[40vh]" />
     </div>
 
+    <!-- mobile -->
+    <div class="nodes">
+      <!-- <p>d</p> -->
+      <!-- <p
+             v-if="!isMenuOpen"
+          class="headingspages w-[100%] pointer-events-none text-center text-4xl  uppercase "
+        >
+          Contact
+        </p> -->
+    </div>
+
+    <div class="bgcream nodes relative min-h-screen flex"></div>
+
+    <div class="nodes contentamb flex h-max">
+      <!-- Left Content: Address and Contact Info -->
+      <div class="left-content">
+        <div class="address text-left flex">
+          <div>
+            <p class="italic underline">Address</p>
+            <p class="w-[58%]">10 Cromwell Road, Hove East</p>
+          </div>
+          <div class="">
+            <div class="contact text-left">
+              <p class="italic underline">Contact</p>
+              <div class="w-[23vw]">
+                <p>Natalya Zelentsova</p>
+                <p>+39 347 6999121</p>
+              </div>
+            </div>
+            <!-- <p>
+              For more comprehensive conversation with one of our expert
+              advisors, please fill in the form opposite and we will contact you
+              asap. Pallazo Eventi Consultant Team.
+            </p> -->
+          </div>
+        </div>
+        <div class="flex contamb">
+          <div class="contact flex text-left mt-[2vh]">
+            <div class="w-[31vw]">
+              <!-- Instagram SVG Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="instagram-icon mr-2"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37a4 4 0 1 1-4.63-4.63 4 4 0 0 1 4.63 4.63z"
+                ></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </div>
+            <div class="email ml-[5vw] text-left mt-[2vh]">
+              <p class="italic underline">Email</p>
+              <div class="w-max">
+                <!-- <p>Natalya Zelentsova</p>
+              <p>+39 347 6999121</p> -->
+                <p>natalya@palazzoeventi.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Content: Form Section -->
+      <div class="right-content">
+        <div class="titcont titmb">
+          <button class="pt-[4vw]" @click="closeSection">
+            <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+          </button>
+          <h1 class="loctext uppercase pt-2">Get in touch</h1>
+        </div>
+
+        <form class="contact-form w-[90vw] grid grid-cols-2 gap-4">
+          <input class="col-span-1" type="text" placeholder="Name *" />
+          <input
+            class="col-span-1"
+            type="text"
+            placeholder="Date of Celebration *"
+          />
+          <input class="col-span-1" type="text" placeholder="Telephone *" />
+          <input
+            class="col-span-1"
+            type="text"
+            placeholder="No. of Days of Celebration *"
+          />
+          <input class="col-span-1" type="email" placeholder="Email *" />
+          <input class="col-span-1" type="text" placeholder="No. of Guests *" />
+          <input class="col-span-1" type="text" placeholder="Country *" />
+          <input
+            class="col-span-1"
+            type="text"
+            placeholder="Estimated Budget *"
+          />
+        </form>
+        <div class="send-button text-center mt-[10vh]">
+          <button class="border border-black px-6 py-2">SEND</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import HeaderComponent from "@/components/layout/Header.vue";
-import { mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "IndexPage",
@@ -82,6 +226,9 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      isMenuOpen: "isMenuOpen", // This will map to the Vuex getter
+    }),
     ...mapState(["gridpub"]),
   },
 };
@@ -91,7 +238,6 @@ export default {
 .headingspagesb {
   font-family: "GT-Bold";
 }
-
 
 .image-item {
   position: relative;
@@ -149,20 +295,19 @@ export default {
 
 .bgcream {
   background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
-    background-image: url("./static/conimg.jpg");
-    display: flex;
-    clip-path: ellipse(51% 47% at 50% 100%);
-    position: absolute;
-    z-index: 0;
-    pointer-events: none;
-
+  background-position: top;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./static/conimg.jpg");
+  display: flex;
+  clip-path: ellipse(51% 47% at 50% 100%);
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.pagbg{
+.pagbg {
   background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
@@ -177,22 +322,24 @@ export default {
   /* padding: 2rem; */
 }
 
-.left-content, .right-content {
+.left-content,
+.right-content {
   font-size: 1vw;
   flex: 1; /* Ensures both take equal width in the flex container */
   overflow: visible; /* Ensures that content is not clipped */
 }
 
 .contact-form input {
-  border-bottom: .5px solid #a29585;
-    padding: .1vw;
-    background-color: #ffffff00;
-    width: 95%;
+  border-bottom: 0.5px solid #a29585;
+  padding: 0.1vw;
+  background-color: #ffffff00;
+  width: 95%;
+  text-transform: uppercase;
 }
 
 .contact-form input:focus {
   border: none; /* Remove the border on focus */
-  border-bottom: .5px solid #a29585;
+  border-bottom: 0.5px solid #a29585;
   outline: none; /* Ensure the focus outline is also removed */
 }
 
@@ -201,7 +348,7 @@ export default {
   color: black;
   cursor: pointer;
   text-transform: uppercase;
-  border: rgba(0, 0, 0, 0.388) .2px solid;
+  border: rgba(0, 0, 0, 0.388) 0.2px solid;
   /* border-radius: 9vw; */
   padding: 1vw;
   height: 10vh;
@@ -218,7 +365,6 @@ export default {
   transition-duration: 0.5s;
 }
 
-
 a {
   color: #a29585;
   text-decoration: none;
@@ -228,15 +374,124 @@ a:hover {
   text-decoration: underline;
 }
 
+input::placeholder {
+  color: rgba(0, 0, 0, 0.438);
+  /* line-height: 0; */
+}
+
+.instagram-icon {
+  width: 2vw;
+  height: auto;
+}
+
+.instagram-icona {
+ color: black;
+ top: 9vh;
+ position: relative;
+}
+
 @media only screen and (max-width: 768px) {
   .bgcream {
-    flex-direction: column; /* Stacks the two sides vertically on small screens */
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 50vh;
+    background-image: url("./static/conimg.jpg");
+    display: flex;
+    clip-path: ellipse(57% 17% at 50% 100%);
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
   }
 
-  /* .left-content,
-  .right-content {
-    height: auto;
-  } */
+  .left-content {
+    background-image: url("./static/background.jpg");
+    background-size: 200vh;
+    background-position: initial;
+    background-repeat: no-repeat;
+    transition-duration: 0.5s;
+    width: 100vw;
+    height: 50vh;
+    height: 30vh;
+    position: absolute;
+    border-bottom: black 0.1px solid;
+    font-size: 3vw;
+    /* height: auto; */
+  }
 
-} 
+  .address {
+    padding: 8vw;
+    padding-top: 11vh;
+    padding-bottom: 0vh;
+  }
+
+  .contamb {
+    padding: 8vw;
+    padding-top: 0vh;
+    padding-bottom: 1vh;
+  }
+
+  .right-content {
+    position: absolute;
+    top: 31vh;
+    width: 100vw;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+
+  .contentamb {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .send-button button {
+    background-color: #ffffff;
+    color: black;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: rgba(0, 0, 0, 0.388) 0.2px solid;
+    /* border-radius: 9vw; */
+    /* padding: 10vw; */
+    height: 7vh;
+    font-size: 4.5vw;
+    width: 27vw;
+    border-radius: 50%;
+  }
+
+  .contact-form {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .contact-form input {
+    font-size: 3.5vw;
+    /* padding-bottom: .5vh; */
+    text-align: center;
+    text-transform: uppercase;
+    width: auto;
+  }
+
+  .titcont {
+    width: 90vw;
+    display: flex;
+    padding-bottom: 2vh;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .loctext {
+    font-size: 3vw;
+    font-size: 5vw;
+    font-family: "GT-Bold";
+  }
+
+  .loctextlink {
+    font-size: 3vw;
+  }
+}
 </style>
