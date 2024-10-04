@@ -3,13 +3,12 @@
   <header
     class="header  top-[1rem] md:top-4 lg:top-[2rem]  flex  items-center p-6"
   >
-    <div class="flex  md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
-      <div class="headbar " @click="toggleMenu">
-        <SvgMenu v-if="!isMenuOpen" class="headbar w-[1.4vw] hover:cursor-pointer" />
-        <SvgClose v-else class="headbar w-[1.4vw] hover:cursor-pointer" />
-      </div> 
-      <!-- <div class="w-[2vw]"></div> -->
-    </div>
+  <div class="flex md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
+    <div class="headbar" @click="toggleMenu">
+      <SvgMenu v-if="!isMenuOpen" class="headbar w-[1.4vw] hover:cursor-pointer" />
+      <SvgClose v-else class="headbar w-[1.4vw] hover:cursor-pointer" />
+    </div> 
+  </div>
 
     
 
@@ -122,7 +121,9 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-      this.$emit("menu-toggled", this.isMenuOpen);
+      // this.$emit("menu-toggled", this.isMenuOpen);
+      this.$store.commit('toggleMenu');
+      
     },
     fadeInAllImg() {
       this.fadeInAllImgClass = true;
@@ -143,6 +144,11 @@ export default {
     //     this.menuTopPosition = `calc(${headerBottom}px + 3.5vh)`;
     //   }
     // },
+    computed: {
+    currentTitle() {
+      return this.$store.state.title;
+    }
+  },
   },
 };
 </script>
