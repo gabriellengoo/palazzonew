@@ -1156,6 +1156,12 @@ export default {
   mounted() {
     this.checkViewport(); // Set the initial value based on viewport
     window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
+
+      // Set hoveredSection to 'design' if not on mobile
+  if (!this.isMobile) {
+    this.hoveredSection = 'design';
+  }
+
   },
 
   beforeDestroy() {
@@ -1176,15 +1182,25 @@ export default {
 
     resetActiveSection() {
       if (!this.isMobile) {
-        this.activeSection = "design"; // Only reset for non-mobile devices
+        this.activeSection = "design"; 
+        // Only reset for non-mobile devices
+        this.hoveredSection =  "design";
       }
     },
+   
     toggleMenu() {
       this.$store.commit("toggleMenu");
     },
     checkViewport() {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
       this.activeSection = this.isMobile ? false : " "; // Set activeSection based on isMobile
+
+    // Update hoveredSection based on viewport
+    if (!this.isMobile) {
+      this.hoveredSection = 'design';
+    } else {
+      this.hoveredSection = null;
+    }
     },
     setActiveSection(section) {
       if (this.isMobile) {
