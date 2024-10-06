@@ -75,6 +75,18 @@ html {
   position: relative;
 }
 
+.rightimg{
+  z-index: 0 !important;
+}
+
+.disa{
+    z-index: 10 !important;
+}
+
+.titlea{
+  z-index: 10 !important;
+}
+
 .headingspages {
   font-family: "GT-Bold";
   font-family: "MinionPro-Regular";
@@ -244,6 +256,7 @@ html {
   }
 
   @media only screen and (max-width: 768px) {
+    
         .headera {
               padding-top: 2.5vw;
         padding-bottom: 2.5vw;

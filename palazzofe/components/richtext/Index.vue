@@ -51,6 +51,9 @@ export default {
   text-indent: 1rem;
 } */
 
+.richcont div p {
+ padding-bottom: 2vh;
+}
 
 div p{
 /* padding-bottom: 2.5vh; */
@@ -58,10 +61,9 @@ div p{
 }
 
 @media only screen and (max-width: 768px) {
-  div p{
+  /* div p{
 padding-bottom: 1.5vh;
-/* font-family: 'MinionPro-Regular'; */
-}
+} */
 }
 
 p{

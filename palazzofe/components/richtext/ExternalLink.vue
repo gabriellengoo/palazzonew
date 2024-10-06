@@ -39,13 +39,15 @@ export default {}
 
 a {
   text-decoration: none;
+  text-decoration: underline;
+  font-style: italic;
   color: #000;
   transition: text-decoration 0.3s ease;
 }
 
 
 a:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
     transition: text-decoration 0.3s ease;
 }
 

@@ -20,25 +20,26 @@
       <!-- Left Content: Address and Contact Info -->
       <div class="left-content w-1/2 p-[3vw] pl-[0vw]">
         <div class="address text-left flex">
-          <div>
-            <p class="italic underline">Address</p>
-            <p class="w-[6vw]">10 Cromwell Road, Hove East</p>
-          </div>
-          <div class="ml-[7vw]">
-            <p>
-              For more comprehensive conversation with one of our expert
-              advisors, please fill in the form opposite and we will contact you
-              asap. Pallazo Eventi Consultant Team.
-            </p>
+         
+          <Richtext
+                    class="w-[7vw] "
+                    :blocks="contact.address"
+                  ></Richtext>
+          <div class="ml-[6vw]">
+            <Richtext
+                    class="w-[20vw] "
+                    :blocks="contact.address2"
+                  ></Richtext>
+           
           </div>
         </div>
         <div class="flex">
           <div class="contact text-left mt-[2vh]">
-            <p class="italic underline">Contact</p>
-            <div class="w-[8vw]">
-              <p>Natalya Zelentsova</p>
-              <p>+39 347 6999121</p>
-            </div>
+           
+            <Richtext
+                    class="w-[8vw] "
+                    :blocks="contact.contact"
+                  ></Richtext>
             <a href="#" class="instagram-icona w-[31vw]">
               <!-- Instagram SVG Icon -->
               <svg
@@ -59,10 +60,15 @@
               </svg>
             </a>
           </div>
-          <div class="email ml-[5vw] text-left mt-[2vh]">
+          <!-- <div class="email ml-[5vw] text-left mt-[2vh]">
             <p class="italic underline">Email</p>
             <p>natalya@palazzoeventi.com</p>
-          </div>
+          </div> -->
+          <Richtext
+                    class="email ml-[5vw] text-left mt-[2vh] "
+                    :blocks="contact.email"
+                  ></Richtext>
+          
         </div>
       </div>
 
@@ -90,7 +96,7 @@
             placeholder="Estimated Budget *"
           />
         </form>
-        <div class="send-button text-center mt-[10vh]">
+        <div class="send-button text-center mt-[7vh]">
           <button class="border border-black px-6 py-2">SEND</button>
         </div>
       </div>
@@ -104,33 +110,42 @@
     </div>
 
     <!-- mobile -->
-    <div class="nodes">
-      <!-- <p>d</p> -->
-      <!-- <p
-             v-if="!isMenuOpen"
-          class="headingspages w-[100%] pointer-events-none text-center text-4xl  uppercase "
-        >
-          Contact
-        </p> -->
-    </div>
+    
 
     <div class="bgcream nodes relative min-h-screen flex"></div>
 
     <div class="nodes contentamb flex h-max">
+
+      <!-- <div class="nodes">
+      <p
+             v-if="!isMenuOpen"
+          class="headingspages w-[100%] pointer-events-none text-center text-4xl  uppercase "
+        >
+          Contact
+        </p>
+    </div> -->
       <!-- Left Content: Address and Contact Info -->
       <div class="left-content">
         <div class="address text-left flex">
-          <div>
+          <!-- <div>
             <p class="italic underline">Address</p>
             <p class="w-[58%]">10 Cromwell Road, Hove East</p>
-          </div>
+          </div> -->
+          <Richtext
+                    class="richcont w-[34%]"
+                    :blocks="contact.address"
+                  ></Richtext>
           <div class="">
             <div class="contact text-left">
-              <p class="italic underline">Contact</p>
+              <!-- <p class="italic underline">Contact</p>
               <div class="w-[23vw]">
                 <p>Natalya Zelentsova</p>
                 <p>+39 347 6999121</p>
-              </div>
+              </div> -->
+              <Richtext
+                    class="richcont w-[23vw] ml-[7vw]"
+                    :blocks="contact.contact"
+                  ></Richtext>
             </div>
             <!-- <p>
               For more comprehensive conversation with one of our expert
@@ -162,13 +177,15 @@
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>
             </div>
-            <div class="email ml-[5vw] text-left mt-[2vh]">
-              <p class="italic underline">Email</p>
+            <div class="email ml-[5vw] text-left">
+              <!-- <p class="italic underline">Email</p>
               <div class="w-max">
-                <!-- <p>Natalya Zelentsova</p>
-              <p>+39 347 6999121</p> -->
                 <p>natalya@palazzoeventi.com</p>
-              </div>
+              </div> -->
+              <Richtext
+                    class="richcont  "
+                    :blocks="contact.email"
+                  ></Richtext>
             </div>
           </div>
         </div>
@@ -217,24 +234,44 @@
 import HeaderComponent from "@/components/layout/Header.vue";
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
+import { groq } from "@nuxtjs/sanity";
 
 export default {
   name: "IndexPage",
+
+  async asyncData({ params, $sanity, store }) {
+    const query = groq`*[_type == "contact"]{
+    title,
+    address,
+    address2,
+    contact,
+    email,
+  } | order(_updatedAt desc)[0]`;
+
+    const contact = await $sanity.fetch(query);
+
+    return { contact };
+  },
 
   components: {
     HeaderComponent,
   },
 
   computed: {
-    ...mapGetters({
-      isMenuOpen: "isMenuOpen", // This will map to the Vuex getter
-    }),
+    ...mapGetters(['isMenuOpen']), 
     ...mapState(["gridpub"]),
+  },
+
+  methods: {
+    ...mapMutations(['toggleMenu', 'setMenuState']),
+   
   },
 };
 </script>
 
 <style scoped>
+
+
 .headingspagesb {
   font-family: "GT-Bold";
 }
@@ -295,7 +332,7 @@ export default {
 
 .bgcream {
   background-size: cover;
-  background-position: top;
+  background-position: top; 
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
@@ -327,6 +364,10 @@ export default {
   font-size: 1vw;
   flex: 1; /* Ensures both take equal width in the flex container */
   overflow: visible; /* Ensures that content is not clipped */
+}
+
+.contact-form{
+  font-size: .8vw;
 }
 
 .contact-form input {
@@ -391,6 +432,8 @@ input::placeholder {
 }
 
 @media only screen and (max-width: 768px) {
+
+
   .bgcream {
     background-size: contain;
     background-position: bottom;

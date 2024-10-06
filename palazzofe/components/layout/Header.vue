@@ -82,11 +82,11 @@
             <li><a href="./weddings">WEDDINGS</a></li>
             <li><a href="./events">EVENTS</a></li>
             <li><a href="./services">SERVICES</a></li>
-            <li><a href="#about">ABOUT</a></li>
+            <li><a href="./about">ABOUT</a></li>
             <li><a href="./press">PRESS</a></li>
             <li><a href="#team">TEAM</a></li>
             <li><a href="./contact">CONTACT</a></li>
-            <li><a href="#awards">AWARDS</a></li>
+            <li><a href="./awards">AWARDS</a></li>
           </ul>
         </nav>
       </div>
@@ -132,8 +132,8 @@ export default {
       // Return different URLs based on the grid item index
       const links = [
         './weddings', './events', './services',
-        '/link4', './', './press',
-        './contact', '/link8', '/link9',
+        '/about', './', './press',
+        './contact', '/link8', './awards',
       ];
       return links[index - 1]; // Adjust index for 1-based loop
     },
@@ -147,7 +147,10 @@ export default {
     computed: {
     currentTitle() {
       return this.$store.state.title;
-    }
+    },
+    isMenuOpen() {
+      return this.$store.getters.isMenuOpen;
+    },
   },
   },
 };
