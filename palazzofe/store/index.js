@@ -3,6 +3,7 @@ export const state = () => ({
   gridd: [],
   gridpub: [],
   gridaw: [],
+  gridteam: [],
   title: false,
   activeProject: false,
   activeTalent: false,
@@ -24,6 +25,9 @@ export const mutations = {
   },  
   SET_GRIDAW(state, grid4) {
     state.gridaw = grid4
+  },
+  SET_GRIDTEAM(state, grid5) {
+    state.gridteam = grid5
   },
   SET_TITLE(state, title) {
     state.title = title
@@ -213,6 +217,44 @@ _key, double, spacer,
 } | order(_updatedAt desc)[0]`
 
 
+const gridQuery5 = groq`*[_type == "team" ] 
+{
+  grid7[] {
+_key, double, spacer, 
+"video" : {"id" : video.asset->playbackId, 
+"aspect" : video.asset->data.aspect_ratio , 
+"thumbTime" : video.asset->thumbTime }, 
+"image" : 
+  {"image" : image.asset._ref, 
+  "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+  "size" : {"width" : image.asset->metadata.dimensions.width, 
+  "height" : image.asset->metadata.dimensions.height}, 
+  "position" : position }, 
+  "imageh" : 
+  { "imageh" : imageh.asset._ref,
+  "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+  "size" : {"width" : image.asset->metadata.dimensions.width, 
+  "height" : image.asset->metadata.dimensions.height}, 
+  "position" : position }, 
+  portrait,
+  link, title, year, private, month,
+"reference": reference->{
+    _id,
+    title,
+    "slug" : slug.current,
+    "slider": slider[] {
+      _key,
+      images[] {
+        _key,
+        portrait,
+        "imageUrl": image.asset->url
+      }
+    }
+  }
+     }
+} | order(_updatedAt desc)[0]`
+
+
 
 
 const gridQuery3 = groq`*[_type == "publications" ] 
@@ -287,6 +329,8 @@ _key, double, spacer,
 } | order(_updatedAt desc)[0]`
 
 
+
+
   const grid = await this.$sanity.fetch(gridQuery)
   // console.log('Grid Query Result:', grid) 
     commit('SET_GRID', grid)
@@ -307,6 +351,11 @@ _key, double, spacer,
     const gridaw = await this.$sanity.fetch(gridQuery4)
     // console.log('Grid2 Query Result:', grid2)
     commit('SET_GRIDAW', gridaw)
+    // commit('SET_GRID3', grid2.grid3);
+
+    const gridteam = await this.$sanity.fetch(gridQuery5)
+    // console.log('Grid2 Query Result:', grid2)
+    commit('SET_GRIDTEAM', gridteam)
     // commit('SET_GRID3', grid2.grid3);
 
   

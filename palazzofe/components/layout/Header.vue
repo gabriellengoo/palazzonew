@@ -84,7 +84,7 @@
             <li><a href="./services">SERVICES</a></li>
             <li><a href="./about">ABOUT</a></li>
             <li><a href="./press">PRESS</a></li>
-            <li><a href="#team">TEAM</a></li>
+            <li><a href="./team">TEAM</a></li>
             <li><a href="./contact">CONTACT</a></li>
             <li><a href="./awards">AWARDS</a></li>
           </ul>
@@ -133,7 +133,7 @@ export default {
       const links = [
         './weddings', './events', './services',
         '/about', './', './press',
-        './contact', '/link8', './awards',
+        './contact', './team', './awards',
       ];
       return links[index - 1]; // Adjust index for 1-based loop
     },

@@ -132,7 +132,7 @@
             <p class="w-[58%]">10 Cromwell Road, Hove East</p>
           </div> -->
           <Richtext
-                    class="richcont w-[34%]"
+                    class="richcontt w-[34%]"
                     :blocks="contact.address"
                   ></Richtext>
           <div class="">
@@ -143,7 +143,7 @@
                 <p>+39 347 6999121</p>
               </div> -->
               <Richtext
-                    class="richcont w-[23vw] ml-[7vw]"
+                    class="richcontt w-[23vw] ml-[7vw]"
                     :blocks="contact.contact"
                   ></Richtext>
             </div>
@@ -183,7 +183,7 @@
                 <p>natalya@palazzoeventi.com</p>
               </div> -->
               <Richtext
-                    class="richcont  "
+                    class="richcontt  "
                     :blocks="contact.email"
                   ></Richtext>
             </div>
