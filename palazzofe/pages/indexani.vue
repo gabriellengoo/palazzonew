@@ -1,86 +1,33 @@
 <template>
-  <div
+   <div
     class="bgmobile relative min-h-screen"
-    :style="{ backgroundImage: 'url(/background.jpg)' }"
-    @mousemove="handleMouseMove"
+    :style="{ backgroundImage: 'url(/background.jpg)', backgroundAttachment: 'fixed' }"
   >
-
-
-  <div class="headera nodesnav content flex w-full justify-between">
+    <div class="headera nodesnav content flex w-full justify-between">
       <h1 class="navmb navmbbord">
- 
         <HeaderComponent />
       </h1>
-
       <h1 class="nodesk textmbhead">PALAZZO EVENTI</h1>
-
-      <p class="navmbno yeart text-center text-4xl  uppercase ">
-        Weddings
-      </p>
-      <p
-        class="navmbno yeart w-[5vw] text-center text-4xl  uppercase "
-      ></p>
-      <p class="navmbno headingspages text-center text-4xl uppercase">
-        palazzo eventi
-      </p>
-      <h1 class="navmbno w-[2vw]">
-   
-      </h1>
+      <p class="navmbno yeart text-center text-4xl uppercase">Weddings</p>
+      <p class="navmbno headingspages text-center text-4xl uppercase">palazzo eventi</p>
     </div>
 
- 
-
-    <div class="headera nomb content flex w-full justify-between">
+    <div class="headera nomb fixed content flex w-full justify-between">
         <h1  class="headingspages text-center text-4xl mb-6 uppercase pt-5 md:pt-2">
-          <!-- <a href="../weddings"
-            ><SvgClose class="headbar hover:cursor-pointer"
-          /></a> -->
+         
           <HeaderComponent @menu-toggled="isMenuOpen = $event" class="headbar w-[2vw] hover:cursor-pointer" />
 
         </h1>
-        <!-- <p
-          class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
-          v-if="project"
-        >
-          {{ project.title }}
-        </p>
-        <p
-          class="yeart text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
-          v-if="project"
-        >
-          {{ project.year }}
-        </p> -->
         <p
           class="headingspages opacity-0 text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
         >
           Weddings 
         </p>
         <h1 class="w-[2vw]">
-          <!-- weddings -->
-          <!-- <a href="../weddings"
-                ><SvgClose class="headbar hover:cursor-pointer"
-              /></a> -->
+       
         </h1>
       </div>
 
-
-    <!-- transform translate-y-[50vh] -->
-    <div class="nomb":class="{ 'hidden-content': isMenuOpen }" id="main-content2">
-      <transition name="fade">
-        <img
-          :src="currentImage"
-          :key="currentImageIndex"
-          class="absolute absolute-center inset-0 w-[100%] mx-auto top-[0vh]"
-          alt="Cherubs"
-        />
-      </transition>
-    </div>
-
-    <div
-      :class="{ 'hidden-content': isMenuOpen }"
-      id="main-content"
-      class="md:flex mbmain justify-center md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen"
-    >
       <div class="textmainpg text-center">
         <h1
           class="maintext text-[14vw] lg:text-[6rem] xl:text-[13rem] text-black leading-tight relative z-0"
@@ -89,27 +36,27 @@
         </h1>
       </div>
 
-      <div class="nodes h-screen w-screen">
+      <!-- Scrollable content -->
+      <div class="image-container" @scroll="handleScroll">
+      <div class="image-wrapper" v-for="(image, index) in images" :key="index">
         <img
-          src="flowero.png"
-          class="p-[16vw] pb-[10vw]"
-          alt="Cherubs"
-        />
-        <img
-          src="angelss.png"
-          class="p-[16vw] pt-[0vw]"
-          alt="Cherubs"
+          :src="image"
+          class="scroll-image"
+          :class="{ 'fixed-center': isImageFixed(index) }"
+          alt="Scrolling Image"
         />
       </div>
     </div>
   </div>
 </template>
 
+
 <script>
 import HeaderComponent from "@/components/layout/Header.vue";
 
 export default {
   name: "IndexPage",
+
   components: {
     HeaderComponent, // Register the component here
   },
@@ -117,70 +64,60 @@ export default {
   data() {
     return {
       images: [
-        // '/angelss.png',
         "/flowert.png",
-        // '/flowero.png'
-        // Add paths to your images here
+        "/angels2.png",
+        "/bird.png"
       ],
-      isMenuOpen: false,
       currentImageIndex: 0,
-      lastMousePosition: { x: 0, y: 0 },
-      movementThreshold: 300, // Increase threshold for slower image changes
+      scrollY: 0,
     };
-  },
-  computed: {
-    currentImage() {
-      return this.images[this.currentImageIndex];
-    },
-    imageClass() {
-      // Conditionally apply width class based on the current image
-      return this.currentImage === "/flower4.png" ? "w-[100vw]" : "";
-    },
   },
   methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-    },
-    handleMouseMove(event) {
-      const { clientX: x, clientY: y } = event;
-      const dx = x - this.lastMousePosition.x;
-      const dy = y - this.lastMousePosition.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance > this.movementThreshold) {
-        this.changeImage();
-        this.lastMousePosition = { x, y };
+    handleScroll() {
+      if (process.client) {
+        this.scrollY = window.scrollY;
       }
     },
-    changeImage() {
-      this.currentImageIndex =
-        (this.currentImageIndex + 1) % this.images.length;
-    },
-    beforeEnter(el) {
-      el.style.opacity = 0;
-    },
-    enter(el, done) {
-      el.offsetHeight; // Trigger reflow
-      el.style.transition = "opacity 1s";
-      el.style.opacity = 1;
-      done();
-    },
-    leave(el, done) {
-      el.style.transition = "opacity 1s";
-      el.style.opacity = 0;
-      done();
-    },
+    isImageFixed(index) {
+      if (!process.client) return false;
+      
+      const scrollPosition = this.scrollY;
+      const imageHeight = window.innerHeight;
+      const imageStart = index * imageHeight;
+      const imageEnd = imageStart + imageHeight;
+
+      // Return true when the image should be fixed at the center
+      return scrollPosition >= imageStart && scrollPosition <= imageEnd;
+    }
   },
   mounted() {
-    this.lastMousePosition = {
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
-    };
+    if (process.client) {
+      window.addEventListener("scroll", this.handleScroll);
+    }
   },
+  beforeDestroy() {
+    if (process.client) {
+      window.removeEventListener("scroll", this.handleScroll);
+    }
+  }
 };
 </script>
 
+
+
+
 <style scoped>
+
+.textmainpg{
+  position: fixed;
+    margin: auto;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+        z-index: 10;
+}
 
 .headera {
     display: flex;
@@ -194,9 +131,9 @@ export default {
     background-position: 0 0;
     background-position: initial;
     background-repeat: no-repeat;
-    position: absolute;
+    position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 100;
     padding: 0.9vw;
 }
 
@@ -240,6 +177,38 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
 } */
+
+.bgmobile {
+  background-size: 113vw;
+    /* background-position: too; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;/* Ensure the background stays fixed */
+}
+
+.image-container {
+  min-height: 300vh; /* Ensure enough height for scrolling */
+}
+
+.image-wrapper {
+  position: relative;
+  height: 100vh; /* Each image takes up full viewport height */
+}
+
+.scroll-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+}
+
+.fixed-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 @media only screen and (max-width: 768px) {
   .textmbhead{

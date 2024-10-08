@@ -104,7 +104,7 @@
 
     <!-- Central Artwork Image (Angel) -->
     <div
-      class="nomb absolute bottom-[27vh] left-[47vw] transform -translate-x-1/2 z-10"
+      class="nomb absolute bottom-[27vh] left-[49vw] transform -translate-x-1/2 z-10"
     >
       <img src="anglecon.png" alt="Angel Artwork" class="w-auto h-[40vh]" />
     </div>
