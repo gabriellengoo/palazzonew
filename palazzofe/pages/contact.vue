@@ -13,11 +13,11 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
-    <div
+    <!-- <div
         class="mbhead absolute top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[10] pointer-events-none"
       >
         <img class="w-[30vw]" src="/conflower.png" />
-      </div>
+      </div> -->
 
     <!-- desktop -->
     <div class="bgcream nomb relative min-h-screen flex"></div>
@@ -84,8 +84,12 @@
             placeholder="Estimated Budget *"
           />
         </form>
-        <div class="send-button text-center mt-[7vh]">
+        <!-- <div class="send-button text-center mt-[7vh]">
           <button class="border border-black px-6 py-2">SEND</button>
+        </div> -->
+        <div class="flex justify-center">
+          <button class="mt-[9vh] w-auto"> <img src="send.png" alt="Angel Artwork" class="w-[10vw] h-auto" />
+          </button>
         </div>
       </div>
     </div>
@@ -196,8 +200,9 @@
             placeholder="Estimated Budget *"
           />
         </form>
-        <div class="send-button text-center mt-[10vh]">
-          <button class="border border-black px-6 py-2">SEND</button>
+        <div class="">
+          <button class="mt-[9vh] w-[26vw]"> <img src="send.png" alt="Angel Artwork" class="w-auto h-auto" />
+          </button>
         </div>
       </div>
     </div>
@@ -339,6 +344,7 @@ export default {
 
 .contact-form {
   font-size: 0.8vw;
+  font-size: 1vw;
   font-family: "NHaas";
 }
 
@@ -346,7 +352,7 @@ export default {
   border-bottom: 0.5px solid #a29585;
   padding: 0.1vw;
   background-color: #ffffff00;
-  width: 95%;
+  width: 98%;
   text-transform: uppercase;
 }
 
