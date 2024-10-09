@@ -20,8 +20,12 @@
           <div v-if="gridpub.grid4" class="">
             <Gridpub class="" :items="gridpub.grid4" size="small"></Gridpub>
           </div>
+          <div v-if="gridpub.grid5" class="nodes border-t-2">
+          <Gridpub class="" :items="gridpub.grid5" size="small"></Gridpub>
+        </div>
         </div>
       </div>
+
 
       <!-- <div
         class="mbhead absolute top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[10] pointer-events-none"
