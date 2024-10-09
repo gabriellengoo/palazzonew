@@ -13,6 +13,12 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
+    <div
+        class="mbhead absolute top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[10] pointer-events-none"
+      >
+        <img class="w-[30vw]" src="/conflower.png" />
+      </div>
+
     <!-- desktop -->
     <div class="bgcream nomb relative min-h-screen flex"></div>
 
@@ -20,44 +26,27 @@
       <!-- Left Content: Address and Contact Info -->
       <div class="left-content w-1/2 p-[3vw] pl-[0vw]">
         <div class="address text-left flex">
-         
-          <Richtext
-                    class="w-[7vw] "
-                    :blocks="contact.address"
-                  ></Richtext>
+          <Richtext class="w-[7vw] adsize" :blocks="contact.address"></Richtext>
           <div class="ml-[6vw]">
             <Richtext
-                    class="w-[20vw] "
-                    :blocks="contact.address2"
-                  ></Richtext>
-           
+              class="w-[20vw] text-[1.05vw]"
+              :blocks="contact.address2"
+            ></Richtext>
           </div>
         </div>
         <div class="flex">
           <div class="contact text-left mt-[2vh]">
-           
             <Richtext
-                    class="w-[8vw] "
-                    :blocks="contact.contact"
-                  ></Richtext>
+              class="w-[8vw] adsize"
+              :blocks="contact.contact"
+            ></Richtext>
             <a href="#" class="instagram-icona w-[31vw]">
               <!-- Instagram SVG Icon -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
+              <img
+                src="insta.png"
+                alt="Angel Artwork"
                 class="instagram-icon mr-2"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path
-                  d="M16 11.37a4 4 0 1 1-4.63-4.63 4 4 0 0 1 4.63 4.63z"
-                ></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
+              />
             </a>
           </div>
           <!-- <div class="email ml-[5vw] text-left mt-[2vh]">
@@ -65,10 +54,9 @@
             <p>natalya@palazzoeventi.com</p>
           </div> -->
           <Richtext
-                    class="email ml-[5vw] text-left mt-[2vh] "
-                    :blocks="contact.email"
-                  ></Richtext>
-          
+            class="email adsize ml-[5vw] text-left mt-[2vh]"
+            :blocks="contact.email"
+          ></Richtext>
         </div>
       </div>
 
@@ -110,12 +98,10 @@
     </div>
 
     <!-- mobile -->
-    
 
     <div class="bgcream nodes relative min-h-screen flex"></div>
 
     <div class="nodes contentamb flex h-max">
-
       <!-- <div class="nodes">
       <p
              v-if="!isMenuOpen"
@@ -132,9 +118,9 @@
             <p class="w-[58%]">10 Cromwell Road, Hove East</p>
           </div> -->
           <Richtext
-                    class="richcontt w-[34%]"
-                    :blocks="contact.address"
-                  ></Richtext>
+            class="richcontt w-[34%]"
+            :blocks="contact.address"
+          ></Richtext>
           <div class="">
             <div class="contact text-left">
               <!-- <p class="italic underline">Contact</p>
@@ -143,9 +129,9 @@
                 <p>+39 347 6999121</p>
               </div> -->
               <Richtext
-                    class="richcontt w-[23vw] ml-[7vw]"
-                    :blocks="contact.contact"
-                  ></Richtext>
+                class="richcontt w-[23vw] ml-[7vw]"
+                :blocks="contact.contact"
+              ></Richtext>
             </div>
             <!-- <p>
               For more comprehensive conversation with one of our expert
@@ -156,36 +142,24 @@
         </div>
         <div class="flex contamb">
           <div class="contact flex text-left mt-[2vh]">
-            <div class="w-[31vw]">
+            <!-- <div class="w-[31vw]"> -->
               <!-- Instagram SVG Icon -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+              <a href="#" class="instagram-icona w-[31vw]">
+              <!-- Instagram SVG Icon -->
+              <img
+                src="insta.png"
+                alt="Angel Artwork"
                 class="instagram-icon mr-2"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path
-                  d="M16 11.37a4 4 0 1 1-4.63-4.63 4 4 0 0 1 4.63 4.63z"
-                ></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </div>
+              />
+            </a>
+            
+            <!-- </div> -->
             <div class="email ml-[5vw] text-left">
               <!-- <p class="italic underline">Email</p>
               <div class="w-max">
                 <p>natalya@palazzoeventi.com</p>
               </div> -->
-              <Richtext
-                    class="richcontt  "
-                    :blocks="contact.email"
-                  ></Richtext>
+              <Richtext class="richcontt" :blocks="contact.email"></Richtext>
             </div>
           </div>
         </div>
@@ -258,20 +232,17 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['isMenuOpen']), 
+    ...mapGetters(["isMenuOpen"]),
     ...mapState(["gridpub"]),
   },
 
   methods: {
-    ...mapMutations(['toggleMenu', 'setMenuState']),
-   
+    ...mapMutations(["toggleMenu", "setMenuState"]),
   },
 };
 </script>
 
 <style scoped>
-
-
 .headingspagesb {
   font-family: "GT-Bold";
 }
@@ -332,7 +303,7 @@ export default {
 
 .bgcream {
   background-size: cover;
-  background-position: top; 
+  background-position: top;
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
@@ -366,8 +337,9 @@ export default {
   overflow: visible; /* Ensures that content is not clipped */
 }
 
-.contact-form{
-  font-size: .8vw;
+.contact-form {
+  font-size: 0.8vw;
+  font-family: "NHaas";
 }
 
 .contact-form input {
@@ -396,13 +368,15 @@ export default {
   font-size: 1.5vw;
   width: 10vw;
   border-radius: 50%;
+  padding-top: 2vh;
 }
 
 .send-button button:hover {
-  background-image: url("./static/background.jpg");
+  /* background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: initial;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #ffffff97;
   transition-duration: 0.5s;
 }
 
@@ -426,13 +400,22 @@ input::placeholder {
 }
 
 .instagram-icona {
- color: black;
- top: 9vh;
- position: relative;
+  color: black;
+  top: 9vh;
+  position: relative;
 }
 
 @media only screen and (max-width: 768px) {
+  .instagram-icon {
+  width: 5vw;
+  height: auto;
+}
 
+.instagram-icona {
+  color: black;
+  top: auto;
+  position: relative;
+}
 
   .bgcream {
     background-size: contain;

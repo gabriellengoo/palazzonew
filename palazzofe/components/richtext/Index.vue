@@ -47,6 +47,14 @@ export default {
 }
 </script>
 <style scoped>
+
+.adsize div p:nth-child(2){
+  font-size: 1.05vw;
+}
+
+.adsize div p:nth-child(3){
+  font-size: 1.05vw;
+}
 /* p:not(:first-of-type) {
   text-indent: 1rem;
 } */

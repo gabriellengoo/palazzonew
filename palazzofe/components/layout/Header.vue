@@ -225,8 +225,8 @@ export default {
   font-weight: 100;
   padding-left: 7vw;
     padding-right: 7vw;
-    padding-left: 13vw;
-    padding-right: 13vw;
+    padding-left: 16vw;
+    padding-right: 16vw;
   /* letter-spacing: 2px; */
 }
 
