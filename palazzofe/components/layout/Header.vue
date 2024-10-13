@@ -280,8 +280,8 @@ display: unset;
     /* font-size: 5.2vh; */
     /* color: black; */
     font-weight: 100;
-    padding-left: 15vw;
-    padding-right: 15vw;
+    padding-left: 16vw;
+    padding-right: 16vw;
 }
 
 }

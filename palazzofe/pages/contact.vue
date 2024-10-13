@@ -88,7 +88,15 @@
           <button class="border border-black px-6 py-2">SEND</button>
         </div> -->
         <div class="flex justify-center">
-          <button class="mt-[9vh] w-auto"> <img src="send.png" alt="Angel Artwork" class="w-[10vw] h-auto" />
+          <button class="mt-[9vh] w-auto"> 
+            <!-- <img
+    :src="currentImage" 
+    alt="Angel Artwork" 
+    class="w-[10vw] h-auto"
+    @mouseover="hoverImage" 
+    @mouseleave="resetImage"
+  /> -->
+  <img src="send.png" alt="Angel Artwork"     class="w-[10vw] h-auto" />
           </button>
         </div>
       </div>
@@ -218,6 +226,14 @@ import { groq } from "@nuxtjs/sanity";
 export default {
   name: "IndexPage",
 
+  data() {
+    return {
+      defaultImage: 'send.png',  // Default image
+      hoverImage: 'sendhn.png',    // Image to show on hover
+      currentImage: 'send.png'     // Track the current image
+    };
+  },
+
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "contact"]{
     title,
@@ -230,6 +246,16 @@ export default {
     const contact = await $sanity.fetch(query);
 
     return { contact };
+  },
+
+
+  methods: {
+    hoverImage() {
+      this.currentImage = this.hoverImage; // Change to hover image on mouseover
+    },
+    resetImage() {
+      this.currentImage = this.defaultImage; // Revert to default image on mouseleave
+    }
   },
 
   components: {
@@ -248,6 +274,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .headingspagesb {
   font-family: "GT-Bold";
 }

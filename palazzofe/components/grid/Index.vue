@@ -5,22 +5,13 @@
       <div class="image-grid pt-[1vh]">
 
         <div class="nodes">
-          <!-- <p>d</p> -->
-          <p
-           v-if="!isMenuOpen"
-         
-          class="headingspages text-center text-4xl  uppercase "
-        >
-          Weddings
-        </p>
+          <p v-if="!isMenuOpen" class="headingspages text-center text-4xl uppercase">
+            Weddings
+          </p>
         </div>
-   
+
         <!-- Loop through the items array in chunks of two -->
-        <div
-          v-for="(chunk, chunkIndex) in chunkedItems"
-          :key="chunkIndex"
-          class="image-row"
-        >
+        <div v-for="(chunk, chunkIndex) in chunkedItems" :key="chunkIndex" class="image-row">
           <div
             v-for="(item, index) in chunk"
             :key="item._key"
@@ -29,28 +20,16 @@
             @mouseleave="hoveredIndex = null; isDefaultActive = true"
           >
             <!-- Image Item -->
-            <div
-              class="relative image-item transition-opacity duration-300"
-              :class="[
-                item.double ? 'double h-fit' : '',
-                item.spacer ? 'p-2' : '',
-                activeTalent &&
-                activeTalent != item.reference.talentId &&
-                activeTalent != item.reference ? 'hidden' : ''
-              ]"
-            >
+            <div class="relative image-item transition-opacity duration-300">
               <figure class="flex flex-col">
                 <div class="relative">
                   <NuxtLink
                     v-if="item.reference.slug"
                     :to="`/work/${item.reference.slug}`"
-                    class="flex flex-col items-end h-full"
+                    class="flex flex-col items-end h-full link-animation linka"  
                   >
                     <figure class="inner-image">
-                      <MediaImage
-                        :src="item.image.image"
-                        v-if="item.image.image"
-                      />
+                      <MediaImage :src="item.image.image" v-if="item.image.image" />
                     </figure>
                     <figcaption class="textsum block text-center uppercase w-full pt-2">
                       <span class="textsumf">{{ item.title || item.reference.title }}</span>
@@ -58,7 +37,6 @@
                     </figcaption>
                   </NuxtLink>
 
-                  <!-- Conditionally show sideim div on hover with fade effect -->
                   <div 
                     v-show="hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0)" 
                     class="sideim"
@@ -69,9 +47,9 @@
                         :src="item.imageh.imageh"
                         v-if="item.imageh.imageh"
                         :class="{
-                            portraitw: item.portrait,
-                            landscapew: !item.portrait,
-                          }"
+                          portraitw: item.portrait,
+                          landscapew: !item.portrait,
+                        }"
                       />
                     </figure>
                   </div>
@@ -89,6 +67,7 @@
 
 
 
+
 <script>
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
@@ -101,6 +80,7 @@ export default {
       isDesktop: false,
       hoveredIndex: null, // Track the hovered image item
       isDefaultActive: true, // Controls the visibility of the default image
+      isAnimating: true, // Track if the animation should be applied
     };
   },
   computed: {
@@ -128,6 +108,11 @@ export default {
       this.hoveredIndex = this.items[0]._key;
       this.isDefaultActive = true;
     }
+
+    // Remove animation class after a short delay
+    setTimeout(() => {
+      this.isAnimating = false;
+    }, 500); // Adjust the duration to match your animation
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);
@@ -143,7 +128,36 @@ export default {
 
 
 
+
 <style scoped>
+.link-animation {
+  transform: scale(0); /* Start small */
+  animation: scale-up 3s forwards; /* Animate scale */
+}
+
+.linka {
+  /* transform: scale(2);
+  transition: transform 0.3s ease; */
+  /* transition: width 3s ease;
+  transition-duration: 3s; */
+  /* opacity: 0;  */
+}
+
+.linka:hover {
+  /* transform: scale(2);
+  transition: transform 0.3s ease; */
+  /* width: 102%;
+  transition: width 3s ease;
+  transition-duration: 3s; */
+  /* opacity: 0;  */
+}
+
+@keyframes scale-up {
+  to {
+    transform: scale(1); /* End at original size */
+  }
+}
+
 .sideim {
   position: fixed;
   left: 50vw;

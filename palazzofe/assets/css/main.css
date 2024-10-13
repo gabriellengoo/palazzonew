@@ -327,11 +327,17 @@ html {
   line-height: normal;
   font-size: 3.5vw;
   /* top: 1.vh !important; */
-  z-index: 1000;
+  z-index: 100;
   position: absolute;
   position: fixed;
   line-height: normal;
   width: 100%;
+  pointer-events: none;
+}
+
+.headbar a{
+  z-index: 1000 !important;
+  position: relative;
 }
 
 .yeart{
