@@ -80,7 +80,8 @@ export default {
       isDesktop: false,
       hoveredIndex: null, // Track the hovered image item
       isDefaultActive: true, // Controls the visibility of the default image
-      isAnimating: true, // Track if the animation should be applied
+      // isAnimating: true, 
+      // Track if the animation should be applied
     };
   },
   computed: {
@@ -104,15 +105,16 @@ export default {
     window.addEventListener("resize", this.handleResize);
 
     // Set the first item's _key to hoveredIndex by default
-    if (this.items.length > 0) {
-      this.hoveredIndex = this.items[0]._key;
-      this.isDefaultActive = true;
-    }
+    // if (this.items.length > 0) {
+    //   this.hoveredIndex = this.items[0]._key;
+    //   this.isDefaultActive = true;
+    // }
 
     // Remove animation class after a short delay
-    setTimeout(() => {
-      this.isAnimating = false;
-    }, 500); // Adjust the duration to match your animation
+    // setTimeout(() => {
+    //   this.isAnimating = false;
+    // }, 500);
+     // Adjust the duration to match your animation
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);

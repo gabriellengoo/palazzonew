@@ -37,7 +37,7 @@
       </div>
 
       <!-- Scrollable content -->
-      <div class="image-container" @scroll="handleScroll">
+      <div class="image-container nomb" @scroll="handleScroll">
       <div class="image-wrapper" v-for="(image, index) in images" :key="index">
         <img
           :src="image"

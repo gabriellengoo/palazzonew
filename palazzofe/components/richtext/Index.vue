@@ -55,6 +55,10 @@ export default {
 .adsize div p:nth-child(3){
   font-size: 1.05vw;
 }
+
+.adsizemb div p:nth-child(1){
+  font-size: 3.5vw;
+}
 /* p:not(:first-of-type) {
   text-indent: 1rem;
 } */

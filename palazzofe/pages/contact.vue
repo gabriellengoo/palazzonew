@@ -62,7 +62,9 @@
 
       <!-- Right Content: Form Section -->
       <div class="right-content w-1/2 p-[5vw] pl-[20vw] pt-[4vw]">
-        <form class="contact-form grid grid-cols-2 gap-4">
+
+
+        <form action="https://formspree.io/f/xwpkkljw" method="POST" class="contact-form grid grid-cols-2 gap-4">
           <input class="col-span-1" type="text" placeholder="Name *" />
           <input
             class="col-span-1"
@@ -88,7 +90,7 @@
           <button class="border border-black px-6 py-2">SEND</button>
         </div> -->
         <div class="flex justify-center">
-          <button class="mt-[9vh] w-auto"> 
+          <button type="submit" class="mt-[9vh] w-auto">
             <!-- <img
     :src="currentImage" 
     alt="Angel Artwork" 
@@ -96,7 +98,7 @@
     @mouseover="hoverImage" 
     @mouseleave="resetImage"
   /> -->
-  <img src="send.png" alt="Angel Artwork"     class="w-[10vw] h-auto" />
+            <img src="send.png" alt="Angel Artwork" class="w-[10vw] h-auto" />
           </button>
         </div>
       </div>
@@ -130,7 +132,7 @@
             <p class="w-[58%]">10 Cromwell Road, Hove East</p>
           </div> -->
           <Richtext
-            class="richcontt w-[34%]"
+            class="richcontt adsizemb w-[34%]"
             :blocks="contact.address"
           ></Richtext>
           <div class="">
@@ -141,7 +143,7 @@
                 <p>+39 347 6999121</p>
               </div> -->
               <Richtext
-                class="richcontt w-[23vw] ml-[7vw]"
+                class="richcontt adsizemb w-[23vw] ml-[7vw]"
                 :blocks="contact.contact"
               ></Richtext>
             </div>
@@ -155,8 +157,8 @@
         <div class="flex contamb">
           <div class="contact flex text-left mt-[2vh]">
             <!-- <div class="w-[31vw]"> -->
-              <!-- Instagram SVG Icon -->
-              <a href="#" class="instagram-icona w-[31vw]">
+            <!-- Instagram SVG Icon -->
+            <a href="#" class="instagram-icona w-[31vw]">
               <!-- Instagram SVG Icon -->
               <img
                 src="insta.png"
@@ -164,14 +166,14 @@
                 class="instagram-icon mr-2"
               />
             </a>
-            
+
             <!-- </div> -->
             <div class="email ml-[5vw] text-left">
               <!-- <p class="italic underline">Email</p>
               <div class="w-max">
                 <p>natalya@palazzoeventi.com</p>
               </div> -->
-              <Richtext class="richcontt" :blocks="contact.email"></Richtext>
+              <Richtext class="richcontt adsizemb" :blocks="contact.email"></Richtext>
             </div>
           </div>
         </div>
@@ -209,7 +211,8 @@
           />
         </form>
         <div class="">
-          <button class="mt-[9vh] w-[26vw]"> <img src="send.png" alt="Angel Artwork" class="w-auto h-auto" />
+          <button class="mt-[9vh] w-[26vw]">
+            <img src="send.png" alt="Angel Artwork" class="w-auto h-auto" />
           </button>
         </div>
       </div>
@@ -228,9 +231,9 @@ export default {
 
   data() {
     return {
-      defaultImage: 'send.png',  // Default image
-      hoverImage: 'sendhn.png',    // Image to show on hover
-      currentImage: 'send.png'     // Track the current image
+      defaultImage: "send.png", // Default image
+      hoverImage: "sendhn.png", // Image to show on hover
+      currentImage: "send.png", // Track the current image
     };
   },
 
@@ -248,14 +251,13 @@ export default {
     return { contact };
   },
 
-
   methods: {
     hoverImage() {
       this.currentImage = this.hoverImage; // Change to hover image on mouseover
     },
     resetImage() {
       this.currentImage = this.defaultImage; // Revert to default image on mouseleave
-    }
+    },
   },
 
   components: {
@@ -274,8 +276,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .headingspagesb {
   font-family: "GT-Bold";
 }
@@ -441,15 +441,15 @@ input::placeholder {
 
 @media only screen and (max-width: 768px) {
   .instagram-icon {
-  width: 5vw;
-  height: auto;
-}
+    width: 5vw;
+    height: auto;
+  }
 
-.instagram-icona {
-  color: black;
-  top: auto;
-  position: relative;
-}
+  .instagram-icona {
+    color: black;
+    top: auto;
+    position: relative;
+  }
 
   .bgcream {
     background-size: contain;
