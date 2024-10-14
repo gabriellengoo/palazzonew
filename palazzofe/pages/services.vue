@@ -1508,10 +1508,10 @@ export default {
 }
 
 .link-container li:hover {
-  background-image: url("./static/background.jpg");
+  /* background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: initial;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   transition-duration: 0.5s;
 }
 

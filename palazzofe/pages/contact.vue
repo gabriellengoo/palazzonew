@@ -254,8 +254,8 @@
             placeholder="Estimated Budget *"
             required
           />
-          <div class="flex justify-center mt-[8vw]">
-          <button type="submit" class="mt-6 w-[40vw] sm:w-[26vw]">
+          <div class="flex justify-center mt-[4vw]">
+          <button type="submit" class="mt-6 w-[50vw] sm:w-[26vw]">
             <img src="send.png" alt="Send" class="w-auto h-auto" />
           </button>
         </div>
@@ -424,8 +424,8 @@ export default {
 }
 
 .contact-form {
-  font-size: 0.8vw;
-  font-size: 1vw;
+  font-size: 0.9vw;
+  /* font-size: 1vw; */
   font-family: "NHaas";
 }
 
@@ -477,7 +477,7 @@ a:hover {
 }
 
 input::placeholder {
-  color: rgba(0, 0, 0, 0.438);
+  color: rgba(0, 0, 0, 0.123);
   /* line-height: 0; */
 }
 
@@ -516,6 +516,7 @@ input::placeholder {
     position: absolute;
     z-index: 0;
     pointer-events: none;
+    display: none;
   }
 
   .left-content {

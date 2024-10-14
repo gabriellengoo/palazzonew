@@ -1,7 +1,7 @@
 <template>
 <div>
   <header
-    class="header  top-[1rem] md:top-4 lg:top-[2rem]  flex  items-center p-6"
+    class="headerb fixed w-screen   flex  items-center p-6"
   >
   <div class="flex md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
     <div class="headbar" @click="toggleMenu">
@@ -388,9 +388,20 @@ display: unset;
   z-index: 1000000000 !important;
 }
 
-.header {
+.headerb {
   font-family: "YourCustomFont", serif;
-  z-index: 1000000000 !important;
+  z-index: 99 !important;
+      padding: .5vw;
+    padding-top: 0vw;
+    /* background-color: #90a2b2;  */
+    background-image: url("./static/background.jpg");
+    background-size: cover;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    top: 0;
+    height: 2.75vw;
+    /* filter: blur(5px) */
+    /* border-bottom: .05vw solid black; */
 }
 
 .headbar {

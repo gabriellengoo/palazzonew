@@ -20,6 +20,7 @@
       >
         <div class="content">
           <div class="nomb pointer-events-none">
+            <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" />
             <img class="w-[30vw]" src="/leftabout.png" />
           </div>
         </div>
@@ -67,10 +68,13 @@
 import HeaderComponent from "@/components/layout/Header.vue";
 import { mapState } from "vuex";
 import { groq } from "@nuxtjs/sanity";
+import animationData from '~/static/animations/aboutani.json';
+import LottieAnimation from '~/components/LottieAnimation.vue';
 
 export default {
   name: "IndexPage",
 
+  
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "about"]{
     title,
@@ -84,10 +88,17 @@ export default {
 
   components: {
     HeaderComponent,
+    LottieAnimation,
   },
 
   computed: {
     ...mapState(["gridd"]),
+  },
+
+  data() {
+    return {
+      animationData
+    };
   },
 };
 </script>
@@ -127,6 +138,14 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
+}
+
+.ania{
+  position: absolute;
+    width: 54vw;
+    left: -1.9vw;
+    top: 2.9vw;
+    height: 100vh;
 }
 
 /* Styles for text inside the frame */
@@ -255,7 +274,7 @@ a:hover {
     z-index: 99;
     left: 10vw;
     top: 33vw;
-    width: 80%;
+    width: 60%;
 }
 
 

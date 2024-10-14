@@ -187,8 +187,10 @@ a:hover {
     background-repeat: no-repeat;
     height: 100vh;
     overflow-y: scroll;
-    background-image: url("./static/background.jpg");
-    background-image: url("./static/PINKBG.png");
+    /* background-image: url("./static/background.jpg");
+    background-image: url("./static/PINKBG.png"); */
+    background-image: url("./static/LeftBG.png");
+
   }
 } 
 </style>

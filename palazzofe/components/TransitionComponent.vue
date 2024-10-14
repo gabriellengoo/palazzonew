@@ -30,6 +30,17 @@
 
 <script>
 export default {
+  head() {
+    return {
+      link: [
+        {
+          rel: 'preload',
+          href: '/static/background.jpg',
+          as: 'image'
+        }
+      ]
+    };
+  },
   data() {
     return {
       // isTransitionActive: true,
@@ -97,13 +108,14 @@ pointer-events: none;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  transition: opacity 3.5s ease; /* Adjust the duration to match the transition */
+  height: 100vh;
+  transition: opacity 1.5s ease; /* Adjust the duration to match the transition */
   background-color: #fff; 
-  /* background-image: url("./static/bggif.gif");
+  background-image: url("./static/background.jpg");
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
+  background-position: 0 0;
+  background-position: initial;
+  background-repeat: no-repeat;
   /* background: rgba(255, 255, 255, 0.752); */
   z-index: 1000000002;
   pointer-events: none;

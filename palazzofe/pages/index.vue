@@ -113,6 +113,18 @@ export default {
   components: {
     HeaderComponent, // Register the component here
   },
+  
+  head() {
+    return {
+      link: [
+        {
+          rel: 'preload',
+          href: '/static/background.jpg',
+          as: 'image'
+        }
+      ]
+    };
+  },
 
   data() {
     return {
