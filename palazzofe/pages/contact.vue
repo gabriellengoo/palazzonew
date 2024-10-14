@@ -62,45 +62,77 @@
 
       <!-- Right Content: Form Section -->
       <div class="right-content w-1/2 p-[5vw] pl-[20vw] pt-[4vw]">
-
-
-        <form action="https://formspree.io/f/xwpkkljw" method="POST" class="contact-form grid grid-cols-2 gap-4">
-          <input class="col-span-1" type="text" placeholder="Name *" />
+        <form
+          action="https://formspree.io/f/xwpkkljw"
+          method="POST"
+          class="contact-form grid grid-cols-2 gap-4"
+        >
           <input
             class="col-span-1"
             type="text"
-            placeholder="Date of Celebration *"
+            name="name"
+            placeholder="Name *"
+            required
           />
-          <input class="col-span-1" type="text" placeholder="Telephone *" />
           <input
             class="col-span-1"
             type="text"
+            name="date"
+            placeholder="Date of Celebration *"
+            required
+          />
+          <input
+            class="col-span-1"
+            type="tel"
+            name="telephone"
+            placeholder="Telephone *"
+            required
+          />
+          <input
+            class="col-span-1"
+            type="text"
+            name="days"
             placeholder="No. of Days of Celebration *"
           />
-          <input class="col-span-1" type="email" placeholder="Email *" />
-          <input class="col-span-1" type="text" placeholder="No. of Guests *" />
-          <input class="col-span-1" type="text" placeholder="Country *" />
+          <input
+            class="col-span-1"
+            type="email"
+            name="email"
+            placeholder="Email *"
+            required
+          />
           <input
             class="col-span-1"
             type="text"
+            name="guests"
+            placeholder="No. of Guests *"
+          />
+          <input
+            class="col-span-1"
+            type="text"
+            name="country"
+            placeholder="Country *"
+          />
+          <input
+            class="col-span-1"
+            type="text"
+            name="budget"
             placeholder="Estimated Budget *"
           />
+
+          <!-- Send Button -->
+          <div class="flex justify-center col-span-2">
+            <button type="submit" class="mt-[9vh] w-auto">
+              <img src="send.png" alt="Send" class="w-[10vw] h-auto" />
+            </button>
+          </div>
         </form>
-        <!-- <div class="send-button text-center mt-[7vh]">
-          <button class="border border-black px-6 py-2">SEND</button>
-        </div> -->
-        <div class="flex justify-center">
+
+        <!-- <div class="flex justify-center">
           <button type="submit" class="mt-[9vh] w-auto">
-            <!-- <img
-    :src="currentImage" 
-    alt="Angel Artwork" 
-    class="w-[10vw] h-auto"
-    @mouseover="hoverImage" 
-    @mouseleave="resetImage"
-  /> -->
             <img src="send.png" alt="Angel Artwork" class="w-[10vw] h-auto" />
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -173,7 +205,10 @@
               <div class="w-max">
                 <p>natalya@palazzoeventi.com</p>
               </div> -->
-              <Richtext class="richcontt adsizemb" :blocks="contact.email"></Richtext>
+              <Richtext
+                class="richcontt adsizemb"
+                :blocks="contact.email"
+              ></Richtext>
             </div>
           </div>
         </div>
@@ -188,31 +223,41 @@
           <h1 class="loctext uppercase pt-2">Get in touch</h1>
         </div>
 
-        <form class="contact-form w-[90vw] grid grid-cols-2 gap-4">
-          <input class="col-span-1" type="text" placeholder="Name *" />
+        <form
+           action="https://formspree.io/f/xwpkkljw"
+          method="POST"
+          class="contact-form w-full grid grid-cols-1 sm:grid-cols-2 gap-4 px-4"
+        >
+          <input class="col-span-1" type="text" placeholder="Name *" name="name" required/>
           <input
             class="col-span-1"
             type="text"
+            name="date"
             placeholder="Date of Celebration *"
+            required
           />
-          <input class="col-span-1" type="text" placeholder="Telephone *" />
+          <input class="col-span-1" type="text"   name="telephone" placeholder="Telephone *" required/>
           <input
             class="col-span-1"
             type="text"
+            name="days"
             placeholder="No. of Days of Celebration *"
+            required
           />
-          <input class="col-span-1" type="email" placeholder="Email *" />
-          <input class="col-span-1" type="text" placeholder="No. of Guests *" />
-          <input class="col-span-1" type="text" placeholder="Country *" />
+          <input class="col-span-1" type="email"  name="email" placeholder="Email *" required/>
+          <input class="col-span-1" type="text"   name="guests" placeholder="No. of Guests *" required/>
+          <input class="col-span-1" type="text" name="country" placeholder="Country *" required/>
           <input
             class="col-span-1"
             type="text"
+             name="budget"
             placeholder="Estimated Budget *"
+            required
           />
         </form>
-        <div class="">
-          <button class="mt-[9vh] w-[26vw]">
-            <img src="send.png" alt="Angel Artwork" class="w-auto h-auto" />
+        <div class="flex justify-center">
+          <button type="submit" class="mt-6 w-[40vw] sm:w-[26vw]">
+            <img src="send.png" alt="Send" class="w-auto h-auto" />
           </button>
         </div>
       </div>
