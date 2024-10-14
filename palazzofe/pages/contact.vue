@@ -1,5 +1,5 @@
 <template>
-  <div class="pagbg">
+  <div class="pagbg all">
     <!-- <HeaderComponent /> -->
     <div class="headera content flex w-full justify-between">
       <h1 class="navmb">
@@ -226,7 +226,7 @@
         <form
            action="https://formspree.io/f/xwpkkljw"
           method="POST"
-          class="contact-form w-full grid grid-cols-1 sm:grid-cols-2 gap-4 px-4"
+          class="contact-form w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
         >
           <input class="col-span-1" type="text" placeholder="Name *" name="name" required/>
           <input
@@ -254,12 +254,13 @@
             placeholder="Estimated Budget *"
             required
           />
-        </form>
-        <div class="flex justify-center">
+          <div class="flex justify-center mt-[8vw]">
           <button type="submit" class="mt-6 w-[40vw] sm:w-[26vw]">
             <img src="send.png" alt="Send" class="w-auto h-auto" />
           </button>
         </div>
+        </form>
+      
       </div>
     </div>
   </div>
@@ -321,6 +322,13 @@ export default {
 </script>
 
 <style scoped>
+.all{
+  overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
 .headingspagesb {
   font-family: "GT-Bold";
 }
