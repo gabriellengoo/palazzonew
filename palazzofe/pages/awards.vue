@@ -172,6 +172,15 @@ a:hover {
     height: auto;
   } */
 
+  .left-content {
+  background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: unset;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
   .right-content {
     display: none;
   }
