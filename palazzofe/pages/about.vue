@@ -25,14 +25,21 @@
         </div>
 
         <div class="content nodes">
-          <div class=" pointer-events-none">
+          <!-- <div class="pointer-events-none">
             <img class="rightimg" src="/aboutright.png" />
+          </div> -->
+          <div class=" pointer-events-none">
+            <img class="rightimg" src="/aboutrighta.png" />
           </div>
+          <div class=" anicol pointer-events-none">
+            <img class="rightimg fade-img" src="/aboutimg3.png" />
+            <img class="rightimg fade-img" src="/aboutimg2.png" />
+          </div>
+        
         </div>
         <div class="email nodes ml-[5vw] text-left">
           <Richtext class="richcont" :blocks="about.about"></Richtext>
         </div>
-
       </div>
 
       <!-- Right Static Content -->
@@ -41,7 +48,11 @@
       >
         <div class="content">
           <div class="nomb pointer-events-none">
-            <img class="rightimg" src="/aboutright.png" />
+            <img class="rightimg" src="/aboutrighta.png" />
+          </div>
+          <div class="nomb anicol pointer-events-none">
+            <img class="rightimg fade-img" src="/aboutimg3.png" />
+            <img class="rightimg fade-img" src="/aboutimg2.png" />
           </div>
         </div>
         <div class="email ml-[5vw] text-left">
@@ -175,41 +186,96 @@ a:hover {
   text-decoration: underline;
 }
 
+.anicol{
+  position: relative;
+    z-index: 99;
+    left: 10vw;
+    top: -44vw;
+    width: 80%;
+}
+
 .rightimg {
   width: 27vw;
-  top: -2vh;
+  /* top: -2vh; */
   left: 2vw;
   position: relative;
 }
 
-.richcont{
+.richcont {
   position: absolute;
-    top: 42vh;
-    left: 64vw;
-    width: 20vw;
-    font-size: 1vw;
+  top: 42vh;
+  left: 64vw;
+  width: 20vw;
+  font-size: 1vw;
+}
+
+.fade-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation: fadeLoop 6s infinite;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-img:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.fade-img:nth-child(2) {
+  animation-delay: 3s;
+}
+
+@keyframes fadeLoop {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* .nomb {
+  position: relative;
+} */
+
+@media only screen and (max-width: 768px) {
+
+  .anicol {
+    position: absolute;
+    z-index: 99;
+    left: 10vw;
+    top: 33vw;
+    width: 80%;
 }
 
 
-
-@media only screen and (max-width: 768px) {
   .bgmobile {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
 
   .rightimg {
     width: 89vw;
-    top: -11vh;
+    top: -9vh;
     left: 0vw;
-}
+  }
 
-.richcont {
+  .richcont {
     position: absolute;
     top: 35vh;
     left: 14vw;
     width: 69vw;
     font-size: 3.5vw;
-}
+  }
   /* .left-content,
   .right-content {
     height: auto;
