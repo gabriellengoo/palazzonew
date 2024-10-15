@@ -13,6 +13,20 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
+    <div class="nodes pointer-events-none">
+          <p
+            :class="[
+              '',
+              { sheadera: !isMenuOpen },
+              { sheaderaopen: isMenuOpen },
+            ]"
+            class="headingspages pointer-events-none text-center text-4xl uppercase"
+          >
+            About
+          </p>
+        </div>
+
+
     <div class="bgmobile relative min-h-screen flex">
       <!-- Left Scrollable Content -->
       <div
@@ -70,6 +84,7 @@ import { mapState } from "vuex";
 import { groq } from "@nuxtjs/sanity";
 import animationData from '~/static/animations/aboutani.json';
 import LottieAnimation from '~/components/LottieAnimation.vue';
+import { mapMutations } from "vuex";
 
 export default {
   name: "IndexPage",
@@ -91,7 +106,15 @@ export default {
     LottieAnimation,
   },
 
+
+  methods: {
+    ...mapMutations(["toggleMenu", "setMenuState"]),
+  },
+
   computed: {
+    isMenuOpen() {
+      return this.$store.getters.isMenuOpen;
+    },
     ...mapState(["gridd"]),
   },
 
@@ -263,6 +286,20 @@ a:hover {
   }
 }
 
+.sheadera {
+  /* display: unset;  */
+        left: 43vw;
+        pointer-events: none;
+  opacity: 1;
+}
+
+.sheaderaopen {
+        left: 39vw;
+        pointer-events: none;
+  /* z-index: 1000 !important; */
+  /* display: none;  */
+  opacity: 0;
+}
 /* .nomb {
   position: relative;
 } */

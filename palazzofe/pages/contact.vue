@@ -13,6 +13,19 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
+
+    <div class="nodes pointer-events-none">
+          <p
+            :class="[
+              '',
+              { sheadera: !isMenuOpen },
+              { sheaderaopen: isMenuOpen },
+            ]"
+            class="headingspages pointer-events-none text-center text-4xl uppercase"
+          >
+            Contact
+          </p>
+        </div>
     <!-- <div
         class="mbhead absolute top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[10] pointer-events-none"
       >
@@ -122,10 +135,10 @@
 
           <!-- Send Button -->
           <div class="flex justify-center col-span-2">
-            <button type="submit" class="mt-[9vh] w-auto">
-              <img src="send.png" alt="Send" class="w-[10vw] h-auto" />
-            </button>
-          </div>
+  <button type="submit" class="mt-[9vh] w-auto send-button" @mouseover="changeImage" @mouseout="resetImage">
+    <img :src="currentImage" alt="Send" class="sendb w-[10vw] h-auto" />
+  </button>
+</div>
         </form>
 
         <!-- <div class="flex justify-center">
@@ -148,14 +161,6 @@
     <div class="bgcream nodes relative min-h-screen flex"></div>
 
     <div class="nodes contentamb flex h-max">
-      <!-- <div class="nodes">
-      <p
-             v-if="!isMenuOpen"
-          class="headingspages w-[100%] pointer-events-none text-center text-4xl  uppercase "
-        >
-          Contact
-        </p>
-    </div> -->
       <!-- Left Content: Address and Contact Info -->
       <div class="left-content">
         <div class="address text-left flex">
@@ -215,52 +220,87 @@
       </div>
 
       <!-- Right Content: Form Section -->
-      <div class="right-content">
-        <div class="titcont titmb">
-          <button class="pt-[4vw]" @click="closeSection">
-            <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-          </button>
-          <h1 class="loctext uppercase pt-2">Get in touch</h1>
-        </div>
+      <div
+        @click="animateSection"
+        :class="{ 'bounce-on-load': isBouncing }"
+        class="right-content overflow-y-scroll flex-1 slide-in"
+      >
+        <div class="allrcont">
+          <div class="titcont titmb">
+            <button class="pt-[4vw]" @click.stop="closeSection">
+              <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+            </button>
+            <h1 class="loctext uppercase pt-2">Get in touch</h1>
+          </div>
 
-        <form
-           action="https://formspree.io/f/xwpkkljw"
-          method="POST"
-          class="contact-form w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
-        >
-          <input class="col-span-1" type="text" placeholder="Name *" name="name" required/>
-          <input
-            class="col-span-1"
-            type="text"
-            name="date"
-            placeholder="Date of Celebration *"
-            required
-          />
-          <input class="col-span-1" type="text"   name="telephone" placeholder="Telephone *" required/>
-          <input
-            class="col-span-1"
-            type="text"
-            name="days"
-            placeholder="No. of Days of Celebration *"
-            required
-          />
-          <input class="col-span-1" type="email"  name="email" placeholder="Email *" required/>
-          <input class="col-span-1" type="text"   name="guests" placeholder="No. of Guests *" required/>
-          <input class="col-span-1" type="text" name="country" placeholder="Country *" required/>
-          <input
-            class="col-span-1"
-            type="text"
-             name="budget"
-            placeholder="Estimated Budget *"
-            required
-          />
-          <div class="flex justify-center mt-[4vw]">
-          <button type="submit" class="mt-6 w-[50vw] sm:w-[26vw]">
-            <img src="send.png" alt="Send" class="w-auto h-auto" />
-          </button>
+          <form
+            action="https://formspree.io/f/xwpkkljw"
+            method="POST"
+            class="contact-form w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
+          >
+            <input
+              class="col-span-1"
+              type="text"
+              placeholder="Name *"
+              name="name"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="date"
+              placeholder="Date of Celebration *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="telephone"
+              placeholder="Telephone *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="days"
+              placeholder="No. of Days of Celebration *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="email"
+              name="email"
+              placeholder="Email *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="guests"
+              placeholder="No. of Guests *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="country"
+              placeholder="Country *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="budget"
+              placeholder="Estimated Budget *"
+              required
+            />
+            <div class="flex justify-center mt-[4vw] mb-[18vw]">
+              <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
+                <img src="sendh.png" alt="Send" class="w-auto h-auto" />
+              </button>
+            </div>
+          </form>
         </div>
-        </form>
-       
       </div>
     </div>
   </div>
@@ -277,9 +317,12 @@ export default {
 
   data() {
     return {
-      defaultImage: "send.png", // Default image
-      hoverImage: "sendhn.png", // Image to show on hover
-      currentImage: "send.png", // Track the current image
+      isSectionVisible: false,
+      defaultImage: 'send.png',
+      hoverImage: 'sendh.png',
+      currentImage: 'send.png',
+      isBouncing: false,
+      isOpen: false,
     };
   },
 
@@ -296,6 +339,18 @@ export default {
 
     return { contact };
   },
+  mounted() {
+    // Delay the start of the bounce animation by 3 seconds
+    setTimeout(() => {
+      this.isBouncing = true;
+      
+      // Optional: Remove the bounce class after animation completes (1s duration)
+      setTimeout(() => {
+        this.isBouncing = false;
+      }, 8000); // Duration of the bounce animation (1s)
+      
+    }, 4000); // 3 second delay before starting the bounce
+  },
 
   methods: {
     hoverImage() {
@@ -304,6 +359,31 @@ export default {
     resetImage() {
       this.currentImage = this.defaultImage; // Revert to default image on mouseleave
     },
+    animateSection() {
+      const rightContent = document.querySelector(".allrcont");
+      console.log(rightContent); // Check if the element is correctly selected
+      if (!this.isOpen && rightContent) {
+        rightContent.classList.add("slide-in"); // Only add the class if not already open
+        this.isOpen = true; // Set the state to open
+      }
+    },
+    closeSection() {
+      const rightContent = document.querySelector(".allrcont");
+      if (this.isOpen && rightContent) {
+        rightContent.classList.remove("slide-in"); // Remove the class when clicking the close button
+        this.isOpen = false; // Set the state back to closed
+      }
+    },
+    // closeSection() {
+    //   this.isSectionVisible = false;
+    // },
+    changeImage() {
+      this.currentImage = this.hoverImage;
+    },
+    resetImage() {
+      this.currentImage = this.defaultImage;
+    },
+    ...mapMutations(["toggleMenu", "setMenuState"]),
   },
 
   components: {
@@ -311,22 +391,37 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["isMenuOpen"]),
+    // ...mapGetters(["isMenuOpen"]),
+    // isMenuOpen: "isMenuOpen",
+    isMenuOpen() {
+      return this.$store.getters.isMenuOpen;
+    },
     ...mapState(["gridpub"]),
-  },
-
-  methods: {
-    ...mapMutations(["toggleMenu", "setMenuState"]),
   },
 };
 </script>
 
 <style scoped>
-.all{
+.sheadera {
+  /* display: unset;  */
+        left: 39vw;
+        pointer-events: none;
+  opacity: 1;
+}
+
+.sheader {
+        left: 39vw;
+        pointer-events: none;
+  /* z-index: 1000 !important; */
+  /* display: none;  */
+  opacity: 0;
+}
+
+.all {
   overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
 }
 
 .headingspagesb {
@@ -409,11 +504,6 @@ export default {
   height: 100vh;
   background-position: 0 0;
   background-position: initial;
-}
-
-.right-content {
-  /* background-color: #f8f8f8; */
-  /* padding: 2rem; */
 }
 
 .left-content,
@@ -526,10 +616,13 @@ input::placeholder {
     background-repeat: no-repeat;
     transition-duration: 0.5s;
     width: 100vw;
-    height: 50vh;
-    height: 30vh;
+    height: 100vh;
+    /* height: 30vh; */
     position: absolute;
-    border-bottom: black 0.1px solid;
+    position: relative;
+    position: fixed;
+    /* position: relative; */
+    /* border-bottom: black 0.1px solid; */
     font-size: 3vw;
     /* height: auto; */
   }
@@ -546,15 +639,101 @@ input::placeholder {
     padding-bottom: 1vh;
   }
 
-  .right-content {
-    position: absolute;
-    top: 31vh;
-    width: 100vw;
+  /* .right-content {
+
+        position: absolute;
+        bottom: -100%;
+        right: 0;
+        width: 100%;
+        transition: bottom 0.5s ease-in-out;
+        background-size: cover;
+        background-image: none;
+        overflow-y: scroll;
+        height: max-content;
+        height: 100vh;
+        z-index: 90;
+        padding: 0;
+  }
+
+  .right-content.slide-in {
+        max-height: 100vh;
+    }
+
+  .right-content.slide-in {
+        bottom: 0;
+        display: flex;
+        align-items: flex-end;
+    } */
+
+  .allrcont {
+    /* position: absolute;
+  bottom: -100%;
+  right: 0;
+  width: 100%;
+  transition: bottom 0.5s ease-in-out;
+  height: 100vh;
+  z-index: 90; */
+  }
+
+  .allrcont.slide-in {
+    /* bottom: 0;  */
+    /* Animates it up */
+    transition: top 0.5s ease-in-out;
+    top: 20vh;
+    /* top: calc(50% - 100px); */
+    /* top: auto; */
+        /* margin-top: 30vh; */
+        height: 100vh;
+  }
+
+  .allrcont {
+    align-items: flex-start;
+    padding: 0rem;
     height: max-content;
+    background-image: url("./static/LeftBG.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-position: initial;
+    border-top: 0.05vw solid black;
+    box-shadow: none;
+    transition: top 0.5s ease-in-out;
+    height: 100vh;
+  }
+
+  @keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-80px);
+  }
+  60% {
+    transform: translateY(-40px);
+  }
+}
+
+.right-content {
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.bounce-on-load {
+  animation: bounce 2s ease;
+  /* animation-delay: 3s; */
+}
+
+  .allrcont {
+    min-height: max-content;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    align-content: center;
     align-items: center;
+    position: absolute;
+    position: relative;
+    top: 88vh;
   }
 
   .contentamb {
@@ -606,6 +785,12 @@ input::placeholder {
 
   .loctextlink {
     font-size: 3vw;
+  }
+
+  .pagbg {
+    /* display: none; */
+    background-image: none;
+    /* background-image: url(/_nuxt/static/LeftBG.png); */
   }
 }
 </style>
