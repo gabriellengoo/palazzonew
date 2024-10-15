@@ -1191,7 +1191,7 @@ export default {
     toggleMenu() {
       this.$store.commit("toggleMenu");
     },
-
+    
     checkViewport() {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
       this.activeSection = this.isMobile ? false : " "; // Set activeSection based on isMobile
@@ -1203,7 +1203,6 @@ export default {
       this.hoveredSection = null;
     }
     },
-    
     setActiveSection(section) {
       if (this.isMobile) {
       if (this.activeSection === section) {

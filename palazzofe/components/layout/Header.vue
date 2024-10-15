@@ -7,7 +7,7 @@
         class="flex md:justify-between lg:justify-between xl:justify-between"
         ref="headerDiv"
       >
-        <div class="headbar">
+        <div class="headbar hover:cursor-pointer">
           <!-- <SvgMenu v-if="!isMenuOpen" class="headbar w-[1.4vw] hover:cursor-pointer" />
       <SvgClose v-else class="headbar w-[1.4vw] hover:cursor-pointer" /> -->
           <button @click="toggleMenu" class="hamburger-button">

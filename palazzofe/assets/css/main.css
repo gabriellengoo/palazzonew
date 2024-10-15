@@ -148,6 +148,20 @@ html {
     z-index: 100;
 }
 
+
+.hamburger-button {
+  position: relative;
+  top: .3vh;
+}
+
+a .inner-image:hover{
+  opacity: 70%;
+  transition-duration: 1s;
+}
+a .inner-image{
+  transition-duration: 1s;
+}
+
 .headera {
   padding: 0.4vw;
 }

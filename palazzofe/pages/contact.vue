@@ -135,7 +135,7 @@
 
           <!-- Send Button -->
           <div class="flex justify-center col-span-2">
-  <button type="submit" class="mt-[9vh] w-auto send-button" @mouseover="changeImage" @mouseout="resetImage">
+  <button type="submit" class="mt-[3vw] w-auto send-button" @mouseover="changeImage" @mouseout="resetImage">
     <img :src="currentImage" alt="Send" class="sendb w-[10vw] h-auto" />
   </button>
 </div>
@@ -228,7 +228,8 @@
         <div class="allrcont">
           <div class="titcont titmb">
             <button class="pt-[4vw]" @click.stop="closeSection">
-              <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+              <div ref="lottieAnimation" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div>
+              <!-- <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" /> -->
             </button>
             <h1 class="loctext uppercase pt-2">Get in touch</h1>
           </div>
@@ -311,6 +312,7 @@ import HeaderComponent from "@/components/layout/Header.vue";
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
 import { groq } from "@nuxtjs/sanity";
+import lottie from 'lottie-web';
 
 export default {
   name: "IndexPage",
@@ -323,6 +325,7 @@ export default {
       currentImage: 'send.png',
       isBouncing: false,
       isOpen: false,
+      lottieInstance: null,
     };
   },
 
@@ -340,6 +343,10 @@ export default {
     return { contact };
   },
   mounted() {
+
+      // Add a click listener on the whole document to detect clicks outside
+      document.addEventListener('click', this.handleClickOutside);
+
     // Delay the start of the bounce animation by 3 seconds
     setTimeout(() => {
       this.isBouncing = true;
@@ -350,6 +357,19 @@ export default {
       }, 8000); // Duration of the bounce animation (1s)
       
     }, 4000); // 3 second delay before starting the bounce
+
+    this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation, // the DOM element
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: '/animations/plus.json', // your Lottie animation JSON file path
+    });
+  },
+
+  beforeDestroy() {
+    // Clean up the event listener when the component is destroyed
+    document.removeEventListener('click', this.handleClickOutside);
   },
 
   methods: {
@@ -363,15 +383,24 @@ export default {
       const rightContent = document.querySelector(".allrcont");
       console.log(rightContent); // Check if the element is correctly selected
       if (!this.isOpen && rightContent) {
-        rightContent.classList.add("slide-in"); // Only add the class if not already open
+        rightContent.classList.add("slide-in");
+        this.lottieInstance.playSegments([0, 11], true);  // Only add the class if not already open
         this.isOpen = true; // Set the state to open
       }
     },
     closeSection() {
       const rightContent = document.querySelector(".allrcont");
       if (this.isOpen && rightContent) {
-        rightContent.classList.remove("slide-in"); // Remove the class when clicking the close button
+        rightContent.classList.remove("slide-in");
+        this.lottieInstance.playSegments([20, 0], true); // Play the Lottie animation for closing
         this.isOpen = false; // Set the state back to closed
+      }
+    },
+    handleClickOutside(event) {
+      const rightContent = document.querySelector(".allrcont");
+      // Check if the click was outside the rightContent or the close button
+      if (this.isOpen && rightContent && !rightContent.contains(event.target)) {
+        this.closeSection(); // Close if the click is outside
       }
     },
     // closeSection() {
@@ -517,13 +546,19 @@ export default {
   font-size: 0.9vw;
   /* font-size: 1vw; */
   font-family: "NHaas";
+  column-gap: 4vw;
+  width: max-content;
+  letter-spacing: .05vw;
+  z-index: 99;
+  position: relative;
 }
 
 .contact-form input {
   border-bottom: 0.5px solid #a29585;
   padding: 0.1vw;
   background-color: #ffffff00;
-  width: 98%;
+  width: 17vw;
+  min-width: max-content;
   text-transform: uppercase;
 }
 
@@ -567,7 +602,7 @@ a:hover {
 }
 
 input::placeholder {
-  color: rgba(0, 0, 0, 0.123);
+  color: rgba(0, 0, 0, 0.525);
   /* line-height: 0; */
 }
 
@@ -678,12 +713,13 @@ input::placeholder {
   .allrcont.slide-in {
     /* bottom: 0;  */
     /* Animates it up */
-    transition: top 0.5s ease-in-out;
-    top: 20vh;
+    transition:  top 0.5s ease-in-out;
+    top: 0vh;
     /* top: calc(50% - 100px); */
     /* top: auto; */
         /* margin-top: 30vh; */
-        height: 100vh;
+        /* height: 100vh; */
+        height: max-content;
   }
 
   .allrcont {
@@ -700,6 +736,7 @@ input::placeholder {
     box-shadow: none;
     transition: top 0.5s ease-in-out;
     height: 100vh;
+    top: 57vh;
   }
 
   @keyframes bounce {
@@ -715,9 +752,17 @@ input::placeholder {
 }
 
 .right-content {
-  position: relative;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  position: absolute;
+        top: 0vh;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        align-items: flex-end;
+        height: 100vh;
+        width: 100vw;
+        align-content: flex-end;
+        flex-direction: column;
+        justify-content: flex-end;
 }
 
 .bounce-on-load {
@@ -727,13 +772,16 @@ input::placeholder {
 
   .allrcont {
     min-height: max-content;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    position: relative;
-    top: 88vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        position: relative;
+        /* top: 88vh; */
+        height: max-content;
+        /* top: 100vh; */
+        justify-content: flex-end;
   }
 
   .contentamb {
@@ -765,7 +813,7 @@ input::placeholder {
     /* padding-bottom: .5vh; */
     text-align: center;
     text-transform: uppercase;
-    width: auto;
+    width: 95vw;
   }
 
   .titcont {
