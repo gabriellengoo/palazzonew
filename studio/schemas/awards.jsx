@@ -5,7 +5,7 @@
 
 export default {
   name: 'awards',
-  title: 'Awards page',
+  title: 'Awards',
   type: 'document',
   // icon: "🏠",
   // icon: '🏠',

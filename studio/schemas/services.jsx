@@ -4,7 +4,7 @@ import React from "react";
 
 export default {
   name: "services", 
-  title: "Services Page",
+  title: "Services",
   type: "document",
   fields: [
     {

@@ -103,6 +103,12 @@ export default {
           type: "string",
         },
 
+        {
+          name: "url",
+          title: 'URL to publication',
+          type: 'url',
+        },
+
 
        
       ],

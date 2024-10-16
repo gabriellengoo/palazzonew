@@ -5,7 +5,7 @@
 
 export default {
   name: 'works',
-  title: 'Weddings page',
+  title: 'Weddings Overview',
   type: 'document',
   // icon: "🏠",
   // icon: '🏠',
@@ -20,7 +20,7 @@ export default {
       name: 'grid',
       title: 'Grid',
       type: 'grid',
-    },
+    }, 
   
     
 

@@ -5,7 +5,7 @@ import React from "react";
 
 export default {
   name: "projectevents",
-  title: "Events Pages Archive",
+  title: "Events Individual Pages",
   type: "document",
   // liveEdit: true,
   // icon: Project, 
@@ -154,6 +154,20 @@ export default {
                       type: "boolean",
                       description: "Is the img portrait?",
                     },
+                    {
+                      name: "day",
+                      title: "Day",
+                      type: "string",
+                      description: "Is the image from day 1, 2, or 3?",
+                      options: {
+                        list: [
+                          { title: "Day 1", value: "day1" },
+                          { title: "Day 2", value: "day2" },
+                          { title: "Day 3", value: "day3" }
+                        ],
+                        layout: "radio" // optional, for radio button layout
+                      }
+                    }
                
                     // {
                     //   name: "video",

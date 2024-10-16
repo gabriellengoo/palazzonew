@@ -5,7 +5,7 @@ import React from "react";
 
 export default {
   name: "project", 
-  title: "Weddings Pages Archive",
+  title: "Weddings Individual Pages",
   type: "document",
   // liveEdit: true,
   // icon: Project,
@@ -21,23 +21,7 @@ export default {
       type: "string",
     },
 
-    
-    // {
-    //   name: "filmtype",
-    //   title: "Feature film or Short film",
-    //   type: "string",
-    //   options: {
-    //     list: [
-    //       { title: "Feature film", value: "feature" },
-    //       { title: "Short film", value: "short" }
-    //     ]
-    //   }
-    // },
-    // {
-    //   name: "inproduction",
-    //   title: "In production?",
-    //   type: "boolean",
-    // },
+  
     {
       name: "slug",
       title: "Slug",
@@ -59,49 +43,7 @@ export default {
       title: "Location Link",
       type: "string",
     },
-    // {
-    //   name: "meta",
-    //   title: "Meta",
-    //   type: "array",
-    //   options: {
-    //     modal: "popover",
-    //   },
-    //   of: [
-    //     {
-    //       name: "meta",
-    //       title: "Meta",
-    //       type: "object",
-    //       fields: [
-    //         {
-    //           name: "title",
-    //           title: "Title",
-    //           type: "string",
-    //         },
-    //         {
-    //           name: "content",
-    //           title: "Content",
-    //           type: "string",
-    //         },
-    //         {
-    //           name: "link",
-    //           title: "Hyperlink Url",
-    //           type: "string",
-    //         },
-    //         // {
-    //         //   name: "content",
-    //         //   title: "Content",
-    //         //   type: "blockContent",
-    //         // },
-    //       ],
-    //       preview: {
-    //         select: {
-    //           title: "content",
-    //           subtitle: "title",
-    //         },
-    //       },
-    //     },
-    //   ], 
-    // }, 
+   
 
     {
       name: "image",
@@ -122,12 +64,7 @@ export default {
           title: "Slide",
           type: "object", 
           fields: [
-            // {
-            //   name: "fullWidth",
-            //   title: "Full Width",
-            //   type: "boolean",
-            //   description: "Make full width on mobile",
-            // },
+       
             {
               name: "images",
               title: "Images",
@@ -154,32 +91,21 @@ export default {
                       type: "boolean",
                       description: "Is the img portrait?",
                     },
-               
-                    // {
-                    //   name: "video",
-                    //   title: "Video",
-                    //   type: "mux.video",
-                    //   hidden: ({ parent, value }) =>
-                    //     (!value && parent?.spacer) || (!value && parent?.image),
-                    // },
-                    // {
-                    //   name: 'youtubeUrl',
-                    //   title: 'YouTube Video URL',
-                    //   type: 'url',
-                    // },
-                    // {
-                    //   name: 'vimeoUrl',
-                    //   title: 'Vimeo Video URL',
-                    //   type: 'url',
-                    // },
-                    // {
-                    //   name: "thumbnailTime",
-                    //   title: "Thumbnail Time",
-                    //   type: "number",
-                    //   description: "Time in seconds for the selected thumbnail frame",
-                    //   validation: (Rule) => Rule.min(0),
-                    //   // inputComponent: CustomThumbnailTimeInput,
-                    // },
+                  {
+                    name: "day",
+                    title: "Day",
+                    type: "number",
+                    description: "Is the image from day 1, 2, or 3?",
+                    options: {
+                      list: [
+                        { title: "Day 1", value: 1 },
+                        { title: "Day 2", value: 2 },
+                        { title: "Day 3", value: 3 }
+                      ],
+                      layout: "radio" // optional, for radio button layout
+                    }
+        },
+                   
 
                   ],
                   preview: {
@@ -229,21 +155,7 @@ export default {
               const { image, video, thumbnailTime } = selection;
               let media;
               if (video) {
-                // media = (
-                //   <img
-                //     src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
-                //     style={{
-                //       objectFit: "cover",
-                //       height: "100%",
-                //       width: "100%",
-                //     }}
-                //   />
-                // );
-                // media = document.createElement("img");
-                // media.src = `https://image.mux.com/${video}/animated.gif`;
-                // media.style.objectFit = "cover";
-                // media.style.height = "100%";
-                // media.style.width = "100%";
+              
               } else if (image) {
                 media = image;
               }

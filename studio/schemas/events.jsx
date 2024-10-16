@@ -5,7 +5,7 @@
 
 export default {
   name: 'events',
-  title: 'Events page',
+  title: 'Events Overview',
   type: 'document',
   // icon: "🏠",
   // icon: '🏠',

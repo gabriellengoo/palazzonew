@@ -43,24 +43,8 @@ export default {
           type: "boolean",
           description: "Is the hover img portrait?",
         },
-     
-        // {
-        //   name: "video",
-        //   title: "Video",
-        //   type: "mux.video",
-        //   hidden: ({ parent, value }) =>
-        //     (!value && parent?.spacer) || (!value && parent?.image),
-        // },
-        // {
-        //   name: 'youtubeUrl',
-        //   title: 'YouTube Video URL',
-        //   type: 'url',
-        // },
-        // {
-        //   name: 'vimeoUrl',
-        //   title: 'Vimeo Video URL',
-        //   type: 'url',
-        // },
+
+  
       
         {
           name: "reference",

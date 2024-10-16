@@ -7,28 +7,23 @@
     <div>
       <!-- Header (optional) -->
       <HeaderComponent />
-      <div class="headera  mbpad content flex w-full justify-between">
+      <div class="headera mbpad content flex w-full justify-between">
         <h1 class="md:w-[1.4vw] w-auto">
           <!-- weddings -->
           <a class="headbar" href="../weddings"
             ><SvgBack class="svgmb hover:cursor-pointer"
           /></a>
         </h1>
-        <p
-          class="yeart navmbno text-center text-4xl uppercase "
-          v-if="project"
-        >
+        <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
           {{ project.title }}
         </p>
         <p
-          class="yeart navmbno opacity-0 text-center text-4xl  uppercase "
+          class="yeart navmbno opacity-0 text-center text-4xl uppercase"
           v-if="project"
         >
           {{ project.year }}
         </p>
-        <p
-          class="headingspages navmbno text-center text-4xl  uppercase "
-        >
+        <p class="headingspages navmbno text-center text-4xl uppercase">
           Weddings
         </p>
         <h1 class="w-[2vw] navmbno">
@@ -39,20 +34,16 @@
         </h1>
       </div>
 
-
-
-
-
       <div class="bgmobile relative min-h-screen flex">
         <!-- Left Scrollable Content -->
-        <div class="left-content flex-1 overflow-y-scroll ">
+        <div class="left-content flex-1 overflow-y-scroll">
           <div>
-        <p
-          class="headingspagesslug pt-[2vw] nodes text-center text-4xl  uppercase "
-        >
-          Weddings
-        </p>
-      </div>
+            <p
+              class="headingspagesslug pt-[2vw] nodes text-center text-4xl uppercase"
+            >
+              Weddings
+            </p>
+          </div>
           <!-- mobile  -->
           <!-- <button
               class="nodes absolute top-0 left-[0] z-30 w-[50%] h-[60vh] previous"
@@ -68,54 +59,52 @@
             ></button> -->
           <div class="nodes nodesgal">
             <section
-                class="top-0 left-0  w-full md:block cursor-grab slider"
-                v-swiper:mySwiper2="swiperOptions2"
-                @slideChange2="onSlideChange2"
-                ref="slider2"
-              >
-                <div class="relative z-40 w-full h-full swiper-wrapper">
-                  <div
-                    v-for="(slide, index) in project.slider"
-                    :key="slide._key"
-                    class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
-                    :class="realIndex == 0 ? '' : ''"
-                  >
-                    <div class="overlaycont flex h-full p-2 w-13/16">
-                      <figure
-                        v-for="image in slide.images"
-                        :key="image._key"
-                        class="overlaydiv flex flex-col flex-1 h-full"
+              class="top-0 left-0 w-full md:block cursor-grab slider"
+              v-swiper:mySwiper2="swiperOptions2"
+              @slideChange2="onSlideChange2"
+              ref="slider2"
+            >
+              <div class="relative z-40 w-full h-full swiper-wrapper">
+                <div
+                  v-for="(slide, index) in project.slider"
+                  :key="slide._key"
+                  class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
+                  :class="realIndex == 0 ? '' : ''"
+                >
+                  <div class="overlaycont flex h-full p-2 w-13/16">
+                    <figure
+                      v-for="image in slide.images"
+                      :key="image._key"
+                      class="overlaydiv flex flex-col flex-1 h-full"
+                      :class="
+                        image.padding
+                          ? image.padding == 'medium'
+                            ? 'p-12 pr-10'
+                            : image.padding == 'large'
+                            ? 'p-20 pr-18'
+                            : 'p-8 pr-6'
+                          : ''
+                      "
+                    >
+                      <MediaImage
+                        :src="image.image.asset._ref"
+                        v-if="image.image"
+                        class="gallery-image w-auto h-full"
                         :class="
                           image.padding
-                            ? image.padding == 'medium'
-                              ? 'p-12 pr-10'
-                              : image.padding == 'large'
-                              ? 'p-20 pr-18'
-                              : 'p-8 pr-6'
-                            : ''
+                            ? 'object-contain'
+                            : 'object-contain max-w-full'
                         "
-                      >
-                        <MediaImage
-                          :src="image.image.asset._ref"
-                          v-if="image.image"
-                          class="gallery-image w-auto h-full"
-                          :class="
-                            image.padding
-                              ? 'object-contain'
-                              : 'object-contain max-w-full'
-                          "
-                          :style="{
-                            pointerEvents: 'auto',
-                          }"
-                          :sizes="'sm:200vw md:150vw lg:200vw'"
-                        ></MediaImage>
-                  
-                   
-                      </figure>
-                    </div>
+                        :style="{
+                          pointerEvents: 'auto',
+                        }"
+                        :sizes="'sm:200vw md:150vw lg:200vw'"
+                      ></MediaImage>
+                    </figure>
                   </div>
                 </div>
-              </section>
+              </div>
+            </section>
 
             <div class="footcon">
               <div class="w-full flex justify-center">
@@ -129,9 +118,7 @@
                     <div class="animate-hover text-[1.2rem] pr-5">
                       <p v-if="project">{{ project.title }}</p>
                     </div>
-
                   </div>
-
                 </div>
               </div>
             </div>
@@ -146,24 +133,23 @@
                   class="arch-frame"
                 /> -->
                 <MediaImage
-                          :src="project.image"
-                          v-if="project.image"
-                               class="arch-frame"
-                        
-                        ></MediaImage>
+                  :src="project.image"
+                  v-if="project.image"
+                  class="arch-frame"
+                ></MediaImage>
               </div>
 
               <!-- footer -->
               <div class="nomb pt-[8vh] footout">
                 <div class="footerstuff">
                   <div
-                class="textnewardesk ttdesk uppercase animate-hover text-[1.2rem] "
-              >
-                <p v-if="project">{{ project.title }}</p>
-                <p class="yeartdesk mb-6 uppercase" v-if="project">
-                  {{ project.year }}
-                </p>
-              </div>
+                    class="textnewardesk ttdesk uppercase animate-hover text-[1.2rem]"
+                  >
+                    <p v-if="project">{{ project.title }}</p>
+                    <p class="yeartdesk mb-6 uppercase" v-if="project">
+                      {{ project.year }}
+                    </p>
+                  </div>
                   <div v-if="project.content" class="pt-3">
                     <Richtext
                       class="contactinner"
@@ -214,7 +200,6 @@
 
               <div class="nodes mbfootout pt-[6vh] footout">
                 <div class="footerstuff">
-            
                   <div v-if="project.content" class="pt-5">
                     <Richtext
                       class="contactinner"
@@ -280,16 +265,9 @@
                         v-for="image in slide.images"
                         :key="image._key"
                         class="overlaydiv flex flex-col flex-1 h-full"
-                        :class="
-                          image.padding
-                            ? image.padding == 'medium'
-                              ? 'p-12 pr-10'
-                              : image.padding == 'large'
-                              ? 'p-20 pr-18'
-                              : 'p-8 pr-6'
-                            : ''
-                        "
                       >
+                       
+
                         <MediaImage
                           :src="image.image.asset._ref"
                           v-if="image.image"
@@ -303,7 +281,28 @@
                           }"
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
+
+                       
                       </figure>
+
+                      <div    v-for="image in slide.images"
+                      :key="image._key" class="text-day1">
+                          <h2
+                            :class="{
+                              '': image.day === 'day1',
+                              '': image.day === 'day2',
+                              '': image.day === 'day3',
+                            }"
+                          >
+                            Day
+                            {{
+                              typeof image.day === "string"
+                                ? image.day.slice(-1)
+                                : image.day
+                            }}
+                          </h2>
+                        </div>
+                        
                     </div>
                   </div>
                 </div>
@@ -392,6 +391,7 @@ export default {
   },
   data() {
     return {
+      images: [],
       index: 1,
       realIndex: 0,
       step: 0,
@@ -419,6 +419,15 @@ export default {
       searchQuery: "", // Initialize search query
     };
   },
+
+  async fetch() {
+    // Assuming `fetchImages()` is your method to get images from Sanity
+    const fetchedImages = await fetchImages();
+
+    // Sort images by the 'day' field, assuming it's a number (day 1, 2, 3...)
+    this.images = fetchedImages.sort((a, b) => a.day - b.day);
+  },
+
   computed: {
     ...mapState(["meta", "metaemails", "projects"]), // Map Vuex state to local computed properties
   },
@@ -432,26 +441,27 @@ export default {
   },
 
   mounted() {
-  const previousScrollPosition = sessionStorage.getItem(
-    "previousScrollPosition"
-  );
-  if (previousScrollPosition && this.$router.isBackNavigation) {
-    window.scrollTo(0, 0);
-  }
+    const previousScrollPosition = sessionStorage.getItem(
+      "previousScrollPosition"
+    );
+    if (previousScrollPosition && this.$router.isBackNavigation) {
+      window.scrollTo(0, 0);
+    }
 
-  this.$nextTick(() => {
-    // Wait for animation to finish
-    setTimeout(() => {
-      // Add a check for screen width
-      if (window.innerWidth > 768) { // Adjust the width threshold as needed
-        window.scrollTo({
-          top: document.querySelector(".reveal-container").offsetHeight,
-          behavior: "smooth",
-        });
-      }
-    }, 1000); // Adjust timeout to match the duration of your animation
-  });
-},
+    this.$nextTick(() => {
+      // Wait for animation to finish
+      setTimeout(() => {
+        // Add a check for screen width
+        if (window.innerWidth > 768) {
+          // Adjust the width threshold as needed
+          window.scrollTo({
+            top: document.querySelector(".reveal-container").offsetHeight,
+            behavior: "smooth",
+          });
+        }
+      }, 1000); // Adjust timeout to match the duration of your animation
+    });
+  },
 
   watch: {
     $route() {
@@ -466,9 +476,6 @@ export default {
     next();
   },
   methods: {
-    nextImage() {
-      // Implement your logic to go to the next image
-    },
     handleBackClick(event) {
       const previousUrl = sessionStorage.getItem("previousUrl");
       if (previousUrl) {
@@ -644,24 +651,6 @@ export default {
       }
     },
 
-
-    // next2() {
-    //   if (this.mySwiper2.isEnd) {
-    //     if (this.project.nextProject) {
-    //       this.mySwiper2.slideTo(0);
-    //     }
-    //   } else {
-    //     this.mySwiper2.slideNext();
-    //   }
-    // },
-    // prev2() {
-    //   if (this.mySwiper2.isBeginning && this.back) {
-    //     this.$router.go(-1);
-    //   } else {
-    //     this.mySwiper2.slidePrev();
-    //   }
-    // },
-
     async searchProjects() {
       const searchQuery = this.searchQuery.trim(); // Remove leading and trailing spaces
       if (searchQuery.length === 0) {
@@ -682,57 +671,84 @@ export default {
 </script>
 
 <style scoped>
-  .previous:hover {
-    cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e") 16 16, pointer;
-    cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(-45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e") 16 16, pointer;
-    cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="), auto !important; 
-    /* cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto; */
-  }
+.previous:hover {
+  cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e")
+      16 16,
+    pointer;
+  cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(-45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e")
+      16 16,
+    pointer;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
+    auto !important;
+  /* cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto; */
+}
 
-  .next {
-    cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+'), auto !important; 
-  }
+.next {
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+"),
+    auto !important;
+}
 
-  /* Fallback for non-custom cursors */
-  /* .previous:hover {
+/* Fallback for non-custom cursors */
+/* .previous:hover {
     cursor: pointer;
   }
 
+  
   .next:hover {
     cursor: pointer;
   } */
-  
+
+.day-1-style {
+  /* Styles specific to images from Day 1 */
+  border: 2px solid red;
+}
+
+.day-2-style {
+  /* Styles specific to images from Day 2 */
+  border: 2px solid blue;
+}
+
+.day-3-style {
+  /* Styles specific to images from Day 3 */
+  border: 2px solid green;
+}
+
+.text-day1 {
+  /* Styling for the text showing the day */
+  font-size: 10rem;
+  opacity: 1;
+}
+
 .portrait {
   /* height: auto;
   width: 34vw;
   left: 25%;
   position: relative; */
   height: auto;
-    width: 34vw;
-    right: 0;
-    bottom: 0;
-    margin-bottom: 1vw;
-    margin-right: 1vw;
-    /* display: flex; */
-    position: absolute;
+  width: 34vw;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 1vw;
+  margin-right: 1vw;
+  /* display: flex; */
+  position: absolute;
 
-    height: 90vh;
-    width: auto;
+  height: 90vh;
+  width: auto;
 }
 
 .landscape {
   height: auto;
-    width: auto;
-    height: auto;
-    width: 44vw;
-    width: 47vw;
-    position: relative;
-    top: 20vh;
-    margin-right: auto;
-    margin-left: auto;
+  width: auto;
+  height: auto;
+  width: 44vw;
+  width: 47vw;
+  position: relative;
+  top: 20vh;
+  margin-right: auto;
+  margin-left: auto;
 
-
-    /* width: auto;
+  /* width: auto;
     height: auto;
     width: 45vw;
     position: absolute;
@@ -827,18 +843,17 @@ export default {
 
 .gallery-images {
   display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    height: 100vh;
-    width: 48vw;
-    width: 49vw;
-    left: 50vw;
-    left: 49vw;
-    position: sticky;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 48vw;
+  width: 49vw;
+  left: 50vw;
+  left: 49vw;
+  position: sticky;
 
-
-    /* display: flex;
+  /* display: flex;
     justify-content: center;
     flex-wrap: wrap;
     height: 100vh;
@@ -846,7 +861,7 @@ export default {
     left: 51vw;
     position: fixed;
     overflow: hidden; */
-    /* align-content: center; */
+  /* align-content: center; */
 }
 
 .gallery-image {
@@ -871,14 +886,13 @@ export default {
   justify-content: center;
   align-items: flex-end; */
 
-
   display: flex;
-    top: 2vh;
-    position: relative;
-    width: 100%;
-    height: 95%;
-    justify-content: center;
-    align-items: flex-end;
+  top: 2vh;
+  position: relative;
+  width: 100%;
+  height: 95%;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 /* Apply the animation to the main container */
@@ -921,8 +935,6 @@ a {
   font-size: 3rem; */
 }
 
-
-
 .footerstuff {
   position: relative;
   /* top: 70vh; */
@@ -953,8 +965,6 @@ a {
     /* font-family: "MinionPro-Regular"; */
     /* font-size: medium; */
   }
-
-
 
   .headingspages {
     /* font-family: "GT-Bold"; */
@@ -994,14 +1004,13 @@ a {
   position: relative;
   z-index: 1;
 
-
   width: auto;
-    height: auto;
-    -o-object-fit: cover;
-    object-fit: contain;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: contain;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .inner-image {
@@ -1071,9 +1080,9 @@ a {
   display: inherit;
 
   height: 47.6vh;
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
 }
 
 .nomb {
@@ -1088,12 +1097,10 @@ a {
   display: none;
 }
 
-
-  .headmb{
-    display: contents;
-    display: none;
-  }
-
+.headmb {
+  display: contents;
+  display: none;
+}
 
 @media only screen and (max-width: 768px) {
   .nomb {
@@ -1112,8 +1119,8 @@ a {
     position: absolute; */
 
     display: flex;
-        height: 56vh;
-        width: 100vw;
+    height: 56vh;
+    width: 100vw;
   }
   .left-content {
     background-image: url("./static/LeftBG.png");
@@ -1123,11 +1130,10 @@ a {
     background-repeat: no-repeat;
     height: 60vh;
     height: max-content;
-    overflow-y: none; 
+    overflow-y: none;
     flex: none;
     padding-top: 6vh;
   }
-
 
   .right-content {
     background-image: url("./static/PINKBG.png");
@@ -1215,21 +1221,20 @@ a {
   } */
 
   .headera {
-        padding-top: 2.5vw;
-        padding-bottom: 2.5vw;
-        padding-left: 2.5vw;
-        padding-right: 2.5vw;
-        flex-direction: column;
-        z-index: 100;
-        
-    }
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    flex-direction: column;
+    z-index: 100;
+  }
 
-    .headera {
-        padding-top: 3.5vw;
-        padding-bottom: 3.5vw;
-        padding-left: 2.5vw;
-        padding-right: 2.5vw;
-    }
+  .headera {
+    padding-top: 3.5vw;
+    padding-bottom: 3.5vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+  }
 
   /* .headmb{
     display: contents;
@@ -1240,7 +1245,6 @@ a {
   background-position: initial;
   background-repeat: no-repeat;
   } */
-
 
   .archimg {
     display: none;

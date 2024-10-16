@@ -6,7 +6,7 @@
 
 export default {
   name: 'home',
-  title: 'Weddings',
+  title: 'Weddings Overview',
   type: 'document',
   // icon: "🏠",
   // icon: '🏠',

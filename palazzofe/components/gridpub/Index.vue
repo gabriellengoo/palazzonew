@@ -44,11 +44,13 @@
             >
               <figure class="flex flex-col">
                 <div class="relative">
-                  <!-- <NuxtLink
-                    v-if="item.reference.slug"
-                    :to="`/eventprojects/${item.reference.slug}`"
+                  <a
+                   
+                     :href="item.url"
+                     target="_blank"
+                        rel="noopener noreferrer"
                     class="flex flex-col items-end h-full"
-                  > -->
+                  >
                     <figure class="inner-image">
                       <MediaImage
                         :src="item.image.image"
@@ -60,7 +62,7 @@
                       <span class="fontsubpub pt-[.5vh] capitalize">{{ item.month || item.reference.month }}</span>
                       <span class="fontsubpub capitalize">{{ item.year || item.reference.year }}</span>
                     </figcaption>
-                  <!-- </NuxtLink> -->
+                  </a>
 
                   <!-- Conditionally show sideim div on hover with fade effect -->
                   <!-- <div 

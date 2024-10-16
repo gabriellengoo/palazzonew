@@ -215,8 +215,17 @@
                 :blocks="contact.email"
               ></Richtext>
             </div>
+
+            
           </div>
         </div>
+
+        <div class="ml-[6vw]">
+            <Richtext
+              class="w-[90vw] pt-[2vh]"
+              :blocks="contact.address2"
+            ></Richtext>
+          </div>
       </div>
 
       <!-- Right Content: Form Section -->
