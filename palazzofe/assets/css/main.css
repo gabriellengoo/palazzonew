@@ -59,13 +59,51 @@ html {
   font-family: "MinionPro-Regular";
   font-size: medium;
 } */
-.swiper-wrapper .text-day1{
-  font-size: 30vw;
-  position: fixed;
-  z-index: 99;
-  transform: none !important;
+
+/* swiper-slide.text-day1{
+  transform: 0 !important;
+  transition-duration: 0ms !important;
   transition-property: none !important;
-  }
+  } */
+
+  .text-day1{
+    font-size: .9vw;
+    position: absolute;
+    z-index: 99;
+    width: -moz-max-content;
+    width: max-content;
+    width: 34vw;
+    top: 96vh;
+    left: 44.5vw;
+    transition-duration: 0ms !important;
+    transform: none !important;
+    transition-property: none !important;
+    font-family: "NHaas";
+    }
+
+    .numg{
+      left: 95.8vw;
+      position: absolute;
+      top: 3.5vw;
+    }
+
+    .text-day2{
+      font-size: .9vw;
+      position: absolute;
+      z-index: 99;
+      width: -moz-max-content;
+      width: max-content;
+      width: 100vw;
+      /* top: 3.5vw; */
+      height: 100vh;
+      /* left: 94.8vw; */
+      transition-duration: 0ms !important;
+      transform: none !important;
+      transition-property: none !important;
+      font-family: "NHaas";
+      pointer-events: none !important;
+
+      }
 
 .textsum {
   font-size: .8vw;

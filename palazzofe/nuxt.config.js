@@ -61,7 +61,7 @@ export default {
     '@nuxtjs/sanity/module',
     // '@nuxtjs/tailwindcss',
     '@nuxt/image',
-    // 'nuxt-gsap-module',
+    'nuxt-gsap-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

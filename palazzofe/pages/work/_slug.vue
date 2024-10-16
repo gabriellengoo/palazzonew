@@ -264,66 +264,67 @@
             ></button>
 
           
-
+            <header class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block">
+          <span class="numg"v-if="project.slider"
+            > (  {{ String(index).padStart(1, '') }} of {{
+              String(project.slider.length).padStart(1, '')
+            }}  )</span
+          >
+        </header>
+<!-- 
+        <header class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block">
+          ( <span v-if="project.slider"
+            > {{ activeDay }}</span
+          > )
+        </header> -->
 
             <div class="nomb nombgal gallery-images">
-              <section
-                class="top-0 left-0 hidden w-full h-full md:block cursor-grab slider"
-                v-swiper:mySwiper="swiperOptions"
-                @slideChange="onSlideChange"
-                ref="slider"
-              >
-                <div class="relative z-40 w-full h-full swiper-wrapper">
-                  <div
-                    v-for="(slide, index) in project.slider"
-                    :key="slide._key"
-                    class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
-                    :class="realIndex == 0 ? '' : ''"
-                  >
-                    <div class="overlaycont flex h-full pb-0 w-13/16">
-                     
-                      <figure
-                        v-for="image in slide.images"
-                        :key="image._key"
-                        class="overlaydiv flex flex-col flex-1 h-full"
-                        :class="
-                          image.padding
-                            ? image.padding == 'medium'
-                              ? 'p-12 pr-10'
-                              : image.padding == 'large'
-                              ? 'p-20 pr-18'
-                              : 'p-8 pr-6'
-                            : ''
-                        "
-                      >
-                      <!-- <div   v-for="(slide, index) in project.slider"
-            :key="slide._key">
-              <div  v-for="image in slide.images"
-            :key="image._key" class="text-day1">
-                       {{ image.day }}
-                      </div>
-            </div>  -->
-            
-            <div class="text-day1"> {{ image.day }}</div>
+              
+  <section
+    class="top-0 left-0 hidden w-full h-full md:block cursor-grab slider"
+    v-swiper:mySwiper="swiperOptions"
+    @slideChange="onSlideChange"
+    ref="slider"
+  >
+    <div class="relative z-40 w-full h-full swiper-wrapper">
+      <div
+        v-for="(slide, index) in project.slider"
+        :key="slide._key"
+        class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
+        :class="realIndex == 0 ? '' : ''"
+      >
+        <div class="overlaycont flex h-full pb-0 w-13/16">
+          
+          <figure
+            v-for="image in slide.images"
+            :key="image._key"
+            class="overlaydiv flex flex-col flex-1 h-full"
+          >
+        
+            <MediaImage
+              :src="image.image.asset._ref"
+              v-if="image.image"
+              class="gallery-image w-auto h-full"
+              :class="{
+                portrait: image.portrait,
+                landscape: !image.portrait,
+              }"
+              :style="{
+                pointerEvents: 'auto',
+              }"
+              :sizes="'sm:200vw md:150vw lg:200vw'"
+            ></MediaImage>
 
-                        <MediaImage
-                          :src="image.image.asset._ref"
-                          v-if="image.image"
-                          class="gallery-image w-auto h-full"
-                          :class="{
-                            portrait: image.portrait,
-                            landscape: !image.portrait,
-                          }"
-                          :style="{
-                            pointerEvents: 'auto',
-                          }"
-                          :sizes="'sm:200vw md:150vw lg:200vw'"
-                        ></MediaImage>
-                      </figure>
-                    </div>
-                  </div>
-                </div>
-              </section>
+            <div class="absolute top-0 left-0 text-day1 z-50">
+      <!-- Display the day number of the active slide -->
+      {{ image.day }}
+    </div>
+
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
 
               <div class="footcon nodes">
                 <div class="w-full flex justify-center">
@@ -355,6 +356,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
@@ -419,20 +421,17 @@ export default {
       clickedImageIndex: null, // Initially set to null
       swiperOptions: {
         slidesPerView: "auto",
-        // keyboard: {
-        //   enabled: true,
-        // },
       },
       swiperOptions2: {
         slidesPerView: "auto",
-        // keyboard: {
-        //   enabled: true,
-        // },
       },
       imageOpacity: 1, // Add this property
       scrolled: false,
       back: false,
       searchQuery: "", // Initialize search query
+      activeDay: null,
+      mySwiper: null, // Initialize mySwiper
+    mySwiper2: null, 
     };
   },
   computed: {
@@ -448,6 +447,11 @@ export default {
   },
 
   mounted() {
+    if (this.project.slider.length > 0 && this.project.slider[0].images.length > 0) {
+    this.activeDay = this.project.slider[0].images[0].day; // Initialize activeDay from the first image
+    this.totalImages = this.project.slider[0].images.length; // Set total images here
+  }
+
   const previousScrollPosition = sessionStorage.getItem(
     "previousScrollPosition"
   );
@@ -482,9 +486,14 @@ export default {
     next();
   },
   methods: {
-    nextImage() {
-      // Implement your logic to go to the next image
+   
+    getPaddingClass(padding) {
+      return padding === 'medium' ? 'p-12 pr-10' :
+             padding === 'large' ? 'p-20 pr-18' :
+             padding === 'small' ? 'p-8 pr-6' :
+             ''; // Return appropriate class based on padding
     },
+   
     handleBackClick(event) {
       const previousUrl = sessionStorage.getItem("previousUrl");
       if (previousUrl) {
@@ -519,36 +528,8 @@ export default {
       // Generate the Vimeo embed URL
       return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0`;
     },
-    onSlideChange(swiper) {
-      this.index = swiper.activeIndex + 1;
-      this.realIndex = swiper.activeIndex;
-      const gsap = this.$gsap;
-      if (swiper.activeIndex == 0 && !this.back) {
-        this.$refs["prev"].classList.add("disabled");
-      } else {
-        this.$refs["prev"].classList.remove("disabled");
-      }
-      if (this.index > 1) {
-        gsap.to(this.$refs["skew"], { x: "-150%" });
-      } else {
-        gsap.to(this.$refs["skew"], { x: "0%" });
-      }
-    },
-    onSlideChange2(swiper) {
-      this.index = swiper.activeIndex + 1;
-      this.realIndex = swiper.activeIndex;
-      const gsap = this.$gsap;
-      if (swiper.activeIndex == 0 && !this.back) {
-        this.$refs["prev"].classList.add("disabled");
-      } else {
-        this.$refs["prev"].classList.remove("disabled");
-      }
-      if (this.index > 1) {
-        gsap.to(this.$refs["skew"], { x: "-150%" });
-      } else {
-        gsap.to(this.$refs["skew"], { x: "0%" });
-      }
-    },
+
+ 
     handleVideoClick(videoId) {
       // Call the playVideo() method of your MediaVideoPlayPlay component
       this.$refs.mediaVideoPlayPlay.playVideo(videoId);
@@ -591,9 +572,27 @@ export default {
     toggleGallery() {
       this.isGalleryExpanded = !this.isGalleryExpanded;
     },
+
     onSlideChange(swiper) {},
+
     onSlideChange2(swiper) {},
-    scroll() {},
+
+    onSlideChange(swiper) {
+      this.index = swiper.activeIndex + 1
+      this.realIndex = swiper.activeIndex
+      const gsap = this.$gsap
+      if (swiper.activeIndex == 0 && !this.back) {
+        this.$refs['prev'].classList.add('disabled')
+      } else {
+        this.$refs['prev'].classList.remove('disabled')
+      }
+      if (this.index > 1) {
+        gsap.to(this.$refs['skew'], { x: '-150%' })
+      } else {
+        gsap.to(this.$refs['skew'], { x: '0%' })
+      }
+    },
+  
     toggleBlueBox() {
       // Toggle the blue box visibility
       this.isBlueBoxActive = !this.isBlueBoxActive;
@@ -644,39 +643,24 @@ export default {
     // pev btn
 
     next() {
-      if (this.mySwiper.isEnd) {
-        if (this.project.nextProject) {
-          this.mySwiper.slideTo(0);
-        }
-      } else {
-        this.mySwiper.slideNext();
-      }
-    },
+  // Remove the link to the next project
+  if (!this.mySwiper.isEnd) {
+    this.mySwiper.slideNext()
+  } else {
+    this.mySwiper.slideTo(0) // Optionally, you can keep this to loop back to the first slide
+  }
+},
     prev() {
-      if (this.mySwiper.isBeginning && this.back) {
-        this.$router.go(-1);
-      } else {
-        this.mySwiper.slidePrev();
-      }
-    },
+  // Remove the isBeginning check
+  if (this.back) {
+    this.$router.go(-1)
+  } else {
+    this.mySwiper.slidePrev()
+  }
+},
 
 
-    // next2() {
-    //   if (this.mySwiper2.isEnd) {
-    //     if (this.project.nextProject) {
-    //       this.mySwiper2.slideTo(0);
-    //     }
-    //   } else {
-    //     this.mySwiper2.slideNext();
-    //   }
-    // },
-    // prev2() {
-    //   if (this.mySwiper2.isBeginning && this.back) {
-    //     this.$router.go(-1);
-    //   } else {
-    //     this.mySwiper2.slidePrev();
-    //   }
-    // },
+   
 
     async searchProjects() {
       const searchQuery = this.searchQuery.trim(); // Remove leading and trailing spaces
@@ -699,13 +683,7 @@ export default {
 
 <style scoped>
 
-.swiper-wrapper .text-day1{
-font-size: 30vw;
-position: fixed;
-z-index: 99;
-transform: none !important;
-transition-property: none !important;
-}
+
 
 
   .previous:hover {
@@ -741,9 +719,11 @@ transition-property: none !important;
     margin-right: 1vw;
     /* display: flex; */
     position: absolute;
-
-    height: 90vh;
+    height: 87vh;
+    top: 5vw;
     width: auto;
+    height:  auto;
+    width: 58vh;
 }
 
 .landscape {
