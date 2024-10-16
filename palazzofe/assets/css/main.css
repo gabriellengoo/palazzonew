@@ -59,7 +59,13 @@ html {
   font-family: "MinionPro-Regular";
   font-size: medium;
 } */
-
+.swiper-wrapper .text-day1{
+  font-size: 30vw;
+  position: fixed;
+  z-index: 99;
+  transform: none !important;
+  transition-property: none !important;
+  }
 
 .textsum {
   font-size: .8vw;
