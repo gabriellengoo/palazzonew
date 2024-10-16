@@ -35,7 +35,7 @@
         <div class="content">
           <div class="nomb pointer-events-none">
             <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" />
-            <img class="w-[30vw]" src="/leftabout.png" />
+            <img class="w-[26.5vw]" src="/leftabout.png" />
           </div>
         </div>
 
@@ -167,8 +167,11 @@ export default {
   position: absolute;
     width: 54vw;
     left: -1.9vw;
-    top: 2.9vw;
+    top: 0.9vw;
     height: 100vh;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
 }
 
 /* Styles for text inside the frame */
@@ -232,8 +235,8 @@ a:hover {
   position: relative;
     z-index: 99;
     left: 10vw;
-    top: -44vw;
-    width: 80%;
+    top: -42vw;
+    width: 70%;
 }
 
 .rightimg {

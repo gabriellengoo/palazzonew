@@ -35,6 +35,10 @@ html {
   font-family: 'MinionPro-Regular';
 }
 
+
+.ania svg{
+    width: 44vw !important;
+}
 /* .headingspages{
   font-family: 'RomainHeadlineTrial';
   font-size: 2vw;
@@ -238,6 +242,14 @@ a .inner-image{
       border-top: black .5px solid;
     } */
 
+    /* .image-rowb:nth-child(1) {
+      border-top: 0.07vw solid black !important;
+  } */
+
+  .image-row:last-child {
+    border-bottom: 0.07vw solid black !important;
+  }
+
     .mbhead{
       top: 45%;
     }
@@ -310,7 +322,7 @@ a .inner-image{
 
 .headingspages {
     font-size: 3.5vw;
-    top: 1.2vh !important;
+    top: 1.4vh !important;
     z-index: 1000;
     z-index: 100;
     position: fixed;
@@ -347,6 +359,7 @@ a .inner-image{
   line-height: normal;
   width: 100%;
   pointer-events: none;
+  top: .5vh !important;
 }
 
 .headbar a{

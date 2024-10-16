@@ -20,6 +20,9 @@
           <div v-if="gridd.grid3" class="">
             <Gridevents2 class="" :items="gridd.grid3" size="small"></Gridevents2>
           </div>
+          <div v-if="gridd.grid2" class="nodes border-t-2">
+          <Gridevents class="" :items="gridd.grid2" size="small"></Gridevents>
+        </div>
         </div>
       </div>
 

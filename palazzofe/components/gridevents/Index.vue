@@ -17,7 +17,7 @@
         <div
           v-for="(chunk, chunkIndex) in chunkedItems"
           :key="chunkIndex"
-          class="image-row"
+          class="image-row image-rowb"
         >
         <!-- <span v-for="(item, index) in chunk"  :key="item._key" >{{ item.title || item.reference.title }}</span> -->
 
@@ -312,6 +312,8 @@ font-size: .8vw;
 
 @media only screen and (max-width: 768px) {
 
+
+
   .sideim img{
     display: none !important;
   }
@@ -323,6 +325,8 @@ font-size: .8vw;
   .eventtype{
     font-size: 1.8vw;
   }
+  
+ 
   /* .left-content{
     padding: 0 !important;
   } */

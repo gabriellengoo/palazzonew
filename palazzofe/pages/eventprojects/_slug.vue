@@ -1233,6 +1233,13 @@ a {
   background-repeat: no-repeat;
   } */
 
+  .headera {
+        padding-top: 3.5vw;
+        padding-bottom: 3.5vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+    }
+
 
   .archimg {
     display: none;

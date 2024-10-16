@@ -18,7 +18,7 @@
         <div
           v-for="(chunk, chunkIndex) in chunkedItems"
           :key="chunkIndex"
-          class="image-row"
+          class="image-row image-rowb"
         >
         <!-- <span v-for="(item, index) in chunk"  :key="item._key" >{{ item.title || item.reference.title }}</span> -->
 

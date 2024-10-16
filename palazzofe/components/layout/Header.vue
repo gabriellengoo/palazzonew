@@ -88,6 +88,11 @@
               <li><a href="./team">TEAM</a></li>
               <li><a href="./contact">CONTACT</a></li>
               <li><a href="./awards">AWARDS</a></li>
+              <!-- <li>
+                <a class=" pointer-events-none" href=""
+                  ><SvgArchstar class=""
+                /></a>
+              </li> -->
             </ul>
           </nav>
         </div>
@@ -276,6 +281,108 @@ export default {
 .toplink {
   color: #33333300 !important;
 }
+
+
+
+.link-container {
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.link-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.link-container li {
+  text-align: center;
+  /* padding: 1.5rem 0; */
+  padding: 0.2rem 0;
+  /* border-bottom: black;
+    border-bottom-width: 2px; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.link-container li:hover {
+  /* background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: initial;
+  background-repeat: no-repeat; */
+  transition-duration: 0.5s;
+}
+
+
+
+.link-container a {
+  text-decoration: none;
+  font-size: 9.2vw;
+  font-size: 5vh;
+  /* font-size: 4vw; */
+  color: black;
+  font-weight: 100;
+  padding-left: 4vw;
+  height: max-content;
+  display: inline-block;
+  padding-right: 4vw;
+  transition-duration: 0.5s;
+}
+
+.link-container a:hover {
+  text-decoration: none;
+  color: #3333331f;
+  /* Optional hover effect */
+  transition-duration: 0.5s;
+}
+
+.link-container {
+  border: 1px solid rgba(0, 0, 0, 0.257);
+  margin: auto;
+  font-family: "RomainHeadlineTrial";
+
+  /* background-color: rgba(255, 255, 255, 0.14);
+    background-color: rgb(255 255 255 / 25%); */
+  border: 1px solid rgba(0, 0, 0, 0.257);
+  border-radius: 590px 590px 2px 2px;
+  margin: auto;
+  font-family: "RomainHeadlineTrial";
+  /* background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: initial;
+  background-repeat: no-repeat; */
+  overflow: hidden;
+  /* width: 24vw; */
+}
+
+.link-container li:hover {
+    /* background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: initial;
+  background-repeat: no-repeat;
+  transition-duration: 0.5s; */
+    background-image: none;
+  }
+
+  .link-container a:hover {
+    text-decoration: none;
+    color: #333333;
+    /* Optional hover effect */
+    transition-duration: 0.5s;
+  }
+
+  .link-container a {
+    text-decoration: none;
+    font-size: 9.2vw;
+    font-size: 5vh;
+    font-size: 4.2vh;
+    /* font-size: 4vw; */
+    color: black;
+    font-weight: 100;
+    padding-left: 7vw;
+    padding-right: 7vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    transition-duration: 0.5s;
+  }
 
 /* mobile nav end--------- */
 
