@@ -423,17 +423,20 @@ export default {
       clickedImageIndex: null, // Initially set to null
       swiperOptions: {
         slidesPerView: "auto",
+        // keyboard: {
+        //   enabled: true,
+        // },
       },
       swiperOptions2: {
         slidesPerView: "auto",
+        // keyboard: {
+        //   enabled: true,
+        // },
       },
       imageOpacity: 1, // Add this property
       scrolled: false,
       back: false,
       searchQuery: "", // Initialize search query
-      activeDay: null,
-      mySwiper: null, // Initialize mySwiper
-      mySwiper2: null,
     };
   },
   computed: {
@@ -449,34 +452,26 @@ export default {
   },
 
   mounted() {
-    if (
-      this.project.slider.length > 0 &&
-      this.project.slider[0].images.length > 0
-    ) {
-      this.totalImages = this.project.slider[0].images.length; // Set total images here
-    }
+  const previousScrollPosition = sessionStorage.getItem(
+    "previousScrollPosition"
+  );
+  if (previousScrollPosition && this.$router.isBackNavigation) {
+    window.scrollTo(0, 0);
+  }
 
-    const previousScrollPosition = sessionStorage.getItem(
-      "previousScrollPosition"
-    );
-    if (previousScrollPosition && this.$router.isBackNavigation) {
-      window.scrollTo(0, 0);
-    }
-
-    this.$nextTick(() => {
-      // Wait for animation to finish
-      setTimeout(() => {
-        // Add a check for screen width
-        if (window.innerWidth > 768) {
-          // Adjust the width threshold as needed
-          window.scrollTo({
-            top: document.querySelector(".reveal-container").offsetHeight,
-            behavior: "smooth",
-          });
-        }
-      }, 1000); // Adjust timeout to match the duration of your animation
-    });
-  },
+  this.$nextTick(() => {
+    // Wait for animation to finish
+    setTimeout(() => {
+      // Add a check for screen width
+      if (window.innerWidth > 768) { // Adjust the width threshold as needed
+        window.scrollTo({
+          top: document.querySelector(".reveal-container").offsetHeight,
+          behavior: "smooth",
+        });
+      }
+    }, 1000); // Adjust timeout to match the duration of your animation
+  });
+},
 
   watch: {
     $route() {
@@ -491,16 +486,9 @@ export default {
     next();
   },
   methods: {
-    getPaddingClass(padding) {
-      return padding === "medium"
-        ? "p-12 pr-10"
-        : padding === "large"
-        ? "p-20 pr-18"
-        : padding === "small"
-        ? "p-8 pr-6"
-        : ""; // Return appropriate class based on padding
+    nextImage() {
+      // Implement your logic to go to the next image
     },
-
     handleBackClick(event) {
       const previousUrl = sessionStorage.getItem("previousUrl");
       if (previousUrl) {
@@ -535,7 +523,36 @@ export default {
       // Generate the Vimeo embed URL
       return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0`;
     },
-
+    onSlideChange(swiper) {
+      this.index = swiper.activeIndex + 1;
+      this.realIndex = swiper.activeIndex;
+      const gsap = this.$gsap;
+      if (swiper.activeIndex == 0 && !this.back) {
+        this.$refs["prev"].classList.add("disabled");
+      } else {
+        this.$refs["prev"].classList.remove("disabled");
+      }
+      if (this.index > 1) {
+        gsap.to(this.$refs["skew"], { x: "-150%" });
+      } else {
+        gsap.to(this.$refs["skew"], { x: "0%" });
+      }
+    },
+    onSlideChange2(swiper) {
+      this.index = swiper.activeIndex + 1;
+      this.realIndex = swiper.activeIndex;
+      const gsap = this.$gsap;
+      if (swiper.activeIndex == 0 && !this.back) {
+        this.$refs["prev"].classList.add("disabled");
+      } else {
+        this.$refs["prev"].classList.remove("disabled");
+      }
+      if (this.index > 1) {
+        gsap.to(this.$refs["skew"], { x: "-150%" });
+      } else {
+        gsap.to(this.$refs["skew"], { x: "0%" });
+      }
+    },
     handleVideoClick(videoId) {
       // Call the playVideo() method of your MediaVideoPlayPlay component
       this.$refs.mediaVideoPlayPlay.playVideo(videoId);
@@ -578,38 +595,27 @@ export default {
     toggleGallery() {
       this.isGalleryExpanded = !this.isGalleryExpanded;
     },
+    onSlideChange(swiper) {},
+    onSlideChange2(swiper) {},
 
     onSlideChange(swiper) {
-      this.index = swiper.activeIndex + 1;
-      this.realIndex = swiper.activeIndex;
-      const gsap = this.$gsap;
+      this.index = swiper.activeIndex + 1
+      this.realIndex = swiper.activeIndex
+      const gsap = this.$gsap
       if (swiper.activeIndex == 0 && !this.back) {
-        this.$refs["prev"].classList.add("disabled");
+        this.$refs['prev'].classList.add('disabled')
       } else {
-        this.$refs["prev"].classList.remove("disabled");
+        this.$refs['prev'].classList.remove('disabled')
       }
       if (this.index > 1) {
-        gsap.to(this.$refs["skew"], { x: "-150%" });
+        gsap.to(this.$refs['skew'], { x: '-150%' })
       } else {
-        gsap.to(this.$refs["skew"], { x: "0%" });
-      }
-    },
-    onSlideChange2(swiper) {
-      this.index = swiper.activeIndex + 1;
-      this.realIndex = swiper.activeIndex;
-      const gsap = this.$gsap;
-      if (swiper.activeIndex == 0 && !this.back) {
-        this.$refs["prev"].classList.add("disabled");
-      } else {
-        this.$refs["prev"].classList.remove("disabled");
-      }
-      if (this.index > 1) {
-        gsap.to(this.$refs["skew"], { x: "-150%" });
-      } else {
-        gsap.to(this.$refs["skew"], { x: "0%" });
+        gsap.to(this.$refs['skew'], { x: '0%' })
       }
     },
 
+
+    scroll() {},
     toggleBlueBox() {
       // Toggle the blue box visibility
       this.isBlueBoxActive = !this.isBlueBoxActive;
@@ -675,6 +681,24 @@ export default {
         this.mySwiper.slidePrev();
       }
     },
+
+
+    // next2() {
+    //   if (this.mySwiper2.isEnd) {
+    //     if (this.project.nextProject) {
+    //       this.mySwiper2.slideTo(0);
+    //     }
+    //   } else {
+    //     this.mySwiper2.slideNext();
+    //   }
+    // },
+    // prev2() {
+    //   if (this.mySwiper2.isBeginning && this.back) {
+    //     this.$router.go(-1);
+    //   } else {
+    //     this.mySwiper2.slidePrev();
+    //   }
+    // },
 
     async searchProjects() {
       const searchQuery = this.searchQuery.trim(); // Remove leading and trailing spaces
