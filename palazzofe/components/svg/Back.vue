@@ -43,8 +43,10 @@ width="40"
 
 <style scoped>
 .svgg{
-width: 1vw;
-height: auto;
+  width: 1.4vw;
+    height: auto;
+    left: .3vw;
+    position: relative;
 }
 
 @media only screen and (max-width: 768px) {

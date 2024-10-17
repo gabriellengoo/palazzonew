@@ -76,6 +76,18 @@ div p{
   /* div p{
 padding-bottom: 1.5vh;
 } */
+.adsize div p:nth-child(2){
+  font-size: 2.05vw;
+}
+
+.adsize div p:nth-child(3){
+  font-size: 2.05vw;
+}
+
+.adsizemb div p:nth-child(1){
+  font-size: 4vw;
+  line-height: normal;
+}
 }
 
 p{
@@ -89,18 +101,7 @@ p{
   /* text-align: justify; */
 }
 
-.adsize div p:nth-child(2){
-  font-size: 2.05vw;
-}
 
-.adsize div p:nth-child(3){
-  font-size: 2.05vw;
-}
-
-.adsizemb div p:nth-child(1){
-  font-size: 4vw;
-  line-height: normal;
-}
 </style>
 <!-- <style scoped lang="css">
 p:not(:first-of-type) {

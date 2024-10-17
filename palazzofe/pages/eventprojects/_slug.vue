@@ -260,6 +260,16 @@
               @click="next"
               aria-label="Next"
             ></button>
+
+            <header class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block">
+          <span class="numg"v-if="project.slider"
+            > ({{ String(index).padStart(1, '') }} of {{
+              String(project.slider.length).padStart(1, '')
+            }})</span
+          >
+        </header>
+
+
             <div class="nomb nombgal gallery-images">
               <section
                 class="top-0 left-0 hidden w-full h-full md:block cursor-grab slider"
@@ -302,6 +312,11 @@
                           }"
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
+
+                        <div class="absolute top-0 left-0 text-day1 z-50">
+      <!-- Display the day number of the active slide -->
+      <span class="numgday">{{ image.day }}</span>
+    </div>
                       </figure>
                     </div>
                   </div>
@@ -576,6 +591,24 @@ export default {
     },
     onSlideChange(swiper) {},
     onSlideChange2(swiper) {},
+
+    onSlideChange(swiper) {
+      this.index = swiper.activeIndex + 1
+      this.realIndex = swiper.activeIndex
+      const gsap = this.$gsap
+      if (swiper.activeIndex == 0 && !this.back) {
+        this.$refs['prev'].classList.add('disabled')
+      } else {
+        this.$refs['prev'].classList.remove('disabled')
+      }
+      if (this.index > 1) {
+        gsap.to(this.$refs['skew'], { x: '-150%' })
+      } else {
+        gsap.to(this.$refs['skew'], { x: '0%' })
+      }
+    },
+
+
     scroll() {},
     toggleBlueBox() {
       // Toggle the blue box visibility
@@ -702,6 +735,20 @@ export default {
   } */
 
   
+/* .portrait {
+  height: auto;
+    width: 34vw;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 1vw;
+    margin-right: 1vw;
+    position: absolute;
+
+    height: 90vh;
+    width: auto;
+} */
+
+  
 .portrait {
   /* height: auto;
   width: 34vw;
@@ -715,9 +762,11 @@ export default {
     margin-right: 1vw;
     /* display: flex; */
     position: absolute;
-
-    height: 90vh;
+    height: 87vh;
+    top: 5vw;
     width: auto;
+    height:  auto;
+    width: 58vh;
 }
 
 .landscape {

@@ -2,11 +2,9 @@
   <div>
     <transition name="screen-transition" mode="out-in">
       <div v-if="isTransitionActive" class="black-screen">
-        <!-- <div class="flex h-screen w-screen justify-center align-middle items-center mx-auto">
-          <h1 :class="{ 'active': isTextVisible }" class=" text-[1rem] leading-[1rem] md:text-[1rem] md:leading-[1.5rem] text-center uppercase">
-            Loading..
-          </h1> 
-        </div> -->
+        <div class="flex h-screen w-screen justify-center align-middle items-center mx-auto">
+          <h1 class="loading-text">Loading...</h1>
+        </div>
       </div>
     </transition>
 
@@ -74,6 +72,70 @@ export default {
 </script>
 
 <style scoped>
+.loading-text {
+  font-size: 1.3vw;; /* Adjust as needed */
+  text-transform: uppercase;
+  color: rgb(13, 13, 13); /* Adjust color if needed */
+  animation: flash 1.5s ease-in-out infinite;
+}
+
+@media only screen and (max-width: 768px) {
+  .loading-text {
+    font-size: 2.5vw; /* Adjust as needed */
+    text-transform: uppercase;
+    color: rgb(13, 13, 13); /* Adjust color if needed */
+    animation: flash 1.5s ease-in-out infinite;
+  }
+}
+
+/* Flash animation */
+@keyframes flash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.text-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  color: #1d1d1b;
+  z-index: 100003;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.text-content.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.black-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000; /* You can change this to your preferred background color */
+  z-index: 1000000002;
+}
+
+.white-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0;
+  transition: opacity 3.5s ease
+}
+
 .titleText {
   opacity: 0;
   transition: opacity 1s ease;
@@ -110,12 +172,12 @@ pointer-events: none;
   width: 100%;
   height: 100vh;
   transition: opacity 1.5s ease; /* Adjust the duration to match the transition */
-  background-color: #fff; 
-  background-image: url("./static/background.jpg");
+  background-color: #e3e2df; 
+  /* background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: 0 0;
   background-position: initial;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   /* background: rgba(255, 255, 255, 0.752); */
   z-index: 1000000002;
   pointer-events: none;

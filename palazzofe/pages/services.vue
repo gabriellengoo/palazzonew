@@ -153,6 +153,9 @@
         @enter="enter"
         @leave="leave"
       >
+     
+     
+
         <div
           :class="{ 'slide-in': activeSection, 'slide-out': !activeSection }"
           class="right-content overflow-y-scroll flex-1"
@@ -195,6 +198,9 @@
                   <button class='pt-[4vw]' @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
+                  
+
+
                   <h1 class="loctext pt-2">Design</h1>
                 </div>
 
@@ -1120,6 +1126,7 @@
 import HeaderComponent from "@/components/layout/Header.vue";
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
+import lottie from 'lottie-web';
 
 export default {
   name: "IndexPage",
@@ -1135,6 +1142,7 @@ export default {
       isMobile: false,
       // activeSection: null,
       hoveredSection: null,
+      lottieInstance: null,
     };
   },
 
@@ -1161,6 +1169,14 @@ export default {
   if (!this.isMobile) {
     this.hoveredSection = 'design';
   }
+
+  this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation4, // the DOM element
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: '/animations/plus.json', // your Lottie animation JSON file path
+    });
 
   },
 
@@ -1191,6 +1207,24 @@ export default {
     toggleMenu() {
       this.$store.commit("toggleMenu");
     },
+
+    openSection() {
+      const rightContent = document.querySelector(".sevcont");
+      if (rightContent && !this.isOpen) {
+        rightContent.classList.add("slide-in");
+        this.lottieInstance.playSegments([0, 11], true);  // Open animation
+        this.isOpen = true;
+      }
+    },
+    
+    closeSection() {
+      const rightContent = document.querySelector(".sevcont");
+      if (rightContent && this.isOpen) {
+        rightContent.classList.remove("slide-in");
+        this.lottieInstance.playSegments([11, 20], true);  // Close animation
+        this.isOpen = false;
+      }
+    },
     
     checkViewport() {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
@@ -1206,8 +1240,10 @@ export default {
     setActiveSection(section) {
       if (this.isMobile) {
       if (this.activeSection === section) {
+        this.lottieInstance.playSegments([0, 11], true);  // Open animation
         this.activeSection = section; // Close the section if clicked again
       } else {
+        this.lottieInstance.playSegments([0, 11], true);  // Open animation
         this.activeSection = section; // Open the new section
       }
     }

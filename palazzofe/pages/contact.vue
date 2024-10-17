@@ -229,19 +229,14 @@
       </div>
 
       <!-- Right Content: Form Section -->
-      <div
-        @click="animateSection"
-        :class="{ 'bounce-on-load': isBouncing }"
-        class="right-content overflow-y-scroll flex-1 slide-in"
-      >
-        <div class="allrcont">
-          <div class="titcont titmb">
-            <button class="pt-[4vw]" @click.stop="closeSection">
-              <div ref="lottieAnimation" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div>
-              <!-- <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" /> -->
-            </button>
-            <h1 class="loctext uppercase pt-2">Get in touch</h1>
-          </div>
+      <div @click="animateSection" :class="{ 'bounce-on-load': isBouncing }" class="right-content overflow-y-scroll flex-1 slide-in">
+    <div class="allrcont">
+      <div class="titcont titmb">
+        <!-- <button class="pt-[4vw]" @click="toggleSection">
+          <div ref="lottieAnimation" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div>
+        </button> -->
+        <h1 class="loctext uppercase pt-2">Get in touch</h1>
+      </div>
 
           <form
             action="https://formspree.io/f/xwpkkljw"
@@ -388,23 +383,32 @@ export default {
     resetImage() {
       this.currentImage = this.defaultImage; // Revert to default image on mouseleave
     },
-    animateSection() {
-      const rightContent = document.querySelector(".allrcont");
-      console.log(rightContent); // Check if the element is correctly selected
-      if (!this.isOpen && rightContent) {
-        rightContent.classList.add("slide-in");
-        this.lottieInstance.playSegments([0, 11], true);  // Only add the class if not already open
-        this.isOpen = true; // Set the state to open
+    toggleSection() {
+      if (!this.isOpen) {
+        this.openSection();
+      } else {
+        this.closeSection();
       }
     },
+    
+    openSection() {
+      const rightContent = document.querySelector(".allrcont");
+      if (rightContent && !this.isOpen) {
+        rightContent.classList.add("slide-in");
+        this.lottieInstance.playSegments([0, 11], true);  // Open animation
+        this.isOpen = true;
+      }
+    },
+    
     closeSection() {
       const rightContent = document.querySelector(".allrcont");
-      if (this.isOpen && rightContent) {
+      if (rightContent && this.isOpen) {
         rightContent.classList.remove("slide-in");
-        this.lottieInstance.playSegments([20, 0], true); // Play the Lottie animation for closing
-        this.isOpen = false; // Set the state back to closed
+        this.lottieInstance.playSegments([11, 20], true);  // Close animation
+        this.isOpen = false;
       }
     },
+  
     handleClickOutside(event) {
       const rightContent = document.querySelector(".allrcont");
       // Check if the click was outside the rightContent or the close button
