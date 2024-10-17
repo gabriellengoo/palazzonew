@@ -73,8 +73,8 @@
               class="absolute text-day2mb top-0 right-0 p-2 text-xs block"
             >
               <span class="numgmb nodes" v-if="project.slider">
-                ({{ String(index).padStart(1, "") }} of
-                {{ String(project.slider.length).padStart(1, "") }})</span
+                ( {{ String(index).padStart(1, "") }} of
+                {{ String(project.slider.length).padStart(1, "") }} )</span
               >
             </header>
             
@@ -273,8 +273,8 @@
               class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block"
             >
               <span class="numg" v-if="project.slider">
-                ({{ String(index).padStart(1, "") }} of
-                {{ String(project.slider.length).padStart(1, "") }})</span
+                ( {{ String(index).padStart(1, "") }} of
+                {{ String(project.slider.length).padStart(1, "") }} )</span
               >
             </header>
             <!-- 
