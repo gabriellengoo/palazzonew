@@ -73,13 +73,14 @@ html {
   width: max-content;
   width: 50vw;
   top: 96.5vh;
-  left: 47vw;
+  left: 45vw;
   display: flex;
   transition-duration: 0ms !important;
   transform: none !important;
   transition-property: none !important;
   font-family: "NHaas";
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
+  flex-direction: row;
 }
 
 .numg {

@@ -453,7 +453,6 @@ export default {
       this.project.slider.length > 0 &&
       this.project.slider[0].images.length > 0
     ) {
-      this.activeDay = this.project.slider[0].images[0].day; // Initialize activeDay from the first image
       this.totalImages = this.project.slider[0].images.length; // Set total images here
     }
 
