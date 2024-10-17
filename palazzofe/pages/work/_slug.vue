@@ -579,11 +579,22 @@ export default {
       this.isGalleryExpanded = !this.isGalleryExpanded;
     },
 
-    onSlideChange(swiper) {},
-
-    onSlideChange2(swiper) {},
-
     onSlideChange(swiper) {
+      this.index = swiper.activeIndex + 1;
+      this.realIndex = swiper.activeIndex;
+      const gsap = this.$gsap;
+      if (swiper.activeIndex == 0 && !this.back) {
+        this.$refs["prev"].classList.add("disabled");
+      } else {
+        this.$refs["prev"].classList.remove("disabled");
+      }
+      if (this.index > 1) {
+        gsap.to(this.$refs["skew"], { x: "-150%" });
+      } else {
+        gsap.to(this.$refs["skew"], { x: "0%" });
+      }
+    },
+    onSlideChange2(swiper) {
       this.index = swiper.activeIndex + 1;
       this.realIndex = swiper.activeIndex;
       const gsap = this.$gsap;
@@ -649,16 +660,16 @@ export default {
     // pev btn
 
     next() {
-      // Remove the link to the next project
-      if (!this.mySwiper.isEnd) {
-        this.mySwiper.slideNext();
+      if (this.mySwiper.isEnd) {
+        if (this.project.nextProject) {
+          this.mySwiper.slideTo(0);
+        }
       } else {
-        this.mySwiper.slideTo(0); // Optionally, you can keep this to loop back to the first slide
+        this.mySwiper.slideNext();
       }
     },
     prev() {
-      // Remove the isBeginning check
-      if (this.back) {
+      if (this.mySwiper.isBeginning && this.back) {
         this.$router.go(-1);
       } else {
         this.mySwiper.slidePrev();
