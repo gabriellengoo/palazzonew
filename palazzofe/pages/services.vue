@@ -1205,7 +1205,7 @@ export default {
     },
     onHoverLeave() {
       if (!this.isMobile) {
-        this.hoveredSection = "section"; // Only reset for non-mobile devices
+        this.hoveredSection = " "; // Only reset for non-mobile devices
       }
     },
 
@@ -1258,7 +1258,7 @@ export default {
       // Check if it's mobile or desktop and set the active section accordingly
       if (!this.isMobile) {
         if (this.activeSection === section) {
-          this.activeSection = null; // Close the section if it's already active
+          this.activeSection = section; // Close the section if it's already active
         } else {
           this.activeSection = section; // Set the clicked section as active
         }
