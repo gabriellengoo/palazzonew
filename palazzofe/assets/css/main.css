@@ -371,8 +371,11 @@ a .inner-image:hover {
   }
 
   .headbarc {
-    width: 3vh;
+    width: 1.9vh;
+    height: max-content;
     display: block;
+    stroke-width: .5vw;
+    stroke: black;
   }
 
   .svgmb {

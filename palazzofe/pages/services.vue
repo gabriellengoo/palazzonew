@@ -164,6 +164,7 @@
         >
           <!-- Design -->
           <div
+          
             :class="{
               'slide-in':
                 activeSection === 'design' || hoveredSection === 'design',
@@ -195,10 +196,10 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+                  <button class='pt-[4vw]'   @click="closeSection">
+                    <SvgClose :class="{ 'headbarc': activeSection, 'rotatesvg': !activeSection }" class=" w-[1.4vw] hover:cursor-pointer" />
                   </button>
-                  
+                  <!-- <div ref="lottieAnimation3" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div> -->
 
 
                   <h1 class="loctext pt-2">Design</h1>
@@ -289,7 +290,9 @@
 
           <!-- Location -->
           <div
+          id="location"
             :class="{
+             
               'slide-in':
                 activeSection === 'location' || hoveredSection === 'location',
               'slide-out':
@@ -1143,6 +1146,7 @@ export default {
       // activeSection: null,
       hoveredSection: null,
       lottieInstance: null,
+      hasHash: false,
     };
   },
 
@@ -1165,26 +1169,35 @@ export default {
     this.checkViewport(); // Set the initial value based on viewport
     window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
 
+    this.checkHash();
+    window.addEventListener("hashchange", this.checkHash); // Listen for changes to the URL
+
+
       // Set hoveredSection to 'design' if not on mobile
   if (!this.isMobile) {
     this.hoveredSection = 'design';
   }
 
   this.lottieInstance = lottie.loadAnimation({
-      container: this.$refs.lottieAnimation4, // the DOM element
+      container: this.$refs.lottieAnimation3, // Lottie animation container reference
       renderer: 'svg',
       loop: false,
       autoplay: false,
-      path: '/animations/plus.json', // your Lottie animation JSON file path
+      path: '/animations/plus.json', // Path to your Lottie animation JSON file
     });
 
   },
 
   beforeDestroy() {
+    window.removeEventListener("hashchange", this.checkHash);
     window.removeEventListener("resize", this.checkViewport); // Clean up event listener
   },
 
   methods: {
+    checkHash() {
+      // Check if the URL contains a hash
+      this.hasHash = window.location.hash !== "";
+    },
     onHover(section) {
       if (!this.isMobile) {
         this.hoveredSection = section; // Set hovered section for non-mobile devices
@@ -1192,17 +1205,17 @@ export default {
     },
     onHoverLeave() {
       if (!this.isMobile) {
-        this.hoveredSection = "design"; // Only reset for non-mobile devices
+        this.hoveredSection = "section"; // Only reset for non-mobile devices
       }
     },
 
-    resetActiveSection() {
-      if (!this.isMobile) {
-        this.activeSection = "design"; 
-        // Only reset for non-mobile devices
-        this.hoveredSection =  "design";
-      }
-    },
+    // resetActiveSection() {
+    //   if (!this.isMobile) {
+    //     // this.activeSection = "design"; 
+    //     // Only reset for non-mobile devices
+    //     this.hoveredSection =  "design";
+    //   }
+    // },
    
     toggleMenu() {
       this.$store.commit("toggleMenu");
@@ -1212,45 +1225,55 @@ export default {
       const rightContent = document.querySelector(".sevcont");
       if (rightContent && !this.isOpen) {
         rightContent.classList.add("slide-in");
-        this.lottieInstance.playSegments([0, 11], true);  // Open animation
         this.isOpen = true;
       }
     },
     
     closeSection() {
-      const rightContent = document.querySelector(".sevcont");
-      if (rightContent && this.isOpen) {
-        rightContent.classList.remove("slide-in");
-        this.lottieInstance.playSegments([11, 20], true);  // Close animation
+      const rightContentt = document.querySelector(".headbarc");
+      // if (rightContent && this.isOpen) {
+        // rightContent.classList.remove("slide-in");
+        rightContentt.classList.add("rotatesvg");
         this.isOpen = false;
-      }
+        this.activeSection = null;
+      // }
     },
     
-    checkViewport() {
+    checkViewport(section) {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
       this.activeSection = this.isMobile ? false : " "; // Set activeSection based on isMobile
 
     // Update hoveredSection based on viewport
+    
     if (!this.isMobile) {
-      this.hoveredSection = 'design';
+      this.hoveredSection = "design";
     } else {
-      this.hoveredSection = null;
+      this.hoveredSection = "";
     }
     },
+
+
+    
     setActiveSection(section) {
-      if (this.isMobile) {
-      if (this.activeSection === section) {
-        this.lottieInstance.playSegments([0, 11], true);  // Open animation
-        this.activeSection = section; // Close the section if clicked again
+      // Check if it's mobile or desktop and set the active section accordingly
+      if (!this.isMobile) {
+        if (this.activeSection === section) {
+          this.activeSection = null; // Close the section if it's already active
+        } else {
+          this.activeSection = section; // Set the clicked section as active
+        }
+
+        // Set hoveredSection to null when a section is clicked
+        this.hoveredSection = null;
       } else {
-        this.lottieInstance.playSegments([0, 11], true);  // Open animation
-        this.activeSection = section; // Open the new section
+        // On mobile, just set the clicked section as active
+        this.activeSection = section;
+        this.hoveredSection = null; // Reset hover section on mobile
       }
-    }
     },
-    closeSection() {
-      this.activeSection = null; // Close the active section
-    },
+    // closeSection() {
+    //   this.activeSection = null; // Close the active section
+    // },
 
     handleClick() {
       if (this.isMobile && this.activeSection) {
@@ -1368,6 +1391,13 @@ export default {
 </script>
 
 <style scoped>
+
+.rotatesvg{
+  transform: rotate(45deg);
+  transition-property: transform;
+  transition-duration: 3s;
+}
+
 .sheadera {
   /* display: unset;  */
   opacity: 1;

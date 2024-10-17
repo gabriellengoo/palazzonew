@@ -232,9 +232,9 @@
       <div @click="animateSection" :class="{ 'bounce-on-load': isBouncing }" class="right-content overflow-y-scroll flex-1 slide-in">
     <div class="allrcont">
       <div class="titcont titmb">
-        <!-- <button class="pt-[4vw]" @click="toggleSection">
+        <button class="pt-[4vw]" @click="toggleSection">
           <div ref="lottieAnimation" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div>
-        </button> -->
+        </button>
         <h1 class="loctext uppercase pt-2">Get in touch</h1>
       </div>
 
