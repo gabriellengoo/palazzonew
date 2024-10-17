@@ -161,13 +161,13 @@ export default {
                       description: "Is the image from day 1, 2, or 3?",
                       options: {
                         list: [
-                          { title: "Day 1", value: "day1" },
-                          { title: "Day 2", value: "day2" },
-                          { title: "Day 3", value: "day3" }
+                          { title: "Day One", value: "Day One" },
+                          { title: "Day Two", value: "Day Two" },
+                          { title: "Day Three", value: "Day Three" }
                         ],
                         layout: "radio" // optional, for radio button layout
                       }
-                    }
+          },
                
                     // {
                     //   name: "video",
