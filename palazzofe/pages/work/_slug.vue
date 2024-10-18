@@ -69,20 +69,20 @@
     </span>
   </span>
 </header> -->
-<header
+<!-- <header
               class="numtextcont absolute text-day2mb top-0 right-0 p-2 text-xs block"
             >
               <span class="numgmb nodes" v-if="project.slider">
                 ( {{ String(index).padStart(1, "") }} of
                 {{ String(project.slider.length).padStart(1, "") }} )</span
               >
-            </header>
+            </header> -->
             
           <div class="nodes nodesgal">
             <section
               class="top-0 left-0 w-full md:block cursor-grab slider"
-              v-swiper:mySwiper2="swiperOptions2"
-              @slideChange2="onSlideChange2"
+              v-swiper:mySwiperMobile="swiperOptions2"
+              @slideChange="onSlideChange"
               ref="slider2"
             >
               <div class="relative z-40 w-full h-full swiper-wrapper">
@@ -437,6 +437,7 @@ export default {
       },
       swiperOptions2: {
         slidesPerView: "auto",
+        
         // keyboard: {
         //   enabled: true,
         // },
@@ -691,22 +692,22 @@ export default {
     },
 
 
-    // next2() {
-    //   if (this.mySwiper2.isEnd) {
-    //     if (this.project.nextProject) {
-    //       this.mySwiper2.slideTo(0);
-    //     }
-    //   } else {
-    //     this.mySwiper2.slideNext();
-    //   }
-    // },
-    // prev2() {
-    //   if (this.mySwiper2.isBeginning && this.back) {
-    //     this.$router.go(-1);
-    //   } else {
-    //     this.mySwiper2.slidePrev();
-    //   }
-    // },
+    next2() {
+      if (this.mySwiperMobile.isEnd) {
+        if (this.project.nextProject) {
+          this.mySwiperMobile.slideTo(0);
+        }
+      } else {
+        this.mySwiperMobile.slideNext();
+      }
+    },
+    prev2() {
+      if (this.mySwiperMobile.isBeginning && this.back) {
+        this.$router.go(-1);
+      } else {
+        this.mySwiperMobile.slidePrev();
+      }
+    },
 
     async searchProjects() {
       const searchQuery = this.searchQuery.trim(); // Remove leading and trailing spaces
