@@ -69,6 +69,7 @@ export default {
           to: {
             type: "projectevents",
           },
+          validation: (Rule) => Rule.required().error('required'), 
           hidden: ({ parent, value }) =>
             !value && (parent?.spacer || parent?.link),
         },

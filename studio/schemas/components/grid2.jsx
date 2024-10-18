@@ -66,6 +66,7 @@ export default {
           name: "reference",
           title: "Reference",
           type: "reference", 
+          validation: (Rule) => Rule.required().error('required'), 
           to: {
             type: "projectevents",
           },

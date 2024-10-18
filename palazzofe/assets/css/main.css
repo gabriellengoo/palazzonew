@@ -65,15 +65,15 @@ html {
   transition-property: none !important;
   } */
 
-.text-day1 {
+.textday1por {
   font-size: 0.8vw;
   position: absolute;
   z-index: 99;
   width: -moz-max-content;
   width: max-content;
   width: 50vw;
-  top: 96.5vh;
-  left: 46.3vw;
+  top: 97.5vh;
+  left: 46.7vw;
   display: flex;
   transition-duration: 0ms !important;
   transform: none !important;
@@ -83,10 +83,42 @@ html {
   flex-direction: row;
 }
 
-.numg {
-  left: 96.8vw;
+.textday1lan {
+  font-size: 0.8vw;
   position: absolute;
-  top: 3.9vw;
+  z-index: 99;
+  width: -moz-max-content;
+  width: max-content;
+  width: 50vw;
+  top: 97.5vh;
+  left: 47.25vw;
+  display: flex;
+  transition-duration: 0ms !important;
+  transform: none !important;
+  transition-property: none !important;
+  font-family: "NHaas";
+  /* flex-direction: row-reverse; */
+  flex-direction: row;
+}
+
+.item-wrapper{
+  max-width: 50%;
+}
+
+.numg {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+}
+
+.numcon{
+  height: 92.9vh;
+  width: 97vw;
+}
+
+.numtextcont{
+  justify-content: flex-end;
+  display: flex !important;
 }
 
 .numgmb {
@@ -132,9 +164,10 @@ html {
   font-size: 0.8vw;
   position: absolute;
   z-index: 99;
+  display: flex !important;
   width: -moz-max-content;
-  width: max-content;
   width: 100vw;
+  /* width: 98.5vw; */
   /* top: 3.5vw; */
   height: 100vh;
   /* left: 94.8vw; */
@@ -143,6 +176,9 @@ html {
   transition-property: none !important;
   font-family: "NHaas";
   pointer-events: none !important;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .textsum {
@@ -284,9 +320,9 @@ a .inner-image {
     padding-right: 0.5vw;
   }
 
-  .portrait {
+  /* .portrait {
     margin-right: 2vw !important;
-  }
+  } */
 
   .landscape {
     width: auto;

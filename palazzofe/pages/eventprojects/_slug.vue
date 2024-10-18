@@ -261,13 +261,14 @@
               aria-label="Next"
             ></button>
 
-            <header class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block">
-          <span class="numg"v-if="project.slider"
-            > ( {{ String(index).padStart(1, '') }} of {{
-              String(project.slider.length).padStart(1, '')
-            }} )</span
-          >
-        </header>
+            <header
+              class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block"
+            >
+             <div class="numcon"> <span class="numg" v-if="project.slider">
+                ( {{ String(index).padStart(1, "") }} of
+                {{ String(project.slider.length).padStart(1, "") }} )</span
+              ></div>
+            </header>
 
 
             <div class="nomb nombgal gallery-images">
@@ -289,15 +290,10 @@
                         v-for="image in slide.images"
                         :key="image._key"
                         class="overlaydiv flex flex-col flex-1 h-full"
-                        :class="
-                          image.padding
-                            ? image.padding == 'medium'
-                              ? 'p-12 pr-10'
-                              : image.padding == 'large'
-                              ? 'p-20 pr-18'
-                              : 'p-8 pr-6'
-                            : ''
-                        "
+                        :class="{
+                            portraitcon: image.portrait,
+                            landscapecon: !image.portrait,
+                          }"
                       >
                         <MediaImage
                           :src="image.image.asset._ref"
@@ -313,10 +309,14 @@
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
 
-                        <div class="absolute top-0 left-0 text-day1 z-50">
-      <!-- Display the day number of the active slide -->
-      <span class="numgday">{{ image.day }}</span>
-    </div>
+                        <div   :class="{
+                            textday1por: image.portrait,
+                            textday1lan: !image.portrait,
+                          }"
+                          class="absolute top-0 left-0 text-day1 z-50">
+                          <!-- Display the day number of the active slide -->
+                          <div v-if="image.day" class="numgday capitalize">{{ image.day }}</div>
+                        </div>
                       </figure>
                     </div>
                   </div>
@@ -749,39 +749,38 @@ export default {
 } */
 
   
+
 .portrait {
-  /* height: auto;
-  width: 34vw;
-  left: 25%;
-  position: relative; */
-  height: auto;
-    width: 34vw;
-    right: 0;
-    bottom: 0;
-    margin-bottom: 1vw;
-    margin-right: 1vw;
-    /* display: flex; */
-    position: absolute;
-    height: 87vh;
-    top: 5vw;
+  margin-right: 1.5vw;
+    position: fixed;
+    margin-top: 5.5vh;
     width: auto;
-    height:  auto;
-    width: 58vh;
+    height: 89vh;
+    -o-object-fit: cover;
+    object-fit: cover;
 }
 
 .landscape {
+ /* height: auto;
+  width: auto;
   height: auto;
-    width: auto;
-    height: auto;
-    width: 44vw;
-    width: 47vw;
-    position: relative;
+  width: 44vw;
+  width: 47vw;
+  position: relative;
+  top: 20vh;
+  margin-right: auto;
+  margin-left: auto; */
+
+  height: 55vh;
+    width: 47vw !important;
+    /* display: flex; */
+    position: sticky !important;
     top: 20vh;
-    margin-right: auto;
-    margin-left: auto;
+    object-fit: cover;
+    object-position: center;
+  
 
-
-    /* width: auto;
+  /* width: auto;
     height: auto;
     width: 45vw;
     position: absolute;
@@ -789,6 +788,24 @@ export default {
     left: 1.5vw;
     margin-right: auto;
     margin-left: auto; */
+}
+
+.landscapecon {
+  width: 50vw;
+    display: flex;
+    align-items: center;
+}
+
+.portraitcon{
+  width: 50vw;
+    height: 100%;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .swiper-wrapper {
@@ -875,7 +892,7 @@ export default {
 }
 
 .gallery-images {
-  display: flex;
+  /* display: flex;
     justify-content: center;
     align-items: flex-end;
     flex-wrap: wrap;
@@ -884,18 +901,18 @@ export default {
     width: 49vw;
     left: 50vw;
     left: 49vw;
-    position: sticky;
+    position: sticky; */
 
 
-    /* display: flex;
+
+    display: flex;
     justify-content: center;
+    align-items: flex-end;
     flex-wrap: wrap;
     height: 100vh;
-    width: 49vw;
-    left: 51vw;
-    position: fixed;
-    overflow: hidden; */
-    /* align-content: center; */
+    width: 50vw;
+    left: 50vw;
+    position: sticky;
 }
 
 .gallery-image {

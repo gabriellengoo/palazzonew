@@ -45,7 +45,6 @@ export default {
         },
 
   
-      
         {
           name: "reference",
           title: "Reference",
@@ -53,6 +52,7 @@ export default {
           to: {
             type: "project",
           },
+          validation: (Rule) => Rule.required().error('required'), 
           hidden: ({ parent, value }) =>
             !value && (parent?.spacer || parent?.link),
         },
