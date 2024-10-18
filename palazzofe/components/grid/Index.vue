@@ -210,7 +210,7 @@ export default {
   height: 100%;
     width: 100%;
     position: relative;
-    top: 5vh;
+    top: 0vh;
     left: 1vw;
     margin: 0 auto;
     object-fit: cover;

@@ -158,12 +158,13 @@ export default {
                       name: "day",
                       title: "Day",
                       type: "string",
-                      description: "Is the image from day 1, 2, or 3?",
+                      description: "Is the image from day 1, 2, 3, or 4?",
                       options: {
                         list: [
                           { title: "Day 1", value: "Day 1" },
                           { title: "Day 2", value: "Day 2" },
-                          { title: "Day 3", value: "Day 3" }
+                          { title: "Day 3", value: "Day 3" },
+                          { title: "Day 4", value: "Day 4" }
                         ],
                         layout: "radio" // optional, for radio button layout
                       }
