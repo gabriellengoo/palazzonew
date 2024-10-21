@@ -13,19 +13,14 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
-
     <div class="nodes pointer-events-none">
-          <p
-            :class="[
-              '',
-              { sheadera: !isMenuOpen },
-              { sheaderaopen: isMenuOpen },
-            ]"
-            class="headingspages pointer-events-none text-center text-4xl uppercase"
-          >
-            Contact
-          </p>
-        </div>
+      <p
+        :class="['', { sheadera: !isMenuOpen }, { sheaderaopen: isMenuOpen }]"
+        class="headingspages pointer-events-none text-center text-4xl uppercase"
+      >
+        Contact
+      </p>
+    </div>
     <!-- <div
         class="mbhead absolute top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[10] pointer-events-none"
       >
@@ -89,17 +84,21 @@
           />
           <input
             class="col-span-1"
-            type="text"
+            type="date"
             name="date"
             placeholder="Date of Celebration *"
             required
+            min="2024-01-01"
+            max="2030-12-31"
           />
           <input
             class="col-span-1"
-            type="tel"
+            type="number"
             name="telephone"
             placeholder="Telephone *"
             required
+            pattern="[0-9]{10,15}"
+            inputmode="numeric"
           />
           <input
             class="col-span-1"
@@ -116,9 +115,12 @@
           />
           <input
             class="col-span-1"
-            type="text"
+            type="number"
             name="guests"
             placeholder="No. of Guests *"
+            required
+            min="0"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
           />
           <input
             class="col-span-1"
@@ -128,17 +130,29 @@
           />
           <input
             class="col-span-1"
-            type="text"
+            type="number"
             name="budget"
             placeholder="Estimated Budget *"
+            required
+            min="0"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
           />
 
           <!-- Send Button -->
           <div class="flex justify-center col-span-2">
-  <button type="submit" class="mt-[3vw] w-auto send-button" @mouseover="changeImage" @mouseout="resetImage">
-    <img :src="currentImage" alt="Send" class="sendb w-[10vw] h-auto" />
-  </button>
-</div>
+            <button
+              type="submit"
+              class="mt-[3vw] w-auto send-button"
+              @mouseover="changeImage"
+              @mouseout="resetImage"
+            >
+              <img
+                :src="currentImage"
+                alt="Send"
+                class="sendb w-[10vw] h-auto"
+              />
+            </button>
+          </div>
         </form>
 
         <!-- <div class="flex justify-center">
@@ -215,28 +229,33 @@
                 :blocks="contact.email"
               ></Richtext>
             </div>
-
-            
           </div>
         </div>
 
         <div class="ml-[6vw]">
-            <Richtext
-              class="w-[90vw] pt-[2vh]"
-              :blocks="contact.address2"
-            ></Richtext>
-          </div>
+          <Richtext
+            class="w-[90vw] pt-[2vh]"
+            :blocks="contact.address2"
+          ></Richtext>
+        </div>
       </div>
 
       <!-- Right Content: Form Section -->
-      <div @click="animateSection" :class="{ 'bounce-on-load': isBouncing }" class="right-content overflow-y-scroll flex-1 slide-in">
-    <div class="allrcont">
-      <div class="titcont titmb">
-        <button class="pt-[4vw]" @click="toggleSection">
-          <div ref="lottieAnimation" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div>
-        </button>
-        <h1 class="loctext uppercase pt-2">Get in touch</h1>
-      </div>
+      <div
+        @click="animateSection"
+        :class="{ 'bounce-on-load': isBouncing }"
+        class="right-content overflow-y-scroll flex-1 slide-in"
+      >
+        <div class="allrcont">
+          <div class="titcont titmb">
+            <button class="pt-[4vw]" @click="toggleSection">
+              <div
+                ref="lottieAnimation"
+                class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+              ></div>
+            </button>
+            <h1 class="loctext uppercase pt-2">Get in touch</h1>
+          </div>
 
           <form
             action="https://formspree.io/f/xwpkkljw"
@@ -246,30 +265,33 @@
             <input
               class="col-span-1"
               type="text"
-              placeholder="Name *"
               name="name"
+              placeholder="Name *"
               required
             />
             <input
               class="col-span-1"
-              type="text"
+              type="date"
               name="date"
               placeholder="Date of Celebration *"
               required
+              min="2024-01-01"
+              max="2030-12-31"
             />
             <input
               class="col-span-1"
-              type="text"
+              type="number"
               name="telephone"
               placeholder="Telephone *"
               required
+              pattern="[0-9]{10,15}"
+              inputmode="numeric"
             />
             <input
               class="col-span-1"
               type="text"
               name="days"
               placeholder="No. of Days of Celebration *"
-              required
             />
             <input
               class="col-span-1"
@@ -280,25 +302,29 @@
             />
             <input
               class="col-span-1"
-              type="text"
+              type="number"
               name="guests"
               placeholder="No. of Guests *"
               required
+              min="0"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
             />
             <input
               class="col-span-1"
               type="text"
               name="country"
               placeholder="Country *"
-              required
             />
             <input
               class="col-span-1"
-              type="text"
+              type="number"
               name="budget"
               placeholder="Estimated Budget *"
               required
+              min="0"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
             />
+
             <div class="flex justify-center mt-[4vw] mb-[18vw]">
               <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
                 <img src="sendh.png" alt="Send" class="w-auto h-auto" />
@@ -316,7 +342,7 @@ import HeaderComponent from "@/components/layout/Header.vue";
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
 import { groq } from "@nuxtjs/sanity";
-import lottie from 'lottie-web';
+import lottie from "lottie-web";
 
 export default {
   name: "IndexPage",
@@ -324,9 +350,9 @@ export default {
   data() {
     return {
       isSectionVisible: false,
-      defaultImage: 'send.png',
-      hoverImage: 'sendh.png',
-      currentImage: 'send.png',
+      defaultImage: "send.png",
+      hoverImage: "sendh.png",
+      currentImage: "send.png",
       isBouncing: false,
       isOpen: false,
       lottieInstance: null,
@@ -347,33 +373,31 @@ export default {
     return { contact };
   },
   mounted() {
-
-      // Add a click listener on the whole document to detect clicks outside
-      document.addEventListener('click', this.handleClickOutside);
+    // Add a click listener on the whole document to detect clicks outside
+    document.addEventListener("click", this.handleClickOutside);
 
     // Delay the start of the bounce animation by 3 seconds
     setTimeout(() => {
       this.isBouncing = true;
-      
+
       // Optional: Remove the bounce class after animation completes (1s duration)
       setTimeout(() => {
         this.isBouncing = false;
       }, 8000); // Duration of the bounce animation (1s)
-      
     }, 4000); // 3 second delay before starting the bounce
 
     this.lottieInstance = lottie.loadAnimation({
       container: this.$refs.lottieAnimation, // the DOM element
-      renderer: 'svg',
+      renderer: "svg",
       loop: false,
       autoplay: false,
-      path: '/animations/plus.json', // your Lottie animation JSON file path
+      path: "/animations/plus.json", // your Lottie animation JSON file path
     });
   },
 
   beforeDestroy() {
     // Clean up the event listener when the component is destroyed
-    document.removeEventListener('click', this.handleClickOutside);
+    document.removeEventListener("click", this.handleClickOutside);
   },
 
   methods: {
@@ -390,25 +414,25 @@ export default {
         this.closeSection();
       }
     },
-    
+
     openSection() {
       const rightContent = document.querySelector(".allrcont");
       if (rightContent && !this.isOpen) {
         rightContent.classList.add("slide-in");
-        this.lottieInstance.playSegments([0, 11], true);  // Open animation
+        this.lottieInstance.playSegments([0, 11], true); // Open animation
         this.isOpen = true;
       }
     },
-    
+
     closeSection() {
       const rightContent = document.querySelector(".allrcont");
       if (rightContent && this.isOpen) {
         rightContent.classList.remove("slide-in");
-        this.lottieInstance.playSegments([11, 20], true);  // Close animation
+        this.lottieInstance.playSegments([11, 20], true); // Close animation
         this.isOpen = false;
       }
     },
-  
+
     handleClickOutside(event) {
       const rightContent = document.querySelector(".allrcont");
       // Check if the click was outside the rightContent or the close button
@@ -446,14 +470,14 @@ export default {
 <style scoped>
 .sheadera {
   /* display: unset;  */
-        left: 39vw;
-        pointer-events: none;
+  left: 39vw;
+  pointer-events: none;
   opacity: 1;
 }
 
 .sheader {
-        left: 39vw;
-        pointer-events: none;
+  left: 39vw;
+  pointer-events: none;
   /* z-index: 1000 !important; */
   /* display: none;  */
   opacity: 0;
@@ -561,7 +585,7 @@ export default {
   font-family: "NHaas";
   column-gap: 4vw;
   width: max-content;
-  letter-spacing: .05vw;
+  letter-spacing: 0.05vw;
   z-index: 99;
   position: relative;
 }
@@ -615,7 +639,7 @@ a:hover {
 }
 
 input::placeholder {
-  color: rgba(0, 0, 0, 0.525);
+  color: rgba(0, 0, 0, 0.525) !important;
   /* line-height: 0; */
 }
 
@@ -726,13 +750,13 @@ input::placeholder {
   .allrcont.slide-in {
     /* bottom: 0;  */
     /* Animates it up */
-    transition:  top 0.5s ease-in-out;
+    transition: top 0.5s ease-in-out;
     top: 0vh;
     /* top: calc(50% - 100px); */
     /* top: auto; */
-        /* margin-top: 30vh; */
-        /* height: 100vh; */
-        height: max-content;
+    /* margin-top: 30vh; */
+    /* height: 100vh; */
+    height: max-content;
   }
 
   .allrcont {
@@ -753,48 +777,52 @@ input::placeholder {
   }
 
   @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-80px);
+    }
+    60% {
+      transform: translateY(-40px);
+    }
   }
-  40% {
-    transform: translateY(-80px);
-  }
-  60% {
-    transform: translateY(-40px);
-  }
-}
 
-.right-content {
-  position: absolute;
-        top: 0vh;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        display: flex;
-        align-items: flex-end;
-        height: 100vh;
-        width: 100vw;
-        align-content: flex-end;
-        flex-direction: column;
-        justify-content: flex-end;
-}
+  .right-content {
+    position: absolute;
+    top: 0vh;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    height: 100vh;
+    width: 100vw;
+    align-content: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 
-.bounce-on-load {
-  animation: bounce 2s ease;
-  /* animation-delay: 3s; */
-}
+  .bounce-on-load {
+    animation: bounce 2s ease;
+    /* animation-delay: 3s; */
+  }
 
   .allrcont {
     min-height: max-content;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: absolute;
-        position: relative;
-        /* top: 88vh; */
-        height: max-content;
-        /* top: 100vh; */
-        justify-content: flex-end;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    position: relative;
+    /* top: 88vh; */
+    height: max-content;
+    /* top: 100vh; */
+    justify-content: flex-end;
   }
 
   .contentamb {

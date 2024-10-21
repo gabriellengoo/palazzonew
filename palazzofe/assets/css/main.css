@@ -17,6 +17,13 @@
   height: 0;
 }
 
+input::placeholder {
+  color: rgba(0, 0, 0, 0.525) !important;
+  /* line-height: 0; */
+}
+
+
+
 #__nuxt,
 #__layout,
 body,
