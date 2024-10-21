@@ -153,9 +153,6 @@
         @enter="enter"
         @leave="leave"
       >
-     
-     
-
         <div
           :class="{ 'slide-in': activeSection, 'slide-out': !activeSection }"
           class="right-content overflow-y-scroll flex-1"
@@ -164,7 +161,6 @@
         >
           <!-- Design -->
           <div
-          
             :class="{
               'slide-in':
                 activeSection === 'design' || hoveredSection === 'design',
@@ -196,12 +192,9 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]'   @click="closeSection">
-                    <SvgClose :class="{ 'headbarc': activeSection, 'rotatesvg': !activeSection }" class=" w-[1.4vw] hover:cursor-pointer" />
+                  <button class='pt-[4vw]' @click="closeSection">
+                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
-                  <!-- <div ref="lottieAnimation3" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div> -->
-
-
                   <h1 class="loctext pt-2">Design</h1>
                 </div>
 
@@ -290,9 +283,7 @@
 
           <!-- Location -->
           <div
-          id="location"
             :class="{
-             
               'slide-in':
                 activeSection === 'location' || hoveredSection === 'location',
               'slide-out':
@@ -1129,7 +1120,6 @@
 import HeaderComponent from "@/components/layout/Header.vue";
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
-import lottie from 'lottie-web';
 
 export default {
   name: "IndexPage",
@@ -1140,13 +1130,11 @@ export default {
 
   data() {
     return {
-      // activeSection: "design",
-      activeSection: false,
+      activeSection: "design",
+      // activeSection: false,
       isMobile: false,
       // activeSection: null,
       hoveredSection: null,
-      lottieInstance: null,
-      hasHash: false,
     };
   },
 
@@ -1169,111 +1157,72 @@ export default {
     this.checkViewport(); // Set the initial value based on viewport
     window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
 
-    this.checkHash();
-    window.addEventListener("hashchange", this.checkHash); // Listen for changes to the URL
-
-
       // Set hoveredSection to 'design' if not on mobile
   if (!this.isMobile) {
     this.hoveredSection = 'design';
   }
 
-  this.lottieInstance = lottie.loadAnimation({
-      container: this.$refs.lottieAnimation3, // Lottie animation container reference
-      renderer: 'svg',
-      loop: false,
-      autoplay: false,
-      path: '/animations/plus.json', // Path to your Lottie animation JSON file
-    });
-
   },
 
   beforeDestroy() {
-    window.removeEventListener("hashchange", this.checkHash);
     window.removeEventListener("resize", this.checkViewport); // Clean up event listener
   },
 
   methods: {
-    checkHash() {
-      // Check if the URL contains a hash
-      this.hasHash = window.location.hash !== "";
-    },
-    onHover(section) {
-      if (!this.isMobile) {
-        this.hoveredSection = section; // Set hovered section for non-mobile devices
-      }
-    },
-    onHoverLeave() {
-      if (!this.isMobile) {
-        this.hoveredSection = " "; // Only reset for non-mobile devices
-      }
-    },
-
-    // resetActiveSection() {
+    // onHover(section) {
     //   if (!this.isMobile) {
-    //     // this.activeSection = "design"; 
-    //     // Only reset for non-mobile devices
-    //     this.hoveredSection =  "design";
+    //     this.hoveredSection = section; // Set hovered section for non-mobile devices
     //   }
     // },
+    // onHoverLeave() {
+    //   if (!this.isMobile) {
+    //     this.hoveredSection = "design"; // Only reset for non-mobile devices
+    //   }
+    // },
+
+    resetActiveSection() {
+      if (!this.isMobile) {
+        this.activeSection = "design"; 
+        // Only reset for non-mobile devices
+        this.hoveredSection =  "design";
+      }
+    },
    
     toggleMenu() {
       this.$store.commit("toggleMenu");
     },
-
-    openSection() {
-      const rightContent = document.querySelector(".sevcont");
-      if (rightContent && !this.isOpen) {
-        rightContent.classList.add("slide-in");
-        this.isOpen = true;
-      }
-    },
-    
-    closeSection() {
-      const rightContentt = document.querySelector(".headbarc");
-      // if (rightContent && this.isOpen) {
-        // rightContent.classList.remove("slide-in");
-        rightContentt.classList.add("rotatesvg");
-        this.isOpen = false;
-        this.activeSection = null;
-      // }
-    },
-    
-    checkViewport(section) {
+    checkViewport() {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
       this.activeSection = this.isMobile ? false : " "; // Set activeSection based on isMobile
 
     // Update hoveredSection based on viewport
-    
     if (!this.isMobile) {
-      this.hoveredSection = "design";
+      this.hoveredSection = 'design';
     } else {
-      this.hoveredSection = "";
+      this.hoveredSection = null;
+    }
+    },
+    setActiveSection(section) {
+      if (this.isMobile) {
+      if (this.activeSection === section) {
+        this.activeSection = section; // Close the section if clicked again
+      } else {
+        this.activeSection = section; // Open the new section
+      }
     }
     },
 
-
-    
     setActiveSection(section) {
-      // Check if it's mobile or desktop and set the active section accordingly
-      if (!this.isMobile) {
-        if (this.activeSection === section) {
-          this.activeSection = section; // Close the section if it's already active
-        } else {
-          this.activeSection = section; // Set the clicked section as active
-        }
+  if (this.activeSection === "design") {
+    this.activeSection = "design"; // If the active section is clicked again, close it
+  } else {
+    this.activeSection = section; // Otherwise, set the clicked section as active
+  }
+}, 
 
-        // Set hoveredSection to null when a section is clicked
-        this.hoveredSection = null;
-      } else {
-        // On mobile, just set the clicked section as active
-        this.activeSection = section;
-        this.hoveredSection = null; // Reset hover section on mobile
-      }
+    closeSection() {
+      this.activeSection = null; // Close the active section
     },
-    // closeSection() {
-    //   this.activeSection = null; // Close the active section
-    // },
 
     handleClick() {
       if (this.isMobile && this.activeSection) {
@@ -1391,13 +1340,6 @@ export default {
 </script>
 
 <style scoped>
-
-.rotatesvg{
-  transform: rotate(45deg);
-  transition-property: transform;
-  transition-duration: 3s;
-}
-
 .sheadera {
   /* display: unset;  */
   opacity: 1;

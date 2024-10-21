@@ -1,7 +1,7 @@
 <template>
   <main class="min-h-full">
       <!-- <LenisComponent /> -->
-      <TransitionComponent />
+      <!-- <TransitionComponent /> -->
       
     <!-- <transition name="fade"> -->
       <Nuxt />
