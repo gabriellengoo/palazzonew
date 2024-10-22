@@ -286,7 +286,15 @@ a .inner-image:hover {
   opacity: 70%;
   transition-duration: 1s;
 }
+a .inner-image .textsum:hover {
+  color: #0000004d;
+}
 a .inner-image {
+  transition-duration: 1s;
+}
+
+.image-item {
+  ty: 70%;
   transition-duration: 1s;
 }
 
