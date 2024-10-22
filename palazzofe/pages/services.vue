@@ -40,100 +40,56 @@
             <div class="  ">
               <nav class="link-container uppercase">
                 <ul>
-                  <li class="pointer-events-none">
+                  <!-- <li class="toplink pointer-events-none">
+                    <a class="toplink" href="#">space</a>
+                  </li> -->
+                  <li @click="closeSection">
                     <a class="svgleft pointer-events-none" href=""
                       ><SvgArchstar class="" @click="setActiveSection('')"
                     /></a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('design')"
-                      @mouseover="onHover('design')"
-                      @mouseleave="onHoverLeave"
-                      href="javascript:void(0)"
-                    >
-                      Design
-                    </a>
+                    <a @click="setActiveSection('design')" href="#">Design</a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('location')"
-                       @mouseover="onHover('location')"
-                      @mouseleave="onHoverLeave"
-                      href="javascript:void(0)"
+                    <a @click="setActiveSection('location')" href="#"
+                      >Location</a
                     >
-                      Location
-                    </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('production')"
-                      @mouseover="onHover('production')"
-                      @mouseleave="onHoverLeave"
-                      href="javascript:void(0)"
+                    <a @click="setActiveSection('production')" href="#"
+                      >Production</a
                     >
-                      Production
-                    </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('concierge')"
-                      @mouseover="onHover('concierge')"
-                      @mouseleave="onHoverLeave"
-                      href="#Concierge"
+                    <a @click="setActiveSection('concierge')" href="#Concierge"
+                      >Concierge</a
                     >
-                      Concierge
-                    </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('activity')"
-                      @mouseover="onHover('activity')"
-                      @mouseleave="onHoverLeave"
-                      href="#activity"
+                    <a @click="setActiveSection('activity')" href="#activity"
+                      >Activity</a
                     >
-                      Activity
-                    </a>
                   </li>
                   <li>
                     <a
                       @click="setActiveSection('celebrities')"
-                      @mouseover="onHover('celebrities')"
-                      @mouseleave="onHoverLeave"
                       href="#celebrities"
+                      >Celebrities</a
                     >
-                      Celebrities
-                    </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('music')"
-                      @mouseover="onHover('music')"
-                      @mouseleave="onHoverLeave"
-                      href="#music"
+                    <a @click="setActiveSection('music')" href="#music"
+                      >Music</a
                     >
-                      Music
-                    </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('products')"
-                      @mouseover="onHover('products')"
-                      @mouseleave="onHoverLeave"
-                      href="#products"
+                    <a @click="setActiveSection('products')" href="#products"
+                      >Products</a
                     >
-                      Products
-                    </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('more')"
-                      @mouseover="onHover('more')"
-                      @mouseleave="onHoverLeave"
-                      href="#more"
-                    >
-                      More
-                    </a>
+                    <a @click="setActiveSection('more')" href="#more">More</a>
                   </li>
                 </ul>
               </nav>
@@ -760,7 +716,7 @@
                 </div>
                 <div :class="[
                     'textaup',
-                    { texta: !services.productionContent.prcontent },
+                    { texta: !services.conciergeContent.cccontent },
                   ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="services.conciergeContent.ccontent"
@@ -1130,11 +1086,12 @@ export default {
 
   data() {
     return {
-      activeSection: "design",
+      // activeSection: "design",
+      // Set the default section, e.g., 'design'
       // activeSection: false,
       isMobile: false,
-      // activeSection: null,
-      hoveredSection: null,
+      activeSection: null,
+      // Track the active section state
     };
   },
 
@@ -1156,12 +1113,6 @@ export default {
   mounted() {
     this.checkViewport(); // Set the initial value based on viewport
     window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
-
-      // Set hoveredSection to 'design' if not on mobile
-  if (!this.isMobile) {
-    this.hoveredSection = 'design';
-  }
-
   },
 
   beforeDestroy() {
@@ -1169,59 +1120,19 @@ export default {
   },
 
   methods: {
-    // onHover(section) {
-    //   if (!this.isMobile) {
-    //     this.hoveredSection = section; // Set hovered section for non-mobile devices
-    //   }
-    // },
-    // onHoverLeave() {
-    //   if (!this.isMobile) {
-    //     this.hoveredSection = "design"; // Only reset for non-mobile devices
-    //   }
-    // },
-
-    resetActiveSection() {
-      if (!this.isMobile) {
-        this.activeSection = "design"; 
-        // Only reset for non-mobile devices
-        this.hoveredSection =  "design";
-      }
-    },
-   
-    toggleMenu() {
-      this.$store.commit("toggleMenu");
-    },
     checkViewport() {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
-      this.activeSection = this.isMobile ? false : " "; // Set activeSection based on isMobile
-
-    // Update hoveredSection based on viewport
-    if (!this.isMobile) {
-      this.hoveredSection = 'design';
-    } else {
-      this.hoveredSection = null;
-    }
+      this.activeSection = this.isMobile ? false : "design"; // Set activeSection based on isMobile
     },
     setActiveSection(section) {
-      if (this.isMobile) {
       if (this.activeSection === section) {
-        this.activeSection = section; // Close the section if clicked again
+        this.activeSection = "design"; // Close the section if clicked again
       } else {
         this.activeSection = section; // Open the new section
       }
-    }
     },
-
-    setActiveSection(section) {
-  if (this.activeSection === "design") {
-    this.activeSection = "design"; // If the active section is clicked again, close it
-  } else {
-    this.activeSection = section; // Otherwise, set the clicked section as active
-  }
-}, 
-
     closeSection() {
-      this.activeSection = null; // Close the active section
+      this.activeSection = null; // Close the section when the close button is clicked
     },
 
     handleClick() {
@@ -1326,15 +1237,8 @@ export default {
     return { services };
   },
 
-  // computed: {
-  //   ...mapState(["gridpub"]),
-  // },
-
   computed: {
     ...mapState(["gridpub"]),
-    isMenuOpen() {
-      return this.$store.getters.isMenuOpen;
-    },
   },
 };
 </script>
