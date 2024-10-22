@@ -712,7 +712,7 @@ input::placeholder {
   }
 
   .headbarc2{
-    width: 1.9vh;
+            width: 1.9vh;
         height: -moz-max-content;
         height: max-content;
         display: block;
