@@ -245,6 +245,7 @@ export default {
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
   object-fit: cover; /* Ensure the image covers the container */
+  object-fit: contain;
 }
 
 /* .bgmobile {
