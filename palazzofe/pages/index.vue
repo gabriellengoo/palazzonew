@@ -197,8 +197,8 @@ export default {
 .headera {
     display: flex;
     align-items: center;
-    padding-left: .7vw;
-    padding-right: .7vw;
+    /* padding-left: .7vw;
+    padding-right: .7vw; */
     border-bottom: .0px solid black;
     border-bottom: .0vw solid black;
     background-image: none;
@@ -209,9 +209,15 @@ export default {
     position: absolute;
     top: 0;
     z-index: 1;
-    padding: 0.9vw;
+    padding: 0vw !important;
+    /* padding: 0.9vw; */
 }
 
+.headbar{
+  padding: 0.2vw;
+  padding-left: 0.5vw;
+  padding-top: 0.5vw;
+}
 
 .hidden-content {
   opacity: 0;
