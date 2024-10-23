@@ -1,61 +1,71 @@
 <template>
-    <div v-if="isVisible" class="modal-overlay" @click="closeModal">
-      <div class="modal-content" @click.stop>
-        <iframe :src="pdfUrl" width="100%" height="500px"></iframe>
-        <button class="close-btn" @click="closeModal">Close</button>
-      </div>
+  <div v-if="isOpen" class="modal-overlay" @click.self="closeModal">
+    <div class="modal-content">
+      <img :src="imageSrc" alt="Popup Image" class="popup-image" />
+      <button class="close-button" @click="closeModal">Close</button>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      pdfUrl: {
-        type: String,
-        required: true,
-      },
-      isVisible: {
-        type: Boolean,
-        default: false,
-      },
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    isOpen: {
+      type: Boolean,
+      required: true,
     },
-    methods: {
-      closeModal() {
-        this.$emit('close');
-      },
+    imageSrc: {
+      type: String,
+      required: true,
     },
-  };
-  </script>
-  
-  <style scoped>
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 80%;
-    max-height: 80%;
-    overflow: auto;
-  }
-  
-  .close-btn {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  </style>
-  
+  },
+  methods: {
+    closeModal() {
+      this.$emit('close');
+    },
+  },
+};
+</script>
+
+<style scoped>
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.popup-image {
+  max-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: 90vh;
+
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+</style>

@@ -42,12 +42,12 @@
                 activeTalent != item.reference ? 'hidden' : ''
               ]" 
             >
-              <figure class="flex flex-col"> 
+              <figure class="flex flex-col">
                 <div class="relative">
+                  <!-- :href="item.url" -->
                   <a
-                   
-                    href="javascript:void(0)" @click="openModal(item.url)" class="flex flex-col items-end h-full linkae link-animationn"
-                   
+                  @click.prevent="openModal" 
+                    class="flex flex-col items-end h-full linkae link-animationn"
                   >
                     <figure class="inner-image">
                       <MediaImage
@@ -71,12 +71,17 @@
 
           </div>
         </div>
+
+          <!-- Modal Component -->
+          <Modal
+          :isOpen="isModalOpen"
+          :imageSrc="selectedImage"
+          @close="closeModal"
+          class="modal"
+        />
+
+
       </div>
-
-        <!-- PDF Modal -->
-        <Modal v-if="isModalVisible" :pdfUrl="selectedPdfUrl" @close="closeModal" />
-
-
     </div>
   </client-only>
 </template>
@@ -91,9 +96,6 @@ import { mapGetters } from "vuex";
 import Modal from "@/components/Modal.vue";
 
 export default {
-  components: {
-    Modal,
-  },
   props: ["items", "size"],
   data() {
     return {
@@ -101,9 +103,12 @@ export default {
       isDesktop: false,
       hoveredIndex: null, // Track the hovered image item
       isDefaultActive: true, // Controls the visibility of the default image
-      isModalVisible: false,
-      selectedPdfUrl: null,
+      isModalOpen: false,
+      selectedImage: "/example.jpg", 
     };
+  },
+  components: {
+    Modal,
   },
   computed: {
     ...mapGetters({
@@ -139,13 +144,13 @@ export default {
     handleResize() {
       this.isDesktop = window.innerWidth > 768;
     },
-    openModal(pdfUrl) {
-      this.selectedPdfUrl = pdfUrl;
-      this.isModalVisible = true;
+    openModal() {
+      this.selectedImage = "/example.jpg"; // Always set to your static image
+      this.isModalOpen = true; // Open the modal
     },
     closeModal() {
-      this.isModalVisible = false;
-      this.selectedPdfUrl = null;
+      this.isModalOpen = false; // Close the modal
+      this.selectedImage = ""; // Clear the selected image if needed
     },
   },
 };
@@ -154,6 +159,10 @@ export default {
 
 
 <style scoped>
+
+.modal{
+z-index: 1000;
+}
 
 .item-wrapper{
   display: flex;

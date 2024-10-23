@@ -166,7 +166,8 @@ export default {
                           { title: "Day 3", value: "Day 3" },
                           { title: "Day 4", value: "Day 4" }
                         ],
-                        layout: "radio" 
+                        layout: "radio" ,
+                        validation: (Rule) => Rule.required().error("Please select a day.") 
                         // optional, for radio button layout
                       }
           },

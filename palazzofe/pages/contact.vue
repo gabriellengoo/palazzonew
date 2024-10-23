@@ -488,7 +488,7 @@ input[type="date"] {
 }
 
 .contact-form {
-  opacity: 0.2;
+  opacity: 0.4;
   transition: opacity 0.5s ease; /* Smooth transition */
 }
 

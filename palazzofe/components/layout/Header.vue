@@ -70,10 +70,10 @@
         class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
       >
       
-        <transition  class="mobilemenu"
+        <transition  class="mobilemenu2"
         name="slide-down" @after-enter="fadeInAllImg">
           <div
-            class="mobilemenu relative mb-auto z-50 flex flex-col justify-center items-center"
+            class="mobilemenu2 relative mb-auto z-50 flex flex-col justify-center items-center"
           >
             <div class="  ">
               <div class="headerr  flex justify-center">
@@ -509,6 +509,8 @@ export default {
   }
 
 
+
+
 }
 
 /* .hover-area {
@@ -776,6 +778,26 @@ export default {
     background-position: initial;
     background-repeat: no-repeat;
     overflow: hidden; */
+    background-size: auto;
+        background-size: cover;
+        background-image: url("./static/background.jpg");
+        background-position: initial;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow-y: scroll;
+
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden; 
+    /* padding-top: 3vh; */
+  }
+
+  .mobilemenu2 {
+
+  
+    /* height: 100vh; */
     transition: max-height 0.5s ease-in-out;
     overflow: hidden; 
     /* padding-top: 3vh; */
@@ -796,17 +818,7 @@ export default {
     flex-direction: column;
         padding: 0 !important;
         padding-top: 6vh !important;
-        background-size: auto;
-        background-size: cover;
-        background-image: url("./static/background.jpg");
-        background-position: initial;
-    background-repeat: no-repeat;
-    height: 100vh;
-    overflow-y: scroll;
-
-        background-position: 0 0;
-        background-repeat: no-repeat;
-        background-size: cover;
+    
         height: 100vh;
         overflow: hidden;
         transition: max-height .5s ease-in-out;

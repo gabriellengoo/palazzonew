@@ -3,7 +3,8 @@
   <div class="reveal-container relative md:min-h-fit md:overflow-hidden">
     <!-- <Headerproject /> -->
     <!-- <LenisComponent />  -->
-
+    <TransitionComponent />
+    
     <div>
       <!-- Header (optional) -->
       <HeaderComponent />
@@ -381,11 +382,14 @@ import { mapMutations, mapState } from "vuex";
 // import Lenis from '@studio-freight/lenis';
 // import LenisComponent from "~/components/LenisComponent.vue";
 // import Headerproject from "~/components/layout/Headerproject.vue";
+import TransitionComponent from "~/components/TransitionComponent.vue";
+
 
 export default {
   components: {
     // Headerproject,
     // LenisComponent,
+    TransitionComponent,
   },
   async asyncData({ params, $sanity, store }) {
   const query = groq`*[_type == "project" && slug.current == "${params.slug}"] {

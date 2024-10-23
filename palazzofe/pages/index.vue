@@ -261,6 +261,16 @@ export default {
 } */
 
 @media only screen and (max-width: 768px) {
+
+  /* .headbar {
+        padding: 2.5vw !important;
+    } */
+
+    .navmbbord {
+      padding: 2.5vw !important;
+        /* justify-content: center; */
+    }
+
   .textmbhead{
     font-size: 4.4vw;
         top: 1.2vh !important;

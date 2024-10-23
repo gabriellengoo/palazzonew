@@ -296,23 +296,20 @@ html {
   top: 0.3vh;
 }
 
-a .inner-image:hover {
+/* a .inner-image:hover {
   opacity: 70%;
   transition-duration: 1s;
-  /* color: red !important; */
 }
 
 a .inner-image {
-  
   transition-duration: 1s;
-}
+} */
 
-.image-item {
-  /* ty: 70%; */
+/* .image-item {
   transition-duration: 1s;
-}
+} */
 
-.linka:hover{
+/* .linka:hover{
   opacity: 70%;
   transition-duration: 1s;
   color: #00000046 !important; 
@@ -322,6 +319,21 @@ a .inner-image {
   opacity: 70%;
   transition-duration: 1s;
   color: #00000046 !important; 
+} */
+
+.linka:hover{
+  opacity: 50%;
+  transition-duration: 1s;
+  /* color: #00000046 !important; */
+}
+/* .item-wrapper:hover .deskimgl{
+  opacity: 100%;
+  transition-duration: 1s;
+} */
+
+.linkae:hover{
+  opacity: 50%;
+  transition-duration: 1s;
 }
 
 .linka{

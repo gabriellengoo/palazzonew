@@ -3,30 +3,34 @@
     <div>
       <!-- Images Section -->
       <div class="image-grid pt-[1vh]">
-
         <div class="nodes">
           <!-- <p>d</p> -->
           <p
-           v-if="!isMenuOpen"
-         
-          class="headingspages text-center text-4xl  uppercase "
-        >
-        Awards
-        </p>
+            v-if="!isMenuOpen"
+            class="headingspages text-center text-4xl uppercase"
+          >
+            Awards
+          </p>
         </div>
-   
+
         <!-- Loop through the items array in chunks of two -->
         <div
           v-for="(chunk, chunkIndex) in chunkedItems"
           :key="chunkIndex"
-          class=" image-rowaw"
+          class="image-rowaw"
         >
           <div
             v-for="(item, index) in chunk"
             :key="item._key"
             class="item-wrapper"
-            @mouseenter="hoveredIndex = item._key; isDefaultActive = false"
-            @mouseleave="hoveredIndex = null; isDefaultActive = true"
+            @mouseenter="
+              hoveredIndex = item._key;
+              isDefaultActive = false;
+            "
+            @mouseleave="
+              hoveredIndex = null;
+              isDefaultActive = true;
+            "
           >
             <!-- Image Item -->
             <div
@@ -36,7 +40,9 @@
                 item.spacer ? 'p-2' : '',
                 activeTalent &&
                 activeTalent != item.reference.talentId &&
-                activeTalent != item.reference ? 'hidden' : ''
+                activeTalent != item.reference
+                  ? 'hidden'
+                  : '',
               ]"
             >
               <figure class="flex flex-col">
@@ -46,46 +52,72 @@
                     :to="`/work/${item.reference.slug}`"
                     class="flex flex-col items-end h-full"
                   > -->
-                    <figure class="inner-image">
-                      <MediaImage
-                        :src="item.image.image"
-                        v-if="item.image.image"
-                      />
-                    </figure>
-                    <figcaption class="textsum block text-center uppercase w-full pt-2">
-                      <span class="textsumf">{{ item.title || item.reference.title }}</span>
-                      <span class="pt-[.1vh]">{{ item.month || item.reference.month }}</span>
-                    </figcaption>
+                  <figure class="inner-image">
+                    <MediaImage
+                      :src="item.image.image"
+                      v-if="item.image.image"
+                    />
+                  </figure>
+                  <figcaption
+                    class="textsum block text-center uppercase w-full pt-2"
+                  >
+                    <span class="textsumf">{{
+                      item.title || item.reference.title
+                    }}</span>
+                    <span class="pt-[.1vh]">{{
+                      item.month || item.reference.month
+                    }}</span>
+                  </figcaption>
                   <!-- </NuxtLink> -->
 
                   <!-- Conditionally show sideim div on hover with fade effect -->
-                  <div 
-                    v-show="hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0)" 
+                  <div
+                    v-show="
+                      hoveredIndex === item._key ||
+                      (isDefaultActive && chunkIndex === 0 && index === 0)
+                    "
                     class="sideim"
-                    :class="{ 'fade-in': hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0), 'fade-out': hoveredIndex !== item._key && !(isDefaultActive && chunkIndex === 0 && index === 0) }"
+                    :class="{
+                      'fade-in':
+                        hoveredIndex === item._key ||
+                        (isDefaultActive && chunkIndex === 0 && index === 0),
+                      'fade-out':
+                        hoveredIndex !== item._key &&
+                        !(isDefaultActive && chunkIndex === 0 && index === 0),
+                    }"
                   >
                     <figure class="deskimgl">
-                      <!-- <MediaImage
+                      <MediaImage
                         :src="item.imageh.imageh"
                         v-if="item.imageh.imageh"
                         :class="{
                             portraitw: item.portrait,
                             landscapew: !item.portrait,
                           }"
-                      /> -->
-                      <div class="content flex-1 p-8 flex justify-center items-center h-full">
-          <div class=" pointer-events-none">
-            <img class="rightimg" src="/awcol.png" />
-          </div>
-        </div>
-                      <figcaption class=" titlea textsum block text-center uppercase w-full pt-2">
-                      <span class="textsumf2">{{ item.title || item.reference.title }}</span>
-                      <!-- <span class="pt-[.1vh]">{{ item.year || item.reference.year }}</span> -->
-                    </figcaption>
-                    <figcaption class=" disa textsum block text-center w-full pt-2">
-                      <!-- <span class="textsumf">{{ item.title || item.reference.title }}</span> -->
-                      <span class="pt-[.1vh]">{{ item.year || item.reference.year }}</span>
-                    </figcaption>
+                      />
+                      <div
+                        class="content flex-1 p-8 flex justify-center items-center h-full"
+                      >
+                        <div class="pointer-events-none">
+                          <img class="rightimg" src="/awcol.png" />
+                        </div>
+                      </div>
+                      <figcaption
+                        class="titlea textsum block text-center uppercase w-full pt-2"
+                      >
+                        <span class="textsumf2">{{
+                          item.title || item.reference.title
+                        }}</span>
+                        <!-- <span class="pt-[.1vh]">{{ item.year || item.reference.year }}</span> -->
+                      </figcaption>
+                      <figcaption
+                        class="disa textsum block text-center w-full pt-2"
+                      >
+                        <!-- <span class="textsumf">{{ item.title || item.reference.title }}</span> -->
+                        <span class="pt-[.1vh]">{{
+                          item.year || item.reference.year
+                        }}</span>
+                      </figcaption>
                     </figure>
                   </div>
                 </div>
@@ -97,10 +129,6 @@
     </div>
   </client-only>
 </template>
-
-
-
-
 
 <script>
 import { mapMutations, mapState } from "vuex";
@@ -135,7 +163,7 @@ export default {
   },
   mounted() {
     this.updateChunkSize(); // Set chunk size on initial mount
-    window.addEventListener("resize", this.updateChunkSize); 
+    window.addEventListener("resize", this.updateChunkSize);
 
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener("resize", this.handleResize);
@@ -147,7 +175,7 @@ export default {
     }
   },
   beforeDestroy() {
-    window.removeEventListener("resize", this.updateChunkSize); 
+    window.removeEventListener("resize", this.updateChunkSize);
     window.removeEventListener("resize", this.handleResize);
   },
   methods: {
@@ -167,43 +195,43 @@ export default {
 };
 </script>
 
-
-
 <style scoped>
 .rightimg {
   width: 34vw;
-  z-index: 9;
-    position: relative;
+  z-index: 9000 !important;
+  position: relative;
+
 }
 
-.titlea{
+.titlea {
   height: 100%;
-    /* width: 100%; */
-    position: absolute;
-    top: 49vh;
-    left: 1vw;
-    font-size: 1.3vw;
-    margin: 0 auto;
-    -o-object-fit: cover;
-    object-fit: cover;
+  /* width: 100%; */
+  position: absolute;
+  top: 49vh;
+  left: 1vw;
+  font-size: 1.3vw;
+  margin: 0 auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  z-index: 9000 !important;
 }
 
-.textsumf2{
-  font-family: 'RomainHeadlineTrial' !important;
+.textsumf2 {
+  font-family: "RomainHeadlineTrial" !important;
 }
 
-.disa{
+.disa {
   height: 100%;
-    /* width: 100%; */
-    position: absolute;
-    top: 85vh;
-    left: 20vw;
-    width: 13vw;
-    font-size: 1.5vw;
-    margin: 0 auto;
-    -o-object-fit: cover;
-    object-fit: cover;
-    font-family: 'RomainHeadlineTrial' !important;
+  /* width: 100%; */
+  position: absolute;
+  top: 85vh;
+  left: 20vw;
+  width: 13vw;
+  font-size: 1.5vw;
+  margin: 0 auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  font-family: "RomainHeadlineTrial" !important;
 }
 
 .sideim {
@@ -227,14 +255,13 @@ export default {
 }
 
 .sideim img {
-  cursor:pointer !important;
+  cursor: pointer !important;
   /* height: auto;
   width: 44vw;
   position: relative;
   top: 20vh;
   margin: 0 auto; */
 }
-
 
 .portraitw {
   /* height: auto;
@@ -248,25 +275,31 @@ export default {
     height: 90vh;
     width: auto; */
 
-    /* height: 44vh;
+  /* height: 44vh;
   width:  auto;
   position: relative;
   top: 20vh;
   margin: 0 auto; */
   height: 100%;
-    width: 100%;
-    position: relative;
-    top: 5vh;
-    left: 1vw;
-    margin: 0 auto;
-    object-fit: cover;
-}
-
-
-.deskimgl{
+  width: 100%;
+  position: relative;
+  top: 5vh;
+  /* left: 1vw; */
+  margin: 0 auto;
   object-fit: cover;
-    height: 100vh;
 }
+
+.deskimgl {
+  object-fit: cover;
+  height: 100vh;
+}
+/* 
+.deskimgl img{
+  position: absolute;
+} */
+
+
+
 
 .landscapew {
   /* height: auto;
@@ -277,12 +310,13 @@ export default {
   margin: 0 auto; */
 
   height: 100%;
-    width: 100%;
-    position: relative;
-    /* top: 20vh; */
-    left: 1vw;
-    margin: 0 auto;
-    object-fit: cover;
+  width: 100%;
+  position: relative;
+  position: absolute;
+  /* top: 20vh; */
+  /* left: 1vw; */
+  margin: 0 auto;
+  object-fit: cover;
 }
 
 .image-grid {
@@ -329,32 +363,28 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-    .image-rowaw:last-child {
-      display: flex;
+  .image-rowaw:last-child {
+    display: flex;
     justify-content: space-between;
     width: 90%;
-        border-bottom: 0.07vw solid rgba(0, 0, 0, 0) !important;
-    }
+    border-bottom: 0.07vw solid rgba(0, 0, 0, 0) !important;
+  }
 }
 
-
 @media only screen and (max-width: 768px) {
-
-  .sideim img{
+  .sideim img {
     display: none !important;
   }
 
-  .sideim{
+  .sideim {
     display: none !important;
   }
 
   .image-item {
     padding: 4vw;
-}
+  }
   /* .left-content{
     padding: 0 !important;
   } */
 }
-
 </style>
-
