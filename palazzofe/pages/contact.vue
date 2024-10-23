@@ -264,14 +264,14 @@
               required
             />
             <input
-              class="col-span-1"
-              type="date"
-              name="date"
-              placeholder="Date of Celebration *"
-              required
-              min="2024-01-01"
-              max="2030-12-31"
-            />
+            class="col-span-1"
+            type="date"
+            name="date"
+            placeholder="Date of Celebration *"
+            required
+            min="2024-01-01"
+            max="3030-12-31"
+          />
             <input
               class="col-span-1"
               type="number"
@@ -367,31 +367,28 @@ export default {
     return { contact };
   },
   mounted() {
-    const contactForm = this.$el.querySelector(".contact-form");
+    const contactForm = this.$el.querySelector('.contact-form');
 
-    // Function to set opacity to 1
-    const setOpacityToFull = () => {
-      contactForm.style.opacity = 1;
-    };
+// Function to set opacity to 1
+const setOpacityToFull = () => {
+  contactForm.style.opacity = 1;
+};
 
-    // Change opacity to 1 when clicked
-    contactForm.addEventListener("click" || "touchstart", (event) => {
-      setOpacityToFull();
-      event.stopPropagation(); // Prevent event bubbling
-    });
+// Change opacity to 1 when clicked
+contactForm.addEventListener('click', (event) => {
+  setOpacityToFull();
+  event.stopPropagation(); // Prevent event bubbling
+});
 
-    // Change opacity to 1 when any input is focused
-    const formFields = contactForm.querySelectorAll(
-      "input, textarea, select, button"
-    );
-    formFields.forEach((field) => {
-      field.addEventListener("focus", setOpacityToFull);
-      field.addEventListener("touchstart", setOpacityToFull); // Handle touch events
-    });
-
-    // Add a click listener on the whole document to detect clicks outside
-    document.addEventListener("click" || "touchstart", this.handleClickOutside);
-
+// Change opacity to 1 when any input is focused
+const formFields = contactForm.querySelectorAll('input, textarea, select, button');
+formFields.forEach(field => {
+  field.addEventListener('focus', setOpacityToFull);
+  field.addEventListener('touchend', (event) => {
+    setOpacityToFull();
+    event.preventDefault(); // Prevent default behavior
+  });
+});
     // Delay the start of the bounce animation by 3 seconds
     setTimeout(() => {
       this.isBouncing = true;
@@ -683,6 +680,12 @@ input::placeholder {
 }
 
 @media only screen and (max-width: 768px) {
+
+  .contact-form {
+  opacity: 1;
+  transition: opacity 0.5s ease; /* Smooth transition */
+}
+
   .instagram-icon {
     width: 5vw;
     height: auto;
