@@ -89,7 +89,7 @@
             placeholder="Date of Celebration *"
             required
             min="2024-01-01"
-            max="2030-12-31"
+            max="3030-12-31"
           />
           <input
             class="col-span-1"
@@ -138,7 +138,6 @@
             oninput="this.value = this.value.replace(/[^0-9]/g, '')"
           />
 
-
           <div class="flex justify-center col-span-2">
             <button
               type="submit"
@@ -154,8 +153,6 @@
             </button>
           </div>
         </form>
-
-     
       </div>
     </div>
 
@@ -240,7 +237,7 @@
        @click="animateSection"
         :class="{ 'bounce-on-load': isBouncing }" -->
       <div
-           :class="{ 'bounce-on-load': isBouncing }"
+        :class="{ 'bounce-on-load': isBouncing }"
         class="right-content overflow-y-scroll flex-1 slide-in"
       >
         <div class="allrcont">
@@ -370,8 +367,30 @@ export default {
     return { contact };
   },
   mounted() {
+    const contactForm = this.$el.querySelector(".contact-form");
+
+    // Function to set opacity to 1
+    const setOpacityToFull = () => {
+      contactForm.style.opacity = 1;
+    };
+
+    // Change opacity to 1 when clicked
+    contactForm.addEventListener("click" || "touchstart", (event) => {
+      setOpacityToFull();
+      event.stopPropagation(); // Prevent event bubbling
+    });
+
+    // Change opacity to 1 when any input is focused
+    const formFields = contactForm.querySelectorAll(
+      "input, textarea, select, button"
+    );
+    formFields.forEach((field) => {
+      field.addEventListener("focus", setOpacityToFull);
+      field.addEventListener("touchstart", setOpacityToFull); // Handle touch events
+    });
+
     // Add a click listener on the whole document to detect clicks outside
-    document.addEventListener("click", this.handleClickOutside);
+    document.addEventListener("click" || "touchstart", this.handleClickOutside);
 
     // Delay the start of the bounce animation by 3 seconds
     setTimeout(() => {
@@ -465,6 +484,16 @@ export default {
 </script>
 
 <style scoped>
+.contact-form {
+  opacity: 0.2;
+  transition: opacity 0.5s ease; /* Smooth transition */
+}
+
+/* Optional: Add a hover effect */
+.contact-form:hover {
+  cursor: pointer;
+}
+
 .sheadera {
   /* display: unset;  */
   left: 39vw;
@@ -636,7 +665,9 @@ a:hover {
 }
 
 input::placeholder {
-  color: rgba(0, 0, 0, 0.525) !important;
+  /* color: rgba(0, 0, 0, 0.525) !important; */
+  color: black !important;
+  opacity: 1;
   /* line-height: 0; */
 }
 
@@ -708,12 +739,12 @@ input::placeholder {
     padding-bottom: 1vh;
   }
 
-  .headbarc{
-            width: 6.3vw;
-        height: -moz-max-content;
-        height: max-content;
-        display: block;
-        stroke-width: 0vw;
+  .headbarc {
+    width: 6.3vw;
+    height: -moz-max-content;
+    height: max-content;
+    display: block;
+    stroke-width: 0vw;
     stroke: black;
   }
 
