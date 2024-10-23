@@ -163,6 +163,12 @@ a:hover {
 }
 
 @media only screen and (max-width: 768px) {
+    .image-rowaw:last-child {
+        border-bottom: 0.07vw solid rgba(0, 0, 0, 0) !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
   .bgmobile {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }

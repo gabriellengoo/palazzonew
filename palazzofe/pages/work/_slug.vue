@@ -90,7 +90,7 @@
                   v-for="(slide, index) in project.slider"
                   :key="slide._key"
                   class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
-                  :class="realIndex == 0 ? '' : ''"
+                 
                 >
                   <div class="overlaycont flex h-full p-2 w-13/16">
                     <figure

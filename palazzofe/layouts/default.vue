@@ -3,13 +3,17 @@
       <!-- <LenisComponent /> -->
       <TransitionComponent />
       
-    <!-- <transition name="fade"> -->
-      <Nuxt />
-    <!-- </transition>  -->
-
     <transition name="fade">
-      <!-- <LayoutHeadertest :class="$route.name !== 'index' ? 'md:flex' : ''" /> -->
+      <Nuxt />
     </transition> 
+
+    <!-- <transition name="fade"> -->
+      <!-- <LayoutHeader 
+        :class="shouldShowHeader ? 'md:flex' : 'hidden'" 
+      /> -->
+      <!-- <LayoutHeader :class="$route.name !== 'index' || 'work/' || 'eventprojects/' ? 'md:flex' : 'hidden'" /> -->
+            <!-- <LayoutHeadertest :class="$route.name !== 'index' ? 'md:flex' : ''" /> -->
+    <!-- </transition>  -->
   </main>
 </template>
 <script>
@@ -20,6 +24,15 @@ export default {
   methods: {
     ...mapActions(["setTitle"]),
     ...mapMutations(["SET_FOOTER", "CLOSE_MENU"]),
+  },
+  computed: {
+    shouldShowHeader() {
+      // Check if the current route is the home page or slug pages
+      const routeName = this.$route.name;
+      return routeName !== 'index' && 
+             routeName !== 'work' && 
+             routeName !== 'eventprojects';
+    }
   },
   data() {
     return {
@@ -50,9 +63,10 @@ export default {
 </script>
 <style scoped>
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 3s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0;
+  opacity: .7;
+  transition: opacity 1s;
 }
 </style>

@@ -6,13 +6,13 @@
       <h1 class="navmb">
         <HeaderComponent />
       </h1>
-      <p class="navmbno yeart text-center text-4xl  uppercase ">
+      <p class="navmbno link-animation yeart text-center text-4xl  uppercase ">
         Weddings
       </p>
       <p
         class="navmbno yeart w-[5vw] text-center text-4xl  uppercase "
       ></p>
-      <p class="navmbno headingspages text-center text-4xl uppercase">
+      <p class="navmbno link-animation headingspages text-center text-4xl uppercase">
         palazzo eventi
       </p>
       <h1 class="navmbno w-[2vw]">
@@ -61,6 +61,14 @@ export default {
 </script>
 
 <style scoped>
+
+
+@keyframes scale-up {
+  to {
+    transform: scale(1); /* End at original size */
+  }
+}
+
 .headingspagesb {
   font-family: "GT-Bold";
 }

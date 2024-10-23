@@ -19,7 +19,7 @@
         <div
           v-for="(chunk, chunkIndex) in chunkedItems"
           :key="chunkIndex"
-          class="image-row"
+          class=" image-rowaw"
         >
           <div
             v-for="(item, index) in chunk"
@@ -291,14 +291,14 @@ export default {
   align-items: center;
 }
 
-.image-row {
+.image-rowaw {
   display: flex;
   justify-content: space-between;
   width: 90%;
   /* border-bottom: 0.07vw solid black; */
 }
 
-.image-row:last-child {
+.image-rowaw:last-child {
   border-bottom: 0;
 }
 
@@ -328,6 +328,14 @@ export default {
   font-family: "GT-Bold";
 }
 
+@media only screen and (max-width: 768px) {
+    .image-rowaw:last-child {
+      display: flex;
+    justify-content: space-between;
+    width: 90%;
+        border-bottom: 0.07vw solid rgba(0, 0, 0, 0) !important;
+    }
+}
 
 
 @media only screen and (max-width: 768px) {

@@ -11,7 +11,7 @@
         </div>
 
         <!-- Loop through the items array in chunks of two -->
-        <div v-for="(chunk, chunkIndex) in chunkedItems" :key="chunkIndex" class="image-row">
+        <div v-for="(chunk, chunkIndex) in chunkedItems" :key="chunkIndex" class="image-row ">
           <div
             v-for="(item, index) in chunk"
             :key="item._key"
