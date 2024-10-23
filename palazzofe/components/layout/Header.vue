@@ -6,12 +6,13 @@
       <div
         class="flex md:justify-between lg:justify-between xl:justify-between"
         ref="headerDiv"
+        @click="toggleMenu"
       >
-        <div class="headbar hover:cursor-pointer">
+        <div class="headbar w-[2vw] hover:cursor-pointer">
           <!-- <SvgMenu v-if="!isMenuOpen" class="headbar w-[1.4vw] hover:cursor-pointer" />
       <SvgClose v-else class="headbar w-[1.4vw] hover:cursor-pointer" /> -->
-          <button @click="toggleMenu" class="hamburger-button">
-            <div ref="lottieAnimation" class="lottie-container w-[1.5vw] hover:cursor-pointer"></div>
+          <button  class="hamburger-button">
+            <div ref="lottieAnimation" class="lottie-container w-[1.7vw] hover:cursor-pointer"></div>
           </button>
         </div>
       </div>

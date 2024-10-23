@@ -166,7 +166,8 @@ export default {
                           { title: "Day 3", value: "Day 3" },
                           { title: "Day 4", value: "Day 4" }
                         ],
-                        layout: "radio" // optional, for radio button layout
+                        layout: "radio" 
+                        // optional, for radio button layout
                       }
           },
                

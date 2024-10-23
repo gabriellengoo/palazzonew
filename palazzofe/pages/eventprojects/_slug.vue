@@ -315,7 +315,7 @@
                           }"
                           class="absolute top-0 left-0 text-day1 z-50">
                           <!-- Display the day number of the active slide -->
-                          <div v-if="image.day" class="numgday capitalize">{{ image.day }}</div>
+                          <p class="numgday capitalize">{{ image.day ? image.day : "Day 1" }}</p>
                         </div>
                       </figure>
                     </div>
@@ -370,29 +370,36 @@ export default {
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "projectevents" && slug.current == "${params.slug}" ] {
       ..., "archiveSlug": archive->slug.current,
+     
       slider[] {
-        fullWidth, imageWidth, overlayimageWidth,thumbnailTime, youtubeUrl,vimeoUrl, images[] {
-          ..., "video" : {"id" : video.asset->playbackId, "aspect" : video.asset->data.aspect_ratio, "thumbTime" : video.asset->thumbTime}
-        }
-      }, 
+      images[] {
+        ...,
+        "day": coalesce(day, "Day 1") 
+      }
+    },
+ 
+   "image": image.asset._ref,
+     
       
-
-      image[],
-      "image" : image.asset._ref,
-
-      "talent" : talent->title, "talentSlug" : talent->slug.current,
-      "footer" : footer,
-      "talentBio" : talent->shortBio,
-      "nextProject" : nextProject->slug.current,
-      
-      "related": *[_type=='project' && references(^.talent._ref) && _id != ^._id]{
-        _id, title, year, content, location, locationlink, production, meta, metadis, "slug" : slug.current
-      }{_id, title, production, meta, metadis, metaemails, "slug" : slug.current},
-      "homeMeta": *[_type == "home"] { meta[], metaemails[], sections[], year},
     }
      | order(_updatedAt desc)[0]`;
 
     const project = await $sanity.fetch(query);
+
+    if (project && project.slider) {
+    project.slider = project.slider.map(slide => {
+      if (slide.images) {
+        slide.images = slide.images.map(image => {
+          const dayFormatted = image.day.charAt(0).toUpperCase() + image.day.slice(1); // Capitalize "day1" to "Day1"
+          return {
+            ...image,
+            day: dayFormatted.replace(/([a-z])(\d+)/, "$1 $2") // Adds a space between "Day" and the number
+          };
+        });
+      }
+      return slide;
+    });
+  }
 
     //    // Debugging: Log the fetched data
     //    console.log('Fetched meta:', project.meta);

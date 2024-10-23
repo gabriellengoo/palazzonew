@@ -40,7 +40,7 @@
                 activeTalent &&
                 activeTalent != item.reference.talentId &&
                 activeTalent != item.reference ? 'hidden' : ''
-              ]"
+              ]" 
             >
               <figure class="flex flex-col">
                 <div class="relative">
@@ -49,7 +49,7 @@
                      :href="item.url"
                      target="_blank"
                         rel="noopener noreferrer"
-                    class="flex flex-col items-end h-full"
+                    class="flex flex-col items-end h-full linkae link-animationn"
                   >
                     <figure class="inner-image">
                       <MediaImage

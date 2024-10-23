@@ -35,7 +35,7 @@
         <div class="content">
           <div class="nomb pointer-events-none">
             <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" />
-            <img class="w-[26.5vw]" src="/leftabout.png" />
+            <img class="w-[26.5vw]" src="/leftaboutt.png" />
           </div>
         </div>
 

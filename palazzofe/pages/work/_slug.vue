@@ -57,7 +57,7 @@
               @click="next"
               aria-label="Next"
             ></button> -->
-            <!-- <header class="absolute text-day2mb top-0 right-0 p-2 text-xs block">
+          <!-- <header class="absolute text-day2mb top-0 right-0 p-2 text-xs block">
   <span class="dots" v-if="project.slider">
     <span
       v-for="(slide, idx) in project.slider"
@@ -69,7 +69,7 @@
     </span>
   </span>
 </header> -->
-<!-- <header
+          <!-- <header
               class="numtextcont absolute text-day2mb top-0 right-0 p-2 text-xs block"
             >
               <span class="numgmb nodes" v-if="project.slider">
@@ -77,7 +77,7 @@
                 {{ String(project.slider.length).padStart(1, "") }} )</span
               >
             </header> -->
-            
+
           <div class="nodes nodesgal">
             <section
               class="top-0 left-0 w-full md:block cursor-grab slider"
@@ -96,7 +96,7 @@
                     <figure
                       v-for="image in slide.images"
                       :key="image._key"
-                      class="overlaydiv  flex flex-col flex-1 h-full"
+                      class="overlaydiv flex flex-col flex-1 h-full"
                       :class="
                         image.padding
                           ? image.padding == 'medium'
@@ -107,7 +107,6 @@
                           : ''
                       "
                     >
-           
                       <MediaImage
                         :src="image.image.asset._ref"
                         v-if="image.image"
@@ -272,10 +271,12 @@
             <header
               class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block"
             >
-             <div class="numcon"> <span class="numg" v-if="project.slider">
-                ( {{ String(index).padStart(1, "") }} of
-                {{ String(project.slider.length).padStart(1, "") }} )</span
-              ></div>
+              <div class="numcon">
+                <span class="numg" v-if="project.slider">
+                  ( {{ String(index).padStart(1, "") }} of
+                  {{ String(project.slider.length).padStart(1, "") }} )</span
+                >
+              </div>
             </header>
             <!-- 
         <header class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block">
@@ -303,10 +304,10 @@
                         v-for="image in slide.images"
                         :key="image._key"
                         :class="{
-                            portraitcon: image.portrait,
-                            landscapecon: !image.portrait,
-                          }"
-                        class="overlaydiv  flex flex-col flex-1 h-full"
+                          portraitcon: image.portrait,
+                          landscapecon: !image.portrait,
+                        }"
+                        class="overlaydiv flex flex-col flex-1 h-full"
                       >
                         <MediaImage
                           :src="image.image.asset._ref"
@@ -322,13 +323,18 @@
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
 
-                        <div   :class="{
+                        <div
+                          :class="{
                             textday1por: image.portrait,
                             textday1lan: !image.portrait,
                           }"
-                          class="absolute top-0 left-0 text-day1 z-50">
+                          class="absolute top-0 left-0 text-day1 z-50"
+                        >
                           <!-- Display the day number of the active slide -->
-                          <div v-if="image.day" class="numgday capitalize">{{ image.day }}</div>
+                          <!-- <div v-if="image.day && image.day !== null && image.day !== undefined" class="numgday capitalize">{{ image.day }}</div>
+                          <div v-else class="numgday capitalize">Day not provided</div> -->
+                          <p class="numgday capitalize">{{ image.day ? image.day : "Day 1" }}</p>
+
                         </div>
                       </figure>
                     </div>
@@ -382,42 +388,43 @@ export default {
     // LenisComponent,
   },
   async asyncData({ params, $sanity, store }) {
-    const query = groq`*[_type == "project" && slug.current == "${params.slug}" ] {
-      ..., "archiveSlug": archive->slug.current,
-      slider[] {
-        fullWidth, imageWidth, overlayimageWidth,thumbnailTime, youtubeUrl,vimeoUrl, images[] {
-          ..., "video" : {"id" : video.asset->playbackId, "aspect" : video.asset->data.aspect_ratio, "thumbTime" : video.asset->thumbTime}
-        }
-      }, 
-      
+  const query = groq`*[_type == "project" && slug.current == "${params.slug}"] {
+    ...,
+    "archiveSlug": archive->slug.current,
 
-      image[],
-      "image" : image.asset._ref,
+    slider[] {
+      images[] {
+        ...,
+        "day": coalesce(day, "Day 1") 
+      }
+    },
 
-      "talent" : talent->title, "talentSlug" : talent->slug.current,
-      "footer" : footer,
-      "talentBio" : talent->shortBio,
-      "nextProject" : nextProject->slug.current,
-      
-      "related": *[_type=='project' && references(^.talent._ref) && _id != ^._id]{
-        _id, title, year, content, location, locationlink, production, meta, metadis, "slug" : slug.current
-      }{_id, title, production, meta, metadis, metaemails, "slug" : slug.current},
-      "homeMeta": *[_type == "home"] { meta[], metaemails[], sections[], year},
-    }
-     | order(_updatedAt desc)[0]`;
+    "image": image.asset._ref,
+  } 
+  | order(_updatedAt desc)[0]`;
 
-    const project = await $sanity.fetch(query);
+  const project = await $sanity.fetch(query);
 
-    //    // Debugging: Log the fetched data
-    //    console.log('Fetched meta:', project.meta);
-    // console.log('Fetched metaemails:', project.metaemails);
+  // Modify the 'day' field for images after fetching the data
+  if (project && project.slider) {
+    project.slider = project.slider.map(slide => {
+      if (slide.images) {
+        slide.images = slide.images.map(image => {
+          const dayFormatted = image.day.charAt(0).toUpperCase() + image.day.slice(1); // Capitalize "day1" to "Day1"
+          return {
+            ...image,
+            day: dayFormatted.replace(/([a-z])(\d+)/, "$1 $2") // Adds a space between "Day" and the number
+          };
+        });
+      }
+      return slide;
+    });
+  }
 
-    // // Commit meta and metaemails to the Vuex store
-    // store.commit('setMeta', project.meta);
-    // store.commit('setMetaEmails', project.metaemails);
+  return { project };
+},
 
-    return { project };
-  },
+
   data() {
     return {
       index: 1,
@@ -437,7 +444,7 @@ export default {
       },
       swiperOptions2: {
         slidesPerView: "auto",
-        
+
         // keyboard: {
         //   enabled: true,
         // },
@@ -461,26 +468,27 @@ export default {
   },
 
   mounted() {
-  const previousScrollPosition = sessionStorage.getItem(
-    "previousScrollPosition"
-  );
-  if (previousScrollPosition && this.$router.isBackNavigation) {
-    window.scrollTo(0, 0);
-  }
+    const previousScrollPosition = sessionStorage.getItem(
+      "previousScrollPosition"
+    );
+    if (previousScrollPosition && this.$router.isBackNavigation) {
+      window.scrollTo(0, 0);
+    }
 
-  this.$nextTick(() => {
-    // Wait for animation to finish
-    setTimeout(() => {
-      // Add a check for screen width
-      if (window.innerWidth > 768) { // Adjust the width threshold as needed
-        window.scrollTo({
-          top: document.querySelector(".reveal-container").offsetHeight,
-          behavior: "smooth",
-        });
-      }
-    }, 1000); // Adjust timeout to match the duration of your animation
-  });
-},
+    this.$nextTick(() => {
+      // Wait for animation to finish
+      setTimeout(() => {
+        // Add a check for screen width
+        if (window.innerWidth > 768) {
+          // Adjust the width threshold as needed
+          window.scrollTo({
+            top: document.querySelector(".reveal-container").offsetHeight,
+            behavior: "smooth",
+          });
+        }
+      }, 1000); // Adjust timeout to match the duration of your animation
+    });
+  },
 
   watch: {
     $route() {
@@ -608,21 +616,20 @@ export default {
     onSlideChange2(swiper) {},
 
     onSlideChange(swiper) {
-      this.index = swiper.activeIndex + 1
-      this.realIndex = swiper.activeIndex
-      const gsap = this.$gsap
+      this.index = swiper.activeIndex + 1;
+      this.realIndex = swiper.activeIndex;
+      const gsap = this.$gsap;
       if (swiper.activeIndex == 0 && !this.back) {
-        this.$refs['prev'].classList.add('disabled')
+        this.$refs["prev"].classList.add("disabled");
       } else {
-        this.$refs['prev'].classList.remove('disabled')
+        this.$refs["prev"].classList.remove("disabled");
       }
       if (this.index > 1) {
-        gsap.to(this.$refs['skew'], { x: '-150%' })
+        gsap.to(this.$refs["skew"], { x: "-150%" });
       } else {
-        gsap.to(this.$refs['skew'], { x: '0%' })
+        gsap.to(this.$refs["skew"], { x: "0%" });
       }
     },
-
 
     scroll() {},
     toggleBlueBox() {
@@ -691,7 +698,6 @@ export default {
       }
     },
 
-
     next2() {
       if (this.mySwiperMobile.isEnd) {
         if (this.project.nextProject) {
@@ -757,16 +763,16 @@ export default {
 
 .portrait {
   margin-right: 1.5vw;
-    position: fixed;
-    margin-top: 5.5vh;
-    width: auto;
-    height: 89vh;
-    -o-object-fit: cover;
-    object-fit: cover;
+  position: fixed;
+  margin-top: 5.5vh;
+  width: auto;
+  height: 89vh;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .landscape {
- /* height: auto;
+  /* height: auto;
   width: auto;
   height: auto;
   width: 44vw;
@@ -777,13 +783,12 @@ export default {
   margin-left: auto; */
 
   height: 55vh;
-    width: 47vw !important;
-    /* display: flex; */
-    position: sticky !important;
-    top: 20vh;
-    object-fit: cover;
-    object-position: center;
-  
+  width: 47vw !important;
+  /* display: flex; */
+  position: sticky !important;
+  top: 20vh;
+  object-fit: cover;
+  object-position: center;
 
   /* width: auto;
     height: auto;
@@ -797,20 +802,20 @@ export default {
 
 .landscapecon {
   width: 50vw;
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.portraitcon{
+.portraitcon {
   width: 50vw;
-    height: 100%;
-    bottom: 0;
-    position: absolute;
-    display: flex;
-    align-content: flex-end;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-end;
+  height: 100%;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .swiper-wrapper {

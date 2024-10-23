@@ -23,10 +23,10 @@
             <div class="relative image-item transition-opacity duration-300">
               <figure class="flex flex-col">
                 <div class="relative">
-                  <NuxtLink
+                  <NuxtLink 
                     v-if="item.reference.slug"
                     :to="`/work/${item.reference.slug}`"
-                    class="flex flex-col items-end h-full link-animation linka"  
+                    class="flex flex-col items-end h-full link-animation linka"   
                   >
                     <figure class="inner-image">
                       <MediaImage :src="item.image.image" v-if="item.image.image" />
@@ -132,6 +132,7 @@ export default {
 
 
 <style scoped>
+
 .link-animation {
   transform: scale(0); /* Start small */
   animation: scale-up 3s forwards; /* Animate scale */

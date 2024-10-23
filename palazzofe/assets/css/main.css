@@ -285,22 +285,44 @@ html {
 a .inner-image:hover {
   opacity: 70%;
   transition-duration: 1s;
+  /* color: red !important; */
 }
-a .inner-image .textsum:hover {
-  color: #0000004d;
-}
+
 a .inner-image {
+  
   transition-duration: 1s;
 }
 
 .image-item {
-  ty: 70%;
+  /* ty: 70%; */
   transition-duration: 1s;
 }
 
 .linka:hover{
   opacity: 70%;
   transition-duration: 1s;
+  color: #00000046 !important; 
+}
+
+.linkae:hover {
+  opacity: 70%;
+  transition-duration: 1s;
+  color: #00000046 !important; 
+}
+
+.linka{
+  transition-duration: 1s;
+}
+
+.link-animationn {
+  transform: scale(0); 
+  animation: scale-up 3s forwards; 
+}
+
+@keyframes scale-up {
+  to {
+    transform: scale(1); /* End at original size */
+  }
 }
 
 .textsum{

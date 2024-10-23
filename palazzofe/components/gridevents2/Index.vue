@@ -46,7 +46,7 @@
                   <NuxtLink
                     v-if="item.reference.slug"
                     :to="`/eventprojects/${item.reference.slug}`"
-                    class="flex flex-col items-end h-full"
+                    class="flex flex-col items-end h-full linkae link-animationn"
                   >
                     <figure class="inner-image">
                       <MediaImage
@@ -151,6 +151,16 @@ export default {
 
 
 <style scoped>
+.link-animationn {
+  transform: scale(0); 
+  animation: scale-up 3s forwards; 
+}
+
+@keyframes scale-up {
+  to {
+    transform: scale(1); /* End at original size */
+  }
+}
 
 .item-wrapper{
   display: flex;
