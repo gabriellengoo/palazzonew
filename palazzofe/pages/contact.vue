@@ -265,7 +265,7 @@
             />
             <input
             class="col-span-1"
-            type="date"
+            type="text"
             name="date"
             placeholder="Date of Celebration *"
             required
