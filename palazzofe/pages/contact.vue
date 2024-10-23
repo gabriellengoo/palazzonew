@@ -481,6 +481,12 @@ formFields.forEach(field => {
 </script>
 
 <style scoped>
+
+input[type="date"] {
+  display: block; /* Ensure it's set to block or inline-block */
+  opacity: 1; /* Ensure it’s fully visible */
+}
+
 .contact-form {
   opacity: 0.2;
   transition: opacity 0.5s ease; /* Smooth transition */
