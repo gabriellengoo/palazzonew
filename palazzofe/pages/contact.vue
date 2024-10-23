@@ -138,7 +138,7 @@
             oninput="this.value = this.value.replace(/[^0-9]/g, '')"
           />
 
-          <!-- Send Button -->
+
           <div class="flex justify-center col-span-2">
             <button
               type="submit"
@@ -236,10 +236,11 @@
         </div>
       </div>
 
-      <!-- Right Content: Form Section -->
-      <!-- <div
-        @click="animateSection"
-        :class="{ 'bounce-on-load': isBouncing }"
+      <!-- Right Content: Form Section
+       @click="animateSection"
+        :class="{ 'bounce-on-load': isBouncing }" -->
+      <div
+           :class="{ 'bounce-on-load': isBouncing }"
         class="right-content overflow-y-scroll flex-1 slide-in"
       >
         <div class="allrcont">
@@ -328,7 +329,7 @@
             </div>
           </form>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -708,10 +709,12 @@ input::placeholder {
   }
 
   .headbarc{
-            width: 1.9vh;
+            width: 6.3vw;
         height: -moz-max-content;
         height: max-content;
         display: block;
+        stroke-width: 0vw;
+    stroke: black;
   }
 
   /* .right-content {

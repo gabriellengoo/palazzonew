@@ -474,6 +474,7 @@ a .inner-image:hover {
     height: max-content;
     display: block;
     stroke-width: .5vw;
+    stroke: black;
     /* stroke: black; */
   }
 
