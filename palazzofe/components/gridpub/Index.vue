@@ -46,10 +46,8 @@
                 <div class="relative">
                   <a
                    
-                     :href="item.url"
-                     target="_blank"
-                        rel="noopener noreferrer"
-                    class="flex flex-col items-end h-full linkae link-animationn"
+                    href="javascript:void(0)" @click="openModal(item.url)" class="flex flex-col items-end h-full linkae link-animationn"
+                   
                   >
                     <figure class="inner-image">
                       <MediaImage
@@ -64,33 +62,21 @@
                     </figcaption>
                   </a>
 
-                  <!-- Conditionally show sideim div on hover with fade effect -->
-                  <!-- <div 
-                    v-show="hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0)" 
-                    class="sideim"
-                    :class="{ 'fade-in': hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0), 'fade-out': hoveredIndex !== item._key && !(isDefaultActive && chunkIndex === 0 && index === 0) }"
-                  >
-                    <figure class="deskimgl">
-                      <MediaImage
-                        :src="item.imageh.imageh"
-                        v-if="item.imageh.imageh"
-                        :class="{
-                            portraitw: item.portrait,
-                            landscapew: !item.portrait,
-                          }"
-                      />
-                    </figure>
-                  </div> -->
+                
 
                 </div>
               </figure>
             </div>
-            <!-- <span v-if="item.private" class="eventtype">Private</span>
-            <span v-if="!item.private" class="eventtype">Corporate</span> -->
+         
 
           </div>
         </div>
       </div>
+
+        <!-- PDF Modal -->
+        <Modal v-if="isModalVisible" :pdfUrl="selectedPdfUrl" @close="closeModal" />
+
+
     </div>
   </client-only>
 </template>
@@ -102,8 +88,12 @@
 <script>
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
+import Modal from "@/components/Modal.vue";
 
 export default {
+  components: {
+    Modal,
+  },
   props: ["items", "size"],
   data() {
     return {
@@ -111,6 +101,8 @@ export default {
       isDesktop: false,
       hoveredIndex: null, // Track the hovered image item
       isDefaultActive: true, // Controls the visibility of the default image
+      isModalVisible: false,
+      selectedPdfUrl: null,
     };
   },
   computed: {
@@ -146,6 +138,14 @@ export default {
     ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
     handleResize() {
       this.isDesktop = window.innerWidth > 768;
+    },
+    openModal(pdfUrl) {
+      this.selectedPdfUrl = pdfUrl;
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+      this.selectedPdfUrl = null;
     },
   },
 };
