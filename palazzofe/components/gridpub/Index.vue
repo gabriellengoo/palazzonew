@@ -42,7 +42,7 @@
                 activeTalent != item.reference ? 'hidden' : ''
               ]" 
             >
-              <figure class="flex flex-col">
+              <figure class="flex flex-col"> 
                 <div class="relative">
                   <a
                    
