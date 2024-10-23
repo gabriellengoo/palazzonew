@@ -112,8 +112,8 @@ export default {
     return {
       isMenuOpen: false,
       isHovered: false,
-      defaultImage: "/newnav.jpg",
-      hoverImage: "/newnavt.jpg",
+      defaultImage: "/newnavt.jpg",
+      hoverImage: "/newnav.jpg",
       menuTopPosition: "0",
       lottieInstance: null,
     };
