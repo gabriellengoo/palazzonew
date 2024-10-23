@@ -162,8 +162,8 @@ html {
 }
 
 .dot {
-  font-size: 16px; /* Adjust the size as needed */
-  color: gray;
+  font-size: 16px;
+  color: #ffffff4d;
   padding: 0 2px;
 }
 
@@ -378,6 +378,10 @@ a .inner-image {
   display: none !important;
 }
 
+.nodesdots{
+  display: none !important;
+}
+
 .nomballbot {
   display: flex;
 }
@@ -510,6 +514,10 @@ a .inner-image:hover {
 }
 
 @media only screen and (max-width: 768px) {
+  .nodesdots {
+    display: flex !important;
+  }
+
   .loading-text {
     font-size: 2.5vw; /* Adjust as needed */
     text-transform: uppercase;

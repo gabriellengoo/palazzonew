@@ -1,12 +1,8 @@
 <template>
-  <!-- md:h-screen -->
   <div class="reveal-container relative md:min-h-fit md:overflow-hidden">
-    <!-- <Headerproject /> -->
-    <!-- <LenisComponent />  -->
     <TransitionComponent />
-    
+
     <div>
-      <!-- Header (optional) -->
       <HeaderComponent />
       <div class="headera mbpad content flex w-full justify-between">
         <h1 class="md:w-[1.4vw] w-auto">
@@ -27,12 +23,7 @@
         <p class="headingspages navmbno text-center text-4xl uppercase">
           Weddings
         </p>
-        <h1 class="w-[2vw] navmbno">
-          <!-- weddings -->
-          <!-- <a href="../weddings"
-                ><SvgClose class="headbar hover:cursor-pointer"
-              /></a> -->
-        </h1>
+        <h1 class="w-[2vw] navmbno"></h1>
       </div>
 
       <div class="bgmobile relative min-h-screen flex">
@@ -58,18 +49,7 @@
               @click="next"
               aria-label="Next"
             ></button> -->
-          <!-- <header class="absolute text-day2mb top-0 right-0 p-2 text-xs block">
-  <span class="dots" v-if="project.slider">
-    <span
-      v-for="(slide, idx) in project.slider"
-      :key="idx"
-      class="dot"
-      :class="{ 'active-dot': idx === index }"
-    >
-      •
-    </span>
-  </span>
-</header> -->
+
           <!-- <header
               class="numtextcont absolute text-day2mb top-0 right-0 p-2 text-xs block"
             >
@@ -91,7 +71,6 @@
                   v-for="(slide, index) in project.slider"
                   :key="slide._key"
                   class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
-                 
                 >
                   <div class="overlaycont flex h-full p-2 w-13/16">
                     <figure
@@ -128,6 +107,21 @@
               </div>
             </section>
 
+            <header
+              class="nodesdots absolute text-day2mb top-0 right-0 p-2 text-xs block"
+            >
+              <span class="dots" v-if="project.slider">
+                <span
+                  v-for="(slide, idx) in project.slider"
+                  :key="idx"
+                  class="dot"
+                  :class="{ 'active-dot': idx === index }"
+                >
+                  •
+                </span>
+              </span>
+            </header>
+
             <div class="footcon">
               <div class="w-full flex justify-center">
                 <div
@@ -136,7 +130,6 @@
                   <div
                     class="titleTextt flex items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
                   >
-                    <!-- md:text-[1.2rem] text-[1rem] -->
                     <div class="animate-hover text-[1.2rem] pr-5">
                       <p v-if="project">{{ project.title }}</p>
                     </div>
@@ -149,11 +142,6 @@
           <div class="allbotindi nomballbot md:p-8">
             <div class="bottom">
               <div class="archimg">
-                <!-- <img
-                  src="/indiangels.png"
-                  alt="Arch Frame"
-                  class="arch-frame"
-                /> -->
                 <MediaImage
                   :src="project.image"
                   v-if="project.image"
@@ -200,17 +188,12 @@
 
         <!-- Right Static Content -->
         <div class="right-content overflow-hidden flex-1">
-          <!-- <h1 class="headingspagesb text-center text-4xl mb-6 uppercase">
-          palazzo eventi
-        </h1> -->
-
           <div
             class="copyrtex copyrtexmb items-baseline w-[96.5vw] justify-between flex pt-10 md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
           >
             <div
               class="titleTextt flex flex-col items-baseline justify-between md:text-6xl text-2xl align-baseline"
             >
-              <!-- md:text-[1.2rem] text-[1rem] -->
               <div
                 class="ttmb uppercase animate-hover text-[1.2rem] pr-[1vw] pl-[1vw]"
               >
@@ -244,17 +227,10 @@
                   </div>
                 </div>
               </div>
-              <!-- <span class="hover-move">Rose.co</span> -->
-              <!-- <p class="crtext text-[1.2rem]">
-                  COPYRIGHT ©2024
-                </p> -->
             </div>
-
-            <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
           </div>
 
           <div class="nomb static-box w-full h-full">
-            <!-- Static Content (e.g., Image, Text, etc.) -->
             <!-- desktop -->
             <button
               class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
@@ -274,17 +250,11 @@
             >
               <div class="numcon">
                 <span class="numg" v-if="project.slider">
-                  ( {{ String(index).padStart(1, "") }} of
-                  {{ String(project.slider.length).padStart(1, "") }} )</span
+                  ( {{ String(index).padStart(0, "") }} of
+                  {{ String(project.slider.length).padStart(0, "") }} )</span
                 >
               </div>
             </header>
-            <!-- 
-        <header class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block">
-          ( <span v-if="project.slider"
-            > {{ activeDay }}</span
-          > )
-        </header> -->
 
             <div class="nomb nombgal gallery-images">
               <section
@@ -331,11 +301,9 @@
                           }"
                           class="absolute top-0 left-0 text-day1 z-50"
                         >
-                          <!-- Display the day number of the active slide -->
-                          <!-- <div v-if="image.day && image.day !== null && image.day !== undefined" class="numgday capitalize">{{ image.day }}</div>
-                          <div v-else class="numgday capitalize">Day not provided</div> -->
-                          <p class="numgday capitalize">{{ image.day ? image.day : "Day 1" }}</p>
-
+                          <p class="numgday capitalize">
+                            {{ image.day ? image.day : "Day 1" }}
+                          </p>
                         </div>
                       </figure>
                     </div>
@@ -351,18 +319,10 @@
                     <div
                       class="titleTextt flex items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
                     >
-                      <!-- md:text-[1.2rem] text-[1rem] -->
                       <div class="animate-hover text-[1.2rem] pr-5">
                         <p v-if="project">{{ project.title }}</p>
                       </div>
-
-                      <!-- <span class="hover-move">Rose.co</span> -->
-                      <!-- <p class="crtext text-[1.2rem]">
-                  COPYRIGHT ©2024
-                </p> -->
                     </div>
-
-                    <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
                   </div>
                 </div>
               </div>
@@ -377,22 +337,14 @@
 <script>
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
-// import Header from "~/components/layout/Header.vue";
-// import About from "~/components/Aboutpage.vue";
-// import Lenis from '@studio-freight/lenis';
-// import LenisComponent from "~/components/LenisComponent.vue";
-// import Headerproject from "~/components/layout/Headerproject.vue";
 import TransitionComponent from "~/components/TransitionComponent.vue";
-
 
 export default {
   components: {
-    // Headerproject,
-    // LenisComponent,
     TransitionComponent,
   },
   async asyncData({ params, $sanity, store }) {
-  const query = groq`*[_type == "project" && slug.current == "${params.slug}"] {
+    const query = groq`*[_type == "project" && slug.current == "${params.slug}"] {
     ...,
     "archiveSlug": archive->slug.current,
 
@@ -407,31 +359,31 @@ export default {
   } 
   | order(_updatedAt desc)[0]`;
 
-  const project = await $sanity.fetch(query);
+    const project = await $sanity.fetch(query);
 
-  // Modify the 'day' field for images after fetching the data
-  if (project && project.slider) {
-    project.slider = project.slider.map(slide => {
-      if (slide.images) {
-        slide.images = slide.images.map(image => {
-          const dayFormatted = image.day.charAt(0).toUpperCase() + image.day.slice(1); // Capitalize "day1" to "Day1"
-          return {
-            ...image,
-            day: dayFormatted.replace(/([a-z])(\d+)/, "$1 $2") // Adds a space between "Day" and the number
-          };
-        });
-      }
-      return slide;
-    });
-  }
+    // Modify the 'day' field for images after fetching the data
+    if (project && project.slider) {
+      project.slider = project.slider.map((slide) => {
+        if (slide.images) {
+          slide.images = slide.images.map((image) => {
+            const dayFormatted =
+              image.day.charAt(0).toUpperCase() + image.day.slice(1); // Capitalize "day1" to "Day1"
+            return {
+              ...image,
+              day: dayFormatted.replace(/([a-z])(\d+)/, "$1 $2"), // Adds a space between "Day" and the number
+            };
+          });
+        }
+        return slide;
+      });
+    }
 
-  return { project };
-},
-
+    return { project };
+  },
 
   data() {
     return {
-      index: 1,
+      index: 0,
       realIndex: 0,
       step: 0,
       isBackNavigation: false,
@@ -442,21 +394,15 @@ export default {
       clickedImageIndex: null, // Initially set to null
       swiperOptions: {
         slidesPerView: "auto",
-        // keyboard: {
-        //   enabled: true,
-        // },
       },
       swiperOptions2: {
         slidesPerView: "auto",
-
-        // keyboard: {
-        //   enabled: true,
-        // },
       },
       imageOpacity: 1, // Add this property
       scrolled: false,
       back: false,
       searchQuery: "", // Initialize search query
+      
     };
   },
   computed: {
@@ -740,12 +686,6 @@ export default {
 
 <style scoped>
 .previous:hover {
-  cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e")
-      16 16,
-    pointer;
-  cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(-45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e")
-      16 16,
-    pointer;
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
     auto !important;
   /* cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto; */
@@ -755,15 +695,6 @@ export default {
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+"),
     auto !important;
 }
-
-/* Fallback for non-custom cursors */
-/* .previous:hover {
-    cursor: pointer;
-  }
-
-  .next:hover {
-    cursor: pointer;
-  } */
 
 .portrait {
   margin-right: 1.5vw;
@@ -776,16 +707,6 @@ export default {
 }
 
 .landscape {
-  /* height: auto;
-  width: auto;
-  height: auto;
-  width: 44vw;
-  width: 47vw;
-  position: relative;
-  top: 20vh;
-  margin-right: auto;
-  margin-left: auto; */
-
   height: 55vh;
   width: 47vw !important;
   /* display: flex; */

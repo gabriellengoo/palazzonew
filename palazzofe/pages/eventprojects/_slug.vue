@@ -66,56 +66,68 @@
               @click="next"
               aria-label="Next"
             ></button> -->
-          <div class="nodes nodesgal">
+            <div class="nodes nodesgal">
             <section
-                class="top-0 left-0  w-full md:block cursor-grab slider"
-                v-swiper:mySwiper2="swiperOptions2"
-                @slideChange2="onSlideChange2"
-                ref="slider2"
-              >
-                <div class="relative z-40 w-full h-full swiper-wrapper">
-                  <div
-                    v-for="(slide, index) in project.slider"
-                    :key="slide._key"
-                    class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
-                    :class="realIndex == 0 ? '' : ''"
-                  >
-                    <div class="overlaycont flex h-full p-2 w-13/16">
-                      <figure
-                        v-for="image in slide.images"
-                        :key="image._key"
-                        class="overlaydiv flex flex-col flex-1 h-full"
+              class="top-0 left-0 w-full md:block cursor-grab slider"
+              v-swiper:mySwiperMobile="swiperOptions2"
+              @slideChange="onSlideChange"
+              ref="slider2"
+            >
+              <div class="relative z-40 w-full h-full swiper-wrapper">
+                <div
+                  v-for="(slide, index) in project.slider"
+                  :key="slide._key"
+                  class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
+                >
+                  <div class="overlaycont flex h-full p-2 w-13/16">
+                    <figure
+                      v-for="image in slide.images"
+                      :key="image._key"
+                      class="overlaydiv flex flex-col flex-1 h-full"
+                      :class="
+                        image.padding
+                          ? image.padding == 'medium'
+                            ? 'p-12 pr-10'
+                            : image.padding == 'large'
+                            ? 'p-20 pr-18'
+                            : 'p-8 pr-6'
+                          : ''
+                      "
+                    >
+                      <MediaImage
+                        :src="image.image.asset._ref"
+                        v-if="image.image"
+                        class="gallery-image w-auto h-full"
                         :class="
                           image.padding
-                            ? image.padding == 'medium'
-                              ? 'p-12 pr-10'
-                              : image.padding == 'large'
-                              ? 'p-20 pr-18'
-                              : 'p-8 pr-6'
-                            : ''
+                            ? 'object-contain'
+                            : 'object-contain max-w-full'
                         "
-                      >
-                        <MediaImage
-                          :src="image.image.asset._ref"
-                          v-if="image.image"
-                          class="gallery-image w-auto h-full"
-                          :class="
-                            image.padding
-                              ? 'object-contain'
-                              : 'object-contain max-w-full'
-                          "
-                          :style="{
-                            pointerEvents: 'auto',
-                          }"
-                          :sizes="'sm:200vw md:150vw lg:200vw'"
-                        ></MediaImage>
-                  
-                   
-                      </figure>
-                    </div>
+                        :style="{
+                          pointerEvents: 'auto',
+                        }"
+                        :sizes="'sm:200vw md:150vw lg:200vw'"
+                      ></MediaImage>
+                    </figure>
                   </div>
                 </div>
-              </section>
+              </div>
+            </section>
+
+            <header
+              class="nodesdots absolute text-day2mb top-0 right-0 p-2 text-xs block"
+            >
+              <span class="dots" v-if="project.slider">
+                <span
+                  v-for="(slide, idx) in project.slider"
+                  :key="idx"
+                  class="dot"
+                  :class="{ 'active-dot': idx === index }"
+                >
+                  •
+                </span>
+              </span>
+            </header>
 
             <div class="footcon">
               <div class="w-full flex justify-center">
@@ -125,13 +137,10 @@
                   <div
                     class="titleTextt flex items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
                   >
-                    <!-- md:text-[1.2rem] text-[1rem] -->
                     <div class="animate-hover text-[1.2rem] pr-5">
                       <p v-if="project">{{ project.title }}</p>
                     </div>
-
                   </div>
-
                 </div>
               </div>
             </div>
@@ -323,6 +332,8 @@
                 </div>
               </section>
 
+            
+
               <div class="footcon nodes">
                 <div class="w-full flex justify-center">
                   <div
@@ -414,7 +425,7 @@ export default {
   },
   data() {
     return {
-      index: 1,
+      index: 0,
       realIndex: 0,
       step: 0,
       isBackNavigation: false,
