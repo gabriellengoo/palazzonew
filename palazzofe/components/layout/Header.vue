@@ -65,17 +65,127 @@
         v-if="isMenuOpen"
         class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center"
       >
-        <!-- h-[90vh] pt-[8.25vh]  pt-[2.25vh] pt-[5.25rem]  -->
+    <div
+        v-if="isMenuOpen"
+        class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
+      >
+      
+        <transition  class="mobilemenu"
+        name="slide-down" @after-enter="fadeInAllImg">
+          <div
+            class="mobilemenu relative mb-auto z-50 flex flex-col justify-center items-center"
+          >
+            <div class="  ">
+              <div class="headerr  flex justify-center">
+            <h1 class="border-t-[1px] border-[#0003]  w-[100vw]"></h1>
+          </div>
+              <nav class="link-container uppercase">
+                <ul>
+                  <li class="pointer-events-none">
+                    <a class="svgleft pointer-events-none" href=""
+                      ><SvgArchstar class="" 
+                    /></a>
+                  </li>
+                  
+                  <li>
+                    <a
+                      href="./weddings"
+                    
+                      
+                    >
+                    WEDDINGS
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      
+                      
+                     href="./events"
+                    >
+                    EVENTS
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                  
+                     href="./services"
+                    >
+                    SERVICES
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                   href="./about"
+                                          >
+                                          ABOUT
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                   href="./press"
+                                         >
+                                         PRESS
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                 
+                      href="./team"
+                    >
+                    TEAM
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                   href="./contact"
+                                  >
+                                  CONTACT
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                  href="./awards"
+                                         >
+                                         AWARDS
+                    </a>
+                  </li>
+                  <!-- <li   class=" opacity-0">
+                    <a
+                      @click="setActiveSection('production')"
+                
+                      href="javascript:void(0)"
+                    >
+                      Production
+                    </a>
+                  </li> -->
+                  
+                </ul>
+              </nav>
+            </div>
+
+       
+          </div>
+        </transition>
+      </div>
+    </div>
+  </transition>
+
+    <!-- <transition
+      class="mobilemenu"
+      name="slide-down"
+      @after-enter="fadeInAllImg"
+    >
+      <div
+        v-if="isMenuOpen"
+        class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center"
+      >
         <div class="  ">
           <div class="headerr pt-[2.9vh] flex justify-center">
-            <!-- <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[100vw]">PALAZZO EVENTI</h1> -->
             <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[100vw]"></h1>
           </div>
           <nav class="link-container">
             <ul>
-              <!-- <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[100vw]">PALAZZO EVENTI</h1> -->
-              <!-- <li class="toplink pointer-events-none "><a class="toplink" href="#">space</a></li> -->
-              <li>
+            <li>
                 <a class="svgleft pointer-events-none" href=""
                   ><SvgArchstar class=""
                 /></a>
@@ -88,19 +198,14 @@
               <li><a href="./team">TEAM</a></li>
               <li><a href="./contact">CONTACT</a></li>
               <li><a href="./awards">AWARDS</a></li>
-              <!-- <li>
-                <a class=" pointer-events-none" href=""
-                  ><SvgArchstar class=""
-                /></a>
-              </li> -->
+             
             </ul>
           </nav>
         </div>
 
-        <!-- <div class="allimg relative w-[100vw] h-[100vh] z-50">
-        </div> -->
+     
       </div>
-    </transition>
+    </transition> -->
   </div>
 </template>
 
@@ -218,7 +323,7 @@ export default {
   /* font-weight: bold; */
   /* letter-spacing: 2px; */
   font-family: "RomainHeadlineTrial";
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   margin-bottom: 1rem;
 }
 
@@ -276,13 +381,16 @@ export default {
   width: max-content;
   margin: auto;
   font-family: "RomainHeadlineTrial";
+  /* width: 80vw; */
 }
 
 .toplink {
   color: #33333300 !important;
 }
 
-
+/* .link-container li:last-child{
+  border: none;
+} */
 
 .link-container {
   margin-top: 2rem;
@@ -295,6 +403,7 @@ export default {
 }
 
 .link-container li {
+  background-color: rgba(255, 255, 255, 0.13);
   text-align: center;
   /* padding: 1.5rem 0; */
   padding: 0.2rem 0;
@@ -338,8 +447,8 @@ export default {
   border: 1px solid rgba(0, 0, 0, 0.257);
   margin: auto;
   font-family: "RomainHeadlineTrial";
-
-  /* background-color: rgba(255, 255, 255, 0.14);
+  background-color: hsla(0,0%,100%,.13);
+  /* background-color: 1px solid rgba(0,0,0,.257);
     background-color: rgb(255 255 255 / 25%); */
   border: 1px solid rgba(0, 0, 0, 0.257);
   border-radius: 590px 590px 2px 2px;
@@ -370,18 +479,18 @@ export default {
   }
 
   .link-container a {
-    text-decoration: none;
-    font-size: 9.2vw;
-    font-size: 5vh;
-    font-size: 4.2vh;
-    /* font-size: 4vw; */
-    color: black;
-    font-weight: 100;
-    padding-left: 7vw;
-    padding-right: 7vw;
-    padding-left: 10vw;
-    padding-right: 10vw;
-    transition-duration: 0.5s;
+    /* webkit-text-decoration: none; */
+        text-decoration: none;
+        font-size: 9.2vw;
+        font-size: 4.2vh;
+        /* font-size: 4vw; */
+        color: black;
+        font-weight: 100;
+        padding-left: 16vw;
+        padding-right: 16vw;
+        transition-duration: 0.5s;
+        height: max-content;
+        display: inline-block;
   }
 
 /* mobile nav end--------- */
@@ -399,15 +508,7 @@ export default {
     display: unset;
   }
 
-  .link-container a {
-    text-decoration: none;
-    font-size: 9.2vw;
-    /* font-size: 5.2vh; */
-    /* color: black; */
-    font-weight: 100;
-    padding-left: 16vw;
-    padding-right: 16vw;
-  }
+
 }
 
 /* .hover-area {
@@ -668,24 +769,47 @@ export default {
   }
 
   .mobilemenu {
-    height: 100vh;
+    /* height: 100vh;
     transition: max-height 0.5s ease-in-out;
     background-image: url("./static/background.jpg");
     background-size: cover;
     background-position: initial;
     background-repeat: no-repeat;
-    overflow: hidden;
+    overflow: hidden; */
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden; 
+    /* padding-top: 3vh; */
   }
 
   .headerr {
     font-size: 2vh;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
   }
 
   .svgleft {
     height: 7vh !important;
     display: inline-flex !important;
     align-items: center !important;
+  }
+
+  .left-content {
+    flex-direction: column;
+        padding: 0 !important;
+        padding-top: 6vh !important;
+        background-size: auto;
+        background-size: cover;
+        background-image: url("./static/background.jpg");
+        background-position: initial;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow-y: scroll;
+
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        overflow: hidden;
+        transition: max-height .5s ease-in-out;
   }
 }
 </style>

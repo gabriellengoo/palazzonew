@@ -1,9 +1,9 @@
 <template>
   <div class="pagbg all">
-    <!-- <HeaderComponent /> -->
+    <HeaderComponent />
     <div class="headera content flex w-full justify-between">
       <h1 class="navmb">
-        <HeaderComponent />
+        <!-- <HeaderComponent /> -->
       </h1>
       <p class="navmbno yeart text-center text-4xl uppercase">CONTACT</p>
       <p class="navmbno yeart w-[5vw] text-center text-4xl uppercase"></p>
