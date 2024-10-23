@@ -40,56 +40,91 @@
             <div class="  ">
               <nav class="link-container uppercase">
                 <ul>
-                  <!-- <li class="toplink pointer-events-none">
-                    <a class="toplink" href="#">space</a>
-                  </li> -->
-                  <li @click="closeSection">
+                  <li class="pointer-events-none">
                     <a class="svgleft pointer-events-none" href=""
                       ><SvgArchstar class="" @click="setActiveSection('')"
                     /></a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('design')" href="#">Design</a>
+                    <a
+                      @click="setActiveSection('design')"
+                    
+                      href="javascript:void(0)"
+                    >
+                      Design
+                    </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('location')" href="#"
-                      >Location</a
+                    <a
+                      @click="setActiveSection('location')"
+                      
+                      href="javascript:void(0)"
                     >
+                      Location
+                    </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('production')" href="#"
-                      >Production</a
+                    <a
+                      @click="setActiveSection('production')"
+                  
+                      href="javascript:void(0)"
                     >
+                      Production
+                    </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('concierge')" href="#Concierge"
-                      >Concierge</a
+                    <a
+                      @click="setActiveSection('concierge')"
+                   
+                      href="#Concierge"
                     >
+                      Concierge
+                    </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('activity')" href="#activity"
-                      >Activity</a
+                    <a
+                      @click="setActiveSection('activity')"
+                  
+                      href="#activity"
                     >
+                      Activity
+                    </a>
                   </li>
                   <li>
                     <a
                       @click="setActiveSection('celebrities')"
+                 
                       href="#celebrities"
-                      >Celebrities</a
                     >
+                      Celebrities
+                    </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('music')" href="#music"
-                      >Music</a
+                    <a
+                      @click="setActiveSection('music')"
+                   
+                      href="#music"
                     >
+                      Music
+                    </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('products')" href="#products"
-                      >Products</a
+                    <a
+                      @click="setActiveSection('products')"
+                  
+                      href="#products"
                     >
+                      Products
+                    </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('more')" href="#more">More</a>
+                    <a
+                      @click="setActiveSection('more')"
+                     
+                      href="#more"
+                    >
+                      More
+                    </a>
                   </li>
                 </ul>
               </nav>
@@ -109,6 +144,9 @@
         @enter="enter"
         @leave="leave"
       >
+     
+     
+
         <div
           :class="{ 'slide-in': activeSection, 'slide-out': !activeSection }"
           class="right-content overflow-y-scroll flex-1"
@@ -117,6 +155,7 @@
         >
           <!-- Design -->
           <div
+          
             :class="{
               'slide-in':
                 activeSection === 'design' || hoveredSection === 'design',
@@ -148,9 +187,12 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc2 w-[1.4vw] hover:cursor-pointer" />
+                  <button class='pt-[4vw]'   @click="closeSection">
+                    <SvgClose :class="{ 'headbarc': activeSection, 'rotatesvg': !activeSection }" class=" w-[1.4vw] hover:cursor-pointer" />
                   </button>
+                  <!-- <div ref="lottieAnimation3" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div> -->
+
+
                   <h1 class="loctext pt-2">Design</h1>
                 </div>
 
@@ -239,7 +281,9 @@
 
           <!-- Location -->
           <div
+          id="location"
             :class="{
+             
               'slide-in':
                 activeSection === 'location' || hoveredSection === 'location',
               'slide-out':
@@ -271,7 +315,7 @@
               <div class="sevcont">
                 <div class="titcont titmb">
                   <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc2 w-[1.4vw] hover:cursor-pointer" />
+                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
                   <h1 class="loctext pt-2">Location</h1>
                 </div>
@@ -387,7 +431,7 @@
                 <div class="titcont titmb">
                   <!-- <a href=""> -->
                   <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc2 w-[1.4vw] hover:cursor-pointer" />
+                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
                   <!-- </a>               -->
                   <h1 class="loctext pt-2">Production</h1>
@@ -492,7 +536,7 @@
               <div class="sevcont">
                 <div class="titcont titmb">
                   <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc2 w-[1.4vw] hover:cursor-pointer" />
+                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
                   <h1 class="loctext pt-2">Products</h1>
                 </div>
@@ -593,7 +637,7 @@
               <div class="sevcont">
                 <div class="titcont titmb">
                   <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc2 w-[1.4vw] hover:cursor-pointer" />
+                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
                   <h1 class="loctext pt-2">More</h1>
                 </div>
@@ -693,7 +737,7 @@
               <div class="sevcont">
                 <div class="titcont titmb">
                   <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc2 w-[1.4vw] hover:cursor-pointer" />
+                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
                   <h1 class="loctext pt-2">Concirerge</h1>
                 </div>
@@ -716,7 +760,7 @@
                 </div>
                 <div :class="[
                     'textaup',
-                    { texta: !services.conciergeContent.cccontent },
+                    { texta: !services.productionContent.prcontent },
                   ]" class="flex pb-[3vh]">
                   <Richtext
                     v-if="services.conciergeContent.ccontent"
@@ -792,7 +836,7 @@
               <div class="sevcont">
                 <div class="titcont titmb">
                   <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc2 w-[1.4vw] hover:cursor-pointer" />
+                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
                   <h1 class="loctext pt-2">Activity</h1>
                 </div>
@@ -895,7 +939,7 @@
               <div class="sevcont">
                 <div class="titcont titmb">
                   <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc2 w-[1.4vw] hover:cursor-pointer" />
+                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
                   <h1 class="loctext pt-2">Celebrities</h1>
                 </div>
@@ -995,7 +1039,7 @@
               <div class="sevcont">
                 <div class="titcont titmb">
                   <button class='pt-[4vw]' @click="closeSection">
-                    <SvgClose class="headbarc2 w-[1.4vw] hover:cursor-pointer" />
+                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
                   </button>
                   <h1 class="loctext pt-2">Music</h1>
                 </div>
@@ -1076,6 +1120,7 @@
 import HeaderComponent from "@/components/layout/Header.vue";
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
+import lottie from 'lottie-web';
 
 export default {
   name: "IndexPage",
@@ -1087,11 +1132,12 @@ export default {
   data() {
     return {
       // activeSection: "design",
-      // Set the default section, e.g., 'design'
-      // activeSection: false,
+      activeSection: false,
       isMobile: false,
-      activeSection: null,
-      // Track the active section state
+      // activeSection: null,
+      hoveredSection: null,
+      lottieInstance: null,
+      hasHash: false,
     };
   },
 
@@ -1113,27 +1159,112 @@ export default {
   mounted() {
     this.checkViewport(); // Set the initial value based on viewport
     window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
+
+    this.checkHash();
+    window.addEventListener("hashchange", this.checkHash); // Listen for changes to the URL
+
+
+      // Set hoveredSection to 'design' if not on mobile
+  if (!this.isMobile) {
+    this.hoveredSection = 'design';
+  }
+
+  this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation3, // Lottie animation container reference
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: '/animations/plus.json', // Path to your Lottie animation JSON file
+    });
+
   },
 
   beforeDestroy() {
+    window.removeEventListener("hashchange", this.checkHash);
     window.removeEventListener("resize", this.checkViewport); // Clean up event listener
   },
 
   methods: {
-    checkViewport() {
-      this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
-      this.activeSection = this.isMobile ? false : "design"; // Set activeSection based on isMobile
+    checkHash() {
+      // Check if the URL contains a hash
+      this.hasHash = window.location.hash !== "";
     },
-    setActiveSection(section) {
-      if (this.activeSection === section) {
-        this.activeSection = "design"; // Close the section if clicked again
-      } else {
-        this.activeSection = section; // Open the new section
+    onHover(section) {
+      if (!this.isMobile) {
+        this.hoveredSection = section; // Set hovered section for non-mobile devices
       }
     },
-    closeSection() {
-      this.activeSection = null; // Close the section when the close button is clicked
+    onHoverLeave() {
+      if (!this.isMobile) {
+        this.hoveredSection = " "; // Only reset for non-mobile devices
+      }
     },
+
+    // resetActiveSection() {
+    //   if (!this.isMobile) {
+    //     // this.activeSection = "design"; 
+    //     // Only reset for non-mobile devices
+    //     this.hoveredSection =  "design";
+    //   }
+    // },
+   
+    toggleMenu() {
+      this.$store.commit("toggleMenu");
+    },
+
+    openSection() {
+      const rightContent = document.querySelector(".sevcont");
+      if (rightContent && !this.isOpen) {
+        rightContent.classList.add("slide-in");
+        this.isOpen = true;
+      }
+    },
+    
+    closeSection() {
+      const rightContentt = document.querySelector(".headbarc");
+      // if (rightContent && this.isOpen) {
+        // rightContent.classList.remove("slide-in");
+        rightContentt.classList.add("rotatesvg");
+        this.isOpen = false;
+        this.activeSection = null;
+      // }
+    },
+    
+    checkViewport(section) {
+      this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
+      this.activeSection = this.isMobile ? false : " "; // Set activeSection based on isMobile
+
+    // Update hoveredSection based on viewport
+    
+    if (!this.isMobile) {
+      this.hoveredSection = "design";
+    } else {
+      this.hoveredSection = "";
+    }
+    },
+
+
+    
+    setActiveSection(section) {
+      // Check if it's mobile or desktop and set the active section accordingly
+      if (!this.isMobile) {
+        if (this.activeSection === section) {
+          this.activeSection = section; // Close the section if it's already active
+        } else {
+          this.activeSection = section; // Set the clicked section as active
+        }
+
+        // Set hoveredSection to null when a section is clicked
+        this.hoveredSection = null;
+      } else {
+        // On mobile, just set the clicked section as active
+        this.activeSection = section;
+        this.hoveredSection = null; // Reset hover section on mobile
+      }
+    },
+    // closeSection() {
+    //   this.activeSection = null; // Close the active section
+    // },
 
     handleClick() {
       if (this.isMobile && this.activeSection) {
@@ -1237,13 +1368,27 @@ export default {
     return { services };
   },
 
+  // computed: {
+  //   ...mapState(["gridpub"]),
+  // },
+
   computed: {
     ...mapState(["gridpub"]),
+    isMenuOpen() {
+      return this.$store.getters.isMenuOpen;
+    },
   },
 };
 </script>
 
 <style scoped>
+
+.rotatesvg{
+  transform: rotate(45deg);
+  transition-property: transform;
+  transition-duration: 3s;
+}
+
 .sheadera {
   /* display: unset;  */
   opacity: 1;
