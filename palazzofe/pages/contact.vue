@@ -233,8 +233,8 @@
         </div>
 
         <img
-          src="angelss.png"
-          class="p-[16vw] pt-[0vw]"
+          src="bird.png"
+          class="p-[10vw]"
           alt="Cherubs"
         />
       </div>
@@ -254,7 +254,7 @@
                 class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
               ></div>
             </button>
-            <h1 class="loctext uppercase pt-2">Get in touch</h1>
+            <h1 class="loctext uppercase pt-2" @click="toggleSection">Get in touch</h1>
           </div>
 
           <form
@@ -325,7 +325,7 @@
               oninput="this.value = this.value.replace(/[^0-9]/g, '')"
             />
 
-            <div class="flex justify-center mt-[4vw] mb-[18vw]">
+            <div class="flex justify-center mt-[4vw] mb-[30vw]">
               <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
                 <img src="sendh.png" alt="Send" class="w-auto h-auto" />
               </button>
@@ -902,7 +902,7 @@ input::placeholder {
   }
 
   .contact-form input {
-    font-size: 3.5vw;
+    font-size: 4vw;
     /* padding-bottom: .5vh; */
     text-align: center;
     text-transform: uppercase;
