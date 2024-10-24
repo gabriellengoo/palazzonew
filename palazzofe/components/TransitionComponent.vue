@@ -75,8 +75,9 @@ export default {
 .loading-text {
   font-size: 1.3vw;; /* Adjust as needed */
   text-transform: uppercase;
+  font-family: 'NHaas';
   /* kerning: 2vw; */
-  letter-spacing: .08vw;
+  letter-spacing: .04vw;
   color: rgb(13, 13, 13); /* Adjust color if needed */
   animation: flash 1.5s ease-in-out infinite;
 }

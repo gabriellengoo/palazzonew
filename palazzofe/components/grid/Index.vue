@@ -240,6 +240,7 @@ export default {
   justify-content: space-between;
   width: 90%;
   border-bottom: 0.07vw solid black;
+  /* align-items: center; */
 }
 
 .image-row:last-child {
