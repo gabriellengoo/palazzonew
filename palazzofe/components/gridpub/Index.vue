@@ -73,12 +73,12 @@
         </div>
 
           <!-- Modal Component -->
-          <Modal
+          <!-- <Modal
           :isOpen="isModalOpen"
           :imageSrc="selectedImage"
           @close="closeModal"
           class="modal"
-        />
+        /> -->
 
 
       </div>
