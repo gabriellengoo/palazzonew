@@ -314,9 +314,9 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <!-- <button class='pt-[4vw]' @click="closeSection">
+                  <button class='pt-[4vw]' @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
+                  </button>
                   <h1 class="loctext pt-2">Location</h1>
                 </div>
                 <div
@@ -430,9 +430,9 @@
               <div class="sevcont">
                 <div class="titcont titmb">
                   <!-- <a href=""> -->
-                  <!-- <button class='pt-[4vw]' @click="closeSection">
+                  <button class='pt-[4vw]' @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
+                  </button>
                   <!-- </a>               -->
                   <h1 class="loctext pt-2">Production</h1>
                 </div>
@@ -535,9 +535,9 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <!-- <button class='pt-[4vw]' @click="closeSection">
+                  <button class='pt-[4vw]' @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
+                  </button>
                   <h1 class="loctext pt-2">Products</h1>
                 </div>
                 <div
@@ -636,9 +636,9 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <!-- <button class='pt-[4vw]' @click="closeSection">
+                  <button class='pt-[4vw]' @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
+                  </button>
                   <h1 class="loctext pt-2">More</h1>
                 </div>
                 <div
@@ -736,9 +736,9 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <!-- <button class='pt-[4vw]' @click="closeSection">
+                  <button class='pt-[4vw]' @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
+                  </button>
                   <h1 class="loctext pt-2">Concirerge</h1>
                 </div>
                 <div
@@ -835,9 +835,9 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <!-- <button class='pt-[4vw]' @click="closeSection">
+                  <button class='pt-[4vw]' @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
+                  </button>
                   <h1 class="loctext pt-2">Activity</h1>
                 </div>
                 <div
@@ -938,9 +938,9 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <!-- <button class='pt-[4vw]' @click="closeSection">
+                  <button class='pt-[4vw]' @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
+                  </button>
                   <h1 class="loctext pt-2">Celebrities</h1>
                 </div>
                 <div
@@ -1038,9 +1038,9 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <!-- <button class='pt-[4vw]' @click="closeSection">
+                  <button class='pt-[4vw]' @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
+                  </button>
                   <h1 class="loctext pt-2">Music</h1>
                 </div>
                 <div

@@ -112,10 +112,10 @@
             >
               <span class="dots" v-if="project.slider">
                 <span
-                  v-for="(slide, idx) in project.slider"
-                  :key="idx"
+                  v-for="n in 3"
+                  :key="n"
                   class="dot"
-                  :class="{ 'active-dot': idx === index }"
+                  :class="{ 'active-dot': index % 3 === n - 1 }"
                 >
                   •
                 </span>
@@ -402,7 +402,6 @@ export default {
       scrolled: false,
       back: false,
       searchQuery: "", // Initialize search query
-      
     };
   },
   computed: {

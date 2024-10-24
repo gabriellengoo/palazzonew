@@ -7,28 +7,23 @@
     <div>
       <!-- Header (optional) -->
       <HeaderComponent />
-      <div class="headera  mbpad content flex w-full justify-between">
+      <div class="headera mbpad content flex w-full justify-between">
         <h1 class="md:w-[1.4vw] w-auto">
           <!-- events -->
           <a class="headbar" href="../events"
             ><SvgBack class="svgmb hover:cursor-pointer"
           /></a>
         </h1>
-        <p
-          class="yeart navmbno text-center text-4xl uppercase "
-          v-if="project"
-        >
+        <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
           {{ project.title }}
         </p>
         <p
-          class="yeart navmbno opacity-0 text-center text-4xl  uppercase "
+          class="yeart navmbno opacity-0 text-center text-4xl uppercase"
           v-if="project"
         >
           {{ project.year }}
         </p>
-        <p
-          class="headingspages navmbno text-center text-4xl  uppercase "
-        >
+        <p class="headingspages navmbno text-center text-4xl uppercase">
           events
         </p>
         <h1 class="w-[2vw] navmbno">
@@ -39,20 +34,16 @@
         </h1>
       </div>
 
-
-
-
-
       <div class="bgmobile relative min-h-screen flex">
         <!-- Left Scrollable Content -->
-        <div class="left-content flex-1 overflow-y-scroll ">
+        <div class="left-content flex-1 overflow-y-scroll">
           <div>
-        <p
-          class="headingspagesslug pt-[2vw] nodes text-center text-4xl  uppercase "
-        >
-          events
-        </p>
-      </div>
+            <p
+              class="headingspagesslug pt-[2vw] nodes text-center text-4xl uppercase"
+            >
+              events
+            </p>
+          </div>
           <!-- mobile  -->
           <!-- <button
               class="nodes absolute top-0 left-[0] z-30 w-[50%] h-[60vh] previous"
@@ -66,7 +57,7 @@
               @click="next"
               aria-label="Next"
             ></button> -->
-            <div class="nodes nodesgal">
+          <div class="nodes nodesgal">
             <section
               class="top-0 left-0 w-full md:block cursor-grab slider"
               v-swiper:mySwiperMobile="swiperOptions2"
@@ -119,10 +110,10 @@
             >
               <span class="dots" v-if="project.slider">
                 <span
-                  v-for="(slide, idx) in project.slider"
-                  :key="idx"
+                  v-for="n in 3"
+                  :key="n"
                   class="dot"
-                  :class="{ 'active-dot': idx === index }"
+                  :class="{ 'active-dot': index % 3 === n - 1 }"
                 >
                   •
                 </span>
@@ -155,24 +146,23 @@
                   class="arch-frame"
                 /> -->
                 <MediaImage
-                          :src="project.image"
-                          v-if="project.image"
-                               class="arch-frame"
-                        
-                        ></MediaImage>
+                  :src="project.image"
+                  v-if="project.image"
+                  class="arch-frame"
+                ></MediaImage>
               </div>
 
               <!-- footer -->
               <div class="nomb pt-[8vh] footout">
                 <div class="footerstuff">
                   <div
-                class="textnewardesk ttdesk uppercase animate-hover text-[1.2rem] "
-              >
-                <p v-if="project">{{ project.title }}</p>
-                <p class="yeartdesk mb-6 uppercase" v-if="project">
-                  {{ project.year }}
-                </p>
-              </div>
+                    class="textnewardesk ttdesk uppercase animate-hover text-[1.2rem]"
+                  >
+                    <p v-if="project">{{ project.title }}</p>
+                    <p class="yeartdesk mb-6 uppercase" v-if="project">
+                      {{ project.year }}
+                    </p>
+                  </div>
                   <div v-if="project.content" class="pt-3">
                     <Richtext
                       class="contactinner"
@@ -273,12 +263,13 @@
             <header
               class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block"
             >
-             <div class="numcon"> <span class="numg" v-if="project.slider">
-                ( {{ String(index).padStart(1, "") }} of
-                {{ String(project.slider.length).padStart(1, "") }} )</span
-              ></div>
+              <div class="numcon">
+                <span class="numg" v-if="project.slider">
+                  ( {{ String(index).padStart(1, "") }} of
+                  {{ String(project.slider.length).padStart(1, "") }} )</span
+                >
+              </div>
             </header>
-
 
             <div class="nomb nombgal gallery-images">
               <section
@@ -300,9 +291,9 @@
                         :key="image._key"
                         class="overlaydiv flex flex-col flex-1 h-full"
                         :class="{
-                            portraitcon: image.portrait,
-                            landscapecon: !image.portrait,
-                          }"
+                          portraitcon: image.portrait,
+                          landscapecon: !image.portrait,
+                        }"
                       >
                         <MediaImage
                           :src="image.image.asset._ref"
@@ -318,21 +309,23 @@
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
 
-                        <div   :class="{
+                        <div
+                          :class="{
                             textday1por: image.portrait,
                             textday1lan: !image.portrait,
                           }"
-                          class="absolute top-0 left-0 text-day1 z-50">
+                          class="absolute top-0 left-0 text-day1 z-50"
+                        >
                           <!-- Display the day number of the active slide -->
-                          <p class="numgday capitalize">{{ image.day ? image.day : "Day 1" }}</p>
+                          <p class="numgday capitalize">
+                            {{ image.day ? image.day : "Day 1" }}
+                          </p>
                         </div>
                       </figure>
                     </div>
                   </div>
                 </div>
               </section>
-
-            
 
               <div class="footcon nodes">
                 <div class="w-full flex justify-center">
@@ -399,19 +392,20 @@ export default {
     const project = await $sanity.fetch(query);
 
     if (project && project.slider) {
-    project.slider = project.slider.map(slide => {
-      if (slide.images) {
-        slide.images = slide.images.map(image => {
-          const dayFormatted = image.day.charAt(0).toUpperCase() + image.day.slice(1); // Capitalize "day1" to "Day1"
-          return {
-            ...image,
-            day: dayFormatted.replace(/([a-z])(\d+)/, "$1 $2") // Adds a space between "Day" and the number
-          };
-        });
-      }
-      return slide;
-    });
-  }
+      project.slider = project.slider.map((slide) => {
+        if (slide.images) {
+          slide.images = slide.images.map((image) => {
+            const dayFormatted =
+              image.day.charAt(0).toUpperCase() + image.day.slice(1); // Capitalize "day1" to "Day1"
+            return {
+              ...image,
+              day: dayFormatted.replace(/([a-z])(\d+)/, "$1 $2"), // Adds a space between "Day" and the number
+            };
+          });
+        }
+        return slide;
+      });
+    }
 
     //    // Debugging: Log the fetched data
     //    console.log('Fetched meta:', project.meta);
@@ -465,26 +459,27 @@ export default {
   },
 
   mounted() {
-  const previousScrollPosition = sessionStorage.getItem(
-    "previousScrollPosition"
-  );
-  if (previousScrollPosition && this.$router.isBackNavigation) {
-    window.scrollTo(0, 0);
-  }
+    const previousScrollPosition = sessionStorage.getItem(
+      "previousScrollPosition"
+    );
+    if (previousScrollPosition && this.$router.isBackNavigation) {
+      window.scrollTo(0, 0);
+    }
 
-  this.$nextTick(() => {
-    // Wait for animation to finish
-    setTimeout(() => {
-      // Add a check for screen width
-      if (window.innerWidth > 768) { // Adjust the width threshold as needed
-        window.scrollTo({
-          top: document.querySelector(".reveal-container").offsetHeight,
-          behavior: "smooth",
-        });
-      }
-    }, 1000); // Adjust timeout to match the duration of your animation
-  });
-},
+    this.$nextTick(() => {
+      // Wait for animation to finish
+      setTimeout(() => {
+        // Add a check for screen width
+        if (window.innerWidth > 768) {
+          // Adjust the width threshold as needed
+          window.scrollTo({
+            top: document.querySelector(".reveal-container").offsetHeight,
+            behavior: "smooth",
+          });
+        }
+      }, 1000); // Adjust timeout to match the duration of your animation
+    });
+  },
 
   watch: {
     $route() {
@@ -612,21 +607,20 @@ export default {
     onSlideChange2(swiper) {},
 
     onSlideChange(swiper) {
-      this.index = swiper.activeIndex + 1
-      this.realIndex = swiper.activeIndex
-      const gsap = this.$gsap
+      this.index = swiper.activeIndex + 1;
+      this.realIndex = swiper.activeIndex;
+      const gsap = this.$gsap;
       if (swiper.activeIndex == 0 && !this.back) {
-        this.$refs['prev'].classList.add('disabled')
+        this.$refs["prev"].classList.add("disabled");
       } else {
-        this.$refs['prev'].classList.remove('disabled')
+        this.$refs["prev"].classList.remove("disabled");
       }
       if (this.index > 1) {
-        gsap.to(this.$refs['skew'], { x: '-150%' })
+        gsap.to(this.$refs["skew"], { x: "-150%" });
       } else {
-        gsap.to(this.$refs['skew'], { x: '0%' })
+        gsap.to(this.$refs["skew"], { x: "0%" });
       }
     },
-
 
     scroll() {},
     toggleBlueBox() {
@@ -695,7 +689,6 @@ export default {
       }
     },
 
-
     // next2() {
     //   if (this.mySwiper2.isEnd) {
     //     if (this.project.nextProject) {
@@ -733,19 +726,25 @@ export default {
 </script>
 
 <style scoped>
-  .previous:hover {
-    cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e") 16 16, pointer;
-    cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(-45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e") 16 16, pointer;
-    cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="), auto !important; 
-    /* cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto; */
-  }
+.previous:hover {
+  cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e")
+      16 16,
+    pointer;
+  cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(-45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e")
+      16 16,
+    pointer;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
+    auto !important;
+  /* cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto; */
+}
 
-  .next {
-    cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+'), auto !important; 
-  }
+.next {
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+"),
+    auto !important;
+}
 
-  /* Fallback for non-custom cursors */
-  /* .previous:hover {
+/* Fallback for non-custom cursors */
+/* .previous:hover {
     cursor: pointer;
   }
 
@@ -753,7 +752,6 @@ export default {
     cursor: pointer;
   } */
 
-  
 /* .portrait {
   height: auto;
     width: 34vw;
@@ -767,20 +765,18 @@ export default {
     width: auto;
 } */
 
-  
-
 .portrait {
   margin-right: 1.5vw;
-    position: fixed;
-    margin-top: 5.5vh;
-    width: auto;
-    height: 89vh;
-    -o-object-fit: cover;
-    object-fit: cover;
+  position: fixed;
+  margin-top: 5.5vh;
+  width: auto;
+  height: 89vh;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .landscape {
- /* height: auto;
+  /* height: auto;
   width: auto;
   height: auto;
   width: 44vw;
@@ -791,13 +787,12 @@ export default {
   margin-left: auto; */
 
   height: 55vh;
-    width: 47vw !important;
-    /* display: flex; */
-    position: sticky !important;
-    top: 20vh;
-    object-fit: cover;
-    object-position: center;
-  
+  width: 47vw !important;
+  /* display: flex; */
+  position: sticky !important;
+  top: 20vh;
+  object-fit: cover;
+  object-position: center;
 
   /* width: auto;
     height: auto;
@@ -811,20 +806,20 @@ export default {
 
 .landscapecon {
   width: 50vw;
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.portraitcon{
+.portraitcon {
   width: 50vw;
-    height: 100%;
-    bottom: 0;
-    position: absolute;
-    display: flex;
-    align-content: flex-end;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-end;
+  height: 100%;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .swiper-wrapper {
@@ -922,16 +917,14 @@ export default {
     left: 49vw;
     position: sticky; */
 
-
-
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    height: 100vh;
-    width: 50vw;
-    left: 50vw;
-    position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 50vw;
+  left: 50vw;
+  position: sticky;
 }
 
 .gallery-image {
@@ -956,14 +949,13 @@ export default {
   justify-content: center;
   align-items: flex-end; */
 
-
   display: flex;
-    top: 2vh;
-    position: relative;
-    width: 100%;
-    height: 95%;
-    justify-content: center;
-    align-items: flex-end;
+  top: 2vh;
+  position: relative;
+  width: 100%;
+  height: 95%;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 /* Apply the animation to the main container */
@@ -1006,8 +998,6 @@ a {
   font-size: 3rem; */
 }
 
-
-
 .footerstuff {
   position: relative;
   /* top: 70vh; */
@@ -1038,8 +1028,6 @@ a {
     /* font-family: "MinionPro-Regular"; */
     /* font-size: medium; */
   }
-
-
 
   .headingspages {
     /* font-family: "GT-Bold"; */
@@ -1079,14 +1067,13 @@ a {
   position: relative;
   z-index: 1;
 
-
   width: auto;
-    height: auto;
-    -o-object-fit: cover;
-    object-fit: contain;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: contain;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .inner-image {
@@ -1156,9 +1143,9 @@ a {
   display: inherit;
 
   height: 47.6vh;
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
 }
 
 .nomb {
@@ -1173,18 +1160,16 @@ a {
   display: none;
 }
 
-
-  .headmb{
-    display: contents;
-    display: none;
-  }
-
+.headmb {
+  display: contents;
+  display: none;
+}
 
 @media only screen and (max-width: 768px) {
   .nomb {
     display: none;
   }
- 
+
   .nodes {
     display: inherit;
   }
@@ -1197,8 +1182,8 @@ a {
     position: absolute; */
 
     display: flex;
-        height: 56vh;
-        width: 100vw;
+    height: 56vh;
+    width: 100vw;
   }
   .left-content {
     background-image: url("./static/LeftBG.png");
@@ -1208,10 +1193,9 @@ a {
     background-repeat: no-repeat;
     height: 60vh;
     height: max-content;
-    overflow-y: none; 
+    overflow-y: none;
     flex: none;
-    padding-top: 6vh ;
-
+    padding-top: 6vh;
   }
 
   .right-content {
@@ -1299,14 +1283,13 @@ a {
   } */
 
   .headera {
-        padding-top: 2.5vw;
-        padding-bottom: 2.5vw;
-        padding-left: 2.5vw;
-        padding-right: 2.5vw;
-        flex-direction: column;
-        z-index: 100;
-        
-    }
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    flex-direction: column;
+    z-index: 100;
+  }
 
   /* .headmb{
     display: contents;
@@ -1319,12 +1302,11 @@ a {
   } */
 
   .headera {
-        padding-top: 3.5vw;
-        padding-bottom: 3.5vw;
-        padding-left: 2.5vw;
-        padding-right: 2.5vw;
-    }
-
+    padding-top: 3.5vw;
+    padding-bottom: 3.5vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+  }
 
   .archimg {
     display: none;

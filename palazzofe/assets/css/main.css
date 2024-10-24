@@ -501,7 +501,7 @@ a .inner-image:hover {
 
   .headbarc {
     width: 3.9vw;
-    height: max-content;
+    height: auto;
     display: block;
     stroke-width: .5vw;
     stroke: black;
