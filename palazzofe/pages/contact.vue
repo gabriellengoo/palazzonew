@@ -682,7 +682,7 @@ input::placeholder {
 }
 
 .instagram-icon {
-  width: 7vw;
+  width: 2vw;
   height: auto;
 }
 
@@ -694,6 +694,10 @@ input::placeholder {
 
 @media only screen and (max-width: 768px) {
 
+  .instagram-icon {
+  width: 7vw;
+  height: auto;
+}
   .contact-form {
   opacity: 1;
   transition: opacity 0.5s ease; /* Smooth transition */
