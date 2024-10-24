@@ -48,7 +48,6 @@
                   <li>
                     <a
                       @click="setActiveSection('design')"
-                    
                       href="javascript:void(0)"
                     >
                       Design
@@ -57,7 +56,6 @@
                   <li>
                     <a
                       @click="setActiveSection('location')"
-                      
                       href="javascript:void(0)"
                     >
                       Location
@@ -66,65 +64,41 @@
                   <li>
                     <a
                       @click="setActiveSection('production')"
-                  
                       href="javascript:void(0)"
                     >
                       Production
                     </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('concierge')"
-                   
-                      href="#Concierge"
-                    >
+                    <a @click="setActiveSection('concierge')" href="#Concierge">
                       Concierge
                     </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('activity')"
-                  
-                      href="#activity"
-                    >
+                    <a @click="setActiveSection('activity')" href="#activity">
                       Activity
                     </a>
                   </li>
                   <li>
                     <a
                       @click="setActiveSection('celebrities')"
-                 
                       href="#celebrities"
                     >
                       Celebrities
                     </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('music')"
-                   
-                      href="#music"
-                    >
+                    <a @click="setActiveSection('music')" href="#music">
                       Music
                     </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('products')"
-                  
-                      href="#products"
-                    >
+                    <a @click="setActiveSection('products')" href="#products">
                       Products
                     </a>
                   </li>
                   <li>
-                    <a
-                      @click="setActiveSection('more')"
-                     
-                      href="#more"
-                    >
-                      More
-                    </a>
+                    <a @click="setActiveSection('more')" href="#more"> More </a>
                   </li>
                 </ul>
               </nav>
@@ -137,6 +111,7 @@
         <!-- </button> -->
       </div>
 
+      <!-- <div ref="lottieAnimation4" class="working lottie-container"></div> -->
       <!-- Right Static Content -->
       <transition
         name="slide"
@@ -144,9 +119,6 @@
         @enter="enter"
         @leave="leave"
       >
-     
-     
-
         <div
           :class="{ 'slide-in': activeSection, 'slide-out': !activeSection }"
           class="right-content overflow-y-scroll flex-1"
@@ -155,7 +127,6 @@
         >
           <!-- Design -->
           <div
-          
             :class="{
               'slide-in':
                 activeSection === 'design' || hoveredSection === 'design',
@@ -187,11 +158,18 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]'   @click="closeSection">
+                  <!-- <button class='pt-[4vw]'   @click="closeSection">
                     <SvgClose :class="{ 'headbarc': activeSection, 'rotatesvg': !activeSection }" class=" w-[1.4vw] hover:cursor-pointer" />
-                  </button>
-                  <!-- <div ref="lottieAnimation3" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div> -->
+                  </button> -->
 
+                  <!-- headbarc -->
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div 
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
+                  </button>
+                  <!-- <div ref="lottieAnimation4" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div> -->
 
                   <h1 class="loctext pt-2">Design</h1>
                 </div>
@@ -281,9 +259,8 @@
 
           <!-- Location -->
           <div
-          id="location"
+            id="location"
             :class="{
-             
               'slide-in':
                 activeSection === 'location' || hoveredSection === 'location',
               'slide-out':
@@ -314,8 +291,14 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]' @click="closeSection">
+                  <!-- <button class="pt-[4vw]" @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+                  </button> -->
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div 
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
                   </button>
                   <h1 class="loctext pt-2">Location</h1>
                 </div>
@@ -340,10 +323,13 @@
                     ]"
                   />
                 </div>
-                <div :class="[
+                <div
+                  :class="[
                     'textaup',
                     { texta: !services.productionContent.prcontent },
-                  ]" class="flex pb-[3vh]">
+                  ]"
+                  class="flex pb-[3vh]"
+                >
                   <Richtext
                     v-if="
                       services.locationContent.lcontent &&
@@ -430,8 +416,14 @@
               <div class="sevcont">
                 <div class="titcont titmb">
                   <!-- <a href=""> -->
-                  <button class='pt-[4vw]' @click="closeSection">
+                  <!-- <button class="pt-[4vw]" @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+                  </button> -->
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div 
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
                   </button>
                   <!-- </a>               -->
                   <h1 class="loctext pt-2">Production</h1>
@@ -452,11 +444,14 @@
                     ]"
                   />
                 </div>
-                
-                <div :class="[
+
+                <div
+                  :class="[
                     'textaup',
                     { texta: !services.productionContent.prcontent },
-                  ]" class="flex pb-[3vh]">
+                  ]"
+                  class="flex pb-[3vh]"
+                >
                   <Richtext
                     v-if="services.productionContent.prcontent"
                     :blocks="services.productionContent.prcontent"
@@ -535,8 +530,14 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]' @click="closeSection">
+                  <!-- <button class="pt-[4vw]" @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+                  </button> -->
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div 
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
                   </button>
                   <h1 class="loctext pt-2">Products</h1>
                 </div>
@@ -557,10 +558,13 @@
                     ]"
                   />
                 </div>
-                <div :class="[
+                <div
+                  :class="[
                     'textaup',
                     { texta: !services.productionContent.prcontent },
-                  ]" class="flex pb-[3vh]">
+                  ]"
+                  class="flex pb-[3vh]"
+                >
                   <Richtext
                     v-if="services.productsContent.pdcontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -636,8 +640,14 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]' @click="closeSection">
+                  <!-- <button class="pt-[4vw]" @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+                  </button> -->
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div 
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
                   </button>
                   <h1 class="loctext pt-2">More</h1>
                 </div>
@@ -658,10 +668,13 @@
                     ]"
                   />
                 </div>
-                <div :class="[
+                <div
+                  :class="[
                     'textaup',
                     { texta: !services.productionContent.prcontent },
-                  ]" class="flex pb-[3vh]">
+                  ]"
+                  class="flex pb-[3vh]"
+                >
                   <Richtext
                     v-if="services.moreContent.mocontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -736,8 +749,14 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]' @click="closeSection">
+                  <!-- <button class="pt-[4vw]" @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+                  </button> -->
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div 
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
                   </button>
                   <h1 class="loctext pt-2">Concirerge</h1>
                 </div>
@@ -758,10 +777,13 @@
                     ]"
                   />
                 </div>
-                <div :class="[
+                <div
+                  :class="[
                     'textaup',
                     { texta: !services.productionContent.prcontent },
-                  ]" class="flex pb-[3vh]">
+                  ]"
+                  class="flex pb-[3vh]"
+                >
                   <Richtext
                     v-if="services.conciergeContent.ccontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -835,8 +857,14 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]' @click="closeSection">
+                  <!-- <button class="pt-[4vw]" @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+                  </button> -->
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div 
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
                   </button>
                   <h1 class="loctext pt-2">Activity</h1>
                 </div>
@@ -857,10 +885,13 @@
                     ]"
                   />
                 </div>
-                <div :class="[
+                <div
+                  :class="[
                     'textaup',
                     { texta: !services.productionContent.prcontent },
-                  ]" class="flex pb-[3vh]">
+                  ]"
+                  class="flex pb-[3vh]"
+                >
                   <Richtext
                     v-if="services.activityContent.acontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -938,8 +969,14 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]' @click="closeSection">
+                  <!-- <button class="pt-[4vw]" @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+                  </button> -->
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div 
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
                   </button>
                   <h1 class="loctext pt-2">Celebrities</h1>
                 </div>
@@ -960,10 +997,13 @@
                     ]"
                   />
                 </div>
-                <div :class="[
+                <div
+                  :class="[
                     'textaup',
                     { texta: !services.productionContent.prcontent },
-                  ]" class="flex pb-[3vh]">
+                  ]"
+                  class="flex pb-[3vh]"
+                >
                   <Richtext
                     v-if="services.celebritiesContent.clcontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -1011,6 +1051,7 @@
               </div>
             </div>
           </div>
+          
           <!-- Music -->
           <div
             :class="{
@@ -1038,8 +1079,14 @@
             >
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <button class='pt-[4vw]' @click="closeSection">
+                  <!-- <button class="pt-[4vw]" @click="closeSection">
                     <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
+                  </button> -->
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div 
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
                   </button>
                   <h1 class="loctext pt-2">Music</h1>
                 </div>
@@ -1060,10 +1107,13 @@
                     ]"
                   />
                 </div>
-                <div :class="[
+                <div
+                  :class="[
                     'textaup',
                     { texta: !services.productionContent.prcontent },
-                  ]" class="flex pb-[3vh]">
+                  ]"
+                  class="flex pb-[3vh]"
+                >
                   <Richtext
                     v-if="services.musicContent.mucontent"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
@@ -1120,13 +1170,41 @@
 import HeaderComponent from "@/components/layout/Header.vue";
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
-import lottie from 'lottie-web';
+import lottie from "lottie-web";
 
 export default {
   name: "IndexPage",
 
   components: {
     HeaderComponent,
+  },
+  mounted() {
+    // Log the container reference to check if it's correctly set
+    console.log("Lottie Container:", this.$refs.lottieAnimation4);
+    console.log("Lottie animation initialized:", this.lottieInstance);
+
+    this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation4, // the DOM element
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "/animations/plus.json", // your Lottie animation JSON file path
+    });
+
+    this.$nextTick(() => {
+      console.log(this.$refs.lottieAnimation4);
+    });
+
+    this.checkViewport(); // Set the initial value based on viewport
+    window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
+
+    this.checkHash();
+    window.addEventListener("hashchange", this.checkHash); // Listen for changes to the URL
+
+    // Set hoveredSection to 'design' if not on mobile
+    if (!this.isMobile) {
+      this.hoveredSection = "design";
+    }
   },
 
   data() {
@@ -1156,28 +1234,6 @@ export default {
       },
     },
   },
-  mounted() {
-    this.checkViewport(); // Set the initial value based on viewport
-    window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
-
-    this.checkHash();
-    window.addEventListener("hashchange", this.checkHash); // Listen for changes to the URL
-
-
-      // Set hoveredSection to 'design' if not on mobile
-  if (!this.isMobile) {
-    this.hoveredSection = 'design';
-  }
-
-  this.lottieInstance = lottie.loadAnimation({
-      container: this.$refs.lottieAnimation3, // Lottie animation container reference
-      renderer: 'svg',
-      loop: false,
-      autoplay: false,
-      path: '/animations/plus.json', // Path to your Lottie animation JSON file
-    });
-
-  },
 
   beforeDestroy() {
     window.removeEventListener("hashchange", this.checkHash);
@@ -1185,6 +1241,19 @@ export default {
   },
 
   methods: {
+    beforeEnter() {
+    this.$nextTick(() => {
+      if (this.$refs.lottieAnimation4) {
+        this.lottieInstance = lottie.loadAnimation({
+          container: this.$refs.lottieAnimation4,
+          renderer: 'svg',
+          loop: false,
+          autoplay: true,
+          path: '/animations/plus.json',
+        });
+      }
+    });
+  },
     checkHash() {
       // Check if the URL contains a hash
       this.hasHash = window.location.hash !== "";
@@ -1200,51 +1269,43 @@ export default {
       }
     },
 
-    // resetActiveSection() {
-    //   if (!this.isMobile) {
-    //     // this.activeSection = "design"; 
-    //     // Only reset for non-mobile devices
-    //     this.hoveredSection =  "design";
-    //   }
-    // },
-   
     toggleMenu() {
       this.$store.commit("toggleMenu");
     },
 
-    openSection() {
-      const rightContent = document.querySelector(".sevcont");
-      if (rightContent && !this.isOpen) {
-        rightContent.classList.add("slide-in");
-        this.isOpen = true;
-      }
-    },
-    
+    // openSection() {
+    //   const rightContent = document.querySelector(".sevcont");
+    //   if (rightContent && !this.isOpen) {
+    //     rightContent.classList.add("slide-in");
+    //     // this.lottieInstance.playSegments([0, 11], true); // Open animation
+    //     this.isOpen = true;
+    //   }
+    // },
+
     closeSection() {
-      const rightContentt = document.querySelector(".headbarc");
+      const rightContent = document.querySelector(".headbarc");
       // if (rightContent && this.isOpen) {
-        // rightContent.classList.remove("slide-in");
-        rightContentt.classList.add("rotatesvg");
-        this.isOpen = false;
-        this.activeSection = null;
+      // rightContent.classList.remove("slide-in");
+      // rightContentt.classList.add("rotatesvg");
+      this.lottieInstance.playSegments([11, 20], true); // Close animation
+      this.isOpen = false;
+      this.activeSection = null;
       // }
     },
-    
+
     checkViewport(section) {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
       this.activeSection = this.isMobile ? false : " "; // Set activeSection based on isMobile
 
-    // Update hoveredSection based on viewport
-    
-    if (!this.isMobile) {
-      this.hoveredSection = "design";
-    } else {
-      this.hoveredSection = "";
-    }
+      // Update hoveredSection based on viewport
+
+      if (!this.isMobile) {
+        this.hoveredSection = "design";
+      } else {
+        this.hoveredSection = "";
+      }
     },
 
-
-    
     setActiveSection(section) {
       // Check if it's mobile or desktop and set the active section accordingly
       if (!this.isMobile) {
@@ -1259,6 +1320,7 @@ export default {
       } else {
         // On mobile, just set the clicked section as active
         this.activeSection = section;
+        this.lottieInstance.playSegments([0, 11], true); // Open animation
         this.hoveredSection = null; // Reset hover section on mobile
       }
     },
@@ -1382,12 +1444,18 @@ export default {
 </script>
 
 <style scoped>
-
-.rotatesvg{
+/* .rotatesvg {
   transform: rotate(45deg);
   transition-property: transform;
   transition-duration: 3s;
-}
+} */
+
+/* .lottie-container {
+  width: 100vw; 
+  Or whatever width fits your design
+  height: 300px; 
+  Or set the height based on your animation
+} */
 
 .sheadera {
   /* display: unset;  */
@@ -1419,7 +1487,7 @@ export default {
   position: fixed;
   bottom: 0;
   left: 77vw;
-  padding-left: .85vw;
+  padding-left: 0.85vw;
 }
 
 .texta {
@@ -1521,7 +1589,7 @@ export default {
 .laybimg {
   padding: 2vw;
   padding-left: 0;
-  margin-right: .5vw;
+  margin-right: 0.5vw;
   padding-top: 0vh;
   top: -8vh;
   position: relative;
@@ -1529,7 +1597,7 @@ export default {
   width: 22.5vw;
 }
 
-.pte{
+.pte {
   top: -8vh;
   position: relative;
 }
@@ -1543,7 +1611,7 @@ export default {
   /* font-size: 1.4vw; */
   line-height: normal;
   top: 5vw;
-    position: relative;
+  position: relative;
 }
 
 .link-container {
@@ -1738,7 +1806,7 @@ a {
   }
 
   .laybimsize {
-    position:relative !important;
+    position: relative !important;
     top: 0vh !important;
     height: 24.6vw !important;
   }
@@ -1906,7 +1974,7 @@ a {
     top: -2vh;
   }
 
-  .textaup{
+  .textaup {
     position: relative;
     top: -2vh;
   }
@@ -1954,7 +2022,6 @@ a {
     top: 0vw;
     position: relative;
   }
- 
 
   .loctext {
     font-size: 3vw;

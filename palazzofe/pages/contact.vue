@@ -406,6 +406,9 @@ formFields.forEach(field => {
       }, 8000); // Duration of the bounce animation (1s)
     }, 4000); // 3 second delay before starting the bounce
 
+    console.log('Lottie Container:', this.$refs.lottieAnimation);
+    console.log('Lottie animation initialized:', this.lottieInstance);
+
     this.lottieInstance = lottie.loadAnimation({
       container: this.$refs.lottieAnimation, // the DOM element
       renderer: "svg",

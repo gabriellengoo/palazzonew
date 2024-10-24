@@ -527,7 +527,15 @@ a .inner-image:hover {
     display: block;
     stroke-width: .5vw;
     stroke: black;
-    /* stroke: black; */
+  }
+
+  .closeservpg {
+    width: 6.3vw;
+    height: -moz-max-content;
+    height: max-content;
+    display: block;
+    stroke-width: 0vw;
+    stroke: black;
   }
 
   .headbarc2 {
