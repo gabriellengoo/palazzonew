@@ -470,6 +470,10 @@ a .inner-image {
   } */
 
 @media only screen and (max-width: 768px) {
+  .hovaw:hover{
+    opacity: 100%;
+    transition-duration: 1s;
+  }
   /* .image-grid:nth-child(1){
       border-top: black .5px solid;
     } */

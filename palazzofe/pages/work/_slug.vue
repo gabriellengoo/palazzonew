@@ -768,6 +768,7 @@ export default {
 
 .overlaydiv {
   /* padding-top: 6vh; */
+  padding-bottom: 7vw;
 }
 
 .overlay-gallery {
