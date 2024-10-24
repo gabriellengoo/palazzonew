@@ -83,23 +83,35 @@
     >
       <div class="textmainpg text-center">
         <h1
-          class="maintext text-[14vw] lg:text-[6rem] xl:text-[13rem] text-black leading-tight relative z-0"
+          class="maintext text-[16vw] lg:text-[6rem] xl:text-[13rem] text-black leading-tight relative z-0"
         >
           PALAZZO EVENTI
         </h1>
       </div>
 
-      <div class="nodes h-screen w-screen">
+      <div class="nodesindex h-screen w-screen">
+       <div class="contflower">
         <img
           src="flowero.png"
-          class="p-[16vw] pb-[10vw]"
+          class="flowset "
           alt="Cherubs"
         />
         <img
+          src="flowero.png"
+          class="flowset "
+          alt="Cherubs"
+        />
+        <img
+          src="flowero.png"
+          class="flowset "
+          alt="Cherubs"
+        />
+       </div>
+        <!-- <img
           src="angelss.png"
           class="p-[16vw] pt-[0vw]"
           alt="Cherubs"
-        />
+        /> -->
       </div>
     </div>
   </div>
@@ -193,6 +205,23 @@ export default {
 </script>
 
 <style scoped>
+
+.flowset{
+  padding: 4vw;
+    padding-bottom: 10vw;
+    width: 95vw;
+    height: auto;
+}
+
+.contflower{
+  height: 95vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    align-items: center;
+}
 
 .headera {
     display: flex;
@@ -301,7 +330,12 @@ export default {
 
   .textmainpg{
     position: absolute;
-    top: 23vh;
+        /* top: 23vh; */
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        align-content: center;
+        align-items: center;
   }
 
 

@@ -231,6 +231,12 @@
             :blocks="contact.address2"
           ></Richtext>
         </div>
+
+        <img
+          src="angelss.png"
+          class="p-[16vw] pt-[0vw]"
+          alt="Cherubs"
+        />
       </div>
 
       <!-- Right Content: Form Section

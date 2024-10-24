@@ -11,7 +11,10 @@
           <!-- <SvgMenu v-if="!isMenuOpen" class="headbar w-[1.4vw] hover:cursor-pointer" />
       <SvgClose v-else class="headbar w-[1.4vw] hover:cursor-pointer" /> -->
           <button @click="toggleMenu" class="hamburger-button">
-            <div ref="lottieAnimation" class="lottie-container w-[1.5vw] hover:cursor-pointer"></div>
+            <div
+              ref="lottieAnimation"
+              class="lottie-container w-[1.5vw] hover:cursor-pointer"
+            ></div>
           </button>
         </div>
       </div>
@@ -65,91 +68,55 @@
         v-if="isMenuOpen"
         class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center"
       >
-    <div
-        v-if="isMenuOpen"
-        class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
-      >
-      
-        <transition  class="mobilemenu2"
-        name="slide-down" @after-enter="fadeInAllImg">
-          <div
-            class="mobilemenu2 relative mb-auto z-50 flex flex-col justify-center items-center"
+        <div
+          v-if="isMenuOpen"
+          class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
+        >
+          <transition
+            class="mobilemenu2"
+            name="slide-down"
+            @after-enter="fadeInAllImg"
           >
-            <div class="  ">
-              <div class="headerr  flex justify-center">
-            <h1 class="border-t-[1px] border-[#0003]  w-[100vw]"></h1>
-          </div>
-              <nav class="link-container uppercase">
-                <ul>
-                  <li class="pointer-events-none">
-                    <a class="svgleft pointer-events-none" href=""
-                      ><SvgArchstar class="" 
-                    /></a>
-                  </li>
-                  
-                  <li>
-                    <a
-                      href="./weddings"
-                    
-                      
-                    >
-                    WEDDINGS
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      
-                      
-                     href="./events"
-                    >
-                    EVENTS
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                  
-                     href="./services"
-                    >
-                    SERVICES
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                   href="./about"
-                                          >
-                                          ABOUT
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                   href="./press"
-                                         >
-                                         PRESS
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                 
-                      href="./team"
-                    >
-                    TEAM
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                   href="./contact"
-                                  >
-                                  CONTACT
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                  href="./awards"
-                                         >
-                                         AWARDS
-                    </a>
-                  </li>
-                  <!-- <li   class=" opacity-0">
+            <div
+              class="mobilemenu2 relative mb-auto z-50 flex flex-col justify-center items-center"
+            >
+              <div class="  ">
+                <div class="headerr flex justify-center">
+                  <h1 class="border-t-[1px] border-[#0003] w-[100vw]"></h1>
+                </div>
+                <nav class="link-container uppercase">
+                  <ul>
+                    <li class="pointer-events-none">
+                      <a class="svgleft pointer-events-none" href=""
+                        ><SvgArchstar class=""
+                      /></a>
+                    </li>
+
+                    <li>
+                      <a href="./weddings"> WEDDINGS </a>
+                    </li>
+                    <li>
+                      <a href="./events"> EVENTS </a>
+                    </li>
+                    <li>
+                      <a href="./services"> SERVICES </a>
+                    </li>
+                    <li>
+                      <a href="./about"> ABOUT </a>
+                    </li>
+                    <li>
+                      <a href="./press"> PRESS </a>
+                    </li>
+                    <li>
+                      <a href="./team"> TEAM </a>
+                    </li>
+                    <li>
+                      <a href="./contact"> CONTACT </a>
+                    </li>
+                    <li>
+                      <a href="./awards"> AWARDS </a>
+                    </li>
+                    <!-- <li   class=" opacity-0">
                     <a
                       @click="setActiveSection('production')"
                 
@@ -158,17 +125,14 @@
                       Production
                     </a>
                   </li> -->
-                  
-                </ul>
-              </nav>
+                  </ul>
+                </nav>
+              </div>
             </div>
-
-       
-          </div>
-        </transition>
+          </transition>
+        </div>
       </div>
-    </div>
-  </transition>
+    </transition>
 
     <!-- <transition
       class="mobilemenu"
@@ -210,7 +174,7 @@
 </template>
 
 <script>
-import lottie from 'lottie-web';
+import lottie from "lottie-web";
 
 export default {
   data() {
@@ -229,10 +193,10 @@ export default {
 
     this.lottieInstance = lottie.loadAnimation({
       container: this.$refs.lottieAnimation, // the DOM element
-      renderer: 'svg',
+      renderer: "svg",
       loop: false,
       autoplay: false,
-      path: '/animations/hamburger.json', // your Lottie animation JSON file path
+      path: "/animations/hamburger.json", // your Lottie animation JSON file path
     });
   },
   beforeDestroy() {
@@ -285,10 +249,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-
-
 .nav-menu {
   z-index: 10000;
 }
@@ -420,8 +380,6 @@ export default {
   transition-duration: 0.5s;
 }
 
-
-
 .link-container a {
   text-decoration: none;
   font-size: 9.2vw;
@@ -447,51 +405,51 @@ export default {
   border: 1px solid rgba(0, 0, 0, 0.257);
   margin: auto;
   font-family: "RomainHeadlineTrial";
-  background-color: hsla(0,0%,100%,.13);
+  background-color: hsla(0, 0%, 100%, 0.13);
   /* background-color: 1px solid rgba(0,0,0,.257);
     background-color: rgb(255 255 255 / 25%); */
   border: 1px solid rgba(0, 0, 0, 0.257);
   border-radius: 590px 590px 2px 2px;
   margin: auto;
   font-family: "RomainHeadlineTrial";
-  /* background-image: url("./static/background.jpg");
+  background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: initial;
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat;
   overflow: hidden;
   /* width: 24vw; */
 }
 
 .link-container li:hover {
-    /* background-image: url("./static/background.jpg");
+  /* background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: initial;
   background-repeat: no-repeat;
   transition-duration: 0.5s; */
-    background-image: none;
-  }
+  background-image: none;
+}
 
-  .link-container a:hover {
-    text-decoration: none;
-    color: #333333;
-    /* Optional hover effect */
-    transition-duration: 0.5s;
-  }
+.link-container a:hover {
+  text-decoration: none;
+  color: #333333;
+  /* Optional hover effect */
+  transition-duration: 0.5s;
+}
 
-  .link-container a {
-    /* webkit-text-decoration: none; */
-        text-decoration: none;
-        font-size: 9.2vw;
-        font-size: 4.2vh;
-        /* font-size: 4vw; */
-        color: black;
-        font-weight: 100;
-        padding-left: 16vw;
-        padding-right: 16vw;
-        transition-duration: 0.5s;
-        height: max-content;
-        display: inline-block;
-  }
+.link-container a {
+  /* webkit-text-decoration: none; */
+  text-decoration: none;
+  font-size: 9.2vw;
+  font-size: 4.2vh;
+  /* font-size: 4vw; */
+  color: black;
+  font-weight: 100;
+  padding-left: 16vw;
+  padding-right: 16vw;
+  transition-duration: 0.5s;
+  height: max-content;
+  display: inline-block;
+}
 
 /* mobile nav end--------- */
 
@@ -507,10 +465,6 @@ export default {
   .mobilemenu {
     display: unset;
   }
-
-
-
-
 }
 
 /* .hover-area {
@@ -765,8 +719,7 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-
-  .lottie-container{
+  .lottie-container {
     width: 4.5vw;
   }
 
@@ -779,32 +732,31 @@ export default {
     background-repeat: no-repeat;
     overflow: hidden; */
     background-size: auto;
-        background-size: cover;
-        background-image: url("./static/background.jpg");
-        background-position: initial;
+    background-size: cover;
+    background-image: url("./static/background.jpg");
+    background-position: initial;
     background-repeat: no-repeat;
     height: 100vh;
     overflow-y: scroll;
 
-        background-position: 0 0;
-        background-repeat: no-repeat;
-        background-size: cover;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
     transition: max-height 0.5s ease-in-out;
-    overflow: hidden; 
+    overflow: hidden;
     /* padding-top: 3vh; */
   }
 
   .mobilemenu2 {
-
-  
     /* height: 100vh; */
     transition: max-height 0.5s ease-in-out;
-    overflow: hidden; 
+    overflow: hidden;
     /* padding-top: 3vh; */
   }
 
   .headerr {
     font-size: 2vh;
+    margin-bottom: 1.8rem;
     /* margin-top: 2rem; */
   }
 
@@ -816,12 +768,12 @@ export default {
 
   .left-content {
     flex-direction: column;
-        padding: 0 !important;
-        padding-top: 6vh !important;
-    
-        height: 100vh;
-        overflow: hidden;
-        transition: max-height .5s ease-in-out;
+    padding: 0 !important;
+    padding-top: 6vh !important;
+
+    height: 100vh;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
   }
 }
 </style>

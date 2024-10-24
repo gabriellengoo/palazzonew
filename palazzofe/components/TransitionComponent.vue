@@ -84,7 +84,7 @@ export default {
 
 @media only screen and (max-width: 768px) {
   .loading-text {
-    font-size: 2.5vw; /* Adjust as needed */
+    font-size: 5vw; /* Adjust as needed */
     text-transform: uppercase;
     color: rgb(13, 13, 13); /* Adjust color if needed */
     animation: flash 1.5s ease-in-out infinite;

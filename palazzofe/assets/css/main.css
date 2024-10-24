@@ -395,6 +395,10 @@ a .inner-image {
   display: inherit !important;
 }
 
+.nodesindex{
+  display: none !important;
+}
+
 @media (max-width: 1440px) {
   .headera {
     /* padding-top: 0.5vw;
@@ -451,7 +455,12 @@ a .inner-image {
   /* .image-rowb:nth-child(1) {
       border-top: 0.07vw solid black !important;
   } */
-
+  .nodesindex{
+    display: flex !important;
+    justify-content: end;
+    align-items: flex-end;
+  }
+  
 
 
 a .inner-image:hover {

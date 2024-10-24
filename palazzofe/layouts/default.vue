@@ -19,8 +19,13 @@
 <script>
 import { mapActions, mapMutations } from "vuex";
 // import LenisComponent from "~/components/LenisComponent.vue";
+import TransitionComponent from "~/components/TransitionComponent.vue";
+
 
 export default {
+  components: {
+    TransitionComponent,
+  },
   methods: {
     ...mapActions(["setTitle"]),
     ...mapMutations(["SET_FOOTER", "CLOSE_MENU"]),
