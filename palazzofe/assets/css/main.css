@@ -326,6 +326,11 @@ a .inner-image {
   transition-duration: 1s;
   /* color: #00000046 !important; */
 }
+
+.hovaw:hover{
+  opacity: 50%;
+  transition-duration: 1s;
+}
 /* .item-wrapper:hover .deskimgl{
   opacity: 100%;
   transition-duration: 1s;

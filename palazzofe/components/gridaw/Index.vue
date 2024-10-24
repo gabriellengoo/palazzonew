@@ -45,13 +45,14 @@
                   : '',
               ]"
             >
-              <figure class="flex flex-col">
+              <figure class="flex flex-col ">
                 <div class="relative">
                   <!-- <NuxtLink
                     v-if="item.reference.slug"
                     :to="`/work/${item.reference.slug}`"
                     class="flex flex-col items-end h-full"
                   > -->
+                  <div class="hovaw">
                   <figure class="inner-image">
                     <MediaImage
                       :src="item.image.image"
@@ -68,6 +69,7 @@
                       item.month || item.reference.month
                     }}</span>
                   </figcaption>
+                  </div>
                   <!-- </NuxtLink> -->
 
                   <!-- Conditionally show sideim div on hover with fade effect -->
@@ -98,26 +100,26 @@
                       <div
                         class="content flex-1 p-8 flex justify-center items-center h-full"
                       >
-                        <div class="pointer-events-none">
+                        <!-- <div class="pointer-events-none">
                           <img class="rightimg" src="/awcol.png" />
-                        </div>
+                        </div> -->
+                        <div class="pinkcircle rightimg"></div>
                       </div>
                       <figcaption
                         class="titlea textsum block text-center uppercase w-full pt-2"
                       >
                         <span class="textsumf2">{{
-                          item.title || item.reference.title
-                        }}</span>
-                        <!-- <span class="pt-[.1vh]">{{ item.year || item.reference.year }}</span> -->
-                      </figcaption>
-                      <figcaption
-                        class="disa textsum block text-center w-full pt-2"
-                      >
-                        <!-- <span class="textsumf">{{ item.title || item.reference.title }}</span> -->
-                        <span class="pt-[.1vh]">{{
+                          // item.title || item.reference.title
                           item.year || item.reference.year
                         }}</span>
                       </figcaption>
+                      <!-- <figcaption
+                        class="disa textsum block text-center w-full pt-2"
+                      >
+                        <span class="pt-[.1vh]">{{
+                          item.year || item.reference.year
+                        }}</span>
+                      </figcaption> -->
                     </figure>
                   </div>
                 </div>
@@ -204,11 +206,17 @@ export default {
 }
 
 .titlea {
-  height: 100%;
-  /* width: 100%; */
+  /* height: 100%;
+  width: 100%;
   position: absolute;
   top: 49vh;
-  left: 1vw;
+  left: 1vw; */
+  height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 45vh;
+    left: 0;
+
   font-size: 1.3vw;
   margin: 0 auto;
   -o-object-fit: cover;
@@ -218,6 +226,19 @@ export default {
 
 .textsumf2 {
   font-family: "RomainHeadlineTrial" !important;
+  width: 30%;
+}
+
+.pinkcircle {
+  width: 20vw;
+  height: 20vw;       
+  background-color: pink; 
+  background-image: url("./static/PINKBG.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;    
+  display: inline-block; 
 }
 
 .disa {
@@ -356,6 +377,7 @@ export default {
 .textsum {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .textsumf {
