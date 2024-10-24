@@ -106,7 +106,7 @@
             </section>
 
             <header
-              class="nodesdots absolute text-day2mb top-0 right-0 p-2 text-xs block"
+              class="nodesdots absolute dotsmb top-0 right-0 p-2 text-xs block"
             >
               <span class="dots" v-if="project.slider">
                 <span

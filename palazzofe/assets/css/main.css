@@ -157,12 +157,34 @@ html {
   justify-content: center;
 }
 
+
+.dotsmb {
+  font-size: 2.8vw;
+  position: absolute;
+  z-index: 99;
+  width: -moz-max-content;
+  width: max-content;
+  width: 100vw;
+  /* top: 7vw; */
+  height: 100vh;
+  /* left: 94.8vw; */
+  display: flex;
+  transition-duration: 0ms !important;
+  transform: none !important;
+  transition-property: none !important;
+  font-family: "NHaas";
+  pointer-events: none !important;
+  justify-content: center;
+}
+
 .dots {
   display: inline-block;
+  top: 100vw;
+  position: relative;
 }
 
 .dot {
-  font-size: 16px;
+  font-size: 7vw;
   color: #ffffff4d;
   padding: 0 2px;
 }
