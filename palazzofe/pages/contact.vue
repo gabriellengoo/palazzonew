@@ -163,8 +163,9 @@
       <img src="anglecon.png" alt="Angel Artwork" class="w-auto h-[40vh]" />
     </div>
 
-    <!-- mobile -->
 
+
+    <!-- mobile -->
     <div class="bgcream nodes relative min-h-screen flex"></div>
 
     <div class="nodes contentamb flex h-max">
@@ -225,7 +226,7 @@
           </div>
         </div>
 
-        <div class="ml-[6vw]">
+        <div class="ml-[8.2vw]">
           <Richtext
             class="w-[90vw] pt-[2vh]"
             :blocks="contact.address2"
@@ -681,7 +682,7 @@ input::placeholder {
 }
 
 .instagram-icon {
-  width: 2vw;
+  width: 7vw;
   height: auto;
 }
 

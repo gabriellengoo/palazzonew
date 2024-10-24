@@ -362,7 +362,7 @@ export default {
   .headera {
     align-items: center;
     align-items: flex-start;
-    background-image: url("./static/background.jpg");
+    background-image: url("./static/Navbar.jpg");
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: cover;
@@ -382,7 +382,6 @@ export default {
 
         align-items: center;
         align-items: flex-start;
-        background-image: url(/_nuxt/static/background.jpg);
         background-position: 0 0;
         background-repeat: no-repeat;
         background-size: cover;
