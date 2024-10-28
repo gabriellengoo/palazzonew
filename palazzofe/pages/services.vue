@@ -20,7 +20,7 @@
         class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
       >
         <!-- <button class='pt-[4vw]' @click="closeSection"> -->
-        <div class="nodes">
+        <div class="nodes contmbhead">
           <!-- <p>d</p> -->
           <p
             :class="[
@@ -1248,7 +1248,7 @@ export default {
           container: this.$refs.lottieAnimation4,
           renderer: 'svg',
           loop: false,
-          autoplay: true,
+          autoplay: false,
           path: '/animations/plus.json',
         });
       }
@@ -1287,6 +1287,8 @@ export default {
       // if (rightContent && this.isOpen) {
       // rightContent.classList.remove("slide-in");
       // rightContentt.classList.add("rotatesvg");
+      // this.lottieInstance.playSegments([0, 11], true); // Open animation
+
       this.lottieInstance.playSegments([11, 20], true); // Close animation
       this.isOpen = false;
       this.activeSection = null;
@@ -1312,6 +1314,7 @@ export default {
         if (this.activeSection === section) {
           this.activeSection = section; // Close the section if it's already active
         } else {
+          // this.lottieInstance.playSegments([0, 11], true); // Open animation
           this.activeSection = section; // Set the clicked section as active
         }
 
@@ -1320,7 +1323,9 @@ export default {
       } else {
         // On mobile, just set the clicked section as active
         this.activeSection = section;
-        this.lottieInstance.playSegments([0, 11], true); // Open animation
+        // this.lottieInstance.playSegments([11, 20], true); // Close animation
+
+        // this.lottieInstance.playSegments([0, 11], true); // Open animation
         this.hoveredSection = null; // Reset hover section on mobile
       }
     },

@@ -13,7 +13,7 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
-    <div class="nodes pointer-events-none">
+    <div class="nodes contmbhead pointer-events-none">
       <p
         :class="['', { sheadera: !isMenuOpen }, { sheaderaopen: isMenuOpen }]"
         class="headingspages pointer-events-none text-center text-4xl uppercase"
@@ -509,7 +509,7 @@ input[type="date"] {
 
 .sheadera {
   /* display: unset;  */
-  left: 39vw;
+  /* left: 39vw; */
   pointer-events: none;
   opacity: 1;
 }
