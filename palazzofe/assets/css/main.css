@@ -621,11 +621,13 @@ a .inner-image:hover {
 
   .contmbhead{
     width: 100vw;
-    height: 100vh;
+    height: 96.7vh;
     position: absolute;
     top: 3.3vw;
     display: flex !important;
     justify-content: center;
+    pointer-events: none;
+    overflow: hidden;
   }
 
   .sheadera {
