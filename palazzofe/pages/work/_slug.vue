@@ -768,7 +768,7 @@ export default {
 
 .overlaydiv {
   /* padding-top: 6vh; */
-  padding-bottom: 7vw;
+  /* padding-bottom: 7vw; */
 }
 
 .overlay-gallery {
@@ -1086,6 +1086,12 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
+
+  .overlaydiv {
+  /* padding-top: 6vh; */
+  padding-bottom: 7vw;
+}
+
   .nomb {
     display: none;
   }

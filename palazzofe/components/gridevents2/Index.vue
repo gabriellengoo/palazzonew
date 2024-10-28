@@ -4,7 +4,7 @@
       <!-- Images Section -->
       <div class="image-grid pt-[1vh]">
 
-        <div class="nodes">
+        <div class="nodes contmbhead">
           <!-- <p>d</p> -->
           <p
              v-if="!isMenuOpen"

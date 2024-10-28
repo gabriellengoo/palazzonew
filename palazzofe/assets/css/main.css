@@ -166,7 +166,7 @@ html {
   width: max-content;
   width: 100vw;
   /* top: 7vw; */
-  height: 100vh;
+  height: 62vh;
   /* left: 94.8vw; */
   display: flex;
   transition-duration: 0ms !important;
@@ -178,9 +178,10 @@ html {
 }
 
 .dots {
-  display: inline-block;
-  top: 100vw;
-  position: relative;
+  display: flex;
+    /* top: 100vw; */
+    position: relative;
+    align-items: flex-end;
 }
 
 .dot {
@@ -608,12 +609,23 @@ a .inner-image:hover {
 
   .headingspages {
     font-size: 3.5vw;
-    top: 1.4vh !important;
+    /* top: 1.4vh !important; */
+    /* top: 3.4vw !important; */
+    top: auto !important;
     z-index: 1000;
     z-index: 100;
-    position: fixed;
+    /* position: fixed; */
     line-height: normal;
     /* display: none; */
+  }
+
+  .contmbhead{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 3.3vw;
+    display: flex !important;
+    justify-content: center;
   }
 
   .sheadera {
