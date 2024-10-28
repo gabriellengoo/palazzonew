@@ -659,7 +659,7 @@ a .inner-image:hover {
     line-height: normal;
     width: 100%;
     pointer-events: none;
-    top: 0.5vh !important;
+    top: 0.7vh !important;
   }
 
   .headbar a {

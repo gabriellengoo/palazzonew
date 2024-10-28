@@ -828,7 +828,7 @@ export default {
 .headera {
   display: flex;
   border-bottom: 0.5px solid black;
-  background-image: url("./static/background.jpg");
+  background-image: url("./static/Navbar.jpg");
   background-size: cover;
   background-position: initial;
   background-repeat: no-repeat;
@@ -1290,10 +1290,10 @@ a {
   } */
 
   .headera {
-    padding-top: 2.5vw;
+    /* padding-top: 2.5vw;
     padding-bottom: 2.5vw;
     padding-left: 2.5vw;
-    padding-right: 2.5vw;
+    padding-right: 2.5vw; */
     flex-direction: column;
     z-index: 100;
   }
@@ -1311,9 +1311,14 @@ a {
   .headera {
     padding-top: 3.5vw;
     padding-bottom: 3.5vw;
+    padding-bottom: 3.5vw !important;
     padding-left: 2.5vw;
     padding-right: 2.5vw;
   }
+
+  .svgmb {
+        top: 0vw !important;
+    }
 
   .archimg {
     display: none;
