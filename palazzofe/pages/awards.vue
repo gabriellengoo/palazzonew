@@ -139,6 +139,7 @@ export default {
 .left-content {
   background-image: url("./static/background.jpg");
   background-size: 102vw;
+  background-size: 192vh;
   background-position: unset;
   background-repeat: no-repeat;
   height: 100vh;

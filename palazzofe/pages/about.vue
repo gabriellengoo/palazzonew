@@ -216,7 +216,7 @@ export default {
 
 .right-content {
   background-image: url("./static/background.jpg");
-  background-size: 102vw;
+  background-size: 192vh;
   background-position: unset;
   background-repeat: no-repeat;
   height: 100vh;
@@ -305,6 +305,52 @@ a:hover {
 }
 /* .nomb {
   position: relative;
+} */
+
+
+/* @media only screen and (max-width: 1024px) {
+
+.anicol {
+  position: absolute;
+  z-index: 99;
+  left: 10vw;
+  top: 33vw;
+  width: 60%;
+}
+
+
+.bgmobile {
+  flex-direction: column; 
+}
+
+.rightimg {
+  width: 89vw;
+  top: -9vh;
+  left: 0vw;
+}
+
+.richcont {
+  position: absolute;
+  top: 35vh;
+  left: 14vw;
+  width: 69vw;
+  font-size: 3.5vw;
+}
+
+
+.right-content {
+  display: none;
+}
+
+.left-content {
+  padding: 0 !important;
+  padding-top: 4vh !important;
+  padding-top: 6vh !important;
+  background-image: url("./static/background.jpg");
+  background-size: initial;
+  background-position: unset;
+  background-repeat: no-repeat;
+}
 } */
 
 @media only screen and (max-width: 768px) {

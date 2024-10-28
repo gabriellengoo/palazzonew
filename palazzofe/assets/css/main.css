@@ -23,10 +23,8 @@ input::placeholder {
 }
 
 .nuxt-progress {
-  background-color: #f0c2c4; 
+  background-color: #f0c2c4;
 }
-
-
 
 #__nuxt,
 #__layout,
@@ -112,7 +110,7 @@ html {
   flex-direction: row;
 }
 
-.item-wrapper{
+.item-wrapper {
   max-width: 50%;
 }
 
@@ -122,12 +120,12 @@ html {
   justify-content: flex-end;
 }
 
-.numcon{
+.numcon {
   height: 92.9vh;
   width: 97vw;
 }
 
-.numtextcont{
+.numtextcont {
   justify-content: flex-end;
   display: flex !important;
 }
@@ -157,7 +155,6 @@ html {
   justify-content: center;
 }
 
-
 .dotsmb {
   font-size: 2.8vw;
   position: absolute;
@@ -179,9 +176,9 @@ html {
 
 .dots {
   display: flex;
-    /* top: 100vw; */
-    position: relative;
-    align-items: flex-end;
+  /* top: 100vw; */
+  position: relative;
+  align-items: flex-end;
 }
 
 .dot {
@@ -231,8 +228,8 @@ html {
   padding: 0.2vw;
   top: 0.15vh !important;
   position: relative;
-  transform: scale(0.7); 
-  animation: scale-up 3s forwards; 
+  transform: scale(0.7);
+  animation: scale-up 3s forwards;
 }
 
 .rightimg {
@@ -257,8 +254,8 @@ html {
   top: 0.15vh !important;
   position: relative;
   line-height: normal;
-  transform: scale(0.7); 
-  animation: scale-up 3s forwards; 
+  transform: scale(0.7);
+  animation: scale-up 3s forwards;
 }
 
 .fontsubpub {
@@ -308,7 +305,7 @@ html {
   z-index: 100;
 }
 
-.headbar{
+.headbar {
   /* padding: 0.2vw;
   padding-left: 0.5vw;
   padding-top: 0.5vw; */
@@ -344,13 +341,13 @@ a .inner-image {
   color: #00000046 !important; 
 } */
 
-.linka:hover{
+.linka:hover {
   opacity: 50%;
   transition-duration: 1s;
   /* color: #00000046 !important; */
 }
 
-.hovaw:hover{
+.hovaw:hover {
   opacity: 50%;
   transition-duration: 1s;
 }
@@ -359,18 +356,18 @@ a .inner-image {
   transition-duration: 1s;
 } */
 
-.linkae:hover{
+.linkae:hover {
   opacity: 50%;
   transition-duration: 1s;
 }
 
-.linka{
+.linka {
   transition-duration: 1s;
 }
 
 .link-animationn {
-  transform: scale(0); 
-  animation: scale-up 3s forwards; 
+  transform: scale(0);
+  animation: scale-up 3s forwards;
 }
 
 @keyframes scale-up {
@@ -380,8 +377,8 @@ a .inner-image {
 }
 
 .link-animation {
-  transform: scale(0); 
-  animation: scale-up 3s forwards; 
+  transform: scale(0);
+  animation: scale-up 3s forwards;
 }
 
 @keyframes scale-up {
@@ -390,7 +387,7 @@ a .inner-image {
   }
 }
 
-.textsum{
+.textsum {
   transition-duration: 1s;
 }
 
@@ -406,7 +403,7 @@ a .inner-image {
   display: none !important;
 }
 
-.nodesdots{
+.nodesdots {
   display: none !important;
 }
 
@@ -418,7 +415,7 @@ a .inner-image {
   display: inherit !important;
 }
 
-.nodesindex{
+.nodesindex {
   display: none !important;
 }
 
@@ -471,36 +468,26 @@ a .inner-image {
   } */
 
 @media only screen and (max-width: 768px) {
-  .hovaw:hover{
+  .hovaw:hover {
     opacity: 100%;
     transition-duration: 1s;
   }
-  /* .image-grid:nth-child(1){
-      border-top: black .5px solid;
-    } */
 
-  /* .image-rowb:nth-child(1) {
-      border-top: 0.07vw solid black !important;
-  } */
-  .nodesindex{
+  .nodesindex {
     display: flex !important;
     justify-content: end;
     align-items: flex-end;
   }
-  
 
+  a .inner-image:hover {
+    opacity: 100%;
+    transition-duration: 1s;
+  }
 
-a .inner-image:hover {
-  opacity: 100%;
-  transition-duration: 1s;
-}
-
-
-.linka:hover{
-  opacity: 100%;
-  transition-duration: 1s;
-}
-
+  .linka:hover {
+    opacity: 100%;
+    transition-duration: 1s;
+  }
 
   .image-row:last-child {
     border-bottom: 0.07vw solid black !important;
@@ -530,7 +517,7 @@ a .inner-image:hover {
     width: 3.9vw;
     height: auto;
     display: block;
-    stroke-width: .5vw;
+    stroke-width: 0.5vw;
     stroke: black;
   }
 
@@ -547,9 +534,8 @@ a .inner-image:hover {
     width: 1.2vh;
     height: max-content;
     display: block;
-    stroke-width: .5vw;
+    stroke-width: 0.5vw;
     stroke: black;
-    
   }
 
   .svgmb {
@@ -619,7 +605,7 @@ a .inner-image:hover {
     /* display: none; */
   }
 
-  .contmbhead{
+  .contmbhead {
     width: 100vw;
     height: 96.7vh;
     position: absolute;
@@ -686,3 +672,189 @@ a .inner-image:hover {
       padding-top: 2vh;
   } */
 }
+
+
+/* @media only screen and (max-width: 1024px) {
+  .hovaw:hover {
+    opacity: 100%;
+    transition-duration: 1s;
+  }
+
+  .nodesindex {
+    display: flex !important;
+    justify-content: end;
+    align-items: flex-end;
+  }
+
+  a .inner-image:hover {
+    opacity: 100%;
+    transition-duration: 1s;
+  }
+
+  .linka:hover {
+    opacity: 100%;
+    transition-duration: 1s;
+  }
+
+  .image-row:last-child {
+    border-bottom: 0.07vw solid black !important;
+  }
+
+  .mbhead {
+    top: 45%;
+  }
+
+  .mbhead img {
+    width: 56vw;
+  }
+
+  .yeart {
+    font-family: "GT-SuperBook";
+  }
+
+  .headbar {
+    width: 4.4vw;
+    width: 2.4vh;
+    width: 3.4vh;
+    display: block;
+  }
+
+  .headbarc {
+    width: 3.9vw;
+    height: auto;
+    display: block;
+    stroke-width: 0.5vw;
+    stroke: black;
+  }
+
+  .closeservpg {
+    width: 6.3vw;
+    height: -moz-max-content;
+    height: max-content;
+    display: block;
+    stroke-width: 0vw;
+    stroke: black;
+  }
+
+  .headbarc2 {
+    width: 1.2vh;
+    height: max-content;
+    display: block;
+    stroke-width: 0.5vw;
+    stroke: black;
+  }
+
+  .svgmb {
+    top: -1vw;
+    position: relative;
+  }
+
+  .mbpad {
+    padding-bottom: 1vw !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .nodesdots {
+    display: flex !important;
+  }
+
+  .loading-text {
+    font-size: 2.5vw; 
+    text-transform: uppercase;
+    color: rgb(13, 13, 13); 
+    animation: flash 1.5s ease-in-out infinite;
+  }
+
+  .headera {
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    flex-direction: column;
+    position: relative;
+    position: fixed;
+    align-items: flex-start;
+  }
+
+  .navmbno {
+    display: none !important;
+  }
+
+  .textsum {
+    font-size: 2.1vw;
+  }
+
+  .nodes {
+    display: contents;
+  }
+
+  .nodesnav {
+    display: flex !important;
+  }
+
+  .nomballbot {
+    display: none !important;
+  }
+
+  .headingspages {
+    font-size: 3.5vw;
+    top: auto !important;
+    z-index: 1000;
+    z-index: 100;
+    line-height: normal;
+  }
+
+  .contmbhead {
+    width: 100vw;
+    height: 96.7vh;
+    position: absolute;
+    top: 3.3vw;
+    display: flex !important;
+    justify-content: center;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .sheadera {
+    opacity: 1;
+  }
+
+  .sheaderaopen {
+    opacity: 0;
+  }
+
+  .headingspagesslug {
+    font-family: "GT-Bold";
+    font-family: "MinionPro-Regular";
+    font-family: "RomainHeadlineTrial";
+    font-size: medium;
+    font-size: 1vw;
+    top: 0.15vh !important;
+    position: relative;
+    line-height: normal;
+    font-size: 3.5vw;
+    z-index: 100;
+    position: absolute;
+    position: fixed;
+    line-height: normal;
+    width: 100%;
+    pointer-events: none;
+    top: 0.7vh !important;
+  }
+
+  .headbar a {
+    z-index: 1000 !important;
+    position: relative;
+  }
+
+  .yeart {
+    font-size: inherit !important;
+    top: 0 !important;
+  }
+
+  .nomb {
+    display: none !important;
+  }
+
+} */
