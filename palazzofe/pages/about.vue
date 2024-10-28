@@ -13,7 +13,7 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
-    <div class="nodes pointer-events-none">
+    <div class="nodes contmbhead pointer-events-none">
           <p
             :class="[
               '',
@@ -291,7 +291,7 @@ a:hover {
 
 .sheadera {
   /* display: unset;  */
-        left: 43vw;
+        /* left: 43vw; */
         pointer-events: none;
   opacity: 1;
 }

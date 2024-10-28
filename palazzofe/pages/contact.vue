@@ -834,6 +834,7 @@ input::placeholder {
     transition: top 0.5s ease-in-out;
     height: 100vh;
     top: 57vh;
+    top:144vw;
   }
 
   @keyframes bounce {

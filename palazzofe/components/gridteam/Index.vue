@@ -4,7 +4,7 @@
       <!-- Images Section -->
       <div class="image-grid pt-[1vh]">
 
-        <div class="nodes">
+        <div class="nodes contmbhead">
           
           <!-- <p>d</p> -->
           <p
@@ -247,6 +247,15 @@ font-size: .8vw;
     object-fit: cover;
 }
 
+.item-wrapper{
+  width: 100% !important;
+  max-width: 50% !important;
+}
+
+.image-row{
+  width: 100% !important;
+
+}
 
 .deskimgl{
   object-fit: cover;
@@ -279,12 +288,13 @@ font-size: .8vw;
 .image-row {
   display: flex;
   justify-content: space-between;
+  justify-content: center;
   width:52%;
   /* border-bottom: 0.07vw solid black; */
 }
 
 .image-row:last-child {
-  border-bottom: 0;
+  border-bottom: 0 !important;
 }
 
 .image-item {
@@ -319,10 +329,14 @@ font-size: .8vw;
 }
 
 .image-grid{
-  padding-top: 95vw;
+  padding-top: 75vw;
 }
 
 @media only screen and (max-width: 768px) {
+  .item-wrapper{
+  width: 100% !important;
+  max-width: 100% !important;
+}
 
   .sideim img{
     display: none !important;
@@ -344,6 +358,7 @@ font-size: .8vw;
 .image-row {
   display: flex;
   justify-content: space-between;
+  justify-content: center;
   width:100%;
   /* border-bottom: 0.07vw solid black; */
 }
