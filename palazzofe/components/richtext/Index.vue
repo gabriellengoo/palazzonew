@@ -107,6 +107,22 @@ div p{
 }
 
 @media only screen and (max-width: 768px) {
+  .lay1text div p:nth-child(1){
+  font-size: 3vw;
+  font-weight: bolder;
+}
+
+.lay2text div p:nth-child(1){
+  font-size: 4vw;
+  /* font-weight: bolder; */
+  line-height: 5vw;
+  /* width: 68%; */
+  font-family: 'NHaas' !important;
+}
+
+.underimglay1 p{
+  font-size: 3vw !important;
+}
   /* div p{
 padding-bottom: 1.5vh;
 } */

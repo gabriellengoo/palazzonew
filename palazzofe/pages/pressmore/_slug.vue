@@ -76,7 +76,7 @@
           <div class="column col-4 pt-[13vw]">
             <Richtext
               v-if="project.column5Text"
-              class="contactinnerpressslug lay1text p-[.5vw]"
+              class="contactinnerpressslug lay1text p-[.5vw] "
               :blocks="project.column5Text"
             ></Richtext>
           </div>
@@ -118,7 +118,7 @@
               </div>
               <Richtext
                 v-if="project.layout2Column3Text"
-                class="contactinnerpressslug p-[.5vw]"
+                class="contactinnerpressslug p-[.5vw] colmb"
                 :blocks="project.layout2Column3Text"
               ></Richtext>
             </div>
@@ -127,7 +127,7 @@
             <!-- <p v-if="project.column4Text">{{ project.column4Text }}</p> -->
             <Richtext
               v-if="project.layout2Column4Text"
-              class="contactinnerpressslug p-[.5vw]"
+              class="contactinnerpressslug p-[.5vw] colmb"
               :blocks="project.layout2Column4Text"
             ></Richtext>
             <img
@@ -154,12 +154,12 @@
           <div class="column col-5 pr-[2vw]">
             <div class="flex">
               <img
-                class="imglay1"
+                class="imglay1 "
                 :src="project.layout2Column5Image.asset.url"
                 v-if="project.layout2Column5Image"
                 alt="Main Image"
               />
-              <div class="datelay2" v-if="project.layout2date">
+              <div class="datelay2 nomb" v-if="project.layout2date">
                 <Richtext
                   v-if="project.layout2date"
                   class="contactinnerpressslug p-[.5vw] datein2"
@@ -523,7 +523,20 @@ export default {
 /* Additional responsive styling */
 @media (max-width: 768px) {
   .layout {
+    padding-top: 3vh;
     grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
   }
+
+  .bgmobile{
+    font-size: 3vw;
+  }
+
+  .layout-2 .col-1, .layout-2 .col-5 {
+    grid-column: span 2;
+}
+
+.colmb{
+  width: 95vw;
+}
 }
 </style>
