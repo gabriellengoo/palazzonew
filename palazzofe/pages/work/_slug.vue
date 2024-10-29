@@ -342,7 +342,7 @@ import TransitionComponent from "~/components/TransitionComponent.vue";
 export default {
   components: {
     TransitionComponent,
-  },
+  }, 
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "project" && slug.current == "${params.slug}"] {
     ...,
@@ -354,7 +354,7 @@ export default {
         "day": coalesce(day, "Day 1") 
       }
     },
-
+ 
     "image": image.asset._ref,
   } 
   | order(_updatedAt desc)[0]`;

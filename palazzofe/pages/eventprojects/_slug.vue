@@ -376,7 +376,7 @@ export default {
     const query = groq`*[_type == "projectevents" && slug.current == "${params.slug}" ] {
       ..., "archiveSlug": archive->slug.current,
      
-      slider[] {
+      slider[] { 
       images[] {
         ...,
         "day": coalesce(day, "Day 1") 

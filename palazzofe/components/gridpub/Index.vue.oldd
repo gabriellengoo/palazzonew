@@ -34,80 +34,43 @@
               isDefaultActive = true;
             "
           >
-            <!-- Image Item -->
-            <div
-              class="relative image-item transition-opacity duration-300"
-              :class="[
-                item.double ? 'double h-fit' : '',
-                item.spacer ? 'p-2' : '',
-                activeTalent &&
-                activeTalent != item.reference.talentId &&
-                activeTalent != item.reference
-                  ? 'hidden'
-                  : '',
-              ]"
-            >
-              <figure class="flex flex-col">
-                <div class="relative">
-                  <!-- :href="item.url" -->
-                  <!-- <a 
-                  @click.prevent="openModal" 
-                    class="flex flex-col items-end h-full linkae link-animationn"
-                  > -->
-                  <NuxtLink
-                    v-if="item.reference && item.reference.slug"
-                    :to="`/pressmore/${item.reference.slug}`"
-                    class="flex flex-col items-end h-full linkae link-animationn"
-                  >
-                    <figure class="inner-image">
-                      <MediaImage
-                        :src="item.image.image"
-                        v-if="item.image.image"
-                      />
-                    </figure>
-                    <figcaption
-                      class="textsum block text-center uppercase w-full pt-2"
-                    >
-                      <span class="textsumf">{{
-                        item.title || item.reference.title
-                      }}</span>
-                      <span class="fontsubpub pt-[.5vh] capitalize">{{
-                        item.month || item.reference.month
-                      }}</span>
-                      <span class="fontsubpub capitalize">{{
-                        item.year || item.reference.year
-                      }}</span>
-                    </figcaption>
-                  </NuxtLink>
+                <!-- Link or Image -->
+        <div v-if="item.reference && item.reference.slug">
+          <button @click="openModal(item.reference.slug)">
+            <figure class="inner-image">
+              <MediaImage :src="item.image.image" v-if="item.image.image" />
+            </figure>
+            <figcaption class="textsum block text-center uppercase w-full pt-2">
+              <span class="textsumf">{{ item.title || item.reference.title }}</span>
+              <span class="fontsubpub pt-[.5vh] capitalize">{{ item.month || item.reference.month }}</span>
+              <span class="fontsubpub capitalize">{{ item.year || item.reference.year }}</span>
+            </figcaption>
+          </button>
+        </div>
+        <div v-else>
+          <!-- Display image without link if no slug -->
+          <figure class="inner-image">
+            <MediaImage :src="item.image.image" v-if="item.image.image" />
+          </figure>
+          <figcaption class="textsum block text-center uppercase w-full pt-2">
+            <span class="textsumf">{{ item.title || item.reference.title }}</span>
+            <span class="fontsubpub pt-[.5vh] capitalize">{{ item.month || item.reference.month }}</span>
+            <span class="fontsubpub capitalize">{{ item.year || item.reference.year }}</span>
+          </figcaption>
+        </div>
+        
+   <!-- Modal -->
+   <Modal :show="isModalOpen" @close="closeModal">
+        <div v-if="modalContent">
+          <!-- Fetch and display the modal content here based on the slug -->
+          <h1>{{ modalContent.title }}</h1>
+          <p>{{ modalContent.description }}</p>
+        </div>
+      </Modal>
 
-                  <!-- If no slug, show content without a link -->
-                  <div
-                    v-else
-                    class="flex flex-col items-end h-full linkae link-animationn"
-                  >
-                    <figure class="inner-image">
-                      <MediaImage
-                        :src="item.image.image"
-                        v-if="item.image.image"
-                      />
-                    </figure>
-                    <figcaption
-                      class="textsum block text-center uppercase w-full pt-2"
-                    >
-                      <span class="textsumf">{{
-                        item.title || item.reference.title
-                      }}</span>
-                      <span class="fontsubpub pt-[.5vh] capitalize">{{
-                        item.month || item.reference.month
-                      }}</span>
-                      <span class="fontsubpub capitalize">{{
-                        item.year || item.reference.year
-                      }}</span>
-                    </figcaption>
-                  </div>
-                </div>
-              </figure>
-            </div>
+    
+
+      
           </div>
         </div>
       </div>

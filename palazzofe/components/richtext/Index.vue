@@ -47,6 +47,40 @@ export default {
 }
 </script>
 <style scoped>
+.lay1text div p:nth-child(1){
+  font-size: 1.6vw;
+  font-weight: bolder;
+}
+
+.lay2text div p:nth-child(1){
+  font-size: 1.6vw;
+  /* font-weight: bolder; */
+  line-height: 2vw;
+  /* width: 68%; */
+  font-family: 'NHaas' !important;
+}
+
+.underimglay1 p{
+  font-size: 1vw !important;
+}
+
+.underimglay1{
+  padding-top: 0vw !important;
+}
+.contactinnerpressslug div p{
+  padding-bottom: 0.5vw !important;
+  line-height: normal;
+}
+
+.contactinnerpressslug p{
+  padding-bottom: 0.5vw !important;
+  line-height: normal;
+}
+
+.contactinnerpressslug p a{
+  padding-bottom: 0.5vw !important;
+  line-height: normal !important;
+}
 
 .adsize div p:nth-child(2){
   font-size: 1.05vw;
