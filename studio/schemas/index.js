@@ -20,7 +20,8 @@ import awards from "./awards";
 import grid6 from "./components/grid6";
 import team from "./team";
 import grid7 from "./components/grid7";
+import pressindi from "./pressindi";
 
 // home,
 
-export const schemaTypes = [blockContent,grid,grid2,grid3,work,project,events,projectevents, publications, grid4, grid5, services, contact, about, awards, grid6, team, grid7]
+export const schemaTypes = [blockContent,grid,grid2,grid3,work,project,events,projectevents, publications, pressindi, grid4, grid5, services, contact, about, awards, grid6, team, grid7]

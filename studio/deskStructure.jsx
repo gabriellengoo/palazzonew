@@ -1,4 +1,4 @@
-import { MdSettings, MdColorLens, MdMenu, MdHome } from 'react-icons/md'; // Import icons from react-icons library
+// import { MdSettings, MdColorLens, MdMenu, MdHome } from 'react-icons/md'; // Import icons from react-icons library
 
 export const deskStructure = (S) =>
   S.list()

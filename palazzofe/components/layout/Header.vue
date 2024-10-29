@@ -23,10 +23,10 @@
       <transition name="slide-down" @after-enter="fadeInAllImg">
         <nav
           v-if="isMenuOpen"
-          class="nav-menu fixed left-0 w-full h-screen z-[500] flex justify-center items-center"
+          class="nav-menu fixed left-0 w-full h-screen z-[500] object-cover"
         >
           <div
-            class="image-container absolute inset-0 w-full h-full object-cover"
+            class="image-container  inset-0 w-full h-full object-cover"
             @mouseenter="isHovered = true"
             @mouseleave="isHovered = false"
           >
@@ -181,8 +181,8 @@ export default {
     return {
       isMenuOpen: false,
       isHovered: false,
-      defaultImage: "/newnavt.jpg",
-      hoverImage: "/newnav.jpg",
+      defaultImage: "/navicon.png",
+      hoverImage: "/navtype.png",
       menuTopPosition: "0",
       lottieInstance: null,
     };
@@ -251,6 +251,7 @@ export default {
 <style scoped>
 .nav-menu {
   z-index: 10000;
+
 }
 
 /* Styling for the invisible 3x3 grid */
@@ -528,22 +529,35 @@ export default {
 }
 
 .image-container {
-  width: 100%;
-  height: 100%;
-  background-image: url("./static/background.jpg");
-  background-size: cover;
-  background-position: initial;
-  background-repeat: no-repeat;
+    width: 80vw;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .default-image-display,
 .hover-image-display {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-fit: contain; */
+
+  position: absolute;
+    /* top: 0; */
+    /* left: 0; */
+    width: auto;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-fit: contain;
+    object-fit: contain;
 }
 
 .default-image-display {
@@ -552,7 +566,7 @@ export default {
 }
 
 .default-image-display.faded-out {
-  opacity: 0.4;
+  opacity: 0;
 }
 
 .hover-image-display {
@@ -613,6 +627,12 @@ export default {
 .nav-menu {
   top: v-bind(menuTopPosition);
   transition: top 0.5s ease;
+  background-image: url("./static/navbg.jpg");
+  background-size: cover;
+  background-position: initial;
+  background-repeat: no-repeat;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .slide-down-enter-active,

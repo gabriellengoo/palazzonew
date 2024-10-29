@@ -105,7 +105,7 @@ export default {
                       ],
                       layout: "radio" // optional, for radio button layout
                     },
-                    validation: (Rule) => Rule.required().error("Please select a day.") 
+                    // validation: (Rule) => Rule.required().error("Please select a day.") 
                     // initialValue: "Day not provided" 
         },
                    

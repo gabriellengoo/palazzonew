@@ -62,16 +62,16 @@ export default {
         //   type: 'url',
         // },
       
-        // {
-        //   name: "reference",
-        //   title: "Reference",
-        //   type: "reference", 
-        //   to: {
-        //     type: "projectevents",
-        //   },
-        //   hidden: ({ parent, value }) =>
-        //     !value && (parent?.spacer || parent?.link),
-        // },
+        {
+          name: "reference",
+          title: "Reference",
+          type: "reference", 
+          to: {
+            type: "pressindi",
+          },
+          hidden: ({ parent, value }) =>
+            !value && (parent?.spacer || parent?.link),
+        },
         // {
         //   name: "double",
         //   title: "Double",
@@ -103,11 +103,11 @@ export default {
           type: "string",
         },
 
-        {
-          name: "url",
-          title: 'URL to publication',
-          type: 'url',
-        },
+        // {
+        //   name: "url",
+        //   title: 'URL to publication',
+        //   type: 'url',
+        // },
 
 
        
