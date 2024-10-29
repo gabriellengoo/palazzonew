@@ -79,22 +79,43 @@ export default {
                   type: "object",
                   fields: [
                     {
+                      name: "newDay",
+                      title: "New Day?",
+                      description: "Toggle this is you want a new day divider",
+                      type: "boolean",
+                    },
+                    {
                       name: "image",
                       title: "Image",
                       type: "image",
-                      hidden: ({ parent, value }) =>
-                        (!value && parent?.spacer) || (!value && parent?.video),
+                      hidden: ({ parent }) => parent?.newDay,
                     },
                     {
                       name: "portrait",
                       title: "portrait img",
                       type: "boolean",
                       description: "Is the img portrait?",
+                      hidden: ({ parent }) => parent?.newDay,
+                    },
+                    
+                    
+                    {
+                      name: "newDayImage",
+                      title: "New Day Image",
+                      type: "image",
+                      hidden: ({ parent }) => !parent?.newDay, // Hide if newDay is false
+                    },
+                    {
+                      name: "newDayText",
+                      title: "New Day Text",
+                      type: "string",
+                      hidden: ({ parent }) => !parent?.newDay, // Hide if newDay is false
                     },
                   {
                     name: "day",
                     title: "Day",
                     type: "string",
+                    hidden: ({ parent }) => parent?.newDay,
                     description: "Is the image from day 1, 2, 3, or 4?",
                     options: {
                       list: [

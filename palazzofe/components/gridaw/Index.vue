@@ -206,30 +206,39 @@ export default {
 }
 
 .titlea {
-  /* height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 49vh;
-  left: 1vw; */
   height: 100%;
     width: 100%;
     position: absolute;
-    top: 45vh;
+    top: 0;
     left: 0;
-
-  font-size: 1.3vw;
-  margin: 0 auto;
-  -o-object-fit: cover;
-  object-fit: cover;
-  z-index: 9000 !important;
+    font-size: 1.3vw;
+    margin: 0 auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    z-index: 9000 !important;
 }
 
 .textsumf2 {
-  font-family: "RomainHeadlineTrial" !important;
-  width: 30%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1vw;
+  font-style: italic;
+  text-decoration: underline;
+  z-index: 10;
+  height: 20vw;
+  display: flex;
+  width: 20vw;
+  background-image: url("./static/CircleWhite.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  font-family: 'RomainHeadlineTrial';
 }
 
-.pinkcircle {
+/* .pinkcircle {
   width: 20vw;
   height: 20vw;       
   background-color: pink; 
@@ -239,7 +248,7 @@ export default {
   background-repeat: no-repeat;
   border-radius: 50%;    
   display: inline-block; 
-}
+} */
 
 .disa {
   height: 100%;
@@ -376,8 +385,9 @@ export default {
 
 .textsum {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .textsumf {

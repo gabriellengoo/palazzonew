@@ -74,6 +74,7 @@ html {
   transition-property: none !important;
   } */
 
+
 .textday1por {
   font-size: 0.8vw;
   position: absolute;
@@ -419,6 +420,7 @@ a .inner-image {
   display: none !important;
 }
 
+
 @media (max-width: 1440px) {
   .headera {
     /* padding-top: 0.5vw;
@@ -456,18 +458,104 @@ a .inner-image {
   } */
 }
 
-/* .headingspages{
-    font-family: 'RomainHeadlineTrial';
-    font-size: 1.5vw;
-  } */
+.new-day-image {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  top: 0vh;
+  left: 1vw;
+  margin: 0 auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
 
-/* .headingspagesb{
-    font-family: 'RomainHeadlineTrial';
-    font-size: 1.5vw;
-   font-weight: bold;
-  } */
+.new-day-info{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-day-text{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1vw;
+  font-style: italic;
+  text-decoration: underline;
+  z-index: 10;
+  height: 20vw;
+  display: flex;
+  width: 20vw;
+  background-image: url("./static/CirclePink.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  font-family: 'RomainHeadlineTrial';
+}
+
+.new-day-textevent{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1vw;
+  font-style: italic;
+  text-decoration: underline;
+  z-index: 10;
+  height: 20vw;
+  display: flex;
+  width: 20vw;
+  background-image: url("./static/CircleBlue.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  font-family: 'RomainHeadlineTrial';
+}
+
+/* .circletext{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1vw;
+  z-index: 10;
+  
+} */
+
+
 
 @media only screen and (max-width: 768px) {
+
+  
+  .new-day-text{
+    font-size: 2vw;
+    font-style: italic;
+    -webkit-text-decoration: underline;
+    text-decoration: underline;
+    z-index: 10;
+    height: 40vw;
+    display: flex;
+    width: 40vw;
+  }
+
+  .new-day-textevent{
+    font-size: 2vw;
+    font-style: italic;
+    -webkit-text-decoration: underline;
+    text-decoration: underline;
+    z-index: 10;
+    height: 40vw;
+    display: flex;
+    width: 40vw;
+  }
+
+  .new-day-image {
+    height: 100%;
+    width: 100%;
+  }
+
   .hovaw:hover {
     opacity: 100%;
     transition-duration: 1s;

@@ -89,7 +89,7 @@
                     >
                       <MediaImage
                         :src="image.image.asset._ref"
-                        v-if="image.image"
+                        v-if="image.image && !image.newDay"
                         class="gallery-image w-auto h-full"
                         :class="
                           image.padding
@@ -101,6 +101,25 @@
                         }"
                         :sizes="'sm:200vw md:150vw lg:200vw'"
                       ></MediaImage>
+
+                      <!-- New Day Display -->
+                      <div v-if="image.newDay" class="new-day-info">
+                        <MediaImage
+                          v-if="image.newDayImage"
+                          :src="image.newDayImage.asset._ref"
+                          class="new-day-image"
+                        ></MediaImage>
+                        <!-- <img
+                         v-if="image.newDayImage"
+                          class="circletext"
+                          src="./static/CirclePink.png"
+                          alt="cirlce"
+                        /> -->
+                   
+                        <p class="new-day-text">
+                          {{ image.newDayText }}
+                        </p>
+                      </div>
                     </figure>
                   </div>
                 </div>
@@ -282,7 +301,7 @@
                       >
                         <MediaImage
                           :src="image.image.asset._ref"
-                          v-if="image.image"
+                          v-if="image.image && !image.newDay"
                           class="gallery-image w-auto h-full"
                           :class="{
                             portrait: image.portrait,
@@ -301,8 +320,23 @@
                           }"
                           class="absolute top-0 left-0 text-day1 z-50"
                         >
-                          <p class="numgday capitalize">
+                          <p
+                            v-if="image.image && !image.newDay"
+                            class="numgday capitalize"
+                          >
                             {{ image.day ? image.day : "Day 1" }}
+                          </p>
+                        </div>
+
+                        <!-- New Day Display -->
+                        <div v-if="image.newDay" class="new-day-info">
+                          <MediaImage
+                            v-if="image.newDayImage"
+                            :src="image.newDayImage.asset._ref"
+                            class="new-day-image"
+                          ></MediaImage>
+                          <p class="new-day-text">
+                            {{ image.newDayText }}
                           </p>
                         </div>
                       </figure>
@@ -342,7 +376,7 @@ import TransitionComponent from "~/components/TransitionComponent.vue";
 export default {
   components: {
     TransitionComponent,
-  }, 
+  },
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "project" && slug.current == "${params.slug}"] {
     ...,
@@ -769,6 +803,7 @@ export default {
 .overlaydiv {
   /* padding-top: 6vh; */
   /* padding-bottom: 7vw; */
+  overflow: hidden;
 }
 
 .overlay-gallery {
@@ -1086,11 +1121,10 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-
   .overlaydiv {
-  /* padding-top: 6vh; */
-  padding-bottom: 7vw;
-}
+    /* padding-top: 6vh; */
+    padding-bottom: 7vw;
+  }
 
   .nomb {
     display: none;
@@ -1226,8 +1260,8 @@ a {
   }
 
   .svgmb {
-        top: 0vw !important;
-    }
+    top: 0vw !important;
+  }
 
   /* .headmb{
     display: contents;

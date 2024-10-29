@@ -251,6 +251,7 @@ export default {
 <style scoped>
 .nav-menu {
   z-index: 10000;
+  overflow: hidden !important;
 
 }
 
@@ -529,14 +530,25 @@ export default {
 }
 
 .image-container {
-    width: 80vw;
+    /* width: 80vw;
     overflow: hidden;
     height: 100%;
     display: flex;
     justify-content: center;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); */
+
+
+    width: 80vw;
+    overflow: hidden !important;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 .default-image-display,
@@ -771,6 +783,7 @@ export default {
     /* height: 100vh; */
     transition: max-height 0.5s ease-in-out;
     overflow: hidden;
+    overflow: hidden !important;
     /* padding-top: 3vh; */
   }
 
