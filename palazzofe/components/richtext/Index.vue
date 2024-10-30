@@ -50,18 +50,60 @@ export default {
 .lay1text div p:nth-child(1){
   font-size: 1.6vw;
   font-weight: bolder;
+  font-family: 'RomainTextTrial';
+  /* font-family: 'NHaas' !important; */
 }
 
 .lay2text div p:nth-child(1){
   font-size: 1.6vw;
   /* font-weight: bolder; */
   line-height: 2vw;
+  font-family: 'RomainTextTrial';
+  /* width: 68%; */
+  /* font-family: 'NHaas' !important; */
+}
+
+.lay3text div p:nth-child(1){
+  font-size: 1.6vw;
+  /* font-weight: bolder; */
+  line-height: 2vw;
+  /* font-family: 'RomainTextTrial'; */
   /* width: 68%; */
   font-family: 'NHaas' !important;
 }
 
+.laytextall p{
+  font-size: 1.5vw;
+  /* font-weight: bolder; */
+  line-height: 2vw;
+  /* width: 68%; */
+  font-family: 'NHaas' !important;
+  justify-content: center;
+    display: flex;
+    text-align: center;
+}
+
 .underimglay1 p{
-  font-size: 1vw !important;
+  font-size: .9vw !important;
+  font-family: 'NHaas' !important;
+}
+
+
+.underimglay3 p{
+  font-size: .9vw;
+  font-family: 'NHaas';
+}
+
+.underimglay3 p:nth-child(1){
+  font-size: auto !important;
+  font-family: auto !important;
+  padding-bottom: 2vw !important;
+}
+
+
+.underimglay2 div p:nth-child(1){
+  font-size: .9vw !important;
+  font-family: 'NHaas' !important;
 }
 
 .underimglay1{
@@ -120,8 +162,30 @@ div p{
   font-family: 'NHaas' !important;
 }
 
+.lay3text div p:nth-child(1){
+  font-size: 4vw;
+  /* font-weight: bolder; */
+  line-height: 5vw;
+  /* width: 68%; */
+  font-family: 'NHaas' !important;
+}
+
+.laytextall p{
+  font-size: 4vw;
+  line-height: 5vw;
+}
+
+.underimglay3 p{
+  font-size: 3vw;
+}
+
 .underimglay1 p{
   font-size: 3vw !important;
+}
+
+.underimglay2 div p:nth-child(1){
+  font-size: 3vw !important;
+  font-family: 'NHaas' !important;
 }
   /* div p{
 padding-bottom: 1.5vh;

@@ -37,6 +37,23 @@ export default {}
   transform: scaleX(1);
 } */
 
+.underimglay1 p a{
+  font-size: 1vw !important;
+  font-family: 'RomainHeadlineTrial';
+  font-family: 'GT-Sectra-Book-Italic';
+}
+
+.bgmobile a{
+  font-size: 1vw !important;
+  font-family: 'RomainHeadlineTrial';
+  font-family: 'GT-Sectra-Book-Italic';
+}
+
+.underimglay2 div p:nth-child(1) a{
+  font-size: 1.2vw !important;
+  font-family: 'GT-Sectra-Book-Italic';
+}
+
 a {
   text-decoration: none;
   text-decoration: underline;
@@ -54,7 +71,23 @@ a:hover {
 /* a {
     position: relative;
 } */
+@media only screen and (max-width: 768px) {
+  .underimglay1 p a{
+  font-size: 2.5vw !important;
+  /* font-family: 'RomainHeadlineTrial'; */
+  font-family: 'GT-Sectra-Book-Italic';
+}
 
+.underimglay2 div p:nth-child(1){
+  font-size: 2.5vw !important;
+  font-family: 'NHaas' !important;
+}
+
+.lay3text div p a{
+  font-size: 2.5vw !important;
+  font-family: 'GT-Sectra-Book-Italic';
+}
+}
 /* a::before {
     content: '';
     position: absolute;
