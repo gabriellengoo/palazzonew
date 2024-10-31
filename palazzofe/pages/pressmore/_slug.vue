@@ -42,6 +42,7 @@
           class="layouts"
           v-for="(section, index) in project.sections"
           :key="index"
+          :class="`pop-in pop-in-${index + 1}`"
           v-if="
             (section.layout1 && currentLayoutIndex === index) ||
             (section.layout2 && currentLayoutIndex === index) ||
@@ -49,24 +50,24 @@
           "
         >
           <div class="layout layout-1" v-if="section.layout1 === true">
-            <div class="column col-1 bounce-in bounce-in-1">
-              <a target="_blank" class="toplink" :href="section.locationlink">
-                <p class="pb-[2vw]">{{ section.location }}</p>
+            <div class="column col-1 ">
+              <a target="_blank" class="toplink pop-in pop-in-1" :href="section.locationlink">
+                <p class="pb-[2vw] ">{{ section.location }}</p>
               </a>
               <div>
                 <img
-                  class="imglay1 p-[.5vw]"
+                  class="imglay1 p-[.5vw] pop-in pop-in-5"
                   :src="section.mainImage"
                   alt="Main Image"
                 />
               </div>
-              <div class="laytextall">
+              <div class="laytextall pop-in pop-in-1">
                 <Richtext
                   class="p-[.5vw]"
                   :blocks="section.column0Text"
                 ></Richtext>
               </div>
-              <div class="flex">
+              <div class="flex pop-in pop-in-2">
                 <Richtext
                   class="contactinnerpressslug p-[.5vw]"
                   :blocks="section.column1Text"
@@ -78,21 +79,21 @@
               </div>
             </div>
 
-            <div class="column col-2 bounce-in bounce-in-2">
+            <div class="column col-2 pop-in pop-in-2">
               <Richtext
                 class="contactinnerpressslug p-[.5vw]"
                 :blocks="section.column3Text"
               ></Richtext>
             </div>
 
-            <div class="column col-3 bounce-in bounce-in-3 pt-[3vw]">
+            <div class="column col-3  pt-[3vw]">
               <Richtext
-                class="contactinnerpressslug underimglay1 p-[.5vw] w-[85%]"
+                class="contactinnerpressslug pop-in pop-in-3 underimglay1 p-[.5vw] w-[85%]"
                 :blocks="section.column4Text"
               ></Richtext>
               <div class="p-[.5vw]">
                 <img
-                  class="imglay1 p-[.5vw]"
+                  class="imglay1 p-[.5vw] pop-in pop-in-5"
                   :src="section.column4Image.asset.url"
                   alt="Main Image"
                 />
@@ -103,7 +104,7 @@
               ></Richtext>
             </div>
 
-            <div class="column col-4 bounce-in bounce-in-4 pt-[10vw]">
+            <div class="column col-4 pop-in pop-in-4 pt-[10vw]">
               <div class="flex">
                 <Richtext
                   class="contactinnerpressslug lay1text p-[.5vw]"
@@ -119,25 +120,25 @@
               </div>
             </div>
 
-            <div class="column col-5 bounce-in bounce-in-5"></div>
+            <div class="column col-5 pop-in pop-in-5"></div>
           </div>
 
           <div class="otherlays" v-if="section.layout1 === false">
             <!-- Layout 2 -->
             <div class="layout layout-2" v-if="section.layout2 === true">
-              <div class="column col-1 bounce-in bounce-in-1">
+              <div class="column col-1 pop-in pop-in-4">
                 <a class="toplink" :href="section.locationlink">
                   <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
                 </a>
                 <Richtext
                   v-if="section.layout2Column1Text"
-                  class="contactinnerpressslug p-[.5vw] lay1text"
+                  class="contactinnerpressslug p-[.5vw] pop-in-4 lay1text"
                   :blocks="section.layout2Column1Text"
                 ></Richtext>
               </div>
-              <div class="column col-2 col-3 bounce-in bounce-in-2">
+              <div class="column col-2 col-3 pop-in pop-in-2">
                 <img
-                  class="imglay1 p-[.5vw]"
+                  class="imglay1 pop-in pop-in-5 p-[.5vw]"
                   :src="section.layout2Image2"
                   alt="Main Image"
                 />
@@ -155,7 +156,7 @@
                   ></Richtext>
                 </div>
               </div>
-              <div class="column col-4 bounce-in bounce-in-3">
+              <div class="column col-4 pop-in pop-in-4">
                 <Richtext
                   v-if="section.layout2Column4Text"
                   class="contactinnerpressslug p-[.5vw] underimglay2 colmb"
@@ -177,7 +178,7 @@
                   alt="Main Image"
                 />
               </div>
-              <div class="column col-5 pr-[1vw] bounce-in bounce-in-4">
+              <div class="column col-5 pr-[1vw] pop-in pop-in-3">
                 <div class="flex">
                   <img
                     class="imglay1 p-[.5vw]"
@@ -203,7 +204,7 @@
 
             <!-- Layout 3 -->
             <div class="layout layout-3" v-if="section.layout3 === true">
-              <div class="column col-1 bounce-in bounce-in-1">
+              <div class="column col-1 pop-in pop-in-4">
                 <a class="toplink" :href="section.locationlink">
                   <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
                 </a>
@@ -214,7 +215,7 @@
                 ></Richtext>
               </div>
 
-              <div class="column col-2 bounce-in bounce-in-2">
+              <div class="column col-2 pop-in pop-in-2">
                 <Richtext
                   v-if="section.layout3Column2Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -238,7 +239,7 @@
                 ></Richtext>
               </div>
 
-              <div class="column col-3 col-4 col-5 bounce-in bounce-in-3">
+              <div class="column col-3 col-4 col-5 pop-in pop-in-3">
                 <div class="flex">
                   <img
                     class="imglay1 p-[.5vw]"
@@ -257,17 +258,17 @@
                 <div class="flex">
                   <Richtext
                     v-if="section.layout3Column3Text"
-                    class="contactinnerpressslug underimglay3 p-[.5vw] w-[60vw] lay3text"
+                    class="contactinnerpressslug underimglay3 pop-in pop-in-4 p-[.5vw] w-[60vw] lay3text"
                     :blocks="section.layout3Column3Text"
                   ></Richtext>
                   <Richtext
                     v-if="section.layout3Column4Text"
-                    class="contactinnerpressslug p-[.5vw] w-[100%]"
+                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] w-[100%]"
                     :blocks="section.layout3Column4Text"
                   ></Richtext>
                   <Richtext
                     v-if="section.layout3Column5Text"
-                    class="contactinnerpressslug p-[.5vw] w-[100%]"
+                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 w-[100%]"
                     :blocks="section.layout3Column5Text"
                   ></Richtext>
                 </div>
@@ -432,61 +433,54 @@ export default {
 </script>
 
 <style scoped>
-@keyframes bounceIn {
-  0% {
-    transform: translateY(100%); /* Start below the viewport */
-    opacity: 0; /* Invisible */
+.pop-in {
+  animation: popIn 0.5s forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.pop-in-1 {
+  animation-delay: .5s;
+}
+
+.pop-in-2 {
+  animation-delay: 1.0s;
+}
+
+.pop-in-3 {
+  animation-delay: 1.6s;
+}
+
+.pop-in-4 {
+  animation-delay: 1.9s;
+}
+
+.pop-in-5 {
+  animation-delay: 2.2s;
+  /* animation: popIn 0.5s forwards, blurIn 0.5s forwards; */
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
   }
-  50% {
-    transform: translateY(-20%); /* Move up a little */
-    opacity: 1; /* Fully visible */
-  }
-  100% {
-    transform: translateY(0); /* Final position */
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
-@keyframes bounceIn2 {
-  0% {
-    transform: scale(0%);
-    opacity: 0; /* Invisible */
+/* @keyframes blurIn {
+  from {
+    filter: blur(0px);
   }
-  100% {
-    transform: scale(100%);
-    opacity: 1; /* Fully visible */
+  to {
+    filter: blur(2px);
   }
-}
-
-/* .bounce-in {
-  animation: bounce-in 0.5s ease forwards;
 } */
 
-/* Add staggered fade-in effect using different animation delays */
-.bounce-in-1 {
-  animation: bounce-in2 5s;
-  animation-delay: 0.1s;
-  animation: bounce-in 0.5s ease forwards;
-}
 
-.bounce-in-2 {
-  animation: bounce-in2 5s;
-  animation-delay: 0.2s;
-}
-
-.bounce-in-3 {
-  animation: bounce-in2 5s;
-  animation-delay: 0.3s;
-}
-
-.bounce-in-4 {
-  animation: bounce-in2 5s;
-  animation-delay: 0.4s;
-}
-
-.bounce-in-5 {
-  animation: bounce-in2 5s;
-  animation-delay: 0.5s;
-}
 
 .next-button {
   padding: 1rem;
