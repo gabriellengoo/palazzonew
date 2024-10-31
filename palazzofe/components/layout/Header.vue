@@ -543,6 +543,13 @@ export default {
     width: 80vw;
     overflow: hidden !important;
     height: 95vh;
+
+
+    width: 80vw;
+    overflow: hidden !important;
+    height: 51vw;
+
+
     display: flex;
     justify-content: center;
     position: absolute;

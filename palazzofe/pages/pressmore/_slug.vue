@@ -91,7 +91,7 @@
                 class="contactinnerpressslug pop-in pop-in-3 underimglay1 p-[.5vw] w-[85%]"
                 :blocks="section.column4Text"
               ></Richtext>
-              <div class="p-[.5vw]">
+              <div class="">
                 <img
                   class="imglay1 p-[.5vw] pop-in pop-in-5"
                   :src="section.column4Image.asset.url"
@@ -178,7 +178,8 @@
                   alt="Main Image"
                 />
               </div>
-              <div class="column col-5 pr-[1vw] pop-in pop-in-3">
+              <!-- pr-[1vw] -->
+              <div class="column col-5  pop-in pop-in-3">
                 <div class="flex">
                   <img
                     class="imglay1 p-[.5vw]"
@@ -279,15 +280,29 @@
       </transition>
 
       <!-- Next Button -->
-      <button
+      <!-- <button
         @click="nextLayout"
         class="next-button"
         :disabled="currentLayoutIndex >= totalLayouts - 1"
       >
         Next Page
-        <!-- <SvgBack class="svgmb hover:cursor-pointer"
-          /> -->
-      </button>
+      </button> -->
+      <!-- Next/Previous Button -->
+<!-- Navigation Buttons -->
+<!-- <button
+  v-if="currentLayoutIndex > 0"
+  @click="prevLayout"
+  class="prev-button"
+>
+  Previous Page
+</button> -->
+
+<button
+  @click="nextLayout"
+  class="next-button"
+>
+  {{ currentLayoutIndex < totalLayouts - 1 ? 'Next Page' : 'Read again' }}
+</button>
     </div>
   </div>
 </template>
@@ -390,19 +405,38 @@ export default {
   computed: {
     ...mapState(["meta", "metaemails", "projects"]),
     totalLayouts() {
-      // Count how many layouts there are
-      return this.project.sections.filter(
-        (section) => section.layout1 || section.layout2 || section.layout3
-      ).length;
+      return this.project.sections.length;
     },
+       // Change button text based on current layout position
+    //    buttonText() {
+    //   return this.currentLayoutIndex >= this.totalLayouts - 1 ? "Previous Page" : "Next Page";
+    // },
+    // // Disable button if at the beginning or end of layouts
+    // isDisabled() {
+    //   return this.currentLayoutIndex <= 0 && this.buttonText === "Previous Page";
+    // },
   },
   methods: {
     closeModal() {
       this.isModalOpen = false; // Close the modal
     },
-    nextLayout() {
+    // nextLayout() {
+    //   if (this.currentLayoutIndex < this.totalLayouts - 1) {
+    //     this.currentLayoutIndex++;
+    //   }
+    // },
+   // Navigate to next or previous layout
+   nextLayout() {
       if (this.currentLayoutIndex < this.totalLayouts - 1) {
         this.currentLayoutIndex++;
+      } else {
+        this.currentLayoutIndex = 0; // Reset to first layout
+      }
+    },
+    // Navigate to the previous layout
+    prevLayout() {
+      if (this.currentLayoutIndex > 0) {
+        this.currentLayoutIndex--;
       }
     },
     playSegment() {
@@ -628,6 +662,17 @@ export default {
   height: max-content;
   transform: rotateZ(270deg);
   font-family: "NHaas" !important;
+
+  top: -6.3vw;
+    left: 14.1vw;
+  font-size: 1vw;
+  position: absolute;
+  left: 13.5vw;
+  text-transform: uppercase;
+  height: -moz-max-content;
+  height: max-content;
+  transform: rotateZ(270deg);
+  font-family: "NHaas" !important;
 }
 
 .datein2 {
@@ -635,6 +680,7 @@ export default {
   font-size: 1vw;
   position: absolute;
   left: 13.5vw;
+  left: 14.1vw;
   text-transform: uppercase;
   height: -moz-max-content;
   height: max-content;
@@ -647,6 +693,16 @@ export default {
   font-size: 1vw;
   position: absolute;
   left: 54.2vw;
+  text-transform: uppercase;
+  height: -moz-max-content;
+  height: max-content;
+  transform: rotateZ(270deg);
+  font-family: "NHaas" !important;
+
+  top: 3.7vw;
+  font-size: 1vw;
+  position: absolute;
+  /* left: 13.5vw; */
   text-transform: uppercase;
   height: -moz-max-content;
   height: max-content;
