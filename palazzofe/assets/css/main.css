@@ -193,17 +193,21 @@ html {
 }
 
 .yearbig{
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   text-transform: uppercase;
   font-family: 'NHaasGrotesk' !important;
 }
 
 .yearsmall{
   font-size: 1.2vw;
+  -webkit-text-decoration: underline;
   text-decoration: underline;
+  
+  font-size: 1vw;
   font-family: 'GT-Sectra-Book';
-  /* font-family: 'GT-Sectra-Book-Italic'; */
+  font-family: 'GT-Sectra-Book-Italic';
 }
+
 
 .yeartiny{
   font-size: 1.2vw;
@@ -211,8 +215,13 @@ html {
   top: 3.5vw;
   text-decoration: underline;
   font-family: 'GT-Sectra-Book';
-  /* font-family: 'GT-Sectra-Book-Italic'; */
+
+
+  font-size: 1vw;
+  font-family: 'GT-Sectra-Book';
+  font-family: 'GT-Sectra-Book-Italic';
 }
+
 
 .text-day2 {
   font-size: 0.8vw;
