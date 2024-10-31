@@ -87,6 +87,11 @@ a:hover {
   font-size: 2.5vw !important;
   font-family: 'GT-Sectra-Book-Italic';
 }
+
+.underimglay2 div p:nth-child(1) a {
+    font-size: 2.5vw !important;
+    font-family: 'GT-Sectra-Book-Italic';
+}
 }
 /* a::before {
     content: '';

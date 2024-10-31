@@ -144,8 +144,8 @@ export default {
                   fields: [
                     {
                       name: "newDay",
-                      title: "New Day?",
-                      description: "Toggle this is you want a new day divider",
+                      title: "Create title Divider",
+                      description: "Toggle this is you want to add a title divider",
                       type: "boolean",
                     },
                     {
@@ -183,13 +183,13 @@ export default {
         
           {
             name: "newDayImage",
-            title: "New Day Image",
+            title: "Divider Image",
             type: "image",
             hidden: ({ parent }) => !parent?.newDay, // Hide if newDay is false
           },
           {
             name: "newDayText",
-            title: "New Day Text",
+            title: "Divider Text",
             type: "string",
             hidden: ({ parent }) => !parent?.newDay, // Hide if newDay is false
           },
@@ -220,37 +220,49 @@ export default {
                     // },
 
                   ],
+
+
                   preview: {
                     select: {
-                      spacer: "spacer",
-                      image: "image",
-                      video: "video.asset.playbackId",
-                      thumbnailTime: "thumbnailTime",
+                      spacer: 'spacer',
+                      image: 'image',
+                      video: 'video.asset.playbackId',
+                      thumbnailTime: 'thumbnailTime',
+                      newDayImage: 'newDayImage',
                     },
                     prepare(selection) {
-                      const { image, spacer, video, thumbnailTime } = selection;
-                      let media;
-                      if (video) {
+                      const {image, spacer, video, thumbnailTime, newDayImage} = selection
+                      let media
+                      if (newDayImage) {
+                        // media = newDayImage;
+                        media = (
+                          <img
+                          src="/static/blue.png"
+                          style={{
+                            objectFit: 'cover',
+                            height: '100%',
+                            width: '100%',
+                          }}
+                        />
+                        )
+                      } else if (video) {
                         media = (
                           <img
                             src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
                             style={{
-                              objectFit: "cover",
-                              height: "100%",
-                              width: "100%",
+                              objectFit: 'cover',
+                              height: '100%',
+                              width: '100%',
                             }}
                           />
-                        );
+                        )
                       } else if (image) {
-                        media = image;
+                        media = image
                       }
                       return {
-                        media: video
-                          ? media
-                          : image
-                          ? media
-                          : spacer,
-                      };
+                        media: video ? media : image ? media : spacer ? media : newDayImage 
+                      }
+                   
                     },
                   },
                 },
@@ -259,37 +271,39 @@ export default {
           ],
           preview: {
             select: {
-              image: "images.0.image",
-              video: "images.0.video.asset.playbackId",
-              thumbnailTime: "images.0.thumbnailTime",
+              image: 'images.0.image',
+              video: 'images.0.video.asset.playbackId',
+              thumbnailTime: 'images.0.thumbnailTime',
+              newDayImage: 'images.0.newDayImage',
             },
             prepare(selection) {
-              const { image, video, thumbnailTime } = selection;
-              let media;
-              if (video) {
-                // media = (
-                //   <img
-                //     src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
-                //     style={{
-                //       objectFit: "cover",
-                //       height: "100%",
-                //       width: "100%",
-                //     }}
-                //   />
-                // );
-                // media = document.createElement("img");
-                // media.src = `https://image.mux.com/${video}/animated.gif`;
-                // media.style.objectFit = "cover";
-                // media.style.height = "100%";
-                // media.style.width = "100%";
-              } else if (image) {
-                media = image;
+              const {image, video, thumbnailTime, newDayImage} = selection
+              let media
+              if (newDayImage) {
+                // media = newDayImage
+                media = (
+                  <img
+                    src="/static/blue.png"
+                    style={{
+                      objectFit: 'cover',
+                      height: '100%',
+                      width: '100%',
+                    }}
+                  />
+                )
+              }
+              else if (video) {
+              } 
+              else if (image) {
+                media = image
               }
               return {
                 media: media,
-              };
+              }
             },
           },
+
+
         },
       ],
     },

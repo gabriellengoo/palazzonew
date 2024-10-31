@@ -200,7 +200,7 @@ _key, double, spacer,
   "height" : image.asset->metadata.dimensions.height}, 
   "position" : position }, 
   portrait, day,
-  link, title, year, private, month,
+  link, title, year, years, yeart, private, month,
 "reference": reference->{
     _id,
     title,

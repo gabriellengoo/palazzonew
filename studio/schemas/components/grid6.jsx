@@ -99,7 +99,19 @@ export default {
 
         {
           name: "year",
-          title: "Sub-title",
+          title: "Sub-title Big",
+          type: "string",
+        },
+
+        {
+          name: "years",
+          title: "Sub-title Small",
+          type: "string",
+        },
+
+        {
+          name: "yeart",
+          title: "Sub-title Tiny",
           type: "string",
         },
         // {

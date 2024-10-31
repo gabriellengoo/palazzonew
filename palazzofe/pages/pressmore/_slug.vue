@@ -4,133 +4,289 @@
     <div class="headera mbpad content flex w-full justify-between">
       <h1 class="md:w-[1.4vw] w-auto">
         <a class="headbar" href="../press">
-          <SvgBack class="svgmb hover:cursor-pointer" />
+          <div
+            ref="lottieAnimation"
+            class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+          ></div>
+          <!-- <SvgClose class="svgmb hover:cursor-pointer" /> -->
         </a>
       </h1>
-    </div>
-
-    <div class="bgmobile relative min-h-screen flex flex-col p-[1vw]" >
-      <transition name="slide" mode="out-in">
-  <div class="layouts" v-for="(section, index) in project.sections" :key="index" 
-       v-if="(section.layout1 && currentLayoutIndex === index) || 
-              (section.layout2 && currentLayoutIndex === index) || 
-              (section.layout3 && currentLayoutIndex === index)">
-    
-    <div class="layout layout-1" v-if="section.layout1 === true">
-      <div class="column col-1 bounce-in bounce-in-1">
-        <a target="_blank" class="toplink" :href="section.locationlink">
-          <p class="pb-[2vw]">{{ section.location }}</p>
-        </a>
-        <div>
-          <img class="imglay1" :src="section.mainImage" alt="Main Image" />
-        </div>
-        <div>
-          <Richtext class="p-[.5vw]" :blocks="section.column0Text"></Richtext>
-        </div>
-        <div class="flex">
-          <Richtext class="contactinnerpressslug p-[.5vw]" :blocks="section.column1Text"></Richtext>
-          <Richtext class="contactinnerpressslug p-[.5vw]" :blocks="section.column2Text"></Richtext>
-        </div>
-      </div>
-
-      <div class="column col-2 bounce-in bounce-in-2">
-        <Richtext class="contactinnerpressslug p-[.5vw]" :blocks="section.column3Text"></Richtext>
-      </div>
-
-      <div class="column col-3 bounce-in bounce-in-3 pt-[3vw]">
-        <Richtext class="contactinnerpressslug p-[.5vw] w-[85%]" :blocks="section.column4Text"></Richtext>
-        <div class="p-[.5vw]">
-          <img class="imglay1" :src="section.column4Image.asset.url" alt="Main Image" />
-        </div>
-        <Richtext class="contactinnerpressslug underimglay1 p-[.5vw]" :blocks="section.column5Text"></Richtext>
-      </div>
-
-      <div class="column col-4 bounce-in bounce-in-4 pt-[10vw]">
-        <Richtext class="contactinnerpressslug lay1text p-[.5vw]" :blocks="section.column6Text"></Richtext>
-      </div>
-
-      <div class="column col-5 bounce-in bounce-in-5"></div>
-    </div>
-
-    <div class="otherlays">
-      <!-- Layout 2 -->
-      <div class="layout layout-2" v-if="section.layout2 === true">
-        <div class="column col-1 bounce-in bounce-in-1">
-          <a class="toplink" :href="section.locationlink">
-            <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-          </a>
-          <Richtext v-if="section.layout2Column1Text" class="contactinnerpressslug p-[.5vw] lay1text" :blocks="section.layout2Column1Text"></Richtext>
-        </div>
-        <div class="column col-2 col-3 bounce-in bounce-in-2">
-          <img class="imglay1 p-[.5vw]" :src="section.layout2Image2" alt="Main Image" />
-          <div class="flex">
-            <div class="contactinnerpressslug p-[.5vw] w-[96vw]">
-              <Richtext v-if="section.layout2Column2Text" :blocks="section.layout2Column2Text"></Richtext>
-            </div>
-            <Richtext v-if="section.layout2Column3Text" class="contactinnerpressslug p-[.5vw] colmb" :blocks="section.layout2Column3Text"></Richtext>
-          </div>
-        </div>
-        <div class="column col-4 bounce-in bounce-in-3">
-          <Richtext v-if="section.layout2Column4Text" class="contactinnerpressslug p-[.5vw] underimglay2 colmb" :blocks="section.layout2Column4Text"></Richtext>
-          <img class="imglay1" :src="section.layout2Column4Image" v-if="section.layout2Column4Image" alt="Main Image" />
-          <a class="toplink text-center" :href="section.locationlink">
-            <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-          </a>
-          <img class="imglay1" :src="section.layout2Column44Image" v-if="section.layout2Column44Image" alt="Main Image" />
-        </div>
-        <div class="column col-5 pr-[2vw] bounce-in bounce-in-4">
-          <div class="flex">
-            <img class="imglay1" :src="section.layout2Column5Image" v-if="section.layout2Column5Image" alt="Main Image" />
-            <div class="datelay2 nomb" v-if="section.layout2date">
-              <Richtext v-if="section.layout2date" class="contactinnerpressslug p-[.5vw] datein2" :blocks="section.layout2date"></Richtext>
-            </div>
-          </div>
-          <Richtext v-if="section.layout2Column5Text" class="contactinnerpressslug p-[.5vw]" :blocks="section.layout2Column5Text"></Richtext>
-        </div>
-      </div>
-
-      <!-- Layout 3 -->
-      <div class="layout layout-3" v-if="section.layout3 === true">
-        <div class="column col-1 bounce-in bounce-in-1">
-          <a class="toplink" :href="section.locationlink">
-            <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-          </a>
-          <Richtext v-if="section.layout3Column1Text" class="contactinnerpressslug p-[.5vw]" :blocks="section.layout3Column1Text"></Richtext>
-        </div>
-
-        <div class="column col-2 bounce-in bounce-in-2">
-          <Richtext v-if="section.layout3Column2Text" class="contactinnerpressslug p-[.5vw]" :blocks="section.layout3Column2Text"></Richtext>
-          <a class="toplink flex justify-center items-center" :href="section.locationlink">
-            <p class="p-[.5vw] text-center">{{ section.location }}</p>
-          </a>
-          <img class="imglay1" :src="section.layout3Column2Image" alt="Main Image" />
-          <Richtext v-if="section.layout3Column22Text" class="contactinnerpressslug p-[.5vw]" :blocks="section.layout3Column22Text"></Richtext>
-        </div>
-
-        <div class="column col-3 col-4 col-5 bounce-in bounce-in-3">
-          <img class="imglay1 p-[.5vw]" :src="section.layout3Image3_5" v-if="section.layout3Image3_5" alt="Main Image" />
-          <div class="flex">
-            <Richtext v-if="section.layout3Column3Text" class="contactinnerpressslug underimglay3 p-[.5vw] w-[60vw] lay3text" :blocks="section.layout3Column3Text"></Richtext>
-            <Richtext v-if="section.layout3Column4Text" class="contactinnerpressslug p-[.5vw] w-[100%]" :blocks="section.layout3Column4Text"></Richtext>
-            <Richtext v-if="section.layout3Column5Text" class="contactinnerpressslug p-[.5vw] w-[100%]" :blocks="section.layout3Column5Text"></Richtext>
-          </div>
-        </div>
+      <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
+        {{ project.title }}
+      </p>
+      <p class="headingspages navmbno text-center text-4xl uppercase">
+        Publication
+      </p>
+      <div class="navmbno">
+        <p
+          class="headingspagesslug pt-[2vw] nodes text-center text-4xl uppercase"
+        >
+          Publication
+        </p>
       </div>
     </div>
-  </div>
-</transition>
 
+    <div v-if="project" class="presshedindi">
+      <p
+        class="headingspagesslug pt-[2vw] nodes text-center text-4xl uppercase"
+      >
+        {{ project.title }}
+      </p>
+    </div>
 
-               <!-- Next Button -->
-               <button 
-      @click="nextLayout" 
-      class="next-button"
-      :disabled="currentLayoutIndex >= totalLayouts - 1"
+    <div
+      class="bgmobile relative min-h-screen flex flex-col p-[1vw] pl-[0.3vw]"
     >
-      Next Article
-      <!-- <SvgBack class="svgmb hover:cursor-pointer"
+      <transition name="slide" mode="out-in">
+        <div
+          class="layouts"
+          v-for="(section, index) in project.sections"
+          :key="index"
+          v-if="
+            (section.layout1 && currentLayoutIndex === index) ||
+            (section.layout2 && currentLayoutIndex === index) ||
+            (section.layout3 && currentLayoutIndex === index)
+          "
+        >
+          <div class="layout layout-1" v-if="section.layout1 === true">
+            <div class="column col-1 bounce-in bounce-in-1">
+              <a target="_blank" class="toplink" :href="section.locationlink">
+                <p class="pb-[2vw]">{{ section.location }}</p>
+              </a>
+              <div>
+                <img
+                  class="imglay1 p-[.5vw]"
+                  :src="section.mainImage"
+                  alt="Main Image"
+                />
+              </div>
+              <div class="laytextall">
+                <Richtext
+                  class="p-[.5vw]"
+                  :blocks="section.column0Text"
+                ></Richtext>
+              </div>
+              <div class="flex">
+                <Richtext
+                  class="contactinnerpressslug p-[.5vw]"
+                  :blocks="section.column1Text"
+                ></Richtext>
+                <Richtext
+                  class="contactinnerpressslug p-[.5vw]"
+                  :blocks="section.column2Text"
+                ></Richtext>
+              </div>
+            </div>
+
+            <div class="column col-2 bounce-in bounce-in-2">
+              <Richtext
+                class="contactinnerpressslug p-[.5vw]"
+                :blocks="section.column3Text"
+              ></Richtext>
+            </div>
+
+            <div class="column col-3 bounce-in bounce-in-3 pt-[3vw]">
+              <Richtext
+                class="contactinnerpressslug underimglay1 p-[.5vw] w-[85%]"
+                :blocks="section.column4Text"
+              ></Richtext>
+              <div class="p-[.5vw]">
+                <img
+                  class="imglay1 p-[.5vw]"
+                  :src="section.column4Image.asset.url"
+                  alt="Main Image"
+                />
+              </div>
+              <Richtext
+                class="contactinnerpressslug underimglay1 p-[.5vw]"
+                :blocks="section.column5Text"
+              ></Richtext>
+            </div>
+
+            <div class="column col-4 bounce-in bounce-in-4 pt-[10vw]">
+              <div class="flex">
+                <Richtext
+                  class="contactinnerpressslug lay1text p-[.5vw]"
+                  :blocks="section.column6Text"
+                ></Richtext>
+                <div class="datelay2 nomb" v-if="section.layout1date">
+                  <Richtext
+                    v-if="section.layout1date"
+                    class="contactinnerpressslug p-[.5vw] datein1"
+                    :blocks="section.layout1date"
+                  ></Richtext>
+                </div>
+              </div>
+            </div>
+
+            <div class="column col-5 bounce-in bounce-in-5"></div>
+          </div>
+
+          <div class="otherlays" v-if="section.layout1 === false">
+            <!-- Layout 2 -->
+            <div class="layout layout-2" v-if="section.layout2 === true">
+              <div class="column col-1 bounce-in bounce-in-1">
+                <a class="toplink" :href="section.locationlink">
+                  <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                </a>
+                <Richtext
+                  v-if="section.layout2Column1Text"
+                  class="contactinnerpressslug p-[.5vw] lay1text"
+                  :blocks="section.layout2Column1Text"
+                ></Richtext>
+              </div>
+              <div class="column col-2 col-3 bounce-in bounce-in-2">
+                <img
+                  class="imglay1 p-[.5vw]"
+                  :src="section.layout2Image2"
+                  alt="Main Image"
+                />
+                <div class="flex">
+                  <div class="contactinnerpressslug p-[.5vw] w-[96vw]">
+                    <Richtext
+                      v-if="section.layout2Column2Text"
+                      :blocks="section.layout2Column2Text"
+                    ></Richtext>
+                  </div>
+                  <Richtext
+                    v-if="section.layout2Column3Text"
+                    class="contactinnerpressslug p-[.5vw] colmb"
+                    :blocks="section.layout2Column3Text"
+                  ></Richtext>
+                </div>
+              </div>
+              <div class="column col-4 bounce-in bounce-in-3">
+                <Richtext
+                  v-if="section.layout2Column4Text"
+                  class="contactinnerpressslug p-[.5vw] underimglay2 colmb"
+                  :blocks="section.layout2Column4Text"
+                ></Richtext>
+                <img
+                  class="imglay1 p-[.5vw]"
+                  :src="section.layout2Column4Image"
+                  v-if="section.layout2Column4Image"
+                  alt="Main Image"
+                />
+                <a class="toplink text-center" :href="section.locationlink">
+                  <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                </a>
+                <img
+                  class="imglay1 p-[.5vw]"
+                  :src="section.layout2Column44Image"
+                  v-if="section.layout2Column44Image"
+                  alt="Main Image"
+                />
+              </div>
+              <div class="column col-5 pr-[1vw] bounce-in bounce-in-4">
+                <div class="flex">
+                  <img
+                    class="imglay1 p-[.5vw]"
+                    :src="section.layout2Column5Image"
+                    v-if="section.layout2Column5Image"
+                    alt="Main Image"
+                  />
+                  <div class="datelay2 nomb" v-if="section.layout2date">
+                    <Richtext
+                      v-if="section.layout2date"
+                      class="contactinnerpressslug p-[.5vw] datein2"
+                      :blocks="section.layout2date"
+                    ></Richtext>
+                  </div>
+                </div>
+                <Richtext
+                  v-if="section.layout2Column5Text"
+                  class="contactinnerpressslug p-[.5vw]"
+                  :blocks="section.layout2Column5Text"
+                ></Richtext>
+              </div>
+            </div>
+
+            <!-- Layout 3 -->
+            <div class="layout layout-3" v-if="section.layout3 === true">
+              <div class="column col-1 bounce-in bounce-in-1">
+                <a class="toplink" :href="section.locationlink">
+                  <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                </a>
+                <Richtext
+                  v-if="section.layout3Column1Text"
+                  class="contactinnerpressslug p-[.5vw]"
+                  :blocks="section.layout3Column1Text"
+                ></Richtext>
+              </div>
+
+              <div class="column col-2 bounce-in bounce-in-2">
+                <Richtext
+                  v-if="section.layout3Column2Text"
+                  class="contactinnerpressslug p-[.5vw]"
+                  :blocks="section.layout3Column2Text"
+                ></Richtext>
+                <a
+                  class="toplink flex justify-center items-center"
+                  :href="section.locationlink"
+                >
+                  <p class="p-[.5vw] text-center">{{ section.location }}</p>
+                </a>
+                <img
+                  class="imglay1 p-[.5vw]"
+                  :src="section.layout3Column2Image"
+                  alt="Main Image"
+                />
+                <Richtext
+                  v-if="section.layout3Column22Text"
+                  class="contactinnerpressslug p-[.5vw]"
+                  :blocks="section.layout3Column22Text"
+                ></Richtext>
+              </div>
+
+              <div class="column col-3 col-4 col-5 bounce-in bounce-in-3">
+                <div class="flex">
+                  <img
+                    class="imglay1 p-[.5vw]"
+                    :src="section.layout3Image3_5"
+                    v-if="section.layout3Image3_5"
+                    alt="Main Image"
+                  />
+                  <div class="datelay2 nomb" v-if="section.layout3date">
+                    <Richtext
+                      v-if="section.layout3date"
+                      class="contactinnerpressslug p-[.5vw] datein3"
+                      :blocks="section.layout3date"
+                    ></Richtext>
+                  </div>
+                </div>
+                <div class="flex">
+                  <Richtext
+                    v-if="section.layout3Column3Text"
+                    class="contactinnerpressslug underimglay3 p-[.5vw] w-[60vw] lay3text"
+                    :blocks="section.layout3Column3Text"
+                  ></Richtext>
+                  <Richtext
+                    v-if="section.layout3Column4Text"
+                    class="contactinnerpressslug p-[.5vw] w-[100%]"
+                    :blocks="section.layout3Column4Text"
+                  ></Richtext>
+                  <Richtext
+                    v-if="section.layout3Column5Text"
+                    class="contactinnerpressslug p-[.5vw] w-[100%]"
+                    :blocks="section.layout3Column5Text"
+                  ></Richtext>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition>
+
+      <!-- Next Button -->
+      <button
+        @click="nextLayout"
+        class="next-button"
+        :disabled="currentLayoutIndex >= totalLayouts - 1"
+      >
+        Next Page
+        <!-- <SvgBack class="svgmb hover:cursor-pointer"
           /> -->
-    </button>
+      </button>
     </div>
   </div>
 </template>
@@ -139,6 +295,7 @@
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
 import TransitionComponent from "~/components/TransitionComponent.vue";
+import lottie from "lottie-web";
 
 export default {
   components: {
@@ -173,6 +330,7 @@ export default {
         column4Text,
         column5Text,
         column6Text,
+        layout1date,
         layout2Column1Text,
         "layout2Image2": layout2Image2.asset->url,
         layout2Column2Text,
@@ -190,7 +348,8 @@ export default {
         "layout3Image3_5": layout3Image3_5.asset->url,
         layout3Column3Text,
         layout3Column4Text,
-        layout3Column5Text
+        layout3Column5Text,
+        layout3date,
       }
       } | order(_updatedAt desc)[0]`;
 
@@ -222,7 +381,8 @@ export default {
       isBackNavigation: false,
       imageNumberPosition: { top: 0, left: 0 },
       isModalOpen: false, // Set the initial state of the modal
-      currentLayoutIndex: 0, 
+      currentLayoutIndex: 0,
+      lottieInstance: null,
       // ... other data properties
     };
   },
@@ -230,8 +390,8 @@ export default {
     ...mapState(["meta", "metaemails", "projects"]),
     totalLayouts() {
       // Count how many layouts there are
-      return this.project.sections.filter(section => 
-        section.layout1 || section.layout2 || section.layout3
+      return this.project.sections.filter(
+        (section) => section.layout1 || section.layout2 || section.layout3
       ).length;
     },
   },
@@ -243,9 +403,31 @@ export default {
       if (this.currentLayoutIndex < this.totalLayouts - 1) {
         this.currentLayoutIndex++;
       }
-    }
+    },
+    playSegment() {
+      // Play from frame 11 to 20
+      if (this.lottieInstance) {
+        this.lottieInstance.playSegments([55, 20], true);
+      }
+    },
     // ... other methods
   },
+  mounted() {
+    console.log("Lottie animation initialized:", this.lottieInstance);
+
+    this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation, // the DOM element
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "/animations/hamburger.json", // your Lottie animation JSON file path
+    });
+
+     // Set the animation to frame 11 without playing
+     this.lottieInstance.goToAndStop(55, true);
+  },
+
+ 
 };
 </script>
 
@@ -266,11 +448,11 @@ export default {
 
 @keyframes bounceIn2 {
   0% {
-    transform: scale(0%); 
+    transform: scale(0%);
     opacity: 0; /* Invisible */
   }
   100% {
-    transform:  scale(100%); 
+    transform: scale(100%);
     opacity: 1; /* Fully visible */
   }
 }
@@ -315,17 +497,18 @@ export default {
   cursor: pointer;
   transition: background-color 0.3s;
   position: fixed;
-    bottom: .5vh;
-    width: 98%;
-    text-transform: uppercase;
-    font-family: 'GT-Sectra-Book';
-    transition: color 0.8s ease;
+  bottom: 0.5vh;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: "GT-Sectra-Book";
+  font-family: "NHaas" !important;
+  transition: color 0.8s ease;
 }
 
 .next-button:hover {
   /* background-color: #0056b3; */
   transition: color 0.8s ease;
-  color: #ccc;;
+  color: #ccc;
 }
 
 .next-button:disabled {
@@ -333,17 +516,19 @@ export default {
   cursor: not-allowed;
 }
 
-.slide-enter-active, .slide-leave-active {
+.slide-enter-active,
+.slide-leave-active {
   transition: transform 0.5s ease;
 }
-.slide-enter, .slide-leave-to {
+.slide-enter,
+.slide-leave-to {
   transform: translateY(100%); /* Slide in from the right */
 }
 
 .toplink {
   text-decoration: underline;
   /* font-style: italic; */
-  font-family: 'GT-Sectra-Book-Italic';
+  font-family: "GT-Sectra-Book-Italic";
 }
 
 .imglay1 {
@@ -363,11 +548,14 @@ export default {
   overflow-y: scroll;
   font-size: 1.2vw;
   justify-content: center;
+  justify-content: flex-start;
   font-family: "RomainHeadlineTrial";
-  font-family: 'GT-Sectra-Book-Italic';
-  font-family: 'NHaasGrotesk';
-  font-family: 'RomainTextTrial';
-  font-family: 'GT-Sectra-Book';
+  font-family: "GT-Sectra-Book-Italic";
+  font-family: "NHaasGrotesk";
+  font-family: "RomainTextTrial";
+  font-family: "GT-Sectra-Book";
+  overflow-y: hidden;
+  height: 100vh;
   /* font-family: "GT-Bold"; */
 }
 
@@ -415,16 +603,61 @@ export default {
   /* left: 83vw; */
 }
 
-.datein2 {
-  top: 3vw;
-  font-size: 1vw;
+.presshedindi {
+  z-index: 10000000;
   position: absolute;
-  left: 13vw;
+  font-family: "GT-Bold";
+  font-family: "MinionPro-Regular";
+  font-family: "RomainHeadlineTrial";
+  /* font-family: 'GT-SuperBook'; */
+  font-size: medium;
+  position: relative;
+  font-size: 3.5vw;
+  z-index: 100;
+  position: absolute;
+  position: fixed;
+  line-height: normal;
+  width: 100%;
+  pointer-events: none;
+  top: 0.7vh !important;
+  display: flex;
+  justify-content: center;
+}
+
+.datein1 {
+  top: 0;
+  font-size: 1vw;
+  position: relative;
+  left: 13.8vw;
   text-transform: uppercase;
   height: -moz-max-content;
   height: max-content;
   transform: rotateZ(270deg);
-  font-family: 'NHaas' !important;
+  font-family: "NHaas" !important;
+}
+
+.datein2 {
+  top: 3.7vw;
+  font-size: 1vw;
+  position: absolute;
+  left: 13.5vw;
+  text-transform: uppercase;
+  height: -moz-max-content;
+  height: max-content;
+  transform: rotateZ(270deg);
+  font-family: "NHaas" !important;
+}
+
+.datein3 {
+  top: 3.8vw;
+  font-size: 1vw;
+  position: absolute;
+  left: 54.2vw;
+  text-transform: uppercase;
+  height: -moz-max-content;
+  height: max-content;
+  transform: rotateZ(270deg);
+  font-family: "NHaas" !important;
 }
 
 .layout-2 .col-1,
@@ -456,16 +689,17 @@ export default {
     grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
   }
 
-  .bgmobile{
+  .bgmobile {
     font-size: 3vw;
   }
 
-  .layout-2 .col-1, .layout-2 .col-5 {
+  .layout-2 .col-1,
+  .layout-2 .col-5 {
     grid-column: span 2;
-}
+  }
 
-.colmb{
-  width: 95vw;
-}
+  .colmb {
+    width: 95vw;
+  }
 }
 </style>

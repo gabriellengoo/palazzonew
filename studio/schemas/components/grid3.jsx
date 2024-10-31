@@ -25,7 +25,7 @@ export default {
       fields: [ 
         {
           name: "image",
-          title: "Image",
+          title: "Arch Image PNG",
           type: "image",
           hidden: ({ parent, value }) =>
             (!value && parent?.spacer) || (!value && parent?.video),

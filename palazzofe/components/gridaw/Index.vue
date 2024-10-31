@@ -106,12 +106,19 @@
                         <div class="pinkcircle rightimg"></div>
                       </div>
                       <figcaption
-                        class="titlea textsum block text-center uppercase w-full pt-2"
+                        class="titlea textsum block text-center  w-full pt-2"
                       >
-                        <span class="textsumf2">{{
-                          // item.title || item.reference.title
-                          item.year || item.reference.year
+                    <div class="textsumf2">
+                      <span class="yearbig" v-if="item.year">{{
+                          item.year
                         }}</span>
+                        <span class="yearsmall" v-if="item.years">{{
+                          item.years 
+                        }}</span>
+                          <span class="yeartiny" v-if="item.yeart">{{
+                          item.yeart 
+                        }}</span>
+                    </div>
                       </figcaption>
                       <!-- <figcaption
                         class="disa textsum block text-center w-full pt-2"
@@ -223,19 +230,17 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   font-size: 1vw;
-  font-style: italic;
-  text-decoration: underline;
   z-index: 10;
   height: 20vw;
   display: flex;
   width: 20vw;
-  background-image: url("./static/CircleWhite.png");
+  background-image: url("./static/CirclePink.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   align-items: center;
   justify-content: center;
-  font-family: 'RomainHeadlineTrial';
+  flex-direction: column;
 }
 
 /* .pinkcircle {

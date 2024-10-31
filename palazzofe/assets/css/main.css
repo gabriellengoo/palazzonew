@@ -192,6 +192,28 @@ html {
   color: black; /* Color for the active dot */
 }
 
+.yearbig{
+  font-size: 1.6vw;
+  text-transform: uppercase;
+  font-family: 'NHaasGrotesk' !important;
+}
+
+.yearsmall{
+  font-size: 1.2vw;
+  text-decoration: underline;
+  font-family: 'GT-Sectra-Book';
+  /* font-family: 'GT-Sectra-Book-Italic'; */
+}
+
+.yeartiny{
+  font-size: 1.2vw;
+  position: relative;
+  top: 3.5vw;
+  text-decoration: underline;
+  font-family: 'GT-Sectra-Book';
+  /* font-family: 'GT-Sectra-Book-Italic'; */
+}
+
 .text-day2 {
   font-size: 0.8vw;
   position: absolute;
@@ -493,6 +515,7 @@ a .inner-image {
   align-items: center;
   justify-content: center;
   font-family: 'RomainHeadlineTrial';
+  font-family: 'GT-Sectra-Book-Italic';
 }
 
 .new-day-textevent{
@@ -513,7 +536,10 @@ a .inner-image {
   align-items: center;
   justify-content: center;
   font-family: 'RomainHeadlineTrial';
+  font-family: 'GT-Sectra-Book-Italic';
 }
+
+
 
 /* .circletext{
   position: absolute;

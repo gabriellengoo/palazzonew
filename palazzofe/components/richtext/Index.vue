@@ -150,7 +150,7 @@ div p{
 
 @media only screen and (max-width: 768px) {
   .lay1text div p:nth-child(1){
-  font-size: 3vw;
+  font-size: 4vw;
   font-weight: bolder;
 }
 

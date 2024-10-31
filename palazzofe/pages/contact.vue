@@ -261,7 +261,7 @@
           <form
             action="https://formspree.io/f/xwpkkljw"
             method="POST"
-            class="contact-form w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
+            class="contact-form pb-[5vh] w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
           >
             <input
               class="col-span-1"
@@ -326,7 +326,7 @@
               oninput="this.value = this.value.replace(/[^0-9]/g, '')"
             />
 
-            <div class="flex justify-center mt-[4vw] mb-[30vw]">
+            <div class="flex justify-center mt-[4vw]">
               <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
                 <img src="sendh.png" alt="Send" class="w-auto h-auto" />
               </button>
@@ -834,7 +834,7 @@ input::placeholder {
     transition: top 0.5s ease-in-out;
     height: 100vh;
     top: 57vh;
-    top:144vw;
+    top:122vw;
   }
 
   @keyframes bounce {
