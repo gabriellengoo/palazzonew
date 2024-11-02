@@ -13,30 +13,26 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
+
     <div class="bgmobile relative min-h-screen flex">
       <!-- Left Scrollable Content -->
-      <div
-        class="contentt flex-1 flex justify-center items-center overflow-y-scroll p-8"
-      >
-      <div v-if="gridteam.grid7" class="">
+      <div class="left-content flex-1 overflow-y-scroll p-8">
+        <div class="content">
+          <div v-if="gridteam.grid7" class="">
             <Gridteam class="" :items="gridteam.grid7" size="small"></Gridteam>
           </div>
-
+        </div>
       </div>
 
+
       <!-- Right Static Content -->
-      <!-- <div
-        class="right-content overflow-y-scroll flex-1 p-8 flex justify-center items-center"
-      >
-        <div class="content">
-          <div class="nomb pointer-events-none">
-            <img class="rightimg" src="/aboutright.png" />
-          </div>
-        </div>
-        <div class="email ml-[5vw] text-left">
-          <Richtext class="richcont" :blocks="about.about"></Richtext>
-        </div>
-      </div> -->
+      <div class="right-content overflow-y-scroll flex-1 p-8">
+        <!-- <div class="static-box w-full h-full">
+        </div> -->
+        <!-- <div v-if="gridd.grid2" class="">
+          <Gridevents class="" :items="gridd.grid2" size="small"></Gridevents>
+        </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -71,20 +67,10 @@ export default {
 </script>
 
 <style scoped>
-.contentt {
-  background-image: url("./static/background.jpg");
-    background-size: auto auto;
-    background-size: 150vw;
-    background-position: 0 0;
-    background-position: initial;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-}
-
 .headingspagesb {
   font-family: "GT-Bold";
 }
+
 
 .image-item {
   position: relative;
@@ -159,9 +145,9 @@ export default {
 }
 
 .right-content {
-  background-image: url("./static/background.jpg");
-  background-size: initial;
-  background-position: unset;
+  background-image: url("./static/BLUEbg.png");
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -175,52 +161,11 @@ a:hover {
   text-decoration: underline;
 }
 
-.rightimg {
-  width: 27vw;
-  top: -2vh;
-  left: 2vw;
-  position: relative;
-}
-
-.richcont{
-  position: absolute;
-    top: 42vh;
-    left: 64vw;
-    width: 20vw;
-    font-size: 1vw;
-}
-
-
-
 @media only screen and (max-width: 768px) {
-  .contentt {
-  background-image: url("./static/background.jpg");
-    background-size: auto auto;
-    background-size: cover;
-    background-position: 0 0;
-    background-position: initial;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-}
-
   .bgmobile {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
 
-  .rightimg {
-    width: 89vw;
-    top: -11vh;
-    left: 0vw;
-}
-
-.richcont {
-    position: absolute;
-    top: 35vh;
-    left: 14vw;
-    width: 69vw;
-    font-size: 3.5vw;
-}
   /* .left-content,
   .right-content {
     height: auto;
@@ -234,10 +179,7 @@ a:hover {
     padding: 0 !important;
     padding-top: 4vh !important;
     padding-top: 6vh !important;
-    background-image: url("./static/background.jpg");
-    background-size: initial;
-    background-position: unset;
-    background-repeat: no-repeat;
+    background-image: url("./static/BLUEbg.png");
   }
 }
 </style>

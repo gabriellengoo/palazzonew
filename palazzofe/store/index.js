@@ -239,12 +239,16 @@ _key, double, spacer,
   "position" : position }, 
   portrait, day,
   link, title, year, private, month,
+     content3,
+      content4,
 "reference": reference->{
     _id,
     title,
+    
     "slug" : slug.current,
     "slider": slider[] {
       _key,
+   
       images[] {
         _key,
         portrait,

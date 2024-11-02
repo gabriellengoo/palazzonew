@@ -301,7 +301,7 @@
   @click="nextLayout"
   class="next-button"
 >
-  {{ currentLayoutIndex < totalLayouts - 1 ? 'Next Page' : 'Read again' }}
+  {{ currentLayoutIndex < totalLayouts - 1 ? 'Next Page' : 'End' }}
 </button>
     </div>
   </div>
