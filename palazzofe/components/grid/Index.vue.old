@@ -3,27 +3,28 @@
     <div>
       <!-- Images Section -->
       <div class="image-grid pt-[1vh]">
+
+      
+
         <!-- Loop through the items array in chunks of two -->
-        <div v-for="(chunk, chunkIndex) in chunkedItems" :key="chunkIndex" class="image-row">
+        <div v-for="(chunk, chunkIndex) in chunkedItems" :key="chunkIndex" class="image-row ">
           <div
             v-for="(item, index) in chunk"
             :key="item._key"
             class="item-wrapper"
             @mouseenter="hoveredIndex = item._key; isDefaultActive = false"
             @mouseleave="hoveredIndex = null; isDefaultActive = true"
-            @mousemove="onMouseMove"
           >
             <!-- Image Item -->
             <div class="relative image-item transition-opacity duration-300">
               <figure class="flex flex-col">
-                <div class="relative inner-image" ref="innerImage">
+                <div class="relative">
                   <NuxtLink 
                     v-if="item.reference.slug"
                     :to="`/work/${item.reference.slug}`"
                     class="flex flex-col items-end h-full link-animation linka"   
                   >
-                    <figure>
-                      <div class="hover-effect" :style="hoverEffectStyle"></div>
+                    <figure class="inner-image">
                       <MediaImage :src="item.image.image" v-if="item.image.image" />
                     </figure>
                     <figcaption class="textsum block text-center uppercase w-full pt-2">
@@ -31,7 +32,7 @@
                       <span class="pt-[.1vh]">{{ item.year || item.reference.year }}</span>
                     </figcaption>
                   </NuxtLink>
-                  <!-- Hover effect element -->
+
                   <div 
                     v-show="hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0)" 
                     class="sideim"
@@ -48,7 +49,6 @@
                       />
                     </figure>
                   </div>
-                 
                 </div>
               </figure>
             </div>
@@ -64,28 +64,27 @@
 
 
 
-
 <script>
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
+// import { groq } from "@nuxtjs/sanity";
 
 export default {
   props: ["items", "size"],
+
+
+
   data() {
     return {
       project: false,
       isDesktop: false,
-      hoveredIndex: null,
-      isDefaultActive: true,
-      hoverEffectStyle: {
-        left: '0px',
-        top: '0px',
-      }
+      hoveredIndex: null, // Track the hovered image item
+      isDefaultActive: true, // Controls the visibility of the default image
     };
   },
   computed: {
     ...mapGetters({
-      isMenuOpen: "isMenuOpen",
+      isMenuOpen: "isMenuOpen", // This will map to the Vuex getter
     }),
     ...mapState(["activeProject", "activeTalent"]),
     chunkedItems() {
@@ -99,32 +98,22 @@ export default {
       }, []);
     },
   },
-  methods: {
-    ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
-    onMouseMove(event) {
-      const boundingRect = event.currentTarget.getBoundingClientRect();
-      const offsetX = event.clientX - boundingRect.left;
-      const offsetY = event.clientY - boundingRect.top;
-
-      this.hoverEffectStyle = {
-        left: `${offsetX}px`,
-        top: `${offsetY}px`,
-      };
-    },
-    handleResize() {
-      this.isDesktop = window.innerWidth > 768;
-    },
-  },
   mounted() {
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener("resize", this.handleResize);
+
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);
   },
+  methods: {
+    ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
+    handleResize() {
+      this.isDesktop = window.innerWidth > 768;
+    },
+  },
 };
 </script>
-
 
 
 
@@ -297,38 +286,6 @@ export default {
   /* .left-content{
     padding: 0 !important;
   } */
-}
-
-
-.linka {
-  position: relative;
-  overflow: hidden;
-  /* opacity: 70%; */
-  /* opacity: 100%; */
-}
-
-.hover-effect {
-  position: absolute;
-  width: 0px;
-  height: 0px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.049); /* Adjust to desired color */
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background-color 0.3s;
-}
-
-.linka img:hover {
-  mix-blend-mode: plus-lighter;
-  /* opacity: 2%; */
-}
-
-
-.inner-image:hover .hover-effect  {
-  width: 600px;
-  height: 600px;
-  background: rgba(255, 255, 255, 0.08); /* Adjust hover effect color */
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.117) 10%, rgba(255, 255, 255, 0) 70%);
 }
 
 </style>
