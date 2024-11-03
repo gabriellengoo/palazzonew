@@ -126,6 +126,8 @@ export default {
   height: 100vh;
   background-color: #000; /* You can change this to your preferred background color */
   z-index: 1000000002;
+  z-index: 102 !important;
+  
 }
 
 .white-screen {
@@ -183,7 +185,10 @@ pointer-events: none;
   background-repeat: no-repeat; */
   /* background: rgba(255, 255, 255, 0.752); */
   z-index: 1000000002;
+  z-index: 102 !important;
   pointer-events: none;
+  /* z-index: 46 !important; */
+
 }
 
 .white-screen {
@@ -193,6 +198,7 @@ pointer-events: none;
   width: 100%;
   height: 100%;
   background-color: #fff;
+
   /* background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: center;
@@ -200,6 +206,7 @@ pointer-events: none;
   opacity: 0;
   transition: opacity 3.5s ease; /* Adjust the duration to match the transition */
   z-index: 1000000001;
+  z-index: 102 !important;
 }
 
 .white-screen.active {

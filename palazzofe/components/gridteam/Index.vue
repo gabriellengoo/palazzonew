@@ -1,90 +1,72 @@
 <template>
   <client-only>
     <div>
-      <!-- Images Section -->
       <div class="image-grid pt-[1vh]">
         <div class="nodes contmbhead">
           <p v-if="!isMenuOpen" class="headingspages text-center text-4xl uppercase">Team</p>
         </div>
 
-        <!-- Loop through the items array in chunks of two -->
         <div v-for="(chunk, chunkIndex) in chunkedItems" :key="chunkIndex" class="chunk-container">
-          <!-- Image Row -->
           <div class="image-row">
-            <div v-for="(item, index) in chunk" :key="item._key" class="item-wrapper" @mouseenter="hoveredIndex = item._key; isDefaultActive = false" @mouseleave="hoveredIndex = null; isDefaultActive = true">
+            <div
+              v-for="(item, index) in chunk"
+              :key="item._key"
+              class="item-wrapper"
+              @click="clickHandler(item._key)"
+            >
               <div class="relative image-item transition-opacity duration-300" :class="[item.double ? 'double h-fit' : '', item.spacer ? 'p-2' : '', activeTalent && activeTalent != item.reference.talentId && activeTalent != item.reference ? 'hidden' : '']">
                 <figure class="flex flex-col">
                   <div class="relative">
                     <div class="link-animation linkateam">
-                    <figure class="inner-image">
-                      <MediaImage :src="item.image.image" v-if="item.image.image" />
-                    </figure>
-                    <figcaption class="textsum block text-center uppercase w-full pt-[1vw]">
-                      <span class="textsumf">{{ item.title }}</span>
-                      <span class="fontsubpub capitalize pt-[.5vw]">{{ item.month }}</span>
-                    </figcaption>
-                  </div>
-
-                    <div 
-                    v-show="hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0)" 
-                    class="sideim"
-                    :class="{ 'fade-in': hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0), 'fade-out': hoveredIndex !== item._key && !(isDefaultActive && chunkIndex === 0 && index === 0) }"
-                  >
-                    <figure class="deskimgl">
-                      <MediaImage
-                        :src="item.image.image"
-                        v-if="item.image.image"
-                      
-                      />
-                    </figure>
-                 
-
-
-                  <div class="footerstuff">
-                  <div
-                    class="textnewardesk teambio ttdesk  animate-hover"
-                  >
-                  <p v-if="item" class="uppercase">{{ item.title }}</p>
-                    <p class="yeartdesk mb-6 capitalize" v-if="item">
-                      {{ item.year }}
-                    </p>
-                  </div>
-
-                  <div v-if="item.content3" class="pt-[1vw] text-[1.3vw]">
-                    <Richtext
-                      class="contactinner"
-                      :blocks="item.content3"
-                    ></Richtext>
-                  </div>
-                  <div
-                    v-if="item.content4"
-                    class="w-full flex items-center text-center flex-col pt-[2vw] md:pt-[6vh] locationtext text-[1.3vw]"
-                  >
-                    <p class="loctext">Email</p>
-                    <div class="flex flex-col normal-case italic loctextlink">
-                      <Richtext
-                      class="contactinner teamemail"
-                      :blocks="item.content4"
-                    ></Richtext>
+                      <figure class="inner-image">
+                        <MediaImage :src="item.image.image" v-if="item.image.image" />
+                      </figure>
+                      <figcaption class="textsum block text-center uppercase w-full pt-[1vw]">
+                        <span class="textsumf">{{ item.title }}</span>
+                        <span class="fontsubpub capitalize pt-[.5vw]">{{ item.month }}</span>
+                      </figcaption>
                     </div>
-                  </div>
-                </div>
 
-                  </div>
+                    <div
+                      v-show="hoveredIndex === item._key"
+                      class="sideim"
+                      :class="{ 'fade-in': hoveredIndex === item._key, 'fade-out': hoveredIndex !== item._key }"
+                    >
+                      <figure class="deskimgl">
+                        <MediaImage :src="item.imageh.imageh" v-if="item.imageh.imageh" />
+                        <MediaImage :src="item.image.image" v-else-if="item.image.image" />
+                      </figure>
+
+                      <div class="footerstuff">
+                        <div class="textnewardesk teambio ttdesk animate-hover">
+                          <p v-if="item" class="uppercase">{{ item.title }}</p>
+                          <p class="yeartdesk mb-6 capitalize" v-if="item">{{ item.year }}</p>
+                        </div>
+
+                        <div v-if="item.content3" class="pt-[1vw] text-[1.3vw]">
+                          <Richtext class="contactinner teambios" :blocks="item.content3" />
+                        </div>
+                        <div v-if="item.content4" class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]">
+                          <p class="loctext uppercase">Email</p>
+                          <div class="flex flex-col normal-case italic loctextlink">
+                            <Richtext class="contactinner teamemail" :blocks="item.content4" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </figure>
               </div>
             </div>
           </div>
 
-          <!-- Text below each image row -->
-          <div class="spanning-text">TEAM WORK MAKES
-            THE DREAM WORK</div>
+          <div v-if="gridteam.titlec" class="spanning-text nomb">{{ gridteam.titlec }}</div>
         </div>
       </div>
     </div>
   </client-only>
 </template>
+
 
 
 
@@ -107,19 +89,23 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isMenuOpen: "isMenuOpen", 
-    }),
-    ...mapState(["activeProject", "activeTalent"]),
-    chunkedItems() {
-      return this.items.reduce((resultArray, item, index) => {
-        const chunkIndex = Math.floor(index / 2);
-        if (!resultArray[chunkIndex]) {
-          resultArray[chunkIndex] = [];
-        }
-        resultArray[chunkIndex].push(item);
-        return resultArray;
-      }, []);
-    },
+    isMenuOpen: "isMenuOpen", 
+  }),
+  ...mapState(["activeProject", "activeTalent", "gridteam"]),
+  chunkedItems() {
+    return this.items.reduce((resultArray, item, index) => {
+      const chunkIndex = Math.floor(index / 2);
+      if (!resultArray[chunkIndex]) {
+        resultArray[chunkIndex] = [];
+      }
+      resultArray[chunkIndex].push(item);
+      return resultArray;
+    }, []);
+  },
+  // Add a computed property for the first item's key
+  firstItemKey() {
+    return this.items.length > 0 ? this.items[0]._key : null;
+  }
   },
   mounted() {
     this.isDesktop = window.innerWidth > 768;
@@ -135,9 +121,13 @@ export default {
   },
   methods: {
     ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
-    handleResize() {
-      this.isDesktop = window.innerWidth > 768;
-    },
+  handleResize() {
+    this.isDesktop = window.innerWidth > 768;
+  },
+  clickHandler(key) {
+    // Check if clicked item is already active; if so, go back to the first item
+    this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
+  }
   },
 };
 </script>
@@ -161,7 +151,7 @@ export default {
 .inner-image{
   object-fit: cover;
     width: auto;
-    height: 19vw;
+    /* height: 19vw; */
     overflow: hidden;
     position: relative;
 }
@@ -249,15 +239,31 @@ export default {
   object-fit: cover;
     -o-object-position: center;
     object-position: center;
-    height: 63vh;
+    height: 68vh;
+    /* height: 37vw ; */
     padding: 1vw;
     padding-top: 4vw;
     overflow: hidden;
 }
 
+.image-row .item-wrapper:nth-child(1){
+  margin-right: 1.5vw;
+}
+
+.image-row .item-wrapper:nth-child(2){
+  margin-left: 1.5vw;
+}
+
+.deskimgl img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
 .footerstuff{
   padding: 1vw;
     padding-top: 1.5vw;
+    padding-top: 0;
     position: relative;
   /* top: 70vh; */
   font-size: medium;
@@ -283,7 +289,7 @@ export default {
 
 .teambio{
   padding-top: .5vw;
-  border-top: solid;
+  border-top: 0.9vw solid rgba(0, 0, 0, 0.327);
   border-top-width: 0.7px;
 }
 
@@ -326,6 +332,12 @@ export default {
   width: 15vw;
 }
 
+.chunk-container:last-child .spanning-text {
+  display: none !important;
+}
+
+
+
 .image-row:last-child {
   border-bottom: 0;
 }
@@ -334,8 +346,8 @@ export default {
   position: relative;
   margin-bottom: 20px;
   padding: 1vw;
-  padding: 3.5vw;
-  padding-bottom: 2vw;
+  padding: 2vw;
+  padding-bottom: 1vw;
   padding-top: 2vw;
 }
 
@@ -378,11 +390,21 @@ export default {
 
   .image-row {
     border-bottom: 0vw solid black;
-    border-bottom: 0.07vw solid black;
+    border-bottom: 0.07vw solid rgba(0, 0, 0, 0.137) !important;
+    width: 100%;
   }
+
+  .textsum {
+    padding-top: 5vw;
+}
 
   .image-item {
     padding: 3.5vw;
+    margin-bottom: 0px;
+  }
+
+  .image-grid{
+    padding: 10vw 3vw 2vw 3vw;
   }
 }
 </style>

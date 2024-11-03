@@ -27,9 +27,12 @@ export default {
 
   ],
   preview: {
-    select: {
-      title: 'title',
-    },
+    select: {},
+  prepare() {
+    return {
+      title: "Wedding Overview",
+    };
+      }
     // prepare(selection) {
     //   const { title } = selection;
     //   return {

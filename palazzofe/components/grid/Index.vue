@@ -4,11 +4,11 @@
       <!-- Images Section -->
       <div class="image-grid pt-[1vh]">
 
-        <div class="nodes contmbhead">
+        <!-- <div v-if="grid.title" class="nodes contmbhead">
           <p v-if="!isMenuOpen" class="headingspages text-center text-4xl uppercase">
-            Weddings
+            {{ grid.title }}
           </p> 
-        </div>
+        </div> -->
 
         <!-- Loop through the items array in chunks of two -->
         <div v-for="(chunk, chunkIndex) in chunkedItems" :key="chunkIndex" class="image-row ">
@@ -71,9 +71,21 @@
 <script>
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
+// import { groq } from "@nuxtjs/sanity";
 
 export default {
   props: ["items", "size"],
+
+  // async asyncData({ params, $sanity, store }) {
+  //   const query = groq`*[_type == "works"]{
+  //   title,
+  // } | order(_updatedAt desc)[0]`;
+
+  //   const works = await $sanity.fetch(query);
+
+  //   return { works };
+  // },
+
   data() {
     return {
       project: false,

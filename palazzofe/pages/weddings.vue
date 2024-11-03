@@ -7,7 +7,7 @@
         <HeaderComponent />
       </h1>
       <p class="navmbno link-animation yeart text-center text-4xl  uppercase ">
-        Weddings
+        {{ grid.title }}
       </p>
       <p
         class="navmbno yeart w-[5vw] text-center text-4xl  uppercase "

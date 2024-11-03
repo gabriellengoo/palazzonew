@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-
+ 
 
       <!-- Right Static Content -->
       <div class="right-content overflow-y-scroll flex-1 p-8">
@@ -46,9 +46,9 @@ export default {
   name: "IndexPage",
 
   async asyncData({ params, $sanity, store }) {
-    const query = groq`*[_type == "about"]{
+    const query = groq`*[_type == "team"]{
     title,
-    about,
+    titlec,
   } | order(_updatedAt desc)[0]`;
 
     const about = await $sanity.fetch(query);
@@ -179,7 +179,7 @@ a:hover {
     padding: 0 !important;
     padding-top: 4vh !important;
     padding-top: 6vh !important;
-    background-image: url("./static/BLUEbg.png");
+    background-image: url("./static/LeftBG.png");
   }
 }
 </style>

@@ -589,16 +589,19 @@ input[type="date"] {
 
 .bgcream {
   background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("./static/conimg.jpg");
-  display: flex;
-  clip-path: ellipse(51% 47% at 50% 100%);
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 90vh;
+    top: 10vw;
+    /* background-size: 100vw; */
+    background-image: url("./static/conimg.jpg");
+    display: flex;
+    clip-path: ellipse(55% 62% at 50% 100%);
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
 }
 
 .pagbg {

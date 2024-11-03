@@ -71,7 +71,8 @@ export const actions = {
   async nuxtServerInit({ commit }) {
     // weddings Grid
     const gridQuery = groq`*[_type == "works" ] 
-    {grid[] {
+
+    {title, grid[] {
     _key, double, spacer, 
     "video" : {"id" : video.asset->playbackId, 
     "aspect" : video.asset->data.aspect_ratio , 
@@ -218,8 +219,8 @@ _key, double, spacer,
 } | order(_updatedAt desc)[0]`
 
 
-const gridQuery5 = groq`*[_type == "team" ] 
-{
+const gridQuery5 = groq`*[_type == "team" ]
+{  titlec,
   grid7[] {
 _key, double, spacer, 
 "video" : {"id" : video.asset->playbackId, 

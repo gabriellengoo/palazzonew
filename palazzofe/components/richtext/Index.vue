@@ -47,6 +47,10 @@ export default {
 }
 </script>
 <style scoped>
+.teambios{
+  line-height: 1.7vw;
+}
+
 .lay1text div p:nth-child(1){
   font-size: 1.6vw;
   font-weight: bolder;

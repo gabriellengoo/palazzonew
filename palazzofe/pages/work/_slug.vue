@@ -36,28 +36,7 @@
               Weddings
             </p>
           </div>
-          <!-- mobile  -->
-          <!-- <button
-              class="nodes absolute top-0 left-[0] z-30 w-[50%] h-[60vh] previous"
-              :class="back ? '' : 'disabled'"
-              @click="prev"
-              ref="prev"
-              aria-label="Previous"
-            ></button>
-            <button
-              class="nodes absolute top-0 right-0 z-30 w-[50%] h-[60vh] next"
-              @click="next"
-              aria-label="Next"
-            ></button> -->
-
-          <!-- <header
-              class="numtextcont absolute text-day2mb top-0 right-0 p-2 text-xs block"
-            >
-              <span class="numgmb nodes" v-if="project.slider">
-                ( {{ String(index).padStart(1, "") }} of
-                {{ String(project.slider.length).padStart(1, "") }} )</span
-              >
-            </header> -->
+       
 
           <div class="nodes nodesgal">
             <section
@@ -109,12 +88,7 @@
                           :src="image.newDayImage.asset._ref"
                           class="new-day-image"
                         ></MediaImage>
-                        <!-- <img
-                         v-if="image.newDayImage"
-                          class="circletext"
-                          src="./static/CirclePink.png"
-                          alt="cirlce"
-                        /> -->
+                     
                    
                         <p class="new-day-text">
                           {{ image.newDayText }}
@@ -511,18 +485,7 @@ export default {
     closeGallery() {
       this.$store.commit("setGalleryState", false); // Set gallery state as closed
     },
-    getYouTubeEmbedUrl(youtubeUrl) {
-      // Extract YouTube video ID from the URL
-      const videoId = youtubeUrl.split("v=")[1];
-      // Generate the YouTube embed URL with autoplay, mute, loop, and hide controls on hover parameters
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&showinfo=0`;
-    },
-    getVimeoEmbedUrl(vimeoUrl) {
-      // Extract Vimeo video ID from the URL
-      const videoId = vimeoUrl.split("/").pop();
-      // Generate the Vimeo embed URL
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0`;
-    },
+  
     onSlideChange(swiper) {
       this.index = swiper.activeIndex + 1;
       this.realIndex = swiper.activeIndex;
@@ -553,10 +516,7 @@ export default {
         gsap.to(this.$refs["skew"], { x: "0%" });
       }
     },
-    handleVideoClick(videoId) {
-      // Call the playVideo() method of your MediaVideoPlayPlay component
-      this.$refs.mediaVideoPlayPlay.playVideo(videoId);
-    },
+ 
 
     showGalleryOnHover() {
       this.$refs.overlayGallery.classList.add("active");

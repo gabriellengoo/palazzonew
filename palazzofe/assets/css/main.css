@@ -227,6 +227,7 @@ html {
   font-size: 0.8vw;
   position: absolute;
   z-index: 99;
+  z-index: 40;
   display: flex !important;
   width: -moz-max-content;
   width: 100vw;

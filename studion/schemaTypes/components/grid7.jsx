@@ -31,11 +31,11 @@ export default {
             (!value && parent?.spacer) || (!value && parent?.video),
         },
       
-        // {
-        //   name: "imageh",
-        //   title: "Hover Image",
-        //   type: "image",
-        // },
+        {
+          name: "imageh",
+          title: "Hover Image",
+          type: "image",
+        },
 
        
 
