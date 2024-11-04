@@ -92,6 +92,10 @@ a:hover {
     font-size: 2.5vw !important;
     font-family: 'GT-Sectra-Book-Italic';
 }
+
+.aboutbot div p a{
+    font-size: 3vw !important;
+  }
 }
 /* a::before {
     content: '';

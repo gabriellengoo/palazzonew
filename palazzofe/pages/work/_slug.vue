@@ -15,7 +15,7 @@
           {{ project.title }}
         </p>
         <p
-          class="yeart navmbno opacity-0 text-center text-4xl uppercase"
+          class="yeart navmbno navop opacity-0 text-center text-4xl uppercase"
           v-if="project"
         >
           {{ project.year }}

@@ -6,7 +6,7 @@
     <TransitionComponent />
     <div>
       <!-- Header (optional) -->
-      <HeaderComponent />
+      <HeaderComponent /> 
       <div class="headera mbpad content flex w-full justify-between">
         <h1 class="md:w-[1.4vw] w-auto">
           <!-- events -->
@@ -18,7 +18,7 @@
           {{ project.title }}
         </p>
         <p
-          class="yeart navmbno opacity-0 text-center text-4xl uppercase"
+          class="yeart navmbno opacity-0 navop text-center text-4xl uppercase"
           v-if="project"
         >
           {{ project.year }}

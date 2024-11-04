@@ -53,7 +53,7 @@
         
         </div>
         <div class="email nodes ml-[5vw] text-left">
-          <Richtext class="richcont" :blocks="about.about"></Richtext>
+          <Richtext class="richcont aboutbot" :blocks="about.about"></Richtext>
         </div>
       </div>
 

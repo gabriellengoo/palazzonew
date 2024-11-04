@@ -17,6 +17,20 @@
   height: 0;
 }
 
+
+/* Add this to your styles */
+/* img {
+  transition: filter 0.5s ease; 
+  filter: blur(5px); 
+}
+
+img.loaded {
+  filter: none; 
+} */
+
+
+
+
 input::placeholder {
   color: rgba(0, 0, 0, 0.525) !important;
   /* line-height: 0; */
@@ -261,8 +275,9 @@ html {
   padding: 0.2vw;
   top: 0.15vh !important;
   position: relative;
-  transform: scale(0.7);
-  animation: scale-up 3s forwards;
+  animation: fade-in 2s forwards;
+  /* transform: scale(0.7); */
+  /* animation: scale-up 3s forwards; */
 }
 
 .rightimg {
@@ -287,9 +302,22 @@ html {
   top: 0.15vh !important;
   position: relative;
   line-height: normal;
-  transform: scale(0.7);
-  animation: scale-up 3s forwards;
+  /* transform: scale(0.7); */
+  /* animation: scale-up 3s forwards; */
+  opacity: 0; 
+  animation: fade-in 2s forwards;
 }
+
+@keyframes fade-in {
+  to {
+    opacity: 1; 
+  }
+}
+
+.navop{
+  opacity: 0 !important;
+}
+
 
 .fontsubpub {
   font-family: "NHaas";
@@ -349,6 +377,30 @@ html {
   top: 0.3vh;
 }
 
+
+.hover-effect { 
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.049); /* Adjust to desired color */
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.3s;
+}
+
+.linka img:hover {
+  mix-blend-mode: plus-lighter;
+  /* opacity: 2%; */
+}
+
+
+.inner-image:hover .hover-effect  {
+  width: 600px;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.08); /* Adjust hover effect color */
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.117) 10%, rgba(255, 255, 255, 0) 70%);
+}
 /* a .inner-image:hover {
   opacity: 70%;
   transition-duration: 1s;
@@ -400,26 +452,49 @@ a .inner-image {
 }
 
 .link-animationn {
-  transform: scale(0);
-  animation: scale-up 3s forwards;
+  transform: scale(.5);
+  animation: scale-up 1s forwards;
 }
 
 @keyframes scale-up {
   to {
-    transform: scale(1); /* End at original size */
+    transform: scale(1); 
   }
 }
 
 .link-animation {
-  transform: scale(0);
-  animation: scale-up 3s forwards;
+  transform: scale(.5);
+  animation: scale-up 1s forwards;
 }
 
 @keyframes scale-up {
   to {
-    transform: scale(1); /* End at original size */
+    transform: scale(1); 
   }
 }
+
+/* .link-animationn {
+  opacity: 0; 
+  animation: fade-in 1s forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1; 
+  }
+}
+
+.link-animation {
+  opacity: 0; 
+  animation: fade-in 1s forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1; 
+  }
+} */
+
 
 .textsum {
   transition-duration: 1s;

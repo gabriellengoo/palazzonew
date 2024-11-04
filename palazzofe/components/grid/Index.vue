@@ -3,6 +3,16 @@
     <div>
       <!-- Images Section -->
       <div class="image-grid pt-[1vh]">
+
+        <div class="nodes contmbhead">
+          <!-- <p>d</p> -->
+          <p
+          class="headingspages text-center text-4xl  uppercase "
+        >
+          Weddings
+        </p>
+        </div>
+
         <!-- Loop through the items array in chunks of two -->
         <div v-for="(chunk, chunkIndex) in chunkedItems" :key="chunkIndex" class="image-row">
           <div
@@ -68,6 +78,25 @@
 <script>
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
+import gsap from "gsap";
+import { onMounted, nextTick } from 'vue';
+
+// onMounted(async () => {
+//   await nextTick();
+//   const items = document.querySelectorAll(".image-item");
+//   console.log("Number of .image-item elements found:", items.length);
+  
+//   if (items.length > 0) {
+//     gsap.to(".image-item", {
+//       filter: "blur(5px)",
+//       duration: 2,
+//     });
+//   } else {
+//     console.warn(".image-item elements not found");
+//   }
+// });
+
+
 
 export default {
   props: ["items", "size"],
@@ -118,7 +147,14 @@ export default {
   mounted() {
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener("resize", this.handleResize);
+
+   
+
   },
+
+
+
+
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);
   },
@@ -135,6 +171,9 @@ export default {
   transform: scale(0); /* Start small */
   animation: scale-up 3s forwards; /* Animate scale */
 }
+
+
+
 
 .linka {
   /* transform: scale(2);
@@ -307,29 +346,7 @@ export default {
   /* opacity: 100%; */
 }
 
-.hover-effect {
-  position: absolute;
-  width: 0px;
-  height: 0px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.049); /* Adjust to desired color */
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background-color 0.3s;
-}
 
-.linka img:hover {
-  mix-blend-mode: plus-lighter;
-  /* opacity: 2%; */
-}
-
-
-.inner-image:hover .hover-effect  {
-  width: 600px;
-  height: 600px;
-  background: rgba(255, 255, 255, 0.08); /* Adjust hover effect color */
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.117) 10%, rgba(255, 255, 255, 0) 70%);
-}
 
 </style>
 

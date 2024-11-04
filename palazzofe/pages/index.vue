@@ -51,7 +51,7 @@
           {{ project.year }}
         </p> -->
         <p
-          class="headingspages opacity-0 text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
+          class="headingspages navop opacity-0 text-center text-4xl mb-6 uppercase pt-5 md:pt-2"
         >
           Weddings 
         </p>

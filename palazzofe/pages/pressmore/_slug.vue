@@ -734,13 +734,45 @@ export default {
 
 /* Additional responsive styling */
 @media (max-width: 768px) {
+
+  .headera {
+          flex-direction: column;
+        padding-bottom: 4vw !important;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        padding-top: 3.5vw;
+        z-index: 100;
+}
+
+.presshedindi {
+        font-family: "GT-Bold";
+        font-family: "MinionPro-Regular";
+        font-family: "RomainHeadlineTrial";
+        font-size: medium;
+        font-size: 3.5vw;
+        line-height: normal;
+        pointer-events: none;
+        position: relative;
+        position: absolute;
+        position: fixed;
+        top: .7vh !important;
+        width: 100%;
+        z-index: 100;
+        padding-bottom: 3.5vw !important;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        padding-top: 2vw;
+        z-index: 100;
+    }
+
   .layout {
-    padding-top: 3vh;
+    padding-top: 5vh;
     grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
   }
 
   .bgmobile {
     font-size: 3vw;
+    overflow-y: scroll
   }
 
   .layout-2 .col-1,

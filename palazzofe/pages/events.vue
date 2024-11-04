@@ -5,9 +5,9 @@
       <h1 class="navmb">
         <HeaderComponent />
       </h1>
-      <p class="navmbno yeart text-center text-4xl uppercase link-animation">Events</p>
+      <p class="navmbno yeart text-center text-4xl uppercase ">Events</p>
       <p class="navmbno yeart w-[5vw] text-center text-4xl uppercase"></p>
-      <p class="navmbno headingspages text-center text-4xl uppercase link-animation">
+      <p class="navmbno headingspages text-center text-4xl uppercase ">
         palazzo eventi
       </p>
       <h1 class="navmbno w-[2vw]"></h1>

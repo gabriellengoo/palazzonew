@@ -27,6 +27,7 @@
             class="item-wrapper"
             @mouseenter="hoveredIndex = item._key; isDefaultActive = false"
             @mouseleave="hoveredIndex = null; isDefaultActive = true"
+            @mousemove="onMouseMove"
           >
 
             <!-- Image Item -->
@@ -48,6 +49,7 @@
                     class="flex flex-col items-end h-full linkae link-animationn"
                   >
                     <figure class="inner-image">
+                      <div class="hover-effect" :style="hoverEffectStyle"></div>
                       <MediaImage
                         :src="item.image.image"
                         v-if="item.image.image"
@@ -59,29 +61,13 @@
                     </figcaption>
                   </NuxtLink>
 
-                  <!-- Conditionally show sideim div on hover with fade effect -->
-                  <!-- <div 
-                    v-show="hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0)" 
-                    class="sideim"
-                    :class="{ 'fade-in': hoveredIndex === item._key || (isDefaultActive && chunkIndex === 0 && index === 0), 'fade-out': hoveredIndex !== item._key && !(isDefaultActive && chunkIndex === 0 && index === 0) }"
-                  >
-                    <figure class="deskimgl">
-                      <MediaImage
-                        :src="item.imageh.imageh"
-                        v-if="item.imageh.imageh"
-                        :class="{
-                            portraitw: item.portrait,
-                            landscapew: !item.portrait,
-                          }"
-                      />
-                    </figure>
-                  </div> -->
-
+                 
+                  
                 </div>
               </figure>
             </div>
-            <!-- <span v-if="item.private" class="eventtype">Private</span>
-            <span v-if="!item.private" class="eventtype">Corporate</span> -->
+            
+
 
           </div>
         </div>
@@ -105,6 +91,10 @@ export default {
       isDesktop: false,
       hoveredIndex: null, // Track the hovered image item
       isDefaultActive: true, // Controls the visibility of the default image
+      hoverEffectStyle: {
+        left: '0px',
+        top: '0px',
+      }
     };
   },
   computed: {
@@ -137,6 +127,16 @@ export default {
     ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
     handleResize() {
       this.isDesktop = window.innerWidth > 768;
+    },
+    onMouseMove(event) {
+      const boundingRect = event.currentTarget.getBoundingClientRect();
+      const offsetX = event.clientX - boundingRect.left;
+      const offsetY = event.clientY - boundingRect.top;
+
+      this.hoverEffectStyle = {
+        left: `${offsetX}px`,
+        top: `${offsetY}px`,
+      };
     },
   },
 };
@@ -317,6 +317,11 @@ font-size: .8vw;
 .textsumf {
   font-family: "GT-Bold";
 }
+
+
+
+
+
 
 
 
