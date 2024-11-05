@@ -51,12 +51,17 @@ export default {
   line-height: 1.7vw;
 }
 
-.lay1text div p:nth-child(1){
+.lay1subtext{
   font-size: 1.6vw;
   font-weight: bolder;
   font-family: 'RomainTextTrial';
-  /* font-family: 'NHaas' !important; */
 }
+
+/* .lay1text div p:nth-child(1){
+  font-size: 1.6vw;
+  font-weight: bolder;
+  font-family: 'RomainTextTrial';
+} */
 
 .lay2text div p:nth-child(1){
   font-size: 1.6vw;
@@ -76,6 +81,11 @@ export default {
   font-family: 'NHaas' !important;
 }
 
+.lay3subtext{
+  font-size: 1.5vw !important;
+  font-family: 'NHaas' !important;
+}
+
 .laytextall p{
   font-size: 1.5vw;
   /* font-weight: bolder; */
@@ -92,6 +102,19 @@ export default {
   font-family: 'NHaas' !important;
 }
 
+.imtitle p{
+  font-size: 1vw !important;
+    font-family: 'RomainHeadlineTrial';
+    font-family: 'GT-Sectra-Book-Italic'!important;
+    text-decoration: underline;
+}
+
+.imtitle2 p:last-child{
+  font-size: 1vw !important;
+    font-family: 'RomainHeadlineTrial';
+    font-family: 'GT-Sectra-Book-Italic'!important;
+    text-decoration: underline;
+}
 
 .underimglay3 p{
   font-size: .9vw;
@@ -112,14 +135,20 @@ export default {
 
 .underimglay1{
   padding-top: 0vw !important;
+  padding-bottom: 0vw !important;
 }
+
+.imtitle p{
+  padding-bottom: 0vw !important;
+}
+
 .contactinnerpressslug div p{
   padding-bottom: 0.5vw !important;
   line-height: normal;
 }
 
 .contactinnerpressslug p{
-  padding-bottom: 0.5vw !important;
+  padding-bottom: 0.5vw;
   line-height: normal;
 }
 
@@ -154,9 +183,11 @@ div p{
 
 @media only screen and (max-width: 768px) {
 
+  .imtitle2 p:last-child{
+    font-size: 3vw !important;
+  }
 
-
-  .lay1text div p:nth-child(1){
+  .lay1subtext{
   font-size: 4vw;
   font-weight: bolder;
 }

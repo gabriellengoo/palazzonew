@@ -51,9 +51,9 @@
         >
           <div class="layout layout-1" v-if="section.layout1 === true">
             <div class="column col-1 ">
-              <a target="_blank" class="toplink pop-in pop-in-1" :href="section.locationlink">
-                <p class="pb-[2vw] ">{{ section.location }}</p>
-              </a>
+              <!-- <a target="_blank" class="toplink pop-in pop-in-1" :href="section.locationlink"> -->
+                <p class="toplink p-[.5vw] pb-[2vw] ">{{ section.location }}</p>
+              <!-- </a> -->
               <div>
                 <img
                   class="imglay1 p-[.5vw] pop-in pop-in-5"
@@ -67,7 +67,7 @@
                   :blocks="section.column0Text"
                 ></Richtext>
               </div>
-              <div class="flex pop-in pop-in-2">
+              <div class="flex pop-in pop-in-2 w-[39vw]">
                 <Richtext
                   class="contactinnerpressslug p-[.5vw]"
                   :blocks="section.column1Text"
@@ -81,14 +81,14 @@
 
             <div class="column col-2 pop-in pop-in-2">
               <Richtext
-                class="contactinnerpressslug p-[.5vw]"
+                class="contactinnerpressslug"
                 :blocks="section.column3Text"
               ></Richtext>
             </div>
 
             <div class="column col-3  pt-[3vw]">
               <Richtext
-                class="contactinnerpressslug pop-in pop-in-3 underimglay1 p-[.5vw] w-[85%]"
+                class="contactinnerpressslug imtitle pop-in pop-in-3 underimglay1 p-[.5vw] w-[85%]"
                 :blocks="section.column4Text"
               ></Richtext>
               <div class="">
@@ -99,17 +99,21 @@
                 />
               </div>
               <Richtext
-                class="contactinnerpressslug underimglay1 p-[.5vw]"
+                class="contactinnerpressslug imtitle2 underimglay1 p-[.5vw]"
                 :blocks="section.column5Text"
               ></Richtext>
             </div>
 
             <div class="column col-4 pop-in pop-in-4 pt-[10vw]">
               <div class="flex">
-                <Richtext
-                  class="contactinnerpressslug lay1text p-[.5vw]"
+                <div class="flex flex-col"><Richtext
+                  class="contactinnerpressslug lay1subtext p-[.5vw]"
                   :blocks="section.column6Text"
                 ></Richtext>
+                <Richtext
+                  class="contactinnerpressslug  p-[.5vw]"
+                  :blocks="section.column7Text"
+                ></Richtext></div>
                 <div class="datelay2 nomb" v-if="section.layout1date">
                   <Richtext
                     v-if="section.layout1date"
@@ -123,17 +127,23 @@
             <div class="column col-5 pop-in pop-in-5"></div>
           </div>
 
+
           <div class="otherlays" v-if="section.layout1 === false">
             <!-- Layout 2 -->
             <div class="layout layout-2" v-if="section.layout2 === true">
               <div class="column col-1 pop-in pop-in-4">
-                <a class="toplink" :href="section.locationlink">
-                  <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-                </a>
+                <!-- <a class="toplink" :href="section.locationlink"> -->
+                  <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                <!-- </a> -->
                 <Richtext
                   v-if="section.layout2Column1Text"
-                  class="contactinnerpressslug p-[.5vw] pop-in-4 lay1text"
+                  class="contactinnerpressslug lay1subtext p-[.5vw] pop-in-4 lay1text"
                   :blocks="section.layout2Column1Text"
+                ></Richtext>
+                <Richtext
+                  v-if="section.layout2Column11Text"
+                  class="contactinnerpressslug  p-[.5vw] pop-in-4 lay1text"
+                  :blocks="section.layout2Column11Text"
                 ></Richtext>
               </div>
               <div class="column col-2 col-3 pop-in pop-in-2">
@@ -142,35 +152,49 @@
                   :src="section.layout2Image2"
                   alt="Main Image"
                 />
-                <div class="flex">
-                  <div class="contactinnerpressslug p-[.5vw] w-[96vw]">
+                <div class="flex w-[40vw]">
+                  <!-- <div class="contactinnerpressslug p-[.5vw] w-[96vw]"> -->
                     <Richtext
                       v-if="section.layout2Column2Text"
                       :blocks="section.layout2Column2Text"
+                      class="contactinnerpressslug p-[.5vw] w-[83vw]"
                     ></Richtext>
-                  </div>
+                  <!-- </div> -->
                   <Richtext
                     v-if="section.layout2Column3Text"
-                    class="contactinnerpressslug p-[.5vw] colmb"
+                    class="contactinnerpressslug p-[.5vw] colmb w-[86vw]"
                     :blocks="section.layout2Column3Text"
                   ></Richtext>
                 </div>
               </div>
               <div class="column col-4 pop-in pop-in-4">
+               <div class="flex flex-col">
+                <p class="imagetext p-[.5vw] pb-0">IMAGE</p>
                 <Richtext
                   v-if="section.layout2Column4Text"
-                  class="contactinnerpressslug p-[.5vw] underimglay2 colmb"
+                  class="contactinnerpressslug p-[.5vw] pt-0 imtitle2 colmb"
                   :blocks="section.layout2Column4Text"
                 ></Richtext>
+                <Richtext
+                  v-if="section.layout2Column44Text"
+                  class="contactinnerpressslug p-[.5vw] colmb"
+                  :blocks="section.layout2Column44Text"
+                ></Richtext>
+               </div>
                 <img
                   class="imglay1 p-[.5vw]"
                   :src="section.layout2Column4Image"
                   v-if="section.layout2Column4Image"
                   alt="Main Image"
                 />
-                <a class="toplink text-center" :href="section.locationlink">
-                  <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-                </a>
+                <!-- <a class="toplink text-center" :href="section.locationlink"> -->
+                  <!-- <p class="">{{ section.location }}</p> -->
+                <!-- </a> -->
+                <Richtext
+                  v-if="section.layout2Column444Text"
+                  class="toplink p-[.5vw] "
+                  :blocks="section.layout2Column444Text"
+                ></Richtext>
                 <img
                   class="imglay1 p-[.5vw]"
                   :src="section.layout2Column44Image"
@@ -206,9 +230,9 @@
             <!-- Layout 3 -->
             <div class="layout layout-3" v-if="section.layout3 === true">
               <div class="column col-1 pop-in pop-in-4">
-                <a class="toplink" :href="section.locationlink">
-                  <p class="p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-                </a>
+                <!-- <a class="toplink" :href="section.locationlink"> -->
+                  <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                <!-- </a> -->
                 <Richtext
                   v-if="section.layout3Column1Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -222,12 +246,17 @@
                   class="contactinnerpressslug p-[.5vw]"
                   :blocks="section.layout3Column2Text"
                 ></Richtext>
-                <a
+                <Richtext
+                  v-if="section.layout3Column23Text"
+                  class="contactinnerpressslug toplink p-[.5vw]"
+                  :blocks="section.layout3Column23Text"
+                ></Richtext>
+                <!-- <a
                   class="toplink flex justify-center items-center"
                   :href="section.locationlink"
-                >
-                  <p class="p-[.5vw] text-center">{{ section.location }}</p>
-                </a>
+                > -->
+                  <!-- <p class="toplink p-[.5vw] text-center">{{ section.location }}</p> -->
+                <!-- </a> -->
                 <img
                   class="imglay1 p-[.5vw]"
                   :src="section.layout3Column2Image"
@@ -257,19 +286,29 @@
                   </div>
                 </div>
                 <div class="flex">
-                  <Richtext
-                    v-if="section.layout3Column3Text"
-                    class="contactinnerpressslug underimglay3 pop-in pop-in-4 p-[.5vw] w-[60vw] lay3text"
-                    :blocks="section.layout3Column3Text"
-                  ></Richtext>
+                 <div class="flex flex-col w-[87vw]">
+                <Richtext
+                  v-if="section.layout3Column3Text"
+                  class="contactinnerpressslug lay3subtext p-[.5vw] pt-0 colmb pop-in pop-in-4"
+                  :blocks="section.layout3Column3Text"
+                ></Richtext>
+                <p class="imagetext p-[.5vw] pb-0">IMAGE</p>
+                <Richtext
+                  v-if="section.layout3Column33Text"
+                  class="contactinnerpressslug p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
+                  :blocks="section.layout3Column33Text"
+                ></Richtext>
+                 </div>
+               
+
                   <Richtext
                     v-if="section.layout3Column4Text"
-                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] w-[100%]"
+                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] "
                     :blocks="section.layout3Column4Text"
                   ></Richtext>
                   <Richtext
                     v-if="section.layout3Column5Text"
-                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 w-[100%]"
+                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 "
                     :blocks="section.layout3Column5Text"
                   ></Richtext>
                 </div>
@@ -346,12 +385,16 @@ export default {
         column4Text,
         column5Text,
         column6Text,
+        column7Text,
         layout1date,
         layout2Column1Text,
+        layout2Column11Text,
         "layout2Image2": layout2Image2.asset->url,
         layout2Column2Text,
         layout2Column3Text,
         layout2Column4Text,
+        layout2Column44Text,
+        layout2Column444Text,
         "layout2Column4Image": layout2Column4Image.asset->url,
         "layout2Column44Image": layout2Column44Image.asset->url,
         "layout2Column5Image": layout2Column5Image.asset->url,
@@ -361,8 +404,10 @@ export default {
         layout3Column2Text,
         "layout3Column2Image": layout3Column2Image.asset->url,
         layout3Column22Text,
+        layout3Column23Text,
         "layout3Image3_5": layout3Image3_5.asset->url,
         layout3Column3Text,
+        layout3Column33Text,
         layout3Column4Text,
         layout3Column5Text,
         layout3date,
@@ -467,6 +512,11 @@ export default {
 </script>
 
 <style scoped>
+.imagetext{
+    font-size: .9vw !important;
+    font-family: 'NHaas' !important;
+}
+
 .pop-in {
   animation: popIn 0.5s forwards;
   opacity: 0;
@@ -599,6 +649,9 @@ export default {
   grid-template-columns: repeat(5, 1fr); /* Five equal columns */
   gap: 10px; /* Space between columns */
   gap: 1.5vw;
+  width: 98.4vw;
+  height: 100vh;
+
 }
 
 .layout-1 .col-1 {
@@ -663,9 +716,9 @@ export default {
   transform: rotateZ(270deg);
   font-family: "NHaas" !important;
 
-  top: -6.3vw;
+  top: -5.9vw;
     left: 14.1vw;
-  font-size: 1vw;
+  font-size: .9vw;
   position: absolute;
   left: 13.5vw;
   text-transform: uppercase;
@@ -676,11 +729,11 @@ export default {
 }
 
 .datein2 {
-  top: 3.7vw;
-  font-size: 1vw;
+  top: 3.3vw;
+  font-size: .9vw;
   position: absolute;
   left: 13.5vw;
-  left: 14.1vw;
+  left: 14.5vw;
   text-transform: uppercase;
   height: -moz-max-content;
   height: max-content;
@@ -692,15 +745,15 @@ export default {
   top: 3.8vw;
   font-size: 1vw;
   position: absolute;
-  left: 54.2vw;
+  left: 54.6vw;
   text-transform: uppercase;
   height: -moz-max-content;
   height: max-content;
   transform: rotateZ(270deg);
   font-family: "NHaas" !important;
 
-  top: 3.7vw;
-  font-size: 1vw;
+  top: 3.3vw;
+  font-size: .9vw;
   position: absolute;
   /* left: 13.5vw; */
   text-transform: uppercase;

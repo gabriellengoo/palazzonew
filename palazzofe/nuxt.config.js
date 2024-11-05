@@ -49,8 +49,6 @@ export default {
     { src: '@plugins/masonry', mode: 'client' },
     { src: '@plugins/lazy', mode: 'client' },
     { src: '@plugins/slider', mode: 'client' },
-    // { src: "~/plugins/imageBlur.js", mode: "client" },
-    // '~/plugins/imageBlur.client.js',
     '~/plugins/preview.client.js',
   ],
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -69,12 +67,6 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['vue-scrollto/nuxt', "nuxt-gsap-module"],
 
-  gsap: {
-    extraPlugins: {
-      scrollTrigger: true,
-    },
-  },
-  
   sanity: {
     // module options
     projectId: '0i1cdi6a',

@@ -106,14 +106,14 @@ export default {
             // Common fields
             {
               name: 'location',
-              title: 'Top Link Text',
+              title: 'Small Publication, Title',
               type: 'string',
             },
-            {
-              name: 'locationlink',
-              title: 'Top Link URL',
-              type: 'string',
-            },
+            // {
+            //   name: 'locationlink',
+            //   title: 'Top Link URL',
+            //   type: 'string',
+            // },
             
 
             // Layout 1 Fields (Visible only if Layout 1 is active)
@@ -122,19 +122,19 @@ export default {
            
             {
               name: 'mainImage',
-              title: 'Layout 1 Publication Logo (png) (2 Columns)',
+              title: 'Layout 1, Large Publication. Logo (png only)',
               type: 'image',
               hidden: ({parent}) => !parent?.layout1,
             },
             {
               name: 'column4Image',
-              title: 'Layout 1 Column 4 Image',
+              title: 'Layout 1, Column 4. Image',
               type: 'image',
               hidden: ({parent}) => !parent?.layout1,
             },
             {
               name: 'column0Text',
-              title: 'Subtext (below main image)',
+              title: 'Subtitle',
               type: 'array',
               of: [blockConfig],
               // validation: (Rule) =>
@@ -149,7 +149,7 @@ export default {
             },
             {
               name: 'column1Text',
-              title: 'Layout 1 Column 1 Text (below main image)',
+              title: 'Layout 1, Column 1. Bodycopy',
               type: 'array',
               of: [blockConfig],
               
@@ -157,21 +157,21 @@ export default {
             },
             {
               name: 'column2Text',
-              title: 'Layout 1 Column 2 Text',
+              title: 'Layout 1, Column 2. Bodycopy',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout1,
             },
             {
               name: 'column3Text',
-              title: 'Layout 1 Column 3 Text',
+              title: 'Layout 1, Column 3. Bodycopy',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout1,
             },
             {
               name: 'column4Text',
-              title: 'Layout 1 Column 4 Text',
+              title: 'Layout 1, Column 4. Image Title',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout1,
@@ -179,14 +179,21 @@ export default {
 
             {
               name: 'column5Text',
-              title: 'Layout 1 Column 5 Text',
+              title: 'Layout 1, Column 5. Image description',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout1,
             },
             {
               name: 'column6Text',
-              title: 'Layout 1 Column 6 Text',
+              title: 'Layout 1, Column 6. Subtitle',
+              type: 'array',
+              of: [blockConfig],
+              hidden: ({parent}) => !parent?.layout1,
+            },
+            {
+              name: 'column7Text',
+              title: 'Layout 1, Column 6. Bodycopy',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout1,
@@ -204,19 +211,19 @@ export default {
             // Layout 2 Fields (Visible only if Layout 2 is active)
             {
               name: 'layout2Image2',
-              title: 'Layout 2 - Publication Logo (png) Column 2-3 Image',
+              title: 'Layout 2, Large Image.',
               type: 'image',
               hidden: ({parent}) => !parent?.layout2,
             },
             {
               name: 'layout2Column4Image',
-              title: 'Layout 2 - Column 4 Image',
+              title: 'Layout 2, Pressed Flower. (png only)',
               type: 'image',
               hidden: ({parent}) => !parent?.layout2,
             },
             {
               name: 'layout2Column44Image',
-              title: 'Layout 2 - Column 4 Image',
+              title: 'Layout 2, Small Publication Logo (PNG only)',
               type: 'image',
               hidden: ({parent}) => !parent?.layout2,
             },
@@ -228,36 +235,49 @@ export default {
             },
             {
               name: 'layout2Column1Text',
-              title: 'Layout 2 - Column 1 Text',
+              title: 'Subtitle',
               type: 'array',
               of: [blockConfig],
-              // validation: (Rule) =>
-              //   Rule.custom(blocks => {
-              //     const text = blocks
-              //       .map(block => block.children.map(child => child.text).join(''))
-              //       .join(' ');
-              //     const wordCount = text.split(/\s+/).length;
-              //     return wordCount <= 600 || 'Text cannot exceed 600 words.';
-              //   }),
+              hidden: ({parent}) => !parent?.layout2,
+            },
+            {
+              name: 'layout2Column11Text',
+              title: 'Layout 2, Column 1. Bodycopy',
+              type: 'array',
+              of: [blockConfig],
               hidden: ({parent}) => !parent?.layout2,
             },
             {
               name: 'layout2Column2Text',
-              title: 'Layout 2 - Column 2 Text',
+              title: 'Layout 2, Column 2. Bodycopy',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout2,
             },
             {
               name: 'layout2Column3Text',
-              title: 'Layout 2 - Column 3 Text',
+              title: 'Layout 2, Column 3. Bodycopy',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout2,
             },
             {
               name: 'layout2Column4Text',
-              title: 'Layout 2 - Column 4 Text',
+              title: 'Layout 2, Column 4. Image Title',
+              type: 'array',
+              of: [blockConfig],
+              hidden: ({parent}) => !parent?.layout2,
+            },
+            {
+              name: 'layout2Column44Text',
+              title: 'Layout 2, Column 4. Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+              hidden: ({parent}) => !parent?.layout2,
+            },
+            {
+              name: 'layout2Column444Text',
+              title: 'Layout 2, Subtitle',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout2,
@@ -265,7 +285,7 @@ export default {
 
             {
               name: 'layout2Column5Text',
-              title: 'Layout 2 - Column 5 Text',
+              title: 'Layout 2, Column 5. Bodycopy',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout2,
@@ -281,19 +301,19 @@ export default {
             // Layout 3 Fields (Visible only if Layout 3 is active)
             {
               name: 'layout3Image3_5',
-              title: 'Layout 3 - Publication Logo (png) Column 3-5 Image',
+              title: 'Layout 3, Large Image',
               type: 'image',
               hidden: ({parent}) => !parent?.layout3,
             },
             {
               name: 'layout3Column2Image',
-              title: 'Layout 3 - Column 2 Image',
+              title: 'Layout 3, Small Publication Logo (PNG only)',
               type: 'image',
               hidden: ({parent}) => !parent?.layout3,
             },
             {
               name: 'layout3Column1Text',
-              title: 'Layout 3 - Column 1 Text',
+              title: 'Layout 3, Column 1. Bodycopy',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
@@ -301,7 +321,14 @@ export default {
 
             {
               name: 'layout3Column2Text',
-              title: 'Layout 3 - Column 2 Text',
+              title: 'Layout 3, Column 2. Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+              hidden: ({parent}) => !parent?.layout3,
+            },
+            {
+              name: 'layout3Column23Text',
+              title: 'Small Publication Subtitle',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
@@ -309,7 +336,7 @@ export default {
 
             {
               name: 'layout3Column22Text',
-              title: 'Layout 3 - Column 2 Text 2',
+              title: 'Layout 3, Column 2. Bodycopy 2',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
@@ -317,21 +344,28 @@ export default {
 
             {
               name: 'layout3Column3Text',
-              title: 'Layout 3 - Column 3 Text',
+              title: 'Layout 3, Column 3. Subtitle',
+              type: 'array',
+              of: [blockConfig],
+              hidden: ({parent}) => !parent?.layout3,
+            },
+            {
+              name: 'layout3Column33Text',
+              title: 'Layout 3, Column 3. Image description.',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
             },
             {
               name: 'layout3Column4Text',
-              title: 'Layout 3 - Column 4 Text',
+              title: 'Layout 3, Column 4. Bodycopy',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
             },
             {
               name: 'layout3Column5Text',
-              title: 'Layout 3 - Column 5 Text',
+              title: 'Layout 3, Column 5. Bodycopy',
               type: 'array',
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,

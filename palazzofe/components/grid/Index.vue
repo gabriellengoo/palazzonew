@@ -78,25 +78,6 @@
 <script>
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
-import gsap from "gsap";
-import { onMounted, nextTick } from 'vue';
-
-// onMounted(async () => {
-//   await nextTick();
-//   const items = document.querySelectorAll(".image-item");
-//   console.log("Number of .image-item elements found:", items.length);
-  
-//   if (items.length > 0) {
-//     gsap.to(".image-item", {
-//       filter: "blur(5px)",
-//       duration: 2,
-//     });
-//   } else {
-//     console.warn(".image-item elements not found");
-//   }
-// });
-
-
 
 export default {
   props: ["items", "size"],
@@ -147,14 +128,7 @@ export default {
   mounted() {
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener("resize", this.handleResize);
-
-   
-
   },
-
-
-
-
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);
   },
@@ -171,9 +145,6 @@ export default {
   transform: scale(0); /* Start small */
   animation: scale-up 3s forwards; /* Animate scale */
 }
-
-
-
 
 .linka {
   /* transform: scale(2);
