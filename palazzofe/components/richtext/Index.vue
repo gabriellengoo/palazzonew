@@ -55,6 +55,7 @@ export default {
   font-size: 1.6vw;
   font-weight: bolder;
   font-family: 'RomainTextTrial';
+  line-height: normal;
 }
 
 /* .lay1text div p:nth-child(1){
@@ -84,6 +85,7 @@ export default {
 .lay3subtext{
   font-size: 1.5vw !important;
   font-family: 'NHaas' !important;
+  line-height: normal;
 }
 
 .laytextall p{
@@ -95,6 +97,7 @@ export default {
   justify-content: center;
     display: flex;
     text-align: center;
+    line-height: normal;
 }
 
 .underimglay1 p{

@@ -4,6 +4,7 @@ export const state = () => ({
   gridpub: [],
   gridaw: [],
   gridteam: [],
+  gridpubindi: [],
   title: false,
   activeProject: false,
   activeTalent: false,
@@ -28,6 +29,9 @@ export const mutations = {
   },
   SET_GRIDTEAM(state, grid5) {
     state.gridteam = grid5
+  },
+  SET_GRIDPRESS(state, gridpress) {
+    state.gridpubindi = gridpress
   },
   SET_TITLE(state, title) {
     state.title = title
@@ -69,6 +73,20 @@ import { groq } from '@nuxtjs/sanity'
 
 export const actions = {
   async nuxtServerInit({ commit }) {
+
+
+    const gridQuerypress = groq`*[_type == "pressindi" ] {
+
+   "slider": slider[]{
+    _key,
+    "images": images[]{
+      _key,
+      "image": image.asset->url,
+    }
+  },
+} `
+    
+
     // weddings Grid
     const gridQuery = groq`*[_type == "works" ] 
 
@@ -362,6 +380,12 @@ _key, double, spacer,
     const gridteam = await this.$sanity.fetch(gridQuery5)
     // console.log('Grid2 Query Result:', grid2)
     commit('SET_GRIDTEAM', gridteam)
+    // commit('SET_GRID3', grid2.grid3);
+
+
+    const gridpubindi = await this.$sanity.fetch(gridQuerypress)
+    // console.log('Grid2 Query Result:', grid2)
+    commit('SET_GRIDTEAM', gridpubindi)
     // commit('SET_GRID3', grid2.grid3);
 
   

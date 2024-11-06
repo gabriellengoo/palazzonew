@@ -8,7 +8,6 @@
             ref="lottieAnimation"
             class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
           ></div>
-          <!-- <SvgClose class="svgmb hover:cursor-pointer" /> -->
         </a>
       </h1>
       <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
@@ -49,11 +48,20 @@
             (section.layout3 && currentLayoutIndex === index)
           "
         >
+
           <div class="layout layout-1" v-if="section.layout1 === true">
+
+            <div class="top-right-element" v-if="section.layout1date">
+                    <Richtext
+                      v-if="section.layout1date"
+                      class="contactinnerpressslug "
+                      :blocks="section.layout1date"
+                    ></Richtext>
+                  </div>
+
+
             <div class="column col-1 ">
-              <!-- <a target="_blank" class="toplink pop-in pop-in-1" :href="section.locationlink"> -->
                 <p class="toplink p-[.5vw] pb-[2vw] ">{{ section.location }}</p>
-              <!-- </a> -->
               <div>
                 <img
                   class="imglay1 p-[.5vw] pop-in pop-in-5"
@@ -114,13 +122,7 @@
                   class="contactinnerpressslug  p-[.5vw]"
                   :blocks="section.column7Text"
                 ></Richtext></div>
-                <div class="datelay2 nomb" v-if="section.layout1date">
-                  <Richtext
-                    v-if="section.layout1date"
-                    class="contactinnerpressslug p-[.5vw] datein1"
-                    :blocks="section.layout1date"
-                  ></Richtext>
-                </div>
+         
               </div>
             </div>
 
@@ -131,10 +133,19 @@
           <div class="otherlays" v-if="section.layout1 === false">
             <!-- Layout 2 -->
             <div class="layout layout-2" v-if="section.layout2 === true">
+              
+
+              <div class="top-right-element" v-if="section.layout2date">
+                    <Richtext
+                      v-if="section.layout2date"
+                      class="contactinnerpressslug "
+                      :blocks="section.layout2date"
+                    ></Richtext>
+                  </div>
+
+
               <div class="column col-1 pop-in pop-in-4">
-                <!-- <a class="toplink" :href="section.locationlink"> -->
                   <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-                <!-- </a> -->
                 <Richtext
                   v-if="section.layout2Column1Text"
                   class="contactinnerpressslug lay1subtext p-[.5vw] pop-in-4 lay1text"
@@ -153,13 +164,11 @@
                   alt="Main Image"
                 />
                 <div class="flex w-[40vw]">
-                  <!-- <div class="contactinnerpressslug p-[.5vw] w-[96vw]"> -->
                     <Richtext
                       v-if="section.layout2Column2Text"
                       :blocks="section.layout2Column2Text"
                       class="contactinnerpressslug p-[.5vw] w-[83vw]"
                     ></Richtext>
-                  <!-- </div> -->
                   <Richtext
                     v-if="section.layout2Column3Text"
                     class="contactinnerpressslug p-[.5vw] colmb w-[86vw]"
@@ -169,7 +178,7 @@
               </div>
               <div class="column col-4 pop-in pop-in-4">
                <div class="flex flex-col">
-                <p class="imagetext p-[.5vw] pb-0">IMAGE</p>
+                <p  v-if="section.layout2Column4Text" class="imagetext p-[.5vw] pb-0">IMAGE</p>
                 <Richtext
                   v-if="section.layout2Column4Text"
                   class="contactinnerpressslug p-[.5vw] pt-0 imtitle2 colmb"
@@ -187,9 +196,7 @@
                   v-if="section.layout2Column4Image"
                   alt="Main Image"
                 />
-                <!-- <a class="toplink text-center" :href="section.locationlink"> -->
-                  <!-- <p class="">{{ section.location }}</p> -->
-                <!-- </a> -->
+             
                 <Richtext
                   v-if="section.layout2Column444Text"
                   class="toplink p-[.5vw] "
@@ -202,7 +209,6 @@
                   alt="Main Image"
                 />
               </div>
-              <!-- pr-[1vw] -->
               <div class="column col-5  pop-in pop-in-3">
                 <div class="flex">
                   <img
@@ -211,13 +217,7 @@
                     v-if="section.layout2Column5Image"
                     alt="Main Image"
                   />
-                  <div class="datelay2 nomb" v-if="section.layout2date">
-                    <Richtext
-                      v-if="section.layout2date"
-                      class="contactinnerpressslug p-[.5vw] datein2"
-                      :blocks="section.layout2date"
-                    ></Richtext>
-                  </div>
+                
                 </div>
                 <Richtext
                   v-if="section.layout2Column5Text"
@@ -228,11 +228,19 @@
             </div>
 
             <!-- Layout 3 -->
+           
+
             <div class="layout layout-3" v-if="section.layout3 === true">
+              <div class="top-right-element" v-if="section.layout3date">
+                    <Richtext
+                      v-if="section.layout3date"
+                      class="contactinnerpressslug "
+                      :blocks="section.layout3date"
+                    ></Richtext>
+                  </div>
+
               <div class="column col-1 pop-in pop-in-4">
-                <!-- <a class="toplink" :href="section.locationlink"> -->
                   <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-                <!-- </a> -->
                 <Richtext
                   v-if="section.layout3Column1Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -251,12 +259,7 @@
                   class="contactinnerpressslug toplink p-[.5vw]"
                   :blocks="section.layout3Column23Text"
                 ></Richtext>
-                <!-- <a
-                  class="toplink flex justify-center items-center"
-                  :href="section.locationlink"
-                > -->
-                  <!-- <p class="toplink p-[.5vw] text-center">{{ section.location }}</p> -->
-                <!-- </a> -->
+          
                 <img
                   class="imglay1 p-[.5vw]"
                   :src="section.layout3Column2Image"
@@ -277,22 +280,18 @@
                     v-if="section.layout3Image3_5"
                     alt="Main Image"
                   />
-                  <div class="datelay2 nomb" v-if="section.layout3date">
-                    <Richtext
-                      v-if="section.layout3date"
-                      class="contactinnerpressslug p-[.5vw] datein3"
-                      :blocks="section.layout3date"
-                    ></Richtext>
-                  </div>
+               
                 </div>
+              
+
                 <div class="flex">
                  <div class="flex flex-col w-[87vw]">
                 <Richtext
                   v-if="section.layout3Column3Text"
-                  class="contactinnerpressslug lay3subtext p-[.5vw] pt-0 colmb pop-in pop-in-4"
+                  class=" lay3subtext p-[.5vw] pt-0 colmb pop-in pop-in-4"
                   :blocks="section.layout3Column3Text"
                 ></Richtext>
-                <p class="imagetext p-[.5vw] pb-0">IMAGE</p>
+                <p  v-if="section.layout3Column33Text" class="imagetext p-[.5vw] pb-0">IMAGE</p>
                 <Richtext
                   v-if="section.layout3Column33Text"
                   class="contactinnerpressslug p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
@@ -303,38 +302,53 @@
 
                   <Richtext
                     v-if="section.layout3Column4Text"
-                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] "
+                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0] "
                     :blocks="section.layout3Column4Text"
                   ></Richtext>
                   <Richtext
                     v-if="section.layout3Column5Text"
-                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 "
+                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 pt-[0]"
                     :blocks="section.layout3Column5Text"
                   ></Richtext>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </transition>
 
-      <!-- Next Button -->
-      <!-- <button
-        @click="nextLayout"
-        class="next-button"
-        :disabled="currentLayoutIndex >= totalLayouts - 1"
+
+       <!-- Display the gridpress content here -->
+       <div  class="gridpress-container">
+  <!-- <div v-for="(gridItem, index) in project.gridpress" :key="index" class="grid-item">
+    <img class="imglay1 p-[.5vw]" :src="gridItem.imageUrl" alt="Grid Image" />
+  </div> -->
+  <!-- <img
+                  class="imglay1 p-[.5vw]"
+                  :src="section.layout3Column2Image"
+                  alt="Main Image"
+                /> -->
+  <!-- <img :src="gridItem.imageUrl" alt="Grid Image" /> -->
+  <!-- <div v-if="gridpubindi.gridpress" class="">
+            <Gridpressindi class="" :items="gridpubindi.gridpress" size="small"></Gridpressindi>
+          </div> -->
+          <!-- v-if="project && project.slider && project.slider.length
+           :key="sliderItem._key" -->
+
+          <div>
+      <div
+        v-for="(slider, index) in project.slider"
+        :key="index"
+        class="slider-item"
       >
-        Next Page
-      </button> -->
-      <!-- Next/Previous Button -->
-<!-- Navigation Buttons -->
-<!-- <button
-  v-if="currentLayoutIndex > 0"
-  @click="prevLayout"
-  class="prev-button"
->
-  Previous Page
-</button> -->
+        <img :src="slider.images.image" alt="Slider Image" />
+      </div>
+    </div>
+</div>
+
+
+
 
 <button
   @click="nextLayout"
@@ -357,10 +371,20 @@ export default {
     TransitionComponent,
   },
   async asyncData({ params, $sanity }) {
-    const query = groq`*[_type == "pressindi" && slug.current == "${params.slug}"] {
+    const query = groq`*[_type == "pressindi" && slug.current == "${params.slug}"] { ...,
         title,
      
         "archiveSlug": archive->slug.current,
+
+
+ "slider": slider[]{
+    _key,
+    "images": images[]{
+      _key,
+      "image": image.asset->url,
+    }
+  },
+
         mainImage {
           asset-> {
             _id,
@@ -416,21 +440,6 @@ export default {
 
     const project = await $sanity.fetch(query);
 
-    // if (project && project.sectionsslider) {
-    //   project.sectionsslider = project.sectionsslider.map((slide) => {
-    //     if (slide.images) {
-    //       slide.images = slide.images.map((image) => {
-    //         const dayFormatted =
-    //           image.day.charAt(0).toUpperCase() + image.day.slice(1);
-    //         return {
-    //           ...image,
-    //           day: dayFormatted.replace(/([a-z])(\d+)/, "$1 $2"),
-    //         };
-    //       });
-    //     }
-    //     return slide;
-    //   });
-    // }
 
     return { project };
   },
@@ -452,25 +461,14 @@ export default {
     totalLayouts() {
       return this.project.sections.length;
     },
-       // Change button text based on current layout position
-    //    buttonText() {
-    //   return this.currentLayoutIndex >= this.totalLayouts - 1 ? "Previous Page" : "Next Page";
-    // },
-    // // Disable button if at the beginning or end of layouts
-    // isDisabled() {
-    //   return this.currentLayoutIndex <= 0 && this.buttonText === "Previous Page";
-    // },
+    ...mapState(["gridpubindi"]),
+
   },
   methods: {
     closeModal() {
       this.isModalOpen = false; // Close the modal
     },
-    // nextLayout() {
-    //   if (this.currentLayoutIndex < this.totalLayouts - 1) {
-    //     this.currentLayoutIndex++;
-    //   }
-    // },
-   // Navigate to next or previous layout
+
    nextLayout() {
       if (this.currentLayoutIndex < this.totalLayouts - 1) {
         this.currentLayoutIndex++;
@@ -512,6 +510,25 @@ export default {
 </script>
 
 <style scoped>
+.gridpress-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  position: absolute;
+}
+
+.grid-item {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+}
+
+.grid-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 .imagetext{
     font-size: .9vw !important;
     font-family: 'NHaas' !important;
@@ -742,7 +759,7 @@ export default {
 }
 
 .datein3 {
-  top: 3.8vw;
+  /* top: 3.8vw;
   font-size: 1vw;
   position: absolute;
   left: 54.6vw;
@@ -750,18 +767,19 @@ export default {
   height: -moz-max-content;
   height: max-content;
   transform: rotateZ(270deg);
-  font-family: "NHaas" !important;
-
-  top: 3.3vw;
-  font-size: .9vw;
-  position: absolute;
-  /* left: 13.5vw; */
-  text-transform: uppercase;
-  height: -moz-max-content;
-  height: max-content;
-  transform: rotateZ(270deg);
-  font-family: "NHaas" !important;
+  font-family: "NHaas" !important; */
 }
+
+.top-right-element {
+  font-size: 1vw;
+  position: fixed;
+  font-family: "NHaas" !important; 
+  top: 6.1vw;
+  right: -4.1vw;
+    transform: rotateZ(90deg);
+    z-index: 1000;
+}
+
 
 .layout-2 .col-1,
 .layout-2 .col-5 {
