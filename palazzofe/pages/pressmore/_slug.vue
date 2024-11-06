@@ -336,13 +336,13 @@
           <!-- v-if="project && project.slider && project.slider.length
            :key="sliderItem._key" -->
 
-          <div>
+          <div v-if="project && project.slider && project.slider.length" >
       <div
         v-for="(slider, index) in project.slider"
         :key="index"
         class="slider-item"
       >
-        <img :src="slider.images.image" alt="Slider Image" />
+        <img :src="slider.images.image" class="imglay1 p-[.5vw]" alt="Slider Image" />
       </div>
     </div>
 </div>
