@@ -490,9 +490,9 @@ export default {
       }
     },
     getRandomStyle() {
-      const top = `${Math.random() * 20}vw`; // Adjust range as needed
-      const width = `${Math.random() * 40 + 10}vw`;
-      const left = `${Math.random() * 95}vw`;  // Adjust range as needed
+      const top = `${Math.random() * 10}vw`; // Adjust range as needed
+      const width = `${Math.random() * 40}vw`;
+      const left = `${Math.random() * 90}vw`;  // Adjust range as needed
       return {
         position: 'absolute',
         top,
