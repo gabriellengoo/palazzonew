@@ -1,4 +1,5 @@
 import React from 'react'
+import {AddIcon} from '@sanity/icons'
 
 const blockConfig = {
   type: 'block',
@@ -49,6 +50,7 @@ export default {
   name: 'pressindi',
   title: 'Publications Individual Pages',
   type: 'document',
+  icon: AddIcon,
 
   fields: [
     {
@@ -62,6 +64,133 @@ export default {
       type: 'slug',
       options: {source: 'title'},
     },
+
+
+
+    {
+      name: "slider",
+      title: "Slider",
+      type: "array",
+      options: {
+        layout: "grid",
+      },
+      of: [
+        {
+          name: "slide",
+          title: "Slide",
+          type: "object", 
+          fields: [
+ 
+          
+            {
+              name: "images",
+              title: "Images",
+              type: "array",
+              options: {
+                layout: "gridpress",
+              },
+              of: [
+                {
+                  name: "imageObject",
+                  title: "Image",
+                  type: "object",
+                  fields: [
+                
+                    {
+                      name: "image",
+                      title: "Image",
+                      type: "image",
+                      hidden: ({ parent }) => parent?.newDay,
+                    },
+                  ],
+
+
+                  preview: {
+                    select: {
+                      spacer: 'spacer',
+                      image: 'image',
+                      video: 'video.asset.playbackId',
+                      thumbnailTime: 'thumbnailTime',
+                      newDayImage: 'newDayImage',
+                    },
+                    prepare(selection) {
+                      const {image, spacer, video, thumbnailTime, newDayImage} = selection
+                      let media
+                      if (newDayImage) {
+                        // media = newDayImage;
+                        media = (
+                          <img
+                          src="/static/blue.png"
+                          style={{
+                            objectFit: 'cover',
+                            height: '100%',
+                            width: '100%',
+                          }}
+                        />
+                        )
+                      } else if (video) {
+                        media = (
+                          <img
+                            src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
+                            style={{
+                              objectFit: 'cover',
+                              height: '100%',
+                              width: '100%',
+                            }}
+                          />
+                        )
+                      } else if (image) {
+                        media = image
+                      }
+                      return {
+                        media: video ? media : image ? media : spacer ? media : newDayImage 
+                      }
+                   
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+          preview: {
+            select: {
+              image: 'images.0.image',
+              video: 'images.0.video.asset.playbackId',
+              thumbnailTime: 'images.0.thumbnailTime',
+              newDayImage: 'images.0.newDayImage',
+            },
+            prepare(selection) {
+              const {image, video, thumbnailTime, newDayImage} = selection
+              let media
+              if (newDayImage) {
+                // media = newDayImage
+                media = (
+                  <img
+                    src="/static/blue.png"
+                    style={{
+                      objectFit: 'cover',
+                      height: '100%',
+                      width: '100%',
+                    }}
+                  />
+                )
+              }
+              else if (video) {
+              } 
+              else if (image) {
+                media = image
+              }
+              return {
+                media: media,
+              }
+            },
+          },
+
+
+        },
+      ],
+    },
+
 
     {
       name: 'sections',

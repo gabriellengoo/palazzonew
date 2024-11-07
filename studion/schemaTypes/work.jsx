@@ -1,12 +1,13 @@
 // import { A11yEmoji } from 'a11y-react-emoji';
 // import { MdSettings, MdColorLens, MdMenu } from 'react-icons/md'; // Import icons from react-icons library
-const Project = () => <A11yEmoji symbol="🏠" label="Home Icon" />;
-
+// const Project = () => <A11yEmoji symbol="🏠" label="Home Icon" />;
+import {HomeIcon} from '@sanity/icons'
 
 export default {
   name: 'works',
   title: 'Weddings Overview',
   type: 'document',
+  icon: HomeIcon,
   // icon: "🏠",
   // icon: '🏠',
   // liveEdit: true,

@@ -1,4 +1,5 @@
 import React from "react";
+import {HelpCircleIcon} from '@sanity/icons'
 // import Emoji from "a11y-react-emoji";
 // const Project = () => <Emoji style={{ fontSize: "2rem" }} symbol="📽️" />;
 
@@ -6,6 +7,7 @@ export default {
   name: "services", 
   title: "Services",
   type: "document",
+  icon: HelpCircleIcon,
   fields: [
     {
       name: "title",

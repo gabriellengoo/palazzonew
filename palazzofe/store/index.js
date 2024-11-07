@@ -153,7 +153,7 @@ export const actions = {
       _id,
       title,
       "slug" : slug.current,
-      "slider": slider[] {
+      "slider": slider[] { 
         _key,
         images[] {
           _key,

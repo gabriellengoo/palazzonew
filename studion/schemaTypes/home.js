@@ -2,6 +2,8 @@
 // import { MdSettings, MdColorLens, MdMenu } from 'react-icons/md';
  // Import icons from react-icons library
 // const Project = () => <A11yEmoji symbol="🏠" label="Home Icon" />;
+// const archive = () => <Emoji style={{ fontSize: "2rem" }} symbol="📽️" />;
+
 
 
 export default {
@@ -10,6 +12,7 @@ export default {
   type: 'document',
   // icon: "🏠",
   // icon: '🏠',
+    // icon: archive,
   // liveEdit: true,
   fields: [
     {

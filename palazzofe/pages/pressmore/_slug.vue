@@ -48,20 +48,17 @@
             (section.layout3 && currentLayoutIndex === index)
           "
         >
-
           <div class="layout layout-1" v-if="section.layout1 === true">
-
             <div class="top-right-element" v-if="section.layout1date">
-                    <Richtext
-                      v-if="section.layout1date"
-                      class="contactinnerpressslug "
-                      :blocks="section.layout1date"
-                    ></Richtext>
-                  </div>
+              <Richtext
+                v-if="section.layout1date"
+                class="contactinnerpressslug"
+                :blocks="section.layout1date"
+              ></Richtext>
+            </div>
 
-
-            <div class="column col-1 ">
-                <p class="toplink p-[.5vw] pb-[2vw] ">{{ section.location }}</p>
+            <div class="column col-1">
+              <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
               <div>
                 <img
                   class="imglay1 p-[.5vw] pop-in pop-in-5"
@@ -94,7 +91,7 @@
               ></Richtext>
             </div>
 
-            <div class="column col-3  pt-[3vw]">
+            <div class="column col-3 pt-[3vw]">
               <Richtext
                 class="contactinnerpressslug imtitle pop-in pop-in-3 underimglay1 p-[.5vw] w-[85%]"
                 :blocks="section.column4Text"
@@ -114,38 +111,35 @@
 
             <div class="column col-4 pop-in pop-in-4 pt-[10vw]">
               <div class="flex">
-                <div class="flex flex-col"><Richtext
-                  class="contactinnerpressslug lay1subtext p-[.5vw]"
-                  :blocks="section.column6Text"
-                ></Richtext>
-                <Richtext
-                  class="contactinnerpressslug  p-[.5vw]"
-                  :blocks="section.column7Text"
-                ></Richtext></div>
-         
+                <div class="flex flex-col">
+                  <Richtext
+                    class="contactinnerpressslug lay1subtext p-[.5vw]"
+                    :blocks="section.column6Text"
+                  ></Richtext>
+                  <Richtext
+                    class="contactinnerpressslug p-[.5vw]"
+                    :blocks="section.column7Text"
+                  ></Richtext>
+                </div>
               </div>
             </div>
 
             <div class="column col-5 pop-in pop-in-5"></div>
           </div>
 
-
           <div class="otherlays" v-if="section.layout1 === false">
             <!-- Layout 2 -->
             <div class="layout layout-2" v-if="section.layout2 === true">
-              
-
               <div class="top-right-element" v-if="section.layout2date">
-                    <Richtext
-                      v-if="section.layout2date"
-                      class="contactinnerpressslug "
-                      :blocks="section.layout2date"
-                    ></Richtext>
-                  </div>
-
+                <Richtext
+                  v-if="section.layout2date"
+                  class="contactinnerpressslug"
+                  :blocks="section.layout2date"
+                ></Richtext>
+              </div>
 
               <div class="column col-1 pop-in pop-in-4">
-                  <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
                 <Richtext
                   v-if="section.layout2Column1Text"
                   class="contactinnerpressslug lay1subtext p-[.5vw] pop-in-4 lay1text"
@@ -153,7 +147,7 @@
                 ></Richtext>
                 <Richtext
                   v-if="section.layout2Column11Text"
-                  class="contactinnerpressslug  p-[.5vw] pop-in-4 lay1text"
+                  class="contactinnerpressslug p-[.5vw] pop-in-4 lay1text"
                   :blocks="section.layout2Column11Text"
                 ></Richtext>
               </div>
@@ -164,11 +158,11 @@
                   alt="Main Image"
                 />
                 <div class="flex w-[40vw]">
-                    <Richtext
-                      v-if="section.layout2Column2Text"
-                      :blocks="section.layout2Column2Text"
-                      class="contactinnerpressslug p-[.5vw] w-[83vw]"
-                    ></Richtext>
+                  <Richtext
+                    v-if="section.layout2Column2Text"
+                    :blocks="section.layout2Column2Text"
+                    class="contactinnerpressslug p-[.5vw] w-[83vw]"
+                  ></Richtext>
                   <Richtext
                     v-if="section.layout2Column3Text"
                     class="contactinnerpressslug p-[.5vw] colmb w-[86vw]"
@@ -177,29 +171,34 @@
                 </div>
               </div>
               <div class="column col-4 pop-in pop-in-4">
-               <div class="flex flex-col">
-                <p  v-if="section.layout2Column4Text" class="imagetext p-[.5vw] pb-0">IMAGE</p>
-                <Richtext
-                  v-if="section.layout2Column4Text"
-                  class="contactinnerpressslug p-[.5vw] pt-0 imtitle2 colmb"
-                  :blocks="section.layout2Column4Text"
-                ></Richtext>
-                <Richtext
-                  v-if="section.layout2Column44Text"
-                  class="contactinnerpressslug p-[.5vw] colmb"
-                  :blocks="section.layout2Column44Text"
-                ></Richtext>
-               </div>
+                <div class="flex flex-col">
+                  <p
+                    v-if="section.layout2Column4Text"
+                    class="imagetext p-[.5vw] pb-0"
+                  >
+                    IMAGE
+                  </p>
+                  <Richtext
+                    v-if="section.layout2Column4Text"
+                    class="contactinnerpressslug p-[.5vw] pt-0 imtitle2 colmb"
+                    :blocks="section.layout2Column4Text"
+                  ></Richtext>
+                  <Richtext
+                    v-if="section.layout2Column44Text"
+                    class="contactinnerpressslug p-[.5vw] colmb"
+                    :blocks="section.layout2Column44Text"
+                  ></Richtext>
+                </div>
                 <img
                   class="imglay1 p-[.5vw]"
                   :src="section.layout2Column4Image"
                   v-if="section.layout2Column4Image"
                   alt="Main Image"
                 />
-             
+
                 <Richtext
                   v-if="section.layout2Column444Text"
-                  class="toplink p-[.5vw] "
+                  class="toplink p-[.5vw]"
                   :blocks="section.layout2Column444Text"
                 ></Richtext>
                 <img
@@ -209,7 +208,7 @@
                   alt="Main Image"
                 />
               </div>
-              <div class="column col-5  pop-in pop-in-3">
+              <div class="column col-5 pop-in pop-in-3">
                 <div class="flex">
                   <img
                     class="imglay1 p-[.5vw]"
@@ -217,7 +216,6 @@
                     v-if="section.layout2Column5Image"
                     alt="Main Image"
                   />
-                
                 </div>
                 <Richtext
                   v-if="section.layout2Column5Text"
@@ -228,19 +226,18 @@
             </div>
 
             <!-- Layout 3 -->
-           
 
             <div class="layout layout-3" v-if="section.layout3 === true">
               <div class="top-right-element" v-if="section.layout3date">
-                    <Richtext
-                      v-if="section.layout3date"
-                      class="contactinnerpressslug "
-                      :blocks="section.layout3date"
-                    ></Richtext>
-                  </div>
+                <Richtext
+                  v-if="section.layout3date"
+                  class="contactinnerpressslug"
+                  :blocks="section.layout3date"
+                ></Richtext>
+              </div>
 
               <div class="column col-1 pop-in pop-in-4">
-                  <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
                 <Richtext
                   v-if="section.layout3Column1Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -259,7 +256,7 @@
                   class="contactinnerpressslug toplink p-[.5vw]"
                   :blocks="section.layout3Column23Text"
                 ></Richtext>
-          
+
                 <img
                   class="imglay1 p-[.5vw]"
                   :src="section.layout3Column2Image"
@@ -280,29 +277,31 @@
                     v-if="section.layout3Image3_5"
                     alt="Main Image"
                   />
-               
                 </div>
-              
 
                 <div class="flex">
-                 <div class="flex flex-col w-[87vw]">
-                <Richtext
-                  v-if="section.layout3Column3Text"
-                  class=" lay3subtext p-[.5vw] pt-0 colmb pop-in pop-in-4"
-                  :blocks="section.layout3Column3Text"
-                ></Richtext>
-                <p  v-if="section.layout3Column33Text" class="imagetext p-[.5vw] pb-0">IMAGE</p>
-                <Richtext
-                  v-if="section.layout3Column33Text"
-                  class="contactinnerpressslug p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
-                  :blocks="section.layout3Column33Text"
-                ></Richtext>
-                 </div>
-               
+                  <div class="flex flex-col w-[87vw]">
+                    <Richtext
+                      v-if="section.layout3Column3Text"
+                      class="lay3subtext p-[.5vw] pt-0 colmb pop-in pop-in-4"
+                      :blocks="section.layout3Column3Text"
+                    ></Richtext>
+                    <p
+                      v-if="section.layout3Column33Text"
+                      class="imagetext p-[.5vw] pb-0"
+                    >
+                      IMAGE
+                    </p>
+                    <Richtext
+                      v-if="section.layout3Column33Text"
+                      class="contactinnerpressslug p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
+                      :blocks="section.layout3Column33Text"
+                    ></Richtext>
+                  </div>
 
                   <Richtext
                     v-if="section.layout3Column4Text"
-                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0] "
+                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
                     :blocks="section.layout3Column4Text"
                   ></Richtext>
                   <Richtext
@@ -314,48 +313,49 @@
               </div>
             </div>
           </div>
-
         </div>
       </transition>
 
+      <!-- Display the gridpress content here -->
+      <transition name="slide" mode="out-in">
+      <div class="gridpress-container" v-for="(section, index) in project.sections"  v-if="
+            (section.layout1 && currentLayoutIndex === index) ||
+            (section.layout2 && currentLayoutIndex === index) ||
+            (section.layout3 && currentLayoutIndex === index)
+          ">
+      
+      <!--   @mouseenter="handleMouseEnter()"
+             @mouseleave="handleMouseLeave()" -->
 
-       <!-- Display the gridpress content here -->
-       <div  class="gridpress-container">
-  <!-- <div v-for="(gridItem, index) in project.gridpress" :key="index" class="grid-item">
-    <img class="imglay1 p-[.5vw]" :src="gridItem.imageUrl" alt="Grid Image" />
-  </div> -->
-  <!-- <img
-                  class="imglay1 p-[.5vw]"
-                  :src="section.layout3Column2Image"
-                  alt="Main Image"
-                /> -->
-  <!-- <img :src="gridItem.imageUrl" alt="Grid Image" /> -->
-  <!-- <div v-if="gridpubindi.gridpress" class="">
-            <Gridpressindi class="" :items="gridpubindi.gridpress" size="small"></Gridpressindi>
-          </div> -->
-          <!-- v-if="project && project.slider && project.slider.length
-           :key="sliderItem._key" -->
-
-          <div v-if="project && project.slider && project.slider.length" >
-      <div
-        v-for="(slider, index) in project.slider"
-        :key="index"
-        class="slider-item"
-      >
-        <img :src="slider.images.image" class="imglay1 p-[.5vw]" alt="Slider Image" />
+        <div class="slider" v-if="section.layout1 === true">
+    <div v-for="slide in project.slider" :key="slide._key" class="slide"    >
+      <div v-for="image in slide.images" :key="image._key"  class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]" 
+      :style="getRandomStyle()"  
+           >
+        <img :src="image.imageUrl" :alt="`Slide Image ${image._key}`"   @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" class="imglay1 p-[.5vw]" />
       </div>
     </div>
-</div>
+  </div>
+      </div>
+    </transition>
+
+ 
 
 
+  <!-- <div v-for="slide in project.slider" class="slider-container">
+    <div
+      v-for="(image, index) in project.slider[0].images"
+      :key="image._key"
+      :style="{ position: 'absolute', ...randomPositions[index] }"
+      class="slider-image"
+    >
+      <img :src="image.imageUrl" :alt="`Image ${image._key}`" />
+    </div>
+  </div> -->
 
-
-<button
-  @click="nextLayout"
-  class="next-button"
->
-  {{ currentLayoutIndex < totalLayouts - 1 ? 'Next Page' : 'End' }}
-</button>
+      <button @click="nextLayout" class="next-button">
+        {{ currentLayoutIndex < totalLayouts - 1 ? "Next Page" : "End" }}
+      </button>
     </div>
   </div>
 </template>
@@ -376,14 +376,14 @@ export default {
      
         "archiveSlug": archive->slug.current,
 
-
- "slider": slider[]{
-    _key,
-    "images": images[]{
-      _key,
-      "image": image.asset->url,
-    }
-  },
+ "slider": slider[] { 
+        _key,
+        images[] {
+          _key,
+          portrait,
+          "imageUrl": image.asset->url
+        }
+      },
 
         mainImage {
           asset-> {
@@ -440,11 +440,11 @@ export default {
 
     const project = await $sanity.fetch(query);
 
-
     return { project };
   },
   data() {
     return {
+      randomPositions: [],
       index: 0,
       realIndex: 0,
       step: 0,
@@ -453,6 +453,8 @@ export default {
       isModalOpen: false, // Set the initial state of the modal
       currentLayoutIndex: 0,
       lottieInstance: null,
+      slides: Array(10).fill({}),
+      hoveredIndex: null,
       // ... other data properties
     };
   },
@@ -462,14 +464,13 @@ export default {
       return this.project.sections.length;
     },
     ...mapState(["gridpubindi"]),
-
   },
   methods: {
     closeModal() {
       this.isModalOpen = false; // Close the modal
     },
 
-   nextLayout() {
+    nextLayout() {
       if (this.currentLayoutIndex < this.totalLayouts - 1) {
         this.currentLayoutIndex++;
       } else {
@@ -488,10 +489,37 @@ export default {
         this.lottieInstance.playSegments([55, 20], true);
       }
     },
+    getRandomStyle() {
+      const top = `${Math.random() * 20}vw`; // Adjust range as needed
+      const width = `${Math.random() * 40 + 10}vw`;
+      const left = `${Math.random() * 95}vw`;  // Adjust range as needed
+      return {
+        position: 'absolute',
+        top,
+        width,
+        left,
+        opacity: this.hoveredIndex !== null ? (this.hoveredIndex === -1 ? 0 : 1) : 1,
+      };
+    },
+    // handleMouseEnter(index) {
+    //   this.hoveredIndex = index;
+    // },
+    // handleMouseLeave(index) {
+    //   this.hoveredIndex = null;
+    // },
+    handleMouseEnter(event) {
+        event.target.classList.add('hovered');  // Add "hovered" class to hide the image
+      },
+      handleMouseLeave(event) {
+        // Do nothing here to prevent reverting back to original opacity
+      },
     // ... other methods
   },
   mounted() {
+    // this.generateRandomPositions(); 
+
     console.log("Lottie animation initialized:", this.lottieInstance);
+
 
     this.lottieInstance = lottie.loadAnimation({
       container: this.$refs.lottieAnimation, // the DOM element
@@ -501,20 +529,84 @@ export default {
       path: "/animations/hamburger.json", // your Lottie animation JSON file path
     });
 
-     // Set the animation to frame 11 without playing
-     this.lottieInstance.goToAndStop(55, true);
+    // Set the animation to frame 11 without playing
+    this.lottieInstance.goToAndStop(55, true);
   },
-
- 
 };
 </script>
 
 <style scoped>
+.slider-image img {
+  transition: opacity 0.5s ease;
+}
+
+.slider img {
+  transition: opacity 0.5s ease;
+}
+
+.random-image-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.random-image img {
+  max-width: 150px; /* Adjust to preferred size */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.random-image img:hover {
+  transform: scale(1.1);
+  opacity: 0;
+}
+
 .gridpress-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
+    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+    gap: 1rem;
+    position: absolute;
+    width: 100vw;
+    height: auto;
+    /* pointer-events: none; */
+}
+
+.imglay1 {
+  opacity: 1;
+  transition: opacity 0.3s ease; 
+}
+
+.imglay1.hovered {
+  opacity: 0;
+}
+
+/* When hovered, apply opacity 0 immediately */
+.imglay1:hover {
+  opacity: 0;
+}
+
+/* .slider .slide:nth-child(even){
+  display: ruby-text;
   position: absolute;
+    top: 2vw;
+    width: 20vw;
+}
+
+.slider .slide:nth-child(even) img{
+  width: 100vw;
+  
+} */
+
+/* .slider:hover{
+opacity: 0;
+
+} */
+
+.even-slide {
+  display: ruby-text;
 }
 
 .grid-item {
@@ -528,10 +620,9 @@ export default {
   height: auto;
 }
 
-
-.imagetext{
-    font-size: .9vw !important;
-    font-family: 'NHaas' !important;
+.imagetext {
+  font-size: 0.9vw !important;
+  font-family: "NHaas" !important;
 }
 
 .pop-in {
@@ -541,11 +632,11 @@ export default {
 }
 
 .pop-in-1 {
-  animation-delay: .5s;
+  animation-delay: 0.5s;
 }
 
 .pop-in-2 {
-  animation-delay: 1.0s;
+  animation-delay: 1s;
 }
 
 .pop-in-3 {
@@ -581,8 +672,6 @@ export default {
   }
 } */
 
-
-
 .next-button {
   padding: 1rem;
   /* background-color: #007bff; */
@@ -598,6 +687,7 @@ export default {
   font-family: "GT-Sectra-Book";
   font-family: "NHaas" !important;
   transition: color 0.8s ease;
+  /* z-index: 10000; */
 }
 
 .next-button:hover {
@@ -668,7 +758,6 @@ export default {
   gap: 1.5vw;
   width: 98.4vw;
   height: 100vh;
-
 }
 
 .layout-1 .col-1 {
@@ -734,8 +823,8 @@ export default {
   font-family: "NHaas" !important;
 
   top: -5.9vw;
-    left: 14.1vw;
-  font-size: .9vw;
+  left: 14.1vw;
+  font-size: 0.9vw;
   position: absolute;
   left: 13.5vw;
   text-transform: uppercase;
@@ -747,7 +836,7 @@ export default {
 
 .datein2 {
   top: 3.3vw;
-  font-size: .9vw;
+  font-size: 0.9vw;
   position: absolute;
   left: 13.5vw;
   left: 14.5vw;
@@ -773,13 +862,12 @@ export default {
 .top-right-element {
   font-size: 1vw;
   position: fixed;
-  font-family: "NHaas" !important; 
+  font-family: "NHaas" !important;
   top: 6.1vw;
   right: -4.1vw;
-    transform: rotateZ(90deg);
-    z-index: 1000;
+  transform: rotateZ(90deg);
+  z-index: 1000;
 }
-
 
 .layout-2 .col-1,
 .layout-2 .col-5 {
@@ -805,36 +893,35 @@ export default {
 
 /* Additional responsive styling */
 @media (max-width: 768px) {
-
   .headera {
-          flex-direction: column;
-        padding-bottom: 4vw !important;
-        padding-left: 2.5vw;
-        padding-right: 2.5vw;
-        padding-top: 3.5vw;
-        z-index: 100;
-}
+    flex-direction: column;
+    padding-bottom: 4vw !important;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    padding-top: 3.5vw;
+    z-index: 100;
+  }
 
-.presshedindi {
-        font-family: "GT-Bold";
-        font-family: "MinionPro-Regular";
-        font-family: "RomainHeadlineTrial";
-        font-size: medium;
-        font-size: 3.5vw;
-        line-height: normal;
-        pointer-events: none;
-        position: relative;
-        position: absolute;
-        position: fixed;
-        top: .7vh !important;
-        width: 100%;
-        z-index: 100;
-        padding-bottom: 3.5vw !important;
-        padding-left: 2.5vw;
-        padding-right: 2.5vw;
-        padding-top: 2vw;
-        z-index: 100;
-    }
+  .presshedindi {
+    font-family: "GT-Bold";
+    font-family: "MinionPro-Regular";
+    font-family: "RomainHeadlineTrial";
+    font-size: medium;
+    font-size: 3.5vw;
+    line-height: normal;
+    pointer-events: none;
+    position: relative;
+    position: absolute;
+    position: fixed;
+    top: 0.7vh !important;
+    width: 100%;
+    z-index: 100;
+    padding-bottom: 3.5vw !important;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    padding-top: 2vw;
+    z-index: 100;
+  }
 
   .layout {
     padding-top: 5vh;
@@ -843,7 +930,7 @@ export default {
 
   .bgmobile {
     font-size: 3vw;
-    overflow-y: scroll
+    overflow-y: scroll;
   }
 
   .layout-2 .col-1,

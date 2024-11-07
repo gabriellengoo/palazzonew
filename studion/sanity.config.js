@@ -1,18 +1,79 @@
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
+import { defineConfig } from 'sanity';
+import { structureTool } from 'sanity/structure';
+import { visionTool } from '@sanity/vision';
+import { schemaTypes } from './schemaTypes';
+import { deskTool } from 'sanity/desk';
+// import defaultDocumentNode from './defaultDocumentNode'
+// import IframePane from 'sanity-plugin-iframe-pane';
+
+// const IFRAME_URL = 'https://your-site-url.com'; // Replace with your actual site URL
 
 export default defineConfig({
   name: 'default',
-  title: 'palazzo',
+  title: 'Palazzo Eventi',
 
   projectId: '0i1cdi6a',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    deskTool({
+      structure: (S) =>
+        S.list()
+          .title('Content')
+          .items([
+            S.divider(),
+            S.listItem()
+              .title('Info Pages')
+              .child(
+                S.list()
+                  .title('Info Pages')
+                  .items([
+                    S.documentTypeListItem('about').title('About'),
+                    S.documentTypeListItem('contact').title('Contact'),
+                    S.documentTypeListItem('services').title('Services'),
+                  ])
+              ),
+            S.divider(),
+            S.listItem()
+              .title('Weddings, Events, Awards and Publications')
+              .child(
+                S.list()
+                  .title('Weddings, Events, Awards and Publications')
+                  .items([
+                    S.documentTypeListItem('works').title('Weddings'),
+                    S.documentTypeListItem('project').title('Weddings Individual'),
+                    S.documentTypeListItem('events').title('Events'),
+                    S.documentTypeListItem('projectevents').title('Events Individual'),
+                    S.documentTypeListItem('publications').title('Publications'),
+                    S.documentTypeListItem('pressindi').title('Publications Individual'),
+                    S.documentTypeListItem('awards').title('Awards'),
+                  ])
+              ),
+            S.divider(),
+            S.documentTypeListItem('team').title('Team'),
+            // Add Live Preview tab
+            // S.listItem()
+            //   .title('Live Preview')
+            //   .child(
+            //     IframePane({
+            //       title: 'Site Preview',
+            //       url: IFRAME_URL,
+            //       options: {
+            //         autoResize: true,
+            //         style: { height: '100vh', width: '100%' },
+            //       },
+            //     })
+            //   ),
+          ]),
+    }),
+    // structureTool({
+    //   defaultDocumentNode,
+    //   structure,
+    // }),
+    visionTool(),
+  ],
 
   schema: {
     types: schemaTypes,
   },
-})
+});

@@ -1,13 +1,16 @@
 import React from 'react'
-// import Emoji from "a11y-react-emoji";
-// const Project = () => <Emoji style={{ fontSize: "2rem" }} symbol="📽️" />;
+import {AddIcon} from '@sanity/icons'
+
 
 export default {
   name: 'project',
   title: 'Weddings Individual Pages',
   type: 'document',
+  icon: AddIcon,
+  // icon: '🏠',
   // liveEdit: true,
   // icon: Project,
+
   fields: [
     {
       name: 'title',
