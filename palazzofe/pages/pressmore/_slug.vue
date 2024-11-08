@@ -33,8 +33,9 @@
       </p>
     </div>
 
+    <!-- pl-[0.3vw] -->
     <div
-      class="bgmobile relative min-h-screen flex flex-col p-[1vw] pl-[0.3vw]"
+      class="bgmobile relative min-h-screen flex flex-col p-[1vw] "
     >
       <transition name="slide" mode="out-in">
         <div
@@ -344,53 +345,48 @@
 
       <!-- @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" -->
       <!-- Display the gridpress content here -->
-      <transition name="fade" mode="out-in">
-    <div v-if="showContent" class="gridpress-container">
-      <!-- Your content here -->
-      <div class="slider" v-for="(section, index) in project.sections" :key="index" v-if="
-        (section.layout1 && currentLayoutIndex === index) ||
-        (section.layout2 && currentLayoutIndex === index) ||
-        (section.layout3 && currentLayoutIndex === index)">
-        <div v-for="slide in project.slider" :key="slide._key" class="slide">
+      <div class="gridpress-container">
+    <!-- Layout 1 -->
+    <transition name="fade" mode="out-in">
+      <div class="slider" v-for="(section, index) in project.sections" :key="index" v-if="showContent1 && section.layout1 && currentLayoutIndex === index">
+        <div v-for="slide in section.slider1" :key="slide._key" class="slide">
           <div v-for="image in slide.images" :key="image._key" class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]">
-            <img @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" :src="image.imageUrl" :alt="`Slide Image ${image._key}`" class="imglay1s p-[.5vw]" />
+            <img @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" :src="image.image" :alt="`Slide Image ${image._key}`" class="imglay1s p-[.5vw]" />
           </div>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+
+    <!-- Layout 2 -->
+    <transition name="fade" mode="out-in">
+      <div class="slider" v-for="(section, index) in project.sections" :key="index" v-if="showContent2 &&  section.layout2 && currentLayoutIndex === index">
+        <div v-for="slide in section.slider2" :key="slide._key" class="slide2">
+          <div v-for="image in slide.images" :key="image._key" class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]">
+            <img @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" :src="image.image" :alt="`Slide Image ${image._key}`" class="imglay1s p-[.5vw]" />
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <!-- Layout 3 -->
+    <transition name="fade" mode="out-in">
+      <div class="slider" v-for="(section, index) in project.sections" :key="index" v-if="showContent3 && section.layout3 && currentLayoutIndex === index">
+        <div v-for="slide in section.slider3" :key="slide._key" class="slide3">
+          <div v-for="image in slide.images" :key="image._key" class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]">
+            <img @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" :src="image.image" :alt="`Slide Image ${image._key}`" class="imglay1s p-[.5vw]" />
+          </div>
+        </div>
+      </div>
+    </transition>
+  </div>
+
 
  
 
 
-    <!-- <transition name="slide" mode="out-in">
-      <div class="gridpress-container" v-for="(section, index) in project.sections"  v-if="
-            (section.layout1 && currentLayoutIndex === index) ||
-            (section.layout2 && currentLayoutIndex === index) ||
-            (section.layout3 && currentLayoutIndex === index)
-          ">
 
-        <div class="slider" v-if="section.layout1 === true">
-    <div v-for="slide in project.slider" :key="slide._key" class="slide"    >
-      <div v-for="image in slide.images" :key="image._key"  class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]" 
-      :style="getRandomStyle()"  
-           >
-        <img :src="image.imageUrl" :alt="`Slide Image ${image._key}`"   @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" class="imglay1s p-[.5vw]" />
-      </div>
-    </div>
-  </div>
-      </div>
-    </transition> -->
-  <!-- <div v-for="slide in project.slider" class="slider-container">
-    <div
-      v-for="(image, index) in project.slider[0].images"
-      :key="image._key"
-      :style="{ position: 'absolute', ...randomPositions[index] }"
-      class="slider-image"
-    >
-      <img :src="image.imageUrl" :alt="`Image ${image._key}`" />
-    </div>
-  </div> -->
+
+ 
 
       <button @click="nextLayout" class="next-button">
         {{ currentLayoutIndex < totalLayouts - 1 ? "Next Page" : "End" }}
@@ -415,14 +411,6 @@ export default {
      
         "archiveSlug": archive->slug.current,
 
- "slider": slider[] { 
-        _key,
-        images[] {
-          _key,
-          portrait,
-          "imageUrl": image.asset->url
-        }
-      },
 
         mainImage {
           asset-> {
@@ -436,14 +424,24 @@ export default {
         locationlink,
         location,
 
-      "slider1": slider[] { 
-        _key,
-        images[] {
-          _key,
-          portrait,
-          "imageUrl": image.asset->url
-        }
-      },
+      "slider1": slider1[]{
+      images[]{
+        "image": image.asset->url
+      }
+    },
+
+       "slider2": slider2[]{
+      images[]{
+        "image": image.asset->url
+      }
+    },
+
+       "slider3": slider3[]{
+      images[]{
+        "image": image.asset->url
+      }
+    },
+
         layout,
         layout1,
         layout2,
@@ -508,6 +506,10 @@ export default {
       popupPosition: { top: 100, left: 100 },
       offset: { x: 0, y: 0 },
       showContent: false,
+      showContent1: false,
+      showContent2: false,
+      showContent3: false,
+      currentLayoutIndex: 0,
       // ... other data properties
     };
   },
@@ -519,6 +521,14 @@ export default {
     ...mapState(["gridpubindi"]),
   },
   methods: {
+
+    showLayoutsWithDelay() {
+      setTimeout(() => { this.showContent1 = true; }, 3000);        // Show immediately
+      setTimeout(() => { this.showContent2 = true; }, 3000);     // Delay by 3000ms (3 seconds)
+      setTimeout(() => { this.showContent3 = true; }, 3000);     // Delay by 6000ms (6 seconds)
+    },
+
+    
     closeModal() {
       this.isModalOpen = false; // Close the modal
     },
@@ -528,7 +538,7 @@ export default {
       if (this.currentLayoutIndex < this.totalLayouts - 1) {
         this.currentLayoutIndex++;
       } else {
-        this.currentLayoutIndex = 0; // Reset to first layout
+        this.currentLayoutIndex = 0; 
       }
     },
     // Navigate to the previous layout
@@ -597,6 +607,8 @@ export default {
     // ... other methods
   },
   mounted() {
+
+    this.showLayoutsWithDelay();
 
     setTimeout(() => {
       this.showContent = true;
@@ -721,7 +733,9 @@ export default {
     /* pointer-events: none; */
 }
 
-.slider div:nth-child(1) img{
+
+/* lay 1 */
+.slider .slide:nth-child(1) img{
   position: absolute;
     width: 36vw;
     /* height: 50vh; */
@@ -729,19 +743,68 @@ export default {
     top: 19vw;
 }
 
-.slider div:nth-child(2) img{
+.slider .slide:nth-child(2) img{
   position: absolute;
     width: 20vw;
     left: 47vw;
     top: 2.5vw;
 }
 
-.slider div:nth-child(3) img{
+.slider .slide:nth-child(3) img{
   position: absolute;
     width: 13vw;
     /* height: 50vh; */
     left: 81vw;
     top: 4vw;
+}
+
+/* lay 2 */
+.slider .slide2:nth-child(1) img{
+  position: absolute;
+    width: 20vw;
+    /* height: 50vh; */
+    left: 9vw;
+    top: 25vw;
+}
+
+.slider .slide2:nth-child(2) img{
+  position: absolute;
+    width: 28vw;
+    left: 51vw;
+    top: 13.4vw;
+}
+
+.slider .slide2:nth-child(3) img{
+  position: absolute;
+    width: 13vw;
+    /* height: 50vh; */
+    left: 81vw;
+    top: 4vw;
+    display: none;
+}
+
+/* lay 3 */
+.slider .slide3:nth-child(1) img{
+  position: absolute;
+    width: 24vw;
+    /* height: 50vh; */
+    left: 0vw;
+    top: 15vw;
+}
+
+.slider .slide3:nth-child(2) img{
+  position: absolute;
+    width: 15vw;
+    left: 61vw;
+    top: 31.5vw;
+}
+
+.slider .slide3:nth-child(3) img{
+  position: absolute;
+    width: 15vw;
+    left: 61vw;
+    top: 31.5vw;
+    display: none;
 }
 
 .imglay1s {
@@ -919,6 +982,7 @@ opacity: 0;
   flex-direction: column;
   gap: 20px; /* Space between layouts */
   padding-top: 3vw;
+  
 }
 
 .layout {
@@ -927,7 +991,8 @@ opacity: 0;
   gap: 10px; /* Space between columns */
   gap: 1.5vw;
   width: 98.4vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 .layout-1 .col-1 {
@@ -1031,12 +1096,12 @@ opacity: 0;
 
 .top-right-element {
   font-size: 1vw;
-  position: fixed;
-  font-family: "NHaas" !important;
-  top: 6.1vw;
-  right: -4.1vw;
-  transform: rotateZ(90deg);
-  z-index: 1000;
+    position: fixed;
+    font-family: "NHaas" !important;
+    top: 7.1vw;
+    right: -4.4vw;
+    transform: rotateZ(90deg);
+    z-index: 1000;
 }
 
 .layout-2 .col-1,

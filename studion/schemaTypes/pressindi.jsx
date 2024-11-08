@@ -67,129 +67,129 @@ export default {
 
 
 
-    {
-      name: "slider",
-      title: "Slider",
-      type: "array",
-      options: {
-        layout: "grid",
-      },
-      of: [
-        {
-          name: "slide",
-          title: "Slide",
-          type: "object", 
-          fields: [
+    // {
+    //   name: "slider",
+    //   title: "Slider",
+    //   type: "array",
+    //   options: {
+    //     layout: "grid",
+    //   },
+    //   of: [
+    //     {
+    //       name: "slide",
+    //       title: "Slide",
+    //       type: "object", 
+    //       fields: [
  
           
-            {
-              name: "images",
-              title: "Images",
-              type: "array",
-              options: {
-                layout: "gridpress",
-              },
-              of: [
-                {
-                  name: "imageObject",
-                  title: "Image",
-                  type: "object",
-                  fields: [
+    //         {
+    //           name: "images",
+    //           title: "Images",
+    //           type: "array",
+    //           options: {
+    //             layout: "gridpress",
+    //           },
+    //           of: [
+    //             {
+    //               name: "imageObject",
+    //               title: "Image",
+    //               type: "object",
+    //               fields: [
                 
-                    {
-                      name: "image",
-                      title: "Image",
-                      type: "image",
-                      hidden: ({ parent }) => parent?.newDay,
-                    },
-                  ],
+    //                 {
+    //                   name: "image",
+    //                   title: "Image",
+    //                   type: "image",
+    //                   hidden: ({ parent }) => parent?.newDay,
+    //                 },
+    //               ],
 
 
-                  preview: {
-                    select: {
-                      spacer: 'spacer',
-                      image: 'image',
-                      video: 'video.asset.playbackId',
-                      thumbnailTime: 'thumbnailTime',
-                      newDayImage: 'newDayImage',
-                    },
-                    prepare(selection) {
-                      const {image, spacer, video, thumbnailTime, newDayImage} = selection
-                      let media
-                      if (newDayImage) {
-                        // media = newDayImage;
-                        media = (
-                          <img
-                          src="/static/blue.png"
-                          style={{
-                            objectFit: 'cover',
-                            height: '100%',
-                            width: '100%',
-                          }}
-                        />
-                        )
-                      } else if (video) {
-                        media = (
-                          <img
-                            src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
-                            style={{
-                              objectFit: 'cover',
-                              height: '100%',
-                              width: '100%',
-                            }}
-                          />
-                        )
-                      } else if (image) {
-                        media = image
-                      }
-                      return {
-                        media: video ? media : image ? media : spacer ? media : newDayImage 
-                      }
+    //               preview: {
+    //                 select: {
+    //                   spacer: 'spacer',
+    //                   image: 'image',
+    //                   video: 'video.asset.playbackId',
+    //                   thumbnailTime: 'thumbnailTime',
+    //                   newDayImage: 'newDayImage',
+    //                 },
+    //                 prepare(selection) {
+    //                   const {image, spacer, video, thumbnailTime, newDayImage} = selection
+    //                   let media
+    //                   if (newDayImage) {
+    //                     // media = newDayImage;
+    //                     media = (
+    //                       <img
+    //                       src="/static/blue.png"
+    //                       style={{
+    //                         objectFit: 'cover',
+    //                         height: '100%',
+    //                         width: '100%',
+    //                       }}
+    //                     />
+    //                     )
+    //                   } else if (video) {
+    //                     media = (
+    //                       <img
+    //                         src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
+    //                         style={{
+    //                           objectFit: 'cover',
+    //                           height: '100%',
+    //                           width: '100%',
+    //                         }}
+    //                       />
+    //                     )
+    //                   } else if (image) {
+    //                     media = image
+    //                   }
+    //                   return {
+    //                     media: video ? media : image ? media : spacer ? media : newDayImage 
+    //                   }
                    
-                    },
-                  },
-                },
-              ],
-            },
-          ],
-          preview: {
-            select: {
-              image: 'images.0.image',
-              video: 'images.0.video.asset.playbackId',
-              thumbnailTime: 'images.0.thumbnailTime',
-              newDayImage: 'images.0.newDayImage',
-            },
-            prepare(selection) {
-              const {image, video, thumbnailTime, newDayImage} = selection
-              let media
-              if (newDayImage) {
-                // media = newDayImage
-                media = (
-                  <img
-                    src="/static/blue.png"
-                    style={{
-                      objectFit: 'cover',
-                      height: '100%',
-                      width: '100%',
-                    }}
-                  />
-                )
-              }
-              else if (video) {
-              } 
-              else if (image) {
-                media = image
-              }
-              return {
-                media: media,
-              }
-            },
-          },
+    //                 },
+    //               },
+    //             },
+    //           ],
+    //         },
+    //       ],
+    //       preview: {
+    //         select: {
+    //           image: 'images.0.image',
+    //           video: 'images.0.video.asset.playbackId',
+    //           thumbnailTime: 'images.0.thumbnailTime',
+    //           newDayImage: 'images.0.newDayImage',
+    //         },
+    //         prepare(selection) {
+    //           const {image, video, thumbnailTime, newDayImage} = selection
+    //           let media
+    //           if (newDayImage) {
+    //             // media = newDayImage
+    //             media = (
+    //               <img
+    //                 src="/static/blue.png"
+    //                 style={{
+    //                   objectFit: 'cover',
+    //                   height: '100%',
+    //                   width: '100%',
+    //                 }}
+    //               />
+    //             )
+    //           }
+    //           else if (video) {
+    //           } 
+    //           else if (image) {
+    //             media = image
+    //           }
+    //           return {
+    //             media: media,
+    //           }
+    //         },
+    //       },
 
 
-        },
-      ],
-    },
+    //     },
+    //   ],
+    // },
 
 
     {
@@ -251,9 +251,11 @@ export default {
               name: "slider1",
               title: "Image overlay",
               type: "array",
+              description: "Display a maximum of 2 Images and 1 PNG Collage ",
               options: {
                 layout: "grid",
               },
+              hidden: ({parent}) => !parent?.layout1,
               of: [
                 {
                   name: "slide",
@@ -469,7 +471,131 @@ export default {
             // Layout 2 Fields (Visible only if Layout 2 is active)
           
            
-           
+            {
+              name: "slider2",
+              title: "Image overlay",
+              type: "array",
+              options: {
+                layout: "grid",
+              },
+              description: "Display a maximum of 1 Image and 1 PNG Collage ",
+              hidden: ({parent}) => !parent?.layout2,
+              of: [
+                {
+                  name: "slide",
+                  title: "Slide",
+                  type: "object", 
+                  fields: [
+         
+                  
+                    {
+                      name: "images",
+                      title: "Images",
+                      type: "array",
+                      options: {
+                        layout: "gridpress",
+                      },
+                      of: [
+                        {
+                          name: "imageObject",
+                          title: "Image",
+                          type: "object",
+                          fields: [
+                        
+                            {
+                              name: "image",
+                              title: "Image",
+                              type: "image",
+                              hidden: ({ parent }) => parent?.newDay,
+                            },
+                          ],
+        
+        
+                          preview: {
+                            select: {
+                              spacer: 'spacer',
+                              image: 'image',
+                              video: 'video.asset.playbackId',
+                              thumbnailTime: 'thumbnailTime',
+                              newDayImage: 'newDayImage',
+                            },
+                            prepare(selection) {
+                              const {image, spacer, video, thumbnailTime, newDayImage} = selection
+                              let media
+                              if (newDayImage) {
+                                // media = newDayImage;
+                                media = (
+                                  <img
+                                  src="/static/blue.png"
+                                  style={{
+                                    objectFit: 'cover',
+                                    height: '100%',
+                                    width: '100%',
+                                  }}
+                                />
+                                )
+                              } else if (video) {
+                                media = (
+                                  <img
+                                    src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
+                                    style={{
+                                      objectFit: 'cover',
+                                      height: '100%',
+                                      width: '100%',
+                                    }}
+                                  />
+                                )
+                              } else if (image) {
+                                media = image
+                              }
+                              return {
+                                media: video ? media : image ? media : spacer ? media : newDayImage 
+                              }
+                           
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  ],
+                  preview: {
+                    select: {
+                      image: 'images.0.image',
+                      video: 'images.0.video.asset.playbackId',
+                      thumbnailTime: 'images.0.thumbnailTime',
+                      newDayImage: 'images.0.newDayImage',
+                    },
+                    prepare(selection) {
+                      const {image, video, thumbnailTime, newDayImage} = selection
+                      let media
+                      if (newDayImage) {
+                        // media = newDayImage
+                        media = (
+                          <img
+                            src="/static/blue.png"
+                            style={{
+                              objectFit: 'cover',
+                              height: '100%',
+                              width: '100%',
+                            }}
+                          />
+                        )
+                      }
+                      else if (video) {
+                      } 
+                      else if (image) {
+                        media = image
+                      }
+                      return {
+                        media: media,
+                      }
+                    },
+                  },
+        
+        
+                },
+              ],
+            },
          
             {
               name: 'layout2Column1Text',
@@ -567,6 +693,133 @@ export default {
             // Layout 3 Fields (Visible only if Layout 3 is active)
           
          
+            {
+              name: "slider3",
+              title: "Image overlay",
+              type: "array",
+              description: "Display a maximum of 1 Image and 1 PNG Collage ",
+              options: {
+                layout: "grid",
+              },
+              description: "",
+              hidden: ({parent}) => !parent?.layout3,
+              of: [
+                {
+                  name: "slide",
+                  title: "Slide",
+                  type: "object", 
+                  fields: [
+         
+                  
+                    {
+                      name: "images",
+                      title: "Images",
+                      type: "array",
+                      options: {
+                        layout: "gridpress",
+                      },
+                      of: [
+                        {
+                          name: "imageObject",
+                          title: "Image",
+                          type: "object",
+                          fields: [
+                        
+                            {
+                              name: "image",
+                              title: "Image",
+                              type: "image",
+                              hidden: ({ parent }) => parent?.newDay,
+                            },
+                          ],
+        
+        
+                          preview: {
+                            select: {
+                              spacer: 'spacer',
+                              image: 'image',
+                              video: 'video.asset.playbackId',
+                              thumbnailTime: 'thumbnailTime',
+                              newDayImage: 'newDayImage',
+                            },
+                            prepare(selection) {
+                              const {image, spacer, video, thumbnailTime, newDayImage} = selection
+                              let media
+                              if (newDayImage) {
+                                // media = newDayImage;
+                                media = (
+                                  <img
+                                  src="/static/blue.png"
+                                  style={{
+                                    objectFit: 'cover',
+                                    height: '100%',
+                                    width: '100%',
+                                  }}
+                                />
+                                )
+                              } else if (video) {
+                                media = (
+                                  <img
+                                    src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
+                                    style={{
+                                      objectFit: 'cover',
+                                      height: '100%',
+                                      width: '100%',
+                                    }}
+                                  />
+                                )
+                              } else if (image) {
+                                media = image
+                              }
+                              return {
+                                media: video ? media : image ? media : spacer ? media : newDayImage 
+                              }
+                           
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  ],
+                  preview: {
+                    select: {
+                      image: 'images.0.image',
+                      video: 'images.0.video.asset.playbackId',
+                      thumbnailTime: 'images.0.thumbnailTime',
+                      newDayImage: 'images.0.newDayImage',
+                    },
+                    prepare(selection) {
+                      const {image, video, thumbnailTime, newDayImage} = selection
+                      let media
+                      if (newDayImage) {
+                        // media = newDayImage
+                        media = (
+                          <img
+                            src="/static/blue.png"
+                            style={{
+                              objectFit: 'cover',
+                              height: '100%',
+                              width: '100%',
+                            }}
+                          />
+                        )
+                      }
+                      else if (video) {
+                      } 
+                      else if (image) {
+                        media = image
+                      }
+                      return {
+                        media: media,
+                      }
+                    },
+                  },
+        
+        
+                },
+              ],
+            },
+
             {
               name: 'layout3Column1Text',
               title: 'Layout 3, Column 1. Bodycopy',
