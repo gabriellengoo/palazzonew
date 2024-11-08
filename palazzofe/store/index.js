@@ -27,8 +27,8 @@ export const mutations = {
   SET_GRIDAW(state, grid4) {
     state.gridaw = grid4
   },
-  SET_GRIDTEAM(state, grid5) {
-    state.gridteam = grid5
+  SET_GRIDTEAM(state, grid7) {
+    state.gridteam = grid7
   },
   SET_GRIDPRESS(state, gridpress) {
     state.gridpubindi = gridpress
@@ -281,6 +281,8 @@ _key, double, spacer,
 
 
 
+
+
 const gridQuery3 = groq`*[_type == "publications" ] 
 {
   grid4[] {
@@ -385,7 +387,7 @@ _key, double, spacer,
 
     const gridpubindi = await this.$sanity.fetch(gridQuerypress)
     // console.log('Grid2 Query Result:', grid2)
-    commit('SET_GRIDTEAM', gridpubindi)
+    commit('SET_GRIDPRESS', gridpubindi)
     // commit('SET_GRID3', grid2.grid3);
 
   

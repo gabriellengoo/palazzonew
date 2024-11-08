@@ -56,7 +56,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["gridd"]),
+    ...mapState(["gridd"]), 
   },
 };
 </script>

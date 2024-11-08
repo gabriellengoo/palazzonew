@@ -52,7 +52,7 @@ export default {
 }
 
 .lay1subtext{
-  font-size: 1.6vw;
+  font-size: 1.4vw;
   font-weight: bolder;
   font-family: 'RomainTextTrial';
   line-height: normal;
@@ -106,14 +106,14 @@ export default {
 }
 
 .imtitle p{
-  font-size: 1vw !important;
+  font-size: 1.1vw !important;
     font-family: 'RomainHeadlineTrial';
     font-family: 'GT-Sectra-Book-Italic'!important;
     text-decoration: underline;
 }
 
 .imtitle2 p:last-child{
-  font-size: 1vw !important;
+  font-size: 1.15vw !important;
     font-family: 'RomainHeadlineTrial';
     font-family: 'GT-Sectra-Book-Italic'!important;
     text-decoration: underline;
@@ -146,8 +146,9 @@ export default {
 }
 
 .contactinnerpressslug div p{
-  padding-bottom: 0.5vw !important;
+  padding-bottom: 1vw !important;
   line-height: normal;
+  letter-spacing: .5px;
 }
 
 .contactinnerpressslug p{
@@ -158,6 +159,15 @@ export default {
 .contactinnerpressslug p a{
   padding-bottom: 0.5vw !important;
   line-height: normal !important;
+}
+
+.lay3subtext div p{
+  padding-bottom: 0.2vw !important;
+  letter-spacing: 2px;
+}
+
+.layouts{
+  font-family: "GT-Sectra-Book";
 }
 
 .adsize div p:nth-child(2){

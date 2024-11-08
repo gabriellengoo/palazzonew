@@ -103,13 +103,19 @@
                   alt="Main Image"
                 />
               </div>
+              <p
+                    v-if="section.column5Text"
+                    class="imagetext p-[.5vw] pt-0 pb-0"
+                  >
+                    IMAGE
+                  </p>
               <Richtext
-                class="contactinnerpressslug imtitle2 underimglay1 p-[.5vw]"
+                class=" imtitle2 underimglay1 p-[.5vw]"
                 :blocks="section.column5Text"
               ></Richtext>
             </div>
 
-            <div class="column col-4 pop-in pop-in-4 pt-[10vw]">
+            <div class="column col-4 pop-in pop-in-4 pt-[8vw]">
               <div class="flex">
                 <div class="flex flex-col">
                   <Richtext
@@ -139,7 +145,7 @@
               </div>
 
               <div class="column col-1 pop-in pop-in-4">
-                <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                <p class="toplink  p-[.5vw] pb-[2vw]">{{ section.location }}</p>
                 <Richtext
                   v-if="section.layout2Column1Text"
                   class="contactinnerpressslug lay1subtext p-[.5vw] pop-in-4 lay1text"
@@ -151,12 +157,14 @@
                   :blocks="section.layout2Column11Text"
                 ></Richtext>
               </div>
-              <div class="column col-2 col-3 pop-in pop-in-2">
+              <div class="column pt-[3vw] col-2 col-3 pop-in pop-in-2">
                 <img
                   class="imglay1 pop-in pop-in-5 p-[.5vw]"
                   :src="section.layout2Image2"
                   alt="Main Image"
+                   @click="openPopup(section.layout2Image2)"
                 />
+                
                 <div class="flex w-[40vw]">
                   <Richtext
                     v-if="section.layout2Column2Text"
@@ -170,7 +178,21 @@
                   ></Richtext>
                 </div>
               </div>
-              <div class="column col-4 pop-in pop-in-4">
+
+
+    <!-- Image Pop-up  @click.self="closePopup"-->
+    <div
+      v-if="popupVisible"
+      class="popup-overlay"
+   
+      :style="{ top: popupPosition.top + 'px', left: popupPosition.left + 'px' }"
+      @mousedown="startDrag"
+    >
+    <button class="popup-imageclose"   @click="closePopup" >close</button>
+      <img :src="popupImage" class="popup-image" />
+    </div>
+
+              <div class="column pt-[3vw] col-4 pop-in pop-in-4">
                 <div class="flex flex-col">
                   <p
                     v-if="section.layout2Column4Text"
@@ -194,11 +216,12 @@
                   :src="section.layout2Column4Image"
                   v-if="section.layout2Column4Image"
                   alt="Main Image"
+                   @click="openPopup(section.layout2Column4Image)"
                 />
 
                 <Richtext
                   v-if="section.layout2Column444Text"
-                  class="toplink p-[.5vw]"
+                  class="toplink text-center p-[.5vw]"
                   :blocks="section.layout2Column444Text"
                 ></Richtext>
                 <img
@@ -206,8 +229,10 @@
                   :src="section.layout2Column44Image"
                   v-if="section.layout2Column44Image"
                   alt="Main Image"
+                  @click="openPopup(section.layout2Column44Image)"
                 />
               </div>
+              
               <div class="column col-5 pop-in pop-in-3">
                 <div class="flex">
                   <img
@@ -215,6 +240,7 @@
                     :src="section.layout2Column5Image"
                     v-if="section.layout2Column5Image"
                     alt="Main Image"
+                     @click="openPopup(section.layout2Column5Image)"
                   />
                 </div>
                 <Richtext
@@ -253,7 +279,7 @@
                 ></Richtext>
                 <Richtext
                   v-if="section.layout3Column23Text"
-                  class="contactinnerpressslug toplink p-[.5vw]"
+                  class="contactinnerpressslug toplink text-center p-[.5vw]"
                   :blocks="section.layout3Column23Text"
                 ></Richtext>
 
@@ -332,7 +358,7 @@
       <div v-for="image in slide.images" :key="image._key"  class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]" 
       :style="getRandomStyle()"  
            >
-        <img :src="image.imageUrl" :alt="`Slide Image ${image._key}`"   @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" class="imglay1 p-[.5vw]" />
+        <img :src="image.imageUrl" :alt="`Slide Image ${image._key}`"   @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" class="imglay1s p-[.5vw]" />
       </div>
     </div>
   </div>
@@ -455,6 +481,10 @@ export default {
       lottieInstance: null,
       slides: Array(10).fill({}),
       hoveredIndex: null,
+      popupVisible: false,
+      popupImage: '',
+      popupPosition: { top: 100, left: 100 },
+      offset: { x: 0, y: 0 },
       // ... other data properties
     };
   },
@@ -491,7 +521,7 @@ export default {
     },
     getRandomStyle() {
       const top = `${Math.random() * 10}vw`; // Adjust range as needed
-      const width = `${Math.random() * 40}vw`;
+      const width = `${Math.random() * 90}vw`;
       const left = `${Math.random() * 90}vw`;  // Adjust range as needed
       return {
         position: 'absolute',
@@ -500,6 +530,33 @@ export default {
         left,
         opacity: this.hoveredIndex !== null ? (this.hoveredIndex === -1 ? 0 : 1) : 1,
       };
+    },
+    openPopup(imageSrc) {
+      this.popupImage = imageSrc;
+      this.popupVisible = true;
+    },
+    closePopup() {
+      console.log("Close button clicked"); 
+      this.popupVisible = false;
+      // this.popupVisible = true;
+    },
+    startDrag(event) {
+      this.offset = {
+        x: event.clientX - this.popupPosition.left,
+        y: event.clientY - this.popupPosition.top,
+      };
+      document.addEventListener('mousemove', this.drag);
+      document.addEventListener('mouseup', this.stopDrag);
+    },
+    drag(event) {
+      this.popupPosition = {
+        top: event.clientY - this.offset.y,
+        left: event.clientX - this.offset.x,
+      };
+    },
+    stopDrag() {
+      document.removeEventListener('mousemove', this.drag);
+      document.removeEventListener('mouseup', this.stopDrag);
     },
     // handleMouseEnter(index) {
     //   this.hoveredIndex = index;
@@ -536,6 +593,55 @@ export default {
 </script>
 
 <style scoped>
+.popup-overlay {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  background-image: url("./static/background.jpg");
+  background-size: 102vw;
+  background-size: 192vh;
+  background-position: unset;
+  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  border: 0.05vw solid black;
+}
+
+.popup-image {
+  max-width: 100%;
+    max-height: 100%;
+    width: 52vw;
+  cursor: pointer;
+  pointer-events: none;
+  font-size: 20vw;
+}
+
+.popup-imageclose{
+  max-width: 100%;
+    max-height: 100%;
+    width: 52vw;
+  cursor: pointer;
+  font-size: 20vw;
+  font-size: 1vw;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.05vw solid black;
+    font-family: "RomainHeadlineTrial";
+    text-transform: uppercase;
+    padding: .5vw;
+    z-index: 1000;
+}
+
+
 .slider-image img {
   transition: opacity 0.5s ease;
 }
@@ -551,8 +657,8 @@ export default {
   overflow: hidden;
 }
 
-.random-image img {
-  max-width: 150px; /* Adjust to preferred size */
+/* .random-image img {
+  max-width: 150px; 
   height: auto;
   transition: transform 0.3s ease;
 }
@@ -560,7 +666,7 @@ export default {
 .random-image img:hover {
   transform: scale(1.1);
   opacity: 0;
-}
+} */
 
 .gridpress-container {
   display: grid;
@@ -574,17 +680,16 @@ export default {
     /* pointer-events: none; */
 }
 
-.imglay1 {
+.imglay1s {
   opacity: 1;
   transition: opacity 0.3s ease; 
 }
 
-.imglay1.hovered {
+.imglay1s.hovered {
   opacity: 0;
 }
 
-/* When hovered, apply opacity 0 immediately */
-.imglay1:hover {
+.imglay1s:hover {
   opacity: 0;
 }
 
@@ -713,6 +818,7 @@ opacity: 0;
 .toplink {
   text-decoration: underline;
   /* font-style: italic; */
+  letter-spacing: .5px;
   font-family: "GT-Sectra-Book-Italic";
 }
 
@@ -748,7 +854,7 @@ opacity: 0;
   display: flex;
   flex-direction: column;
   gap: 20px; /* Space between layouts */
-  padding-top: 2vw;
+  padding-top: 3vw;
 }
 
 .layout {
