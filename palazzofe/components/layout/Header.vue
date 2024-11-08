@@ -181,8 +181,8 @@ export default {
     return {
       isMenuOpen: false,
       isHovered: false,
-      defaultImage: "/navicon.png",
-      hoverImage: "/navtype.png",
+      defaultImage: "/Navn.png",
+      hoverImage: "/Navnt.png",
       menuTopPosition: "0",
       lottieInstance: null,
     };
