@@ -344,24 +344,21 @@
 
       <!-- @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" -->
       <!-- Display the gridpress content here -->
-      <transition name="slide" mode="out-in">
-      <div class="gridpress-container" v-for="(section, index) in project.sections"  v-if="
-            (section.layout1 && currentLayoutIndex === index) ||
-            (section.layout2 && currentLayoutIndex === index) ||
-            (section.layout3 && currentLayoutIndex === index)
-          ">
-
-        <div class="slider" v-if="section.layout1 === true">
-    <div v-for="slide in project.slider" :key="slide._key" class="slide"    >
-      <div v-for="image in slide.images" :key="image._key"  class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]" 
-  
-           >
-        <img :src="image.imageUrl" :alt="`Slide Image ${image._key}`"    class="imglay1s p-[.5vw]" />
+      <transition name="fade" mode="out-in">
+    <div v-if="showContent" class="gridpress-container">
+      <!-- Your content here -->
+      <div class="slider" v-for="(section, index) in project.sections" :key="index" v-if="
+        (section.layout1 && currentLayoutIndex === index) ||
+        (section.layout2 && currentLayoutIndex === index) ||
+        (section.layout3 && currentLayoutIndex === index)">
+        <div v-for="slide in project.slider" :key="slide._key" class="slide">
+          <div v-for="image in slide.images" :key="image._key" class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]">
+            <img @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" :src="image.imageUrl" :alt="`Slide Image ${image._key}`" class="imglay1s p-[.5vw]" />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-      </div>
-    </transition>
+  </transition>
 
  
 
@@ -438,6 +435,15 @@ export default {
        sections[] {
         locationlink,
         location,
+
+      "slider1": slider[] { 
+        _key,
+        images[] {
+          _key,
+          portrait,
+          "imageUrl": image.asset->url
+        }
+      },
         layout,
         layout1,
         layout2,
@@ -501,6 +507,7 @@ export default {
       popupImage: '',
       popupPosition: { top: 100, left: 100 },
       offset: { x: 0, y: 0 },
+      showContent: false,
       // ... other data properties
     };
   },
@@ -515,6 +522,7 @@ export default {
     closeModal() {
       this.isModalOpen = false; // Close the modal
     },
+    
 
     nextLayout() {
       if (this.currentLayoutIndex < this.totalLayouts - 1) {
@@ -589,6 +597,11 @@ export default {
     // ... other methods
   },
   mounted() {
+
+    setTimeout(() => {
+      this.showContent = true;
+    }, 3000); // 5 seconds in milliseconds
+
     // this.generateRandomPositions(); 
 
     console.log("Lottie animation initialized:", this.lottieInstance);
@@ -609,6 +622,18 @@ export default {
 </script>
 
 <style scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s ease; /* Slower, smoother fade in/out */
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0; /* Start and end at 0 opacity */
+}
+
+.imglay1s:hover {
+   /* opacity: 0; */
+}
+
 .popup-overlay {
   position: fixed;
   z-index: 9999;
