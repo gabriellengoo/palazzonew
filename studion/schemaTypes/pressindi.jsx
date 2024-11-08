@@ -253,14 +253,12 @@ export default {
               name: 'mainImage',
               title: 'Layout 1, Large Publication. Logo (png only)',
               type: 'image',
+               options: {
+        hotspot: true, // Enables hotspot and crop functionality
+      },
               hidden: ({parent}) => !parent?.layout1,
             },
-            {
-              name: 'column4Image',
-              title: 'Layout 1, Column 4. Image',
-              type: 'image',
-              hidden: ({parent}) => !parent?.layout1,
-            },
+        
             {
               name: 'column0Text',
               title: 'Subtitle',
@@ -305,6 +303,15 @@ export default {
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout1,
             },
+            {
+              name: 'column4Image',
+              title: 'Layout 1, Column 4. Image',
+              type: 'image',
+               options: {
+        hotspot: true, // Enables hotspot and crop functionality
+      },
+              hidden: ({parent}) => !parent?.layout1,
+            },
 
             {
               name: 'column5Text',
@@ -338,30 +345,10 @@ export default {
 
 
             // Layout 2 Fields (Visible only if Layout 2 is active)
-            {
-              name: 'layout2Image2',
-              title: 'Layout 2, Large Image.',
-              type: 'image',
-              hidden: ({parent}) => !parent?.layout2,
-            },
-            {
-              name: 'layout2Column4Image',
-              title: 'Layout 2, Pressed Flower. (png only)',
-              type: 'image',
-              hidden: ({parent}) => !parent?.layout2,
-            },
-            {
-              name: 'layout2Column44Image',
-              title: 'Layout 2, Small Publication Logo (PNG only)',
-              type: 'image',
-              hidden: ({parent}) => !parent?.layout2,
-            },
-            {
-              name: 'layout2Column5Image',
-              title: 'Layout 2 - Column 5 Image',
-              type: 'image',
-              hidden: ({parent}) => !parent?.layout2,
-            },
+          
+           
+           
+         
             {
               name: 'layout2Column1Text',
               title: 'Subtitle',
@@ -374,6 +361,15 @@ export default {
               title: 'Layout 2, Column 1. Bodycopy',
               type: 'array',
               of: [blockConfig],
+              hidden: ({parent}) => !parent?.layout2,
+            },
+            {
+              name: 'layout2Image2',
+              title: 'Layout 2, Large Image.',
+              type: 'image',
+               options: {
+        hotspot: true, // Enables hotspot and crop functionality
+      },
               hidden: ({parent}) => !parent?.layout2,
             },
             {
@@ -397,6 +393,7 @@ export default {
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout2,
             },
+            
             {
               name: 'layout2Column44Text',
               title: 'Layout 2, Column 4. Bodycopy',
@@ -405,10 +402,28 @@ export default {
               hidden: ({parent}) => !parent?.layout2,
             },
             {
+              name: 'layout2Column44Image',
+              title: 'Layout 2, Small Publication Logo (PNG only)',
+              type: 'image',
+               options: {
+        hotspot: true, // Enables hotspot and crop functionality
+      },
+              hidden: ({parent}) => !parent?.layout2,
+            },
+            {
               name: 'layout2Column444Text',
               title: 'Layout 2, Subtitle',
               type: 'array',
               of: [blockConfig],
+              hidden: ({parent}) => !parent?.layout2,
+            },
+            {
+              name: 'layout2Column5Image',
+              title: 'Layout 2 - Column 5 Image',
+              type: 'image',
+               options: {
+        hotspot: true, // Enables hotspot and crop functionality
+      },
               hidden: ({parent}) => !parent?.layout2,
             },
 
@@ -428,18 +443,8 @@ export default {
             },
 
             // Layout 3 Fields (Visible only if Layout 3 is active)
-            {
-              name: 'layout3Image3_5',
-              title: 'Layout 3, Large Image',
-              type: 'image',
-              hidden: ({parent}) => !parent?.layout3,
-            },
-            {
-              name: 'layout3Column2Image',
-              title: 'Layout 3, Small Publication Logo (PNG only)',
-              type: 'image',
-              hidden: ({parent}) => !parent?.layout3,
-            },
+          
+         
             {
               name: 'layout3Column1Text',
               title: 'Layout 3, Column 1. Bodycopy',
@@ -462,6 +467,15 @@ export default {
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
             },
+            {
+              name: 'layout3Column2Image',
+              title: 'Layout 3, Small Publication Logo (PNG only)',
+              type: 'image',
+               options: {
+        hotspot: true, // Enables hotspot and crop functionality
+      },
+              hidden: ({parent}) => !parent?.layout3,
+            },
 
             {
               name: 'layout3Column22Text',
@@ -470,7 +484,15 @@ export default {
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
             },
-
+            {
+              name: 'layout3Image3_5',
+              title: 'Layout 3, Large Image',
+              type: 'image',
+               options: {
+        hotspot: true, // Enables hotspot and crop functionality
+      },
+              hidden: ({parent}) => !parent?.layout3,
+            },
             {
               name: 'layout3Column3Text',
               title: 'Layout 3, Column 3. Subtitle',

@@ -162,7 +162,7 @@
                   class="imglay1 pop-in pop-in-5 p-[.5vw]"
                   :src="section.layout2Image2"
                   alt="Main Image"
-                   @click="openPopup(section.layout2Image2)"
+              
                 />
                 
                 <div class="flex w-[40vw]">
@@ -181,7 +181,7 @@
 
 
     <!-- Image Pop-up  @click.self="closePopup"-->
-    <div
+    <!-- <div
       v-if="popupVisible"
       class="popup-overlay"
    
@@ -190,7 +190,7 @@
     >
     <button class="popup-imageclose"   @click="closePopup" >close</button>
       <img :src="popupImage" class="popup-image" />
-    </div>
+    </div> -->
 
               <div class="column pt-[3vw] col-4 pop-in pop-in-4">
                 <div class="flex flex-col">
@@ -216,7 +216,7 @@
                   :src="section.layout2Column4Image"
                   v-if="section.layout2Column4Image"
                   alt="Main Image"
-                   @click="openPopup(section.layout2Column4Image)"
+          
                 />
 
                 <Richtext
@@ -229,7 +229,7 @@
                   :src="section.layout2Column44Image"
                   v-if="section.layout2Column44Image"
                   alt="Main Image"
-                  @click="openPopup(section.layout2Column44Image)"
+              
                 />
               </div>
               
@@ -240,7 +240,7 @@
                     :src="section.layout2Column5Image"
                     v-if="section.layout2Column5Image"
                     alt="Main Image"
-                     @click="openPopup(section.layout2Column5Image)"
+                  
                   />
                 </div>
                 <Richtext
@@ -342,6 +342,7 @@
         </div>
       </transition>
 
+      <!-- @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" -->
       <!-- Display the gridpress content here -->
       <transition name="slide" mode="out-in">
       <div class="gridpress-container" v-for="(section, index) in project.sections"  v-if="
@@ -349,9 +350,28 @@
             (section.layout2 && currentLayoutIndex === index) ||
             (section.layout3 && currentLayoutIndex === index)
           ">
-      
-      <!--   @mouseenter="handleMouseEnter()"
-             @mouseleave="handleMouseLeave()" -->
+
+        <div class="slider" v-if="section.layout1 === true">
+    <div v-for="slide in project.slider" :key="slide._key" class="slide"    >
+      <div v-for="image in slide.images" :key="image._key"  class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]" 
+  
+           >
+        <img :src="image.imageUrl" :alt="`Slide Image ${image._key}`"    class="imglay1s p-[.5vw]" />
+      </div>
+    </div>
+  </div>
+      </div>
+    </transition>
+
+ 
+
+
+    <!-- <transition name="slide" mode="out-in">
+      <div class="gridpress-container" v-for="(section, index) in project.sections"  v-if="
+            (section.layout1 && currentLayoutIndex === index) ||
+            (section.layout2 && currentLayoutIndex === index) ||
+            (section.layout3 && currentLayoutIndex === index)
+          ">
 
         <div class="slider" v-if="section.layout1 === true">
     <div v-for="slide in project.slider" :key="slide._key" class="slide"    >
@@ -363,11 +383,7 @@
     </div>
   </div>
       </div>
-    </transition>
-
- 
-
-
+    </transition> -->
   <!-- <div v-for="slide in project.slider" class="slider-container">
     <div
       v-for="(image, index) in project.slider[0].images"
@@ -669,7 +685,7 @@ export default {
 } */
 
 .gridpress-container {
-  display: grid;
+  /* display: grid; */
     /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 1rem;
@@ -678,6 +694,29 @@ export default {
     width: 100vw;
     height: auto;
     /* pointer-events: none; */
+}
+
+.slider div:nth-child(1) img{
+  position: absolute;
+    width: 36vw;
+    /* height: 50vh; */
+    left: 9vw;
+    top: 19vw;
+}
+
+.slider div:nth-child(2) img{
+  position: absolute;
+    width: 20vw;
+    left: 47vw;
+    top: 2.5vw;
+}
+
+.slider div:nth-child(3) img{
+  position: absolute;
+    width: 13vw;
+    /* height: 50vh; */
+    left: 81vw;
+    top: 4vw;
 }
 
 .imglay1s {
@@ -690,7 +729,7 @@ export default {
 }
 
 .imglay1s:hover {
-  opacity: 0;
+  /*  opacity: 0; */
 }
 
 /* .slider .slide:nth-child(even){

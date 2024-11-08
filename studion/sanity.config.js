@@ -3,6 +3,7 @@ import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemaTypes';
 import { deskTool } from 'sanity/desk';
+import SitePreviewTab from './SitePreviewTab'
 // import defaultDocumentNode from './defaultDocumentNode'
 // import IframePane from 'sanity-plugin-iframe-pane';
 
@@ -51,6 +52,14 @@ export default defineConfig({
               ),
             S.divider(),
             S.documentTypeListItem('team').title('Team'),
+
+            S.divider(),
+            // Add the new "Live Preview" tab
+            S.listItem()
+              .title('Live Preview')
+              .child(
+                S.component(SitePreviewTab).title('Site Preview')
+              ),
             // Add Live Preview tab
             // S.listItem()
             //   .title('Live Preview')
