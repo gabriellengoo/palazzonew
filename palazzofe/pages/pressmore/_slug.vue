@@ -323,7 +323,7 @@
                       v-if="section.layout3Column33Text"
                       class="imagetext p-[.5vw] pb-0"
                     >
-                      IMAGE
+                      IMAGE 
                     </p>
                     <Richtext
                       v-if="section.layout3Column33Text"
