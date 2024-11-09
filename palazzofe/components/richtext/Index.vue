@@ -58,27 +58,17 @@ export default {
   line-height: normal;
 }
 
-/* .lay1text div p:nth-child(1){
-  font-size: 1.6vw;
-  font-weight: bolder;
-  font-family: 'RomainTextTrial';
-} */
+
 
 .lay2text div p:nth-child(1){
   font-size: 1.6vw;
-  /* font-weight: bolder; */
   line-height: 2vw;
   font-family: 'RomainTextTrial';
-  /* width: 68%; */
-  /* font-family: 'NHaas' !important; */
 }
 
 .lay3text div p:nth-child(1){
   font-size: 1.6vw;
-  /* font-weight: bolder; */
   line-height: 2vw;
-  /* font-family: 'RomainTextTrial'; */
-  /* width: 68%; */
   font-family: 'NHaas' !important;
 }
 
@@ -195,15 +185,40 @@ div p{
 }
 
 @media only screen and (max-width: 768px) {
+  .laytextall p{
+    font-size: 5.5vw;
+    line-height: 6vw;
+  }
 
   .imtitle2 p:last-child{
     font-size: 3vw !important;
   }
 
-  .lay1subtext{
+  .submblay2 div{
+  display: flex;
+  flex-direction: row;
+}
+
+.mainmblay2{
+  width: 100% !important;
+}
+
+.submblay2:nth-child(1){
+  padding-right: 5vw;
+}
+
+
+  /* .lay1subtext{
   font-size: 4vw;
   font-weight: bolder;
-}
+} */
+
+
+.lay1subtext {
+        font-size: 5vw;
+        font-weight: bolder;
+        width: 54%;
+    }
 
 .lay2text div p:nth-child(1){
   font-size: 4vw;
@@ -253,6 +268,16 @@ padding-bottom: 1.5vh;
   font-size: 4vw;
   line-height: normal;
 }
+
+.lay3subtext p{
+  font-size: 4vw;
+  line-height: normal;
+}
+
+.mblay3col5pad{
+  padding-top: 10vw;
+}
+
 }
 
 p{
