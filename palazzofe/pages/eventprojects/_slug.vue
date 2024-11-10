@@ -10,9 +10,13 @@
       <div class="headera mbpad content flex w-full justify-between">
         <h1 class="md:w-[1.4vw] w-auto">
           <!-- events -->
-          <a class="headbar" href="../events"
-            ><SvgBack class="svgmb hover:cursor-pointer"
-          /></a>
+          <a class="headbar" href="../events">
+            <div
+            ref="lottieAnimation"
+            class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+          ></div>
+            <!-- <SvgBack class="svgmb hover:cursor-pointer"/> -->
+        </a>
         </h1>
         <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
           {{ project.title }}
@@ -388,6 +392,7 @@ import { mapMutations, mapState } from "vuex";
 // import Lenis from '@studio-freight/lenis';
 // import LenisComponent from "~/components/LenisComponent.vue";
 import TransitionComponent from "~/components/TransitionComponent.vue";
+import lottie from "lottie-web";
 
 export default {
   components: {
@@ -463,6 +468,7 @@ export default {
         //   enabled: true,
         // },
       },
+      lottieInstance: null,
       imageOpacity: 1, // Add this property
       scrolled: false,
       back: false,
@@ -502,6 +508,22 @@ export default {
         }
       }, 1000); // Adjust timeout to match the duration of your animation
     });
+
+
+    console.log("Lottie animation initialized:", this.lottieInstance);
+
+
+    this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation, // the DOM element
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "/animations/hamburger.json", // your Lottie animation JSON file path
+    });
+
+    // Set the animation to frame 11 without playing
+    this.lottieInstance.goToAndStop(55, true);
+
   },
 
   watch: {
@@ -517,6 +539,12 @@ export default {
     next();
   },
   methods: {
+    playSegment() {
+      // Play from frame 11 to 20
+      if (this.lottieInstance) {
+        this.lottieInstance.playSegments([55, 20], true);
+      }
+    },
     nextImage() {
       // Implement your logic to go to the next image
     },

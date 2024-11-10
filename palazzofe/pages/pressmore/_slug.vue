@@ -49,7 +49,7 @@
             (section.layout3 && currentLayoutIndex === index)
           "
         >
-           <!-- Layout 2 -->
+           <!-- Layout 1 -->
           <div class="layout layout-1" v-if="section.layout1 === true">
             <div class="top-right-element" v-if="section.layout1date">
               <Richtext
@@ -63,18 +63,18 @@
               <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
               <div>
                 <img
-                  class="imglay1 mbimgcol1lay1 p-[.5vw] pop-in pop-in-5"
+                  class="imglay1 mbimgcol1lay1 p-[.5vw] pop-in pop-in-2"
                   :src="section.mainImage"
                   alt="Main Image"
                 />
               </div>
-              <div class="laytextall mblaytextall pop-in pop-in-1">
+              <div class="laytextall mblaytextall pop-in pop-in-2">
                 <Richtext
                   class="p-[.5vw]"
                   :blocks="section.column0Text"
                 ></Richtext>
               </div>
-              <div class="flex pop-in pop-in-2 w-[39vw] mbcollay1">
+              <div class="flex slideInD-in slideInD-in-2 w-[39vw] mbcollay1">
                 <Richtext
                   class="contactinnerpressslug p-[.5vw]"
                   :blocks="section.column1Text"
@@ -86,7 +86,7 @@
               </div>
             </div>
 
-            <div class="column col-2 pop-in pop-in-2">
+            <div class="column col-2 slideInY-in slideInY-in-2">
               <Richtext
                 class="contactinnerpressslug"
                 :blocks="section.column3Text"
@@ -95,29 +95,29 @@
 
             <div class="column col-3 pt-[3vw] mblcol4lay1">
               <Richtext
-                class="contactinnerpressslug imtitle pop-in pop-in-3 underimglay1 p-[.5vw] w-[85%]"
+                class="contactinnerpressslug imtitle slideInY-in slideInY-in-2 underimglay1 p-[.5vw] w-[85%]"
                 :blocks="section.column4Text"
               ></Richtext>
               <div class="">
                 <img
-                  class="imglay1 p-[.5vw] pop-in pop-in-5"
+                  class="imglay1 p-[.5vw] pop-in pop-in-4"
                   :src="section.column4Image.asset.url"
                   alt="Main Image"
                 />
               </div>
               <p
                     v-if="section.column5Text"
-                    class="imagetext p-[.5vw] pt-0 pb-0"
+                    class="imagetext p-[.5vw] pt-0 pb-0 slideInD-in slideInD-in-3"
                   >
                     IMAGE
                   </p>
               <Richtext
-                class=" imtitle2 underimglay1 p-[.5vw]"
+                class=" imtitle2 underimglay1 slideInD-in slideInD-in-3 p-[.5vw]"
                 :blocks="section.column5Text"
               ></Richtext>
             </div>
 
-            <div class="column col-4 pop-in pop-in-4 pt-[8vw]">
+            <div class="column col-4 slideInY-in slideInY-in-4 pt-[8vw]">
               <div class="flex">
                 <div class="flex flex-col">
                   <Richtext
@@ -132,7 +132,7 @@
               </div>
             </div>
 
-            <div class="column col-5 lay1col5 pop-in pop-in-5"></div>
+            <div class="column col-5 lay1col5 slideIn-in slideIn-in-5"></div>
           </div>
 
 
@@ -889,7 +889,6 @@ opacity: 0;
 
 .pop-in-5 {
   animation-delay: 2.2s;
-  /* animation: popIn 0.5s forwards, blurIn 0.5s forwards; */
 }
 
 @keyframes popIn {
@@ -903,14 +902,106 @@ opacity: 0;
   }
 }
 
-/* @keyframes blurIn {
+
+
+
+.slideIn-in {
+  animation: slideIn 0.5s forwards;
+  opacity: 0;
+  transform: translateX(-100vw); /* Start off-screen to the left */
+}
+
+.slideIn-in-1 {
+  animation-delay: 0.5s;
+}
+
+.slideIn-in-2 {
+  animation-delay: 1s;
+}
+
+.slideIn-in-3 {
+  animation-delay: 1.6s;
+}
+
+.slideIn-in-4 {
+  animation-delay: 1.9s;
+}
+
+.slideIn-in-5 {
+  animation-delay: 2.2s;
+}
+
+@keyframes slideIn {
   from {
-    filter: blur(0px);
+    transform: translateX(-100vw); /* Start off-screen to the left */
+    opacity: 0;
   }
   to {
-    filter: blur(2px);
+    transform: translateX(0); /* Slide into original position */
+    opacity: 1;
   }
-} */
+}
+
+.slideInY-in {
+  animation: slideInY 0.5s forwards;
+  /* animation: slideIn 0.5s forwards; */
+  /* opacity: 0; */
+  transform: translateY(-100vw); /* Start off-screen to the left */
+}
+
+.slideInY-in-1 {
+  animation-delay: 1.6s;
+}
+
+.slideInY-in-2 {
+  animation-delay: 1.9s;
+}
+
+.slideInY-in-3 {
+  animation-delay: 2.2s;
+}
+
+.slideInY-in-4 {
+  animation-delay: 2.5s;
+}
+
+@keyframes slideInY {
+  from {
+    transform: translateY(-100vh); /* Start off-screen to the left */
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0); /* Slide into original position */
+    opacity: 1;
+  }
+}
+
+.slideInD-in {
+  animation: slideInD 0.5s forwards;
+  /* animation: slideIn 0.5s forwards; */
+  /* opacity: 0; */
+  transform: translateY(100vw); /* Start off-screen to the left */
+}
+
+.slideInD-in-2 {
+  animation-delay: 1.9s;
+}
+
+.slideInD-in-3 {
+  animation-delay: 2.2s;
+}
+
+@keyframes slideInD {
+  from {
+    transform: translateY(100vh); /* Start off-screen to the left */
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0); /* Slide into original position */
+    opacity: 1;
+  }
+}
+
 
 .next-button {
   padding: 1rem;

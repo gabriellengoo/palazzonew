@@ -3,10 +3,19 @@
     <div>
       <div class="image-grid pt-[1vh]">
         <div class="nodes contmbhead">
-          <p v-if="!isMenuOpen" class="headingspages text-center text-4xl uppercase">Team</p>
+          <p
+            v-if="!isMenuOpen"
+            class="headingspages text-center text-4xl uppercase"
+          >
+            Team
+          </p>
         </div>
 
-        <div v-for="(chunk, chunkIndex) in chunkedItems" :key="chunkIndex" class="chunk-container">
+        <div
+          v-for="(chunk, chunkIndex) in chunkedItems"
+          :key="chunkIndex"
+          class="chunk-container"
+        >
           <div class="image-row">
             <div
               v-for="(item, index) in chunk"
@@ -14,42 +23,98 @@
               class="item-wrapper"
               @click="clickHandler(item._key)"
             >
-              <div class="relative image-item transition-opacity duration-300" :class="[item.double ? 'double h-fit' : '', item.spacer ? 'p-2' : '', activeTalent && activeTalent != item.reference.talentId && activeTalent != item.reference ? 'hidden' : '']">
+              <div
+                class="relative image-item transition-opacity duration-300"
+                :class="[
+                  item.double ? 'double h-fit' : '',
+                  item.spacer ? 'p-2' : '',
+                  activeTalent &&
+                  activeTalent != item.reference.talentId &&
+                  activeTalent != item.reference
+                    ? 'hidden'
+                    : '',
+                ]"
+              >
                 <figure class="flex flex-col">
                   <div class="relative">
-                    <div class="link-animation linkateam">
+                    <!--  :class="[
+                        hoveredIndex === item._key
+                          ? 'grayscale-off'
+                          : 'linkateam',
+                      ]" -->
+                    <div
+                      class="link-animation linkateam"
+                      :class="[
+                        hoveredIndex === item._key
+                          ? 'grayscale-off'
+                          : 'linkateam',
+                      ]" 
+                    >
                       <figure class="inner-image">
-                        <MediaImage :src="item.image.image" v-if="item.image.image" />
+                        <MediaImage
+                          :src="item.image.image"
+                          v-if="item.image.image"
+                        />
                       </figure>
-                      <figcaption class="textsum block text-center uppercase w-full pt-[1vw]">
-                        <span class="textsumf">{{ item.title }}</span>
-                        <span class="fontsubpub capitalize pt-[.5vw]">{{ item.month }}</span>
+                      <figcaption
+                        class="textsum block text-center uppercase w-full pt-[1vw]"
+                      >
+                        <span class="textsumf">{{
+                          item.title || "Employee Name"
+                        }}</span>
+                        <span class="fontsubpub capitalize pt-[.5vw]">{{
+                          item.month || "Job Position"
+                        }}</span>
                       </figcaption>
                     </div>
 
                     <div
                       v-show="hoveredIndex === item._key"
                       class="sideim"
-                      :class="{ 'fade-in': hoveredIndex === item._key, 'fade-out': hoveredIndex !== item._key }"
+                      :class="{
+                        'fade-in': hoveredIndex === item._key,
+                        'fade-out': hoveredIndex !== item._key,
+                      }"
                     >
                       <figure class="deskimgl">
-                        <MediaImage :src="item.imageh.imageh" v-if="item.imageh.imageh" />
-                        <MediaImage :src="item.image.image" v-else-if="item.image.image" />
+                        <MediaImage
+                          :src="item.imageh.imageh"
+                          v-if="item.imageh.imageh"
+                        />
+                        <MediaImage
+                          :src="item.image.image"
+                          v-else-if="item.image.image"
+                        />
                       </figure>
 
                       <div class="footerstuff">
                         <div class="textnewardesk teambio ttdesk animate-hover">
-                          <p v-if="item" class="uppercase">{{ item.title }}</p>
-                          <p class="yeartdesk mb-6 capitalize" v-if="item">{{ item.year }}</p>
+                          <p v-if="item" class="uppercase">
+                            {{ item.title || "Employee Name" }}
+                          </p>
+                          <p v-if="item" class="yeartdesk mb-6 capitalize">
+                            {{ item.year || "Job Title" }}
+                          </p>
                         </div>
 
                         <div v-if="item.content3" class="pt-[1vw] text-[1.3vw]">
-                          <Richtext class="contactinner teambios" :blocks="item.content3" />
+                          <Richtext
+                            class="contactinner teambios"
+                            :blocks="item.content3"
+                          />
                         </div>
-                        <div v-if="item.content4" class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]">
+                        <div
+                          v-if="item.content4"
+                          class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]"
+                        >
                           <p class="loctext uppercase">Email</p>
-                          <div class="flex flex-col normal-case italic loctextlink">
-                            <Richtext class="contactinner teamemail" :blocks="item.content4" />
+                          <div
+                            class="flex flex-col normal-case italic loctextlink"
+                          >
+                            <Richtext
+                              class="contactinner teamemail"
+                              :blocks="item.content4"
+                            />
                           </div>
                         </div>
                       </div>
@@ -60,18 +125,14 @@
             </div>
           </div>
 
-          <div v-if="gridteam.titlec" class="spanning-text nomb">{{ gridteam.titlec }}</div>
+          <div v-if="gridteam.titlec" class="spanning-text nomb">
+            {{ gridteam.titlec }}
+          </div>
         </div>
       </div>
     </div>
   </client-only>
 </template>
-
-
-
-
-
-
 
 <script>
 import { mapMutations, mapState } from "vuex";
@@ -89,23 +150,23 @@ export default {
   },
   computed: {
     ...mapGetters({
-    isMenuOpen: "isMenuOpen", 
-  }),
-  ...mapState(["activeProject", "activeTalent", "gridteam"]),
-  chunkedItems() {
-    return this.items.reduce((resultArray, item, index) => {
-      const chunkIndex = Math.floor(index / 2);
-      if (!resultArray[chunkIndex]) {
-        resultArray[chunkIndex] = [];
-      }
-      resultArray[chunkIndex].push(item);
-      return resultArray;
-    }, []);
-  },
-  // Add a computed property for the first item's key
-  firstItemKey() {
-    return this.items.length > 0 ? this.items[0]._key : null;
-  }
+      isMenuOpen: "isMenuOpen",
+    }),
+    ...mapState(["activeProject", "activeTalent", "gridteam"]),
+    chunkedItems() {
+      return this.items.reduce((resultArray, item, index) => {
+        const chunkIndex = Math.floor(index / 2);
+        if (!resultArray[chunkIndex]) {
+          resultArray[chunkIndex] = [];
+        }
+        resultArray[chunkIndex].push(item);
+        return resultArray;
+      }, []);
+    },
+    // Add a computed property for the first item's key
+    firstItemKey() {
+      return this.items.length > 0 ? this.items[0]._key : null;
+    },
   },
   mounted() {
     this.isDesktop = window.innerWidth > 768;
@@ -121,18 +182,20 @@ export default {
   },
   methods: {
     ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
-  handleResize() {
-    this.isDesktop = window.innerWidth > 768;
-  },
+    handleResize() {
+      this.isDesktop = window.innerWidth > 768;
+    },
   clickHandler(key) {
-    // Check if clicked item is already active; if so, go back to the first item
-    this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
-  }
+    // Set hoveredIndex to apply the grayscale-off class on the clicked item
+    this.hoveredIndex = this.hoveredIndex === key ? null : key;
+  },
+    clickHandler(key) {
+      // Check if clicked item is already active; if so, go back to the first item
+      this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
+    },
   },
 };
 </script>
-
-
 
 <style scoped>
 .modal {
@@ -148,14 +211,13 @@ export default {
   display: none;
 }
 
-.inner-image{
+.inner-image {
   object-fit: cover;
-    width: auto;
-    /* height: 19vw; */
-    overflow: hidden;
-    position: relative;
+  width: auto;
+  /* height: 19vw; */
+  overflow: hidden;
+  position: relative;
 }
-
 
 /* .image-item:nth-child(1){
   padding: .5vw;
@@ -172,20 +234,26 @@ export default {
   padding-left: 2vw;
 } */
 
-.chunk-container:nth-child(2){
+.chunk-container:nth-child(2) {
   border-top: 0.07vw solid rgba(0, 0, 0, 0.137) !important;
 }
 
-.image-grid{
+.image-grid {
   padding-top: 4vw;
 }
+
+.linkateam {
+  filter: grayscale(100%);
+  transition-duration: 1s;
+}
+
 .linkateam:hover {
   filter: grayscale(0%);
   transition-duration: 1s;
 }
 
-.linkateam {
-  filter: grayscale(100%);
+.grayscale-off {
+  filter: grayscale(0%) !important;
   transition-duration: 1s;
 }
 
@@ -237,34 +305,34 @@ export default {
 
 .deskimgl {
   object-fit: cover;
-    -o-object-position: center;
-    object-position: center;
-    height: 68vh;
-    /* height: 37vw ; */
-    padding: 1vw;
-    padding-top: 4vw;
-    overflow: hidden;
+  -o-object-position: center;
+  object-position: center;
+  height: 68vh;
+  /* height: 37vw ; */
+  padding: 1vw;
+  padding-top: 4vw;
+  overflow: hidden;
 }
 
-.image-row .item-wrapper:nth-child(1){
+.image-row .item-wrapper:nth-child(1) {
   margin-right: 1.5vw;
 }
 
-.image-row .item-wrapper:nth-child(2){
+.image-row .item-wrapper:nth-child(2) {
   margin-left: 1.5vw;
 }
 
-.deskimgl img{
+.deskimgl img {
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
-.footerstuff{
+.footerstuff {
   padding: 1vw;
-    padding-top: 1.5vw;
-    padding-top: 0;
-    position: relative;
+  padding-top: 1.5vw;
+  padding-top: 0;
+  position: relative;
   /* top: 70vh; */
   font-size: medium;
   font-size: 1.7rem;
@@ -274,21 +342,21 @@ export default {
   border-top-width: 0.7px; */
 }
 
-.loctext{
+.loctext {
   font-family: "GT-Bold" !important;
   font-size: 1.1vw !important;
 }
 
-.yeartdesk{
+.yeartdesk {
   font-size: 1.3vw !important;
 }
 
-.teamemail{
+.teamemail {
   text-decoration: underline;
 }
 
-.teambio{
-  padding-top: .5vw;
+.teambio {
+  padding-top: 0.5vw;
   border-top: 0.9vw solid rgba(0, 0, 0, 0.327);
   border-top-width: 0.7px;
 }
@@ -311,10 +379,10 @@ export default {
 .chunk-container {
   margin-bottom: 20px; /* Space between each chunk */
   margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .image-row {
@@ -325,8 +393,8 @@ export default {
 
 .spanning-text {
   text-align: center;
-  font-size: 1.5vw; 
-  margin-top: 10px; 
+  font-size: 1.5vw;
+  margin-top: 10px;
   text-transform: uppercase;
   font-family: "NHaas";
   width: 15vw;
@@ -335,8 +403,6 @@ export default {
 .chunk-container:last-child .spanning-text {
   display: none !important;
 }
-
-
 
 .image-row:last-child {
   border-bottom: 0;
@@ -396,14 +462,14 @@ export default {
 
   .textsum {
     padding-top: 5vw;
-}
+  }
 
   .image-item {
     padding: 3.5vw;
     margin-bottom: 0px;
   }
 
-  .image-grid{
+  .image-grid {
     padding: 10vw 3vw 2vw 3vw;
   }
 }

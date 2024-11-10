@@ -7,9 +7,13 @@
       <div class="headera mbpad content flex w-full justify-between">
         <h1 class="md:w-[1.4vw] w-auto">
           <!-- weddings -->
-          <a class="headbar" href="../weddings"
-            ><SvgBack class="svgmb hover:cursor-pointer"
-          /></a>
+          <a class="headbar" href="../weddings">
+            <!-- <SvgBack class="svgmb hover:cursor-pointer"/> -->
+            <div
+            ref="lottieAnimation"
+            class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+          ></div>
+          </a>
         </h1>
         <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
           {{ project.title }}
@@ -346,6 +350,7 @@
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
 import TransitionComponent from "~/components/TransitionComponent.vue";
+import lottie from "lottie-web";
 
 export default {
   components: {
@@ -410,6 +415,7 @@ export default {
       scrolled: false,
       back: false,
       searchQuery: "", // Initialize search query
+      lottieInstance: null,
     };
   },
   computed: {
@@ -425,6 +431,20 @@ export default {
   },
 
   mounted() {
+    console.log("Lottie animation initialized:", this.lottieInstance);
+
+
+this.lottieInstance = lottie.loadAnimation({
+  container: this.$refs.lottieAnimation, // the DOM element
+  renderer: "svg",
+  loop: false,
+  autoplay: false,
+  path: "/animations/hamburger.json", // your Lottie animation JSON file path
+});
+
+// Set the animation to frame 11 without playing
+this.lottieInstance.goToAndStop(55, true);
+
     const previousScrollPosition = sessionStorage.getItem(
       "previousScrollPosition"
     );
@@ -460,6 +480,12 @@ export default {
     next();
   },
   methods: {
+    playSegment() {
+      // Play from frame 11 to 20
+      if (this.lottieInstance) {
+        this.lottieInstance.playSegments([55, 20], true);
+      }
+    },
     nextImage() {
       // Implement your logic to go to the next image
     },
