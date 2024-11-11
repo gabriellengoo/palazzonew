@@ -47,7 +47,7 @@
             (section.layout1 && currentLayoutIndex === index) ||
             (section.layout2 && currentLayoutIndex === index) ||
             (section.layout3 && currentLayoutIndex === index)
-          "
+          " 
         >
            <!-- Layout 1 -->
           <div class="layout layout-1" v-if="section.layout1 === true">

@@ -86,7 +86,7 @@ export const actions = {
   },
 } `
     
-
+ 
     // weddings Grid
     const gridQuery = groq`*[_type == "works" ] 
 
