@@ -55,39 +55,39 @@ export default {
   font-size: 1.4vw;
   font-weight: bolder;
   font-family: 'RomainTextTrial';
-  line-height: normal;
+  /* line-height: normal; */
 }
 
 
 
 .lay2text div p:nth-child(1){
   font-size: 1.6vw;
-  line-height: 2vw;
+  /* line-height: 2vw; */
   font-family: 'RomainTextTrial';
 }
 
 .lay3text div p:nth-child(1){
   font-size: 1.6vw;
-  line-height: 2vw;
+  /* line-height: 2vw; */
   font-family: 'NHaas' !important;
 }
 
 .lay3subtext{
   font-size: 1.5vw !important;
   font-family: 'NHaas' !important;
-  line-height: normal;
+  /* line-height: normal; */
 }
 
 .laytextall p{
   font-size: 1.5vw;
   /* font-weight: bolder; */
-  line-height: 2vw;
+  /* line-height: 2vw; */
   /* width: 68%; */
   font-family: 'NHaas' !important;
   justify-content: center;
     display: flex;
     text-align: center;
-    line-height: normal;
+    /* line-height: normal; */
 }
 
 .underimglay1 p{
@@ -136,19 +136,28 @@ export default {
 }
 
 .contactinnerpressslug div p{
-  padding-bottom: 1vw !important;
-  line-height: normal;
+  padding-bottom: 1.3vw !important;
+  /* line-height: normal; */
   letter-spacing: .5px;
 }
 
 .contactinnerpressslug p{
-  padding-bottom: 0.5vw;
-  line-height: normal;
+  /* padding-bottom: 0.5vw; */
+  /* line-height: normal; */
+}
+
+.contactinnerpressslug p br{
+  /* padding-bottom: 0.5vw; */
+  /* line-height: normal; */
 }
 
 .contactinnerpressslug p a{
   padding-bottom: 0.5vw !important;
-  line-height: normal !important;
+  /* line-height: normal !important; */
+}
+
+.aboveflower p{
+  padding-bottom: 0;
 }
 
 .lay3subtext div p{
@@ -187,7 +196,7 @@ div p{
 @media only screen and (max-width: 768px) {
   .laytextall p{
     font-size: 5.5vw;
-    line-height: 6vw;
+    /* line-height: 6vw; */
   }
 
   .imtitle2 p:last-child{
@@ -223,7 +232,7 @@ div p{
 .lay2text div p:nth-child(1){
   font-size: 4vw;
   /* font-weight: bolder; */
-  line-height: 5vw;
+  /* line-height: 5vw; */
   /* width: 68%; */
   font-family: 'NHaas' !important;
 }
@@ -231,14 +240,14 @@ div p{
 .lay3text div p:nth-child(1){
   font-size: 4vw;
   /* font-weight: bolder; */
-  line-height: 5vw;
+  /* line-height: 5vw; */
   /* width: 68%; */
   font-family: 'NHaas' !important;
 }
 
 .laytextall p{
   font-size: 4vw;
-  line-height: 5vw;
+  /* line-height: 5vw; */
 }
 
 .underimglay3 p{
@@ -266,12 +275,12 @@ padding-bottom: 1.5vh;
 
 .adsizemb div p:nth-child(1){
   font-size: 4vw;
-  line-height: normal;
+  /* line-height: normal; */
 }
 
 .lay3subtext p{
   font-size: 4vw;
-  line-height: normal;
+  /* line-height: normal; */
 }
 
 .mblay3col5pad{

@@ -160,7 +160,7 @@
                   :blocks="section.layout2Column11Text"
                 ></Richtext>
               </div>
-              <div class="column pt-[3vw] col-2 col-3 pop-in pop-in-2">
+              <div class="column pt-[1.7vw] col-2 col-3 pop-in pop-in-2">
                 <img
                   class="imglay1 pop-in pop-in-5 p-[.5vw]"
                   :src="section.layout2Image2"
@@ -183,19 +183,7 @@
               </div>
 
 
-    <!-- Image Pop-up  @click.self="closePopup"-->
-    <!-- <div
-      v-if="popupVisible"
-      class="popup-overlay"
-   
-      :style="{ top: popupPosition.top + 'px', left: popupPosition.left + 'px' }"
-      @mousedown="startDrag"
-    >
-    <button class="popup-imageclose"   @click="closePopup" >close</button>
-      <img :src="popupImage" class="popup-image" />
-    </div> -->
-
-              <div class="column pt-[3vw] mbcol4lay2 col-4 pop-in pop-in-4 ">
+              <div class="column pt-[1.7vw] mbcol4lay2 col-4 pop-in pop-in-4 ">
                 <div class="flex flex-col">
                   <p
                     v-if="section.layout2Column4Text"
@@ -210,14 +198,14 @@
                   ></Richtext>
                   <Richtext
                     v-if="section.layout2Column44Text"
-                    class="contactinnerpressslug p-[.5vw] colmb"
+                    class="contactinnerpressslug p-[.5vw] aboveflower colmb"
                     :blocks="section.layout2Column44Text"
                   ></Richtext>
                 </div>
                
-                <div class="mbflex">
+                <div class="mbflex flowerimgcon">
                   <img
-                  class="imglay1 p-[.5vw] mblay2imgsize"
+                  class="imglay1 floimg p-[.5vw] mblay2imgsize"
                   :src="section.layout2Column4Image"
                   v-if="section.layout2Column4Image"
                   alt="Main Image"
@@ -227,7 +215,7 @@
 
                 <Richtext
                   v-if="section.layout2Column444Text"
-                  class="toplink text-center p-[.5vw]"
+                  class="toplink text-center p-[.5vw] belowflower"
                   :blocks="section.layout2Column444Text"
                 ></Richtext>
                <div class="mbflex">
@@ -270,7 +258,7 @@
               </div>
 
               <div class="column col-1 pop-in pop-in-4">
-                <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                <p class="toplink  p-[.5vw] pt-[0vw] pb-[2vw]">{{ section.location }}</p>
                 <Richtext
                   v-if="section.layout3Column1Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -746,7 +734,7 @@ export default {
     width: 36vw;
     /* height: 50vh; */
     left: 9vw;
-    top: 19vw;
+    top: 22.9vw;
 }
 
 .slider .slide:nth-child(2) img{
@@ -1197,10 +1185,30 @@ opacity: 0;
   font-size: 1vw;
     position: fixed;
     font-family: "NHaas" !important;
-    top: 7.1vw;
+    top: 6.5vw;
     right: -4.4vw;
+    right: -4.7vw;
     transform: rotateZ(90deg);
+    transform: rotateZ(270deg);
     z-index: 1000;
+}
+
+.flowerimgcon{
+  display: flex;
+  justify-content: center;
+}
+
+.floimg{
+  width: 10vw;
+  padding: 0;
+}
+
+.aboveflower{
+  padding-bottom: 0;
+}
+
+.belowflower{
+  padding-top: 0;
 }
 
 .layout-2 .col-1,
