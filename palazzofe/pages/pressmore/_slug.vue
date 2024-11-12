@@ -380,11 +380,16 @@
 
 
 
- 
+  <button 
+  @click="handleButtonClick" 
+  @mousemove="updateCursorStyle" 
+  @mouseleave="resetCursorStyle"
+  :class="['next-button', buttonCursorClass]"
+>
+  {{ currentLayoutIndex + 1 }} / {{ totalLayouts }}
+</button>
 
-      <button @click="nextLayout" class="next-button">
-        {{ currentLayoutIndex < totalLayouts - 1 ? "Next Page" : "End" }}
-      </button>
+
     </div>
   </div>
 </template>
@@ -504,6 +509,9 @@ export default {
       showContent2: false,
       showContent3: false,
       currentLayoutIndex: 0,
+      buttonCursorClass: 'cursor-default',
+    currentLayoutIndex: 0,
+    totalLayouts: 5 // or however many layouts you have
       // ... other data properties
     };
   },
@@ -541,6 +549,37 @@ export default {
         this.currentLayoutIndex--;
       }
     },
+
+  
+    handleButtonClick(event) {
+    const buttonWidth = event.currentTarget.offsetWidth;
+    const clickPosition = event.offsetX;
+
+    if (clickPosition < buttonWidth / 2) {
+      this.prevLayout();
+    } else {
+      this.nextLayout();
+    }
+  },
+  prevLayout() {
+    if (this.currentLayoutIndex > 0) {
+      this.currentLayoutIndex--;
+    }
+  },
+  nextLayout() {
+    if (this.currentLayoutIndex < this.totalLayouts - 1) {
+      this.currentLayoutIndex++;
+    }
+  },
+  updateCursorStyle(event) {
+    const buttonWidth = event.currentTarget.offsetWidth;
+    this.buttonCursorClass = event.offsetX < buttonWidth / 2 ? 'cursor-left' : 'cursor-right';
+  },
+  resetCursorStyle() {
+    this.buttonCursorClass = '';
+  },
+
+
     playSegment() {
       // Play from frame 11 to 20
       if (this.lottieInstance) {
@@ -628,6 +667,24 @@ export default {
 </script>
 
 <style scoped>
+
+.next-button {
+  cursor: default; /* Default cursor */
+}
+
+.next-button.cursor-left {
+  cursor: w-resize; /* Left arrow cursor */
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
+  auto !important;
+}
+
+.next-button.cursor-right {
+  cursor: e-resize; /* Right arrow cursor */
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+"),
+    auto !important;
+  }
+
+
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity 2s ease; /* Slower, smoother fade in/out */
