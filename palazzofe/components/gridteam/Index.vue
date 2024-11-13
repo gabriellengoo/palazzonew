@@ -234,9 +234,9 @@ export default {
   padding-left: 2vw;
 } */
 
-.chunk-container:nth-child(2) {
+/* .chunk-container:nth-child(2) {
   border-top: 0.07vw solid rgba(0, 0, 0, 0.137) !important;
-}
+} */
 
 .image-grid {
   padding-top: 4vw;
@@ -398,6 +398,13 @@ export default {
   text-transform: uppercase;
   font-family: "NHaas";
   width: 15vw;
+
+  text-align: center;
+    font-size: 1.8vw;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-family: "NHaas";
+    width: 18vw;
 }
 
 .chunk-container:last-child .spanning-text {

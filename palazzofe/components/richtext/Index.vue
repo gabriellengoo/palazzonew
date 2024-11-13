@@ -203,6 +203,10 @@ div p{
     font-size: 3vw !important;
   }
 
+  .mbcoll1 .mblay1col4{
+    width: 50vw;
+  }
+
   .submblay2 div{
   display: flex;
   flex-direction: row;

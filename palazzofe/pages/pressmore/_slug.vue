@@ -13,11 +13,36 @@
       <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
         {{ project.title }}
       </p>
-      <p class="headingspages navmbno text-center text-4xl uppercase">
-        Publication
-      </p>
+      <!-- <p class="headingspages navmbno text-center text-4xl uppercase">
+        {{ project.title }}
+      </p> -->
+      <div   v-for="(section, index) in project.sections"
+          :key="index"
+      v-if="
+            (section.layout1 && currentLayoutIndex === index) ||
+            (section.layout2 && currentLayoutIndex === index) ||
+            (section.layout3 && currentLayoutIndex === index)
+          " >
+        <Richtext
+    v-if="section.layout1 === true"
+                  class="headingspages navmbno text-center text-4xl uppercase"
+                  :blocks="section.column0Text"
+                ></Richtext>
+                <Richtext
+    v-if="section.layout2 === true"
+                  class="headingspages navmbno text-center text-4xl uppercase"
+                  :blocks="section.layout2Column1Text"
+                ></Richtext>
+                <Richtext
+    v-if="section.layout3 === true"
+                  class="headingspages navmbno text-center text-4xl uppercase"
+                   :blocks="section.layout3Column3Text"
+                ></Richtext>
+      </div>
+     
       <div class="navmbno">
         <p
+        
           class="headingspagesslug pt-[2vw] nodes text-center text-4xl uppercase"
         >
           Publication
@@ -119,9 +144,9 @@
 
             <div class="column col-4 slideInY-in slideInY-in-4 pt-[8vw]">
               <div class="flex">
-                <div class="flex flex-col">
+                <div class="flex flex-col mbcoll1">
                   <Richtext
-                    class="contactinnerpressslug lay1subtext p-[.5vw]"
+                    class="contactinnerpressslug lay1subtext mbcoll1in p-[.5vw]"
                     :blocks="section.column6Text"
                   ></Richtext>
                   <Richtext
@@ -511,7 +536,7 @@ export default {
       currentLayoutIndex: 0,
       buttonCursorClass: 'cursor-default',
     currentLayoutIndex: 0,
-    totalLayouts: 5 // or however many layouts you have
+    totalLayouts: '3' // or however many layouts you have
       // ... other data properties
     };
   },
@@ -1292,7 +1317,42 @@ opacity: 0;
 
 /* Additional responsive styling */
 @media (max-width: 768px) {
+  .mbcoll1{
+    flex-direction: row;
+  }
 
+  .mbcoll1in{
+    padding-right: 2vw;
+  }
+
+  .bgmobile{
+    padding: 3vw;
+  }
+
+
+  .next-button{
+    width: 94%;
+    border-top: 0.05vw solid black;
+    border: 0.05vw solid black;
+    border-radius: 0%;
+    background-image: url("./static/LeftBG.png");
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+  }
+  
+  .top-right-element {
+    font-size: 1vw;
+    position: fixed;
+    font-family: "NHaas" !important;
+    top: 6.5vw;
+    right: -4.7vw;
+    transform: rotateZ(90deg);
+    transform: rotateZ(270deg);
+    z-index: 1000;
+    display: none;
+}
 
   .gridpress-container {
  grid-template-columns: repeat(5, 1fr);
@@ -1300,6 +1360,7 @@ opacity: 0;
     gap: 1rem;
     position: fixed;
     width: 100vw;
+    display: none;
 }
 
 .mbimgcol1lay1{
