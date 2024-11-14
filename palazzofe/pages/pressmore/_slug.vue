@@ -367,10 +367,27 @@
       <div class="gridpress-container">
     <!-- Layout 1 -->
     <transition name="fade" mode="out-in">
-      <div class="slider" v-for="(section, index) in project.sections" :key="index" v-if="showContent1 && section.layout1 && currentLayoutIndex === index">
+      <div
+        v-for="(section, index) in project.sections"
+        :key="index"
+        v-if="showContent1 && section.layout1 && currentLayoutIndex === index"
+        class="slider"
+        :style="getTransitionStyle(index)"
+      >
         <div v-for="slide in section.slider1" :key="slide._key" class="slide">
-          <div v-for="image in slide.images" :key="image._key" class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]">
-            <img @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" :src="image.image" :alt="`Slide Image ${image._key}`" class="imglay1s p-[.5vw]" />
+          <div
+            v-for="image in slide.images"
+            :key="image._key"
+            class="slider-item"
+            :class="['slide', { 'even-slide': index % 2 === 0 }]"
+          >
+            <img
+              @mouseenter="handleMouseEnter"
+              @mouseleave="handleMouseLeave"
+              :src="image.image"
+              :alt="`Slide Image ${image._key}`"
+              class="imglay1s p-[.5vw]"
+            />
           </div>
         </div>
       </div>
@@ -378,10 +395,27 @@
 
     <!-- Layout 2 -->
     <transition name="fade" mode="out-in">
-      <div class="slider" v-for="(section, index) in project.sections" :key="index" v-if="showContent2 &&  section.layout2 && currentLayoutIndex === index">
+      <div
+        v-for="(section, index) in project.sections"
+        :key="index"
+        v-if="showContent2 && section.layout2 && currentLayoutIndex === index"
+        class="slider"
+        :style="getTransitionStyle(index)"
+      >
         <div v-for="slide in section.slider2" :key="slide._key" class="slide2">
-          <div v-for="image in slide.images" :key="image._key" class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]">
-            <img @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" :src="image.image" :alt="`Slide Image ${image._key}`" class="imglay1s p-[.5vw]" />
+          <div
+            v-for="image in slide.images"
+            :key="image._key"
+            class="slider-item"
+            :class="['slide', { 'even-slide': index % 2 === 0 }]"
+          >
+            <img
+              @mouseenter="handleMouseEnter"
+              @mouseleave="handleMouseLeave"
+              :src="image.image"
+              :alt="`Slide Image ${image._key}`"
+              class="imglay1s p-[.5vw]"
+            />
           </div>
         </div>
       </div>
@@ -389,10 +423,27 @@
 
     <!-- Layout 3 -->
     <transition name="fade" mode="out-in">
-      <div class="slider" v-for="(section, index) in project.sections" :key="index" v-if="showContent3 && section.layout3 && currentLayoutIndex === index">
+      <div
+        v-for="(section, index) in project.sections"
+        :key="index"
+        v-if="showContent3 && section.layout3 && currentLayoutIndex === index"
+        class="slider"
+        :style="getTransitionStyle(index)"
+      >
         <div v-for="slide in section.slider3" :key="slide._key" class="slide3">
-          <div v-for="image in slide.images" :key="image._key" class="slider-item" :class="['slide', { 'even-slide': index % 2 === 0 }]">
-            <img @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" :src="image.image" :alt="`Slide Image ${image._key}`" class="imglay1s p-[.5vw]" />
+          <div
+            v-for="image in slide.images"
+            :key="image._key"
+            class="slider-item"
+            :class="['slide', { 'even-slide': index % 2 === 0 }]"
+          >
+            <img
+              @mouseenter="handleMouseEnter"
+              @mouseleave="handleMouseLeave"
+              :src="image.image"
+              :alt="`Slide Image ${image._key}`"
+              class="imglay1s p-[.5vw]"
+            />
           </div>
         </div>
       </div>
@@ -662,6 +713,20 @@ export default {
       handleMouseLeave(event) {
         // Do nothing here to prevent reverting back to original opacity
       },
+
+
+      getTransitionStyle(index) {
+      return {
+        transitionDelay: `${index * 4}s`, // Delay before transition starts
+        // transitionDuration: '.4s', 
+      };
+    },
+    // handleMouseEnter() {
+    //   // Your mouse enter logic
+    // },
+    // handleMouseLeave() {
+    //   // Your mouse leave logic
+    // },
     // ... other methods
   },
   mounted() {
@@ -687,6 +752,8 @@ export default {
 
     // Set the animation to frame 11 without playing
     this.lottieInstance.goToAndStop(55, true);
+
+    
   },
 };
 </script>
@@ -711,9 +778,14 @@ export default {
 
 
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 2s ease; /* Slower, smoother fade in/out */
+.fade-enter-active {
+  transition: opacity 2s ease;
 }
+
+.fade-leave-active {
+  transition: opacity .3s ease;
+}
+
 .fade-enter, .fade-leave-to {
   opacity: 0; /* Start and end at 0 opacity */
 }

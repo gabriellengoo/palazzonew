@@ -36,21 +36,54 @@ export default defineConfig({
               ),
             S.divider(),
             S.listItem()
-              .title('Weddings, Events, Awards and Publications')
+              .title('Weddings')
               .child(
                 S.list()
-                  .title('Weddings, Events, Awards and Publications')
+                  .title('Weddings')
                   .items([
                     S.documentTypeListItem('works').title('Weddings'),
                     S.documentTypeListItem('project').title('Weddings Individual'),
-                    S.documentTypeListItem('events').title('Events'),
-                    S.documentTypeListItem('projectevents').title('Events Individual'),
-                    S.documentTypeListItem('publications').title('Publications'),
-                    S.documentTypeListItem('pressindi').title('Publications Individual'),
-                    S.documentTypeListItem('awards').title('Awards'),
+                 
                   ])
               ),
             S.divider(),
+            S.listItem()
+            .title('Events')
+            .child(
+              S.list()
+                .title('Events')
+                .items([
+                 
+                  S.documentTypeListItem('events').title('Events'),
+                  S.documentTypeListItem('projectevents').title('Events Individual'),
+                
+                ])
+            ),
+          S.divider(),
+          S.listItem()
+          .title('Awards')
+          .child(
+            S.list()
+              .title('Awards')
+              .items([
+
+                S.documentTypeListItem('awards').title('Awards'),
+              ])
+          ),
+        S.divider(),
+        S.listItem()
+        .title('Publications')
+        .child(
+          S.list()
+            .title('Publications ')
+            .items([
+             
+              S.documentTypeListItem('publications').title('Publications'),
+              S.documentTypeListItem('pressindi').title('Publications Individual'),
+          
+            ])
+        ),
+      S.divider(),
             S.documentTypeListItem('team').title('Team'),
 
             S.divider(),
