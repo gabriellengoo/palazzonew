@@ -103,15 +103,10 @@
                 </ul>
               </nav>
             </div>
-
-            <!-- <div class="allimg relative w-[100vw] h-[100vh] z-50">
-        </div> -->
           </div>
         </transition>
-        <!-- </button> -->
       </div>
 
-      <!-- <div ref="lottieAnimation4" class="working lottie-container"></div> -->
       <!-- Right Static Content -->
       <transition
         name="slide"
@@ -125,43 +120,21 @@
           @click="closeSection"
           v-if="activeSection"
         >
-          <!-- Design -->
           <div
-            :class="{
-              'slide-in':
-                activeSection === 'design' || hoveredSection === 'design',
-              'slide-out':
-                activeSection !== 'design' && hoveredSection !== 'design',
-            }"
-            :style="{
-              zIndex:
-                activeSection === 'design' || hoveredSection === 'design'
-                  ? 0
-                  : 0,
-            }"
+            v-if="activeContent"
             class="right-content overflow-y-scroll flex-1"
             @click="closeSection"
-            v-if="
-              services &&
-              (activeSection === 'design' || hoveredSection === 'design')
-            "
+            :class="{
+              'slide-in':
+                activeSection,
+              'slide-out':
+                !activeSection,
+            }"
           >
-            <div
-              :class="[
-                'allrcont ',
-                { allrcontb: !services.designContent.dcontent },
-              ]"
-              v-if="
-                services &&
-                (activeSection === 'design' || hoveredSection === 'design')
-              "
-            >
+            <div v-if="activeContent" class="allrcont">
+              <!-- Render Layout A content -->
               <div class="sevcont">
                 <div class="titcont titmb">
-                  <!-- <button class='pt-[4vw]'   @click="closeSection">
-                    <SvgClose :class="{ 'headbarc': activeSection, 'rotatesvg': !activeSection }" class=" w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
-
                   <!-- headbarc -->
                   <button class="pt-[4vw]" @click="closeSection">
                     <div
@@ -169,83 +142,59 @@
                       class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
                     ></div>
                   </button>
-                  <!-- <div ref="lottieAnimation4" class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"></div> -->
 
-                  <h1 class="loctext pt-2">Design</h1>
+                  <!-- <h1 class="loctext pt-2">{{ activeContent.title }}</h1> -->
+                </div>
+                <div class="titcont titmb">
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
+                  </button>
+
+                  <h1 class="loctext pt-2">{{ activeContent.title }}</h1>
                 </div>
 
-                <!-- Add class like production here -->
-                <div
-                  :class="[
-                    'sevimcon',
-                
-                    {
-                      laybimsize: !services.designContent.dcontent,
-                      sevimconA: services.designContent.layout1 === true,
-                    },
-                  ]"
-                >
-                  <!-- Add v-if for design image like in production -->
-                  <img
-                  v-if="services.designContent.layout1 === true"
-                    :src="services.designContent.designImageUrl"
-                    alt="Design Image"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.designContent.dcontent },
-                    ]"
-                  />
-                 
+                <!-- <h1>{{ activeContent.title }}</h1> -->
+                <div class="sevimcon">
+                  <!-- <img
+                  v-if="activeContent"
+                  :src="activeContent.designImageLayoutAUrl.asset._ref"
+  class="servimg pointer-events-none"
+                  /> -->
+                  <!-- <MediaImage
+                  v-if="activeContent"
+                  :src="activeContent.designImageLayoutAUrl"
+                        class="servimg pointer-events-none"
+                      
+                        :style="{
+                          pointerEvents: 'auto',
+                        }"
+                        :sizes="'sm:200vw md:150vw lg:200vw'"
+                      ></MediaImage> -->
+
                 </div>
 
-                <div
-                    v-if="services.designContent.layout2 === true"
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitle">
-                      {{ services.designContent.dsubLayoutB }}
-                    </p>
-                  </div>
-                <div
-                    v-if="services.designContent.layout1 === true"
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitleA">
-                      {{ services.designContent.dsubLayoutA }}
-                    </p>
-                  </div>
+                <div class="flex justify-center pointer-events-none">
+                  <p class="subtitleA">
+                    {{ activeContent.dsubLayoutA }}
+                  </p>
+                </div>
 
                 <div class="flex pl-[5vw] pb-[3vh]">
-                  <!-- Add div and img and v-if statement like production here -->
-
                   <Richtext
-                    v-if="services.designContent.layout1 === true"
                     class="contactinner pr-[4vw] pb-0 w-[50%]"
-                    :blocks="services.designContent.dcontent"
+                    :blocks="activeContent.dcontent"
                   ></Richtext>
 
-                  <!-- If no dcontent, show alternative image like production -->
-                  <img
-                  
-                    v-else="
-                      services.designContent.designImageLayoutBUrl &&
-                      (activeSection === 'design' ||
-                        hoveredSection === 'design')
-                    "
-                     v-if="services.designContent.layout2 === true"
-                    alt="Design Image Layout B"
-                    class="laybimg pointer-events-none"
-                  />
-
-                  <!-- Add class like production here -->
                   <Richtext
                     class="contactinner pr-[4vw] w-[50%] pb-0"
                     :class="[
                       'contactinner',
-                      { 'pt-[7vh]': !services.designContent.dcontent },
+                      { 'pt-[7vh]': !activeContent.dcontent },
                     ]"
-                    :blocks="services.designContent.dcontent2"
+                    :blocks="activeContent.dcontent2"
                   ></Richtext>
                 </div>
 
@@ -257,1136 +206,32 @@
                   <div
                     :class="[
                       'locationtext',
-                      { locationtextb: !services.designContent.dcontent },
+                      { locationtextb: !activeContent.dcontent },
                     ]"
                     class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
                   >
                     <h1 class="loctext">Location</h1>
-                    <a
-                      class="loctextlink"
-                      :href="services.designContent.dlocationlink"
-                      >{{ services.designContent.dlocation }}</a
-                    >
+                    <p class="loctextlink">{{ activeContent.dlocation }}</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- Location -->
-          <div
-            id="location"
-            :class="{
-              'slide-in':
-                activeSection === 'location' || hoveredSection === 'location',
-              'slide-out':
-                activeSection !== 'location' && hoveredSection !== 'location',
-            }"
-            :style="{
-              zIndex:
-                activeSection === 'location' || hoveredSection === 'location'
-                  ? 10
-                  : 1,
-            }"
-            class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            v-if="
-              services &&
-              (activeSection === 'location' || hoveredSection === 'location')
-            "
-          >
-            <div
-              :class="[
-                'allrcont ',
-                { allrcontb: !services.locationContent.lcontent },
-              ]"
-              v-if="
-                services &&
-                (activeSection === 'location' || hoveredSection === 'location')
-              "
-            >
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <!-- <button class="pt-[4vw]" @click="closeSection">
-                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-                  <h1 class="loctext pt-2">Location</h1>
-                </div>
-                <div
-                  :class="[
-                    {
-                      laybimsize: !services.locationContent.lcontent,
-                      sevimconA: services.locationContent.layout113 === true,
-                    },
-                  ]"
-                >
-                  <img
-                    v-if="services.locationContent.layout113 === true"
-                    :src="services.locationContent.locationImageUrl"
-                    alt="Location Image"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.locationContent.lcontent },
-                    ]"
-                  />
-       
-                </div>
-
-                <div
-                    v-if="services.locationContent.layout113 === true"
-                    class='subtextA'
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitleA">
-                      {{ services.locationContent.lsubLayoutA }}
-                    </p>
-                  </div>
-
-                  <div
-                    v-if="services.locationContent.layout223 === true"
-                    :class="[
-                      'subtextb',
-                      'pointer-events-none',
-                      { laybimsizein: !services.locationContent.lcontent },
-                    ]"
-                  >
-                    <p class="subtitle">
-                      {{ services.locationContent.lsubLayoutB }}
-                    </p>
-                  </div>
-            
-
-                <div
-                  :class="[
-                    'textaup',
-                    { texta: !services.locationContent.lcontent },
-                  ]"
-                  class="flex pb-[3vh] pl-[5vw]"
-                >
-                  <Richtext
-                    v-if="services.locationContent.layout113 === true"
-                    class="contactinner pr-[4vw] pb-0 w-[50%]"
-                    :blocks="services.locationContent.lcontent"
-                  ></Richtext>
-
-                  <!-- If no lcontent, show alternative image like production -->
-                  <img
-                   v-if="services.locationContent.layout223 === true"
-                    alt="Location Image Layout B"
-                    class="laybimg pointer-events-none"
-                  />
-
-                  <Richtext
-                    class="contactinner pr-[4vw] w-[50%] pb-0"
-                    :class="[
-                      'contactinner',
-                      { 'pt-[7vh]': !services.locationContent.lcontent },
-                    ]"
-                    :blocks="services.locationContent.lcontent2"
-                  ></Richtext>
-                </div>
-
-                <div class="locmb flex justify-end">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-                  <div
-                    :class="[
-                      'locationtext',
-                      { locationtextb: !services.locationContent.lcontent },
-                    ]"
-                    class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <h1 class="loctext">Location</h1>
-                    <a
-                      class="loctextlink"
-                      :href="services.locationContent.llocationlink"
-                      >{{ services.locationContent.llocation }}</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Production -->
-          <div
-            :class="{
-              'slide-in':
-                activeSection === 'production' ||
-                hoveredSection === 'production',
-              'slide-out':
-                activeSection !== 'production' &&
-                hoveredSection !== 'production',
-            }"
-            class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            v-if="
-              services &&
-              (activeSection === 'production' ||
-                hoveredSection === 'production')
-            "
-          >
-            <div
-              :class="[
-                'allrcont',
-                { allrcontb: !services.productionContent.prcontent },
-              ]"
-              v-if="
-                services &&
-                (activeSection === 'production' ||
-                  hoveredSection === 'production')
-              "
-            >
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <!-- <a href=""> -->
-                  <!-- <button class="pt-[4vw]" @click="closeSection">
-                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-                  <!-- </a>               -->
-                  <h1 class="loctext pt-2">Production</h1>
-                </div>
-                <div
-                  :class="[
-                    {
-                      laybimsize: !services.productionContent.prcontent,
-                      sevimconA: services.productionContent.layout11 === true,
-                    },
-                  ]"
-                >
-                  <img
-                    v-if="services.productionContent.layout11 === true"
-                    :src="services.productionContent.productionImageUrl"
-                    alt="Design Image"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.productionContent.prcontent },
-                    ]"
-                  />
-               
-                </div>
-
-                <div
-                    v-if="services.productionContent.layout11 === true"
-                     class='subtextA'
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitleA">
-                      {{ services.productionContent.prsubLayoutA }}
-                    </p>
-                  </div>
-
-                <div
-                    v-if="services.productionContent.layout22 === true"
-                    :class="[
-                      'subtextb',
-                      'pointer-events-none',
-                      { laybimsizein: !services.productionContent.prcontent },
-                    ]"
-                  >
-                    <p class="subtitle">
-                      {{ services.productionContent.prsubLayoutB }}
-                    </p>
-                  </div>
-                  
-                <div
-                  :class="[
-                    'textaup',
-                    { texta: !services.productionContent.prcontent },
-                  ]"
-                  class="flex pb-[3vh] pl-[5vw]"
-                >
-                  <Richtext
-                    v-if="services.productionContent.layout11 === true"
-                    :blocks="services.productionContent.prcontent"
-                    class="contactinner pr-[4vw] pb-0 w-[50%]"
-                  ></Richtext>
-                  <img
-                    v-else
-                    v-if="services.productionContent.layout22 === true"
-                    :src="services.productionContent.productionImageLayoutBUrl"
-                    alt="Production Image Layout B"
-                    class="laybimg pointer-events-none"
-                  />
-
-                  <Richtext
-                    class="contactinner pr-[4vw] w-[50%] pb-0"
-                    :class="[
-                      'contactinner',
-                      { 'pt-[7vh]': !services.productionContent.prcontent },
-                    ]"
-                    :blocks="services.productionContent.prcontent2"
-                  ></Richtext>
-                </div>
-
-                <div class="flex justify-end locmb">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-                  <div
-                    :class="[
-                      'locationtext',
-                      { locationtextb: !services.productionContent.prcontent },
-                    ]"
-                    class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <h1 class="loctext">Location</h1>
-                    <a
-                      class="loctextlink"
-                      :href="services.productionContent.prlocationlink"
-                      >{{ services.productionContent.prlocation }}</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Products -->
-          <div
-            :class="{
-              'slide-in':
-                activeSection === 'products' || hoveredSection === 'products',
-              'slide-out':
-                activeSection !== 'products' && hoveredSection !== 'products',
-            }"
-            :style="{
-              zIndex:
-                activeSection === 'products' || hoveredSection === 'products'
-                  ? 10
-                  : 1,
-            }"
-            class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            v-if="
-              services &&
-              (activeSection === 'products' || hoveredSection === 'products')
-            "
-          >
-            <div
-              :class="[
-                'allrcont',
-                { allrcontb: !services.productsContent.pdcontent },
-              ]"
-              v-if="
-                services &&
-                (activeSection === 'products' || hoveredSection === 'products')
-              "
-            >
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <!-- <button class="pt-[4vw]" @click="closeSection">
-                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-                  <h1 class="loctext pt-2">Products</h1>
-                </div>
-                <div
-                  :class="[
-                    'sevimcon',
-                    { laybimsize: !services.productsContent.pdcontent,
-                      sevimconA: services.productsContent.layout7 === true,
-                    },
-                    
-                  ]"
-                >
-                  <img
-                    v-if="services.productsContent.layout7 === true"
-                    :src="services.productsContent.productsImageUrl"
-                    alt="Products Image"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.productsContent.pdcontent },
-                    ]"
-                  />
-                
-
-                </div>
-
-                <div
-                    v-if="services.productsContent.layout7 === true"
-                     class='subtextA'
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitleA">
-                      {{ services.productsContent.pdsubLayoutA }}
-                    </p>
-                  </div>
-
-                  <div
-                    v-if="services.productsContent.layout77 === true"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.productsContent.pdcontent },
-                    ]"
-                  >
-                    <p class="subtitle">
-                      {{ services.productsContent.pdsubLayoutB }}
-                    </p>
-                  </div>
-
-                <div
-                  :class="[
-                    'textaup',
-                    { texta: !services.productsContent.pdcontent },
-                  ]"
-                  class="flex pb-[3vh] pl-[5vw]"
-                >
-                  <Richtext
-                    v-if="services.productsContent.layout7 === true"
-                    class="contactinner pr-[4vw] pb-0 w-[50%]"
-                    :blocks="services.productsContent.pdcontent"
-                  ></Richtext>
-
-                  <!-- If no pdcontent, show alternative image -->
-                  <img
-                    v-else
-                    v-if="services.productsContent.layout77 === true"
-                    :src="services.productsContent.productsImageLayoutBUrl"
-                    alt="Products Image Layout B"
-                    class="laybimg pointer-events-none"
-                  />
-
-                  <Richtext
-                    class="contactinner pr-[4vw] w-[50%] pb-0"
-                    :class="[
-                      'contactinner',
-                      { 'pt-[7vh]': !services.productsContent.pdcontent },
-                    ]"
-                    :blocks="services.productsContent.pdcontent2"
-                  ></Richtext>
-                </div>
-
-                <div class="flex justify-end locmb">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-
-                  <div
-                    :class="[
-                      'locationtext',
-                      { locationtextb: !services.productsContent.pdcontent },
-                    ]"
-                    class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <h1 class="loctext">Location</h1>
-                    <a
-                      class="loctextlink"
-                      :href="services.productsContent.pdlocationlink"
-                      >{{ services.productsContent.pdlocation }}</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- More -->
-
-          <div
-            :class="{
-              'slide-in': activeSection === 'more' || hoveredSection === 'more',
-              'slide-out':
-                activeSection !== 'more' && hoveredSection !== 'more',
-            }"
-            class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            v-if="
-              services &&
-              (activeSection === 'more' || hoveredSection === 'more')
-            "
-          >
-            <div
-              :class="[
-                'allrcont',
-                { allrcontb: !services.moreContent.mocontent },
-              ]"
-              v-if="
-                services &&
-                (activeSection === 'more' || hoveredSection === 'more')
-              "
-            >
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <!-- <button class="pt-[4vw]" @click="closeSection">
-                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-                  <h1 class="loctext pt-2">More</h1>
-                </div>
-                <div
-                 :class="[
-                    {
-                      laybimsize: !services.moreContent.mocontent,
-                      sevimconA: services.moreContent.layout8 === true,
-                    },
-                  ]"
-                >
-                  <img
-                    v-if="services.moreContent.layout8 === true"
-                    :src="services.moreContent.moreImageUrl"
-                    alt="More Image"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.moreContent.mocontent },
-                    ]"
-                  />
-                </div>
-
-                <div
-                    v-if="services.moreContent.layout8 === true"
-                     class='subtextA'
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitleA">
-                      {{ services.moreContent.mosubLayoutA }}
-                    </p>
-                  </div>
-                  
-                <div
-                    v-if="services.moreContent.layout88 === true"
-                    :class="[
-                      'subtextb',
-                      'pointer-events-none',
-                      { laybimsizein: !services.moreContent.mocontent },
-                    ]"
-                  >
-                    <p class="subtitle">
-                      {{ services.moreContent.mosubLayoutB }}
-                    </p>
-                  </div>
-
-                <div
-                  :class="[
-                    'textaup',
-                    { texta: !services.moreContent.mocontent },
-                  ]"
-                  class="flex pb-[3vh] pl-[5vw]"
-                >
-                  <Richtext
-                    v-if="services.moreContent.layout8 === true"
-                    class="contactinner pr-[4vw] pb-0 w-[50%]"
-                    :blocks="services.moreContent.mocontent"
-                  ></Richtext>
-
-                  <!-- If no mocontent, show alternative image -->
-                  <img
-                    v-else
-                    v-if="services.moreContent.layout88 === true"
-                    :src="services.moreContent.moreImageLayoutBUrl"
-                    alt="More Image Layout B"
-                    class="laybimg pointer-events-none"
-                  />
-
-                  <Richtext
-                    class="contactinner pr-[4vw] w-[50%] pb-0"
-                    :class="[
-                      'contactinner',
-                      { 'pt-[7vh]': !services.moreContent.mocontent },
-                    ]"
-                    :blocks="services.moreContent.mocontent2"
-                  ></Richtext>
-                </div>
-                <div class="flex justify-end locmb">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-                  <div
-                    :class="[
-                      'locationtext',
-                      { locationtextb: !services.moreContent.mocontent },
-                    ]"
-                    class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <h1 class="loctext">Location</h1>
-                    <a
-                      class="loctextlink"
-                      :href="services.moreContent.molocationlink"
-                      >{{ services.moreContent.molocation }}</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Concirerge -->
-          <div
-            :class="{
-              'slide-in':
-                activeSection === 'concierge' || hoveredSection === 'concierge',
-              'slide-out':
-                activeSection !== 'concierge' && hoveredSection !== 'concierge',
-            }"
-            class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            v-if="
-              services &&
-              (activeSection === 'concierge' || hoveredSection === 'concierge')
-            "
-          >
-            <div
-              :class="[
-                'allrcont',
-                { allrcontb: !services.conciergeContent.ccontent },
-              ]"
-              v-if="
-                services &&
-                (activeSection === 'concierge' ||
-                  hoveredSection === 'concierge')
-              "
-            >
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <!-- <button class="pt-[4vw]" @click="closeSection">
-                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-                  <h1 class="loctext pt-2">Concirerge</h1>
-                </div>
-                <div
-                    :class="[
-                    {
-                      laybimsize: !services.conciergeContent.ccontent,
-                      sevimconA: services.conciergeContent.layout121 === true,
-                    },
-                  ]"
-                >
-                  <img
-                    v-if="services.conciergeContent.layout121 === true"
-                    :src="services.conciergeContent.conciergeImageUrl"
-                    alt="Concirerge Image"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.conciergeContent.ccontent },
-                    ]"
-                  />
-                </div>
-
-                <div
-                    v-if="services.conciergeContent.layout121 === true"
-                     class='subtextA'
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitleA">
-                      {{ services.conciergeContent.ccsubLayoutA }}
-                    </p>
-                  </div>
-
-                <div
-                    v-if="services.conciergeContent.layout212 === true"
-                    :class="[
-                      'subtextb',
-                      'pointer-events-none',
-                      { laybimsizein: !services.conciergeContent.cccontent },
-                    ]"
-                  >
-                    <p class="subtitle">
-                      {{ services.conciergeContent.ccsubLayoutB }}
-                    </p>
-                  </div>
-
-                <div
-                  :class="[
-                    'textaup',
-                    { texta: !services.productionContent.prcontent },
-                  ]"
-                  class="flex pb-[3vh] pl-[5vw]"
-                >
-                  <Richtext
-                     v-if="services.conciergeContent.layout121 === true"
-                    class="contactinner pr-[4vw] pb-0 w-[50%]"
-                    :blocks="services.conciergeContent.ccontent"
-                  ></Richtext>
-
-                  <!-- If no ccontent, show alternative image -->
-                  <img
-                    v-else
-                      v-if="services.conciergeContent.layout212 === true"
-                    :src="services.conciergeContent.conciergeImageLayoutBUrl"
-                    alt="Concirerge Image Layout B"
-                    class="laybimg pointer-events-none"
-                  />
-
-                  <Richtext
-                    class="contactinner pr-[4vw] w-[50%] pb-0"
-                    :class="[
-                      'contactinner',
-                      { 'pt-[7vh]': !services.conciergeContent.ccontent },
-                    ]"
-                    :blocks="services.conciergeContent.ccontent2"
-                  ></Richtext>
-                </div>
-                <div class="flex justify-end locmb">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-                  <div
-                    :class="[
-                      'locationtext',
-                      { locationtextb: !services.conciergeContent.ccontent },
-                    ]"
-                    class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <h1 class="loctext">Location</h1>
-                    <a
-                      class="loctextlink"
-                      :href="services.conciergeContent.clocationlink"
-                      >{{ services.conciergeContent.clocation }}</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Activity -->
-          <div
-            :class="{
-              'slide-in':
-                activeSection === 'activity' || hoveredSection === 'activity',
-              'slide-out':
-                activeSection !== 'activity' && hoveredSection !== 'activity',
-            }"
-            class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            v-if="
-              services &&
-              (activeSection === 'activity' || hoveredSection === 'activity')
-            "
-          >
-            <div
-              :class="[
-                'allrcont',
-                { allrcontb: !services.activityContent.acontent },
-              ]"
-              v-if="
-                services &&
-                (activeSection === 'activity' || hoveredSection === 'activity')
-              "
-            >
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <!-- <button class="pt-[4vw]" @click="closeSection">
-                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-                  <h1 class="loctext pt-2">Activity</h1>
-                </div>
-                <div
-                :class="[
-                    {
-                      laybimsize: !services.activityContent.acontent,
-                      sevimconA: services.activityContent.layout4 === true,
-                    },
-                  ]"
-                >
-                  <img
-                       v-if="services.activityContent.layout4 === true"
-                    :src="services.activityContent.activityImageUrl"
-                    alt="Activity Image"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.activityContent.acontent },
-                    ]"
-                  />
-                </div>
 
 
-                <div
-                        v-if="services.activityContent.layout4 === true"
-                     class='subtextA'
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitleA">
-                      {{ services.activityContent.asubLayoutA }}
-                    </p>
-                  </div>
 
-                <div
-                        v-if="services.activityContent.layout44 === true"
-                    :class="[
-                      'subtextb',
-                      'pointer-events-none',
-                      { laybimsizein: !services.activityContent.acontent },
-                    ]"
-                  >
-                    <p class="subtitle">
-                      {{ services.activityContent.asubLayoutB }}
-                    </p>
-                  </div>
-
-
-                <div
-                  :class="[
-                    'textaup',
-                    { texta: !services.productionContent.prcontent },
-                  ]"
-                  class="flex pb-[3vh] pl-[5vw]"
-                >
-                  <Richtext
-                      v-if="services.activityContent.layout4 === true"
-                    class="contactinner pr-[4vw] pb-0 w-[50%]"
-                    :blocks="services.activityContent.acontent"
-                  ></Richtext>
-
-                  <!-- If no acontent, show alternative image -->
-                  <img
-                    v-else
-                       v-if="services.activityContent.layout44 === true"
-                    :src="services.activityContent.activityImageLayoutBUrl"
-                    alt="Activity Image Layout B"
-                    class="laybimg pointer-events-none"
-                  />
-
-                  <Richtext
-                    class="contactinner pr-[4vw] w-[50%] pb-0"
-                    :class="[
-                      'contactinner',
-                      { 'pt-[7vh]': !services.activityContent.acontent },
-                    ]"
-                    :blocks="services.activityContent.acontent2"
-                  ></Richtext>
-                </div>
-                <div class="flex justify-end locmb">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-                  <div
-                    :class="[
-                      'locationtext',
-                      { locationtextb: !services.activityContent.acontent },
-                    ]"
-                    class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <h1 class="loctext">Location</h1>
-                    <a
-                      class="loctextlink"
-                      :href="services.activityContent.alocationlink"
-                      >{{ services.activityContent.alocation }}</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Celebrities -->
-          <div
-            :class="{
-              'slide-in':
-                activeSection === 'celebrities' ||
-                hoveredSection === 'celebrities',
-              'slide-out':
-                activeSection !== 'celebrities' &&
-                hoveredSection !== 'celebrities',
-            }"
-            class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            v-if="
-              services &&
-              (activeSection === 'celebrities' ||
-                hoveredSection === 'celebrities')
-            "
-          >
-            <div
-              :class="[
-                'allrcont',
-                { allrcontb: !services.celebritiesContent.clcontent },
-              ]"
-              v-if="
-                services &&
-                (activeSection === 'celebrities' ||
-                  hoveredSection === 'celebrities')
-              "
-            >
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <!-- <button class="pt-[4vw]" @click="closeSection">
-                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-                  <h1 class="loctext pt-2">Celebrities</h1>
-                </div>
-                <div
-                :class="[
-                    {
-                      laybimsize: !services.celebritiesContent.clcontent,
-                      sevimconA: services.celebritiesContent.layout5 === true,
-                    },
-                  ]"
-                >
-                  <img
-                    v-if="services.celebritiesContent.layout5 === true"
-                    :src="services.celebritiesContent.celebritiesImageUrl"
-                    alt="Celebrities Image"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.celebritiesContent.clcontent },
-                    ]"
-                  />
-                </div>
-
-
-                <div
-                    v-if="services.celebritiesContent.layout5 === true"
-                     class='subtextA'
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitleA">
-                      {{ services.celebritiesContent.clsubLayoutA }}
-                    </p>
-                  </div>
-
-                <div
-                    v-if="services.celebritiesContent.layout55 === true"
-                    :class="[
-                      'subtextb',
-                      'pointer-events-none',
-                      { laybimsizein: !services.celebritiesContent.clcontent },
-                    ]"
-                  >
-                    <p class="subtitle">
-                      {{ services.celebritiesContent.clsubLayoutB }}
-                    </p>
-                  </div>
-
-
-                <div
-                  :class="[
-                    'textaup',
-                    { texta: !services.productionContent.prcontent },
-                  ]"
-                  class="flex pb-[3vh] pl-[5vw]"
-                >
-                  <Richtext
-                    v-if="services.celebritiesContent.layout5 === true"
-                    class="contactinner pr-[4vw] pb-0 w-[50%]"
-                    :blocks="services.celebritiesContent.clcontent"
-                  ></Richtext>
-
-                  <!-- If no cecontent, show alternative image -->
-                  <img
-                    v-else
-                    v-if="services.celebritiesContent.layout55 === true"
-                    :src="
-                      services.celebritiesContent.celebritiesImageLayoutBUrl
-                    "
-                    alt="Celebrities Image Layout B"
-                    class="laybimg pointer-events-none"
-                  />
-
-                  <Richtext
-                    class="contactinner pr-[4vw] w-[50%] pb-0"
-                    :class="[
-                      'contactinner',
-                      { 'pt-[7vh]': !services.celebritiesContent.clcontent },
-                    ]"
-                    :blocks="services.celebritiesContent.clcontent2"
-                  ></Richtext>
-                </div>
-                <div class="flex justify-end locmb">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-                  <div
-                    :class="[
-                      'locationtext',
-                      { locationtextb: !services.celebritiesContent.clcontent },
-                    ]"
-                    class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <h1 class="loctext">Location</h1>
-                    <a
-                      class="loctextlink"
-                      :href="services.celebritiesContent.clocationlink"
-                      >{{ services.celebritiesContent.cllocation }}</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Music -->
-          <div
-            :class="{
-              'slide-in':
-                activeSection === 'music' || hoveredSection === 'music',
-              'slide-out':
-                activeSection !== 'music' && hoveredSection !== 'music',
-            }"
-            class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            v-if="
-              services &&
-              (activeSection === 'music' || hoveredSection === 'music')
-            "
-          >
-            <div
-              :class="[
-                'allrcont',
-                { allrcontb: !services.musicContent.mucontent },
-              ]"
-              v-if="
-                services &&
-                (activeSection === 'music' || hoveredSection === 'music')
-              "
-            >
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <!-- <button class="pt-[4vw]" @click="closeSection">
-                    <SvgClose class="headbarc w-[1.4vw] hover:cursor-pointer" />
-                  </button> -->
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-                  <h1 class="loctext pt-2">Music</h1>
-                </div>
-                <div
-                :class="[
-                    {
-                      laybimsize: !services.musicContent.mucontent,
-                      sevimconA: services.musicContent.layout6 === true,
-                    },
-                  ]"
-                >
-                  <img
-                    v-if="services.musicContent.layout6 === true"
-                    :src="services.musicContent.musicImageUrl"
-                    alt="Music Image"
-                    :class="[
-                      'servimg',
-                      'pointer-events-none',
-                      { laybimsizein: !services.musicContent.mucontent },
-                    ]"
-                  />
-                </div>
-
-                <div
-                    v-if="services.musicContent.layout6 === true"
-                     class='subtextA'
-                    :class="['flex justify-center', 'pointer-events-none']"
-                  >
-                    <p class="subtitleA">
-                      {{ services.musicContent.musubLayoutA }}
-                    </p>
-                  </div>
-
-                <div
-                    v-if="services.musicContent.layout66 === true"
-                    :class="[
-                      'subtextb',
-                      'pointer-events-none',
-                      { laybimsizein: !services.musicContent.mucontent },
-                    ]"
-                  >
-                    <p class="subtitle">
-                      {{ services.musicContent.musubLayoutB }}
-                    </p>
-                  </div>
-
-
-                <div
-                  :class="[
-                    'textaup',
-                    { texta: !services.musicContent.mucontent },
-                  ]"
-                  class="flex pb-[3vh] pl-[5vw]"
-                >
-                  <Richtext
-                    v-if="services.musicContent.layout6 === true"
-                    class="contactinner pr-[4vw] pb-0 w-[50%]"
-                    :blocks="services.musicContent.mucontent"
-                  ></Richtext>
-
-                  <!-- If no mcontent, show alternative image -->
-                  <img
-                    v-else
-                    v-if="services.musicContent.layout66 === true"
-                    :src="services.musicContent.musicImageLayoutBUrl"
-                    alt="Music Image Layout B"
-                    class="laybimg pointer-events-none"
-                  />
-
-                  <Richtext
-                    class="contactinner pr-[4vw] w-[50%] pb-0"
-                    :class="[
-                      'contactinner',
-                      { 'pt-[7vh]': !services.musicContent.mucontent },
-                    ]"
-                    :blocks="services.musicContent.mucontent2"
-                  ></Richtext>
-                </div>
-                <div class="flex justify-end locmb">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-                  <div
-                    c
-                    :class="[
-                      'locationtext',
-                      { locationtextb: !services.musicContent.mucontent },
-                    ]"
-                    class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <h1 class="loctext">Location</h1>
-                    <a
-                      class="loctextlink"
-                      :href="services.musicContent.mulocationlink"
-                      >{{ services.musicContent.mulocation }}</a
-                    >
-                  </div>
-                </div>
+            <div v-else-if="activeContent.layout2">
+              <!-- Render Layout A content -->
+              <div
+                v-if="activeContent"
+                class="right-content overflow-y-scroll flex-1"
+              >
+                <h1>{{ activeContent.title }}</h1>
+                <img
+                  v-if="activeContent.imageUrl"
+                  :src="activeContent.imageUrl"
+                  alt="Image"
+                />
+                <Richtext :blocks="activeContent.dcontent2b"></Richtext>
               </div>
             </div>
           </div>
@@ -1408,6 +253,7 @@ export default {
   components: {
     HeaderComponent,
   },
+
   mounted() {
     // Log the container reference to check if it's correctly set
     console.log("Lottie Container:", this.$refs.lottieAnimation4);
@@ -1439,42 +285,35 @@ export default {
 
   data() {
     return {
-      // activeSection: "design",
-      activeSection: false,
       isMobile: false,
-      // activeSection: null,
       hoveredSection: null,
       lottieInstance: null,
       hasHash: false,
+      activeSection: null,
+      activeContent: null,
     };
   },
 
   directives: {
-    // if (!this.isMobile) {
-    //     this.isOpen = false;
-    //   } else {
-    //     this.hoveredSection = "design";
-    //   },
-  
     clickOutside: {
-  bind(el, binding, vnode) {
-    // Only bind the event if the viewport width is for mobile devices
-    if (window.innerWidth <= 768) { // Adjust this width as needed
-      el.clickOutsideEvent = function (event) {
-        if (!(el === event.target || el.contains(event.target))) {
-          vnode.context[binding.expression](event);
+      bind(el, binding, vnode) {
+        // Only bind the event if the viewport width is for mobile devices
+        if (window.innerWidth <= 768) {
+          // Adjust this width as needed
+          el.clickOutsideEvent = function (event) {
+            if (!(el === event.target || el.contains(event.target))) {
+              vnode.context[binding.expression](event);
+            }
+          };
+          document.body.addEventListener("click", el.clickOutsideEvent);
         }
-      };
-      document.body.addEventListener("click", el.clickOutsideEvent);
-    }
-  },
-  unbind(el) {
-    if (el.clickOutsideEvent) {
-      document.body.removeEventListener("click", el.clickOutsideEvent);
-    }
-  },
-},
- 
+      },
+      unbind(el) {
+        if (el.clickOutsideEvent) {
+          document.body.removeEventListener("click", el.clickOutsideEvent);
+        }
+      },
+    },
   },
 
   beforeDestroy() {
@@ -1496,40 +335,22 @@ export default {
         }
       });
     },
+
     checkHash() {
       // Check if the URL contains a hash
       this.hasHash = window.location.hash !== "";
-    },
-    onHover(section) {
-      if (!this.isMobile) {
-        this.hoveredSection = section; // Set hovered section for non-mobile devices
-      }
-    },
-    onHoverLeave() {
-      if (!this.isMobile) {
-        this.hoveredSection = " "; // Only reset for non-mobile devices
-      }
     },
 
     toggleMenu() {
       this.$store.commit("toggleMenu");
     },
 
-    // openSection() {
-    //   const rightContent = document.querySelector(".sevcont");
-    //   if (rightContent && !this.isOpen) {
-    //     rightContent.classList.add("slide-in");
-    //     // this.lottieInstance.playSegments([0, 11], true); // Open animation
-    //     this.isOpen = true;
-    //   }
-    // },
-
     closeSection() {
       const rightContent = document.querySelector(".headbarc");
       this.lottieInstance.playSegments([11, 20], true); // Close animation
       this.isOpen = false;
-      // this.activeSection = null;
 
+      // Set the activeSection depending on mobile state
       if (!this.isMobile) {
         this.activeSection = "design";
       } else {
@@ -1537,49 +358,38 @@ export default {
       }
     },
 
-    checkViewport(section) {
+    checkViewport() {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
-      this.activeSection = this.isMobile ? false : " "; // Set activeSection based on isMobile
-
-      // Update hoveredSection based on viewport
-
-      if (!this.isMobile) {
-        this.hoveredSection = "design";
-      } else {
-        this.hoveredSection = "";
-      }
+      this.activeSection = this.isMobile ? null : " "; // Set activeSection based on isMobile
     },
 
-    setActiveSection(section) {
-      // Check if it's mobile or desktop and set the active section accordingly
-      if (!this.isMobile) {
-        if (this.activeSection === section) {
-          this.activeSection = section; // Close the section if it's already active
-        } else {
-          // this.lottieInstance.playSegments([0, 11], true); // Open animation
-          this.activeSection = section; // Set the clicked section as active
-        }
+    async setActiveSection(sectionSlug) {
+  if (this.isMobile) {
+    this.activeSection = sectionSlug;
+    this.activeContent = await this.fetchContent(sectionSlug); // Fetch the content based on the section slug
+    console.log(this.activeContent); // Log the content to check if it has the expected values
+  } else {
+    if (this.activeSection === sectionSlug) {
+      this.activeSection = null;
+      this.activeContent = null;
+    } else {
+      this.activeSection = sectionSlug;
+      this.activeContent = await this.fetchContent(sectionSlug);
+      console.log(this.activeContent); // Log the content to check
+    }
+  }
 
-        // Set hoveredSection to null when a section is clicked
-        this.hoveredSection = null;
-      } else {
-        // On mobile, just set the clicked section as active
-        this.activeSection = section;
-        // this.lottieInstance.playSegments([11, 20], true); // Close animation
+},
 
-        // this.lottieInstance.playSegments([0, 11], true); // Open animation
-        this.hoveredSection = null; // Reset hover section on mobile
-      }
+    async fetchContent(slug) {
+      // Fetch content using the slug from Sanity
+      const query = `*[_type == "services" && slug.current == $slug][0]`;
+      return await this.$sanity.fetch(query, { slug });
     },
-    // closeSection() {
-    //   this.activeSection = null; // Close the active section
-    // },
 
-
-    // Close the active section when clicked outside
     handleClick() {
       if (this.isMobile && this.activeSection) {
-        this.closeSection(); 
+        this.closeSection(); // Close section on mobile click
       }
     },
 
@@ -1592,132 +402,34 @@ export default {
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "services"]{
     title,
-    "designContent": {
-     layout1,
+    
+      layout1,
       layout2,
+      slug,
       dcontent,
+      dcontentb,
       dcontent2,
+      dcontent2b,
       dlocation,
+      dlocationb,
       dlocationlink,
+      dlocationlinkb,
       dsubLayoutA,
       dsubLayoutB,
-      "designImageUrl": dimage.asset->url,
-      "designImageLayoutBUrl": dimageLayoutB.asset->url
-    },
-    "locationContent": {
-     layout113,
-      layout223,
-      lcontent,
-      lcontent2,
-      llocation,
-      lsubLayoutA,
-      lsubLayoutB,
-      llocationlink,
-      "locationImageUrl": limage.asset->url,
-      "locationImageLayoutBUrl": limageLayoutB.asset->url
-    },
-    "productionContent": {
-      layout11,
-      layout22,
-      prcontent,
-      prcontent2,
-      prlocation,
-      prlocationlink,
-      prsubLayoutA,
-      prsubLayoutB,
-      "productionImageUrl": primage.asset->url,
-      "productionImageLayoutBUrl": primageLayoutB.asset->url
-    },
-    "conciergeContent": {
-     layout121,
-      layout212,
-      ccontent,
-      ccontent2,
-      clocation,
-      csubLayoutA,
-      csubLayoutB,
-      clocationlink,
-      "conciergeImageUrl": cimage.asset->url,
-      "conciergeImageLayoutBUrl": cimageLayoutB.asset->url
-    },
-    "activityContent": {
-     layout4,
-      layout44,
-      acontent,
-      acontent2,
-      alocation,
-      asubLayoutA,
-      asubLayoutB,
-      alocationlink,
-      "activityImageUrl": aimage.asset->url,
-      "activityImageLayoutBUrl": aimageLayoutB.asset->url
-    },
-    "celebritiesContent": {
-     layout5,
-      layout5,
-      clcontent,
-      clcontent2,
-      cllocation,
-      clsubLayoutA,
-      clsubLayoutB,
-      cllocationlink,
-      "celebritiesImageUrl": climage.asset->url,
-      "celebritiesImageLayoutBUrl": climageLayoutB.asset->url
-    },
-    "musicContent": {
-     layout6,
-      layout66,
-      mucontent,
-      mucontent2,
-      mulocation,
-      musubLayoutA,
-      musubLayoutB,
-      mulocationlink,
-      "musicImageUrl": muimage.asset->url,
-      "musicImageLayoutBUrl": muimageLayoutB.asset->url
-    },
-    "productsContent": {
-     layout7,
-      layout77,
-      pdcontent,
-      pdcontent2,
-      pdlocation,
-      pdsubLayoutA,
-      pdsubLayoutB,
-      pdlocationlink,
-      "productsImageUrl": pdimage.asset->url,
-      "productsImageLayoutBUrl": pdimageLayoutB.asset->url
-    },
-    "moreContent": {
-     layout8,
-      layout88,
-      mocontent,
-      mocontent2,
-      molocation,
-      mosubLayoutA,
-      mosubLayoutB,
-      molocationlink,
-      "moreImageUrl": moimage.asset->url,
-      "moreImageLayoutBUrl": moimageLayoutB.asset->url
-    },
-  } | order(_updatedAt desc)[0]`;
+
+      "designImageLayoutAUrl": dimage.asset->url,
+
+    
+      "designImageLayoutBUrl": dimageLayoutB.asset->url,
+
+}| order(_updatedAt desc)[0]`;
+
+// "designImageUrl": dimage.asset->url,
 
     const services = await $sanity.fetch(query);
 
-    //    // Debugging: Log the fetched data
-    //    console.log('Fetched meta:', project.meta);
-    // console.log('Fetched metaemails:', project.metaemails);
-
-    // // Commit meta and metaemails to the Vuex store
-    // store.commit('setMeta', project.meta);
-    // store.commit('setMetaEmails', project.metaemails);
-
     return { services };
   },
-
-  // computed: {
-  //   ...mapState(["gridpub"]),
-  // },
 
   computed: {
     ...mapState(["gridpub"]),
@@ -1729,19 +441,6 @@ export default {
 </script>
 
 <style scoped>
-/* .rotatesvg {
-  transform: rotate(45deg);
-  transition-property: transform;
-  transition-duration: 3s;
-} */
-
-/* .lottie-container {
-  width: 100vw; 
-  Or whatever width fits your design
-  height: 300px; 
-  Or set the height based on your animation
-} */
-
 .sheadera {
   /* display: unset;  */
   opacity: 1;
@@ -1787,21 +486,21 @@ export default {
 
 .loctext {
   font-size: smaller;
-  font-size: .9vw;
+  font-size: 0.9vw;
   /* font-family: "GT-Bold"; */
   font-family: "MinionPro-Regular";
-  font-family: 'NHaasGrotesk';
+  font-family: "NHaasGrotesk";
   text-transform: uppercase;
 }
 
 .loctextlink {
   font-size: 1.1vw;
-    text-transform: none;
-    text-align: left;
-    -webkit-text-decoration: underline;
-    text-decoration: underline;
-    font-family: "MinionPro-Regular";
-    font-family: 'GT-Sectra-Book-Italic';
+  text-transform: none;
+  text-align: left;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  font-family: "MinionPro-Regular";
+  font-family: "GT-Sectra-Book-Italic";
 }
 
 .locationtextb {
@@ -1911,16 +610,15 @@ export default {
   top: -3vw;
 }
 
-.subtextb{
+.subtextb {
   display: flex;
-    justify-content: center;
-    height: 17.6vh;
+  justify-content: center;
+  height: 17.6vh;
 }
 
-.subtextA{
+.subtextA {
   position: relative;
   top: -1vw;
-  
 }
 
 .subtcont {
@@ -2142,13 +840,12 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-
-  .subtextA{
-  position: relative;
-  top: -3vw;
-  top: -7vw;
+  .subtextA {
+    position: relative;
+    top: -3vw;
+    top: -7vw;
     padding-bottom: 2vw;
-}
+  }
 
   .subtitle {
     font-size: 3vw;
@@ -2172,11 +869,11 @@ a {
     display: none;
   }
 
-  .subtextb{
+  .subtextb {
     display: flex;
     justify-content: center;
     display: none;
-}
+  }
 
   .laybimg {
     height: 32vh;

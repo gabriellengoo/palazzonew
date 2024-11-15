@@ -36,7 +36,9 @@ export default defineConfig({
               ),
             S.divider(),
             S.listItem()
+      
               .title('Weddings')
+              // .icon: AddIcon,
               .child(
                 S.list()
                   .title('Weddings')
