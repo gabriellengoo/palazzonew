@@ -1235,7 +1235,6 @@ a {
     text-decoration: none;
         font-size: 9.2vw;
         font-size: 3.7vh;
-        /* font-size: 4vw; */
         color: black;
         font-weight: 100;
         padding-left: 6vw;
