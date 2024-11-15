@@ -1242,5 +1242,5 @@ a {
         padding-right: 6vw;
         transition-duration: 0.5s;
   }
-}
+} 
 </style>
