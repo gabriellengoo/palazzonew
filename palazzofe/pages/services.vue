@@ -158,14 +158,20 @@
 
                 <!-- <h1>{{ activeContent.title }}</h1> -->
                 <div class="sevimcon">
+                  <img
+  :src="'https://cdn.sanity.io/images/0i1cdi6a/production/' + activeContent.dimage.asset._ref.split('-')[1] + '-' + activeContent.dimage.asset._ref.split('-')[2] + '.png?w=2000&fit=max&auto=format&dpr=2'"
+  alt="Design Image"
+  class="servimg pointer-events-none"
+/>
+
                   <!-- <img
                   v-if="activeContent"
-                  :src="activeContent.designImageLayoutAUrl.asset._ref"
+                  :src="activeContent.dimage.asset._ref"
   class="servimg pointer-events-none"
                   /> -->
                   <!-- <MediaImage
                   v-if="activeContent"
-                  :src="activeContent.designImageLayoutAUrl"
+                  :src="activeContent.dimages"
                         class="servimg pointer-events-none"
                       
                         :style="{
@@ -400,7 +406,8 @@ export default {
   },
 
   async asyncData({ params, $sanity, store }) {
-    const query = groq`*[_type == "services"]{
+    const query = groq`*[_type == "services"]{ ...,
+      _key,
     title,
     
       layout1,
@@ -417,14 +424,17 @@ export default {
       dsubLayoutA,
       dsubLayoutB,
 
-      "designImageLayoutAUrl": dimage.asset->url,
+      "dimages" : 
+  { "imageUrl": dimage.asset->url,}, 
+  
 
     
+      "designImageLayoutAUrl": dimage.asset->url,
       "designImageLayoutBUrl": dimageLayoutB.asset->url,
 
 }| order(_updatedAt desc)[0]`;
 
-// "designImageUrl": dimage.asset->url,
+//   "dimage": dimage.asset._ref, "designImageUrl": dimage.asset->url,
 
     const services = await $sanity.fetch(query);
 
