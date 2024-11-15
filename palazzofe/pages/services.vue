@@ -88,8 +88,8 @@
                     </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('music')" href="#music">
-                      Music
+                    <a @click="setActiveSection('entertainment')" href="#entertainment">
+                      Entertainment
                     </a>
                   </li>
                   <li>
@@ -131,7 +131,7 @@
                 !activeSection,
             }"
           >
-            <div v-if="activeContent" class="allrcont">
+            <div v-if="activeContent.layout1" class="allrcont">
               <!-- Render Layout A content -->
               <div class="sevcont">
                 <div class="titcont titmb">
@@ -216,7 +216,8 @@
                     ]"
                     class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
                   >
-                    <h1 class="loctext">Location</h1>
+                    <!-- <h1 class="loctext">Location</h1> -->
+                    <h1 class="loctext">{{ activeContent.dlocationlink }}</h1>
                     <p class="loctextlink">{{ activeContent.dlocation }}</p>
                   </div>
                 </div>
@@ -225,20 +226,72 @@
 
 
 
-            <div v-else-if="activeContent.layout2">
+            <div   class="right-content overflow-y-scroll flex-1"
+            @click="closeSection"
+            :class="{
+              'slide-in':
+                activeSection,
+              'slide-out':
+                !activeSection,
+            }" v-else-if="activeContent.layout2">
               <!-- Render Layout A content -->
               <div
                 v-if="activeContent"
-                class="right-content overflow-y-scroll flex-1"
+                class="allrcont"
               >
-                <h1>{{ activeContent.title }}</h1>
-                <img
-                  v-if="activeContent.imageUrl"
-                  :src="activeContent.imageUrl"
-                  alt="Image"
+              <div class="sevcont">
+                <div class="titcont titmb">
+                  <button class="pt-[4vw]" @click="closeSection">
+                    <div
+                      ref="lottieAnimation4"
+                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+                    ></div>
+                  </button>
+                  <h1 class="loctext pt-2">{{ activeContent.title }}</h1>
+                </div>
+
+
+                <div
+                 
+                class="subtextb pointer-events-none"
+                  >
+                    <p class="subtitle">
+                      {{ activeContent.dsubLayoutB }}
+                    </p>
+                  </div>
+
+                  <div class="textaup flex pl-[5vw] pb-[3vh]">
+                    <img
+                    :src="'https://cdn.sanity.io/images/0i1cdi6a/production/' + activeContent.dimageLayoutB.asset._ref.split('-')[1] + '-' + activeContent.dimageLayoutB.asset._ref.split('-')[2] + '.jpg?w=2000&fit=max&auto=format&dpr=2'"
+                  alt="Design Image Layout B"
+                  class="laybimg pointer-events-none"
                 />
-                <Richtext :blocks="activeContent.dcontent2b"></Richtext>
+                <Richtext
+                    class="contactinner pr-[4vw]  w-[50%] pb-0"
+                    :blocks="activeContent.dcontent2b"
+                  ></Richtext>
+                  </div>
+
+                  <div class="flex justify-end locmb">
+                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                    <p class="text-[#00000000]">space</p>
+                  </div>
+                  <!-- Add class like production here -->
+                  <div
+                    
+                    class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                  >
+                    <!-- <h1 class="loctext">Location</h1> -->
+                    <h1 class="loctext">{{ activeContent.dlocationlinkb }}</h1>
+                    <p class="loctextlink">{{ activeContent.dlocationb }}</p>
+                  </div>
+                </div>
+
+                 
+                
+               
               </div>
+            </div>
             </div>
           </div>
         </div>
@@ -286,6 +339,8 @@ export default {
     // Set hoveredSection to 'design' if not on mobile
     if (!this.isMobile) {
       this.hoveredSection = "design";
+      this.activeSection = "design"; // Set default active section to 'design' on desktop
+      this.setActiveSection("design"); // Fetch content for the 'design' section
     }
   },
 
@@ -295,7 +350,7 @@ export default {
       hoveredSection: null,
       lottieInstance: null,
       hasHash: false,
-      activeSection: null,
+      activeSection: null, // Default is null for mobile and will be set to 'design' for desktop in mounted()
       activeContent: null,
     };
   },
@@ -358,7 +413,7 @@ export default {
 
       // Set the activeSection depending on mobile state
       if (!this.isMobile) {
-        this.activeSection = "design";
+        this.activeSection = "design"; // Ensure default is design for desktop
       } else {
         this.activeSection = null;
       }
@@ -366,26 +421,29 @@ export default {
 
     checkViewport() {
       this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
-      this.activeSection = this.isMobile ? null : " "; // Set activeSection based on isMobile
+      if (this.isMobile) {
+        this.activeSection = null; // Reset activeSection on mobile
+      } else {
+        this.activeSection = "design"; // Set default section for desktop
+      }
     },
 
     async setActiveSection(sectionSlug) {
-  if (this.isMobile) {
-    this.activeSection = sectionSlug;
-    this.activeContent = await this.fetchContent(sectionSlug); // Fetch the content based on the section slug
-    console.log(this.activeContent); // Log the content to check if it has the expected values
-  } else {
-    if (this.activeSection === sectionSlug) {
-      this.activeSection = null;
-      this.activeContent = null;
-    } else {
-      this.activeSection = sectionSlug;
-      this.activeContent = await this.fetchContent(sectionSlug);
-      console.log(this.activeContent); // Log the content to check
-    }
-  }
-
-},
+      if (this.isMobile) {
+        this.activeSection = sectionSlug;
+        this.activeContent = await this.fetchContent(sectionSlug); // Fetch the content based on the section slug
+        console.log(this.activeContent); // Log the content to check if it has the expected values
+      } else {
+        if (this.activeSection === sectionSlug) {
+          this.activeSection = 'design'; // Reset to 'design' if same section clicked again
+          this.activeContent = await this.fetchContent('design');
+        } else {
+          this.activeSection = sectionSlug;
+          this.activeContent = await this.fetchContent(sectionSlug);
+          console.log(this.activeContent); // Log the content to check
+        }
+      }
+    },
 
     async fetchContent(slug) {
       // Fetch content using the slug from Sanity
@@ -409,32 +467,23 @@ export default {
     const query = groq`*[_type == "services"]{ ...,
       _key,
     title,
-    
-      layout1,
-      layout2,
-      slug,
-      dcontent,
-      dcontentb,
-      dcontent2,
-      dcontent2b,
-      dlocation,
-      dlocationb,
-      dlocationlink,
-      dlocationlinkb,
-      dsubLayoutA,
-      dsubLayoutB,
-
-      "dimages" : 
-  { "imageUrl": dimage.asset->url,}, 
-  
-
-    
-      "designImageLayoutAUrl": dimage.asset->url,
-      "designImageLayoutBUrl": dimageLayoutB.asset->url,
-
-}| order(_updatedAt desc)[0]`;
-
-//   "dimage": dimage.asset._ref, "designImageUrl": dimage.asset->url,
+    layout1,
+    layout2,
+    slug,
+    dcontent,
+    dcontentb,
+    dcontent2,
+    dcontent2b,
+    dlocation,
+    dlocationb,
+    dlocationlink,
+    dlocationlinkb,
+    dsubLayoutA,
+    dsubLayoutB,
+    "dimages" : { "imageUrl": dimage.asset->url, },
+    "designImageLayoutAUrl": dimage.asset->url,
+    "designImageLayoutBUrl": dimageLayoutB.asset->url,
+  }| order(_updatedAt desc)[0]`;
 
     const services = await $sanity.fetch(query);
 
@@ -449,6 +498,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 .sheadera {
@@ -639,16 +689,15 @@ export default {
 
 .laybimg {
   padding: 2vw;
-  padding-left: 0;
-  margin-right: 0.5vw;
-  padding-top: 0vh;
-  top: -8vh;
-  position: relative;
-  width: 20vw;
-  width: 22.5vw;
-
-  width: 22.5vw;
-  object-fit: cover;
+    /* padding-left: 0; */
+    margin-right: 0.5vw;
+    /* padding-top: 0vh; */
+    top: -8vh;
+    position: relative;
+    padding: 0 2vw 2vw 0;
+    width: 22.5vw;
+    -o-object-fit: cover;
+    object-fit: cover;
 }
 
 .pte {
@@ -703,16 +752,17 @@ export default {
 
 .link-container a {
   text-decoration: none;
-  font-size: 9.2vw;
-  font-size: 5vh;
-  /* font-size: 4vw; */
-  color: black;
-  font-weight: 100;
-  padding-left: 4vw;
-  height: max-content;
-  display: inline-block;
-  padding-right: 4vw;
-  transition-duration: 0.5s;
+    font-size: 9.2vw;
+    font-size: 5vh;
+    /* font-size: 4vw; */
+    color: black;
+    font-weight: 100;
+    padding-left: 2vw;
+    height: -moz-max-content;
+    height: max-content;
+    display: inline-block;
+    padding-right: 2vw;
+    transition-duration: 0.5s;
 }
 
 .link-container a:hover {
@@ -1183,17 +1233,14 @@ a {
 
   .link-container a {
     text-decoration: none;
-    font-size: 9.2vw;
-    font-size: 5vh;
-    font-size: 4.2vh;
-    /* font-size: 4vw; */
-    color: black;
-    font-weight: 100;
-    padding-left: 7vw;
-    padding-right: 7vw;
-    padding-left: 10vw;
-    padding-right: 10vw;
-    transition-duration: 0.5s;
+        font-size: 9.2vw;
+        font-size: 3.7vh;
+        /* font-size: 4vw; */
+        color: black;
+        font-weight: 100;
+        padding-left: 6vw;
+        padding-right: 6vw;
+        transition-duration: 0.5s;
   }
 }
 </style>

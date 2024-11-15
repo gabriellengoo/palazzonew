@@ -22,18 +22,48 @@ export default defineConfig({
         S.list()
           .title('Content')
           .items([
-            S.divider(),
-            S.listItem()
-              .title('Info Pages')
-              .child(
-                S.list()
-                  .title('Info Pages')
-                  .items([
-                    S.documentTypeListItem('about').title('About'),
-                    S.documentTypeListItem('contact').title('Contact'),
-                    S.documentTypeListItem('services').title('Services'),
-                  ])
-              ),
+        
+          
+
+
+              S.divider(),
+              S.listItem()
+        
+                .title('About')
+                // .icon: AddIcon,
+                .child(
+                  S.list()
+                    .title('About')
+                    .items([
+                      S.documentTypeListItem('about').title('About'),
+                    ])
+                ),
+
+                S.divider(),
+                S.listItem()
+          
+                  .title('Contact')
+                  // .icon: AddIcon,
+                  .child(
+                    S.list()
+                      .title('Contact')
+                      .items([
+                        S.documentTypeListItem('contact').title('Contact'),
+                      ])
+                  ),
+
+                  S.divider(),
+                  S.listItem()
+            
+                    .title('Services')
+                    // .icon: AddIcon,
+                    .child(
+                      S.list()
+                        .title('Services')
+                        .items([
+                          S.documentTypeListItem('services').title('Services'),
+                        ])
+                    ),
             S.divider(),
             S.listItem()
       

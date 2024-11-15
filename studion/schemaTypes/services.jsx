@@ -106,6 +106,7 @@ export default {
       type: "string",
 
     },
+
          
     
     {
@@ -149,17 +150,18 @@ export default {
   
     
     {
-      name: "dlocation",
-      title: "Bottom text .Layout A",
-      type: "string",
-      hidden: ({parent}) => !parent?.layout1,
-    },
-    {
       name: "dlocationlink",
       title: "Bottom text underlined .Layout A",
       type: "string",
       hidden: ({parent}) => !parent?.layout1,
     },
+    {
+      name: "dlocation",
+      title: "Bottom text .Layout A",
+      type: "string",
+      hidden: ({parent}) => !parent?.layout1,
+    },
+   
 
 
 
@@ -180,6 +182,7 @@ export default {
       name: "dimageLayoutB",
       title: "Right Main Image .Layout B",
       type: "image",
+      description: "Must be jpg",
       options: {
         hotspot: true, // Enables hotspot and crop functionality
       },
@@ -213,18 +216,19 @@ export default {
     }, 
 
     {
-      name: "dlocationb",
-      title: "Bottom text .Layout B",
-      type: "string",
-      hidden: ({parent}) => !parent?.layout2,
-    },
-    {
       name: "dlocationlinkb",
       title: "Bottom text underlined .Layout B",
       type: "string",
       hidden: ({parent}) => !parent?.layout2,
  
     },
+    {
+      name: "dlocationb",
+      title: "Bottom text .Layout B",
+      type: "string",
+      hidden: ({parent}) => !parent?.layout2,
+    },
+   
 
 
 
