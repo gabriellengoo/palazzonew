@@ -88,7 +88,10 @@
                     </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('entertainment')" href="#entertainment">
+                    <a
+                      @click="setActiveSection('entertainment')"
+                      href="#entertainment"
+                    >
                       Entertainment
                     </a>
                   </li>
@@ -120,178 +123,136 @@
           @click="closeSection"
           v-if="activeSection"
         >
-          <div
-            v-if="activeContent"
-            class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            :class="{
-              'slide-in':
-                activeSection,
-              'slide-out':
-                !activeSection,
-            }"
-          >
-            <div v-if="activeContent.layout1" class="allrcont">
-              <!-- Render Layout A content -->
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <!-- headbarc -->
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-
-                  <!-- <h1 class="loctext pt-2">{{ activeContent.title }}</h1> -->
-                </div>
-                <div class="titcont titmb">
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-
-                  <h1 class="loctext pt-2">{{ activeContent.title }}</h1>
-                </div>
-
-                <!-- <h1>{{ activeContent.title }}</h1> -->
-                <div class="sevimcon">
-                  <img
-  :src="'https://cdn.sanity.io/images/0i1cdi6a/production/' + activeContent.dimage.asset._ref.split('-')[1] + '-' + activeContent.dimage.asset._ref.split('-')[2] + '.png?w=2000&fit=max&auto=format&dpr=2'"
-  alt="Design Image"
-  class="servimg pointer-events-none"
-/>
-
-                  <!-- <img
-                  v-if="activeContent"
-                  :src="activeContent.dimage.asset._ref"
-  class="servimg pointer-events-none"
-                  /> -->
-                  <!-- <MediaImage
-                  v-if="activeContent"
-                  :src="activeContent.dimages"
-                        class="servimg pointer-events-none"
-                      
-                        :style="{
-                          pointerEvents: 'auto',
-                        }"
-                        :sizes="'sm:200vw md:150vw lg:200vw'"
-                      ></MediaImage> -->
-
-                </div>
-
-                <div class="flex justify-center pointer-events-none">
-                  <p class="subtitleA">
-                    {{ activeContent.dsubLayoutA }}
-                  </p>
-                </div>
-
-                <div class="flex pl-[5vw] pb-[3vh]">
-                  <Richtext
-                    class="contactinner pr-[4vw] pb-0 w-[50%]"
-                    :blocks="activeContent.dcontent"
-                  ></Richtext>
-
-                  <Richtext
-                    class="contactinner pr-[4vw] w-[50%] pb-0"
-                    :class="[
-                      'contactinner',
-                      { 'pt-[7vh]': !activeContent.dcontent },
-                    ]"
-                    :blocks="activeContent.dcontent2"
-                  ></Richtext>
-                </div>
-
-                <div class="flex justify-end locmb">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-                  <!-- Add class like production here -->
-                  <div
-                    :class="[
-                      'locationtext',
-                      { locationtextb: !activeContent.dcontent },
-                    ]"
-                    class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <!-- <h1 class="loctext">Location</h1> -->
-                    <h1 class="loctext">{{ activeContent.dlocationlink }}</h1>
-                    <p class="loctextlink">{{ activeContent.dlocation }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div   class="right-content overflow-y-scroll flex-1"
-            @click="closeSection"
-            :class="{
-              'slide-in':
-                activeSection,
-              'slide-out':
-                !activeSection,
-            }" v-else-if="activeContent.layout2">
-              <!-- Render Layout A content -->
+          <div class="all">
+            <button class="w-screen btnsvgserv">
               <div
-                v-if="activeContent"
-                class="allrcont"
-              >
-              <div class="sevcont">
-                <div class="titcont titmb">
-                  <button class="pt-[4vw]" @click="closeSection">
-                    <div
-                      ref="lottieAnimation4"
-                      class="lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
-                    ></div>
-                  </button>
-                  <h1 class="loctext pt-2">{{ activeContent.title }}</h1>
-                </div>
+                v-if="activeSection"
+                ref="lottieAnimation4"
+                class="pt-[4vw] lottie-container closeservpg w-[1.4vw] hover:cursor-pointer"
+              ></div>
+            </button>
 
+            <div
+              v-if="activeContent"
+              @click="closeSection"
+              :class="{
+                'slide-in': activeSection,
+                'slide-out': !activeSection,
+              }"
+            >
+              <div v-if="activeContent.layout1" class="allrcont">
+                <!-- Render Layout A content -->
+                <div class="sevcont">
+                  <div class="titcont titmb">
+                    <h1 class="loctext pt-2">{{ activeContent.title }}</h1>
+                  </div>
 
-                <div
-                 
-                class="subtextb pointer-events-none"
-                  >
-                    <p class="subtitle">
-                      {{ activeContent.dsubLayoutB }}
+                  <div class="sevimcon">
+                    <img
+                      :src="
+                        'https://cdn.sanity.io/images/0i1cdi6a/production/' +
+                        activeContent.dimage.asset._ref.split('-')[1] +
+                        '-' +
+                        activeContent.dimage.asset._ref.split('-')[2] +
+                        '.png?w=2000&fit=max&auto=format&dpr=2'
+                      "
+                      alt="Design Image"
+                      class="servimg pointer-events-none"
+                    />
+                  </div>
+
+                  <div class="flex justify-center pointer-events-none">
+                    <p class="subtitleA">
+                      {{ activeContent.dsubLayoutA }}
                     </p>
                   </div>
 
-                  <div class="textaup flex pl-[5vw] pb-[3vh]">
-                    <img
-                    :src="'https://cdn.sanity.io/images/0i1cdi6a/production/' + activeContent.dimageLayoutB.asset._ref.split('-')[1] + '-' + activeContent.dimageLayoutB.asset._ref.split('-')[2] + '.jpg?w=2000&fit=max&auto=format&dpr=2'"
-                  alt="Design Image Layout B"
-                  class="laybimg pointer-events-none"
-                />
-                <Richtext
-                    class="contactinner pr-[4vw]  w-[50%] pb-0"
-                    :blocks="activeContent.dcontent2b"
-                  ></Richtext>
+                  <div class="flex pl-[5vw] pb-[3vh]">
+                    <Richtext
+                      class="contactinner pr-[4vw] pb-0 w-[50%]"
+                      :blocks="activeContent.dcontent"
+                    ></Richtext>
+
+                    <Richtext
+                      class="contactinner pr-[4vw] w-[50%] pb-0"
+                      :class="[
+                        'contactinner',
+                        { 'pt-[7vh]': !activeContent.dcontent },
+                      ]"
+                      :blocks="activeContent.dcontent2"
+                    ></Richtext>
                   </div>
 
                   <div class="flex justify-end locmb">
-                  <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                    <p class="text-[#00000000]">space</p>
-                  </div>
-                  <!-- Add class like production here -->
-                  <div
-                    
-                    class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                  >
-                    <!-- <h1 class="loctext">Location</h1> -->
-                    <h1 class="loctext">{{ activeContent.dlocationlinkb }}</h1>
-                    <p class="loctextlink">{{ activeContent.dlocationb }}</p>
+                    <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                      <p class="text-[#00000000]">space</p>
+                    </div>
+                    <!-- Add class like production here -->
+                    <div
+                      :class="[
+                        'locationtext',
+                        { locationtextb: !activeContent.dcontent },
+                      ]"
+                      class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
+                    >
+                      <!-- <h1 class="loctext">Location</h1> -->
+                      <h1 class="loctext">{{ activeContent.dlocationlink }}</h1>
+                      <p class="loctextlink">{{ activeContent.dlocation }}</p>
+                    </div>
                   </div>
                 </div>
-
-                 
-                
-               
               </div>
-            </div>
+
+              <div v-else-if="activeContent.layout2">
+                <!-- Render Layout B content -->
+                <div v-if="activeContent" class="allrcont">
+                  <div class="sevcont">
+                    <div class="titcont titmb">
+                      <h1 class="loctext pt-2">{{ activeContent.title }}</h1>
+                    </div>
+
+                    <div class="subtextb pointer-events-none">
+                      <p class="subtitle">
+                        {{ activeContent.dsubLayoutB }}
+                      </p>
+                    </div>
+
+                    <div class="textaup flex pl-[5vw] pb-[3vh]">
+                      <img
+                        :src="
+                          'https://cdn.sanity.io/images/0i1cdi6a/production/' +
+                          activeContent.dimageLayoutB.asset._ref.split('-')[1] +
+                          '-' +
+                          activeContent.dimageLayoutB.asset._ref.split('-')[2] +
+                          '.jpg?w=2000&fit=max&auto=format&dpr=2'
+                        "
+                        alt="Design Image Layout B"
+                        class="laybimg pointer-events-none"
+                      />
+                      <Richtext
+                        class="contactinner pr-[4vw] w-[50%] pb-0"
+                        :blocks="activeContent.dcontent2b"
+                      ></Richtext>
+                    </div>
+
+                    <div class="flex justify-end locmb">
+                      <div class="mbspace w-[50vw] p-[2vw] pt-0">
+                        <p class="text-[#00000000]">space</p>
+                      </div>
+                      <!-- Add class like production here -->
+                      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
+                        <!-- <h1 class="loctext">Location</h1> -->
+                        <h1 class="loctext">
+                          {{ activeContent.dlocationlinkb }}
+                        </h1>
+                        <p class="loctextlink">
+                          {{ activeContent.dlocationb }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -313,9 +274,205 @@ export default {
     HeaderComponent,
   },
 
+  data() {
+    return {
+      isMobile: false,
+      hoveredSection: null,
+      hasHash: false,
+      activeSection: null, // Default is null for mobile and will be set to 'design' for desktop in mounted()
+      activeContent: null,
+      lottieJSON: {
+        nm: "Main Scene",
+        ddd: 0,
+        h: 24,
+        w: 24,
+        meta: { g: "@lottiefiles/creator 1.30.0" },
+        layers: [
+          {
+            ty: 4,
+            nm: "plus Outlines",
+            sr: 1,
+            st: 0,
+            op: 20,
+            ip: 0,
+            hd: false,
+            ddd: 0,
+            bm: 0,
+            hasMask: false,
+            ao: 0,
+            ks: {
+              a: { a: 0, k: [12, 12, 0] },
+              s: {
+                a: 1,
+                k: [
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [90, 90, 100],
+                    t: 0,
+                  },
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [100, 100, 100],
+                    t: 4,
+                  },
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [100, 100, 100],
+                    t: 16,
+                  },
+                  { s: [90, 90, 100], t: 19 },
+                ],
+              },
+              sk: { a: 0, k: 0 },
+              p: { a: 0, k: [12, 12, 0] },
+              r: {
+                a: 1,
+                k: [
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [0],
+                    t: 0,
+                  },
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [0],
+                    t: 4,
+                  },
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [90],
+                    t: 16,
+                  },
+                  { s: [90], t: 19 },
+                ],
+              },
+              sa: { a: 0, k: 0 },
+              o: { a: 0, k: 100 },
+            },
+            shapes: [
+              {
+                ty: "gr",
+                bm: 0,
+                hd: false,
+                mn: "ADBE Vector Group",
+                nm: "Group 1",
+                ix: 1,
+                cix: 2,
+                np: 2,
+                it: [
+                  {
+                    ty: "sh",
+                    bm: 0,
+                    hd: false,
+                    mn: "ADBE Vector Shape - Group",
+                    nm: "Path 1",
+                    ix: 1,
+                    d: 1,
+                    ks: {
+                      a: 0,
+                      k: {
+                        c: true,
+                        i: [
+                          [0, -0.423],
+                          [0.423, 0],
+                          [0, 0],
+                          [0, 0],
+                          [0.425, 0],
+                          [0, 0.423],
+                          [0, 0],
+                          [0, 0],
+                          [0, 0.425],
+                          [-0.425, 0],
+                          [0, 0],
+                          [0, 0],
+                          [-0.425, 0],
+                          [0, -0.425],
+                          [0, 0],
+                          [0, 0],
+                        ],
+                        o: [
+                          [0, 0.423],
+                          [0, 0],
+                          [0, 0],
+                          [0, 0.425],
+                          [-0.425, 0],
+                          [0, 0],
+                          [0, 0],
+                          [-0.425, 0],
+                          [0, -0.423],
+                          [0, 0],
+                          [0, 0],
+                          [0, -0.425],
+                          [0.425, 0],
+                          [0, 0],
+                          [0, 0],
+                          [0.423, 0],
+                        ],
+                        v: [
+                          [10, 0],
+                          [9.231, 0.769],
+                          [0.769, 0.769],
+                          [0.769, 9.231],
+                          [0, 10],
+                          [-0.769, 9.231],
+                          [-0.769, 0.769],
+                          [-9.231, 0.769],
+                          [-10, 0],
+                          [-9.231, -0.769],
+                          [-0.769, -0.769],
+                          [-0.769, -9.231],
+                          [0, -10],
+                          [0.769, -9.231],
+                          [0.769, -0.769],
+                          [9.231, -0.769],
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    ty: "fl",
+                    bm: 0,
+                    hd: false,
+                    mn: "ADBE Vector Graphic - Fill",
+                    nm: "Fill 1",
+                    c: { a: 0, k: [0, 0, 0] },
+                    r: 1,
+                    o: { a: 0, k: 100 },
+                  },
+                  {
+                    ty: "tr",
+                    a: { a: 0, k: [0, 0] },
+                    s: { a: 0, k: [100, 100] },
+                    sk: { a: 0, k: 0 },
+                    p: { a: 0, k: [12, 12] },
+                    r: { a: 0, k: 0 },
+                    sa: { a: 0, k: 0 },
+                    o: { a: 0, k: 100 },
+                  },
+                ],
+              },
+            ],
+            ind: 1,
+          },
+        ],
+        v: "5.7.0",
+        fr: 20,
+        op: 20,
+        ip: 0,
+        assets: [],
+      },
+    };
+  },
+
   mounted() {
     // Log the container reference to check if it's correctly set
-    console.log("Lottie Container:", this.$refs.lottieAnimation4);
+    console.log("Lottie Container Reference:", this.$refs.lottieAnimation4);
     console.log("Lottie animation initialized:", this.lottieInstance);
 
     this.lottieInstance = lottie.loadAnimation({
@@ -323,11 +480,18 @@ export default {
       renderer: "svg",
       loop: false,
       autoplay: false,
-      path: "/animations/plus.json", // your Lottie animation JSON file path
+      animationData: this.lottieJSON,
     });
 
-    this.$nextTick(() => {
-      console.log(this.$refs.lottieAnimation4);
+    if (this.lottieInstance) {
+      console.log("Lottie instance created:", this.lottieInstance);
+    } else {
+      console.error("Failed to initialize Lottie animation.");
+    }
+
+    // Listen for the 'DOMLoaded' event
+    this.lottieInstance.addEventListener("DOMLoaded", () => {
+      console.log("Lottie animation SVG has been loaded successfully!");
     });
 
     this.checkViewport(); // Set the initial value based on viewport
@@ -342,17 +506,6 @@ export default {
       this.activeSection = "design"; // Set default active section to 'design' on desktop
       this.setActiveSection("design"); // Fetch content for the 'design' section
     }
-  },
-
-  data() {
-    return {
-      isMobile: false,
-      hoveredSection: null,
-      lottieInstance: null,
-      hasHash: false,
-      activeSection: null, // Default is null for mobile and will be set to 'design' for desktop in mounted()
-      activeContent: null,
-    };
   },
 
   directives: {
@@ -435,8 +588,8 @@ export default {
         console.log(this.activeContent); // Log the content to check if it has the expected values
       } else {
         if (this.activeSection === sectionSlug) {
-          this.activeSection = 'design'; // Reset to 'design' if same section clicked again
-          this.activeContent = await this.fetchContent('design');
+          this.activeSection = "design"; // Reset to 'design' if same section clicked again
+          this.activeContent = await this.fetchContent("design");
         } else {
           this.activeSection = sectionSlug;
           this.activeContent = await this.fetchContent(sectionSlug);
@@ -498,7 +651,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .sheadera {
@@ -689,15 +841,15 @@ export default {
 
 .laybimg {
   padding: 2vw;
-    /* padding-left: 0; */
-    margin-right: 0.5vw;
-    /* padding-top: 0vh; */
-    top: -8vh;
-    position: relative;
-    padding: 0 2vw 2vw 0;
-    width: 22.5vw;
-    -o-object-fit: cover;
-    object-fit: cover;
+  /* padding-left: 0; */
+  margin-right: 0.5vw;
+  /* padding-top: 0vh; */
+  top: -8vh;
+  position: relative;
+  padding: 0 2vw 2vw 0;
+  width: 22.5vw;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .pte {
@@ -752,17 +904,17 @@ export default {
 
 .link-container a {
   text-decoration: none;
-    font-size: 9.2vw;
-    font-size: 5vh;
-    /* font-size: 4vw; */
-    color: black;
-    font-weight: 100;
-    padding-left: 2vw;
-    height: -moz-max-content;
-    height: max-content;
-    display: inline-block;
-    padding-right: 2vw;
-    transition-duration: 0.5s;
+  font-size: 9.2vw;
+  font-size: 5vh;
+  /* font-size: 4vw; */
+  color: black;
+  font-weight: 100;
+  padding-left: 2vw;
+  height: -moz-max-content;
+  height: max-content;
+  display: inline-block;
+  padding-right: 2vw;
+  transition-duration: 0.5s;
 }
 
 .link-container a:hover {
@@ -1091,7 +1243,7 @@ a {
     /* height: 100vh; */
     background-position: 0 0;
     background-position: initial;
-    border-top: 0.05vw solid black;
+    /* border-top: 0.05vw solid black; */
     box-shadow: none;
   }
 
@@ -1233,13 +1385,13 @@ a {
 
   .link-container a {
     text-decoration: none;
-        font-size: 9.2vw;
-        font-size: 3.7vh;
-        color: black;
-        font-weight: 100;
-        padding-left: 6vw;
-        padding-right: 6vw;
-        transition-duration: 0.5s;
+    font-size: 9.2vw;
+    font-size: 3.7vh;
+    color: black;
+    font-weight: 100;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    transition-duration: 0.5s;
   }
 }
 </style>

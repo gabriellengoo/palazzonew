@@ -728,6 +728,27 @@ a .inner-image {
     display: block;
     stroke-width: 0vw;
     stroke: black;
+    z-index: 100;
+  }
+
+  .btnsvgserv{
+    background-image: url("./static/LeftBG.png");
+    background-size: cover;
+    background-position: center;
+    /* background-size: auto auto; */
+    /* background-size: initial; */
+    background-repeat: no-repeat;
+    /* height: 100vh; */
+    background-position: 0 0;
+    background-position: initial;
+    border-top: 0.05vw solid black;
+    display: flex;
+    justify-content: center;
+  }
+
+  .all{
+    display: flex;
+  flex-direction: column;
   }
 
   .headbarc2 {
