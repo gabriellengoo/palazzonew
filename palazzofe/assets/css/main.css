@@ -677,6 +677,7 @@ html {
   
   .new-day-text{
     font-size: 2vw;
+    font-size: smaller;
     font-style: italic;
     -webkit-text-decoration: underline;
     text-decoration: underline;
@@ -688,6 +689,7 @@ html {
 
   .new-day-textevent{
     font-size: 2vw;
+    font-size: smaller;
     font-style: italic;
     -webkit-text-decoration: underline;
     text-decoration: underline;
