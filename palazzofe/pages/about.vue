@@ -357,6 +357,18 @@ a:hover {
 
 @media only screen and (max-width: 768px) {
 
+
+  .richcont {
+  position: absolute;
+    top: 42vh;
+    left: 64vw;
+    width: 20vw;
+    font-size: 1.3vw;
+    height: 76vw;
+    overflow: scroll;
+}
+
+
   .anicol {
     position: absolute;
     z-index: 99;

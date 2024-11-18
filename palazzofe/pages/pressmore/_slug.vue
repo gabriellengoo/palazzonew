@@ -167,7 +167,7 @@
               <div class="top-right-element" v-if="section.layout2date">
                 <Richtext
                   v-if="section.layout2date"
-                  class="contactinnerpressslug"
+                  class="contactinnerpressslug imgntextlay22"
                   :blocks="section.layout2date"
                 ></Richtext>
               </div>
@@ -176,18 +176,18 @@
                 <p class="toplink  p-[.5vw] pb-[2vw]">{{ section.location }}</p>
                 <Richtext
                   v-if="section.layout2Column1Text"
-                  class="contactinnerpressslug lay1subtext mainmblay2 p-[.5vw] pop-in-4 lay1text"
+                  class="contactinnerpressslug lay1subtext mainmblay2 p-[.5vw] pop-in-4 lay1text imgntextlay22"
                   :blocks="section.layout2Column1Text"
                 ></Richtext>
                 <Richtext
                   v-if="section.layout2Column11Text"
-                  class="contactinnerpressslug submblay2 p-[.5vw] pop-in-4 lay1text"
+                  class="contactinnerpressslug submblay2 p-[.5vw] pop-in-4 lay1text imgntextlay22"
                   :blocks="section.layout2Column11Text"
                 ></Richtext>
               </div>
               <div class="column pt-[1.7vw] col-2 col-3 pop-in pop-in-2">
                 <img
-                  class="imglay1 pop-in pop-in-5 p-[.5vw]"
+                  class="imgntextlay22 pop-in pop-in-5 p-[.5vw]"
                   :src="section.layout2Image2"
                   alt="Main Image"
               
@@ -197,40 +197,40 @@
                   <Richtext
                     v-if="section.layout2Column2Text"
                     :blocks="section.layout2Column2Text"
-                    class="contactinnerpressslug p-[.5vw] w-[83vw]"
+                    class="contactinnerpressslug imgntextlay22 p-[.5vw] "
                   ></Richtext>
                   <Richtext
                     v-if="section.layout2Column3Text"
-                    class="contactinnerpressslug p-[.5vw] colmb w-[86vw]"
+                    class="contactinnerpressslug imgntextlay22 p-[.5vw] "
                     :blocks="section.layout2Column3Text"
                   ></Richtext>
                 </div>
               </div>
 
 
-              <div class="column pt-[1.7vw] mbcol4lay2 col-4 pop-in pop-in-4 ">
+              <div class="column  pt-[1.7vw] mbcol4lay2 col-4 pop-in pop-in-4 ">
                 <div class="flex flex-col">
                   <p
                     v-if="section.layout2Column4Text"
-                    class="imagetext p-[.5vw] pb-0"
+                    class="imagetext imgntextlay22 p-[.5vw] pb-0"
                   >
                     IMAGE
                   </p>
                   <Richtext
                     v-if="section.layout2Column4Text"
-                    class="contactinnerpressslug p-[.5vw] pt-0 imtitle2 colmb"
+                    class="contactinnerpressslug p-[.5vw] pt-0 imgntextlay22 imtitle2 colmb"
                     :blocks="section.layout2Column4Text"
                   ></Richtext>
                   <Richtext
                     v-if="section.layout2Column44Text"
-                    class="contactinnerpressslug p-[.5vw] aboveflower colmb"
+                    class="contactinnerpressslug p-[.5vw] imgntextlay22 aboveflower colmb"
                     :blocks="section.layout2Column44Text"
                   ></Richtext>
                 </div>
                
                 <div class="mbflex flowerimgcon">
                   <img
-                  class="imglay1 floimg p-[.5vw] mblay2imgsize"
+                  class="imgntextlay22 floimg p-[.5vw] mblay2imgsize"
                   :src="section.layout2Column4Image"
                   v-if="section.layout2Column4Image"
                   alt="Main Image"
@@ -240,12 +240,12 @@
 
                 <Richtext
                   v-if="section.layout2Column444Text"
-                  class="toplink text-center p-[.5vw] belowflower"
+                  class="toplink imgntextlay22 text-center p-[.5vw] belowflower"
                   :blocks="section.layout2Column444Text"
                 ></Richtext>
                <div class="mbflex">
                 <img
-                  class="imglay1 p-[.5vw] mblay2imgsize2"
+                  class="imgntextlay22 p-[.5vw] mblay2imgsize2"
                   :src="section.layout2Column44Image"
                   v-if="section.layout2Column44Image"
                   alt="Main Image"
@@ -256,7 +256,7 @@
               <div class="column col-5 mbbotpad pop-in pop-in-3">
                 <div class="flex">
                   <img
-                    class="imglay1 p-[.5vw] "
+                    class="imgntextlay22 p-[.5vw] "
                     :src="section.layout2Column5Image"
                     v-if="section.layout2Column5Image"
                     alt="Main Image"
@@ -265,7 +265,7 @@
                 </div>
                 <Richtext
                   v-if="section.layout2Column5Text"
-                  class="contactinnerpressslug p-[.5vw]"
+                  class="contactinnerpressslug imgntextlay22  p-[.5vw]"
                   :blocks="section.layout2Column5Text"
                 ></Richtext>
               </div>
@@ -1388,6 +1388,11 @@ opacity: 0;
 
 /* Additional responsive styling */
 @media (max-width: 768px) {
+
+  .imgntextlay22 {
+  width: 97%;
+}
+
   .mbcoll1{
     flex-direction: row;
   }
@@ -1641,7 +1646,7 @@ opacity: 0;
 
 .mbcol4lay2{
   padding-bottom: 0vw;
-  width: 100%;
+  width: 96%;
 }
 
 .mbbotpad{
