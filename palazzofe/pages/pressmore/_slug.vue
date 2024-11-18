@@ -304,7 +304,7 @@
                 ></Richtext>
 
                 <img
-                  class="imglay1 p-[.5vw]"
+                  class="imglay1 p-[.5vw] pt-[0]"
                   :src="section.layout3Column2Image"
                   alt="Main Image"
                 />

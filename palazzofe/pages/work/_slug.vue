@@ -54,21 +54,23 @@
                   v-for="(slide, index) in project.slider"
                   :key="slide._key"
                   class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
+
                 >
-                  <div class="overlaycont flex h-full p-2 w-13/16">
+                  <div       v-for="image in slide.images" class=""  
+                  :class="{
+                'mdnewdaycon1': image.newDay,
+                'overlaycont flex h-full p-2 w-13/16': !image.newDay,
+              }" >
+
+              <!-- top-[-2vw] h-[110%] -->
                     <figure
                       v-for="image in slide.images"
                       :key="image._key"
                       class="overlaydiv flex flex-col flex-1 h-full"
-                      :class="
-                        image.padding
-                          ? image.padding == 'medium'
-                            ? 'p-12 pr-10'
-                            : image.padding == 'large'
-                            ? 'p-20 pr-18'
-                            : 'p-8 pr-6'
-                          : ''
-                      "
+                      :class="{
+                ' mdnewdaycon': image.newDay,
+                '': !image.newDay,
+              }" 
                     >
                       <MediaImage
                         :src="image.image.asset._ref"
@@ -1110,6 +1112,8 @@ a {
   .overlaydiv {
     /* padding-top: 6vh; */
     padding-bottom: 7vw;
+    display: flex;
+  justify-content: center;
   }
 
   .nomb {

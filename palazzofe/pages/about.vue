@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <HeaderComponent /> -->
-    <div class="headera content flex w-full justify-between">
+    <div class="headera content flex w-full justify-between overflow-y-hidden">
       <h1 class="navmb">
         <HeaderComponent />
       </h1>
@@ -248,10 +248,12 @@ a:hover {
 
 .richcont {
   position: absolute;
-  top: 42vh;
-  left: 64vw;
-  width: 20vw;
-  font-size: 1vw;
+    top: 42vh;
+    left: 64vw;
+    width: 20vw;
+    font-size: 1.3vw;
+    height: 22vw;
+    overflow: scroll;
 }
 
 .fade-img {
