@@ -587,14 +587,13 @@ export default {
       currentLayoutIndex: 0,
       buttonCursorClass: 'cursor-default',
     currentLayoutIndex: 0,
-    totalLayouts: '3' // or however many layouts you have
-      // ... other data properties
+    // totalLayouts: '3' 
     };
   },
   computed: {
     ...mapState(["meta", "metaemails", "projects"]),
-    totalLayouts() {
-      return this.project.sections.length;
+   totalLayouts() {
+      return this.project?.sections?.length || 0;
     },
     ...mapState(["gridpubindi"]),
   },

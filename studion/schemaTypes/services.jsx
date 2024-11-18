@@ -2,6 +2,7 @@ import React from "react";
 import {HelpCircleIcon} from '@sanity/icons'
 // import Emoji from "a11y-react-emoji";
 // const Project = () => <Emoji style={{ fontSize: "2rem" }} symbol="📽️" />;
+// import WordLimitInput from "./components/WordLimitInput";
 
 const blockConfig = {
   type: 'block',
@@ -113,6 +114,8 @@ export default {
       name: "dcontent",
       title: "Left Text Content .Layout A",
       type: "blockContent",
+      // inputComponent: WordLimitInput,
+      options: { maxWords: 50 },
          validation: (Rule) =>
                 Rule.custom(blocks => {
                   if (!blocks) return true;

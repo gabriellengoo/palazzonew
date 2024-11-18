@@ -6,6 +6,7 @@ import { deskTool } from 'sanity/desk';
 import SitePreviewTab from './SitePreviewTab'
 // import defaultDocumentNode from './defaultDocumentNode'
 // import IframePane from 'sanity-plugin-iframe-pane';
+import { DesktopIcon, InfoOutlineIcon, HelpCircleIcon, HomeIcon, SparklesIcon, ConfettiIcon, BookIcon} from '@sanity/icons'; // Example icons
 
 // const IFRAME_URL = 'https://your-site-url.com'; // Replace with your actual site URL
 
@@ -28,7 +29,7 @@ export default defineConfig({
 
               S.divider(),
               S.listItem()
-        
+              .icon(InfoOutlineIcon) 
                 .title('About')
                 // .icon: AddIcon,
                 .child(
@@ -41,7 +42,7 @@ export default defineConfig({
 
                 S.divider(),
                 S.listItem()
-          
+               
                   .title('Contact')
                   // .icon: AddIcon,
                   .child(
@@ -54,7 +55,7 @@ export default defineConfig({
 
                   S.divider(),
                   S.listItem()
-            
+                  .icon(HelpCircleIcon) 
                     .title('Services')
                     // .icon: AddIcon,
                     .child(
@@ -66,7 +67,7 @@ export default defineConfig({
                     ),
             S.divider(),
             S.listItem()
-      
+            .icon(HomeIcon) 
               .title('Weddings')
               // .icon: AddIcon,
               .child(
@@ -80,6 +81,7 @@ export default defineConfig({
               ),
             S.divider(),
             S.listItem()
+            .icon(SparklesIcon) 
             .title('Events')
             .child(
               S.list()
@@ -93,6 +95,7 @@ export default defineConfig({
             ),
           S.divider(),
           S.listItem()
+          .icon(ConfettiIcon) 
           .title('Awards')
           .child(
             S.list()
@@ -104,6 +107,7 @@ export default defineConfig({
           ),
         S.divider(),
         S.listItem()
+        .icon(BookIcon) 
         .title('Publications')
         .child(
           S.list()
@@ -121,6 +125,7 @@ export default defineConfig({
             S.divider(),
             // Add the new "Live Preview" tab
             S.listItem()
+            .icon(DesktopIcon) 
               .title('Live Preview')
               .child(
                 S.component(SitePreviewTab).title('Site Preview')
