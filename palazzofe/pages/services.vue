@@ -124,7 +124,7 @@
           v-if="activeSection"
         >
           <div class="all">
-            <button class="w-screen btnsvgserv">
+            <button class="nodesnav w-screen btnsvgserv">
               <div
                 v-if="activeSection"
                 ref="lottieAnimation4"
