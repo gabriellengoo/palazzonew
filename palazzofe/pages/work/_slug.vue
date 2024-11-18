@@ -1063,7 +1063,7 @@ a {
   background-repeat: no-repeat;
   height: 100vh;
   /* height: max-content; */
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .right-content {

@@ -863,6 +863,7 @@ html {
   .contmbhead {
     width: 100vw;
     height: 96.7vh;
+    height: 100vh;
     position: absolute;
     top: 3.3vw;
     display: flex !important;
