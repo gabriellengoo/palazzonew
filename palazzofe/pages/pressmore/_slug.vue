@@ -86,9 +86,9 @@
 
             <div class="column col-1">
               <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-              <div>
+              <div class='imglay1cont'>
                 <img
-                  class="imglay1 mbimgcol1lay1 p-[.5vw] pop-in pop-in-2"
+                  class="imglay1 mbimgcol1lay11 p-[.5vw] pop-in pop-in-2"
                   :src="section.mainImage"
                   alt="Main Image"
                 />
@@ -116,6 +116,10 @@
                 class="contactinnerpressslug"
                 :blocks="section.column3Text"
               ></Richtext>
+              <Richtext
+                    class="nodes contactinnerpressslug lay1subtext mbcoll1in p-[.5vw]"
+                    :blocks="section.column6Text"
+                  ></Richtext>
             </div>
 
             <div class="column col-3 pt-[3vw] mblcol4lay1">
@@ -140,11 +144,17 @@
                 class=" imtitle2 underimglay1 slideInD-in slideInD-in-3 p-[.5vw]"
                 :blocks="section.column5Text"
               ></Richtext>
+              
+
+              <Richtext
+                    class=" nodes contactinnerpressslug mblay1col4 p-[.5vw]"
+                    :blocks="section.column7Text"
+                  ></Richtext>
             </div>
 
             <div class="column col-4 slideInY-in slideInY-in-4 pt-[8vw]">
               <div class="flex">
-                <div class="flex flex-col mbcoll1">
+                <div class="flex nomb flex-col mbcoll1">
                   <Richtext
                     class="contactinnerpressslug lay1subtext mbcoll1in p-[.5vw]"
                     :blocks="section.column6Text"
@@ -173,7 +183,7 @@
               </div>
 
               <div class="column col-1 pop-in pop-in-4">
-                <p class="toplink  p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                <p class="toplink toplink2mb p-[.5vw] pb-[2vw]">{{ section.location }}</p>
                 <Richtext
                   v-if="section.layout2Column1Text"
                   class="contactinnerpressslug lay1subtext mainmblay2 p-[.5vw] pop-in-4 lay1text imgntextlay22"
@@ -181,23 +191,23 @@
                 ></Richtext>
                 <Richtext
                   v-if="section.layout2Column11Text"
-                  class="contactinnerpressslug submblay2 p-[.5vw] pop-in-4 lay1text imgntextlay22"
+                  class="contactinnerpressslug mbl22 submblay2 p-[.5vw] pop-in-4 lay1text imgntextlay22"
                   :blocks="section.layout2Column11Text"
                 ></Richtext>
               </div>
               <div class="column pt-[1.7vw] col-2 col-3 pop-in pop-in-2">
                 <img
-                  class="imgntextlay22 pop-in pop-in-5 p-[.5vw]"
+                  class=" pop-in pop-in-5 p-[.5vw]"
                   :src="section.layout2Image2"
                   alt="Main Image"
               
                 />
                 
-                <div class="flex w-[40vw] mbbodylay22">
+                <div class="flex w-[40vw] mbl2coltcon mbbodylay22">
                   <Richtext
                     v-if="section.layout2Column2Text"
                     :blocks="section.layout2Column2Text"
-                    class="contactinnerpressslug imgntextlay22 p-[.5vw] "
+                    class="contactinnerpressslug imgntextlay22 textmbl2col2 p-[.5vw] "
                   ></Richtext>
                   <Richtext
                     v-if="section.layout2Column3Text"
@@ -282,8 +292,22 @@
                 ></Richtext>
               </div>
 
-              <div class="column col-1 pop-in pop-in-4">
+              <div class="column nodesnav flex-col col-3 col-4 col-5 pop-in pop-in-3">
                 <p class="toplink  p-[.5vw] pt-[0vw] pb-[2vw]">{{ section.location }}</p>
+                <div class="flex">
+                  <img
+                    class="imglay1 p-[.5vw]"
+                    :src="section.layout3Image3_5"
+                    v-if="section.layout3Image3_5"
+                    alt="Main Image"
+                  />
+                </div>
+              </div>
+
+
+
+              <div class="column col-1 pop-in pop-in-4">
+                <p class="toplink nomb p-[.5vw] pt-[0vw] pb-[2vw]">{{ section.location }}</p>
                 <Richtext
                   v-if="section.layout3Column1Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -292,6 +316,7 @@
               </div>
 
               <div class="column col-2 pop-in pop-in-2">
+                
                 <Richtext
                   v-if="section.layout3Column2Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -304,7 +329,7 @@
                 ></Richtext>
 
                 <img
-                  class="imglay1 p-[.5vw] pt-[0]"
+                  class="imglay1 nomb p-[.5vw] pt-[0]"
                   :src="section.layout3Column2Image"
                   alt="Main Image"
                 />
@@ -315,7 +340,7 @@
                 ></Richtext>
               </div>
 
-              <div class="column col-3 col-4 col-5 pop-in pop-in-3">
+              <div class="column nomb col-3 col-4 col-5 pop-in pop-in-3">
                 <div class="flex">
                   <img
                     class="imglay1 p-[.5vw]"
@@ -1185,6 +1210,7 @@ opacity: 0;
 .toplink {
   text-decoration: underline;
   /* font-style: italic; */
+  
   letter-spacing: .5px;
   font-family: "GT-Sectra-Book-Italic";
 }
@@ -1388,9 +1414,49 @@ opacity: 0;
 
 /* Additional responsive styling */
 @media (max-width: 768px) {
+  .toplink {
+  text-decoration: underline;
+  /* font-style: italic; */
+  text-align: center;
+  font-size: 3.5vw;
+  letter-spacing: .5px;
+  font-family: "GT-Sectra-Book-Italic";
+}
+
+.imglay1cont{
+  display: flex;
+    justify-content: center;
+}
+
+.layout{
+  column-gap: 6.5vw;
+  row-gap: 2vw;
+}
+
+.layout-2 .col-2, .layout-2 .col-3 , .layout-2 .col-5 {
+    grid-column: span 2;
+    width: 94%;
+}
+
+.toplink2mb{
+  width: 94%;
+}
+
+.mbimgcol1lay11{
+  width: 90%;
+}
 
   .imgntextlay22 {
   width: 97%;
+  /* padding-right: 9vw; */
+}
+
+.textmbl2col2{
+  padding-right: 9vw;
+}
+
+.mbl2coltcon{
+  padding-top: 5vw;
 }
 
   .mbcoll1{
@@ -1616,7 +1682,7 @@ opacity: 0;
 }
 
 .mblaytextall{
-  padding-bottom: 1vw;
+  padding-bottom: 5vw;
 }
 
 .lay1col5{
@@ -1628,11 +1694,12 @@ opacity: 0;
 }
 
   .mblcol2lay1{
-    padding-left: 5vw;
+    padding-left: 8vw;
   }
 
   .mblcol4lay1{
-    padding-left: 1vw;
+    padding-left: 0vw;
+    padding-top: 0;
   }
 
   .imagetext {
@@ -1655,6 +1722,11 @@ opacity: 0;
 
 .mbfullwidthsubtext{
   width: 30vw;
+}
+
+.imglay1{
+  padding-bottom: 4vw ;
+  padding-left: 0vw;
 }
 
 }

@@ -233,6 +233,11 @@ div p{
         width: 54%;
     }
 
+
+.lay1subtext p {
+     padding-top: 4vw;
+    }
+
 .lay2text div p:nth-child(1){
   font-size: 4vw;
   /* font-weight: bolder; */
@@ -260,6 +265,7 @@ div p{
 
 .underimglay1 p{
   font-size: 3vw !important;
+  padding-bottom: 4vw !important;
 }
 
 .underimglay2 div p:nth-child(1){
@@ -289,6 +295,25 @@ padding-bottom: 1.5vh;
 
 .mblay3col5pad{
   padding-top: 10vw;
+}
+
+.contactinnerpressslug div p{
+  padding-bottom: 4.3vw !important;
+}
+
+
+.mbl22 div p:nth-child(2){
+  width: 44vw;
+  padding-bottom: 0vw !important;
+}
+
+.mbl22 div p:nth-child(1){
+  width: 51vw;
+    padding-right: 6vw;
+}
+
+.mbl22{
+  padding-top: 4vw;
 }
 
 }
