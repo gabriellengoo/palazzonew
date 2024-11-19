@@ -193,7 +193,15 @@ div p{
 /* font-family: 'MinionPro-Regular'; */
 }
 
+.deskl2textflex{
+  width: 50vw;
+}
+
 @media only screen and (max-width: 768px) {
+  .deskl2textflex{
+  width: 100%;
+}
+
   .laytextall p{
     font-size: 5.5vw;
     /* line-height: 6vw; */
@@ -289,7 +297,7 @@ padding-bottom: 1.5vh;
 }
 
 .lay3subtext p{
-  font-size: 4vw;
+  font-size: 5vw;
   /* line-height: normal; */
 }
 

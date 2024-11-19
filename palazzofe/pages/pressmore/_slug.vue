@@ -207,11 +207,11 @@
                   <Richtext
                     v-if="section.layout2Column2Text"
                     :blocks="section.layout2Column2Text"
-                    class="contactinnerpressslug imgntextlay22 textmbl2col2 p-[.5vw] "
+                    class="contactinnerpressslug imgntextlay22 deskl2textflex textmbl2col2 p-[.5vw] "
                   ></Richtext>
                   <Richtext
                     v-if="section.layout2Column3Text"
-                    class="contactinnerpressslug imgntextlay22 p-[.5vw] "
+                    class="contactinnerpressslug imgntextlay22 deskl2textflex p-[.5vw] "
                     :blocks="section.layout2Column3Text"
                   ></Richtext>
                 </div>
@@ -292,8 +292,8 @@
                 ></Richtext>
               </div>
 
-              <div class="column nodesnav flex-col col-3 col-4 col-5 pop-in pop-in-3">
-                <p class="toplink  p-[.5vw] pt-[0vw] pb-[2vw]">{{ section.location }}</p>
+              <div class="column nodesnav lay3co1mb flex-col col-3 col-4 col-5 pop-in pop-in-3">
+                <p class="toplink p-[.5vw] pt-[0vw] pb-[2vw]">{{ section.location }}</p>
                 <div class="flex">
                   <img
                     class="imglay1 p-[.5vw]"
@@ -303,20 +303,47 @@
                   />
                 </div>
               </div>
+              <!-- <div>
+                 <Richtext
+                    v-if="section.layout3Column4Text"
+                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
+                    :blocks="section.layout3Column4Text"
+                  ></Richtext>
+                <Richtext
+                    v-if="section.layout3Column5Text"
+                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 pt-[0]"
+                    :blocks="section.layout3Column5Text"
+                  ></Richtext>
+              </div> -->
 
 
 
               <div class="column col-1 pop-in pop-in-4">
-                <p class="toplink nomb p-[.5vw] pt-[0vw] pb-[2vw]">{{ section.location }}</p>
+                <p class="toplink nomblay p-[.5vw] pt-[0vw] pb-[2vw]">{{ section.location }}</p>
                 <Richtext
                   v-if="section.layout3Column1Text"
                   class="contactinnerpressslug p-[.5vw]"
                   :blocks="section.layout3Column1Text"
                 ></Richtext>
+                <Richtext
+                      v-if="section.layout3Column3Text"
+                      class="lay3subtext nodes mbfullwidthsubtext p-[.5vw] pt-0 colmb pop-in pop-in-4"
+                      :blocks="section.layout3Column3Text"
+                    ></Richtext>
               </div>
 
               <div class="column col-2 pop-in pop-in-2">
-                
+                   <p
+                      v-if="section.layout3Column33Text"
+                      class="imagetext nodes p-[.5vw] pb-0"
+                    >
+                      IMAGE 
+                    </p>
+                    <Richtext
+                      v-if="section.layout3Column33Text"
+                      class="contactinnerpressslug underimglay1 nodes mbfullwidth  p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
+                      :blocks="section.layout3Column33Text"
+                    ></Richtext>
                 <Richtext
                   v-if="section.layout3Column2Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -324,15 +351,23 @@
                 ></Richtext>
                 <Richtext
                   v-if="section.layout3Column23Text"
-                  class="contactinnerpressslug toplink text-center p-[.5vw]"
+                  class="contactinnerpressslug toplinkl3mb text-center p-[.5vw]"
                   :blocks="section.layout3Column23Text"
                 ></Richtext>
 
-                <img
-                  class="imglay1 nomb p-[.5vw] pt-[0]"
+                <div class='flex justify-center nodesnav'>
+                  <img
+                  class=" lay3img p-[.5vw] pt-[2vw]"
                   :src="section.layout3Column2Image"
                   alt="Main Image"
                 />
+              </div>
+              <img
+                  class="imglay1 nomblay p-[.5vw] pt-[0]"
+                  :src="section.layout3Column2Image"
+                  alt="Main Image"
+                />
+
                 <Richtext
                   v-if="section.layout3Column22Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -340,8 +375,8 @@
                 ></Richtext>
               </div>
 
-              <div class="column nomb col-3 col-4 col-5 pop-in pop-in-3">
-                <div class="flex">
+              <div class="column  col-3 col-4 col-5 pop-in pop-in-3">
+                <div class="flex nomblay">
                   <img
                     class="imglay1 p-[.5vw]"
                     :src="section.layout3Image3_5"
@@ -350,8 +385,8 @@
                   />
                 </div>
 
-                <div class="flex mblay3col5pad">
-                  <div class="flex flex-col mbfullwidth w-[87vw]">
+                <div class="flex  mblay3col5pad">
+                  <div class="flex nomblay flex-col mbfullwidth w-[87vw]">
                     <Richtext
                       v-if="section.layout3Column3Text"
                       class="lay3subtext mbfullwidthsubtext p-[.5vw] pt-0 colmb pop-in pop-in-4"
@@ -372,12 +407,12 @@
 
                   <Richtext
                     v-if="section.layout3Column4Text"
-                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
+                    class="contactinnerpressslug  pop-in pop-in-1 p-[.5vw] pt-[0]"
                     :blocks="section.layout3Column4Text"
                   ></Richtext>
                   <Richtext
                     v-if="section.layout3Column5Text"
-                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 pt-[0]"
+                    class="contactinnerpressslug  p-[.5vw] pop-in pop-in-3 pt-[0]"
                     :blocks="section.layout3Column5Text"
                   ></Richtext>
                 </div>
@@ -1414,6 +1449,21 @@ opacity: 0;
 
 /* Additional responsive styling */
 @media (max-width: 768px) {
+  .lay3img{
+    width: 30vw;
+    padding-bottom: 4vw;
+  }
+
+  .toplinkl3mb {
+  text-decoration: underline;
+  /* font-style: italic; */
+  text-align: center;
+  font-size: 3vw;
+  letter-spacing: .5px;
+  padding-top: 4vw;
+  font-family: "GT-Sectra-Book-Italic";
+}
+
   .toplink {
   text-decoration: underline;
   /* font-style: italic; */
@@ -1436,6 +1486,11 @@ opacity: 0;
 .layout-2 .col-2, .layout-2 .col-3 , .layout-2 .col-5 {
     grid-column: span 2;
     width: 94%;
+}
+
+.lay3co1mb{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .toplink2mb{

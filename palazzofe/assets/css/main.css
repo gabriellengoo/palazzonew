@@ -639,9 +639,16 @@ a .inner-image {
   
 } */
 
-
+.nomblay{
+  display: block;
+}
 
 @media only screen and (max-width: 768px) {
+
+  .nomblay{
+    display: none;
+  }
+
 
   #__nuxt,
 #__layout,
