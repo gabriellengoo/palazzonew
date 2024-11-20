@@ -260,7 +260,7 @@ a:hover {
     top: 42vh;
     left: 64vw;
     width: 20vw;
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     height: 24vw;
     overflow: scroll;
 }
@@ -270,7 +270,7 @@ a:hover {
     top: 42vh;
     left: 66.2vw;
     width: 22vw;
-    font-size: 1.3vw;
+    /* font-size: 1.3vw; */
     height: 21vw;
     overflow: scroll;
 }
