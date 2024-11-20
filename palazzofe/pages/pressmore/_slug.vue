@@ -16,33 +16,34 @@
       <!-- <p class="headingspages navmbno text-center text-4xl uppercase">
         {{ project.title }}
       </p> -->
-      <div   v-for="(section, index) in project.sections"
-          :key="index"
-      v-if="
-            (section.layout1 && currentLayoutIndex === index) ||
-            (section.layout2 && currentLayoutIndex === index) ||
-            (section.layout3 && currentLayoutIndex === index)
-          " >
+      <div
+        v-for="(section, index) in project.sections"
+        :key="index"
+        v-if="
+          (section.layout1 && currentLayoutIndex === index) ||
+          (section.layout2 && currentLayoutIndex === index) ||
+          (section.layout3 && currentLayoutIndex === index)
+        "
+      >
         <Richtext
-    v-if="section.layout1 === true"
-                  class="headingspages navmbno text-center text-4xl uppercase"
-                  :blocks="section.column0Text"
-                ></Richtext>
-                <Richtext
-    v-if="section.layout2 === true"
-                  class="headingspages navmbno text-center text-4xl uppercase"
-                  :blocks="section.layout2Column1Text"
-                ></Richtext>
-                <Richtext
-    v-if="section.layout3 === true"
-                  class="headingspages navmbno text-center text-4xl uppercase"
-                   :blocks="section.layout3Column3Text"
-                ></Richtext>
+          v-if="section.layout1 === true"
+          class="headingspages navmbno text-center text-4xl uppercase"
+          :blocks="section.column0Text"
+        ></Richtext>
+        <Richtext
+          v-if="section.layout2 === true"
+          class="headingspages navmbno text-center text-4xl uppercase"
+          :blocks="section.layout2Column1Text"
+        ></Richtext>
+        <Richtext
+          v-if="section.layout3 === true"
+          class="headingspages navmbno text-center text-4xl uppercase"
+          :blocks="section.layout3Column3Text"
+        ></Richtext>
       </div>
-     
+
       <div class="navmbno">
         <p
-        
           class="headingspagesslug pt-[2vw] nodes text-center text-4xl uppercase"
         >
           Publication
@@ -59,9 +60,7 @@
     </div>
 
     <!-- pl-[0.3vw] -->
-    <div
-      class="bgmobile relative min-h-screen flex flex-col p-[1vw] "
-    >
+    <div class="bgmobile relative min-h-screen flex flex-col p-[1vw]">
       <transition name="slide" mode="out-in">
         <div
           class="layouts"
@@ -72,9 +71,9 @@
             (section.layout1 && currentLayoutIndex === index) ||
             (section.layout2 && currentLayoutIndex === index) ||
             (section.layout3 && currentLayoutIndex === index)
-          " 
+          "
         >
-           <!-- Layout 1 -->
+          <!-- Layout 1 -->
           <div class="layout layout-1" v-if="section.layout1 === true">
             <div class="top-right-element" v-if="section.layout1date">
               <Richtext
@@ -86,7 +85,7 @@
 
             <div class="column col-1">
               <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
-              <div class='imglay1cont'>
+              <div class="imglay1cont">
                 <img
                   class="imglay1 mbimgcol1lay11 p-[.5vw] pop-in pop-in-2"
                   :src="section.mainImage"
@@ -117,9 +116,9 @@
                 :blocks="section.column3Text"
               ></Richtext>
               <Richtext
-                    class="nodes contactinnerpressslug lay1subtext mbcoll1in p-[.5vw]"
-                    :blocks="section.column6Text"
-                  ></Richtext>
+                class="nodes contactinnerpressslug lay1subtext mbcoll1in p-[.5vw]"
+                :blocks="section.column6Text"
+              ></Richtext>
             </div>
 
             <div class="column col-3 pt-[3vw] mblcol4lay1">
@@ -135,21 +134,20 @@
                 />
               </div>
               <p
-                    v-if="section.column5Text"
-                    class="imagetext p-[.5vw] pt-0 pb-0 slideInD-in slideInD-in-3"
-                  >
-                    IMAGE
-                  </p>
+                v-if="section.column5Text"
+                class="imagetext p-[.5vw] pt-0 pb-0 slideInD-in slideInD-in-3"
+              >
+                IMAGE
+              </p>
               <Richtext
-                class=" imtitle2 underimglay1 slideInD-in slideInD-in-3 p-[.5vw]"
+                class="imtitle2 underimglay1 slideInD-in slideInD-in-3 p-[.5vw]"
                 :blocks="section.column5Text"
               ></Richtext>
-              
 
               <Richtext
-                    class=" nodes contactinnerpressslug mblay1col4 p-[.5vw]"
-                    :blocks="section.column7Text"
-                  ></Richtext>
+                class="nodes contactinnerpressslug mblay1col4 p-[.5vw]"
+                :blocks="section.column7Text"
+              ></Richtext>
             </div>
 
             <div class="column col-4 slideInY-in slideInY-in-4 pt-[8vw]">
@@ -170,7 +168,6 @@
             <div class="column col-5 lay1col5 slideIn-in slideIn-in-5"></div>
           </div>
 
-
           <div class="otherlays" v-if="section.layout1 === false">
             <!-- Layout 2 -->
             <div class="layout layout-2" v-if="section.layout2 === true">
@@ -183,42 +180,166 @@
               </div>
 
               <div class="column col-1 pop-in pop-in-4">
-                <p class="toplink toplink2mb p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+                <p class="toplink toplink2mb p-[.5vw] pb-[2vw]">
+                  {{ section.location }}
+                </p>
+
                 <Richtext
                   v-if="section.layout2Column1Text"
-                  class="contactinnerpressslug lay1subtext mainmblay2 p-[.5vw] pop-in-4 lay1text imgntextlay22"
+                  class="contactinnerpressslug lay2subtextn nodes mainmblay2 p-[.5vw] pop-in-4 lay1text imgntextlay22"
+                  :blocks="section.layout2Column1Text"
+                ></Richtext>
+
+                <Richtext
+                  v-if="section.layout2Column1Text"
+                  class="contactinnerpressslug lay1subtext nomb mainmblay2 p-[.5vw] pop-in-4 lay1text imgntextlay22"
                   :blocks="section.layout2Column1Text"
                 ></Richtext>
                 <Richtext
-                  v-if="section.layout2Column11Text"
-                  class="contactinnerpressslug mbl22 submblay2 p-[.5vw] pop-in-4 lay1text imgntextlay22"
-                  :blocks="section.layout2Column11Text"
-                ></Richtext>
+                      v-if="section.layout2Column11Text"
+                      class="contactinnerpressslug nomb p-[.5vw] imgntextlay22 aboveflower colmb"
+                      :blocks="section.layout2Column11Text"
+                    ></Richtext>
+
               </div>
+
+              <div class="nodes column pt-[1.7vw] col-2 col-3 pop-in pop-in-2">
+                <div class="mbl2coltcon nodes">
+                  <div class="contactinnerpressslug  p-[.5vw]">
+                    <div
+                      class="contactinnerpressslug nodes p-[.5vw] pt-0"
+                    >
+                    <Richtext
+                      v-if="section.layout2Column11Text"
+                      class="contactinnerpressslug nodes p-[.5vw] imgntextlay22 aboveflower colmb"
+                      :blocks="section.layout2Column11Text"
+                    ></Richtext>
+                    <Richtext
+                          v-if="section.layout2Column3Text"
+                          class="contactinnerpressslug nodes p-[.5vw] w-[100vw] imgntextlay22 aboveflower colmb"
+                          :blocks="section.layout2Column3Text"
+                        ></Richtext>
+                    </div>
+                  </div>
+
+                  <div
+                    class=" imgntextlay22 deskl2textflex p-[.5vw]"
+                  >
+                  <Richtext
+                          v-if="section.layout2Column2Text"
+                          :blocks="section.layout2Column2Text"
+                          class="contactinnerpressslug nodes lay2flsizedesk  p-[.5vw]"
+                        ></Richtext>
+                        <div class="mbflex  flowerimgcon">
+                  <img
+                    class="imgntextlay22 floimg p-[.5vw] mblay2imgsize"
+                    :src="section.layout2Column4Image"
+                    v-if="section.layout2Column4Image"
+                    alt="Main Image"
+                  />
+                </div>
+                <Richtext
+                  v-if="section.layout2Column444Text"
+                  class=" toplinkl2mb text-center p-[.5vw]"
+                  :blocks="section.layout2Column444Text"
+                ></Richtext>
+                <div class="mbflex nomblay">
+                  <img
+                    class="lay3img p-[.5vw] pt-[2vw]"
+                    :src="section.layout2Column44Image"
+                    v-if="section.layout2Column44Image"
+                    alt="Main Image"
+                  />
+                </div>
+                        <Richtext
+                    v-if="section.layout2Column44Text"
+                    class="contactinnerpressslug p-[.5vw] imgntextlay22 aboveflower "
+                    :blocks="section.layout2Column44Text"
+                  ></Richtext>
+             
+                  </div>
+                </div>
+              </div>
+
+            
+
               <div class="column pt-[1.7vw] col-2 col-3 pop-in pop-in-2">
                 <img
-                  class=" pop-in pop-in-5 p-[.5vw]"
+                  class="pop-in pop-in-5 p-[.5vw]"
                   :src="section.layout2Image2"
                   alt="Main Image"
-              
                 />
-                
-                <div class="flex w-[40vw] mbl2coltcon mbbodylay22">
+
+                <div class="w-[40vw] mbl2coltcon mbbodylay22 deskl2flex">
                   <Richtext
                     v-if="section.layout2Column2Text"
                     :blocks="section.layout2Column2Text"
-                    class="contactinnerpressslug imgntextlay22 deskl2textflex textmbl2col2 p-[.5vw] "
+                    class="contactinnerpressslug nomblay lay2flsizedesk  p-[.5vw]"
                   ></Richtext>
                   <Richtext
                     v-if="section.layout2Column3Text"
-                    class="contactinnerpressslug imgntextlay22 deskl2textflex p-[.5vw] "
+                    class="contactinnerpressslug nomblay lay2flsizedesk p-[.5vw]"
                     :blocks="section.layout2Column3Text"
                   ></Richtext>
                 </div>
               </div>
 
+              <div
+                class="column nodes pt-[1.7vw] mbcol4lay2 col-4 pop-in pop-in-4"
+              >
+                <div class="mbl2coltcon nodes">
+                  <div class="contactinnerpressslug  p-[.5vw]">
+                    <div
+                      class="contactinnerpressslug nodes p-[.5vw] pt-0 "
+                    >
+                      <p
+                        v-if="section.layout2Column4Text"
+                        class="imagetext p-[.5vw] pb-0"
+                      >
+                        IMAGE
+                      </p>
+                      <Richtext
+                        v-if="section.layout2Column4Text"
+                        class="contactinnerpressslug p-[.5vw] pt-0 imtitle2"
+                        :blocks="section.layout2Column4Text"
+                      ></Richtext>
+                      <Richtext
+                  v-if="section.layout2Column5Text"
+                  class="contactinnerpressslug  p-[.5vw] pb-[30vw]"
+                  :blocks="section.layout2Column5Text"
+                ></Richtext>
+                    </div>
+                  </div>
 
-              <div class="column  pt-[1.7vw] mbcol4lay2 col-4 pop-in pop-in-4 ">
+                  <div
+                    class="contactinnerpressslug imgntextlay22 deskl2textflex p-[.5vw]"
+                  >
+                    <Richtext
+                      v-if="section.layout2Column44Text"
+                      class="contactinnerpressslug nodes p-[.5vw] imgntextlay22 aboveflower colmb"
+                      :blocks="section.layout2Column44Text"
+                    ></Richtext>
+                    <div class="flex">
+                  <img
+                    class="imgntextlay22 "
+                    :src="section.layout2Column5Image"
+                    v-if="section.layout2Column5Image"
+                    alt="Main Image"
+                  />
+                </div>
+                  </div>
+                </div>
+
+                
+
+          
+              </div>
+
+           
+
+              <div
+                class="column nomblay pt-[1.7vw] mbcol4lay2 col-4 pop-in pop-in-4"
+              >
                 <div class="flex flex-col">
                   <p
                     v-if="section.layout2Column4Text"
@@ -237,45 +358,43 @@
                     :blocks="section.layout2Column44Text"
                   ></Richtext>
                 </div>
-               
-                <div class="mbflex flowerimgcon">
+
+                <div class="mbflex nomblay flowerimgcon">
                   <img
-                  class="imgntextlay22 floimg p-[.5vw] mblay2imgsize"
-                  :src="section.layout2Column4Image"
-                  v-if="section.layout2Column4Image"
-                  alt="Main Image"
-          
-                />
-               </div>
+                    class="imgntextlay22 floimg p-[.5vw] mblay2imgsize"
+                    :src="section.layout2Column4Image"
+                    v-if="section.layout2Column4Image"
+                    alt="Main Image"
+                  />
+                </div>
 
                 <Richtext
                   v-if="section.layout2Column444Text"
-                  class="toplink imgntextlay22 text-center p-[.5vw] belowflower"
+                  class="toplink imgntextlay22 nomblay text-center p-[.5vw] belowflower"
                   :blocks="section.layout2Column444Text"
                 ></Richtext>
-               <div class="mbflex">
-                <img
-                  class="imgntextlay22 p-[.5vw] mblay2imgsize2"
-                  :src="section.layout2Column44Image"
-                  v-if="section.layout2Column44Image"
-                  alt="Main Image"
-                />
-               </div>
+                <div class="mbflex nomblay">
+                  <img
+                    class="imgntextlay22 p-[.5vw] mblay2imgsize2"
+                    :src="section.layout2Column44Image"
+                    v-if="section.layout2Column44Image"
+                    alt="Main Image"
+                  />
+                </div>
               </div>
-              
-              <div class="column col-5 mbbotpad pop-in pop-in-3">
+
+              <div class="column nomblay col-5 mbbotpad pop-in pop-in-3">
                 <div class="flex">
                   <img
-                    class="imgntextlay22 p-[.5vw] "
+                    class="imgntextlay22 p-[.5vw]"
                     :src="section.layout2Column5Image"
                     v-if="section.layout2Column5Image"
                     alt="Main Image"
-                  
                   />
                 </div>
                 <Richtext
                   v-if="section.layout2Column5Text"
-                  class="contactinnerpressslug imgntextlay22  p-[.5vw]"
+                  class="contactinnerpressslug nomblay imgntextlay22 p-[.5vw]"
                   :blocks="section.layout2Column5Text"
                 ></Richtext>
               </div>
@@ -292,8 +411,12 @@
                 ></Richtext>
               </div>
 
-              <div class="column nodesnav lay3co1mb flex-col col-3 col-4 col-5 pop-in pop-in-3">
-                <p class="toplink p-[.5vw] pt-[0vw] pb-[2vw]">{{ section.location }}</p>
+              <div
+                class="column nodesnav lay3co1mb flex-col col-3 col-4 col-5 pop-in pop-in-3"
+              >
+                <p class="toplink p-[.5vw] pt-[0vw] pb-[2vw]">
+                  {{ section.location }}
+                </p>
                 <div class="flex">
                   <img
                     class="imglay1 p-[.5vw]"
@@ -316,34 +439,34 @@
                   ></Richtext>
               </div> -->
 
-
-
               <div class="column col-1 pop-in pop-in-4">
-                <p class="toplink nomblay p-[.5vw] pt-[0vw] pb-[2vw]">{{ section.location }}</p>
+                <p class="toplink nomblay p-[.5vw] pt-[0vw] pb-[2vw]">
+                  {{ section.location }}
+                </p>
                 <Richtext
                   v-if="section.layout3Column1Text"
                   class="contactinnerpressslug p-[.5vw]"
                   :blocks="section.layout3Column1Text"
                 ></Richtext>
                 <Richtext
-                      v-if="section.layout3Column3Text"
-                      class="lay3subtext nodes mbfullwidthsubtext p-[.5vw] pt-0 colmb pop-in pop-in-4"
-                      :blocks="section.layout3Column3Text"
-                    ></Richtext>
+                  v-if="section.layout3Column3Text"
+                  class="lay3subtext nodes mbfullwidthsubtext p-[.5vw] pt-0 colmb pop-in pop-in-4"
+                  :blocks="section.layout3Column3Text"
+                ></Richtext>
               </div>
 
               <div class="column col-2 pop-in pop-in-2">
-                   <p
-                      v-if="section.layout3Column33Text"
-                      class="imagetext nodes p-[.5vw] pb-0"
-                    >
-                      IMAGE 
-                    </p>
-                    <Richtext
-                      v-if="section.layout3Column33Text"
-                      class="contactinnerpressslug underimglay1 nodes mbfullwidth  p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
-                      :blocks="section.layout3Column33Text"
-                    ></Richtext>
+                <p
+                  v-if="section.layout3Column33Text"
+                  class="imagetext nodes p-[.5vw] pb-0"
+                >
+                  IMAGE
+                </p>
+                <Richtext
+                  v-if="section.layout3Column33Text"
+                  class="contactinnerpressslug underimglay1 nodes mbfullwidth p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
+                  :blocks="section.layout3Column33Text"
+                ></Richtext>
                 <Richtext
                   v-if="section.layout3Column2Text"
                   class="contactinnerpressslug p-[.5vw]"
@@ -355,14 +478,14 @@
                   :blocks="section.layout3Column23Text"
                 ></Richtext>
 
-                <div class='flex justify-center nodesnav'>
+                <div class="flex justify-center nodesnav">
                   <img
-                  class=" lay3img p-[.5vw] pt-[2vw]"
-                  :src="section.layout3Column2Image"
-                  alt="Main Image"
-                />
-              </div>
-              <img
+                    class="lay3img p-[.5vw] pt-[2vw]"
+                    :src="section.layout3Column2Image"
+                    alt="Main Image"
+                  />
+                </div>
+                <img
                   class="imglay1 nomblay p-[.5vw] pt-[0]"
                   :src="section.layout3Column2Image"
                   alt="Main Image"
@@ -375,7 +498,7 @@
                 ></Richtext>
               </div>
 
-              <div class="column  col-3 col-4 col-5 pop-in pop-in-3">
+              <div class="column col-3 col-4 col-5 pop-in pop-in-3">
                 <div class="flex nomblay">
                   <img
                     class="imglay1 p-[.5vw]"
@@ -385,7 +508,7 @@
                   />
                 </div>
 
-                <div class="flex  mblay3col5pad">
+                <div class="flex mblay3col5pad">
                   <div class="flex nomblay flex-col mbfullwidth w-[87vw]">
                     <Richtext
                       v-if="section.layout3Column3Text"
@@ -396,23 +519,23 @@
                       v-if="section.layout3Column33Text"
                       class="imagetext p-[.5vw] pb-0"
                     >
-                      IMAGE 
+                      IMAGE
                     </p>
                     <Richtext
                       v-if="section.layout3Column33Text"
-                      class="contactinnerpressslug mbfullwidth  p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
+                      class="contactinnerpressslug mbfullwidth p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
                       :blocks="section.layout3Column33Text"
                     ></Richtext>
                   </div>
 
                   <Richtext
                     v-if="section.layout3Column4Text"
-                    class="contactinnerpressslug  pop-in pop-in-1 p-[.5vw] pt-[0]"
+                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
                     :blocks="section.layout3Column4Text"
                   ></Richtext>
                   <Richtext
                     v-if="section.layout3Column5Text"
-                    class="contactinnerpressslug  p-[.5vw] pop-in pop-in-3 pt-[0]"
+                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 pt-[0]"
                     :blocks="section.layout3Column5Text"
                   ></Richtext>
                 </div>
@@ -425,107 +548,117 @@
       <!-- @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" -->
       <!-- Display the gridpress content here -->
       <div class="gridpress-container">
-    <!-- Layout 1 -->
-    <transition name="fade" mode="out-in">
-      <div
-        v-for="(section, index) in project.sections"
-        :key="index"
-        v-if="showContent1 && section.layout1 && currentLayoutIndex === index"
-        class="slider"
-        :style="getTransitionStyle(index)"
-      >
-        <div v-for="slide in section.slider1" :key="slide._key" class="slide">
+        <!-- Layout 1 -->
+        <transition name="fade" mode="out-in">
           <div
-            v-for="image in slide.images"
-            :key="image._key"
-            class="slider-item"
-            :class="['slide', { 'even-slide': index % 2 === 0 }]"
+            v-for="(section, index) in project.sections"
+            :key="index"
+            v-if="
+              showContent1 && section.layout1 && currentLayoutIndex === index
+            "
+            class="slider"
+            :style="getTransitionStyle(index)"
           >
-            <img
-              @mouseenter="handleMouseEnter"
-              @mouseleave="handleMouseLeave"
-              :src="image.image"
-              :alt="`Slide Image ${image._key}`"
-              class="imglay1s p-[.5vw]"
-            />
+            <div
+              v-for="slide in section.slider1"
+              :key="slide._key"
+              class="slide"
+            >
+              <div
+                v-for="image in slide.images"
+                :key="image._key"
+                class="slider-item"
+                :class="['slide', { 'even-slide': index % 2 === 0 }]"
+              >
+                <img
+                  @mouseenter="handleMouseEnter"
+                  @mouseleave="handleMouseLeave"
+                  :src="image.image"
+                  :alt="`Slide Image ${image._key}`"
+                  class="imglay1s p-[.5vw]"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </transition>
+        </transition>
 
-    <!-- Layout 2 -->
-    <transition name="fade" mode="out-in">
-      <div
-        v-for="(section, index) in project.sections"
-        :key="index"
-        v-if="showContent2 && section.layout2 && currentLayoutIndex === index"
-        class="slider"
-        :style="getTransitionStyle(index)"
-      >
-        <div v-for="slide in section.slider2" :key="slide._key" class="slide2">
+        <!-- Layout 2 -->
+        <transition name="fade" mode="out-in">
           <div
-            v-for="image in slide.images"
-            :key="image._key"
-            class="slider-item"
-            :class="['slide', { 'even-slide': index % 2 === 0 }]"
+            v-for="(section, index) in project.sections"
+            :key="index"
+            v-if="
+              showContent2 && section.layout2 && currentLayoutIndex === index
+            "
+            class="slider"
+            :style="getTransitionStyle(index)"
           >
-            <img
-              @mouseenter="handleMouseEnter"
-              @mouseleave="handleMouseLeave"
-              :src="image.image"
-              :alt="`Slide Image ${image._key}`"
-              class="imglay1s p-[.5vw]"
-            />
+            <div
+              v-for="slide in section.slider2"
+              :key="slide._key"
+              class="slide2"
+            >
+              <div
+                v-for="image in slide.images"
+                :key="image._key"
+                class="slider-item"
+                :class="['slide', { 'even-slide': index % 2 === 0 }]"
+              >
+                <img
+                  @mouseenter="handleMouseEnter"
+                  @mouseleave="handleMouseLeave"
+                  :src="image.image"
+                  :alt="`Slide Image ${image._key}`"
+                  class="imglay1s p-[.5vw]"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </transition>
+        </transition>
 
-    <!-- Layout 3 -->
-    <transition name="fade" mode="out-in">
-      <div
-        v-for="(section, index) in project.sections"
-        :key="index"
-        v-if="showContent3 && section.layout3 && currentLayoutIndex === index"
-        class="slider"
-        :style="getTransitionStyle(index)"
-      >
-        <div v-for="slide in section.slider3" :key="slide._key" class="slide3">
+        <!-- Layout 3 -->
+        <transition name="fade" mode="out-in">
           <div
-            v-for="image in slide.images"
-            :key="image._key"
-            class="slider-item"
-            :class="['slide', { 'even-slide': index % 2 === 0 }]"
+            v-for="(section, index) in project.sections"
+            :key="index"
+            v-if="
+              showContent3 && section.layout3 && currentLayoutIndex === index
+            "
+            class="slider"
+            :style="getTransitionStyle(index)"
           >
-            <img
-              @mouseenter="handleMouseEnter"
-              @mouseleave="handleMouseLeave"
-              :src="image.image"
-              :alt="`Slide Image ${image._key}`"
-              class="imglay1s p-[.5vw]"
-            />
+            <div
+              v-for="slide in section.slider3"
+              :key="slide._key"
+              class="slide3"
+            >
+              <div
+                v-for="image in slide.images"
+                :key="image._key"
+                class="slider-item"
+                :class="['slide', { 'even-slide': index % 2 === 0 }]"
+              >
+                <img
+                  @mouseenter="handleMouseEnter"
+                  @mouseleave="handleMouseLeave"
+                  :src="image.image"
+                  :alt="`Slide Image ${image._key}`"
+                  class="imglay1s p-[.5vw]"
+                />
+              </div>
+            </div>
           </div>
-        </div>
+        </transition>
       </div>
-    </transition>
-  </div>
 
-
- 
-
-
-
-
-  <button 
-  @click="handleButtonClick" 
-  @mousemove="updateCursorStyle" 
-  @mouseleave="resetCursorStyle"
-  :class="['next-button', buttonCursorClass]"
->
-  {{ currentLayoutIndex + 1 }} / {{ totalLayouts }}
-</button>
-
-
+      <button
+        @click="handleButtonClick"
+        @mousemove="updateCursorStyle"
+        @mouseleave="resetCursorStyle"
+        :class="['next-button', buttonCursorClass]"
+      >
+        {{ currentLayoutIndex + 1 }} / {{ totalLayouts }}
+      </button>
     </div>
   </div>
 </template>
@@ -637,7 +770,7 @@ export default {
       slides: Array(10).fill({}),
       hoveredIndex: null,
       popupVisible: false,
-      popupImage: '',
+      popupImage: "",
       popupPosition: { top: 100, left: 100 },
       offset: { x: 0, y: 0 },
       showContent: false,
@@ -645,37 +778,40 @@ export default {
       showContent2: false,
       showContent3: false,
       currentLayoutIndex: 0,
-      buttonCursorClass: 'cursor-default',
-    currentLayoutIndex: 0,
-    // totalLayouts: '3' 
+      buttonCursorClass: "cursor-default",
+      currentLayoutIndex: 0,
+      // totalLayouts: '3'
     };
   },
   computed: {
     ...mapState(["meta", "metaemails", "projects"]),
-   totalLayouts() {
+    totalLayouts() {
       return this.project?.sections?.length || 0;
     },
     ...mapState(["gridpubindi"]),
   },
   methods: {
-
     showLayoutsWithDelay() {
-      setTimeout(() => { this.showContent1 = true; }, 3000);        // Show immediately
-      setTimeout(() => { this.showContent2 = true; }, 3000);     // Delay by 3000ms (3 seconds)
-      setTimeout(() => { this.showContent3 = true; }, 3000);     // Delay by 6000ms (6 seconds)
+      setTimeout(() => {
+        this.showContent1 = true;
+      }, 3000); // Show immediately
+      setTimeout(() => {
+        this.showContent2 = true;
+      }, 3000); // Delay by 3000ms (3 seconds)
+      setTimeout(() => {
+        this.showContent3 = true;
+      }, 3000); // Delay by 6000ms (6 seconds)
     },
 
-    
     closeModal() {
       this.isModalOpen = false; // Close the modal
     },
-    
 
     nextLayout() {
       if (this.currentLayoutIndex < this.totalLayouts - 1) {
         this.currentLayoutIndex++;
       } else {
-        this.currentLayoutIndex = 0; 
+        this.currentLayoutIndex = 0;
       }
     },
     // Navigate to the previous layout
@@ -685,35 +821,34 @@ export default {
       }
     },
 
-  
     handleButtonClick(event) {
-    const buttonWidth = event.currentTarget.offsetWidth;
-    const clickPosition = event.offsetX;
+      const buttonWidth = event.currentTarget.offsetWidth;
+      const clickPosition = event.offsetX;
 
-    if (clickPosition < buttonWidth / 2) {
-      this.prevLayout();
-    } else {
-      this.nextLayout();
-    }
-  },
-  prevLayout() {
-    if (this.currentLayoutIndex > 0) {
-      this.currentLayoutIndex--;
-    }
-  },
-  nextLayout() {
-    if (this.currentLayoutIndex < this.totalLayouts - 1) {
-      this.currentLayoutIndex++;
-    }
-  },
-  updateCursorStyle(event) {
-    const buttonWidth = event.currentTarget.offsetWidth;
-    this.buttonCursorClass = event.offsetX < buttonWidth / 2 ? 'cursor-left' : 'cursor-right';
-  },
-  resetCursorStyle() {
-    this.buttonCursorClass = '';
-  },
-
+      if (clickPosition < buttonWidth / 2) {
+        this.prevLayout();
+      } else {
+        this.nextLayout();
+      }
+    },
+    prevLayout() {
+      if (this.currentLayoutIndex > 0) {
+        this.currentLayoutIndex--;
+      }
+    },
+    nextLayout() {
+      if (this.currentLayoutIndex < this.totalLayouts - 1) {
+        this.currentLayoutIndex++;
+      }
+    },
+    updateCursorStyle(event) {
+      const buttonWidth = event.currentTarget.offsetWidth;
+      this.buttonCursorClass =
+        event.offsetX < buttonWidth / 2 ? "cursor-left" : "cursor-right";
+    },
+    resetCursorStyle() {
+      this.buttonCursorClass = "";
+    },
 
     playSegment() {
       // Play from frame 11 to 20
@@ -724,13 +859,14 @@ export default {
     getRandomStyle() {
       const top = `${Math.random() * 10}vw`; // Adjust range as needed
       const width = `${Math.random() * 90}vw`;
-      const left = `${Math.random() * 90}vw`;  // Adjust range as needed
+      const left = `${Math.random() * 90}vw`; // Adjust range as needed
       return {
-        position: 'absolute',
+        position: "absolute",
         top,
         width,
         left,
-        opacity: this.hoveredIndex !== null ? (this.hoveredIndex === -1 ? 0 : 1) : 1,
+        opacity:
+          this.hoveredIndex !== null ? (this.hoveredIndex === -1 ? 0 : 1) : 1,
       };
     },
     openPopup(imageSrc) {
@@ -738,7 +874,7 @@ export default {
       this.popupVisible = true;
     },
     closePopup() {
-      console.log("Close button clicked"); 
+      console.log("Close button clicked");
       this.popupVisible = false;
       // this.popupVisible = true;
     },
@@ -747,8 +883,8 @@ export default {
         x: event.clientX - this.popupPosition.left,
         y: event.clientY - this.popupPosition.top,
       };
-      document.addEventListener('mousemove', this.drag);
-      document.addEventListener('mouseup', this.stopDrag);
+      document.addEventListener("mousemove", this.drag);
+      document.addEventListener("mouseup", this.stopDrag);
     },
     drag(event) {
       this.popupPosition = {
@@ -757,8 +893,8 @@ export default {
       };
     },
     stopDrag() {
-      document.removeEventListener('mousemove', this.drag);
-      document.removeEventListener('mouseup', this.stopDrag);
+      document.removeEventListener("mousemove", this.drag);
+      document.removeEventListener("mouseup", this.stopDrag);
     },
     // handleMouseEnter(index) {
     //   this.hoveredIndex = index;
@@ -767,17 +903,16 @@ export default {
     //   this.hoveredIndex = null;
     // },
     handleMouseEnter(event) {
-        event.target.classList.add('hovered');  // Add "hovered" class to hide the image
-      },
-      handleMouseLeave(event) {
-        // Do nothing here to prevent reverting back to original opacity
-      },
+      event.target.classList.add("hovered"); // Add "hovered" class to hide the image
+    },
+    handleMouseLeave(event) {
+      // Do nothing here to prevent reverting back to original opacity
+    },
 
-
-      getTransitionStyle(index) {
+    getTransitionStyle(index) {
       return {
         transitionDelay: `${index * 4}s`, // Delay before transition starts
-        // transitionDuration: '.4s', 
+        // transitionDuration: '.4s',
       };
     },
     // handleMouseEnter() {
@@ -789,17 +924,15 @@ export default {
     // ... other methods
   },
   mounted() {
-
     this.showLayoutsWithDelay();
 
     setTimeout(() => {
       this.showContent = true;
     }, 3000); // 5 seconds in milliseconds
 
-    // this.generateRandomPositions(); 
+    // this.generateRandomPositions();
 
     console.log("Lottie animation initialized:", this.lottieInstance);
-
 
     this.lottieInstance = lottie.loadAnimation({
       container: this.$refs.lottieAnimation, // the DOM element
@@ -811,14 +944,11 @@ export default {
 
     // Set the animation to frame 11 without playing
     this.lottieInstance.goToAndStop(55, true);
-
-    
   },
 };
 </script>
 
 <style scoped>
-
 .next-button {
   cursor: default; /* Default cursor */
 }
@@ -826,31 +956,30 @@ export default {
 .next-button.cursor-left {
   cursor: w-resize; /* Left arrow cursor */
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
-  auto !important;
+    auto !important;
 }
 
 .next-button.cursor-right {
   cursor: e-resize; /* Right arrow cursor */
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+"),
     auto !important;
-  }
-
-
+}
 
 .fade-enter-active {
   transition: opacity 2s ease;
 }
 
 .fade-leave-active {
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0; /* Start and end at 0 opacity */
 }
 
 .imglay1s:hover {
-   /* opacity: 0; */
+  /* opacity: 0; */
 }
 
 .popup-overlay {
@@ -877,30 +1006,29 @@ export default {
 
 .popup-image {
   max-width: 100%;
-    max-height: 100%;
-    width: 52vw;
+  max-height: 100%;
+  width: 52vw;
   cursor: pointer;
   pointer-events: none;
   font-size: 20vw;
 }
 
-.popup-imageclose{
+.popup-imageclose {
   max-width: 100%;
-    max-height: 100%;
-    width: 52vw;
+  max-height: 100%;
+  width: 52vw;
   cursor: pointer;
   font-size: 20vw;
   font-size: 1vw;
-    height: 4vh;
-    display: flex;
-    align-items: center;
-    border-bottom: 0.05vw solid black;
-    font-family: "RomainHeadlineTrial";
-    text-transform: uppercase;
-    padding: .5vw;
-    z-index: 1000;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.05vw solid black;
+  font-family: "RomainHeadlineTrial";
+  text-transform: uppercase;
+  padding: 0.5vw;
+  z-index: 1000;
 }
-
 
 .slider-image img {
   transition: opacity 0.5s ease;
@@ -930,93 +1058,92 @@ export default {
 
 .gridpress-container {
   /* display: grid; */
-    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1rem;
-    gap: 1rem;
-    position: absolute;
-    width: 100vw;
-    height: auto;
-    /* pointer-events: none; */
+  /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+  gap: 1rem;
+  position: absolute;
+  width: 100vw;
+  height: auto;
+  /* pointer-events: none; */
 }
-
 
 /* lay 1 */
-.slider .slide:nth-child(1) img{
+.slider .slide:nth-child(1) img {
   position: absolute;
-    width: 36vw;
-    /* height: 50vh; */
-    left: 9vw;
-    top: 22.9vw;
+  width: 36vw;
+  /* height: 50vh; */
+  left: 9vw;
+  top: 22.9vw;
 }
 
-.slider .slide:nth-child(2) img{
+.slider .slide:nth-child(2) img {
   position: absolute;
-    width: 20vw;
-    left: 47vw;
-    top: 2.5vw;
+  width: 20vw;
+  left: 47vw;
+  top: 2.5vw;
 }
 
-.slider .slide:nth-child(3) img{
+.slider .slide:nth-child(3) img {
   position: absolute;
-    width: 13vw;
-    /* height: 50vh; */
-    left: 81vw;
-    top: 4vw;
+  width: 13vw;
+  /* height: 50vh; */
+  left: 81vw;
+  top: 4vw;
 }
 
 /* lay 2 */
-.slider .slide2:nth-child(1) img{
+.slider .slide2:nth-child(1) img {
   position: absolute;
-    width: 20vw;
-    /* height: 50vh; */
-    left: 9vw;
-    top: 25vw;
+  width: 20vw;
+  /* height: 50vh; */
+  left: 9vw;
+  top: 25vw;
 }
 
-.slider .slide2:nth-child(2) img{
+.slider .slide2:nth-child(2) img {
   position: absolute;
-    width: 28vw;
-    left: 51vw;
-    top: 13.4vw;
+  width: 28vw;
+  left: 51vw;
+  top: 13.4vw;
 }
 
-.slider .slide2:nth-child(3) img{
+.slider .slide2:nth-child(3) img {
   position: absolute;
-    width: 13vw;
-    /* height: 50vh; */
-    left: 81vw;
-    top: 4vw;
-    display: none;
+  width: 13vw;
+  /* height: 50vh; */
+  left: 81vw;
+  top: 4vw;
+  display: none;
 }
 
 /* lay 3 */
-.slider .slide3:nth-child(1) img{
+.slider .slide3:nth-child(1) img {
   position: absolute;
-    width: 24vw;
-    /* height: 50vh; */
-    left: 0vw;
-    top: 15vw;
+  width: 24vw;
+  /* height: 50vh; */
+  left: 0vw;
+  top: 15vw;
 }
 
-.slider .slide3:nth-child(2) img{
+.slider .slide3:nth-child(2) img {
   position: absolute;
-    width: 15vw;
-    left: 61vw;
-    top: 31.5vw;
+  width: 15vw;
+  left: 61vw;
+  top: 31.5vw;
 }
 
-.slider .slide3:nth-child(3) img{
+.slider .slide3:nth-child(3) img {
   position: absolute;
-    width: 15vw;
-    left: 61vw;
-    top: 31.5vw;
-    display: none;
+  width: 15vw;
+  left: 61vw;
+  top: 31.5vw;
+  display: none;
 }
 
 .imglay1s {
   opacity: 1;
-  transition: opacity 0.3s ease; 
+  transition: opacity 0.3s ease;
 }
 
 .imglay1s.hovered {
@@ -1102,9 +1229,6 @@ opacity: 0;
     opacity: 1;
   }
 }
-
-
-
 
 .slideIn-in {
   animation: slideIn 0.5s forwards;
@@ -1203,7 +1327,6 @@ opacity: 0;
   }
 }
 
-
 .next-button {
   padding: 1rem;
   /* background-color: #007bff; */
@@ -1245,8 +1368,8 @@ opacity: 0;
 .toplink {
   text-decoration: underline;
   /* font-style: italic; */
-  
-  letter-spacing: .5px;
+
+  letter-spacing: 0.5px;
   font-family: "GT-Sectra-Book-Italic";
 }
 
@@ -1283,7 +1406,6 @@ opacity: 0;
   flex-direction: column;
   gap: 20px; /* Space between layouts */
   padding-top: 3vw;
-  
 }
 
 .layout {
@@ -1397,31 +1519,31 @@ opacity: 0;
 
 .top-right-element {
   font-size: 1vw;
-    position: fixed;
-    font-family: "NHaas" !important;
-    top: 6.5vw;
-    right: -4.4vw;
-    right: -4.7vw;
-    transform: rotateZ(90deg);
-    transform: rotateZ(270deg);
-    z-index: 1000;
+  position: fixed;
+  font-family: "NHaas" !important;
+  top: 6.5vw;
+  right: -4.4vw;
+  right: -4.7vw;
+  transform: rotateZ(90deg);
+  transform: rotateZ(270deg);
+  z-index: 1000;
 }
 
-.flowerimgcon{
+.flowerimgcon {
   display: flex;
   justify-content: center;
 }
 
-.floimg{
+.floimg {
   width: 10vw;
   padding: 0;
 }
 
-.aboveflower{
+.aboveflower {
   padding-bottom: 0;
 }
 
-.belowflower{
+.belowflower {
   padding-top: 0;
 }
 
@@ -1446,88 +1568,109 @@ opacity: 0;
 .layout-3 .col-3 {
   grid-column: span 3; /* Image spans three columns */
 }
+.deskl2flex {
+  display: flex;
+}
+
+.lay2flsizedesk {
+  width: 50vw;
+}
 
 /* Additional responsive styling */
 @media (max-width: 768px) {
-  .lay3img{
+  .lay2flsizedesk {
+  }
+
+  .lay3img {
     width: 30vw;
     padding-bottom: 4vw;
   }
 
   .toplinkl3mb {
-  text-decoration: underline;
-  /* font-style: italic; */
-  text-align: center;
-  font-size: 3vw;
-  letter-spacing: .5px;
-  padding-top: 4vw;
-  font-family: "GT-Sectra-Book-Italic";
-}
+    text-decoration: underline;
+    /* font-style: italic; */
+    text-align: center;
+    font-size: 3vw;
+    letter-spacing: 0.5px;
+    padding-top: 4vw;
+    font-family: "GT-Sectra-Book-Italic";
+  }
 
+  .toplinkl2mb {
+    text-decoration: underline;
+    /* font-style: italic; */
+    text-align: center;
+    font-size: 3vw;
+    letter-spacing: 0.5px;
+    /* padding-top: 4vw; */
+    font-family: "GT-Sectra-Book-Italic";
+  }
   .toplink {
-  text-decoration: underline;
-  /* font-style: italic; */
-  text-align: center;
-  font-size: 3.5vw;
-  letter-spacing: .5px;
-  font-family: "GT-Sectra-Book-Italic";
-}
+    text-decoration: underline;
+    /* font-style: italic; */
+    text-align: center;
+    font-size: 3.5vw;
+    letter-spacing: 0.5px;
+    font-family: "GT-Sectra-Book-Italic";
+  }
 
-.imglay1cont{
-  display: flex;
+  .imglay1cont {
+    display: flex;
     justify-content: center;
-}
+  }
 
-.layout{
-  column-gap: 6.5vw;
-  row-gap: 2vw;
-}
+  .layout {
+    column-gap: 6.5vw;
+    row-gap: 2vw;
+  }
 
-.layout-2 .col-2, .layout-2 .col-3 , .layout-2 .col-5 {
+  .layout-2 .col-2,
+  .layout-2 .col-3,
+  .layout-2 .col-5 {
     grid-column: span 2;
     width: 94%;
-}
+    width: 100%;
+  }
 
-.lay3co1mb{
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
+  .lay3co1mb {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
 
-.toplink2mb{
-  width: 94%;
-}
+  .toplink2mb {
+    width: 94%;
+  }
 
-.mbimgcol1lay11{
-  width: 90%;
-}
+  .mbimgcol1lay11 {
+    width: 90%;
+  }
 
   .imgntextlay22 {
-  width: 97%;
-  /* padding-right: 9vw; */
-}
+    width: 97%;
+    /* padding-right: 9vw; */
+  }
 
-.textmbl2col2{
-  padding-right: 9vw;
-}
+  .textmbl2col2 {
+    padding-right: 9vw;
+  }
 
-.mbl2coltcon{
-  padding-top: 5vw;
-}
+  .mbl2coltcon {
+    padding-top: 5vw;
+  }
 
-  .mbcoll1{
+  .mbcoll1 {
     flex-direction: row;
   }
 
-  .mbcoll1in{
+  .mbcoll1in {
     padding-right: 2vw;
   }
 
-  .bgmobile{
+  .bgmobile {
     padding: 3vw;
   }
 
-
-  .next-button{
+  .next-button {
     width: 94%;
     border-top: 0.05vw solid black;
     border: 0.05vw solid black;
@@ -1538,7 +1681,7 @@ opacity: 0;
     background-position: initial;
     background-repeat: no-repeat;
   }
-  
+
   .top-right-element {
     font-size: 1vw;
     position: fixed;
@@ -1549,23 +1692,22 @@ opacity: 0;
     transform: rotateZ(270deg);
     z-index: 1000;
     display: none;
-}
+  }
 
   .gridpress-container {
- grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 1rem;
     gap: 1rem;
     position: fixed;
     width: 100vw;
     display: none;
-}
+  }
 
-.mbimgcol1lay1{
-  width: 97%;
-}
+  .mbimgcol1lay1 {
+    width: 97%;
+  }
 
-
-.top-right-element {
+  .top-right-element {
     font-size: 2.5vw;
     position: fixed;
     font-family: "NHaas" !important;
@@ -1573,102 +1715,99 @@ opacity: 0;
     right: -9.4vw;
     transform: rotateZ(90deg);
     z-index: 1000;
-}
+  }
 
-.mbbodylay22{
-  width: 100%;
-}
+  .mbbodylay22 {
+    width: 100%;
+  }
 
-/* .mblay24size{
+  /* .mblay24size{
   width: 97vw;
 } */
 
-.mblay2imgsize{
-  width: 54%;
-  
-}
+  .mblay2imgsize {
+    width: 54%;
+  }
 
-.mbflex{
-  justify-content: center;
+  .mbflex {
+    justify-content: center;
     align-items: center;
     display: flex;
     width: 100%;
-}
+  }
 
-.mblay2imgsize2{
+  .mblay2imgsize2 {
+  }
 
-}
-
-/* lay 1 */
-.slider .slide:nth-child(1) img{
-  position: absolute;
+  /* lay 1 */
+  .slider .slide:nth-child(1) img {
+    position: absolute;
     width: 57vw;
     left: 9vw;
     top: 60vw;
-}
+  }
 
-.slider .slide:nth-child(2) img{
-  position: absolute;
-        width: 51vw;
-        left: -0.5vw;
-        top: 180.5vw;
-}
+  .slider .slide:nth-child(2) img {
+    position: absolute;
+    width: 51vw;
+    left: -0.5vw;
+    top: 180.5vw;
+  }
 
-.slider .slide:nth-child(3) img{
-  position: absolute;
-        width: 31vw;
-        left: 63vw;
-        top: 19vw;
-}
+  .slider .slide:nth-child(3) img {
+    position: absolute;
+    width: 31vw;
+    left: 63vw;
+    top: 19vw;
+  }
 
-/* lay 2 */
-.slider .slide2:nth-child(1) img{
-  position: absolute;
-        width: 50vw;
-        /* height: 50vh; */
-        left: 8vw;
-        top: 114vw;
-}
+  /* lay 2 */
+  .slider .slide2:nth-child(1) img {
+    position: absolute;
+    width: 50vw;
+    /* height: 50vh; */
+    left: 8vw;
+    top: 114vw;
+  }
 
-.slider .slide2:nth-child(2) img{
-  position: absolute;
-        width: 54vw;
-        left: 41vw;
-        top: 37.4vw;
-}
+  .slider .slide2:nth-child(2) img {
+    position: absolute;
+    width: 54vw;
+    left: 41vw;
+    top: 37.4vw;
+  }
 
-.slider .slide2:nth-child(3) img{
-  position: absolute;
+  .slider .slide2:nth-child(3) img {
+    position: absolute;
     width: 13vw;
     /* height: 50vh; */
     left: 81vw;
     top: 4vw;
     display: none;
-}
+  }
 
-/* lay 3 */
-.slider .slide3:nth-child(1) img{
-  position: absolute;
-        width: 56vw;
-        left: 0vw;
-        top: 79vw;
-}
+  /* lay 3 */
+  .slider .slide3:nth-child(1) img {
+    position: absolute;
+    width: 56vw;
+    left: 0vw;
+    top: 79vw;
+  }
 
-.slider .slide3:nth-child(2) img{
-  position: absolute;
-        width: 44vw;
-        left: 73vw;
-        top: 15.5vw;
-}
+  .slider .slide3:nth-child(2) img {
+    position: absolute;
+    width: 44vw;
+    left: 73vw;
+    top: 15.5vw;
+  }
 
-.slider .slide3:nth-child(3) img{
-  position: absolute;
+  .slider .slide3:nth-child(3) img {
+    position: absolute;
     width: 15vw;
     left: 61vw;
     top: 31.5vw;
     display: none;
-}
-
+  }
 
   .headera {
     flex-direction: column;
@@ -1710,7 +1849,6 @@ opacity: 0;
     overflow: hidden;
     overflow-y: scroll;
     width: 100%;
-  
   }
 
   .layout-2 .col-1,
@@ -1722,37 +1860,36 @@ opacity: 0;
     width: 95vw;
   }
 
-  .mbcollay1{
+  .mbcollay1 {
     width: 100%;
-    
   }
 
   /* .mblay1col4{
     width: 95vw;
   } */
 
-.col-4{
-  padding-top: 5vw;
-  padding-bottom: 20vw;
-}
+  .col-4 {
+    padding-top: 5vw;
+    padding-bottom: 20vw;
+  }
 
-.mblaytextall{
-  padding-bottom: 5vw;
-}
+  .mblaytextall {
+    padding-bottom: 5vw;
+  }
 
-.lay1col5{
-  display:none;
-}
+  .lay1col5 {
+    display: none;
+  }
 
-.layout-1 .col-4 {
+  .layout-1 .col-4 {
     grid-column: span 2;
-}
+  }
 
-  .mblcol2lay1{
+  .mblcol2lay1 {
     padding-left: 8vw;
   }
 
-  .mblcol4lay1{
+  .mblcol4lay1 {
     padding-left: 0vw;
     padding-top: 0;
   }
@@ -1760,29 +1897,28 @@ opacity: 0;
   .imagetext {
     font-size: 2.5vw !important;
     font-family: "NHaas" !important;
-}
+  }
 
-.mbfullwidth{
-  width: 100%;
-}
+  .mbfullwidth {
+    width: 100%;
+  }
 
-.mbcol4lay2{
-  padding-bottom: 0vw;
-  width: 96%;
-}
+  .mbcol4lay2 {
+    padding-bottom: 0vw;
+    width: 96%;
+  }
 
-.mbbotpad{
-  padding-bottom: 22vw !important;
-}
+  .mbbotpad {
+    padding-bottom: 22vw !important;
+  }
 
-.mbfullwidthsubtext{
-  width: 30vw;
-}
+  .mbfullwidthsubtext {
+    width: 30vw;
+  }
 
-.imglay1{
-  padding-bottom: 4vw ;
-  padding-left: 0vw;
-}
-
+  .imglay1 {
+    padding-bottom: 4vw;
+    padding-left: 0vw;
+  }
 }
 </style>

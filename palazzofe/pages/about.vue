@@ -52,8 +52,13 @@
           </div>
         
         </div>
-        <div class="email nodes ml-[5vw] text-left">
+        <!-- <div class="email nodes ml-[5vw] text-left">
           <Richtext class="richcont aboutbot" :blocks="about.about"></Richtext>
+          <div class="richcont2" ><SvgBack/></div>
+        </div> -->
+        <div class="email ml-[5vw] richcont text-left">
+          <Richtext class="richcont3 aboutbot" :blocks="about.about"></Richtext>
+          <div class="richcont2" ><SvgBack/></div>
         </div>
       </div>
 
@@ -68,10 +73,12 @@
           <div class="nomb anicol pointer-events-none">
             <img class="rightimg fade-img" src="/aboutimg3.png" />
             <img class="rightimg fade-img" src="/aboutimg2.png" />
+            <!-- <div class="richcont2" ><SvgBack/></div> -->
           </div>
         </div>
-        <div class="email ml-[5vw] text-left">
-          <Richtext class="richcont" :blocks="about.about"></Richtext>
+        <div class="email ml-[5vw] richcont text-left">
+          <Richtext class="richcont3" :blocks="about.about"></Richtext>
+          <div class="richcont2" ><SvgBack/></div>
         </div>
       </div>
     </div>
@@ -84,6 +91,7 @@ import { mapState } from "vuex";
 import { groq } from "@nuxtjs/sanity";
 import animationData from '~/static/animations/aboutani.json';
 import LottieAnimation from '~/components/LottieAnimation.vue';
+import SvgBack from '~/components/svg/Back.vue';
 import { mapMutations } from "vuex";
 
 export default {
@@ -104,6 +112,7 @@ export default {
   components: {
     HeaderComponent,
     LottieAnimation,
+    SvgBack,
   },
 
 
@@ -252,8 +261,31 @@ a:hover {
     left: 64vw;
     width: 20vw;
     font-size: 1.3vw;
-    height: 22vw;
+    height: 24vw;
     overflow: scroll;
+}
+
+.richcont3 {
+  position: fixed;
+    top: 42vh;
+    left: 66.2vw;
+    width: 22vw;
+    font-size: 1.3vw;
+    height: 21vw;
+    overflow: scroll;
+}
+
+.richcont2 {
+  position: relative;
+    top: 9vw;
+    left: -5.5vw;
+    transform: rotateZ(270deg);
+    width: 27vw;
+    /* overflow: hidden; */
+    pointer-events: none;
+    z-index: 100;
+    padding-left: .3vw;
+    height: max-content;
 }
 
 .fade-img {
@@ -358,16 +390,49 @@ a:hover {
 @media only screen and (max-width: 768px) {
 
 
-  .richcont {
+  /* .richcont {
   position: absolute;
     top: 42vh;
     left: 64vw;
     width: 20vw;
-    font-size: 1.3vw;
+    font-size: 1.4vw;
     height: 76vw;
     overflow: scroll;
-}
+} */
 
+.richcont {
+  position: absolute;
+        top: 35vh;
+        left: 9vw;
+        width: 73vw;
+        font-size: 1.8vw;
+        height: 82vw;
+        overflow: scroll;
+} 
+
+.richcont3 {
+  position: relative;
+        top: 0;
+        left: 0;
+        width: auto;
+        font-size: 3.4vw;
+        height: 68vw;
+        overflow: scroll;
+} 
+
+.richcont2 {
+    position: relative;
+    top: -4vw;
+    left: 21.5vw;
+    transform: rotateZ(270deg);
+    width: 27vw;
+    /* overflow: hidden; */
+    pointer-events: none;
+    z-index: 100;
+    padding-left: .3vw;
+    height: -moz-max-content;
+    height: max-content;
+}
 
   .anicol {
     position: absolute;
@@ -388,13 +453,13 @@ a:hover {
     left: 0vw;
   }
 
-  .richcont {
+  /* .richcont {
     position: absolute;
     top: 35vh;
     left: 14vw;
     width: 69vw;
     font-size: 3.5vw;
-  }
+  } */
   /* .left-content,
   .right-content {
     height: auto;

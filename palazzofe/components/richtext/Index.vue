@@ -202,6 +202,7 @@ div p{
   width: 100%;
 }
 
+
   .laytextall p{
     font-size: 5.5vw;
     /* line-height: 6vw; */
@@ -309,7 +310,18 @@ padding-bottom: 1.5vh;
   padding-bottom: 4.3vw !important;
 }
 
+.lay2subtextn p{
+  font-size: 5.5vw;
+        font-weight: bolder;
+    
+  font-family: 'RomainTextTrial';
+}
 
+.toplinkl2mb p{
+    padding-bottom: 0vw !important;
+  }
+
+  
 .mbl22 div p:nth-child(2){
   width: 44vw;
   padding-bottom: 0vw !important;

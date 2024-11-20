@@ -398,7 +398,7 @@ export default {
 
   data() {
     return {
-      index: 0,
+      index: 1,
       realIndex: 0,
       step: 0,
       isBackNavigation: false,
