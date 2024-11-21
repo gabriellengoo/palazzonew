@@ -556,7 +556,7 @@
             v-if="
               showContent1 && section.layout1 && currentLayoutIndex === index
             "
-            class="slider"
+            class="slider absolute h-[100vh] overflow-hidden w-[100vw]"
             :style="getTransitionStyle(index)"
           >
             <div
@@ -590,7 +590,7 @@
             v-if="
               showContent2 && section.layout2 && currentLayoutIndex === index
             "
-            class="slider"
+            class="slider absolute h-[100vh] overflow-hidden w-[100vw]"
             :style="getTransitionStyle(index)"
           >
             <div
@@ -624,7 +624,7 @@
             v-if="
               showContent3 && section.layout3 && currentLayoutIndex === index
             "
-            class="slider"
+            class="slider absolute h-[100vh] overflow-hidden w-[100vw]"
             :style="getTransitionStyle(index)"
           >
             <div
@@ -651,7 +651,8 @@
         </transition>
       </div>
 
-      <button
+      <div class="butcon">
+        <button
         @click="handleButtonClick"
         @mousemove="updateCursorStyle"
         @mouseleave="resetCursorStyle"
@@ -659,6 +660,15 @@
       >
         {{ currentLayoutIndex + 1 }} / {{ totalLayouts }}
       </button>
+      </div>
+      <!-- <button
+        @click="handleButtonClick"
+        @mousemove="updateCursorStyle"
+        @mouseleave="resetCursorStyle"
+        :class="['next-button', buttonCursorClass]"
+      >
+        {{ currentLayoutIndex + 1 }} / {{ totalLayouts }}
+      </button> -->
     </div>
   </div>
 </template>
@@ -964,6 +974,18 @@ export default {
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+"),
     auto !important;
 }
+
+.next-button {
+    width: 94%;
+    border-top: 0.05vw solid black;
+    border: 0.05vw solid black;
+    border-radius: 0%;
+    background-image: url("./static/LeftBG.png");
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+  }
 
 .fade-enter-active {
   transition: opacity 2s ease;
@@ -1327,22 +1349,26 @@ opacity: 0;
   }
 }
 
+.butcon{
+display: flex;
+width: 100%;
+justify-content: center;
+}
+
 .next-button {
   padding: 1rem;
-  /* background-color: #007bff; */
-  /* color: white; */
-  border: none;
-  border-radius: 5px;
+  /* border: none;
+  border-radius: 5px; */
   cursor: pointer;
   transition: background-color 0.3s;
   position: fixed;
   bottom: 0.5vh;
-  width: 100%;
+  /* width: 100%; */
+  width: 95%;
   text-transform: uppercase;
   font-family: "GT-Sectra-Book";
   font-family: "NHaas" !important;
   transition: color 0.8s ease;
-  /* z-index: 10000; */
 }
 
 .next-button:hover {
@@ -1398,6 +1424,7 @@ opacity: 0;
   font-family: "GT-Sectra-Book";
   overflow-y: hidden;
   height: 100vh;
+  overflow-y: scroll;
   /* font-family: "GT-Bold"; */
 }
 
@@ -1521,7 +1548,7 @@ opacity: 0;
   font-size: 1vw;
   position: fixed;
   font-family: "NHaas" !important;
-  top: 6.5vw;
+  top: 7vw;
   right: -4.4vw;
   right: -4.7vw;
   transform: rotateZ(90deg);
@@ -1582,7 +1609,7 @@ opacity: 0;
   }
 
   .lay3img {
-    width: 30vw;
+    width: 34vw;
     padding-bottom: 4vw;
   }
 

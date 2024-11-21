@@ -47,6 +47,10 @@ export default {
 }
 </script>
 <style scoped>
+.mbcontexx p{
+  font-size: 4vw;
+}
+ 
 .teambios{
   line-height: 1.7vw;
 }
@@ -58,6 +62,9 @@ export default {
   /* line-height: normal; */
 }
 
+.sevtext p{
+ /* display: none; */
+}
 
 
 .lay2text div p:nth-child(1){

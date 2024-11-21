@@ -33,30 +33,41 @@
         class="left-content flex-1 flex justify-center items-center overflow-y-scroll p-8"
       >
         <div class="content">
-          <div class="nomb pointer-events-none">
-            <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" />
+          <div class="nomb">
+            <div class="imgsa" @mousemove="handleMouseHover" @mouseleave="stopScrolling">
+              <img class="ania2" src="/1.png" />
+              <img class="ania2" src="/2.png" />
+              <img class="ania2" src="/3.png" />
+              <img class="ania2" src="/4.png" />
+              <img class="ania2" src="/5.png" />
+            </div>
+            <!-- <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" /> -->
             <img class="w-[26.5vw]" src="/leftaboutt.png" />
           </div>
         </div>
 
+        
+
+        <div class="content">
+          <div class="nomb covercont pointer-events-none">
+            <!-- <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" /> -->
+            <img class="coverabout nomb" src="/abnew.png" />
+          </div>
+        </div>
+
         <div class="content nodes">
-          <!-- <div class="pointer-events-none">
-            <img class="rightimg" src="/aboutright.png" />
-          </div> -->
           <div class=" pointer-events-none">
             <img class="rightimg" src="/aboutrighta.png" />
           </div>
           <div class=" anicol pointer-events-none">
-            <img class="rightimg fade-img" src="/aboutimg3.png" />
-            <img class="rightimg fade-img" src="/aboutimg2.png" />
+            <!-- <img class="rightimg fade-img" src="/aboutimg3.png" />
+            <img class="rightimg fade-img" src="/aboutimg2.png" /> -->
+            <img class="rightimg fade-img" src="/j.png" />
           </div>
-        
         </div>
-        <!-- <div class="email nodes ml-[5vw] text-left">
-          <Richtext class="richcont aboutbot" :blocks="about.about"></Richtext>
-          <div class="richcont2" ><SvgBack/></div>
-        </div> -->
-        <div class="email ml-[5vw] richcont text-left">
+       
+        <!-- @mousemove="handleMouseHover" @mouseleave="stopScrolling" -->
+        <div class="email ml-[5vw] richcont text-left" >
           <Richtext class="richcont3 aboutbot" :blocks="about.about"></Richtext>
           <div class="richcont2" ><SvgBack/></div>
         </div>
@@ -71,9 +82,9 @@
             <img class="rightimg" src="/aboutrighta.png" />
           </div>
           <div class="nomb anicol pointer-events-none">
-            <img class="rightimg fade-img" src="/aboutimg3.png" />
-            <img class="rightimg fade-img" src="/aboutimg2.png" />
-            <!-- <div class="richcont2" ><SvgBack/></div> -->
+            <!-- <img class="rightimg fade-img" src="/aboutimg3.png" />
+            <img class="rightimg fade-img" src="/aboutimg2.png" /> -->
+            <img class="rightimg fade-img" src="/j.png" />
           </div>
         </div>
         <div class="email ml-[5vw] richcont text-left">
@@ -115,9 +126,45 @@ export default {
     SvgBack,
   },
 
+  mounted() {
+   
+  },
 
   methods: {
     ...mapMutations(["toggleMenu", "setMenuState"]),
+
+    handleMouseHover(event) {
+      const container = event.currentTarget;
+      const rect = container.getBoundingClientRect();
+      const containerHeight = rect.height;
+      const mouseY = event.clientY - rect.top; // Mouse Y position relative to the container
+      const scrollSpeed = 95; // Adjust this to control the scrolling speed
+      
+      // Scroll up if the mouse is near the top
+      if (mouseY < containerHeight * 0.3) {
+        this.scrollContainer(container, -scrollSpeed);
+      }
+      // Scroll down if the mouse is near the bottom
+      else if (mouseY > containerHeight * 0.7) {
+        this.scrollContainer(container, scrollSpeed);
+      }
+    },
+    scrollContainer(container, speed) {
+      // Clear any existing interval to avoid multiple overlaps
+      if (this.scrollInterval) clearInterval(this.scrollInterval);
+
+      // Start a new interval to scroll
+      this.scrollInterval = setInterval(() => {
+        container.scrollTop += speed;
+      }, 100); // Adjust interval time for smoother scrolling
+    },
+    stopScrolling() {
+      // Stop the scrolling when the mouse leaves the container
+      if (this.scrollInterval) {
+        clearInterval(this.scrollInterval);
+        this.scrollInterval = null;
+      }
+    },
   },
 
   computed: {
@@ -129,7 +176,8 @@ export default {
 
   data() {
     return {
-      animationData
+      animationData,
+      scrollInterval: null
     };
   },
 };
@@ -181,6 +229,40 @@ export default {
     display: flex;
     justify-items: center;
     justify-content: center;
+}
+
+.imgsa{
+  position: fixed;
+    width: auto;
+    left: 13.5vw;
+    top: 16vh;
+    overflow-y: scroll;
+    height: 67.4vh;
+    display: flex;
+    justify-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    scroll-behavior: smooth;
+    /* cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><text y="18" font-size="25" fill="black">●</text></svg>') 12 12, auto; */
+    /* cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+"),
+    auto !important; */
+    /* cursor: move; */
+}
+
+.ania2{
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+  width: 23vw;
+}
+
+.ania2:first-child{
+  padding-top: 10vw;
+}
+
+.ania2:last-child{
+  padding-top: 10vw;
+    padding-bottom: 2vw;
 }
 
 /* Styles for text inside the frame */
@@ -244,8 +326,24 @@ a:hover {
   position: relative;
     z-index: 99;
     left: 10vw;
-    top: -42vw;
-    width: 70%;
+    top: -38vw;
+    width: 43%;
+}
+
+.coverabout{
+  width: 45vw;
+    height: 51vw;
+    position: absolute;
+}
+
+.covercont{
+  position: absolute;
+    left: 2.5vw;
+    top: -2vh;
+    height: 100vh;
+    width: 50vw;
+    display: flex !important;
+    align-items: center;
 }
 
 .rightimg {
@@ -267,7 +365,7 @@ a:hover {
 
 .richcont3 {
   position: fixed;
-    top: 42vh;
+    top: 40vh;
     left: 66.2vw;
     width: 22vw;
     /* font-size: 1.3vw; */
@@ -292,17 +390,17 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0;
-  animation: fadeLoop 6s infinite;
-  transition: opacity 1s ease-in-out;
+  /* opacity: 0; */
+  /* animation: fadeLoop 6s infinite; */
+  /* transition: opacity 1s ease-in-out; */
 }
 
 .fade-img:nth-child(1) {
-  animation-delay: 0s;
+  /* animation-delay: 0s; */
 }
 
 .fade-img:nth-child(2) {
-  animation-delay: 3s;
+  /* animation-delay: 3s; */
 }
 
 @keyframes fadeLoop {
@@ -416,7 +514,7 @@ a:hover {
         left: 0;
         width: auto;
         font-size: 3.4vw;
-        height: 68vw;
+        height: 69vw;
         overflow: scroll;
 } 
 
@@ -434,13 +532,13 @@ a:hover {
     height: max-content;
 }
 
-  .anicol {
-    position: absolute;
-    z-index: 99;
-    left: 10vw;
-    top: 33vw;
-    width: 60%;
-}
+.anicol{
+        position: absolute;
+        z-index: 99;
+        left: 30vw;
+        top: 53vw;
+        width: 39%;
+    }
 
 
   .bgmobile {

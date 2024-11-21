@@ -47,6 +47,7 @@
                   </li>
                   <li>
                     <a
+                    :class="{ active: activeSection === 'design' }"
                       @click="setActiveSection('design')"
                       href="javascript:void(0)"
                     >
@@ -55,6 +56,7 @@
                   </li>
                   <li>
                     <a
+                    :class="{ active: activeSection === 'location' }"
                       @click="setActiveSection('location')"
                       href="javascript:void(0)"
                     >
@@ -63,6 +65,7 @@
                   </li>
                   <li>
                     <a
+                    :class="{ active: activeSection === 'production' }"
                       @click="setActiveSection('production')"
                       href="javascript:void(0)"
                     >
@@ -70,17 +73,18 @@
                     </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('concierge')" href="#Concierge">
+                    <a    :class="{ active: activeSection === 'concierge' }" @click="setActiveSection('concierge')" href="#Concierge">
                       Concierge
                     </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('activity')" href="#activity">
+                    <a    :class="{ active: activeSection === 'activity' }" @click="setActiveSection('activity')" href="#activity">
                       Activity
                     </a>
                   </li>
                   <li>
                     <a
+                    :class="{ active: activeSection === 'celebrities' }"
                       @click="setActiveSection('celebrities')"
                       href="#celebrities"
                     >
@@ -89,6 +93,7 @@
                   </li>
                   <li>
                     <a
+                    :class="{ active: activeSection === 'entertainment' }"
                       @click="setActiveSection('entertainment')"
                       href="#entertainment"
                     >
@@ -96,12 +101,13 @@
                     </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('products')" href="#products">
+                    <a :class="{ active: activeSection === 'products' }"
+                       @click="setActiveSection('products')" href="#products">
                       Products
                     </a>
                   </li>
                   <li>
-                    <a @click="setActiveSection('more')" href="#more"> More </a>
+                    <a :class="{ active: activeSection === 'more' }" @click="setActiveSection('more')" href="#more"> More </a>
                   </li>
                 </ul>
               </nav>
@@ -123,7 +129,7 @@
           @click="closeSection"
           v-if="activeSection"
         >
-          <div class="all">
+          <div class="all" >
             <button class="nodesnav w-screen btnsvgserv">
               <div
                 v-if="activeSection"
@@ -183,21 +189,26 @@
                     ></Richtext>
                   </div>
 
-                  <div class="flex justify-end locmb">
-                    <div class="mbspace w-[50vw] p-[2vw] pt-0">
-                      <p class="text-[#00000000]">space</p>
-                    </div>
+                  <div class="flex justify-end h-[4vh] overflow-hidden locdesk locmb">
+                   
                     <!-- Add class like production here -->
-                    <div
-                      :class="[
-                        'locationtext',
-                        { locationtextb: !activeContent.dcontent },
-                      ]"
-                      class="w-[50vw] p-[2vw] pr-[3vw] pt-0"
-                    >
-                      <!-- <h1 class="loctext">Location</h1> -->
+                  
+                    <div class="flex nomb pl-[5vw] pb-[3vh]">
+                   
+                      <Richtext
+                      class="contactinner opacity-0 pr-[4vw] pb-0 w-[50%]"
+                      :blocks="activeContent.dcontent"
+                    ></Richtext>
+
+                    
+
+                    <div class="contactinner pr-[4vw] w-[50%] pb-0">
                       <h1 class="loctext">{{ activeContent.dlocationlink }}</h1>
                       <p class="loctextlink">{{ activeContent.dlocation }}</p>
+                    </div>
+                
+                      <!-- <h1 class="loctext">Location</h1> -->
+                  
                     </div>
                   </div>
                 </div>
@@ -205,7 +216,7 @@
 
               <div v-else-if="activeContent.layout2">
                 <!-- Render Layout B content -->
-                <div v-if="activeContent" class="allrcont">
+                <div v-if="activeContent" class="allrcontb">
                   <div class="sevcont">
                     <div class="titcont titmb">
                       <h1 class="loctext pt-2">{{ activeContent.title }}</h1>
@@ -235,12 +246,12 @@
                       ></Richtext>
                     </div>
 
-                    <div class="flex justify-end locmb">
+                    <div class="textaup nomb flex pl-[5vw] pb-[3vh] locmb">
                       <div class="mbspace w-[50vw] p-[2vw] pt-0">
                         <p class="text-[#00000000]">space</p>
                       </div>
                       <!-- Add class like production here -->
-                      <div class="locationtext w-[50vw] p-[2vw] pr-[3vw] pt-0">
+                      <div class="locationtextb w-[50vw] p-[2vw] pr-[3vw] pt-0">
                         <!-- <h1 class="loctext">Location</h1> -->
                         <h1 class="loctext">
                           {{ activeContent.dlocationlinkb }}
@@ -676,14 +687,40 @@ export default {
 .locationtext {
   /* padding-top: 3vh; */
   text-align: center;
-  align-items: center;
-  align-items: flex-start;
-  flex-direction: column;
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  left: 77vw;
-  padding-left: 0.85vw;
+    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 77.1vw;
+    width: max-content;
+    padding-left: 0.85vw;
+}
+
+.locationtextb {
+  /* padding-top: 3vh; */
+  text-align: center;
+    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 78.5vw;
+    width: max-content;
+    padding-left: 0.85vw;
+}
+
+
+
+.locdesk{
+  height: 4vh;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 52vw;
+    padding-bottom: 5vw;
 }
 
 .texta {
@@ -715,9 +752,7 @@ export default {
   font-family: "GT-Sectra-Book-Italic";
 }
 
-.locationtextb {
-  left: 54vw;
-}
+
 
 .allrcont {
   display: flex;
@@ -731,12 +766,14 @@ export default {
   align-items: flex-end;
   padding: 2rem;
   overflow-y: hidden;
+  pointer-events: none;
 }
 
 .allrcontb {
   display: flex;
   top: 2vh;
   top: 7vh;
+  top: 9vh;
   position: relative;
   width: 100%;
   /* height: 95%; */
@@ -744,6 +781,7 @@ export default {
   align-items: flex-end;
   padding: 2rem;
   overflow-y: hidden;
+  pointer-events: none;
 }
 
 .sevcont {
@@ -917,6 +955,13 @@ export default {
   transition-duration: 0.5s;
 }
 
+/* Active link style */
+.link-container a.active {
+  color: #3333331f; /* Faded color for the active link */
+  opacity: 0.6; /* Faded look */
+  pointer-events: none; /* Prevent clicking on the already active link */
+}
+
 .link-container a:hover {
   text-decoration: none;
   color: #3333331f;
@@ -1052,6 +1097,8 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
+
+
   .subtextA {
     position: relative;
     top: -3vw;
@@ -1393,5 +1440,13 @@ a {
     padding-right: 6vw;
     transition-duration: 0.5s;
   }
+
+  /* .allrcont {
+    height: 53vh;
+}
+
+.allrcontb {
+  height: 64vh;
+} */
 }
 </style>

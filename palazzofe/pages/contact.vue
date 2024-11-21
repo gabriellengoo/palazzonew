@@ -158,9 +158,9 @@
 
     <!-- Central Artwork Image (Angel) -->
     <div
-      class="nomb absolute bottom-[27vh] left-[49vw] transform -translate-x-1/2 z-10"
+      class="nomb absolute bottom-[29vh] left-[49vw] transform -translate-x-1/2 z-10"
     >
-      <img src="anglecon.png" alt="Angel Artwork" class="w-auto h-[40vh]" />
+      <img src="contactbird.png" alt="Angel Artwork" class="w-auto h-[33vh]" />
     </div>
 
 
@@ -228,13 +228,19 @@
 
         <div class="ml-[8.2vw]">
           <Richtext
-            class="w-[90vw] pt-[2vh]"
+            class="w-[84vw] pt-[2vh] mbcontexx"
             :blocks="contact.address2"
           ></Richtext>
         </div>
 
-        <img
+        <!-- <img
           src="bird.png"
+          class="p-[10vw]"
+          alt="Cherubs"
+        /> -->
+
+        <img
+          src="contactbird.png"
           class="p-[10vw]"
           alt="Cherubs"
         />

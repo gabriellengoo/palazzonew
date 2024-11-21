@@ -62,7 +62,6 @@
                 'overlaycont flex h-full p-2 w-13/16': !image.newDay,
               }" >
 
-              <!-- top-[-2vw] h-[110%] -->
                     <figure
                       v-for="image in slide.images"
                       :key="image._key"
@@ -300,12 +299,12 @@
                           }"
                           class="absolute top-0 left-0 text-day1 z-50"
                         >
-                          <p
+                          <!-- <p
                             v-if="image.image && !image.newDay"
                             class="numgday capitalize"
                           >
                             {{ image.day ? image.day : "Day 1" }}
-                          </p>
+                          </p> -->
                         </div>
 
                         <!-- New Day Display -->
