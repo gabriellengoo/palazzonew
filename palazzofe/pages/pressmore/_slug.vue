@@ -292,17 +292,12 @@
                     <div
                       class="contactinnerpressslug nodes p-[.5vw] pt-0 "
                     >
-                      <p
-                        v-if="section.layout2Column4Text"
-                        class="imagetext p-[.5vw] pb-0"
-                      >
-                        IMAGE
-                      </p>
+                   
                       <Richtext
-                        v-if="section.layout2Column4Text"
-                        class="contactinnerpressslug p-[.5vw] pt-0 imtitle2"
-                        :blocks="section.layout2Column4Text"
-                      ></Richtext>
+                      v-if="section.layout2Column44Text"
+                      class="contactinnerpressslug nodes p-[.5vw] imgntextlay22 aboveflower colmb"
+                      :blocks="section.layout2Column44Text"
+                    ></Richtext>
                       <Richtext
                   v-if="section.layout2Column5Text"
                   class="contactinnerpressslug  p-[.5vw] pb-[30vw]"
@@ -314,12 +309,21 @@
                   <div
                     class="contactinnerpressslug imgntextlay22 deskl2textflex p-[.5vw]"
                   >
-                    <Richtext
-                      v-if="section.layout2Column44Text"
-                      class="contactinnerpressslug nodes p-[.5vw] imgntextlay22 aboveflower colmb"
-                      :blocks="section.layout2Column44Text"
-                    ></Richtext>
+                  <p
+                        v-if="section.layout2Column4Text"
+                        class="imagetext p-[.5vw] pb-0"
+                      >
+                        IMAGE
+                      </p>
+                      <Richtext
+                        v-if="section.layout2Column4Text"
+                        class="contactinnerpressslug p-[.5vw] pt-0 imtitle2"
+                        :blocks="section.layout2Column4Text"
+                      ></Richtext>
+                      
                     <div class="flex">
+                  
+
                   <img
                     class="imgntextlay22 "
                     :src="section.layout2Column5Image"
@@ -1609,7 +1613,7 @@ justify-content: center;
   }
 
   .lay3img {
-    width: 34vw;
+    width: 41vw;
     padding-bottom: 4vw;
   }
 

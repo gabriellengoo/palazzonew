@@ -318,10 +318,12 @@ padding-bottom: 1.5vh;
 }
 
 .lay2subtextn p{
-  font-size: 5.5vw;
+  font-size: 4.5vw;
         font-weight: bolder;
-    
-  font-family: 'RomainTextTrial';
+        padding-top: 3vw;
+        padding-bottom: 3vw;
+        text-align: center;
+        font-family: 'RomainTextTrial';
 }
 
 .toplinkl2mb p{
