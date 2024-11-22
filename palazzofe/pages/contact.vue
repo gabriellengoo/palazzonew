@@ -816,7 +816,7 @@ input::placeholder {
   }
 
   .contamb {
-    padding: 3vw;
+    padding: 3vw; 
     padding-top: 0vh;
     padding-left: 4vw;
     padding-bottom: 1vh;
