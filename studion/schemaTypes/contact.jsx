@@ -37,6 +37,29 @@ export default {
       title: "Email",
       type: "blockContent",
     },
+
+    {
+      name: 'socialMedia',
+      title: 'Social Media Links',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'platform', type: 'string', title: 'Platform' },
+            { name: 'url', type: 'url', title: 'URL' },
+            { name: 'icon', type: 'image', title: 'Icon' }, 
+            {
+              name: 'show',
+              type: 'boolean',
+              title: 'Show on Website',
+              description: 'Toggle to show or hide this link on the website',
+              initialValue: true, // Default to visible
+            },
+          ],
+        },
+      ],
+    },
   
   
   ],

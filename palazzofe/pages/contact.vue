@@ -48,15 +48,16 @@
               class="w-[8vw] adsize"
               :blocks="contact.contact"
             ></Richtext>
-            <a href="#" class="instagram-icona w-[31vw]">
-              <!-- Instagram SVG Icon -->
+            <!-- <a href="#" class="instagram-icona w-[31vw]">
               <img
                 src="insta.png"
                 alt="Angel Artwork"
                 class="instagram-icon mr-2"
               />
-            </a>
+            </a> -->
+            
           </div>
+        
           <!-- <div class="email ml-[5vw] text-left mt-[2vh]">
             <p class="italic underline">Email</p>
             <p>natalya@palazzoeventi.com</p>
@@ -66,7 +67,31 @@
             :blocks="contact.email"
           ></Richtext>
         </div>
+
+        <div class="flex w-[31vw] instagram-icona">
+          <div v-for="social in contact.socialMedia" class="social-icons flex mt-4">
+    <a
+    v-if="social.show"
+      :key="social.platform"
+      :href="social.url"
+   
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-link mr-4"
+    >
+      <img
+     
+        :src="social.icon"
+        :alt="`${social.platform} Icon`"
+        class="social-icon instagram-icon"
+      />
+      <!-- <span v-else>{{ social.platform }}</span> -->
+    </a>
+  </div>
+             
+            </div>
       </div>
+     
 
       <!-- Right Content: Form Section -->
       <div class="right-content w-1/2 p-[5vw] pl-[20vw] pt-[4vw]">
@@ -203,14 +228,30 @@
           <div class="contact flex text-left mt-[2vh]">
             <!-- <div class="w-[31vw]"> -->
             <!-- Instagram SVG Icon -->
-            <a href="#" class="instagram-icona w-[31vw]">
-              <!-- Instagram SVG Icon -->
-              <img
-                src="insta.png"
-                alt="Angel Artwork"
-                class="instagram-icon mr-2"
-              />
-            </a>
+            
+            <div class="flex contamb">
+          <div v-for="social in contact.socialMedia" class="social-icons contact flex text-left mt-[2vh]">
+    <a
+    v-if="social.show"
+      :key="social.platform"
+      :href="social.url"
+   
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-link mr-4"
+    >
+      <img
+     
+        :src="social.icon"
+        :alt="`${social.platform} Icon`"
+        class="social-icon instagram-icon"
+      />
+      <!-- <span v-else>{{ social.platform }}</span> -->
+    </a>
+  </div>
+             
+            </div>
+           
 
             <!-- </div> -->
             <div class="email ml-[5vw] text-left">
@@ -226,6 +267,8 @@
           </div>
         </div>
 
+      
+
         <div class="ml-[8.2vw]">
           <Richtext
             class="w-[84vw] pt-[2vh] mbcontexx"
@@ -237,7 +280,7 @@
           src="bird.png"
           class="p-[10vw]"
           alt="Cherubs"
-        /> -->
+        /> --> 
 
         <img
           src="contactbird.png"
@@ -373,6 +416,12 @@ export default {
     address2,
     contact,
     email,
+    socialMedia[] {
+      platform,
+      url,
+      "icon": icon.asset->url,
+      show,
+    }
   } | order(_updatedAt desc)[0]`;
 
     const contact = await $sanity.fetch(query);
@@ -622,6 +671,7 @@ input[type="date"] {
 
 .left-content,
 .right-content {
+  height: max-content;
   font-size: 1vw;
   flex: 1; /* Ensures both take equal width in the flex container */
   overflow: visible; /* Ensures that content is not clipped */
@@ -766,8 +816,9 @@ input::placeholder {
   }
 
   .contamb {
-    padding: 8vw;
+    padding: 3vw;
     padding-top: 0vh;
+    padding-left: 4vw;
     padding-bottom: 1vh;
   }
 
