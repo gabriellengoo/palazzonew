@@ -10,9 +10,9 @@
           <a class="headbar" href="../weddings">
             <!-- <SvgBack class="svgmb hover:cursor-pointer"/> -->
             <div
-            ref="lottieAnimation"
-            class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
-          ></div>
+              ref="lottieAnimation"
+              class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+            ></div>
           </a>
         </h1>
         <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
@@ -40,7 +40,6 @@
               Weddings
             </p>
           </div>
-       
 
           <div class="nodes nodesgal">
             <section
@@ -54,22 +53,23 @@
                   v-for="(slide, index) in project.slider"
                   :key="slide._key"
                   class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
-
                 >
-                  <div       v-for="image in slide.images" class=""  
-                  :class="{
-                'mdnewdaycon1': image.newDay,
-                'overlaycont flex h-full p-2 w-13/16': !image.newDay,
-              }" >
-
+                  <div
+                    v-for="image in slide.images"
+                    class=""
+                    :class="{
+                      mdnewdaycon1: image.newDay,
+                      'overlaycont flex h-full p-2 w-13/16': !image.newDay,
+                    }"
+                  >
                     <figure
                       v-for="image in slide.images"
                       :key="image._key"
                       class="overlaydiv flex flex-col flex-1 h-full"
                       :class="{
-                ' mdnewdaycon': image.newDay,
-                '': !image.newDay,
-              }" 
+                        ' mdnewdaycon': image.newDay,
+                        '': !image.newDay,
+                      }"
                     >
                       <MediaImage
                         :src="image.image.asset._ref"
@@ -86,6 +86,15 @@
                         :sizes="'sm:200vw md:150vw lg:200vw'"
                       ></MediaImage>
 
+                           <!-- video -->
+                           <iframe
+                          v-if="image.vimeoUrl"
+                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          class="landscape gallery-image w-auto h-full"
+                        ></iframe>
+
                       <!-- New Day Display -->
                       <div v-if="image.newDay" class="new-day-info">
                         <MediaImage
@@ -93,8 +102,7 @@
                           :src="image.newDayImage.asset._ref"
                           class="new-day-image"
                         ></MediaImage>
-                     
-                   
+
                         <p class="new-day-text">
                           {{ image.newDayText }}
                         </p>
@@ -307,6 +315,15 @@
                           </p> -->
                         </div>
 
+                        <!-- video -->
+                        <iframe
+                          v-if="image.vimeoUrl"
+                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          class="landscape gallery-image w-auto h-full"
+                        ></iframe>
+
                         <!-- New Day Display -->
                         <div v-if="image.newDay" class="new-day-info">
                           <MediaImage
@@ -434,17 +451,16 @@ export default {
   mounted() {
     console.log("Lottie animation initialized:", this.lottieInstance);
 
+    this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation, // the DOM element
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "/animations/hamburger.json", // your Lottie animation JSON file path
+    });
 
-this.lottieInstance = lottie.loadAnimation({
-  container: this.$refs.lottieAnimation, // the DOM element
-  renderer: "svg",
-  loop: false,
-  autoplay: false,
-  path: "/animations/hamburger.json", // your Lottie animation JSON file path
-});
-
-// Set the animation to frame 11 without playing
-this.lottieInstance.goToAndStop(55, true);
+    // Set the animation to frame 11 without playing
+    this.lottieInstance.goToAndStop(55, true);
 
     const previousScrollPosition = sessionStorage.getItem(
       "previousScrollPosition"
@@ -481,6 +497,12 @@ this.lottieInstance.goToAndStop(55, true);
     next();
   },
   methods: {
+    getVimeoEmbedUrl(vimeoUrl) {
+      // Extract Vimeo video ID from the URL
+      const videoId = vimeoUrl.split("/").pop();
+      // Generate the Vimeo embed URL
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0&muted=1&background=1`;
+    },
     playSegment() {
       // Play from frame 11 to 20
       if (this.lottieInstance) {
@@ -512,7 +534,7 @@ this.lottieInstance.goToAndStop(55, true);
     closeGallery() {
       this.$store.commit("setGalleryState", false); // Set gallery state as closed
     },
-  
+
     onSlideChange(swiper) {
       this.index = swiper.activeIndex + 1;
       this.realIndex = swiper.activeIndex;
@@ -543,7 +565,6 @@ this.lottieInstance.goToAndStop(55, true);
         gsap.to(this.$refs["skew"], { x: "0%" });
       }
     },
- 
 
     showGalleryOnHover() {
       this.$refs.overlayGallery.classList.add("active");
@@ -1108,11 +1129,23 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
+
+  .landscape {
+  height: 55vh;
+  width: 90vw !important;
+  /* display: flex; */
+  position: sticky !important;
+  top: 20vh;
+  object-fit: cover;
+  object-position: center;
+ 
+}
+
   .overlaydiv {
     /* padding-top: 6vh; */
     padding-bottom: 7vw;
     display: flex;
-  justify-content: center;
+    justify-content: center;
   }
 
   .nomb {

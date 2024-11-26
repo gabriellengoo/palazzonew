@@ -132,97 +132,87 @@ export default {
           
             {
               name: "images",
-              title: "Images",
+              title: "Content",
               type: "array",
               options: {
                 layout: "grid",
               },
               of: [
                 {
-                  name: "imageObject",
-                  title: "Image",
-                  type: "object",
+                  name: 'imageObject',
+                  title: 'Image',
+                  type: 'object',
                   fields: [
                     {
-                      name: "newDay",
-                      title: "Create title Divider",
-                      description: "Toggle this is you want to add a title divider",
-                      type: "boolean",
+                      name: 'newDay',
+                      title: 'Create title Divider',
+                      description: 'Toggle this is you want to add a title divider',
+                      type: 'boolean',
+                      hidden: ({parent}) => parent?.newVideo,
                     },
                     {
-                      name: "image",
-                      title: "Image",
-                      type: "image",
-                      hidden: ({ parent }) => parent?.newDay,
+                      name: 'newVideo',
+                      title: 'Add Video',
+                      description: 'Toggle this is you want to add a video',
+                      type: 'boolean',
+                      hidden: ({parent}) => parent?.newDay,
                     },
                     {
-                      name: "portrait",
-                      title: "portrait img",
-                      type: "boolean",
-                      description: "Is the img portrait?",
-                      hidden: ({ parent }) => parent?.newDay,
+                      name: 'vimeoUrl',
+                      title: 'Vimeo Video URL',
+                      type: 'url',
+                      hidden: ({parent}) => !parent?.newVideo,
                     },
                     {
-                      name: "day",
-                      title: "Day",
-                      type: "string",
-                      hidden: ({ parent }) => parent?.newDay,
-                      description: "Is the image from day 1, 2, 3, or 4?",
+                      name: 'image',
+                      title: 'Image',
+                      type: 'image',
+                      hidden: ({parent}) => parent?.newDay,
+                      hidden: ({parent}) => parent?.newVideo,
+                    },
+                    {
+                      name: 'portrait',
+                      title: 'Portrait img',
+                      type: 'boolean',
+                      description: 'Is the img portrait?',
+                      hidden: ({parent}) => parent?.newDay,
+                      hidden: ({parent}) => parent?.newVideo,
+                    },
+
+                    {
+                      name: 'newDayImage',
+                      title: 'Divider Image',
+                      type: 'image',
+                      hidden: ({parent}) => !parent?.newDay, // Hide if newDay is false
+                      hidden: ({parent}) => parent?.newVideo,
+                    },
+                    {
+                      name: 'newDayText',
+                      title: 'Divider Text',
+                      type: 'string',
+                      hidden: ({parent}) => !parent?.newDay, // Hide if newDay is false
+                      hidden: ({parent}) => parent?.newVideo,
+                    },
+                    {
+                      name: 'day',
+                      title: 'Day',
+                      type: 'string',
+                      hidden: ({parent}) => parent?.newDay,
+                      hidden: ({parent}) => parent?.newVideo,
+                      description: 'Is the image from day 1, 2, 3, or 4?',
                       options: {
                         list: [
-                          { title: "Day 1", value: "Day 1" },
-                          { title: "Day 2", value: "Day 2" },
-                          { title: "Day 3", value: "Day 3" },
-                          { title: "Day 4", value: "Day 4" }
+                          {title: 'Day 1', value: 'Day 1'},
+                          {title: 'Day 2', value: 'Day 2'},
+                          {title: 'Day 3', value: 'Day 3'},
+                          {title: 'Day 4', value: 'Day 4'},
                         ],
-                        layout: "radio" ,
-                        // validation: (Rule) => Rule.required().error("Please select a day.") 
-                        // optional, for radio button layout
-                      }
-          },
-                
-        
-          {
-            name: "newDayImage",
-            title: "Divider Image",
-            type: "image",
-            hidden: ({ parent }) => !parent?.newDay, // Hide if newDay is false
-          },
-          {
-            name: "newDayText",
-            title: "Divider Text",
-            type: "string",
-            hidden: ({ parent }) => !parent?.newDay, // Hide if newDay is false
-          },
-                    // {
-                    //   name: "video",
-                    //   title: "Video",
-                    //   type: "mux.video",
-                    //   hidden: ({ parent, value }) =>
-                    //     (!value && parent?.spacer) || (!value && parent?.image),
-                    // },
-                    // {
-                    //   name: 'youtubeUrl',
-                    //   title: 'YouTube Video URL',
-                    //   type: 'url',
-                    // },
-                    // {
-                    //   name: 'vimeoUrl',
-                    //   title: 'Vimeo Video URL',
-                    //   type: 'url',
-                    // },
-                    // {
-                    //   name: "thumbnailTime",
-                    //   title: "Thumbnail Time",
-                    //   type: "number",
-                    //   description: "Time in seconds for the selected thumbnail frame",
-                    //   validation: (Rule) => Rule.min(0),
-                    //   // inputComponent: CustomThumbnailTimeInput,
-                    // },
-
+                        layout: 'radio', // optional, for radio button layout
+                      },
+                      // validation: (Rule) => Rule.required().error("Please select a day.")
+                      // initialValue: "Day not provided"
+                    },
                   ],
-
-
                   preview: {
                     select: {
                       spacer: 'spacer',
@@ -230,21 +220,40 @@ export default {
                       video: 'video.asset.playbackId',
                       thumbnailTime: 'thumbnailTime',
                       newDayImage: 'newDayImage',
+                      vimeoUrl: 'vimeoUrl',
+             
                     },
                     prepare(selection) {
-                      const {image, spacer, video, thumbnailTime, newDayImage} = selection
+                      const {image, spacer, video, thumbnailTime, newDayImage, vimeoUrl} = selection
                       let media
-                      if (newDayImage) {
+                      if (vimeoUrl) {
+                        return {
+                          media: (
+                            <iframe
+                              frameBorder="0"
+                              src={`${vimeoUrl}?autoplay=1&loop=1&autopause=0&muted=1&background=1`}
+                              style={{
+                             
+                                height: '100%',
+                                border: 'none',
+                                pointerEvents: 'none',
+                              }}
+                              title="Vimeo Video"
+                            />
+                          ),
+                          title: 'Video Preview',
+                        }
+                      } else if (newDayImage) {
                         // media = newDayImage;
                         media = (
                           <img
-                          src="/static/blue.png"
-                          style={{
-                            objectFit: 'cover',
-                            height: '100%',
-                            width: '100%',
-                          }}
-                        />
+                            src="/static/pink.png"
+                            style={{
+                              objectFit: 'cover',
+                              height: '100%',
+                              width: '100%',
+                            }}
+                          />
                         )
                       } else if (video) {
                         media = (
@@ -261,9 +270,8 @@ export default {
                         media = image
                       }
                       return {
-                        media: video ? media : image ? media : spacer ? media : newDayImage 
+                        media: video ? media : image ? media : spacer ? media : newDayImage,
                       }
-                   
                     },
                   },
                 },
@@ -276,15 +284,35 @@ export default {
               video: 'images.0.video.asset.playbackId',
               thumbnailTime: 'images.0.thumbnailTime',
               newDayImage: 'images.0.newDayImage',
+              vimeoUrl: 'images.0.vimeoUrl',
             },
             prepare(selection) {
-              const {image, video, thumbnailTime, newDayImage} = selection
+              const {image, video, thumbnailTime, vimeoUrl, newDayImage} = selection
               let media
-              if (newDayImage) {
+              if (vimeoUrl) {
+                return {
+                  media: (
+                    <iframe
+                      frameBorder="0"
+                      src={`${vimeoUrl}?autoplay=1&loop=1&autopause=0&muted=1&background=1`}
+                      style={{
+                        
+                        height: '100%',
+                        border: 'none',
+                        pointerEvents: 'none',
+                      }}
+                      title="Vimeo Video"
+                    />
+                  ),
+              
+                }
+              } 
+
+              else if (newDayImage) {
                 // media = newDayImage
                 media = (
                   <img
-                    src="/static/blue.png"
+                    src="/static/pink.png"
                     style={{
                       objectFit: 'cover',
                       height: '100%',
@@ -292,10 +320,8 @@ export default {
                     }}
                   />
                 )
-              }
-              else if (video) {
-              } 
-              else if (image) {
+              } else if (video) {
+              } else if (image) {
                 media = image
               }
               return {
@@ -303,48 +329,60 @@ export default {
               }
             },
           },
-
-
         },
       ],
     },
-
   ],
+
   preview: {
     select: {
-      title: "title",
-      subtitle: "client.0.label",
-      image: "slider.0.images.0.image",
-      video: "slider.0.images.0.video.asset.playbackId",
-      thumbnailTime: "slider.0.images.0.thumbnailTime",
+      title: 'title',
+      subtitle: 'client.0.label',
+      image: 'slider.0.images.0.image',
+      video: 'slider.0.images.0.video.asset.playbackId',
+      thumbnailTime: 'slider.0.images.0.thumbnailTime',
+      vimeoUrl: 'slider.0.images.0.vimeoUrl',
     },
     prepare(selection) {
-      const { image, title, video, subtitle, thumbnailTime } = selection;
-      let media;
-      if (video) {
+      const {image, title, video, subtitle, thumbnailTime, vimeoUrl} = selection
+      let media
+      if (vimeoUrl) {
+        return {
+          media: (
+            <iframe
+              frameBorder="0"
+              src={`${vimeoUrl}?autoplay=1&loop=1&autopause=0&muted=1&background=1`}
+              style={{
+               
+                height: '100%',
+                border: 'none',
+                pointerEvents: 'none',
+              }}
+              title="Vimeo Video"
+            />
+          ),
+          title: title,
+        }
+      } 
+      else if (video) {
         media = (
           <img
             src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
             style={{
-              objectFit: "cover",
-              height: "100%",
-              width: "100%",
+              objectFit: 'cover',
+              height: '100%',
+              width: '100%',
             }}
           />
-        );
-        // media = document.createElement("img");
-        // media.src = `https://image.mux.com/${video}/animated.gif`;
-        // media.style.objectFit = "cover";
-        // media.style.height = "100%";
-        // media.style.width = "100%";
+        )
       } else if (image) {
-        media = image;
+        media = image
       }
       return {
         title: title,
         subtitle: subtitle,
         media: media,
-      };
+      }
     },
   },
-};
+}

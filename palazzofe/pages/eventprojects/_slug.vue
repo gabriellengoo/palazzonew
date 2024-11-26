@@ -6,17 +6,17 @@
     <TransitionComponent />
     <div>
       <!-- Header (optional) -->
-      <HeaderComponent /> 
+      <HeaderComponent />
       <div class="headera mbpad content flex w-full justify-between">
         <h1 class="md:w-[1.4vw] w-auto">
           <!-- events -->
           <a class="headbar" href="../events">
             <div
-            ref="lottieAnimation"
-            class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
-          ></div>
+              ref="lottieAnimation"
+              class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+            ></div>
             <!-- <SvgBack class="svgmb hover:cursor-pointer"/> -->
-        </a>
+          </a>
         </h1>
         <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
           {{ project.title }}
@@ -74,19 +74,22 @@
                   :key="slide._key"
                   class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
                 >
-                <div       v-for="image in slide.images" class=""  
-                  :class="{
-                'mdnewdaycon1': image.newDay,
-                'overlaycont flex h-full p-2 w-13/16': !image.newDay,
-              }" >
+                  <div
+                    v-for="image in slide.images"
+                    class=""
+                    :class="{
+                      mdnewdaycon1: image.newDay,
+                      'overlaycont flex h-full p-2 w-13/16': !image.newDay,
+                    }"
+                  >
                     <figure
                       v-for="image in slide.images"
                       :key="image._key"
                       class="overlaydiv flex flex-col flex-1 h-full"
                       :class="{
-                ' mdnewdaycon': image.newDay,
-                '': !image.newDay,
-              }" 
+                        ' mdnewdaycon': image.newDay,
+                        '': !image.newDay,
+                      }"
                     >
                       <MediaImage
                         :src="image.image.asset._ref"
@@ -102,17 +105,27 @@
                         }"
                         :sizes="'sm:200vw md:150vw lg:200vw'"
                       ></MediaImage>
-                          <!-- New Day Display -->
-        <div v-if="image.newDay" class="new-day-info">
-          <MediaImage
-            v-if="image.newDayImage"
-            :src="image.newDayImage.asset._ref"
-            class="new-day-image"
-          ></MediaImage>
-          <p class="new-day-textevent">
-            {{ image.newDayText }}
-          </p>
-        </div>
+
+                       <!-- video -->
+                       <iframe
+                          v-if="image.vimeoUrl"
+                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          class="landscape gallery-image w-auto h-full"
+                        ></iframe>
+                        
+                      <!-- New Day Display -->
+                      <div v-if="image.newDay" class="new-day-info">
+                        <MediaImage
+                          v-if="image.newDayImage"
+                          :src="image.newDayImage.asset._ref"
+                          class="new-day-image"
+                        ></MediaImage>
+                        <p class="new-day-textevent">
+                          {{ image.newDayText }}
+                        </p>
+                      </div>
                     </figure>
                   </div>
                 </div>
@@ -336,17 +349,26 @@
                           </p> -->
                         </div>
 
-                            <!-- New Day Display -->
-        <div v-if="image.newDay" class="new-day-info">
-          <MediaImage
-            v-if="image.newDayImage"
-            :src="image.newDayImage.asset._ref"
-            class="new-day-image"
-          ></MediaImage>
-          <p class="new-day-textevent">
-            {{ image.newDayText }}
-          </p>
-        </div>
+                         <!-- video -->
+                         <iframe
+                          v-if="image.vimeoUrl"
+                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          class="landscape gallery-image w-auto h-full"
+                        ></iframe>
+
+                        <!-- New Day Display -->
+                        <div v-if="image.newDay" class="new-day-info">
+                          <MediaImage
+                            v-if="image.newDayImage"
+                            :src="image.newDayImage.asset._ref"
+                            class="new-day-image"
+                          ></MediaImage>
+                          <p class="new-day-textevent">
+                            {{ image.newDayText }}
+                          </p>
+                        </div>
                       </figure>
                     </div>
                   </div>
@@ -508,9 +530,7 @@ export default {
       }, 1000); // Adjust timeout to match the duration of your animation
     });
 
-
     console.log("Lottie animation initialized:", this.lottieInstance);
-
 
     this.lottieInstance = lottie.loadAnimation({
       container: this.$refs.lottieAnimation, // the DOM element
@@ -522,7 +542,6 @@ export default {
 
     // Set the animation to frame 11 without playing
     this.lottieInstance.goToAndStop(55, true);
-
   },
 
   watch: {
@@ -579,7 +598,7 @@ export default {
       // Extract Vimeo video ID from the URL
       const videoId = vimeoUrl.split("/").pop();
       // Generate the Vimeo embed URL
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0`;
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0&muted=1&background=1`;
     },
     onSlideChange(swiper) {
       this.index = swiper.activeIndex + 1;
@@ -1218,13 +1237,22 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-
-  .overlaydiv {
-  /* padding-top: 6vh; */
-  display: flex;
-  justify-content: center;
-  padding-bottom: 7vw;
+  .landscape {
+  height: 55vh;
+  width: 90vw !important;
+  /* display: flex; */
+  position: sticky !important;
+  top: 20vh;
+  object-fit: cover;
+  object-position: center;
+ 
 }
+  .overlaydiv {
+    /* padding-top: 6vh; */
+    display: flex;
+    justify-content: center;
+    padding-bottom: 7vw;
+  }
 
   .nomb {
     display: none;
@@ -1370,8 +1398,8 @@ a {
   }
 
   .svgmb {
-        top: 0vw !important;
-    }
+    top: 0vw !important;
+  }
 
   .archimg {
     display: none;

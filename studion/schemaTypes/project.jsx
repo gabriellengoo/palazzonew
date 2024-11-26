@@ -1,7 +1,6 @@
 import React from 'react'
 import {AddIcon} from '@sanity/icons'
 
-
 export default {
   name: 'project',
   title: 'Weddings Individual Pages',
@@ -66,11 +65,13 @@ export default {
           fields: [
             {
               name: 'images',
-              title: 'Images',
+              title: 'Content',
               type: 'array',
               options: {
                 layout: 'grid',
               },
+              // https://vimeo.com/966622577 https://player.vimeo.com/video/966622577?h=ec87c2def5
+              // https://player.vimeo.com/video/721799699?h=b659979974?background=1&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
               of: [
                 {
                   name: 'imageObject',
@@ -82,19 +83,35 @@ export default {
                       title: 'Create title Divider',
                       description: 'Toggle this is you want to add a title divider',
                       type: 'boolean',
+                      hidden: ({parent}) => parent?.newVideo,
+                    },
+                    {
+                      name: 'newVideo',
+                      title: 'Add Video',
+                      description: 'Toggle this is you want to add a video',
+                      type: 'boolean',
+                      hidden: ({parent}) => parent?.newDay,
+                    },
+                    {
+                      name: 'vimeoUrl',
+                      title: 'Vimeo Video URL',
+                      type: 'url',
+                      hidden: ({parent}) => !parent?.newVideo,
                     },
                     {
                       name: 'image',
                       title: 'Image',
                       type: 'image',
                       hidden: ({parent}) => parent?.newDay,
+                      hidden: ({parent}) => parent?.newVideo,
                     },
                     {
                       name: 'portrait',
-                      title: 'portrait img',
+                      title: 'Portrait img',
                       type: 'boolean',
                       description: 'Is the img portrait?',
                       hidden: ({parent}) => parent?.newDay,
+                      hidden: ({parent}) => parent?.newVideo,
                     },
 
                     {
@@ -102,18 +119,21 @@ export default {
                       title: 'Divider Image',
                       type: 'image',
                       hidden: ({parent}) => !parent?.newDay, // Hide if newDay is false
+                      hidden: ({parent}) => parent?.newVideo,
                     },
                     {
                       name: 'newDayText',
                       title: 'Divider Text',
                       type: 'string',
                       hidden: ({parent}) => !parent?.newDay, // Hide if newDay is false
+                      hidden: ({parent}) => parent?.newVideo,
                     },
                     {
                       name: 'day',
                       title: 'Day',
                       type: 'string',
                       hidden: ({parent}) => parent?.newDay,
+                      hidden: ({parent}) => parent?.newVideo,
                       description: 'Is the image from day 1, 2, 3, or 4?',
                       options: {
                         list: [
@@ -135,21 +155,40 @@ export default {
                       video: 'video.asset.playbackId',
                       thumbnailTime: 'thumbnailTime',
                       newDayImage: 'newDayImage',
+                      vimeoUrl: 'vimeoUrl',
+             
                     },
                     prepare(selection) {
-                      const {image, spacer, video, thumbnailTime, newDayImage} = selection
+                      const {image, spacer, video, thumbnailTime, newDayImage, vimeoUrl} = selection
                       let media
-                      if (newDayImage) {
+                      if (vimeoUrl) {
+                        return {
+                          media: (
+                            <iframe
+                              frameBorder="0"
+                              src={`${vimeoUrl}?autoplay=1&loop=1&autopause=0&muted=1&background=1`}
+                              style={{
+                             
+                                height: '100%',
+                                border: 'none',
+                                pointerEvents: 'none',
+                              }}
+                              title="Vimeo Video"
+                            />
+                          ),
+                          title: 'Video Preview',
+                        }
+                      } else if (newDayImage) {
                         // media = newDayImage;
                         media = (
                           <img
-                          src="/static/pink.png"
-                          style={{
-                            objectFit: 'cover',
-                            height: '100%',
-                            width: '100%',
-                          }}
-                        />
+                            src="/static/pink.png"
+                            style={{
+                              objectFit: 'cover',
+                              height: '100%',
+                              width: '100%',
+                            }}
+                          />
                         )
                       } else if (video) {
                         media = (
@@ -166,9 +205,8 @@ export default {
                         media = image
                       }
                       return {
-                        media: video ? media : image ? media : spacer ? media : newDayImage 
+                        media: video ? media : image ? media : spacer ? media : newDayImage,
                       }
-                   
                     },
                   },
                 },
@@ -181,11 +219,31 @@ export default {
               video: 'images.0.video.asset.playbackId',
               thumbnailTime: 'images.0.thumbnailTime',
               newDayImage: 'images.0.newDayImage',
+              vimeoUrl: 'images.0.vimeoUrl',
             },
             prepare(selection) {
-              const {image, video, thumbnailTime, newDayImage} = selection
+              const {image, video, thumbnailTime, vimeoUrl, newDayImage} = selection
               let media
-              if (newDayImage) {
+              if (vimeoUrl) {
+                return {
+                  media: (
+                    <iframe
+                      frameBorder="0"
+                      src={`${vimeoUrl}?autoplay=1&loop=1&autopause=0&muted=1&background=1`}
+                      style={{
+                        
+                        height: '100%',
+                        border: 'none',
+                        pointerEvents: 'none',
+                      }}
+                      title="Vimeo Video"
+                    />
+                  ),
+              
+                }
+              } 
+
+              else if (newDayImage) {
                 // media = newDayImage
                 media = (
                   <img
@@ -197,10 +255,8 @@ export default {
                     }}
                   />
                 )
-              }
-              else if (video) {
-              } 
-              else if (image) {
+              } else if (video) {
+              } else if (image) {
                 media = image
               }
               return {
@@ -208,7 +264,6 @@ export default {
               }
             },
           },
-          
         },
       ],
     },
@@ -221,11 +276,30 @@ export default {
       image: 'slider.0.images.0.image',
       video: 'slider.0.images.0.video.asset.playbackId',
       thumbnailTime: 'slider.0.images.0.thumbnailTime',
+      vimeoUrl: 'slider.0.images.0.vimeoUrl',
     },
     prepare(selection) {
-      const {image, title, video, subtitle, thumbnailTime} = selection
+      const {image, title, video, subtitle, thumbnailTime, vimeoUrl} = selection
       let media
-      if (video) {
+      if (vimeoUrl) {
+        return {
+          media: (
+            <iframe
+              frameBorder="0"
+              src={`${vimeoUrl}?autoplay=1&loop=1&autopause=0&muted=1&background=1`}
+              style={{
+               
+                height: '100%',
+                border: 'none',
+                pointerEvents: 'none',
+              }}
+              title="Vimeo Video"
+            />
+          ),
+          title: title,
+        }
+      } 
+      else if (video) {
         media = (
           <img
             src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
