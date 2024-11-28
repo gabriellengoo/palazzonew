@@ -28,6 +28,14 @@ img.loaded {
   filter: none; 
 } */
 
+.overlaydiv {
+  pointer-events: none; /* Ensure overlays don’t block interaction */
+}
+
+iframe {
+  pointer-events: auto; /* Allow interaction with iframe */
+}
+
 
 
 

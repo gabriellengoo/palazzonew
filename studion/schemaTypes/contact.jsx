@@ -13,6 +13,16 @@ export default {
   // liveEdit: true,
   fields: [
     {
+      name: 'seo',
+      title: 'Click here for SEO Metadata',
+      type: 'seo',  // Reusing the `seo` object schema
+      // Collapsible section with initial state set to collapsed
+      options: {
+        collapsible: true,
+        collapsed: true,  // Set to `true` to keep it collapsed by default
+      },
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
@@ -38,28 +48,8 @@ export default {
       type: "blockContent",
     },
 
-    {
-      name: 'socialMedia',
-      title: 'Social Media Links',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            { name: 'platform', type: 'string', title: 'Platform' },
-            { name: 'url', type: 'url', title: 'URL' },
-            { name: 'icon', type: 'image', title: 'Icon' }, 
-            {
-              name: 'show',
-              type: 'boolean',
-              title: 'Show on Website',
-              description: 'Toggle to show or hide this link on the website',
-              initialValue: true, // Default to visible
-            },
-          ],
-        },
-      ],
-    },
+
+ 
   
   
   ],

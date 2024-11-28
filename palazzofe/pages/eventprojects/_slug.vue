@@ -355,6 +355,7 @@
                           :src="getVimeoEmbedUrl(image.vimeoUrl)"
                           frameborder="0"
                           allowfullscreen
+                          @click="openVimeoLink(image.vimeoUrl)"
                           class="landscape gallery-image w-auto h-full"
                         ></iframe>
 

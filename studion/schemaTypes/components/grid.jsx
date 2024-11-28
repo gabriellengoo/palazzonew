@@ -1,14 +1,4 @@
-import React from "react";
-
-// import { RiNumber0 } from "react-icons/Ri";
-// import { RiNumber1 } from "react-icons/Ri";
-// import { RiNumber2 } from "react-icons/Ri";
-// import { RiNumber3 } from "react-icons/Ri";
-// import { RiNumber4 } from "react-icons/Ri";
-// import { RiNumber5 } from "react-icons/Ri";
-// import { RiNumber6 } from "react-icons/Ri";
-// import { RiNumber7 } from "react-icons/Ri";
-
+// Updated grid schema with SEO fields for each image item
 export default {
   name: "grid",
   title: "Grid",
@@ -22,7 +12,7 @@ export default {
       name: "item",
       title: "Item",
       type: "object",
-      fields: [ 
+      fields: [
         {
           name: "image",
           title: "Arch Image PNG",
@@ -30,37 +20,28 @@ export default {
           hidden: ({ parent, value }) =>
             (!value && parent?.spacer) || (!value && parent?.video),
         },
-      
         {
           name: "imageh",
           title: "Hover Image",
           type: "image",
         },
-
         {
           name: "portrait",
-          title: "portrait img",
+          title: "Portrait Image",
           type: "boolean",
-          description: "Is the hover img portrait?",
+          description: "Is the hover image portrait?",
         },
-
-  
         {
           name: "reference",
           title: "Reference",
-          type: "reference", 
+          type: "reference",
           to: {
             type: "project",
           },
-          validation: (Rule) => Rule.required().error('required'), 
+          validation: (Rule) => Rule.required().error('required'),
           hidden: ({ parent, value }) =>
             !value && (parent?.spacer || parent?.link),
         },
-        // {
-        //   name: "double",
-        //   title: "Double",
-        //   type: "boolean",
-        // },
         {
           name: "title",
           title: "Title",
@@ -68,12 +49,13 @@ export default {
           hidden: ({ parent, value }) =>
             !value && (parent?.spacer || parent?.reference),
         },
-
         {
           name: "year",
           title: "Year",
           type: "string",
         },
+ 
+        
       ],
       preview: {
         select: {

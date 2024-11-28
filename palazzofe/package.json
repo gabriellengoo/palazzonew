@@ -13,6 +13,7 @@
     "@nuxtjs/sanity": "^0.10.0",
     "@sanity/client": "^2.21.7",
     "@studio-freight/lenis": "^1.0.39",
+    "@vimeo/player": "^2.25.0",
     "consola": "^3.2.3",
     "core-js": "^3.25.3",
     "lottie-web": "^5.12.2",
@@ -20,18 +21,18 @@
     "sanity-blocks-vue-component": "0.1.0",
     "swiper": "^9.4.1",
     "vue": "^2.7.10",
-    "vue-server-renderer": "^2.7.10",
-    "vue-template-compiler": "^2.7.10",
     "vue-awesome-swiper": "^4.1.1",
     "vue-lazyload": "^1.3.3",
     "vue-masonry": "^0.13.0",
     "vue-masonry-wall": "^0.3.2",
-    "vue-scrollto": "^2.20.0"
+    "vue-scrollto": "^2.20.0",
+    "vue-server-renderer": "^2.7.10",
+    "vue-template-compiler": "^2.7.10"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.0",
-    "postcss": "^8.4.17",
     "nuxt-gsap-module": "^1.5.0",
+    "postcss": "^8.4.17",
     "tailwindcss": "^3.3.3"
   }
 }

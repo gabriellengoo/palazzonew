@@ -23,6 +23,7 @@ export default {
       title: "Item",
       type: "object",
       fields: [ 
+        
         {
           name: "image",
           title: "Images for gallery",

@@ -27,9 +27,11 @@ import team from "./team";
 import grid7 from "./components/grid7";
 import gridpress from "./components/gridpress";
 import pressindi from "./pressindi";
+import seo from "./components/seo";
+import seoImage from "./components/seoImage"
 // import WordLimitInput from "./components/WordLimitInput";
 
 // home,
 
-export const schemaTypes = [blockContent,grid,grid2,grid3,work,project,events,projectevents, publications, pressindi, grid4, grid5, services, contact, about, awards, grid6, team, grid7, gridpress ]
+export const schemaTypes = [seoImage, blockContent,grid,grid2,grid3,work,project,events,projectevents, publications, pressindi, grid4, grid5, services, contact, about, awards, grid6, team, grid7, gridpress, seo ]
 

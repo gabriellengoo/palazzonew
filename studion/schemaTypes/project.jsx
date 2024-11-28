@@ -12,6 +12,16 @@ export default {
 
   fields: [
     {
+      name: 'seo',
+      title: 'Click here for SEO Metadata',
+      type: 'seo',  // Reusing the `seo` object schema
+      // Collapsible section with initial state set to collapsed
+      options: {
+        collapsible: true,
+        collapsed: true,  // Set to `true` to keep it collapsed by default
+      },
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -73,11 +83,24 @@ export default {
               // https://vimeo.com/966622577 https://player.vimeo.com/video/966622577?h=ec87c2def5
               // https://player.vimeo.com/video/721799699?h=b659979974?background=1&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
               of: [
+                  // SEO fields for each image
+             
                 {
                   name: 'imageObject',
                   title: 'Image',
                   type: 'object',
                   fields: [
+                    {
+                      name: 'seoImage',
+                      title: 'Click here for SEO Image Metadata',
+                      type: 'seoImage',  // Reusing the `seo` object schema
+                      // Collapsible section with initial state set to collapsed
+                      options: {
+                        collapsible: true,
+                        collapsed: true,  // Set to `true` to keep it collapsed by default
+                      },
+                      hidden: ({parent}) => parent?.newDay,
+                    },
                     {
                       name: 'newDay',
                       title: 'Create title Divider',
@@ -144,9 +167,11 @@ export default {
                         ],
                         layout: 'radio', // optional, for radio button layout
                       },
+                      
                       // validation: (Rule) => Rule.required().error("Please select a day.")
                       // initialValue: "Day not provided"
                     },
+                
                   ],
                   preview: {
                     select: {

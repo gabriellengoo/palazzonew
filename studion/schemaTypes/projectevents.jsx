@@ -12,6 +12,16 @@ export default {
   // icon: Project, 
   fields: [
     {
+      name: 'seo',
+      title: 'Click here for SEO Metadata',
+      type: 'seo',  // Reusing the `seo` object schema
+      // Collapsible section with initial state set to collapsed
+      options: {
+        collapsible: true,
+        collapsed: true,  // Set to `true` to keep it collapsed by default
+      },
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
@@ -118,17 +128,20 @@ export default {
         layout: "grid",
       },
       of: [
+        
         {
           name: "slide",
           title: "Slide",
           type: "object", 
           fields: [
+            
             // {
             //   name: "fullWidth",
             //   title: "Full Width",
             //   type: "boolean",
             //   description: "Make full width on mobile",
             // },
+            
           
             {
               name: "images",
@@ -138,11 +151,24 @@ export default {
                 layout: "grid",
               },
               of: [
+                
                 {
                   name: 'imageObject',
                   title: 'Image',
                   type: 'object',
                   fields: [
+                      // SEO fields for each image
+               {
+                name: 'seoImage',
+                title: 'Click here for SEO Image Metadata',
+                type: 'seo',  // Reusing the `seo` object schema
+                // Collapsible section with initial state set to collapsed
+                options: {
+                  collapsible: true,
+                  collapsed: true,  // Set to `true` to keep it collapsed by default
+                },
+                hidden: ({parent}) => parent?.newDay,
+              },
                     {
                       name: 'newDay',
                       title: 'Create title Divider',
@@ -212,6 +238,7 @@ export default {
                       // validation: (Rule) => Rule.required().error("Please select a day.")
                       // initialValue: "Day not provided"
                     },
+                
                   ],
                   preview: {
                     select: {
