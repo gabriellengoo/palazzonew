@@ -236,20 +236,39 @@
             </div>
           </div>
 
-          <div class="nomb static-box w-full h-full">
+           <!-- video -->
+           <!-- <div class="z-50 absolute" v-for="(slide, index) in project.slider"
+                    :key="slide._key">
+               <div  v-for="image in slide.images"
+                        :key="image._key"> 
+                        <iframe
+                          v-if="image.vimeoUrl"
+                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          class=" w-[47vw] h-[55vh]"
+                        ></iframe>
+                      </div>
+              </div> -->
+
+          <div   class="nomb static-box w-full h-full">
             <!-- desktop -->
-            <button
-              class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
-              :class="back ? '' : 'disabled'"
+          <div ref="buts" :class="back ? '' : 'disabled'"  class="nomb absolute top-0 left-[49vw]  w-[50%] h-full ">  <button
+              class="nomb absolute top-0 left-[49vw]  w-[25%] h-full previous"
+              
               @click="prev"
               ref="prev"
               aria-label="Previous"
             ></button>
             <button
-              class="nomb absolute top-0 right-0 z-30 w-[25%] h-full next"
+             
+              class="nomb absolute top-0 right-0  w-[25%] h-full next"
               @click="next"
+              ref="next"
               aria-label="Next"
-            ></button>
+            ></button></div>
+
+           
 
             <header
               class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block"
@@ -262,12 +281,16 @@
               </div>
             </header>
 
+
+             
+
             <div class="nomb nombgal gallery-images">
               <section
                 class="top-0 left-0 hidden w-full h-full md:block cursor-grab slider"
                 v-swiper:mySwiper="swiperOptions"
                 @slideChange="onSlideChange"
                 ref="slider"
+                
               >
                 <div class="relative z-40 w-full h-full swiper-wrapper">
                   <div
@@ -286,6 +309,7 @@
                         }"
                         class="overlaydiv flex flex-col flex-1 h-full"
                       >
+                      
                         <MediaImage
                           :src="image.image.asset._ref"
                           v-if="image.image && !image.newDay"
@@ -315,14 +339,25 @@
                           </p> -->
                         </div>
 
-                        <!-- video -->
+                        <!-- video
                         <iframe
                           v-if="image.vimeoUrl"
                           :src="getVimeoEmbedUrl(image.vimeoUrl)"
                           frameborder="0"
                           allowfullscreen
                           class="landscape gallery-image w-auto h-full"
+                        ></iframe> -->
+                        <!-- <div class="z-50 absolute" >
+               <div> 
+                        <iframe
+                          v-if="image.vimeoUrl"
+                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          class=" w-[47vw] h-[55vh]"
                         ></iframe>
+                      </div>
+              </div> -->
 
                         <!-- New Day Display -->
                         <div v-if="image.newDay" class="new-day-info">
@@ -340,8 +375,16 @@
                   </div>
                 </div>
 
-                                <p v-if="isLastSlide"  class="z-[500] text-[10vw] top-[40vh] absolute last">end test</p>
-
+                <!-- <p v-if="isLastSlide"  class="z-[500] text-[10vw] top-[40vh] absolute last">end test</p> -->
+                <div  v-if="isLastSlide"  class="z-[500] text-[10vw] top-[40vh] absolute last"> 
+                        <iframe
+                          v-if="image.vimeoUrl"
+                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          class=" w-[47vw] h-[55vh]"
+                        ></iframe>
+                      </div>
               </section>
 
               <div class="footcon nodes">
@@ -443,6 +486,12 @@ export default {
     isLastSlide() {
     return this.realIndex === this.project.slider.length - 1;
   },
+  //   isFirstSlide() {
+  //   return this.realIndex === 0;
+  // },
+  // isLastSlide() {
+  //   return this.realIndex === this.project.slider.length - 1;
+  // },
     ...mapState(["meta", "metaemails", "projects"]), // Map Vuex state to local computed properties
   },
   created() {
@@ -507,7 +556,7 @@ export default {
       // Extract Vimeo video ID from the URL
       const videoId = vimeoUrl.split("/").pop();
       // Generate the Vimeo embed URL
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0&muted=1&background=1`;
+      return `https://player.vimeo.com/video/${videoId}`;
     },
     playSegment() {
       // Play from frame 11 to 20
@@ -542,28 +591,16 @@ export default {
     },
 
     onSlideChange(swiper) {
-  this.index = swiper.activeIndex + 1;
-  this.realIndex = swiper.activeIndex;
-
-  const gsap = this.$gsap;
-
-  // Toggle "previous" button visibility
-  if (swiper.activeIndex === 0 && !this.back) {
-    this.$refs["prev"].classList.add("disabled");
-  } else if (this.isLastSlide) {
-    this.$refs["prev"].style.display = "none"; // Hide "previous" button
-  } else {
-    this.$refs["prev"].classList.remove("disabled");
-    this.$refs["prev"].style.display = ""; // Reset to default
-  }
-
-  // Adjust skew animation
-  if (this.index > 1) {
-    gsap.to(this.$refs["skew"], { x: "-150%" });
-  } else {
-    gsap.to(this.$refs["skew"], { x: "0%" });
-  }
+    this.index = swiper.activeIndex + 1; // Update slide index
+    this.realIndex = swiper.activeIndex; // Update real index
+    
+    if (swiper.isEnd) { // Check if it's the last slide
+        this.$refs["buts"].classList.remove("disabled"); // Enable button
+    } else {
+        this.$refs["buts"].classList.add("disabled"); // Disable button
+    }
 },
+
     onSlideChange2(swiper) {
       this.index = swiper.activeIndex + 1;
       this.realIndex = swiper.activeIndex;
