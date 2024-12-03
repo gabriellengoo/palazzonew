@@ -788,6 +788,8 @@ cursor: crosshair;
     position: relative;
 }
 
+
+
 .previous:hover {
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
     auto !important;
@@ -810,6 +812,9 @@ cursor: crosshair;
 display: none;
 }
 
+button.disabled {
+  visibility: hidden; /* or display: none; if you want it removed */
+}
 
 .portrait {
   margin-right: 1.5vw;

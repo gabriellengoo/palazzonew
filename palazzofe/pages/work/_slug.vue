@@ -238,18 +238,7 @@
 
           <div class="nomb static-box w-full h-full">
             <!-- desktop -->
-            <button
-              class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
-              :class="back ? '' : 'disabled'"
-              @click="prev"
-              ref="prev"
-              aria-label="Previous"
-            ></button>
-            <button
-              class="nomb absolute top-0 right-0 z-30 w-[25%] h-full next"
-              @click="next"
-              aria-label="Next"
-            ></button>
+           
 
             <header
               class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block"
@@ -263,6 +252,18 @@
             </header>
 
             <div class="nomb nombgal gallery-images">
+              <button
+              class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
+              :class="back ? '' : ''"
+              @click="prev"
+              ref="prev"
+              aria-label="Previous"
+            ></button>
+            <button
+              class="nomb absolute top-0 right-0 z-30 w-[25%] h-full next"
+              @click="next"
+              aria-label="Next"
+            ></button>
               <section
                 class="top-0 left-0 hidden w-full h-full md:block cursor-grab slider"
                 v-swiper:mySwiper="swiperOptions"
@@ -340,8 +341,9 @@
                   </div>
                 </div>
 
-                                <p v-if="isLastSlide"  class="z-[500] text-[10vw] top-[40vh] absolute last">end test</p>
+                                <!-- <p v-if="isLastSlide"  class="z-[500] text-[10vw] top-[40vh] absolute last">end test</p> -->
 
+                                
               </section>
 
               <div class="footcon nodes">
@@ -442,6 +444,7 @@ export default {
   computed: {
     isLastSlide() {
     return this.realIndex === this.project.slider.length - 1;
+    
   },
     ...mapState(["meta", "metaemails", "projects"]), // Map Vuex state to local computed properties
   },
@@ -455,6 +458,32 @@ export default {
   },
 
   mounted() {
+      // Select all elements with the class "gallery-image"
+   // Function to update z-index based on the active slide
+   const updateZIndexForActiveSlide = () => {
+    const activeSlide = document.querySelector('.gallery-image.active');
+    const galleryImages = document.querySelectorAll('.gallery-image');
+
+    // Reset all z-index values
+    galleryImages.forEach((galleryImage) => {
+      galleryImage.style.zIndex = '';
+    });
+
+    if (activeSlide) {
+      const iframe = activeSlide.querySelector('iframe');
+      if (iframe) {
+        activeSlide.style.zIndex = '10000';
+      }
+    }
+  };
+
+  // Call the function initially
+  updateZIndexForActiveSlide();
+
+  // Example: Listening for a slide change event
+  document.addEventListener('slideChange', updateZIndexForActiveSlide);
+
+
     console.log("Lottie animation initialized:", this.lottieInstance);
 
     this.lottieInstance = lottie.loadAnimation({
@@ -769,6 +798,11 @@ cursor: crosshair;
     z-index: 30;
 }
 
+.overlaycont{
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
+    auto !important;
+}
+
 .disabled {
 display: none;
 }
@@ -906,6 +940,8 @@ display: none;
   left: 65vw;
 }
 
+
+
 .gallery-images {
   display: flex;
   justify-content: center;
@@ -915,6 +951,7 @@ display: none;
   width: 50vw;
   left: 50vw;
   position: sticky;
+  z-index: auto;
 
   /* display: flex;
     justify-content: center;
@@ -937,7 +974,7 @@ display: none;
   align-items: center;
   /* height: 90vh; */
   /* padding: 2vh; */
-  pointer-events: none !important;
+  pointer-events: none;
 }
 
 .allbotindi {

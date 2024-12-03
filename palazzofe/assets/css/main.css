@@ -33,8 +33,15 @@ img.loaded {
 }
 
 iframe {
-  pointer-events: auto; /* Allow interaction with iframe */
+  z-index: 200;
+  pointer-events: auto !important;
+  cursor: pointer !important;
 }
+
+.gallery-image:has(iframe) {
+  z-index: 1000;
+}
+
 
 
 
