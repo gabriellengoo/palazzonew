@@ -187,19 +187,24 @@ export default {
                       const {image, spacer, video, thumbnailTime, newDayImage, vimeoUrl} = selection
                       let media
                       if (vimeoUrl) {
+                        // Ensure the vimeoUrl contains the base Vimeo link and append start time if provided
+                        const videoId = vimeoUrl.split('/').pop(); // Extract the video ID
+                        const startTime = thumbnailTime ? `?t=${thumbnailTime}s` : ''; // Add start time if available
+                        const videoEmbedUrl = `https://player.vimeo.com/video/${videoId}${startTime}?autoplay=1&loop=1&autopause=0&muted=1&background=1`; // Construct the embed URL
+                  
                         return {
                           media: (
                             <iframe
-                              frameBorder="0"
-                              src={`${vimeoUrl}?autoplay=1&loop=1&autopause=0&muted=1&background=1`}
-                              style={{
-                             
-                                height: '100%',
-                                border: 'none',
-                                pointerEvents: 'none',
-                              }}
-                              title="Vimeo Video"
-                            />
+                            frameBorder="0"
+                            src={videoEmbedUrl}
+                            style={{
+                              height: '100%',
+                              width: '100%',
+                              border: 'none',
+                              pointerEvents: 'none',
+                            }}
+                            title="Vimeo Video"
+                          />
                           ),
                           title: 'Video Preview',
                         }
@@ -247,29 +252,33 @@ export default {
               vimeoUrl: 'images.0.vimeoUrl',
             },
             prepare(selection) {
-              const {image, video, thumbnailTime, vimeoUrl, newDayImage} = selection
-              let media
+              const { image, video, thumbnailTime, vimeoUrl, newDayImage } = selection;
+              let media;
+          
               if (vimeoUrl) {
+                // Ensure the vimeoUrl contains the base Vimeo link and append start time if provided
+                const videoId = vimeoUrl.split('/').pop(); // Extract the video ID
+                const startTime = thumbnailTime ? `?t=${thumbnailTime}s` : ''; // Add start time if available
+                const videoEmbedUrl = `https://player.vimeo.com/video/${videoId}${startTime}?autoplay=1&loop=1&autopause=0&muted=1&background=1`; // Construct the embed URL
+          
                 return {
                   media: (
                     <iframe
                       frameBorder="0"
-                      src={`${vimeoUrl}?autoplay=1&loop=1&autopause=0&muted=1&background=1`}
+                      src={videoEmbedUrl}
                       style={{
-                        
                         height: '100%',
+                        width: '100%',
                         border: 'none',
                         pointerEvents: 'none',
                       }}
                       title="Vimeo Video"
                     />
                   ),
-              
-                }
-              } 
-
-              else if (newDayImage) {
-                // media = newDayImage
+                  title: 'Video Preview',
+                };
+              } else if (newDayImage) {
+                // Fallback image if newDayImage is provided
                 media = (
                   <img
                     src="/static/pink.png"
@@ -279,16 +288,29 @@ export default {
                       width: '100%',
                     }}
                   />
-                )
+                );
               } else if (video) {
+                // Mux animated GIF if video is provided
+                media = (
+                  <img
+                    src={`https://image.mux.com/${video}/animated.gif?start=${thumbnailTime || 0}`}
+                    style={{
+                      objectFit: 'cover',
+                      height: '100%',
+                      width: '100%',
+                    }}
+                  />
+                );
               } else if (image) {
-                media = image
+                // Default image if no video or newDayImage is available
+                media = image;
               }
+          
               return {
                 media: media,
-              }
+              };
             },
-          },
+          },          
         },
       ],
     },
@@ -307,19 +329,24 @@ export default {
       const {image, title, video, subtitle, thumbnailTime, vimeoUrl} = selection
       let media
       if (vimeoUrl) {
+        // Ensure the vimeoUrl contains the base Vimeo link and append start time if provided
+        const videoId = vimeoUrl.split('/').pop(); // Extract the video ID
+        const startTime = thumbnailTime ? `?t=${thumbnailTime}s` : ''; // Add start time if available
+        const videoEmbedUrl = `https://player.vimeo.com/video/${videoId}${startTime}?autoplay=1&loop=1&autopause=0&muted=1&background=1`; // Construct the embed URL
+  
         return {
           media: (
             <iframe
-              frameBorder="0"
-              src={`${vimeoUrl}?autoplay=1&loop=1&autopause=0&muted=1&background=1`}
-              style={{
-               
-                height: '100%',
-                border: 'none',
-                pointerEvents: 'none',
-              }}
-              title="Vimeo Video"
-            />
+            frameBorder="0"
+            src={videoEmbedUrl}
+            style={{
+              height: '100%',
+              width: '100%',
+              border: 'none',
+              pointerEvents: 'none',
+            }}
+            title="Vimeo Video"
+          />
           ),
           title: title,
         }

@@ -94,7 +94,7 @@ export default {
               description:
                 'Toggle to activate Layout 1. See here for reference: https://i.ibb.co/HT6GhvV/Whats-App-Image-2024-10-28-at-10-47-57.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout2 || parent?.layout3,
+              hidden: ({parent}) => parent?.layout2 || parent?.layout3 || parent?.layout4,
             },
             {
               name: 'layout2',
@@ -103,7 +103,7 @@ export default {
               description:
                 'Toggle to activate Layout 2. See here for reference: https://i.ibb.co/LCr8SzH/Whats-App-Image-2024-10-28-at-10-48-43.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout3,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout3 || parent?.layout4,
             },
             {
               name: 'layout3',
@@ -112,7 +112,16 @@ export default {
               description:
                 'Toggle to activate Layout 3. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout2,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout4,
+            },
+            {
+              name: 'layout4',
+              title: 'Layout 4',
+              type: 'boolean',
+              description:
+                'Toggle to activate Layout 4. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
+              initialValue: false,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3,
             },
 
             // Common fields
@@ -718,7 +727,6 @@ export default {
             },
 
             // Layout 3 Fields (Visible only if Layout 3 is active)
-
             {
               name: 'slider3',
               title: 'Image overlay',
@@ -1003,19 +1011,76 @@ export default {
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
             },
+
+
+
+
+             // layout4
+             {
+              name: 'layout4bw',
+              title: 'Layout 4, Large Image, Black and White',
+              type: 'boolean',
+              description:
+                'Toggle to activate Black and White',
+              initialValue: false,
+              hidden: ({parent}) => !parent?.layout4,
+                        },
+             {
+              name: 'layout4Image',
+              title: 'Layout 4, Large Image',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables hotspot and crop functionality
+              },
+              hidden: ({parent}) => !parent?.layout4,
+            },
+            {
+              name: 'layout4logo',
+              title: 'Layout 4, Small Publication Logo (PNG only)',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables hotspot and crop functionality
+              },
+              hidden: ({parent}) => !parent?.layout4,
+            },
+        
+          {
+            name: 'layout4bigtext',
+            title: 'Layout 4, Large Text',
+            type: 'array',
+            of: [blockConfig],
+            validation: (Rule) =>
+              Rule.custom((blocks) => {
+                if (!blocks) return true
+                const text4 = blocks
+                  .map((block) => block.children.map((child) => child.text || '').join(''))
+                  .join(' ')
+                const wordCount4 = text4.split(/\s+/).length
+                return wordCount4 <= 103 || 'Text cannot exceed 103 words.'
+              }),
+            hidden: ({parent}) => !parent?.layout4,
+          },
+
           ],
+
+
+
+         
+
+
           preview: {
             select: {
               title: 'location', // Assuming 'location' is a field representing the section's name/title
               layout1Image: 'mainImage',
               layout2Image: 'layout2Image2',
               layout3Image: 'layout3Image3_5',
+              layout4Image: 'layout4Image',
             },
             prepare(selection) {
-              const {title, layout1Image, layout2Image, layout3Image} = selection
+              const {title, layout1Image, layout2Image, layout3Image, layout4Image} = selection
 
               // Select the image based on the active layout for each section
-              const media = layout1Image || layout2Image || layout3Image
+              const media = layout1Image || layout2Image || layout3Image || layout4Image
 
               return {
                 title: title || 'Untitled Article',

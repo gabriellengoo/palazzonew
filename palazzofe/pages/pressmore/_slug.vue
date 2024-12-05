@@ -22,7 +22,8 @@
         v-if="
           (section.layout1 && currentLayoutIndex === index) ||
           (section.layout2 && currentLayoutIndex === index) ||
-          (section.layout3 && currentLayoutIndex === index)
+          (section.layout3 && currentLayoutIndex === index) ||
+          (section.layout4 && currentLayoutIndex === index)
         "
       >
         <Richtext
@@ -39,6 +40,11 @@
           v-if="section.layout3 === true"
           class="headingspages navmbno text-center text-4xl uppercase"
           :blocks="section.layout3Column3Text"
+        ></Richtext>
+        <Richtext
+          v-if="section.layout4bigtext === true"
+          class="headingspages navmbno text-center text-4xl uppercase"
+          :blocks="section.layout4bigtext"
         ></Richtext>
       </div>
 
@@ -66,11 +72,17 @@
           class="layouts"
           v-for="(section, index) in project.sections"
           :key="index"
-          :class="`pop-in pop-in-${index + 1}`"
+          :class="{
+  ['pop-in pop-in-' + (index + 1)]: true,
+  otherlays: !section.layout1 || !section.layout2 || !section.layout3,
+  lay4size: section.layout4
+}"
+
           v-if="
             (section.layout1 && currentLayoutIndex === index) ||
             (section.layout2 && currentLayoutIndex === index) ||
-            (section.layout3 && currentLayoutIndex === index)
+            (section.layout3 && currentLayoutIndex === index) ||
+            (section.layout4 && currentLayoutIndex === index)
           "
         >
           <!-- Layout 1 -->
@@ -168,7 +180,11 @@
             <div class="column col-5 lay1col5 slideIn-in slideIn-in-5"></div>
           </div>
 
-          <div class="otherlays" v-if="section.layout1 === false">
+          <div  :class="{
+                      otherlays: !section.layout1 || !section.layout2 || !section.layout3 ,
+                      'lay4size': section.layout4,
+                    }"
+                     v-if="section.layout1 === false">
             <!-- Layout 2 -->
             <div class="layout layout-2" v-if="section.layout2 === true">
               <div class="top-right-element" v-if="section.layout2date">
@@ -545,6 +561,62 @@
                 </div>
               </div>
             </div>
+
+
+
+            <!-- Layout 4 -->
+            <div class="layout-4 w-[100%] h-[100%] pop-in pop-in-1" v-if="section.layout4 === true">
+           
+             
+
+              <div
+                class="h-[100%]"
+              >
+               <img
+                    class="imglay4"
+                    :src="section.layout4Image"
+                    v-if="section.layout4bw === false"
+                    alt="Main Image"
+                  />
+
+                  <img
+                    class="imglay4 lay4bw"
+                    :src="section.layout4Image"
+                    v-if="section.layout4bw === true"
+                    alt="Main Image"
+                  />
+             
+              </div>
+
+             <div>
+              <div class="absolute logolay4 top-0 left-0 flex flex-col justify-start items-center h-full w-full">
+                <img
+                    class="logoimglay4"
+                    :src="section.layout4logo"
+                    v-if="section.layout4logo"
+                    alt="Main Image"
+                  />
+                 
+                  <p class=" p-[.5vw] pb-[2vw]">
+                  {{ section.location }}
+                </p>
+              </div>
+             </div>
+         
+           <div class="absolute top-0 left-0 flex flex-col justify-center items-center h-full w-full">
+           
+
+            <Richtext
+          v-if="section.layout4bigtext"
+          class=" text-center biglay4 uppercase"
+          :blocks="section.layout4bigtext"
+        ></Richtext>
+
+           </div>
+
+            </div>
+
+
           </div>
         </div>
       </transition>
@@ -728,6 +800,7 @@ export default {
         layout1,
         layout2,
         layout3,
+        layout4,
         "mainImage": mainImage.asset->url,
         column0Text,
         column1Text,
@@ -763,6 +836,11 @@ export default {
         layout3Column4Text,
         layout3Column5Text,
         layout3date,
+        "layout4Image": layout4Image.asset->url,
+        "layout4logo": layout4logo.asset->url,
+        layout4smalltext,
+        layout4bigtext,
+        layout4bw,
       }
       } | order(_updatedAt desc)[0]`;
 
@@ -963,6 +1041,52 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+/*lay4*/
+.imglay4{
+  height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.lay4size{
+  height: 100%;
+    width: 100%;
+}
+
+.logoimglay4{
+  height: auto;
+    width: 16vw;
+}
+
+.biglay4{
+  font-size: 6vw;
+  color: white;
+    line-height: 7vw;
+    width: 65vw;
+    font-family: "RomainHeadlineTrial";
+}
+
+.logolay4{
+  align-content: center;
+    flex-wrap: wrap;
+    padding-top: 3vw;
+    color: white;
+}
+
+.logolay4 p{
+  text-decoration: underline;
+  font-family: "GT-Sectra-Book-Italic";
+  font-size: 1.6vw;
+}
+
+.lay4bw{
+  filter: grayscale(100);
+}
+/*lay4end */
+
 .next-button {
   cursor: default; /* Default cursor */
 }
