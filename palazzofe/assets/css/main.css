@@ -28,9 +28,7 @@ img.loaded {
   filter: none; 
 } */
 
-.overlaydiv {
-  pointer-events: none; /* Ensure overlays don’t block interaction */
-}
+
 
 iframe {
   z-index: 200;

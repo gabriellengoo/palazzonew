@@ -250,9 +250,8 @@
                 >
               </div>
             </header>
-
-            <div class="nomb nombgal gallery-images">
-              <button
+            <button
+            v-if="!isLastSlide" 
               class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
               :class="back ? '' : ''"
               @click="prev"
@@ -260,10 +259,14 @@
               aria-label="Previous"
             ></button>
             <button
+            v-if="!isLastSlide" 
               class="nomb absolute top-0 right-0 z-30 w-[25%] h-full next"
               @click="next"
               aria-label="Next"
             ></button>
+
+            <div class="nomb nombgal gallery-images">
+          
               <section
                 class="top-0 left-0 hidden w-full h-full md:block cursor-grab slider"
                 v-swiper:mySwiper="swiperOptions"
@@ -341,8 +344,7 @@
                   </div>
                 </div>
 
-                                <!-- <p v-if="isLastSlide"  class="z-[500] text-[10vw] top-[40vh] absolute last">end test</p> -->
-
+                               
                                 
               </section>
 
@@ -774,11 +776,7 @@ export default {
 cursor: crosshair;
 }
 
-.gallery-images section div div figure div div iframe {
-  z-index: 50;
-  z-index: 500;
-    position: relative;
-}
+
 
 .previous:hover {
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
@@ -798,10 +796,7 @@ cursor: crosshair;
     z-index: 30;
 }
 
-.overlaycont{
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
-    auto !important;
-}
+
 
 .disabled {
 display: none;
