@@ -23,7 +23,9 @@
           (section.layout1 && currentLayoutIndex === index) ||
           (section.layout2 && currentLayoutIndex === index) ||
           (section.layout3 && currentLayoutIndex === index) ||
-          (section.layout4 && currentLayoutIndex === index)
+          (section.layout4 && currentLayoutIndex === index) ||
+          (section.layout5 && currentLayoutIndex === index) ||
+          (section.layout6 && currentLayoutIndex === index)
         "
       >
         <Richtext
@@ -46,6 +48,7 @@
           class="headingspages navmbno text-center text-4xl uppercase"
           :blocks="section.layout4bigtext"
         ></Richtext>
+     
       </div>
 
       <div class="navmbno">
@@ -80,9 +83,11 @@
 
           v-if="
             (section.layout1 && currentLayoutIndex === index) ||
-            (section.layout2 && currentLayoutIndex === index) ||
-            (section.layout3 && currentLayoutIndex === index) ||
-            (section.layout4 && currentLayoutIndex === index)
+          (section.layout2 && currentLayoutIndex === index) ||
+          (section.layout3 && currentLayoutIndex === index) ||
+          (section.layout4 && currentLayoutIndex === index) ||
+          (section.layout5 && currentLayoutIndex === index) ||
+          (section.layout6 && currentLayoutIndex === index)
           "
         >
           <!-- Layout 1 -->
@@ -181,7 +186,7 @@
           </div>
 
           <div  :class="{
-                      otherlays: !section.layout1 || !section.layout2 || !section.layout3 ,
+                      otherlays: !section.layout1 || !section.layout2 || !section.layout3 || !section.layout5 || !section.layout6,
                       'lay4size': section.layout4,
                     }"
                      v-if="section.layout1 === false">
@@ -446,18 +451,7 @@
                   />
                 </div>
               </div>
-              <!-- <div>
-                 <Richtext
-                    v-if="section.layout3Column4Text"
-                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
-                    :blocks="section.layout3Column4Text"
-                  ></Richtext>
-                <Richtext
-                    v-if="section.layout3Column5Text"
-                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 pt-[0]"
-                    :blocks="section.layout3Column5Text"
-                  ></Richtext>
-              </div> -->
+         
 
               <div class="column col-1 pop-in pop-in-4">
                 <p class="toplink nomblay p-[.5vw] pt-[0vw] pb-[2vw]">
@@ -615,6 +609,206 @@
            </div>
 
             </div>
+
+
+
+             <!-- Layout 5 -->
+             <div class="layout layout-5" v-if="section.layout5 === true">
+           
+
+             
+         
+
+              <div class="column layout-5-col-1 w-[30vw]  pop-in pop-in-4">
+                <img
+                    class="p-[.5vw]"
+                    :src="section.layout5imgsl"
+                    v-if="section.layout5imgsl"
+                    alt="Main Image"
+                  />
+
+                <div class="flex">
+                  <div class="flex flex-col">
+                  <img
+                    class="p-[.5vw]"
+                    :src="section.layout5imgsp"
+                    v-if="section.layout5imgsp"
+                    alt="Main Image"
+                  />
+                  <Richtext
+                  v-if="section.layout5subtitle"
+                  class="contactinnerpressslug lay1subtext uppercase mainmblay2 lay1text imgntextlay22 p-[.5vw] pop-in pop-in-3 pt-[0]"
+                  :blocks="section.layout5subtitle"
+                ></Richtext> 
+              </div>
+              <div class="flex flex-col">
+                  <img
+                    class="p-[.5vw]"
+                    :src="section.layout5imgxsl"
+                    v-if="section.layout5imgxsl"
+                    alt="Main Image"
+                  />
+                  <img
+                    class="p-[.5vw]"
+                    :src="section.layout5imgxsp"
+                    v-if="section.layout5imgxsp"
+                    alt="Main Image"
+                  />
+              </div>
+                </div>
+              
+              </div>
+
+
+           
+
+              <div class="column col-2 pop-in pop-in-2  w-[15vw] ">
+               
+                <Richtext
+                  v-if="section.layout5col3body"
+                  class="contactinnerpressslug"
+                  :blocks="section.layout5col3body"
+                ></Richtext> 
+              
+              </div>
+
+              <div class="column col-3 col-4 col-5 pop-in pop-in-3  w-[50vw] ">
+                <div class="flex nomblay">
+                  <img
+                    class="p-[.5vw]"
+                    :src="section.layout5imglarge"
+                    v-if="section.layout5imglarge"
+                    alt="Main Image"
+                  />
+                </div>
+
+                <div class="flex mblay3col5pad">
+               
+                  <Richtext
+                    v-if="section.layout5col5sub"
+                    class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 pt-[0]"
+                    :blocks="section.layout5col5sub"
+                  ></Richtext>
+
+                  <Richtext
+                    v-if="section.layout5col5body"
+                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
+                    :blocks="section.layout5col5body"
+                  ></Richtext>
+                
+
+                  <div class="flex nomblay flex-col mbfullwidth w-[87vw]">
+                    <img
+                    class="p-[.5vw]"
+                    :src="section.layout5logo"
+                    v-if="section.layout5logo"
+                    alt="Main Image"
+                  />
+                  
+                    <Richtext
+                      v-if="section.layout5col5sub"
+                      class="contactinnerpressslug mbfullwidth p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
+                      :blocks="section.layout5col5sub"
+                    ></Richtext>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+                   <!-- Layout 6 -->
+             <div class="layout layout-5" v-if="section.layout6 === true">
+           
+
+
+              <div class="column layout-5-col-1 w-[30vw]  pop-in pop-in-4">
+                <img
+                    class="p-[.5vw]"
+                    :src="section.layout6image"
+                    v-if="section.layout6image"
+                    alt="Main Image"
+                  />
+                  <img
+                    class="p-[.5vw]"
+                    :src="section.layout6logo"
+                    v-if="section.layout6logo"
+                    alt="Main Image"
+                  />
+
+              
+              
+              </div>
+           
+
+              <div class="column col-2 pop-in pop-in-2  w-[15vw] ">
+               
+                <Richtext
+                  v-if="section.layout6col3sub"
+                  class="contactinnerpressslug mbfullwidth p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
+                  :blocks="section.layout6col3sub"
+                ></Richtext> 
+                <img
+                    class="p-[.5vw]"
+                    :src="section.layout6Imagesp"
+                    v-if="section.layout6Imagesp"
+                    alt="Main Image"
+                  />
+                  <img
+                    class="p-[.5vw]"
+                    :src="section.layout6Imagspe2"
+                    v-if="section.layout6Imagspe2"
+                    alt="Main Image"
+                  />
+              
+              </div>
+
+              <div class="column col-3 col-4 col-5 pop-in pop-in-3  w-[50vw] ">
+                <div class="flex nomblay">
+                  <img
+                    class="p-[.5vw]"
+                    :src="section.layout6Imagelarlan"
+                    v-if="section.layout6Imagelarlan"
+                    alt="Main Image"
+                  />
+                </div>
+
+                <div class="flex mblay3col5pad">
+               
+                <div class="flex flex-col">
+                  <Richtext
+                    v-if="section.layout6subtitle"
+                    class="contactinnerpressslug lay1subtext uppercase mainmblay2 lay1text imgntextlay22 p-[.5vw] pop-in pop-in-3 pt-[0]"
+                    :blocks="section.layout6subtitle"
+                  ></Richtext>
+                  <Richtext
+                    v-if="section.layout6col4body"
+                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
+                    :blocks="section.layout6col4body"
+                  ></Richtext>
+                </div>
+
+                 
+                <Richtext
+                    v-if="section.layout6col5body"
+                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
+                    :blocks="section.layout6col5body"
+                  ></Richtext>
+
+                  <div class="flex nomblay flex-col mbfullwidth w-[87vw]">
+                 
+                  
+                    <Richtext
+                      v-if="section.layout6col6body"
+                      class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
+                      :blocks="section.layout6col6body"
+                    ></Richtext>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            
 
 
           </div>
@@ -801,6 +995,8 @@ export default {
         layout2,
         layout3,
         layout4,
+        layout5,
+        layout6,
         "mainImage": mainImage.asset->url,
         column0Text,
         column1Text,
@@ -841,6 +1037,27 @@ export default {
         layout4smalltext,
         layout4bigtext,
         layout4bw,
+        "layout5imgsl": layout5imgsl.asset->url,
+        "layout5imgsp": layout5imgsp.asset->url,
+        layout5subtitle,
+        "layout5imgxsl": layout5imgxsl.asset->url,
+        "layout5imgxsp": layout5imgxsp.asset->url,
+        layout5col3body,
+        "layout5imglarge": layout5imglarge.asset->url,
+        layout5col4body,
+        layout5col5body,
+        "layout5logo": layout5logo.asset->url,
+        layout5col5sub,
+        "layout6image": layout6image.asset->url,
+        "layout6logo": layout6logo.asset->url,
+        layout6col3sub,
+        "layout6Imagesp": layout6Imagesp.asset->url,
+        "layout6Imagspe2": layout6Imagspe2.asset->url,
+        "layout6Imagelarlan": layout6Imagelarlan.asset->url,
+        layout6subtitle,
+        layout6col4body,
+        layout6col5body,
+        layout6col6body,
       }
       } | order(_updatedAt desc)[0]`;
 
@@ -1113,6 +1330,7 @@ export default {
     background-position: 0 0;
     background-position: initial;
     background-repeat: no-repeat;
+
   }
 
 .fade-enter-active {
@@ -1485,6 +1703,7 @@ justify-content: center;
 
 .next-button {
   padding: 1rem;
+  padding: .5vw;
   /* border: none;
   border-radius: 5px; */
   cursor: pointer;
@@ -1574,6 +1793,10 @@ justify-content: center;
 }
 
 .layout-1 .col-1 {
+  grid-column: span 2; /* Image spans two columns */
+}
+
+.layout-5-col-1 {
   grid-column: span 2; /* Image spans two columns */
 }
 
@@ -1723,6 +1946,11 @@ justify-content: center;
 .layout-3 .col-3 {
   grid-column: span 3; /* Image spans three columns */
 }
+
+.layout-5 {
+  grid-template-columns: repeat(6, 1fr) !important;
+}
+
 .deskl2flex {
   display: flex;
 }
@@ -1733,6 +1961,21 @@ justify-content: center;
 
 /* Additional responsive styling */
 @media (max-width: 768px) {
+  .next-button {
+  padding: 1rem;
+  /* border: none;
+  border-radius: 5px; */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: fixed;
+  bottom: 0.5vh;
+  /* width: 100%; */
+  width: 95%;
+  text-transform: uppercase;
+  font-family: "GT-Sectra-Book";
+  font-family: "NHaas" !important;
+  transition: color 0.8s ease;
+}
   .lay2flsizedesk {
   }
 

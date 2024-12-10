@@ -94,7 +94,7 @@ export default {
               description:
                 'Toggle to activate Layout 1. See here for reference: https://i.ibb.co/HT6GhvV/Whats-App-Image-2024-10-28-at-10-47-57.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout2 || parent?.layout3 || parent?.layout4,
+              hidden: ({parent}) => parent?.layout2 || parent?.layout3 || parent?.layout4 ||  parent?.layout5,
             },
             {
               name: 'layout2',
@@ -103,7 +103,7 @@ export default {
               description:
                 'Toggle to activate Layout 2. See here for reference: https://i.ibb.co/LCr8SzH/Whats-App-Image-2024-10-28-at-10-48-43.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout3 || parent?.layout4,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout3 || parent?.layout4 ||  parent?.layout5,
             },
             {
               name: 'layout3',
@@ -112,7 +112,7 @@ export default {
               description:
                 'Toggle to activate Layout 3. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout4,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout4 ||  parent?.layout5,
             },
             {
               name: 'layout4',
@@ -121,7 +121,27 @@ export default {
               description:
                 'Toggle to activate Layout 4. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout5,
+            },
+
+            {
+              name: 'layout5',
+              title: 'Layout 5',
+              type: 'boolean',
+              description:
+                'Toggle to activate Layout 5. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
+              initialValue: false,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout4,
+            },
+
+            {
+              name: 'layout6',
+              title: 'Layout 6',
+              type: 'boolean',
+              description:
+                'Toggle to activate Layout 6. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
+              initialValue: false,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout5,
             },
 
             // Common fields
@@ -1061,6 +1081,292 @@ export default {
             hidden: ({parent}) => !parent?.layout4,
           },
 
+
+
+
+
+             // layout5
+             {
+              name: 'layout5imgsl',
+              title: 'Layout 5, Small Landscape Image',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables hotspot and crop functionality
+              },
+              hidden: ({parent}) => !parent?.layout5,
+            },
+            {
+              name: 'layout5imgsp',
+              title: 'Layout 5, Small Portrait Image',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables hotspot and crop functionality
+              },
+              hidden: ({parent}) => !parent?.layout5,
+            },
+            {
+              name: 'layout5subtitle',
+              title: 'Layout 5, Column 1. Subtitle',
+              type: 'array',
+              of: [blockConfig],
+              validation: (Rule) =>
+                Rule.custom((blocks) => {
+                  if (!blocks) return true
+                  const text4 = blocks
+                    .map((block) => block.children.map((child) => child.text || '').join(''))
+                    .join(' ')
+                  const wordCount4 = text4.split(/\s+/).length
+                  return wordCount4 <= 10 || 'Text cannot exceed 10 words.'
+                }),
+
+              hidden: ({parent}) => !parent?.layout5,
+            },
+            {
+              name: 'layout5imgxsl',
+              title: 'Layout 5, Extra Small Landscape Image',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables hotspot and crop functionality
+              },
+              hidden: ({parent}) => !parent?.layout5,
+            },
+            {
+              name: 'layout5imgxsp',
+              title: 'Layout 5, Extra Small Portrait Image',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables hotspot and crop functionality
+              },
+              hidden: ({parent}) => !parent?.layout5,
+            },
+           
+         
+            {
+              name: 'layout5col3body',
+              title: 'Layout 5, Column 3. Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+              validation: (Rule) =>
+                Rule.custom((blocks) => {
+                  if (!blocks) return true
+                  const text4 = blocks
+                    .map((block) => block.children.map((child) => child.text || '').join(''))
+                    .join(' ')
+                  const wordCount4 = text4.split(/\s+/).length
+                  return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                }),
+
+              hidden: ({parent}) => !parent?.layout5,
+            },
+            {
+              name: 'layout5imglarge',
+              title: 'Layout 5, Largest Image',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables hotspot and crop functionality
+              },
+              hidden: ({parent}) => !parent?.layout5,
+            },
+            {
+              name: 'layout5col4body',
+              title: 'Layout 5, Column 4. Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+              validation: (Rule) =>
+                Rule.custom((blocks) => {
+                  if (!blocks) return true
+                  const text4 = blocks
+                    .map((block) => block.children.map((child) => child.text || '').join(''))
+                    .join(' ')
+                  const wordCount4 = text4.split(/\s+/).length
+                  return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                }),
+
+              hidden: ({parent}) => !parent?.layout5,
+            },
+            {
+              name: 'layout5col5body',
+              title: 'Layout 5, Column 5. Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+              validation: (Rule) =>
+                Rule.custom((blocks) => {
+                  if (!blocks) return true
+                  const text4 = blocks
+                    .map((block) => block.children.map((child) => child.text || '').join(''))
+                    .join(' ')
+                  const wordCount4 = text4.split(/\s+/).length
+                  return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                }),
+
+              hidden: ({parent}) => !parent?.layout5,
+            },
+            {
+              name: 'layout5logo',
+              title: 'Layout 5, Small Publication Logo (PNG only)',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables hotspot and crop functionality
+              },
+              hidden: ({parent}) => !parent?.layout5,
+            },
+            {
+              name: 'layout5col5sub',
+              title: 'Layout 5, Column 6. Subtitle',
+              type: 'array',
+              of: [blockConfig],
+              validation: (Rule) =>
+                Rule.custom((blocks) => {
+                  if (!blocks) return true
+                  const text4 = blocks
+                    .map((block) => block.children.map((child) => child.text || '').join(''))
+                    .join(' ')
+                  const wordCount4 = text4.split(/\s+/).length
+                  return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                }),
+
+              hidden: ({parent}) => !parent?.layout5,
+            },
+
+
+
+               // layout6
+      
+               {
+                name: 'layout6image',
+                title: 'Layout 6, Portrait Image',
+                type: 'image',
+                options: {
+                  hotspot: true, // Enables hotspot and crop functionality
+                },
+                hidden: ({parent}) => !parent?.layout6,
+              },
+              {
+                name: 'layout6logo',
+                title: 'Layout 6, Small Publication Logo (PNG only)',
+                type: 'image',
+                options: {
+                  hotspot: true, // Enables hotspot and crop functionality
+                },
+                hidden: ({parent}) => !parent?.layout6,
+              },
+              {
+                name: 'layout6col3sub',
+                title: 'Layout 6, Column 3. Subtitle',
+                type: 'array',
+                of: [blockConfig],
+                validation: (Rule) =>
+                  Rule.custom((blocks) => {
+                    if (!blocks) return true
+                    const text4 = blocks
+                      .map((block) => block.children.map((child) => child.text || '').join(''))
+                      .join(' ')
+                    const wordCount4 = text4.split(/\s+/).length
+                    return wordCount4 <= 200 || 'Text cannot exceed 200 words.'
+                  }),
+  
+                hidden: ({parent}) => !parent?.layout6,
+              },
+              {
+                name: 'layout6Imagesp',
+                title: 'Layout 6, Small Portrait Image 1',
+                type: 'image',
+                options: {
+                  hotspot: true, // Enables hotspot and crop functionality
+                },
+                hidden: ({parent}) => !parent?.layout6,
+              },
+              {
+                name: 'layout6Imagspe2',
+                title: 'Layout 6, Small Portrait Image 2',
+                type: 'image',
+                options: {
+                  hotspot: true, // Enables hotspot and crop functionality
+                },
+                hidden: ({parent}) => !parent?.layout6,
+              },
+              {
+                name: 'layout6Imagelarlan',
+                title: 'Layout 6, Largest Landscape Image',
+                type: 'image',
+                options: {
+                  hotspot: true, // Enables hotspot and crop functionality
+                },
+                hidden: ({parent}) => !parent?.layout6,
+              },
+              {
+                name: 'layout6subtitle',
+                title: 'Layout 6, Column 4. Subtitle',
+                type: 'array',
+                of: [blockConfig],
+                validation: (Rule) =>
+                  Rule.custom((blocks) => {
+                    if (!blocks) return true
+                    const text4 = blocks
+                      .map((block) => block.children.map((child) => child.text || '').join(''))
+                      .join(' ')
+                    const wordCount4 = text4.split(/\s+/).length
+                    return wordCount4 <= 10 || 'Text cannot exceed 10 words.'
+                  }),
+  
+                hidden: ({parent}) => !parent?.layout6,
+              },
+              
+              {
+                name: 'layout6col4body',
+                title: 'Layout 6, Column 4. Bodycopy',
+                type: 'array',
+                of: [blockConfig],
+                validation: (Rule) =>
+                  Rule.custom((blocks) => {
+                    if (!blocks) return true
+                    const text4 = blocks
+                      .map((block) => block.children.map((child) => child.text || '').join(''))
+                      .join(' ')
+                    const wordCount4 = text4.split(/\s+/).length
+                    return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                  }),
+  
+                hidden: ({parent}) => !parent?.layout6,
+              },
+
+              {
+                name: 'layout6col5body',
+                title: 'Layout 6, Column 5. Bodycopy',
+                type: 'array',
+                of: [blockConfig],
+                validation: (Rule) =>
+                  Rule.custom((blocks) => {
+                    if (!blocks) return true
+                    const text4 = blocks
+                      .map((block) => block.children.map((child) => child.text || '').join(''))
+                      .join(' ')
+                    const wordCount4 = text4.split(/\s+/).length
+                    return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                  }),
+  
+                hidden: ({parent}) => !parent?.layout6,
+              },
+              {
+                name: 'layout6col6body',
+                title: 'Layout 6, Column 6. Bodycopy',
+                type: 'array',
+                of: [blockConfig],
+                validation: (Rule) =>
+                  Rule.custom((blocks) => {
+                    if (!blocks) return true
+                    const text4 = blocks
+                      .map((block) => block.children.map((child) => child.text || '').join(''))
+                      .join(' ')
+                    const wordCount4 = text4.split(/\s+/).length
+                    return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                  }),
+  
+                hidden: ({parent}) => !parent?.layout6,
+              },
+        
+       
+
           ],
 
 
@@ -1075,15 +1381,17 @@ export default {
               layout2Image: 'layout2Image2',
               layout3Image: 'layout3Image3_5',
               layout4Image: 'layout4Image',
+              layout5Image: 'layout5imglarge',
+              layout6Image: 'layout6Imagesp',
             },
             prepare(selection) {
-              const {title, layout1Image, layout2Image, layout3Image, layout4Image} = selection
+              const {title, layout1Image, layout2Image, layout3Image, layout4Image, layout5Image, layout6Image} = selection
 
               // Select the image based on the active layout for each section
-              const media = layout1Image || layout2Image || layout3Image || layout4Image
+              const media = layout1Image || layout2Image || layout3Image || layout4Image || layout5Image || layout6Image
 
               return {
-                title: title || 'Untitled Article',
+                title: title || 'Article',
                 media: media,
               }
             },
