@@ -101,9 +101,10 @@
             </div>
 
             <div class="column col-1">
-              <p class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+              <p v-if="section.layout1date" class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
               <div class="imglay1cont">
                 <img
+                v-if="section.mainImage"
                   class="imglay1 mbimgcol1lay11 p-[.5vw] pop-in pop-in-2"
                   :src="section.mainImage"
                   alt="Main Image"
@@ -111,16 +112,19 @@
               </div>
               <div class="laytextall mblaytextall pop-in pop-in-2">
                 <Richtext
+                v-if="section.column0Text"
                   class="p-[.5vw]"
                   :blocks="section.column0Text"
                 ></Richtext>
               </div>
               <div class="flex slideInD-in slideInD-in-2 w-[39vw] mbcollay1">
                 <Richtext
+                v-if="section.column1Text"
                   class="contactinnerpressslug p-[.5vw]"
                   :blocks="section.column1Text"
                 ></Richtext>
                 <Richtext
+                v-if="section.column2Text"
                   class="contactinnerpressslug p-[.5vw] mblcol2lay1"
                   :blocks="section.column2Text"
                 ></Richtext>
@@ -129,10 +133,12 @@
 
             <div class="column col-2 slideInY-in slideInY-in-2">
               <Richtext
+              v-if="section.column3Text"
                 class="contactinnerpressslug"
                 :blocks="section.column3Text"
               ></Richtext>
               <Richtext
+              v-if="section.column6Text"
                 class="nodes contactinnerpressslug lay1subtext mbcoll1in p-[.5vw]"
                 :blocks="section.column6Text"
               ></Richtext>
@@ -140,12 +146,13 @@
 
             <div class="column col-3 pt-[3vw] mblcol4lay1">
               <Richtext
+              v-if="section.column4Text"
                 class="contactinnerpressslug imtitle slideInY-in slideInY-in-2 underimglay1 p-[.5vw] w-[85%]"
                 :blocks="section.column4Text"
               ></Richtext>
               <div class="">
                 <img
-                  v-if="section.column4Image.asset.url"
+                v-if="section.column5Text"
                   class="imglay1 p-[.5vw] pop-in pop-in-4"
                   :src="section.column4Image.asset.url"
                   alt="Main Image"
@@ -158,11 +165,13 @@
                 IMAGE
               </p>
               <Richtext
+              v-if="section.column5Text"
                 class="imtitle2 underimglay1 slideInD-in slideInD-in-3 p-[.5vw]"
                 :blocks="section.column5Text"
               ></Richtext>
 
               <Richtext
+              v-if="section.column7Text"
                 class="nodes contactinnerpressslug mblay1col4 p-[.5vw]"
                 :blocks="section.column7Text"
               ></Richtext>
@@ -172,10 +181,12 @@
               <div class="flex">
                 <div class="flex nomb flex-col mbcoll1">
                   <Richtext
+                  v-if="section.column6Text"
                     class="contactinnerpressslug lay1subtext mbcoll1in p-[.5vw]"
                     :blocks="section.column6Text"
                   ></Richtext>
                   <Richtext
+                  v-if="section.column7Text"
                     class="contactinnerpressslug mblay1col4 p-[.5vw]"
                     :blocks="section.column7Text"
                   ></Richtext>
