@@ -33,8 +33,8 @@ const blockConfig = {
           },
         ],
       },
-      {
-        title: 'Internal Link',
+   {
+     title: 'Internal Link',
         name: 'internalLink',
         type: 'reference',
         to: [{type: 'project'}],
@@ -290,15 +290,15 @@ export default {
               title: 'Subtitle',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text0 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount0 = text0.split(/\s+/).length
-                  return wordCount0 <= 10 || 'Text cannot exceed 10 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text0 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount0 = text0.split(/\s+/).length
+                  //return wordCount0 <= 10 || 'Text cannot exceed 10 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout1,
             },
             {
@@ -306,15 +306,15 @@ export default {
               title: 'Layout 1, Column 1. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true // Skip validation if blocks is undefined
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 60 || 'Text cannot exceed 60 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true // Skip //validation if blocks is undefined
+                  //const text = blocks//
+                    //.map((block) => blo//ck.children.map((child) => child.text || '').join(''))
+                    //.join(' //')
+                  //const wordCo//unt = text.split(/\s+/).length
+                  //return wordC//ount <= 60 || 'Text cannot exceed 60 words.'
+               //// }),
               hidden: ({parent}) => !parent?.layout1,
             },
             {
@@ -322,15 +322,15 @@ export default {
               title: 'Layout 1, Column 2. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 60 || 'Text cannot exceed 60 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount = text.split(/\s+/).length
+                  //return wordCount <= 60 || 'Text cannot exceed 60 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout1,
             },
             {
@@ -338,15 +338,15 @@ export default {
               title: 'Layout 1, Column 3. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text3 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount3 = text3.split(/\s+/).length
-                  return wordCount3 <= 110 || 'Text cannot exceed 110 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text3 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount3 = text3.split(/\s+/).length
+                  //return wordCount3 <= 110 || 'Text cannot exceed 110 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout1,
             },
             {
@@ -354,15 +354,15 @@ export default {
               title: 'Layout 1, Column 4. Image Title',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 20 || 'Text cannot exceed 20 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 20 || 'Text cannot exceed 20 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout1,
             },
             {
@@ -380,15 +380,15 @@ export default {
               title: 'Layout 1, Column 5. Image description',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text5 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount5 = text5.split(/\s+/).length
-                  return wordCount5 <= 6 || 'Text cannot exceed 6 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text5 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount5 = text5.split(/\s+/).length
+                  //return wordCount5 <= 6 || 'Text cannot exceed 6 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout1,
             },
 
@@ -397,15 +397,24 @@ export default {
               title: 'Layout 1, Column 6. Subtitle',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text6 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount6 = text6.split(/\s+/).length
-                  return wordCount6 <= 10 || 'Text cannot exceed 10 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text6 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount6 = text6.split(/\s+/).length
+                  //return wordCount6 <= 10 || 'Text cannot exceed 10 words.'
+                //}),
+              hidden: ({parent}) => !parent?.layout1,
+            },
+            {
+              name: 'column7Image',
+              title: 'Layout 1, Column 6. Image',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables hotspot and crop functionality
+              },
               hidden: ({parent}) => !parent?.layout1,
             },
             {
@@ -413,15 +422,15 @@ export default {
               title: 'Layout 1, Column 6. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text7 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount7 = text7.split(/\s+/).length
-                  return wordCount7 <= 85 || 'Text cannot exceed 85 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text7 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount7 = text7.split(/\s+/).length
+                  //return wordCount7 <= 85 || 'Text cannot exceed 85 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout1,
             },
             {
@@ -429,15 +438,15 @@ export default {
               title: 'Layout 1 - Publication date',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text8 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount8 = text8.split(/\s+/).length
-                  return wordCount8 <= 3 || 'Text cannot exceed 3 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text8 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount8 = text8.split(/\s+/).length
+                  //return wordCount8 <= 3 || 'Text cannot exceed 3 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout1,
             },
 
@@ -565,15 +574,15 @@ export default {
               title: 'Subtitle',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 10 || 'Text cannot exceed 10 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount = text.split(/\s+/).length
+                  //return wordCount <= 10 || 'Text cannot exceed 10 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout2,
             },
             {
@@ -581,15 +590,15 @@ export default {
               title: 'Layout 2, Column 1. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 70 || 'Text cannot exceed 70 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount = text.split(/\s+/).length
+                  //return wordCount <= 70 || 'Text cannot exceed 70 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout2,
             },
             {
@@ -606,15 +615,15 @@ export default {
               title: 'Layout 2, Column 2. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 50 || 'Text cannot exceed 50 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount = text.split(/\s+/).length
+                  //return wordCount <= 50 || 'Text cannot exceed 50 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout2,
             },
             {
@@ -622,15 +631,15 @@ export default {
               title: 'Layout 2, Column 3. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 55 || 'Text cannot exceed 55 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount = text.split(/\s+/).length
+                  //return wordCount <= 55 || 'Text cannot exceed 55 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout2,
             },
             {
@@ -638,15 +647,15 @@ export default {
               title: 'Layout 2, Column 4. Image Title',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 20 || 'Text cannot exceed 20 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount = text.split(/\s+/).length
+                  //return wordCount <= 20 || 'Text cannot exceed 20 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout2,
             },
 
@@ -655,15 +664,15 @@ export default {
               title: 'Layout 2, Column 4. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 25 || 'Text cannot exceed 25 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount = text.split(/\s+/).length
+                  //return wordCount <= 25 || 'Text cannot exceed 25 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout2,
             },
 
@@ -682,15 +691,15 @@ export default {
               title: 'Layout 2, Subtitle',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 10 || 'Text cannot exceed 10 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount = text.split(/\s+/).length
+                  //return wordCount <= 10 || 'Text cannot exceed 10 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout2,
             },
             {
@@ -718,15 +727,15 @@ export default {
               title: 'Layout 2, Column 5. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount = text.split(/\s+/).length
-                  return wordCount <= 63 || 'Text cannot exceed 63 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount = text.split(/\s+/).length
+                  //return wordCount <= 63 || 'Text cannot exceed 63 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout2,
             },
             {
@@ -734,15 +743,15 @@ export default {
               title: 'Layout 2 - Publication date',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 3 || 'Text cannot exceed 3 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 3 || 'Text cannot exceed 3 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout2,
             },
 
@@ -870,15 +879,15 @@ export default {
               title: 'Layout 3, Column 1. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 103 || 'Text cannot exceed 103 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 103 || 'Text cannot exceed 103 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout3,
             },
 
@@ -887,15 +896,15 @@ export default {
               title: 'Layout 3, Column 2. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 44 || 'Text cannot exceed 44 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 44 || 'Text cannot exceed 44 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout3,
             },
             {
@@ -903,15 +912,15 @@ export default {
               title: 'Small Publication Subtitle',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 5 || 'Text cannot exceed 5 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 5 || 'Text cannot exceed 5 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout3,
             },
             {
@@ -928,15 +937,15 @@ export default {
               name: 'layout3Column22Text',
               title: 'Layout 3, Column 2. Bodycopy 2',
               type: 'array',
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 39 || 'Text cannot exceed 39 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 39 || 'Text cannot exceed 39 words.'
+                //}),
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
             },
@@ -954,15 +963,15 @@ export default {
               title: 'Layout 3, Column 3. Subtitle',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 10 || 'Text cannot exceed 10 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 10 || 'Text cannot exceed 10 words.'
+                //}),
 
               hidden: ({parent}) => !parent?.layout3,
             },
@@ -970,15 +979,15 @@ export default {
               name: 'layout3Column33Text',
               title: 'Layout 3, Column 3. Image description.',
               type: 'array',
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 5 || 'Text cannot exceed 5 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 5 || 'Text cannot exceed 5 words.'
+                //}),
 
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
@@ -988,15 +997,15 @@ export default {
               title: 'Layout 3, Column 4. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 25 || 'Text cannot exceed 25 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 25 || 'Text cannot exceed 25 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout3,
             },
             {
@@ -1004,30 +1013,30 @@ export default {
               title: 'Layout 3, Column 5. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 25 || 'Text cannot exceed 25 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 25 || 'Text cannot exceed 25 words.'
+                //}),
               hidden: ({parent}) => !parent?.layout3,
             },
             {
               name: 'layout3date',
               title: 'Layout 3 - Publication date',
               type: 'array',
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 3 || 'Text cannot exceed 3 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 3 || 'Text cannot exceed 3 words.'
+                //}),
               of: [blockConfig],
               hidden: ({parent}) => !parent?.layout3,
             },
@@ -1069,15 +1078,15 @@ export default {
             title: 'Layout 4, Large Text',
             type: 'array',
             of: [blockConfig],
-            validation: (Rule) =>
-              Rule.custom((blocks) => {
-                if (!blocks) return true
-                const text4 = blocks
-                  .map((block) => block.children.map((child) => child.text || '').join(''))
-                  .join(' ')
-                const wordCount4 = text4.split(/\s+/).length
-                return wordCount4 <= 103 || 'Text cannot exceed 103 words.'
-              }),
+            //validation: (Rule) =>
+              //Rule.custom((blocks) => {
+                //if (!blocks) return true
+                //const text4 = blocks
+                  //.map((block) => block.children.map((child) => child.text || '').join(''))
+                  //.join(' ')
+                //const wordCount4 = text4.split(/\s+/).length
+                //return wordCount4 <= 103 || 'Text cannot exceed 103 words.'
+              //}),
             hidden: ({parent}) => !parent?.layout4,
           },
 
@@ -1109,15 +1118,15 @@ export default {
               title: 'Layout 5, Column 1. Subtitle',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 10 || 'Text cannot exceed 10 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 10 || 'Text cannot exceed 10 words.'
+                //}),
 
               hidden: ({parent}) => !parent?.layout5,
             },
@@ -1146,15 +1155,15 @@ export default {
               title: 'Layout 5, Column 3. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                //}),
 
               hidden: ({parent}) => !parent?.layout5,
             },
@@ -1172,15 +1181,15 @@ export default {
               title: 'Layout 5, Column 4. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                //}),
 
               hidden: ({parent}) => !parent?.layout5,
             },
@@ -1189,15 +1198,15 @@ export default {
               title: 'Layout 5, Column 5. Bodycopy',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                //}),
 
               hidden: ({parent}) => !parent?.layout5,
             },
@@ -1215,15 +1224,15 @@ export default {
               title: 'Layout 5, Column 6. Subtitle',
               type: 'array',
               of: [blockConfig],
-              validation: (Rule) =>
-                Rule.custom((blocks) => {
-                  if (!blocks) return true
-                  const text4 = blocks
-                    .map((block) => block.children.map((child) => child.text || '').join(''))
-                    .join(' ')
-                  const wordCount4 = text4.split(/\s+/).length
-                  return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
-                }),
+              //validation: (Rule) =>
+                //Rule.custom((blocks) => {
+                  //if (!blocks) return true
+                  //const text4 = blocks
+                    //.map((block) => block.children.map((child) => child.text || '').join(''))
+                    //.join(' ')
+                  //const wordCount4 = text4.split(/\s+/).length
+                  //return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                //}),
 
               hidden: ({parent}) => !parent?.layout5,
             },
@@ -1255,15 +1264,15 @@ export default {
                 title: 'Layout 6, Column 3. Subtitle',
                 type: 'array',
                 of: [blockConfig],
-                validation: (Rule) =>
-                  Rule.custom((blocks) => {
-                    if (!blocks) return true
-                    const text4 = blocks
-                      .map((block) => block.children.map((child) => child.text || '').join(''))
-                      .join(' ')
-                    const wordCount4 = text4.split(/\s+/).length
-                    return wordCount4 <= 200 || 'Text cannot exceed 200 words.'
-                  }),
+                //validation: (Rule) =>
+                  //Rule.custom((blocks) => {
+                    //if (!blocks) return true
+                    //const text4 = blocks
+                      //.map((block) => block.children.map((child) => child.text || '').join(''))
+                      //.join(' ')
+                    //const wordCount4 = text4.split(/\s+/).length
+                    //return wordCount4 <= 200 || 'Text cannot exceed 200 words.'
+                  //}),
   
                 hidden: ({parent}) => !parent?.layout6,
               },
@@ -1299,15 +1308,15 @@ export default {
                 title: 'Layout 6, Column 4. Subtitle',
                 type: 'array',
                 of: [blockConfig],
-                validation: (Rule) =>
-                  Rule.custom((blocks) => {
-                    if (!blocks) return true
-                    const text4 = blocks
-                      .map((block) => block.children.map((child) => child.text || '').join(''))
-                      .join(' ')
-                    const wordCount4 = text4.split(/\s+/).length
-                    return wordCount4 <= 10 || 'Text cannot exceed 10 words.'
-                  }),
+                //validation: (Rule) =>
+                  //Rule.custom((blocks) => {
+                    //if (!blocks) return true
+                    //const text4 = blocks
+                      //.map((block) => block.children.map((child) => child.text || '').join(''))
+                      //.join(' ')
+                    //const wordCount4 = text4.split(/\s+/).length
+                    //return wordCount4 <= 10 || 'Text cannot exceed 10 words.'
+                  //}),
   
                 hidden: ({parent}) => !parent?.layout6,
               },
@@ -1317,15 +1326,15 @@ export default {
                 title: 'Layout 6, Column 4. Bodycopy',
                 type: 'array',
                 of: [blockConfig],
-                validation: (Rule) =>
-                  Rule.custom((blocks) => {
-                    if (!blocks) return true
-                    const text4 = blocks
-                      .map((block) => block.children.map((child) => child.text || '').join(''))
-                      .join(' ')
-                    const wordCount4 = text4.split(/\s+/).length
-                    return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
-                  }),
+                //validation: (Rule) =>
+                  //Rule.custom((blocks) => {
+                    //if (!blocks) return true
+                    //const text4 = blocks
+                      //.map((block) => block.children.map((child) => child.text || '').join(''))
+                      //.join(' ')
+                    //const wordCount4 = text4.split(/\s+/).length
+                    //return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                  //}),
   
                 hidden: ({parent}) => !parent?.layout6,
               },
@@ -1335,15 +1344,15 @@ export default {
                 title: 'Layout 6, Column 5. Bodycopy',
                 type: 'array',
                 of: [blockConfig],
-                validation: (Rule) =>
-                  Rule.custom((blocks) => {
-                    if (!blocks) return true
-                    const text4 = blocks
-                      .map((block) => block.children.map((child) => child.text || '').join(''))
-                      .join(' ')
-                    const wordCount4 = text4.split(/\s+/).length
-                    return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
-                  }),
+                //validation: (Rule) =>
+                  //Rule.custom((blocks) => {
+                    //if (!blocks) return true
+                    //const text4 = blocks
+                      //.map((block) => block.children.map((child) => child.text || '').join(''))
+                      //.join(' ')
+                    //const wordCount4 = text4.split(/\s+/).length
+                    //return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                  //}),
   
                 hidden: ({parent}) => !parent?.layout6,
               },
@@ -1352,15 +1361,15 @@ export default {
                 title: 'Layout 6, Column 6. Bodycopy',
                 type: 'array',
                 of: [blockConfig],
-                validation: (Rule) =>
-                  Rule.custom((blocks) => {
-                    if (!blocks) return true
-                    const text4 = blocks
-                      .map((block) => block.children.map((child) => child.text || '').join(''))
-                      .join(' ')
-                    const wordCount4 = text4.split(/\s+/).length
-                    return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
-                  }),
+                //validation: (Rule) =>
+                  //Rule.custom((blocks) => {
+                    //if (!blocks) return true
+                    //const text4 = blocks
+                      //.map((block) => block.children.map((child) => child.text || '').join(''))
+                      //.join(' ')
+                    //const wordCount4 = text4.split(/\s+/).length
+                    //return wordCount4 <= 500 || 'Text cannot exceed 500 words.'
+                  //}),
   
                 hidden: ({parent}) => !parent?.layout6,
               },

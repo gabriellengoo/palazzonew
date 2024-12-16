@@ -101,7 +101,7 @@
             </div>
 
             <div class="column col-1">
-              <p v-if="section.layout1date" class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+              <p v-if="section.location" class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
               <div class="imglay1cont">
                 <img
                 v-if="section.mainImage"
@@ -177,14 +177,20 @@
               ></Richtext>
             </div>
 
-            <div class="column col-4 slideInY-in slideInY-in-4 pt-[8vw]">
+            <div class="column col-4 slideInY-in slideInY-in-4 ">
               <div class="flex">
                 <div class="flex nomb flex-col mbcoll1">
-                  <Richtext
+                  <img
+                v-if="section.column7Image"
+                  class="lay3img p-[.5vw] "
+                  :src="section.column7Image.asset.url"
+                  alt="Main Image"
+                />
+                  <!-- <Richtext
                   v-if="section.column6Text"
                     class="contactinnerpressslug lay1subtext mbcoll1in p-[.5vw]"
                     :blocks="section.column6Text"
-                  ></Richtext>
+                  ></Richtext> -->
                   <Richtext
                   v-if="section.column7Text"
                     class="contactinnerpressslug mblay1col4 p-[.5vw]"
@@ -298,6 +304,7 @@
 
               <div class="column pt-[1.7vw] col-2 col-3 pop-in pop-in-2">
                 <img
+                v-if="section.layout2Image2"
                   class="pop-in pop-in-5 p-[.5vw]"
                   :src="section.layout2Image2"
                   alt="Main Image"
@@ -1018,6 +1025,7 @@ export default {
         column4Text,
         column5Text,
         column6Text,
+        column7Image  { asset-> { _id, url } },
         column7Text,
         layout1date,
         layout2Column1Text,
