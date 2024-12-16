@@ -52,7 +52,7 @@ export default {
   fields: [
     {
       name: 'seo',
-      title: 'Click here for SEO Metadata',
+      title: 'CLICK HERE FOR SEO METADATA',
       type: 'seo',  // Reusing the `seo` object schema
       // Collapsible section with initial state set to collapsed
       options: {
@@ -94,7 +94,7 @@ export default {
               description:
                 'Toggle to activate Layout 1. See here for reference: https://i.ibb.co/HT6GhvV/Whats-App-Image-2024-10-28-at-10-47-57.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout2 || parent?.layout3 || parent?.layout4 ||  parent?.layout5,
+              hidden: ({parent}) => parent?.layout2 || parent?.layout3 || parent?.layout4 ||  parent?.layout5 || parent?.layout6,
             },
             {
               name: 'layout2',
@@ -103,7 +103,7 @@ export default {
               description:
                 'Toggle to activate Layout 2. See here for reference: https://i.ibb.co/LCr8SzH/Whats-App-Image-2024-10-28-at-10-48-43.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout3 || parent?.layout4 ||  parent?.layout5,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout3 || parent?.layout4 ||  parent?.layout5 || parent?.layout6,
             },
             {
               name: 'layout3',
@@ -112,7 +112,7 @@ export default {
               description:
                 'Toggle to activate Layout 3. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout4 ||  parent?.layout5,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout4 ||  parent?.layout5 || parent?.layout6,
             },
             {
               name: 'layout4',
@@ -121,7 +121,7 @@ export default {
               description:
                 'Toggle to activate Layout 4. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout5,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout5 || parent?.layout6,
             },
 
             {
@@ -131,7 +131,7 @@ export default {
               description:
                 'Toggle to activate Layout 5. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout4,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout4 ||  parent?.layout6,
             },
 
             {
@@ -141,7 +141,7 @@ export default {
               description:
                 'Toggle to activate Layout 6. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
               initialValue: false,
-              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout5,
+              hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout4 ||  parent?.layout5,
             },
 
             // Common fields

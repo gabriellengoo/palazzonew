@@ -26,7 +26,7 @@ export default {
         // SEO fields for each image
         {
           name: 'seoImage',
-          title: 'Click here for SEO Image Metadata',
+          title: 'CLICK HERE FOR SEO KEYWORDS',
           type: 'seo', // Reusing the `seo` object schema
           // Collapsible section with initial state set to collapsed
           options: {

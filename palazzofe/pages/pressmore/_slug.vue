@@ -28,7 +28,7 @@
           (section.layout6 && currentLayoutIndex === index)
         "
       >
-        <Richtext
+        <!-- <Richtext
           v-if="section.layout1 === true"
           class="headingspages navmbno text-center text-4xl uppercase"
           :blocks="section.column0Text"
@@ -47,8 +47,34 @@
           v-if="section.layout4bigtext === true"
           class="headingspages navmbno text-center text-4xl uppercase"
           :blocks="section.layout4bigtext"
+        ></Richtext> -->
+        <p  v-if="section.layout1 === true"
+          class="headingspages navmbno text-center text-4xl uppercase">
+                  {{ section.location }}
+                </p>
+                <p  v-if="section.layout2 === true"
+          class="headingspages navmbno text-center text-4xl uppercase">
+                  {{ section.location }}
+                </p>
+                <p  v-if="section.layout3 === true"
+          class="headingspages navmbno text-center text-4xl uppercase">
+                  {{ section.location }}
+                </p>
+                <p  v-if="section.layout4 === true"
+          class="headingspages navmbno text-center text-4xl uppercase">
+                  {{ section.location }}
+                </p>
+              
+                <Richtext
+                v-if="section.layout5 === true"
+          class="headingspages navmbno text-center text-4xl uppercase"
+          :blocks="section.layout5subtitle"
         ></Richtext>
-     
+                <Richtext
+                v-if="section.layout6 === true"
+          class="headingspages navmbno text-center text-4xl uppercase"
+          :blocks="section.layout6subtitle"
+        ></Richtext>
       </div>
 
       <div class="navmbno">
@@ -105,7 +131,7 @@
               <div class="imglay1cont">
                 <img
                 v-if="section.mainImage"
-                  class="imglay1 mbimgcol1lay11 p-[.5vw] pop-in pop-in-2"
+                  class=" mbimgcol1lay11 p-[.5vw] pop-in pop-in-2 lay1imsize"
                   :src="section.mainImage"
                   alt="Main Image"
                 />
@@ -583,7 +609,7 @@
              
 
               <div
-                class="h-[100%]"
+                class="h-[100vh]"
               >
                <img
                     class="imglay4"
@@ -602,7 +628,12 @@
               </div>
 
              <div>
-              <div class="absolute logolay4 top-0 left-0 flex flex-col justify-start items-center h-full w-full">
+             
+             </div>
+         
+           <div class="absolute top-0 left-0 flex flex-col items-center h-full w-full">
+           
+            <div class=" logolay4 top-0 left-0 flex flex-col justify-start items-center pb-[5vw]  w-full">
                 <img
                     class="logoimglay4"
                     :src="section.layout4logo"
@@ -614,10 +645,6 @@
                   {{ section.location }}
                 </p>
               </div>
-             </div>
-         
-           <div class="absolute top-0 left-0 flex flex-col justify-center items-center h-full w-full">
-           
 
             <Richtext
           v-if="section.layout4bigtext"
@@ -635,40 +662,37 @@
              <div class="layout layout-5" v-if="section.layout5 === true">
            
 
-             
-         
-
               <div class="column layout-5-col-1 w-[30vw]  pop-in pop-in-4">
                 <img
-                    class="p-[.5vw]"
+                    class="pb-[1vw]"
                     :src="section.layout5imgsl"
                     v-if="section.layout5imgsl"
                     alt="Main Image"
                   />
 
-                <div class="flex">
+                <div class="flex mblay5col5pad">
                   <div class="flex flex-col">
                   <img
-                    class="p-[.5vw]"
+                    class="pb-[1vw]"
                     :src="section.layout5imgsp"
                     v-if="section.layout5imgsp"
                     alt="Main Image"
                   />
                   <Richtext
                   v-if="section.layout5subtitle"
-                  class="contactinnerpressslug lay1subtext uppercase mainmblay2 lay1text imgntextlay22 p-[.5vw] pop-in pop-in-3 pt-[0]"
+                  class="contactinnerpressslug lay1subtext uppercase mainmblay2 lay1text imgntextlay22 pt-[.5vw] pop-in pop-in-3 "
                   :blocks="section.layout5subtitle"
                 ></Richtext> 
               </div>
               <div class="flex flex-col">
                   <img
-                    class="p-[.5vw]"
+                    class="pb-[1vw]"
                     :src="section.layout5imgxsl"
                     v-if="section.layout5imgxsl"
                     alt="Main Image"
                   />
                   <img
-                    class="p-[.5vw]"
+                    class="pb-[1vw]"
                     :src="section.layout5imgxsp"
                     v-if="section.layout5imgxsp"
                     alt="Main Image"
@@ -691,22 +715,22 @@
               
               </div>
 
-              <div class="column col-3 col-4 col-5 pop-in pop-in-3  w-[50vw] ">
-                <div class="flex nomblay">
+              <div class="column col-3 col-4 col-5 pop-in pop-in-3  w-[50vw]  ">
+                <div class="flex nomblay ">
                   <img
-                    class="p-[.5vw]"
+                    class="pb-[.5vw] lay5lastimg w-[100%]"
                     :src="section.layout5imglarge"
                     v-if="section.layout5imglarge"
                     alt="Main Image"
                   />
                 </div>
 
-                <div class="flex mblay3col5pad">
+                <div class="flex mblay55col5pad">
                
                   <Richtext
-                    v-if="section.layout5col5sub"
+                    v-if="section.layout5col4body"
                     class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 pt-[0]"
-                    :blocks="section.layout5col5sub"
+                    :blocks="section.layout5col4body"
                   ></Richtext>
 
                   <Richtext
@@ -716,9 +740,9 @@
                   ></Richtext>
                 
 
-                  <div class="flex nomblay flex-col mbfullwidth w-[87vw]">
+                  <div class="flex lay5logocenter flex-col mbfullwidth ">
                     <img
-                    class="p-[.5vw]"
+                    class="pb-[.5vw] lay5imsize"
                     :src="section.layout5logo"
                     v-if="section.layout5logo"
                     alt="Main Image"
@@ -742,17 +766,20 @@
 
               <div class="column layout-5-col-1 w-[30vw]  pop-in pop-in-4">
                 <img
-                    class="p-[.5vw]"
+                    class=" w-[100%]"
                     :src="section.layout6image"
                     v-if="section.layout6image"
                     alt="Main Image"
                   />
-                  <img
-                    class="p-[.5vw]"
+                  <div class="imglay1cont">
+                    <img
+                    class="p-[.5vw] lay6imsize"
                     :src="section.layout6logo"
                     v-if="section.layout6logo"
                     alt="Main Image"
                   />
+                  </div>
+                 
 
               
               
@@ -763,17 +790,17 @@
                
                 <Richtext
                   v-if="section.layout6col3sub"
-                  class="contactinnerpressslug mbfullwidth p-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
+                  class="contactinnerpressslug mbfullwidth pb-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
                   :blocks="section.layout6col3sub"
                 ></Richtext> 
                 <img
-                    class="p-[.5vw]"
+                    class="pb-[1vw] w-[100%]"
                     :src="section.layout6Imagesp"
                     v-if="section.layout6Imagesp"
                     alt="Main Image"
                   />
                   <img
-                    class="p-[.5vw]"
+                    class=" w-[100%]"
                     :src="section.layout6Imagspe2"
                     v-if="section.layout6Imagspe2"
                     alt="Main Image"
@@ -781,27 +808,27 @@
               
               </div>
 
-              <div class="column col-3 col-4 col-5 pop-in pop-in-3  w-[50vw] ">
+              <div class="column col-3 pop-in pop-in-3  w-[50vw] ">
                 <div class="flex nomblay">
                   <img
-                    class="p-[.5vw]"
+                    class="pb-[.5vw] w-[100%] lay6lastimg"
                     :src="section.layout6Imagelarlan"
                     v-if="section.layout6Imagelarlan"
                     alt="Main Image"
                   />
                 </div>
 
-                <div class="flex mblay3col5pad">
+                <div class="flex mblay6col5pad">
                
-                <div class="flex flex-col">
+                <div class="flex flex-col lay5col-3">
                   <Richtext
                     v-if="section.layout6subtitle"
-                    class="contactinnerpressslug lay1subtext uppercase mainmblay2 lay1text imgntextlay22 p-[.5vw] pop-in pop-in-3 pt-[0]"
+                    class="contactinnerpressslug w-[15vw] pb-[1vw] lay1subtext uppercase mainmblay2 lay1text imgntextlay22  pop-in pop-in-3 pt-[0]"
                     :blocks="section.layout6subtitle"
                   ></Richtext>
                   <Richtext
                     v-if="section.layout6col4body"
-                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
+                    class="contactinnerpressslug pop-in pop-in-1  pt-[0]"
                     :blocks="section.layout6col4body"
                   ></Richtext>
                 </div>
@@ -809,16 +836,16 @@
                  
                 <Richtext
                     v-if="section.layout6col5body"
-                    class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
+                    class="contactinnerpressslug  w-[15vw] col-4 pop-in pop-in-1  pt-[0]"
                     :blocks="section.layout6col5body"
                   ></Richtext>
 
-                  <div class="flex nomblay flex-col mbfullwidth w-[87vw]">
+                  <div class="flex nomblay flex-col col-5 mbfullwidth w-[87vw]">
                  
                   
                     <Richtext
                       v-if="section.layout6col6body"
-                      class="contactinnerpressslug pop-in pop-in-1 p-[.5vw] pt-[0]"
+                      class="contactinnerpressslug w-[15vw] pop-in pop-in-1  pt-[0]"
                       :blocks="section.layout6col6body"
                     ></Richtext>
                   </div>
@@ -1279,7 +1306,67 @@ export default {
 
 <style scoped>
 
+.mblay6col5pad{
+  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    gap: 1rem;
+    width: 100%;
+}
 
+.mblay5col5pad{
+  display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    gap: 1vw;
+    width: 100%;
+}
+
+.mblay55col5pad{
+  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    gap: 1rem;
+    width: 100%;
+}
+
+.lay1imsize{
+  height: 30vh;
+  height: auto;
+  max-height: 30vh;
+}
+
+.lay6imsize{
+  height: 30vh;
+  height: auto;
+  max-height: 15vh;
+}
+
+.lay5imsize{
+  height: 10vh;
+  height: auto;
+  max-height: 10vh;
+}
+
+.lay5logocenter{
+  display: flex;
+  align-items: center;
+}
+
+.lay6lastimg{
+  height: 60vh;
+    object-fit: cover;
+}
+
+.lay5lastimg{
+  height: 50vh;
+    object-fit: cover;
+}
+
+.imglay1cont{
+  display: flex;
+    justify-content: center;
+}
 
 /*lay4*/
 .imglay4{
@@ -1295,14 +1382,14 @@ export default {
 
 .logoimglay4{
   height: auto;
-    width: 16vw;
+    width: 9vw;
 }
 
 .biglay4{
-  font-size: 6vw;
+  font-size: 6.5vw;
   color: white;
-    line-height: 7vw;
-    width: 65vw;
+    line-height: 7.5vw;
+    width: 70vw;
     font-family: "RomainHeadlineTrial";
 }
 
@@ -1810,6 +1897,7 @@ justify-content: center;
   width: 98.4vw;
   width: 100%;
   height: 100%;
+  margin-bottom: 5vw;
 }
 
 .layout-1 .col-1 {
@@ -1969,7 +2057,18 @@ justify-content: center;
 
 .layout-5 {
   grid-template-columns: repeat(6, 1fr) !important;
+  /* gap: .2vw !important; */
 }
+
+.layout-5 .col-3{
+  grid-column: span 3;
+}
+
+.lay5col-3{
+  grid-column: span 1;
+}
+
+
 
 .deskl2flex {
   display: flex;

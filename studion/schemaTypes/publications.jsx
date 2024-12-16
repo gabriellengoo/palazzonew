@@ -14,7 +14,7 @@ export default {
   fields: [
     {
       name: 'seo',
-      title: 'Click here for SEO Metadata',
+      title: 'CLICK HERE FOR SEO METADATA',
       type: 'seo',  // Reusing the `seo` object schema
       // Collapsible section with initial state set to collapsed
       options: {

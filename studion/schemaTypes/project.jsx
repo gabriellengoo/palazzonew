@@ -13,7 +13,7 @@ export default {
   fields: [
     {
       name: 'seo',
-      title: 'Click here for SEO Metadata',
+      title: 'CLICK HERE FOR SEO METADATA',
       type: 'seo',  // Reusing the `seo` object schema
       // Collapsible section with initial state set to collapsed
       options: {
@@ -92,7 +92,7 @@ export default {
                   fields: [
                     {
                       name: 'seoImage',
-                      title: 'Click here for SEO Image Metadata',
+                      title: 'CLICK HERE FOR SEO KEYWORDS',
                       type: 'seoImage',  // Reusing the `seo` object schema
                       // Collapsible section with initial state set to collapsed
                       options: {
