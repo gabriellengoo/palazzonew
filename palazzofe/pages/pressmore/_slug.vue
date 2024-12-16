@@ -145,6 +145,7 @@
               ></Richtext>
               <div class="">
                 <img
+                  v-if="section.column4Image.asset.url"
                   class="imglay1 p-[.5vw] pop-in pop-in-4"
                   :src="section.column4Image.asset.url"
                   alt="Main Image"
