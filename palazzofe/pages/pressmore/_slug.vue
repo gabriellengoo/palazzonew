@@ -178,7 +178,7 @@
               ></Richtext>
               <div class="">
                 <img
-                v-if="section.column5Text"
+                v-if="section.column4Text"
                   class="imglay1 p-[.5vw] pop-in pop-in-4"
                   :src="section.column4Image.asset.url"
                   alt="Main Image"
@@ -2013,6 +2013,8 @@ justify-content: center;
   transform: rotateZ(90deg);
   transform: rotateZ(270deg);
   z-index: 1000;
+  top: 4vw;
+    right: -0.7vw;
 }
 
 .flowerimgcon {
