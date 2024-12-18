@@ -10,8 +10,17 @@
           ></div>
         </a>
       </h1>
+      <p class=" text-[#00000000] headingspages navmbno text-center text-4xl uppercase" v-if="project">
+        {{ project.title }}
+      </p>
       <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
         {{ project.title }}
+      </p>
+      <p class=" text-[#00000000] headingspages navmbno text-center text-4xl uppercase" v-if="project">
+        {{ project.title }}
+      </p>
+      <p class="headingspages navmbno text-center text-4xl uppercase" v-if="project">
+        {{ project.stitle }}
       </p>
       <!-- <p class="headingspages navmbno text-center text-4xl uppercase">
         {{ project.title }}
@@ -48,7 +57,7 @@
           class="headingspages navmbno text-center text-4xl uppercase"
           :blocks="section.layout4bigtext"
         ></Richtext> -->
-        <p  v-if="section.layout1 === true"
+        <!-- <p  v-if="section.layout1 === true"
           class="headingspages navmbno text-center text-4xl uppercase">
                   {{ section.location }}
                 </p>
@@ -74,7 +83,7 @@
                 v-if="section.layout6 === true"
           class="headingspages navmbno text-center text-4xl uppercase"
           :blocks="section.layout6subtitle"
-        ></Richtext>
+        ></Richtext> -->
       </div>
 
       <div class="navmbno">
@@ -1002,6 +1011,7 @@ export default {
   async asyncData({ params, $sanity }) {
     const query = groq`*[_type == "pressindi" && slug.current == "${params.slug}"] { ...,
         title,
+        stitle,
      
         "archiveSlug": archive->slug.current,
 
@@ -1350,7 +1360,7 @@ export default {
 
 .lay5logocenter{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .lay6lastimg{
@@ -2013,8 +2023,12 @@ justify-content: center;
   transform: rotateZ(90deg);
   transform: rotateZ(270deg);
   z-index: 1000;
+  top: 3.9vw;
+    right: -1.3vw;
   top: 4vw;
     right: -0.7vw;
+    top: 3.9vw;
+    right: -2.5vw;
 }
 
 .flowerimgcon {
