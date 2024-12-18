@@ -66,6 +66,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'stitle',
+      title: 'Top Second Title',
+      type: 'string',
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
