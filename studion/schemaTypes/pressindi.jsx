@@ -124,7 +124,7 @@ export default {
               title: 'Layout 4',
               type: 'boolean',
               description:
-                'Toggle to activate Layout 4. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
+                'Toggle to activate Layout 4. See here for reference: https://i.ibb.co/LdtVrQG/Whats-App-Image-2024-12-09-at-09-21-11.jpg',
               initialValue: false,
               hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout5 || parent?.layout6,
             },
@@ -134,7 +134,7 @@ export default {
               title: 'Layout 5',
               type: 'boolean',
               description:
-                'Toggle to activate Layout 5. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
+                'Toggle to activate Layout 5. See here for reference: https://i.ibb.co/whGbrny/Whats-App-Image-2024-12-09-at-09-21-12.jpg',
               initialValue: false,
               hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout4 ||  parent?.layout6,
             },
@@ -144,7 +144,7 @@ export default {
               title: 'Layout 6',
               type: 'boolean',
               description:
-                'Toggle to activate Layout 6. See here for reference: https://i.ibb.co/YXg1PdT/Whats-App-Image-2024-10-28-at-10-48-48.jpg',
+                'Toggle to activate Layout 6. See here for reference: https://i.ibb.co/f0Kj9JH/Whats-App-Image-2024-12-16-at-14-44-05.jpg',
               initialValue: false,
               hidden: ({parent}) => parent?.layout1 || parent?.layout2 || parent?.layout3 ||  parent?.layout4 ||  parent?.layout5,
             },

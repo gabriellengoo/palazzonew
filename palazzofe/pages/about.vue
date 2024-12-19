@@ -51,8 +51,8 @@
         <div class="content">
           <div class="nomb covercont pointer-events-none">
             <!-- <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" /> -->
-            <img class="coverabout nomb" src="/abnew.png" />
-          </div>
+            <img class="coverabout nomb" src="/abneww.png" />
+          </div> 
         </div>
 
         <div class="content nodes">
@@ -60,9 +60,9 @@
             <img class="rightimg" src="/aboutrighta.png" />
           </div>
           <div class=" anicol pointer-events-none">
-            <!-- <img class="rightimg fade-img" src="/aboutimg3.png" />
-            <img class="rightimg fade-img" src="/aboutimg2.png" /> -->
             <img class="rightimg fade-img" src="/j.png" />
+            <img class="rightimg fade-img" src="/I.png" />
+            <!-- <img class="rightimg fade-img" src="/j.png" /> -->
           </div>
         </div>
        
@@ -82,9 +82,9 @@
             <img class="rightimg" src="/aboutrighta.png" />
           </div>
           <div class="nomb anicol pointer-events-none">
-            <!-- <img class="rightimg fade-img" src="/aboutimg3.png" />
-            <img class="rightimg fade-img" src="/aboutimg2.png" /> -->
             <img class="rightimg fade-img" src="/j.png" />
+            <img class="rightimg fade-img" src="/I.png" />
+            <!-- <img class="rightimg fade-img" src="/j.png" /> -->
           </div>
         </div>
         <div class="email ml-[5vw] richcont text-left">
@@ -390,17 +390,17 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  /* opacity: 0; */
-  /* animation: fadeLoop 6s infinite; */
-  /* transition: opacity 1s ease-in-out; */
+  opacity: 0;
+  animation: fadeLoop 6s infinite;
+  transition: opacity 1s ease-in-out;
 }
 
 .fade-img:nth-child(1) {
-  /* animation-delay: 0s; */
+  animation-delay: 0s;
 }
 
 .fade-img:nth-child(2) {
-  /* animation-delay: 3s; */
+  animation-delay: 3s;
 }
 
 @keyframes fadeLoop {

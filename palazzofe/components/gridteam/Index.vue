@@ -243,7 +243,7 @@ export default {
 }
 
 .linkateam {
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   transition-duration: 1s;
 }
 

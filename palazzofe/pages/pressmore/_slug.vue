@@ -368,11 +368,11 @@
                       class="contactinnerpressslug nodes p-[.5vw] pt-0 "
                     >
                    
-                      <Richtext
+                      <!-- <Richtext
                       v-if="section.layout2Column44Text"
                       class="contactinnerpressslug nodes p-[.5vw] imgntextlay22 aboveflower colmb"
                       :blocks="section.layout2Column44Text"
-                    ></Richtext>
+                    ></Richtext> -->
                       <Richtext
                   v-if="section.layout2Column5Text"
                   class="contactinnerpressslug  p-[.5vw] pb-[30vw]"
@@ -639,7 +639,7 @@
              
              </div>
          
-           <div class="absolute top-0 left-0 flex flex-col items-center h-full w-full">
+           <div class="absolute mbtextarea top-0 left-0 flex flex-col items-center h-full w-full">
            
             <div class=" logolay4 top-0 left-0 flex flex-col justify-start items-center pb-[5vw]  w-full">
                 <img
@@ -670,7 +670,7 @@
              <div class="layout layout-5" v-if="section.layout5 === true">
            
 
-              <div class="column layout-5-col-1 w-[30vw]  pop-in pop-in-4">
+              <div class="column layout-5-col-1 w-[30vw] lastcollay5  pop-in pop-in-4">
                 <img
                     class="pb-[1vw] w-[100%]"
                     :src="section.layout5imgsl"
@@ -717,13 +717,13 @@
                
                 <Richtext
                   v-if="section.layout5col3body"
-                  class="contactinnerpressslug"
+                  class="contactinnerpressslug mblay5col3body"
                   :blocks="section.layout5col3body"
                 ></Richtext> 
               
               </div>
 
-              <div class="column col-3 col-4 col-5 pop-in pop-in-3  w-[50vw]  ">
+              <div class="column col-3 col-4 col-5 pop-in pop-in-3 lastcollay5 w-[50vw]  ">
                 <div class="flex nomblay ">
                   <img
                     class="pb-[.5vw] lay5lastimg w-[100%]"
@@ -772,7 +772,7 @@
            
 
 
-              <div class="column layout-5-col-1 w-[30vw]  pop-in pop-in-4">
+              <div class="column layout-5-col-1 w-[30vw] mblay6colsize  pop-in pop-in-4">
                 <img
                     class=" w-[100%]"
                     :src="section.layout6image"
@@ -794,7 +794,7 @@
               </div>
            
 
-              <div class="column col-2 pop-in pop-in-2  w-[15vw] ">
+              <div class="column col-2 pop-in pop-in-2  w-[15vw] mblay6colsize ">
                
                 <Richtext
                   v-if="section.layout6col3sub"
@@ -817,7 +817,7 @@
               </div>
 
               <div class="column col-3 pop-in pop-in-3  w-[50vw] ">
-                <div class="flex nomblay">
+                <div class="flex lay6lastimg ">
                   <img
                     class="pb-[.5vw] w-[100%] lay6lastimg"
                     :src="section.layout6Imagelarlan"
@@ -828,7 +828,7 @@
 
                 <div class="flex mblay6col5pad">
                
-                <div class="flex flex-col lay5col-3">
+                <div class="flex flex-col lay5col-3 mblay6colsize">
                   <Richtext
                     v-if="section.layout6subtitle"
                     class="contactinnerpressslug w-[15vw] pb-[1vw] lay5subtext uppercase mainmblay2 lay1text imgntextlay22  pop-in pop-in-3 pt-[0]"
@@ -844,16 +844,16 @@
                  
                 <Richtext
                     v-if="section.layout6col5body"
-                    class="contactinnerpressslug  w-[15vw] col-4 pop-in pop-in-1  pt-[0]"
+                    class="contactinnerpressslug mblay6colsize w-[15vw] mblay6endtext col-4 pop-in pop-in-1  pt-[0]"
                     :blocks="section.layout6col5body"
                   ></Richtext>
 
-                  <div class="flex nomblay flex-col col-5 mbfullwidth w-[87vw]">
+                  <div class="flex mblay6colsize  flex-col col-5 mbfullwidth w-[87vw]">
                  
                   
                     <Richtext
                       v-if="section.layout6col6body"
-                      class="contactinnerpressslug w-[15vw] pop-in pop-in-1  pt-[0]"
+                      class="contactinnerpressslug mblay6colsize w-[15vw] pop-in pop-in-1  pt-[0]"
                       :blocks="section.layout6col6body"
                     ></Richtext>
                   </div>
@@ -1387,6 +1387,12 @@ export default {
 .lay4size{
   height: 100%;
     width: 100%;
+
+    height: 100vh;
+    width: 100vw;
+    top: 0vh;
+    left: 0vw;
+    position: absolute;
 }
 
 .logoimglay4{
@@ -2099,6 +2105,10 @@ justify-content: center;
 
 /* Additional responsive styling */
 @media (max-width: 768px) {
+  .mbtextarea{
+    justify-content: center;
+  }
+
   .next-button {
   padding: 1rem;
   /* border: none;
@@ -2106,7 +2116,7 @@ justify-content: center;
   cursor: pointer;
   transition: background-color 0.3s;
   position: fixed;
-  bottom: 0.5vh;
+  bottom: 3.5vh;
   /* width: 100%; */
   width: 95%;
   text-transform: uppercase;
@@ -2114,8 +2124,66 @@ justify-content: center;
   font-family: "NHaas" !important;
   transition: color 0.8s ease;
 }
-  .lay2flsizedesk {
-  }
+
+.biglay4{
+  font-size: 9.5vw;
+  line-height: 10.5vw;
+    color: white;
+    width: 100vw;
+    font-family: "RomainHeadlineTrial";
+}
+
+.mblay6col5pad {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    gap: 1rem;
+    width: 100%;
+}
+
+.mblay6colsize{
+  width: 44vw;
+}
+
+.lay5subtext {
+    font-size: 4.4vw;
+    /* font-weight: bolder; */
+    font-family: 'NHaas';
+}
+
+.layout-5{
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.lay6lastimg{
+  width: 94vw;
+}
+
+.lastcollay5{
+  width: 94vw;
+}
+
+.mblay6endtext{
+  padding-top: 1vw !important;
+  padding-bottom: 0 !important;
+}
+
+.logolay4 p{
+  font-size: 5.7vw;
+}
+
+.logoimglay4{
+  width: 30vw;
+}
+
+.mblay5col3body{
+  width: 94vw;
+}
+
+.layout .layout-5 {
+  display: flex;
+}
+
 
   .lay3img {
     width: 41vw;

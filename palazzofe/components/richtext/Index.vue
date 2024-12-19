@@ -85,6 +85,10 @@ export default {
   /* line-height: normal; */
 }
 
+.mblay5col3body div p{
+  width: 94vw;
+}
+
 .laytextall p{
   font-size: 1.5vw;
   /* font-weight: bolder; */
