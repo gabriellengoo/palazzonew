@@ -136,16 +136,16 @@
             </div>
 
             <div class="column col-1">
-              <p v-if="section.location" class="toplink p-[.5vw] pb-[2vw]">{{ section.location }}</p>
+              <p v-if="section.location" class="toplink p-[.5vw] pb-[1vw]">{{ section.location }}</p>
               <div class="imglay1cont">
                 <img
                 v-if="section.mainImage"
-                  class=" mbimgcol1lay11 p-[.5vw] pop-in pop-in-2 lay1imsize"
+                  class=" mbimgcol1lay11 p-[.5vw] pb-[0] pt-[0] pop-in pop-in-2 lay1imsize"
                   :src="section.mainImage"
                   alt="Main Image"
                 />
               </div>
-              <div class="laytextall mblaytextall pop-in pop-in-2">
+              <div class="laytextall mblaytextall pop-in pt-[0] pb-[.5vw] pop-in-2">
                 <Richtext
                 v-if="section.column0Text"
                   class="p-[.5vw]"
@@ -616,7 +616,6 @@
             <div class="layout-4 w-[100%] h-[100%] pop-in pop-in-1" v-if="section.layout4 === true">
            
              
-
               <div
                 class="h-[100vh]"
               >
@@ -673,7 +672,7 @@
 
               <div class="column layout-5-col-1 w-[30vw]  pop-in pop-in-4">
                 <img
-                    class="pb-[1vw]"
+                    class="pb-[1vw] w-[100%]"
                     :src="section.layout5imgsl"
                     v-if="section.layout5imgsl"
                     alt="Main Image"
@@ -832,7 +831,7 @@
                 <div class="flex flex-col lay5col-3">
                   <Richtext
                     v-if="section.layout6subtitle"
-                    class="contactinnerpressslug w-[15vw] pb-[1vw] lay1subtext uppercase mainmblay2 lay1text imgntextlay22  pop-in pop-in-3 pt-[0]"
+                    class="contactinnerpressslug w-[15vw] pb-[1vw] lay5subtext uppercase mainmblay2 lay1text imgntextlay22  pop-in pop-in-3 pt-[0]"
                     :blocks="section.layout6subtitle"
                   ></Richtext>
                   <Richtext
@@ -1392,14 +1391,20 @@ export default {
 
 .logoimglay4{
   height: auto;
-    width: 9vw;
+    width: 11vw;
+}
+
+.lay5subtext{
+  font-size: 1.4vw;
+    /* font-weight: bolder; */
+    font-family: 'NHaas';
 }
 
 .biglay4{
-  font-size: 6.5vw;
-  color: white;
-    line-height: 7.5vw;
-    width: 70vw;
+  font-size: 7.5vw;
+    color: white;
+    line-height: 8.5vw;
+    width: 75vw;
     font-family: "RomainHeadlineTrial";
 }
 
@@ -1413,7 +1418,7 @@ export default {
 .logolay4 p{
   text-decoration: underline;
   font-family: "GT-Sectra-Book-Italic";
-  font-size: 1.6vw;
+  font-size: 1.7vw;
 }
 
 .lay4bw{
@@ -1820,19 +1825,17 @@ justify-content: center;
 
 .next-button {
   padding: 1rem;
-  padding: .5vw;
-  /* border: none;
-  border-radius: 5px; */
-  cursor: pointer;
-  transition: background-color 0.3s;
-  position: fixed;
-  bottom: 0.5vh;
-  /* width: 100%; */
-  width: 95%;
-  text-transform: uppercase;
-  font-family: "GT-Sectra-Book";
-  font-family: "NHaas" !important;
-  transition: color 0.8s ease;
+    padding: .5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 2.5vh;
+    /* width: 100%; */
+    width: 97%;
+    text-transform: uppercase;
+    font-family: "GT-Sectra-Book";
+    font-family: "NHaas" !important;
+    transition: color 0.8s ease;
 }
 
 .next-button:hover {
@@ -2037,7 +2040,7 @@ justify-content: center;
 }
 
 .floimg {
-  width: 10vw;
+  width: 12vw;
   padding: 0;
 }
 
@@ -2046,7 +2049,7 @@ justify-content: center;
 }
 
 .belowflower {
-  padding-top: 0;
+  padding-top: 2vw;
 }
 
 .layout-2 .col-1,
