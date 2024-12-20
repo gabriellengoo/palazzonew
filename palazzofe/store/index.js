@@ -240,6 +240,10 @@ _key, double, spacer,
 const gridQuery5 = groq`*[_type == "team" ]
 {  titlec,
   grid7[] {
+    seo {
+      title,
+      keywords
+    },
 _key, double, spacer, 
 "video" : {"id" : video.asset->playbackId, 
 "aspect" : video.asset->data.aspect_ratio , 
@@ -286,6 +290,10 @@ _key, double, spacer,
 const gridQuery3 = groq`*[_type == "publications" ] 
 {
   grid4[] {
+    seo {
+      title,
+      keywords
+    },
 _key, double, spacer, 
 "video" : {"id" : video.asset->playbackId, 
 "aspect" : video.asset->data.aspect_ratio , 
@@ -320,6 +328,10 @@ _key, double, spacer,
      },
 
   grid5[] {
+    seo {
+      title,
+      keywords
+    },
 _key, double, spacer, 
 "video" : {"id" : video.asset->playbackId, 
 "aspect" : video.asset->data.aspect_ratio , 
