@@ -82,7 +82,7 @@
             <img class="rightimg" src="/aboutrighta.png" />
           </div>
           <div class="nomb anicol pointer-events-none">
-            <img class="rightimg fade-img" src="/j.png" />
+            <img class="rightimg fade-img" src="/J.png" />
             <img class="rightimg fade-img" src="/I.png" />
             <!-- <img class="rightimg fade-img" src="/j.png" /> -->
           </div>
