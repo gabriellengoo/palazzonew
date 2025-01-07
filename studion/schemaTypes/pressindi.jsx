@@ -1378,6 +1378,20 @@ export default {
   
                 hidden: ({parent}) => !parent?.layout6,
               },
+
+              {
+                name: 'layout6col6bodymb',
+                title: 'Click here for Layout6 Mobile Bodycopy',
+                type: 'array',
+                of: [blockConfig],
+               
+                // Collapsible section with initial state set to collapsed
+                options: {
+                  collapsible: true,
+                  collapsed: true,  // Set to `true` to keep it collapsed by default
+                },
+                hidden: ({parent}) => !parent?.layout6,
+              },
         
        
 

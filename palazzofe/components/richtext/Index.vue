@@ -213,6 +213,10 @@ div p{
   width: 100%;
 }
 
+.lay1subtextmbv {
+  font-size: 4.5vw;
+  font-weight: bolder;
+}
 
   .laytextall p{
     font-size: 5.5vw;
