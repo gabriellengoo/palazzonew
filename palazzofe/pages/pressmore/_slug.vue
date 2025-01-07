@@ -652,13 +652,40 @@
              
               </div>
 
+
+              
+
              <div>
              
              </div>
          
-           <div class="absolute mbtextarea top-0 left-0 flex flex-col items-center h-full w-full">
+
+             <div class="deskno absolute pt-[15vw] top-0 left-0 flex flex-col items-center h-full w-full">
            
-            <div class=" logolay4 top-0 left-0 flex flex-col justify-start items-center pb-[5vw]  w-full">
+           <div class=" logolay4 logolay4mb top-0 left-0 flex flex-col justify-start items-center pb-[5vw]  w-full">
+               <img
+                   class="logoimglay4mb"
+                   :src="section.layout4logo"
+                   v-if="section.layout4logo"
+                   alt="Main Image"
+                 />
+                
+                 <p class=" p-[.5vw] pb-[2vw]">
+                 {{ section.location }}
+               </p>
+             </div>
+
+           <Richtext
+         v-if="section.layout4bigtext"
+         class=" text-center biglay4 biglay4mb uppercase"
+         :blocks="section.layout4bigtext"
+       ></Richtext>
+
+          </div>
+
+           <div class="mbnof absolute mbtextarea top-0 left-0 flex flex-col items-center h-full w-full">
+           
+            <div class=" logolay4  top-0 left-0 flex flex-col justify-start items-center pb-[5vw]  w-full">
                 <img
                     class="logoimglay4"
                     :src="section.layout4logo"
@@ -789,7 +816,7 @@
            
 
 
-              <div class="column layout-5-col-1 w-[30vw] mblay6colsize  pop-in pop-in-4">
+              <div class="mbno column layout-5-col-1 w-[30vw] mblay6colsize  pop-in pop-in-4">
                 <img
                     class=" w-[100%]"
                     :src="section.layout6image"
@@ -804,15 +831,64 @@
                     alt="Main Image"
                   />
                   </div>
-                 
-
-              
-              
               </div>
+
+
+              <div class="deskno column layout-5-col-1 w-[30vw] mblay6colsize  pop-in pop-in-4">
+               
+               <Richtext
+                  v-if="section.layout6subtitle"
+                  class="contactinnerpressslug w-[15vw] lay5subtext uppercase mainmblay2 lay1text imgntextlay22  pop-in pop-in-3 pt-[0]"
+                  :blocks="section.layout6subtitle"
+                ></Richtext>
+                 <div class="imglay1cont">
+                   <img
+                   class="p-[.5vw] lay6imsize"
+                   :src="section.layout6logo"
+                   v-if="section.layout6logo"
+                   alt="Main Image"
+                 />
+                 </div>
+                 <Richtext
+                 v-if="section.layout6col3sub"
+                 class="contactinnerpressslug mbfullwidth pb-[.5vw] pt-[3vw] imtitle2 colmb pop-in pop-in-4"
+                 :blocks="section.layout6col3sub"
+               ></Richtext> 
+                 <!-- <img
+                   class=" w-[100%]"
+                   :src="section.layout6image"
+                   v-if="section.layout6image"
+                   alt="Main Image"
+                 /> -->
+             </div>
            
 
-              <div class="column col-2 pop-in pop-in-2  w-[15vw] mblay6colsize ">
+             <!-- <div class="column deskno col-3 pop-in pop-in-2  w-[15vw] mblay6colsize ">
+           
+                  <Richtext
+                    v-if="section.layout6col4body"
+                    class="contactinnerpressslug pop-in pop-in-1  pt-[0]"
+                    :blocks="section.layout6col4body"
+                  ></Richtext>
+            </div> -->
+
+              <div class="column deskno col-2 pop-in pop-in-2  w-[15vw] mblay6colsize ">
                
+                <img
+                    class=" w-[100%]"
+                    :src="section.layout6image"
+                    v-if="section.layout6image"
+                    alt="Main Image"
+                  /> 
+
+               
+            
+             
+             </div>
+
+              <div class="mbno column col-2 pop-in pop-in-2  w-[15vw] mblay6colsize ">
+               
+                
                 <Richtext
                   v-if="section.layout6col3sub"
                   class="contactinnerpressslug mbfullwidth pb-[.5vw] pt-0 imtitle2 colmb pop-in pop-in-4"
@@ -833,7 +909,67 @@
               
               </div>
 
-              <div class="column col-3 pop-in pop-in-3  w-[50vw] ">
+
+              <div class="column deskno col-3 pop-in pop-in-3   ">
+
+                <div class="flex mblay6col5padone pt-[3vw]">
+               
+               <div class="flex flex-col lay5col-3 ">
+                
+                 <Richtext
+                   v-if="section.layout6col4body"
+                   class="contactinnerpressslug pop-in pop-in-1  pt-[0]"
+                   :blocks="section.layout6col4body"
+                 ></Richtext>
+               </div>
+
+                
+               <Richtext
+                   v-if="section.layout6col5body"
+                   class="contactinnerpressslug  mblay6endtext col-4 pop-in pop-in-1  pt-[0]"
+                   :blocks="section.layout6col5body"
+                 ></Richtext>
+
+                 <div class="flex   flex-col col-5 mbfullwidth w-[87vw]">
+                
+                 
+                   <Richtext
+                     v-if="section.layout6col6body"
+                     class="contactinnerpressslug  pop-in pop-in-1  pt-[0]"
+                     :blocks="section.layout6col6body"
+                   ></Richtext>
+                 </div>
+               </div>
+
+               <div class="flex justify-between">
+                <img
+                   class="pb-[1vw] w-[46%]"
+                   :src="section.layout6Imagesp"
+                   v-if="section.layout6Imagesp"
+                   alt="Main Image"
+                 />
+                 <img
+                   class=" w-[46%]"
+                   :src="section.layout6Imagspe2"
+                   v-if="section.layout6Imagspe2"
+                   alt="Main Image"
+                 />
+               </div>
+
+                <div class="flex pt-[2vw] ">
+                  <img
+                    class="pb-[.5vw] w-[100%] "
+                    :src="section.layout6Imagelarlan"
+                    v-if="section.layout6Imagelarlan"
+                    alt="Main Image"
+                  />
+                </div>
+
+                
+                
+              </div>
+
+              <div class="mbno column col-3 pop-in pop-in-3  w-[50vw] ">
                 <div class="flex lay6lastimg ">
                   <img
                     class="pb-[.5vw] w-[100%] lay6lastimg"
@@ -843,6 +979,7 @@
                   />
                 </div>
 
+                
                 <div class="flex mblay6col5pad">
                
                 <div class="flex flex-col lay5col-3 mblay6colsize">
@@ -2128,10 +2265,26 @@ justify-content: center;
   display: inherit;
 }
 
+.mbnof{
+  display: flex;
+}
+
+.logolay4 {
+    padding-top: 6vw;
+}
+
+.logoimglay4 {
+    width: 10vw;
+}
+
 /* Additional responsive styling */
 @media (max-width: 768px) {
   .mbtextarea{
     justify-content: center;
+  }
+
+  .mbnof{
+display: none;
   }
 
   .next-button {
@@ -2163,6 +2316,14 @@ justify-content: center;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     gap: 1rem;
+    width: 100%;
+}
+
+.mblay6col5padone {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0rem;
+    gap: 0rem;
     width: 100%;
 }
 
@@ -2285,6 +2446,18 @@ justify-content: center;
   .deskno{
     display: inherit;
   }
+
+  .logoimglay4mb{
+    width: 20vw;
+  }
+
+  .logolay4mb p {
+        font-size: 4.7vw;
+    }
+
+    .biglay4mb {
+      padding-top: 24vh;
+    }
 
   .imgntextlay22 {
     width: 97%;
