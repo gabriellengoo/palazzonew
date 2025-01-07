@@ -969,7 +969,7 @@
                 
               </div>
 
-              <div class="mbno column col-3 pop-in pop-in-3  w-[50vw] ">
+              <div class="mbnob column col-3 pop-in pop-in-3  w-[50vw] ">
                 <div class="flex lay6lastimg ">
                   <img
                     class="pb-[.5vw] w-[100%] lay6lastimg"
@@ -2269,6 +2269,10 @@ justify-content: center;
   display: flex;
 }
 
+.mbnob{
+  display: block;
+}
+
 .logolay4 {
     padding-top: 6vw;
 }
@@ -2287,6 +2291,10 @@ justify-content: center;
 display: none;
   }
 
+  .mbnob{
+    display: none;
+  }
+  
   .next-button {
   padding: 1rem;
   /* border: none;
