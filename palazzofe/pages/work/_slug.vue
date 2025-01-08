@@ -209,10 +209,11 @@
         <!-- </button> -->
      
         <iframe
-          :src="project.locationlink"
-          frameborder="0"
-          class=""
-        ></iframe>
+      :src="`${project.locationlink}?autoplay=1&fullscreen=1`"
+      frameborder="0"
+      class="w-full h-full"
+      allowfullscreen
+    ></iframe>
       </div>
     </div>
                 </div>
