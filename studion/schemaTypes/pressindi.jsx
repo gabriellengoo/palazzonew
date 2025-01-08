@@ -455,6 +455,34 @@ export default {
               hidden: ({parent}) => !parent?.layout1,
             },
 
+
+            {
+              name: 'layout11bodymb',
+              title: 'Click here for Layout1, Left Column. Mobile Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+             
+              fieldset: 'mobileBodyCopyL11', // Associate with a collapsible fieldset
+              hidden: ({ parent }) => !parent?.layout1,
+            },
+            {
+              name: 'layout12bodymb',
+              title: 'Click here for  Layout1, Right Column. Mobile Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+             
+              fieldset: 'mobileBodyCopyL12', // Associate with a collapsible fieldset
+              hidden: ({ parent }) => !parent?.layout1,
+            },
+            {
+              name: 'layout13bodymb',
+              title: 'Click here for Layout1, Bottom Column. Mobile Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+             
+              fieldset: 'mobileBodyCopyL13', // Associate with a collapsible fieldset
+              hidden: ({ parent }) => !parent?.layout1,
+            },
             // Layout 2 Fields (Visible only if Layout 2 is active)
 
             {
@@ -758,6 +786,42 @@ export default {
                   //return wordCount4 <= 3 || 'Text cannot exceed 3 words.'
                 //}),
               hidden: ({parent}) => !parent?.layout2,
+            },
+            {
+              name: 'layout21bodymb',
+              title: 'Click here for Layout2, Left Column. Mobile Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+             
+              fieldset: 'mobileBodyCopyL21', // Associate with a collapsible fieldset
+              hidden: ({ parent }) => !parent?.layout2,
+            },
+            {
+              name: 'layout22bodymb',
+              title: 'Click here for Layout2, Right Column. Mobile Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+             
+              fieldset: 'mobileBodyCopyL22', // Associate with a collapsible fieldset
+              hidden: ({ parent }) => !parent?.layout2,
+            },
+            {
+              name: 'layout23bodymb',
+              title: 'Click here for Layout2, Right Below Image Bottom Column. Mobile Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+             
+              fieldset: 'mobileBodyCopyL23', // Associate with a collapsible fieldset
+              hidden: ({ parent }) => !parent?.layout2,
+            },
+            {
+              name: 'layout24bodymb',
+              title: 'Click here for Layout2, Right Bottom Column. Mobile Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+             
+              fieldset: 'mobileBodyCopyL24', // Associate with a collapsible fieldset
+              hidden: ({ parent }) => !parent?.layout2,
             },
 
             // Layout 3 Fields (Visible only if Layout 3 is active)
@@ -1241,6 +1305,24 @@ export default {
 
               hidden: ({parent}) => !parent?.layout5,
             },
+            {
+              name: 'layout5tbodymb',
+              title: 'Click here for Layout5, Top Column. Mobile Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+             
+              fieldset: 'mobileBodyCopyL5t', // Associate with a collapsible fieldset
+              hidden: ({ parent }) => !parent?.layout5,
+            },
+            {
+              name: 'layout5bbodymb',
+              title: 'Click here for Layout5, Bottom Column. Mobile Bodycopy',
+              type: 'array',
+              of: [blockConfig],
+             
+              fieldset: 'mobileBodyCopyL5b', // Associate with a collapsible fieldset
+              hidden: ({ parent }) => !parent?.layout5,
+            },
 
 
 
@@ -1385,18 +1467,103 @@ export default {
                 type: 'array',
                 of: [blockConfig],
                
-                // Collapsible section with initial state set to collapsed
-                options: {
-                  collapsible: true,
-                  collapsed: true,  // Set to `true` to keep it collapsed by default
-                },
-                hidden: ({parent}) => !parent?.layout6,
+                fieldset: 'mobileBodyCopyL6', // Associate with a collapsible fieldset
+                hidden: ({ parent }) => !parent?.layout6,
               },
         
+              
        
 
           ],
 
+          fieldsets: [
+            // lay1
+            {
+              name: 'mobileBodyCopyL11',
+              title: 'Click here for Layout1, Left Column. Mobile Bodycopy',
+              options: {
+                collapsible: true,
+                collapsed: true, // Default state
+              },
+            },
+            {
+              name: 'mobileBodyCopyL12',
+              title: 'Click here for  Layout1, Right Column. Mobile Bodycopy',
+              options: {
+                collapsible: true,
+                collapsed: true, // Default state
+              },
+            },
+            {
+              name: 'mobileBodyCopyL13',
+              title: 'Click here for Layout1, Bottom Column. Mobile Bodycopy',
+              options: {
+                collapsible: true,
+                collapsed: true, // Default state
+              },
+            },
+            // lay2
+            {
+              name: 'mobileBodyCopyL21',
+              title: 'Click here for Layout2, Left Column. Mobile Bodycopy',
+              options: {
+                collapsible: true,
+                collapsed: true, // Default state
+              },
+            },
+            {
+              name: 'mobileBodyCopyL22',
+              title: 'Click here for Layout2, Right Column. Mobile Bodycopy',
+              options: {
+                collapsible: true,
+                collapsed: true, // Default state
+              },
+            },
+            {
+              name: 'mobileBodyCopyL23',
+              title: 'Click here for Layout2, Right Below Image Bottom Column. Mobile Bodycopy',
+              options: {
+                collapsible: true,
+                collapsed: true, // Default state
+              },
+            },
+            {
+              name: 'mobileBodyCopyL24',
+              title: 'Click here for Layout2, Right Bottom Column. Mobile Bodycopy',
+              options: {
+                collapsible: true,
+                collapsed: true, // Default state
+              },
+            },
+          // lay5
+              {
+                name: 'mobileBodyCopyL5t',
+                title: 'Click here for Layout5, Top Column. Mobile Bodycopy',
+                options: {
+                  collapsible: true,
+                  collapsed: true, // Default state
+                },
+              },
+              {
+                name: 'mobileBodyCopyL5b',
+                title: 'Click here for  Layout5, Bottom Column. Mobile Bodycopy',
+                options: {
+                  collapsible: true,
+                  collapsed: true, // Default state
+                },
+              },
+             
+         // lay6
+            {
+              name: 'mobileBodyCopyL6',
+              title: 'Click here for Layout6 Mobile Bodycopy',
+              options: {
+                collapsible: true,
+                collapsed: true, // Default state
+              },
+            },
+            
+          ],
 
 
          
