@@ -972,7 +972,7 @@
               </div>
 
               <div
-                class="desknob column layout-5-col-1 w-[30vw] pop-in pop-in-4"
+                class="desknob column layout-5-col-1 w-[34vw] pop-in pop-in-4"
               >
                 <Richtext
                   v-if="section.layout6subtitle"
@@ -2390,13 +2390,13 @@ display: block;
 object-fit: contain;
 height: auto;
         width: auto;
-        padding-top: 6vw;
-        padding-bottom: 6vw;
+        padding-top: 4vw;
+        padding-bottom: 4vw;
   }
 
   .layout-5mbv{
     padding-top: 4vh !important;
-    /* column-gap: 3.5vw; */
+    column-gap: 3.5vw !important;
   }
 
   .lay3imgmbv {
