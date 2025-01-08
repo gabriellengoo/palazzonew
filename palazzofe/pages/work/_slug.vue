@@ -172,20 +172,47 @@
                       :blocks="project.content"
                     ></Richtext>
                   </div>
-                  <div
-                    v-if="project.location"
-                    class="w-full flex items-center text-center flex-col pt-10 md:pt-[6vh] locationtext"
-                  >
-                    <p class="loctext">Location,</p>
-                    <div class="flex flex-col normal-case italic loctextlink">
-                      <a
-                        :href="project.locationlink"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >{{ project.location }}</a
-                      >
-                    </div>
-                  </div>
+                    <!-- Location Link -->
+    <div v-if="project.location" class="w-full flex items-center text-center flex-col md:pt-5 locationtext">
+      <p class="loctext">Location,</p>
+      <div class="flex flex-col normal-case italic loctextlink">
+        <a href="javascript:void(0)" @click="openModal">{{ project.location }}</a>
+      </div>
+    </div>
+
+    <!-- Draggable Iframe Modal -->
+    <div
+      v-if="isModalOpen"
+      class="modal-container fixed inset-0 z-50 flex items-center justify-center"
+    >
+      <!-- Draggable Modal -->
+      <div
+        class="modal-content bg-white shadow-lg rounded-lg overflow-hidden relative"
+        ref="modal"
+        @mousedown="startDragging"
+        @mouseup="stopDragging"
+        @mousemove="drag"
+        :style="{ top: `${position.top}px`, left: `${position.left}px` }"
+      >
+        <button
+          class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
+          @click="closeModal"
+        >
+          Close
+          <!-- <div
+     
+     ref="lottieAnimation"
+     class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+   ></div> -->
+        </button>
+     
+        <iframe
+          :src="project.locationlink"
+          frameborder="0"
+          class="w-[600px] h-[400px]"
+        ></iframe>
+      </div>
+    </div>
                 </div>
               </div>
             </div>
@@ -441,6 +468,10 @@ export default {
       back: false,
       searchQuery: "", // Initialize search query
       lottieInstance: null,
+      isModalOpen: false,
+      isDragging: false,
+      position: { top: 100, left: 100 }, // Initial position of the modal
+      offset: { x: 0, y: 0 },
     };
   },
   computed: {
@@ -534,6 +565,31 @@ export default {
     next();
   },
   methods: {
+    openModal() {
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
+    },
+    startDragging(event) {
+      this.isDragging = true;
+      this.offset = {
+        x: event.clientX - event.target.closest(".modal-content").offsetLeft,
+        y: event.clientY - event.target.closest(".modal-content").offsetTop,
+      };
+    },
+    stopDragging() {
+      this.isDragging = false;
+    },
+    drag(event) {
+      if (this.isDragging) {
+        this.position = {
+          top: event.clientY - this.offset.y,
+          left: event.clientX - this.offset.x,
+        };
+      }
+    },
+  
     getVimeoEmbedUrl(vimeoUrl) {
       // Extract Vimeo video ID from the URL
       const videoId = vimeoUrl.split("/").pop();
@@ -771,6 +827,76 @@ export default {
 </script>
 
 <style scoped>
+
+/* .location-container a {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+} */
+
+.iframe-modal {
+  position: fixed;
+  width: 50%;
+  height: 50%;
+ /* background: #f1f1f1; */
+ background-image: url("./static/Navbar.jpg");
+  border: 2px solid #000;
+  z-index: 100000000 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  /* background: #f1f1f1; */
+  background-image: url("./static/Navbar.jpg");
+  cursor: grab;
+}
+
+.drag-handle {
+  cursor: grab;
+  font-weight: bold;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.iframe-content {
+  width: 100%;
+  height: calc(100% - 40px); /* Adjust height to account for header */
+}
+
+.modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  cursor: grab;
+}
+
+.modal-content {
+  position: absolute;
+  cursor: grab;
+  z-index: 1000;
+   /* background: #f1f1f1; */
+   background-image: url("./static/Navbar.jpg");
+}
+
+.modal-content:active {
+  cursor: grabbing;
+  z-index: 1000;
+}
+
+
 
 .last{
 cursor: crosshair;
