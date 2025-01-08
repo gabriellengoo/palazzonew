@@ -174,7 +174,8 @@
                   </div>
                     <!-- Location Link -->
     <div v-if="project.location" class="w-full flex items-center text-center flex-col md:pt-5 locationtext">
-      <p class="loctext">Location,</p>
+      <!-- <p class="loctext">Location,</p> -->
+      <p class="loctext">Film,</p>
       <div class="flex flex-col normal-case italic loctextlink">
         <a href="javascript:void(0)" @click="openModal">{{ project.location }}</a>
       </div>
@@ -187,24 +188,25 @@
     >
       <!-- Draggable Modal -->
       <div
-        class="modal-content bg-white shadow-lg rounded-lg overflow-hidden relative"
+        class="modal-content bg-white  overflow-hidden relative"
         ref="modal"
         @mousedown="startDragging"
         @mouseup="stopDragging"
         @mousemove="drag"
         :style="{ top: `${position.top}px`, left: `${position.left}px` }"
       >
-        <button
+        <!-- <button
           class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
           @click="closeModal"
-        >
-          Close
-          <!-- <div
-     
-     ref="lottieAnimation"
-     class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
-   ></div> -->
+        > -->
+          <!-- Close -->
+          <button
+          class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
+          @click="closeModal"
+        > 
+          <SvgClose class=""/>
         </button>
+        <!-- </button> -->
      
         <iframe
           :src="project.locationlink"
@@ -880,20 +882,58 @@ export default {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  cursor: grab;
+  /* cursor: grab; */
+  pointer-events: none;
 }
 
 .modal-content {
   position: absolute;
-  cursor: grab;
-  z-index: 1000;
-   /* background: #f1f1f1; */
-   background-image: url("./static/Navbar.jpg");
+    cursor: grab;
+    z-index: 1000;
+    height: 45vh;
+    display: flex;
+    width: 50vw;
+    /* background: #f1f1f1; */
+    background-image: url("./static/background.jpg");
+    align-items: flex-end;
+    pointer-events: auto;
+
+
+    height: 25vw;
+    display: flex;
+    width: 40vw;
+    border: 0.5px solid black;
+    /* position: absolute;
+    cursor: grab;
+    z-index: 1000;
+    height: 45vh;
+    display: flex;
+    width: max-content;
+    background-image: url("./static/background.jpg");
+    align-items: flex-end;
+    pointer-events: auto;
+    width: 50%;
+    height: 55%;
+    position: relative; */
 }
 
 .modal-content iframe {
-  height: 50vh;
+  height: 40vh;
   width: 50vw;
+
+  object-fit: cover;
+  width: 100%;
+  height: 90%;
+    border: none;
+  /* height: 40vh;
+    width: 50vw;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0; */
 }
 
 .modal-content:active {
@@ -1284,6 +1324,8 @@ a {
   height: 100vh;
   /* height: max-content; */
   overflow-y: hidden;
+  z-index: 1;
+  position: initial;
 }
 
 .right-content {
@@ -1292,6 +1334,8 @@ a {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  z-index: 0;
+  position: initial;
 }
 
 .copyrtexd {
