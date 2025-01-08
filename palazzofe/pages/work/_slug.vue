@@ -209,7 +209,7 @@
         <iframe
           :src="project.locationlink"
           frameborder="0"
-          class="w-[600px] h-[400px]"
+          class=""
         ></iframe>
       </div>
     </div>
@@ -869,7 +869,7 @@ export default {
 
 .iframe-content {
   width: 100%;
-  height: calc(100% - 40px); /* Adjust height to account for header */
+  height: calc(90vh - 40px); /* Adjust height to account for header */
 }
 
 .modal-container {
@@ -889,6 +889,11 @@ export default {
   z-index: 1000;
    /* background: #f1f1f1; */
    background-image: url("./static/Navbar.jpg");
+}
+
+.modal-content iframe {
+  height: 50vh;
+  width: 50vw;
 }
 
 .modal-content:active {

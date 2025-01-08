@@ -953,7 +953,7 @@
             <!-- Layout 6 -->
             <div class="layout layout-5 layout-5mbv" v-if="section.layout6 === true">
               <div
-                class="mbno column layout-5-col-1 w-[30vw] mblay6colsize pop-in pop-in-4"
+                class="mbnob column layout-5-col-1 w-[30vw] mblay6colsize pop-in pop-in-4"
               >
                 <img
                   class="w-[100%]"
@@ -972,7 +972,7 @@
               </div>
 
               <div
-                class="deskno column layout-5-col-1 w-[30vw] pop-in pop-in-4"
+                class="desknob column layout-5-col-1 w-[30vw] pop-in pop-in-4"
               >
                 <Richtext
                   v-if="section.layout6subtitle"
@@ -981,7 +981,7 @@
                 ></Richtext>
                 <div class="imglay1cont">
                   <img
-                    class="p-[.5vw] lay6imsizemb"
+                    class="p-[.5vw]  lay6imsizembv"
                     :src="section.layout6logo"
                     v-if="section.layout6logo"
                     alt="Main Image"
@@ -1007,7 +1007,7 @@
               </div>
 
               <div
-                class="mbno column col-2 pop-in pop-in-2 w-[15vw] mblay6colsize"
+                class="mbnob column col-2 pop-in pop-in-2 w-[15vw] mblay6colsize"
               >
                 <Richtext
                   v-if="section.layout6col3sub"
@@ -2377,10 +2377,26 @@ opacity: 0;
   width: auto;
 }
 
+.desknob{
+display: none;
+}
 /* Additional responsive styling */
 @media (max-width: 768px) {
+  .desknob{
+display: block;
+  }
+
+  .lay6imsizembv{
+object-fit: contain;
+height: auto;
+        width: auto;
+        padding-top: 6vw;
+        padding-bottom: 6vw;
+  }
+
   .layout-5mbv{
     padding-top: 4vh !important;
+    /* column-gap: 3.5vw; */
   }
 
   .lay3imgmbv {
