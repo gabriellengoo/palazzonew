@@ -2592,7 +2592,7 @@ height: auto;
   }
 
   .logoimglay4mb {
-    width: 20vw;
+    width: 24vw;
   }
 
   .logolay4mb p {
