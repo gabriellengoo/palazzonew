@@ -136,11 +136,19 @@
               class="nodesdots absolute dotsmb top-0 right-0 p-2 text-xs block"
             >
               <span class="dots" v-if="project.slider">
-                <span
+                <!-- <span
                   v-for="n in 3"
                   :key="n"
                   class="dot"
                   :class="{ 'active-dot': index % 3 === n - 1 }"
+                >
+                  •
+                </span> -->
+                <span
+                  v-for="n in 3"
+                  :key="n"
+                  class="dot"
+                  :class="{ 'active-dot': index % 4 === n - 0 }"
                 >
                   •
                 </span>

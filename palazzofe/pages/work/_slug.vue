@@ -121,7 +121,7 @@
                   v-for="n in 3"
                   :key="n"
                   class="dot"
-                  :class="{ 'active-dot': index % 3 === n - 1 }"
+                  :class="{ 'active-dot': index % 4 === n - 0 }"
                 >
                   •
                 </span>
@@ -831,6 +831,9 @@ export default {
 </script>
 
 <style scoped>
+/* .dots span:last-child{
+display: none;
+} */
 
 /* .location-container a {
   cursor: pointer;
