@@ -31,6 +31,30 @@ export default defineConfig({
         S.list()
           .title('Content')
           .items([
+
+            S.divider(),
+            S.listItem()
+              .icon(HomeIcon)
+              .title('Home')
+              .child(
+                S.documentTypeList('home')
+                  .title('Home')
+                  .child((documentId) =>
+                    S.document()
+                      .documentId(documentId)
+                      .schemaType('home')
+                      .views([
+                        S.view.form(), // Default editing form
+                        S.view
+                          .component(Iframe)
+                          .options({
+                            url: (doc) => `https://palazzonew.vercel.app`,
+                          })
+                          .title('Preview'),
+                      ]),
+                  ),
+              ),
+
             S.divider(),
             S.listItem()
               .icon(InfoOutlineIcon)
@@ -76,7 +100,7 @@ export default defineConfig({
               ),
             S.divider(),
             S.listItem()
-              .icon(HomeIcon)
+              .icon(SparklesIcon)
               .title('Weddings')
               // .icon: AddIcon,
               .child(

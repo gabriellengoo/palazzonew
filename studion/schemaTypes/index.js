@@ -3,7 +3,7 @@
 
 
 
-// import home from './home';
+import home from './home';
 import grid from "./components/grid";
 import grid2 from "./components/grid2";
 import grid3 from "./components/grid3";
@@ -33,5 +33,5 @@ import seoImage from "./components/seoImage"
 
 // home,
 
-export const schemaTypes = [seoImage, blockContent,grid,grid2,grid3,work,project,events,projectevents, publications, pressindi, grid4, grid5, services, contact, about, awards, grid6, team, grid7, gridpress, seo ]
+export const schemaTypes = [seoImage, blockContent,grid,grid2,grid3,home,work,project,events,projectevents, publications, pressindi, grid4, grid5, services, contact, about, awards, grid6, team, grid7, gridpress, seo ]
 

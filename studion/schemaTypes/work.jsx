@@ -1,10 +1,10 @@
-import {HomeIcon} from '@sanity/icons'
+import {SparklesIcon} from '@sanity/icons'
 
 export default {
   name: 'works',
   title: 'Weddings Overview',
   type: 'document',
-  icon: HomeIcon,
+  icon: SparklesIcon,
   fields: [
     {
       name: 'seo',

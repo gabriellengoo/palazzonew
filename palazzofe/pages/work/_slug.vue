@@ -411,7 +411,7 @@ import lottie from "lottie-web";
 export default {
   components: {
     TransitionComponent,
-  },
+  }, 
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "project" && slug.current == "${params.slug}"] {
     ...,
