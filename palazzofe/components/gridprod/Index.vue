@@ -60,10 +60,10 @@
                         class="textsum block text-center uppercase w-full pt-[1vw]"
                       >
                         <span class="textsumf">{{
-                          item.title || "Employee Name"
+                          item.title || "Name"
                         }}</span>
                         <span class="fontsubpub capitalize pt-[.5vw]">{{
-                          item.month || "Job Position"
+                          item.month || "Position"
                         }}</span>
                       </figcaption>
                     </div>
@@ -90,10 +90,10 @@
                       <div class="footerstuff">
                         <div class="textnewardesk teambio ttdesk animate-hover">
                           <p v-if="item" class="uppercase">
-                            {{ item.title || "Employee Name" }}
+                            {{ item.title || "Name" }}
                           </p>
                           <p v-if="item" class="yeartdesk mb-6 capitalize">
-                            {{ item.year || "Job Title" }}
+                            {{ item.year || "Title" }}
                           </p>
                         </div>
 

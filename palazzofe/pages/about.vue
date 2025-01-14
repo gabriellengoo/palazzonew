@@ -73,10 +73,7 @@
         </div>
        
 
-         <!-- Awards Button -->
-    <div class="butcon">
-      <button @click="toggleAwards" class="bttn">Awards</button>
-    </div>
+ 
        <!-- <div class="butcon">
         <button
           class="bttn"
@@ -113,6 +110,14 @@
     </div>
 
   </div>
+
+
+          <!-- Awards Button -->
+          <div class="butcon">
+            <button class="bttn" @click="toggleAwards">
+          {{ isAwardsOpen ? 'About' : 'Awards' }}
+        </button>
+    </div>
 
 
     <!-- Awards Content -->
@@ -333,7 +338,7 @@ export default {
     position: fixed;
     bottom: 2.5vh;
     /* width: 100%; */
-    width: 48%;
+    width: 98%;
     text-transform: uppercase;
     font-family: "GT-Sectra-Book";
     font-family: "NHaas" !important;
@@ -598,7 +603,29 @@ a:hover {
 
 @media only screen and (max-width: 768px) {
 
-
+  .bttn {
+    position: absolute;
+    border-top: 0.05vw solid black;
+    border: 0.05vw solid black;
+    border-radius: 0%;
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    padding: 2.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 2.5vh;
+    /* width: 100%; */
+    width: 98%;
+    text-transform: uppercase;
+    font-family: "GT-Sectra-Book";
+    font-family: "NHaas" !important;
+    transition: color 0.8s ease;
+    font-size: 3vw;
+}
 
 .richcont {
   position: absolute;
@@ -628,7 +655,7 @@ a:hover {
     width: 27vw;
     /* overflow: hidden; */
     pointer-events: none;
-    z-index: 100;
+    z-index: 20;
     padding-left: .3vw;
     height: -moz-max-content;
     height: max-content;
@@ -636,7 +663,7 @@ a:hover {
 
 .anicol{
         position: absolute;
-        z-index: 99;
+        z-index: 20;
         left: 30vw;
         top: 53vw;
         width: 39%;
