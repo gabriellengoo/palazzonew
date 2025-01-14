@@ -19,7 +19,7 @@
    
       </h1>
     </div>
-
+ 
     <div class="bgmobile relative min-h-screen flex">
       <!-- Left Scrollable Content -->
       <div class="left-content flex-1 overflow-y-scroll p-8">

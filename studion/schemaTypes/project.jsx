@@ -212,7 +212,7 @@ export default {
                         // media = newDayImage;
                         media = (
                           <img
-                            src="/static/pink.png"
+                            src="/static/white.png"
                             style={{
                               objectFit: 'cover',
                               height: '100%',

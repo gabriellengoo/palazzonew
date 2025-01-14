@@ -610,7 +610,7 @@ a .inner-image {
   height: 20vw;
   display: flex;
   width: 20vw;
-  background-image: url("./static/CirclePink.png");
+  background-image: url("./static/whitecircle.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
