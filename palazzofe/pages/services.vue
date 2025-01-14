@@ -273,50 +273,395 @@
 </template>
 
 <script>
-import sanityClient from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
+import HeaderComponent from "@/components/layout/Header.vue";
+import { groq } from "@nuxtjs/sanity";
+import { mapMutations, mapState } from "vuex";
+import lottie from "lottie-web";
 
 export default {
   name: "IndexPage",
+
+  components: {
+    HeaderComponent,
+  },
+
   data() {
     return {
-      galleryImages: [], // To store resolved image URLs
+      isMobile: false,
+      hoveredSection: null,
+      hasHash: false,
+      activeSection: null, // Default is null for mobile and will be set to 'design' for desktop in mounted()
+      activeContent: null,
+      lottieJSON: {
+        nm: "Main Scene",
+        ddd: 0,
+        h: 24,
+        w: 24,
+        meta: { g: "@lottiefiles/creator 1.30.0" },
+        layers: [
+          {
+            ty: 4,
+            nm: "plus Outlines",
+            sr: 1,
+            st: 0,
+            op: 20,
+            ip: 0,
+            hd: false,
+            ddd: 0,
+            bm: 0,
+            hasMask: false,
+            ao: 0,
+            ks: {
+              a: { a: 0, k: [12, 12, 0] },
+              s: {
+                a: 1,
+                k: [
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [90, 90, 100],
+                    t: 0,
+                  },
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [100, 100, 100],
+                    t: 4,
+                  },
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [100, 100, 100],
+                    t: 16,
+                  },
+                  { s: [90, 90, 100], t: 19 },
+                ],
+              },
+              sk: { a: 0, k: 0 },
+              p: { a: 0, k: [12, 12, 0] },
+              r: {
+                a: 1,
+                k: [
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [0],
+                    t: 0,
+                  },
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [0],
+                    t: 4,
+                  },
+                  {
+                    o: { x: 0.333, y: 0 },
+                    i: { x: 0.667, y: 1 },
+                    s: [90],
+                    t: 16,
+                  },
+                  { s: [90], t: 19 },
+                ],
+              },
+              sa: { a: 0, k: 0 },
+              o: { a: 0, k: 100 },
+            },
+            shapes: [
+              {
+                ty: "gr",
+                bm: 0,
+                hd: false,
+                mn: "ADBE Vector Group",
+                nm: "Group 1",
+                ix: 1,
+                cix: 2,
+                np: 2,
+                it: [
+                  {
+                    ty: "sh",
+                    bm: 0,
+                    hd: false,
+                    mn: "ADBE Vector Shape - Group",
+                    nm: "Path 1",
+                    ix: 1,
+                    d: 1,
+                    ks: {
+                      a: 0,
+                      k: {
+                        c: true,
+                        i: [
+                          [0, -0.423],
+                          [0.423, 0],
+                          [0, 0],
+                          [0, 0],
+                          [0.425, 0],
+                          [0, 0.423],
+                          [0, 0],
+                          [0, 0],
+                          [0, 0.425],
+                          [-0.425, 0],
+                          [0, 0],
+                          [0, 0],
+                          [-0.425, 0],
+                          [0, -0.425],
+                          [0, 0],
+                          [0, 0],
+                        ],
+                        o: [
+                          [0, 0.423],
+                          [0, 0],
+                          [0, 0],
+                          [0, 0.425],
+                          [-0.425, 0],
+                          [0, 0],
+                          [0, 0],
+                          [-0.425, 0],
+                          [0, -0.423],
+                          [0, 0],
+                          [0, 0],
+                          [0, -0.425],
+                          [0.425, 0],
+                          [0, 0],
+                          [0, 0],
+                          [0.423, 0],
+                        ],
+                        v: [
+                          [10, 0],
+                          [9.231, 0.769],
+                          [0.769, 0.769],
+                          [0.769, 9.231],
+                          [0, 10],
+                          [-0.769, 9.231],
+                          [-0.769, 0.769],
+                          [-9.231, 0.769],
+                          [-10, 0],
+                          [-9.231, -0.769],
+                          [-0.769, -0.769],
+                          [-0.769, -9.231],
+                          [0, -10],
+                          [0.769, -9.231],
+                          [0.769, -0.769],
+                          [9.231, -0.769],
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    ty: "fl",
+                    bm: 0,
+                    hd: false,
+                    mn: "ADBE Vector Graphic - Fill",
+                    nm: "Fill 1",
+                    c: { a: 0, k: [0, 0, 0] },
+                    r: 1,
+                    o: { a: 0, k: 100 },
+                  },
+                  {
+                    ty: "tr",
+                    a: { a: 0, k: [0, 0] },
+                    s: { a: 0, k: [100, 100] },
+                    sk: { a: 0, k: 0 },
+                    p: { a: 0, k: [12, 12] },
+                    r: { a: 0, k: 0 },
+                    sa: { a: 0, k: 0 },
+                    o: { a: 0, k: 100 },
+                  },
+                ],
+              },
+            ],
+            ind: 1,
+          },
+        ],
+        v: "5.7.0",
+        fr: 20,
+        op: 20,
+        ip: 0,
+        assets: [],
+      },
     };
   },
-  methods: {
-    async fetchGalleryImages() {
-      // Fetch gallery data from Sanity
-      const query = `*[_type == "home"][0].gallery`;
-      try {
-        const data = await this.sanityClient.fetch(query);
 
-        // Resolve image URLs
-        this.galleryImages = data.map((item) => {
-          const imageUrl = this.imageBuilder.image(item.asset._ref).url();
-          return { url: imageUrl, key: item._key };
-        });
-      } catch (error) {
-        console.error("Error fetching gallery images:", error);
-      }
-    },
-  },
   mounted() {
-    // Initialize Sanity client
-    this.sanityClient = sanityClient({
-      projectId: '0i1cdi6a',
-      dataset: 'production',
-       useCdn: true,
+    // Log the container reference to check if it's correctly set
+    console.log("Lottie Container Reference:", this.$refs.lottieAnimation4);
+    console.log("Lottie animation initialized:", this.lottieInstance);
+
+    this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation4, // the DOM element
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: this.lottieJSON,
     });
 
-    // Initialize image URL builder
-    this.imageBuilder = imageUrlBuilder(this.sanityClient);
+    if (this.lottieInstance) {
+      console.log("Lottie instance created:", this.lottieInstance);
+    } else {
+      console.error("Failed to initialize Lottie animation.");
+    }
 
-    // Fetch gallery images
-    this.fetchGalleryImages();
+    // Listen for the 'DOMLoaded' event
+    this.lottieInstance.addEventListener("DOMLoaded", () => {
+      console.log("Lottie animation SVG has been loaded successfully!");
+    });
+
+    this.checkViewport(); // Set the initial value based on viewport
+    window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
+
+    this.checkHash();
+    window.addEventListener("hashchange", this.checkHash); // Listen for changes to the URL
+
+    // Set hoveredSection to 'design' if not on mobile
+    if (!this.isMobile) {
+      this.hoveredSection = "design";
+      this.activeSection = "design"; // Set default active section to 'design' on desktop
+      this.setActiveSection("design"); // Fetch content for the 'design' section
+    }
+  },
+
+  directives: {
+    clickOutside: {
+      bind(el, binding, vnode) {
+        // Only bind the event if the viewport width is for mobile devices
+        if (window.innerWidth <= 768) {
+          // Adjust this width as needed
+          el.clickOutsideEvent = function (event) {
+            if (!(el === event.target || el.contains(event.target))) {
+              vnode.context[binding.expression](event);
+            }
+          };
+          document.body.addEventListener("click", el.clickOutsideEvent);
+        }
+      },
+      unbind(el) {
+        if (el.clickOutsideEvent) {
+          document.body.removeEventListener("click", el.clickOutsideEvent);
+        }
+      },
+    },
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("hashchange", this.checkHash);
+    window.removeEventListener("resize", this.checkViewport); // Clean up event listener
+  },
+
+  methods: {
+    beforeEnter() {
+      this.$nextTick(() => {
+        if (this.$refs.lottieAnimation4) {
+          this.lottieInstance = lottie.loadAnimation({
+            container: this.$refs.lottieAnimation4,
+            renderer: "svg",
+            loop: false,
+            autoplay: false,
+            path: "/animations/plus.json",
+          });
+        }
+      });
+    },
+
+    checkHash() {
+      // Check if the URL contains a hash
+      this.hasHash = window.location.hash !== "";
+    },
+
+    toggleMenu() {
+      this.$store.commit("toggleMenu");
+    },
+
+    closeSection() {
+      const rightContent = document.querySelector(".headbarc");
+      this.lottieInstance.playSegments([11, 20], true); // Close animation
+      this.isOpen = false;
+
+      // Set the activeSection depending on mobile state
+      if (!this.isMobile) {
+        this.activeSection = "design"; // Ensure default is design for desktop
+      } else {
+        this.activeSection = null;
+      }
+    },
+
+    checkViewport() {
+      this.isMobile = window.innerWidth <= 768; // Set isMobile based on viewport width
+      if (this.isMobile) {
+        this.activeSection = null; // Reset activeSection on mobile
+      } else {
+        this.activeSection = "design"; // Set default section for desktop
+      }
+    },
+
+    async setActiveSection(sectionSlug) {
+      if (this.isMobile) {
+        this.activeSection = sectionSlug;
+        this.activeContent = await this.fetchContent(sectionSlug); // Fetch the content based on the section slug
+        console.log(this.activeContent); // Log the content to check if it has the expected values
+      } else {
+        if (this.activeSection === sectionSlug) {
+          this.activeSection = "design"; // Reset to 'design' if same section clicked again
+          this.activeContent = await this.fetchContent("design");
+        } else {
+          this.activeSection = sectionSlug;
+          this.activeContent = await this.fetchContent(sectionSlug);
+          console.log(this.activeContent); // Log the content to check
+        }
+      }
+    },
+
+    async fetchContent(slug) {
+      // Fetch content using the slug from Sanity
+      const query = `*[_type == "services" && slug.current == $slug][0]`;
+      return await this.$sanity.fetch(query, { slug });
+    },
+
+    handleClick() {
+      if (this.isMobile && this.activeSection) {
+        this.closeSection(); // Close section on mobile click
+      }
+    },
+
+    toggleActiveSection() {
+      // Toggle between open and closed states
+      this.activeSection = !this.activeSection;
+    },
+  },
+
+  async asyncData({ params, $sanity, store }) {
+    const query = groq`*[_type == "services"]{ ...,
+      _key,
+    title,
+    layout1,
+    layout2,
+    slug,
+    dcontent,
+    dcontentb,
+    dcontent2,
+    dcontent2b,
+    dlocation,
+    dlocationb,
+    dlocationlink,
+    dlocationlinkb,
+    dsubLayoutA,
+    dsubLayoutB,
+    "dimages" : { "imageUrl": dimage.asset->url, },
+    "designImageLayoutAUrl": dimage.asset->url,
+    "designImageLayoutBUrl": dimageLayoutB.asset->url,
+  }| order(_updatedAt desc)[0]`;
+
+    const services = await $sanity.fetch(query);
+
+    return { services };
+  },
+
+  computed: {
+    ...mapState(["gridpub"]),
+    isMenuOpen() {
+      return this.$store.getters.isMenuOpen;
+    },
   },
 };
 </script>
-
 
 <style scoped>
 .sheadera {
@@ -614,6 +959,8 @@ export default {
 .link-container a.active {
   color: #3333331f; /* Faded color for the active link */
   opacity: 0.6; /* Faded look */
+  color: rgb(28 28 28 / 70%);
+  opacity: 0.6;
   pointer-events: none; /* Prevent clicking on the already active link */
 }
 

@@ -34,15 +34,19 @@
       >
         <div class="content">
           <div class="nomb">
-            <div class="imgsa" @mousemove="handleMouseHover" @mouseleave="stopScrolling">
-              <img class="ania2" src="/1.png" />
-              <img class="ania2" src="/2.png" />
-              <img class="ania2" src="/3.png" />
-              <img class="ania2" src="/4.png" />
-              <img class="ania2" src="/5.png" />
-            </div>
+            <div class="imgsa">
+  <div class="scroll-container">
+    <img class="ania2" src="/1.png" />
+    <img class="ania2" src="/2.png" />
+    <img class="ania2" src="/3.png" />
+    <img class="ania2" src="/4.png" />
+    <img class="ania2" src="/1.png" /> <!-- Duplicate first image for looping -->
+  </div>
+</div>
+
             <!-- <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" /> -->
             <img class="w-[26.5vw]" src="/leftaboutt.png" />
+            <!-- <img class="w-[26.5vw]" src="/wind.png" /> -->
           </div>
         </div>
 
@@ -51,7 +55,8 @@
         <div class="content">
           <div class="nomb covercont pointer-events-none">
             <!-- <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" /> -->
-            <img class="coverabout nomb" src="/abneww.png" />
+            <!-- <img class="coverabout nomb" src="/abneww.png" /> -->
+            <img class="coverabout nomb" src="/wind.png" />
           </div> 
         </div>
 
@@ -127,11 +132,29 @@ export default {
   },
 
   mounted() {
-   
+    this.startAutoScroll();
   },
 
   methods: {
     ...mapMutations(["toggleMenu", "setMenuState"]),
+
+    startAutoScroll() {
+      const container = document.querySelector('.scroll-container');
+      const images = container.children;
+      const imageWidth = window.innerWidth * .215;// Get the width of a single image
+      const totalWidth = imageWidth * images.length;
+
+      setInterval(() => {
+        this.scrollOffset -= imageWidth;
+
+        // If the offset goes beyond the total width, reset it for looping
+        if (Math.abs(this.scrollOffset) >= totalWidth - imageWidth) {
+          this.scrollOffset = 0;
+        }
+
+        container.style.transform = `translateX(${this.scrollOffset}px)`;
+      }, 1000); // Adjust interval duration for scrolling speed
+    },
 
     handleMouseHover(event) {
       const container = event.currentTarget;
@@ -177,7 +200,8 @@ export default {
   data() {
     return {
       animationData,
-      scrollInterval: null
+      scrollInterval: null,
+      scrollOffset: 0
     };
   },
 };
@@ -220,6 +244,10 @@ export default {
   background-repeat: no-repeat; */
 }
 
+.right-content{
+  z-index: 20;
+}
+
 .ania{
   position: absolute;
     width: 54vw;
@@ -236,6 +264,7 @@ export default {
     width: auto;
     left: 13.5vw;
     top: 16vh;
+    top: 39vh;
     overflow-y: scroll;
     height: 67.4vh;
     display: flex;
@@ -244,11 +273,36 @@ export default {
     flex-direction: column;
     align-items: center;
     scroll-behavior: smooth;
-    /* cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><text y="18" font-size="25" fill="black">●</text></svg>') 12 12, auto; */
-    /* cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+"),
-    auto !important; */
-    /* cursor: move; */
 }
+
+/* .imgsa {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+} */
+
+.scroll-container {
+  z-index: 1;
+  display: flex;
+  gap: 0; /* No gaps between images */
+  transition: transform 0.5s ease-in-out;
+}
+
+.ania2 {
+  width: 23vw;
+  height: auto;
+  padding: 0 2vw 0 2vw;
+  object-fit: contain;
+  /* width: auto; */
+  /* flex-shrink: 0; */
+}
+
+/* .ania2 {
+  height: 100px;
+  width: auto;
+  flex-shrink: 0;
+}
+
 
 .ania2{
   padding-top: 5vw;
@@ -263,7 +317,7 @@ export default {
 .ania2:last-child{
   padding-top: 10vw;
     padding-bottom: 2vw;
-}
+} */
 
 /* Styles for text inside the frame */
 .textframe {
@@ -332,7 +386,9 @@ a:hover {
 
 .coverabout{
   width: 45vw;
+  width: 60vw;
     height: 51vw;
+    height: auto;
     position: absolute;
 }
 
@@ -342,6 +398,16 @@ a:hover {
     top: -2vh;
     height: 100vh;
     width: 50vw;
+    display: flex !important;
+    align-items: center;
+}
+
+.covercont {
+    position: absolute;
+    left: -0.5vw;
+    top: 0vh;
+    height: 100vh;
+    width: 60vw;
     display: flex !important;
     align-items: center;
 }

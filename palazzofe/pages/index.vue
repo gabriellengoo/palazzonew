@@ -42,14 +42,19 @@
       id="main-content"
       class="md:flex mainconhome mbmain justify-center md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen"
     >
-      <div class="textmainpg text-center">
-        <h1 class="maintext text-[14vw] lg:text-[8vw] xl:text-[8vw] text-white leading-tight relative z-0">
+      <div v-if="home" class="textmainpg text-center">
+        <!-- <h1 class="maintext text-[14vw] lg:text-[8vw] xl:text-[8vw] text-white leading-tight relative z-0">
           PALAZZO EVENTI
         </h1>
         <h1 class="maintext subtx text-[1.5vw] text-white leading-tight relative z-0 uppercase">
           Wedding & Event  •  Planning Italy
-        </h1>
+        </h1> -->
         <!-- <img class="w-[80vw]" src="/homelo.png" /> -->
+        <MediaImage
+                  :src="home.image.asset._ref"
+                  class="w-[80vw]"
+                  :sizes="'sm:200vw md:150vw lg:200vw'"
+                />
       </div>
     </div>
   </div>

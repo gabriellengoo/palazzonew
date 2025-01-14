@@ -22,6 +22,12 @@ export default {
       title: 'Title',
       type: 'string',
     },
+
+    {
+      name: 'image',
+      title: 'Logo',
+      type: 'image',
+    },
     { 
       name: 'slider',
       title: 'Home Gallery',

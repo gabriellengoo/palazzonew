@@ -104,7 +104,7 @@
             class="col-span-1"
             type="text"
             name="name"
-            placeholder="Name *"
+            placeholder="Full Name *"
             required
           />
           <input
@@ -150,8 +150,8 @@
           <input
             class="col-span-1"
             type="text"
-            name="country"
-            placeholder="Country *"
+            name="More info"
+            placeholder="More Info *"
           />
           <input
             class="col-span-1"
@@ -316,7 +316,7 @@
               class="col-span-1"
               type="text"
               name="name"
-              placeholder="Name *"
+              placeholder="Full Name *"
               required
             />
             <input
@@ -362,8 +362,8 @@
             <input
               class="col-span-1"
               type="text"
-              name="country"
-              placeholder="Country *"
+              name="info"
+              placeholder="More Info *"
             />
             <input
               class="col-span-1"
