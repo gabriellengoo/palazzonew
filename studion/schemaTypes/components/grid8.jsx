@@ -10,7 +10,7 @@ import React from "react";
 // import { RiNumber7 } from "react-icons/Ri";
 
 export default {
-  name: "grid6",
+  name: "grid8",
   title: "Grid",
   type: "array",
   liveEdit: true,
@@ -79,11 +79,12 @@ export default {
           title: "Sub-title Tiny",
           type: "string",
         },
-        // {
-        //   name: "content3",
-        //   title: "Content",
-        //   type: "blockContent",
-        // },
+      
+        {
+          name: "content3",
+          title: "Bio",
+          type: "blockContent",
+        },
 
 
        

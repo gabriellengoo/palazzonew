@@ -281,7 +281,7 @@ export default {
                 // Fallback image if newDayImage is provided
                 media = (
                   <img
-                    src="/static/pink.png"
+                    src="/static/white.png"
                     style={{
                       objectFit: 'cover',
                       height: '100%',

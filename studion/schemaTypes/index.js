@@ -25,13 +25,15 @@ import awards from "./awards";
 import grid6 from "./components/grid6";
 import team from "./team";
 import grid7 from "./components/grid7";
+import grid8 from "./components/grid8";
 import gridpress from "./components/gridpress";
 import pressindi from "./pressindi";
 import seo from "./components/seo";
 import seoImage from "./components/seoImage"
+import products from './products';
 // import WordLimitInput from "./components/WordLimitInput";
 
 // home,
 
-export const schemaTypes = [seoImage, blockContent,grid,grid2,grid3,home,work,project,events,projectevents, publications, pressindi, grid4, grid5, services, contact, about, awards, grid6, team, grid7, gridpress, seo ]
+export const schemaTypes = [seoImage, blockContent,grid,grid2,grid3,grid8,home,work,project,events,projectevents, publications,products, pressindi, grid4, grid5, services, contact, about, awards, grid6, team, grid7, gridpress, seo ]
 

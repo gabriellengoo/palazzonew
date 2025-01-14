@@ -5,6 +5,7 @@ export const state = () => ({
   gridaw: [],
   gridteam: [],
   gridpubindi: [],
+  gridprod: [],
   title: false,
   activeProject: false,
   activeTalent: false,
@@ -32,6 +33,9 @@ export const mutations = {
   },
   SET_GRIDPRESS(state, gridpress) {
     state.gridpubindi = gridpress
+  },
+  SET_GRIDPROD(state, grid8) {
+    state.gridprod = grid8
   },
   SET_TITLE(state, title) {
     state.title = title
@@ -237,6 +241,45 @@ _key, double, spacer,
 } | order(_updatedAt desc)[0]`
 
 
+const gridQuery6 = groq`*[_type == "products" ] 
+{
+  grid8[] {
+_key, double, spacer, 
+"video" : {"id" : video.asset->playbackId, 
+"aspect" : video.asset->data.aspect_ratio , 
+"thumbTime" : video.asset->thumbTime }, 
+"image" : 
+  {"image" : image.asset._ref, 
+  "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+  "size" : {"width" : image.asset->metadata.dimensions.width, 
+  "height" : image.asset->metadata.dimensions.height}, 
+  "position" : position }, 
+  "imageh" : 
+  { "imageh" : imageh.asset._ref,
+  "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+  "size" : {"width" : image.asset->metadata.dimensions.width, 
+  "height" : image.asset->metadata.dimensions.height}, 
+  "position" : position }, 
+  portrait, day,
+  link, title, year, years, yeart, private, month,
+   content3,
+"reference": reference->{
+    _id,
+    title,
+    "slug" : slug.current,
+    "slider": slider[] {
+      _key,
+      images[] {
+        _key,
+        portrait,
+        "imageUrl": image.asset->url
+      }
+    }
+  }
+     }
+} | order(_updatedAt desc)[0]`
+
+
 const gridQuery5 = groq`*[_type == "team" ]
 {  titlec,
   grid7[] {
@@ -394,6 +437,11 @@ _key, double, spacer,
     const gridteam = await this.$sanity.fetch(gridQuery5)
     // console.log('Grid2 Query Result:', grid2)
     commit('SET_GRIDTEAM', gridteam)
+    // commit('SET_GRID3', grid2.grid3);
+
+    const gridprod = await this.$sanity.fetch(gridQuery6)
+    // console.log('Grid2 Query Result:', grid2)
+    commit('SET_GRIDPROD', gridprod)
     // commit('SET_GRID3', grid2.grid3);
 
 

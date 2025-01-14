@@ -114,7 +114,7 @@
                       <a href="./contact"> CONTACT </a>
                     </li>
                     <li>
-                      <a href="./awards"> AWARDS </a>
+                      <a href="./products"> products </a>
                     </li>
                     <!-- <li   class=" opacity-0">
                     <a
@@ -225,7 +225,7 @@ export default {
         "./press",
         "./contact",
         "./team",
-        "./awards",
+        "./products",
       ];
       return links[index - 1]; // Adjust index for 1-based loop
     },

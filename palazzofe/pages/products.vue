@@ -1,37 +1,43 @@
 <template>
   <div>
+
     <!-- <HeaderComponent /> -->
     <div class="headera content flex w-full justify-between">
       <h1 class="navmb">
         <HeaderComponent />
       </h1>
-      <p class="navmbno yeart text-center text-4xl uppercase">Team</p>
-      <p class="navmbno yeart w-[5vw] text-center text-4xl uppercase"></p>
+      <p class="navmbno yeart text-center text-4xl  uppercase ">
+        Products
+      </p>
+      <p
+        class="navmbno yeart w-[5vw] text-center text-4xl  uppercase "
+      ></p>
       <p class="navmbno headingspages text-center text-4xl uppercase">
         palazzo eventi
       </p>
-      <h1 class="navmbno w-[2vw]"></h1>
+      <h1 class="navmbno w-[2vw]">
+   
+      </h1>
     </div>
-
-
+ 
     <div class="bgmobile relative min-h-screen flex">
       <!-- Left Scrollable Content -->
       <div class="left-content flex-1 overflow-y-scroll p-8">
-        <div class="content">
-          <div v-if="gridteam.grid7" class="">
-            <Gridteam class="" :items="gridteam.grid7" size="small"></Gridteam>
+        <div class="content gridcontent ">
+      
+
+          <div v-if="gridprod.grid8" class="">
+            <Gridprod class="" :items="gridprod.grid8" size="small"></Gridprod>
           </div>
         </div>
       </div>
- 
- 
+
       <!-- Right Static Content -->
-      <div class="right-content overflow-y-scroll flex-1 p-8">
-        <!-- <div class="static-box w-full h-full">
-        </div> -->
-        <!-- <div v-if="gridd.grid2" class="">
-          <Gridevents class="" :items="gridd.grid2" size="small"></Gridevents>
-        </div> -->
+      <div class="right-content nomb overflow-hidden flex-1 p-8 flex justify-center items-center">
+      
+        <!-- <div class="static-box w-full h-full"> -->
+        
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -40,37 +46,32 @@
 <script>
 import HeaderComponent from "@/components/layout/Header.vue";
 import { mapState } from "vuex";
-import { groq } from "@nuxtjs/sanity";
 
 export default {
   name: "IndexPage",
-
-  async asyncData({ params, $sanity, store }) {
-    const query = groq`*[_type == "team"]{
-    title,
-    titlec,
-  } | order(_updatedAt desc)[0]`;
-
-    const about = await $sanity.fetch(query);
-
-    return { about };
-  },
 
   components: {
     HeaderComponent,
   },
 
   computed: {
-    ...mapState(["gridteam"]),
+    ...mapState(["gridprod"]),
   },
 };
 </script>
 
 <style scoped>
+
+
+.gridcontent{
+  height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
 .headingspagesb {
   font-family: "GT-Bold";
 }
-
 
 .image-item {
   position: relative;
@@ -136,9 +137,10 @@ export default {
 }
 
 .left-content {
-  background-image: url("./static/LeftBG.png");
-  background-size: cover;
-  background-position: center;
+  background-image: url("./static/background.jpg");
+  background-size: 102vw;
+  background-size: 192vh;
+  background-position: unset;
   background-repeat: no-repeat;
   height: 100vh;
   overflow-y: scroll;
@@ -162,6 +164,12 @@ a:hover {
 }
 
 @media only screen and (max-width: 768px) {
+    .image-rowaw:last-child {
+        border-bottom: 0.07vw solid rgba(0, 0, 0, 0) !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
   .bgmobile {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
@@ -171,15 +179,28 @@ a:hover {
     height: auto;
   } */
 
+  .left-content {
+  background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: unset;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
   .right-content {
     display: none;
   }
 
-  .left-content {
+
+  .left-content{
     padding: 0 !important;
     padding-top: 4vh !important;
     padding-top: 6vh !important;
-    background-image: url("./static/LeftBG.png");
   }
+
+.gridcontent {
+    height: auto;
+}
 }
 </style>

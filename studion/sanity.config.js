@@ -134,6 +134,15 @@ export default defineConfig({
               ),
             S.divider(),
             S.listItem()
+            .icon(ConfettiIcon)
+            .title('Products')
+            .child(
+              S.list()
+                .title('Products')
+                .items([S.documentTypeListItem('products').title('Products')]),
+            ),
+          S.divider(),
+            S.listItem()
               .icon(BookIcon)
               .title('Publications')
               .child(
