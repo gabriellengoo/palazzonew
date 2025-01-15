@@ -45,12 +45,12 @@ export default {
     },
     {
       name: 'location',
-      title: 'Location',
+      title: 'Video Text',
       type: 'string',
     },
     {
       name: 'locationlink',
-      title: 'Location Link',
+      title: 'Video Link',
       type: 'string',
     },
 

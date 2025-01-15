@@ -172,6 +172,7 @@ a:hover {
     font-family: "GT-Sectra-Book", sans-serif;
     transition: background-color 0.3s ease;
     position: absolute;
+    border-top: 0.05vw solid black;
     /* border-top: 0.05vw solid black;
     border: 0.05vw solid black; */
     border-radius: 0%;
@@ -188,10 +189,11 @@ a:hover {
     bottom: 0;
     width: 50%;
     text-transform: uppercase;
-    font-family: "GT-Sectra-Book";
-    font-family: "NHaas" !important;
+    /* font-family: "GT-Sectra-Book"; */
+    /* font-family: "NHaas" !important; */
     transition: color 0.8s ease;
     font-size: 1vw;
+    left: 0;
 }
 
 @media only screen and (max-width: 768px) {
@@ -211,8 +213,8 @@ a:hover {
     /* width: 100%; */
     width: 98%;
     text-transform: uppercase;
-    font-family: "GT-Sectra-Book";
-    font-family: "NHaas" !important;
+    /* font-family: "GT-Sectra-Book"; */
+    /* font-family: "NHaas" !important; */
     transition: color 0.8s ease;
     font-size: 3vw;
 }

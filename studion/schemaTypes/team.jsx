@@ -37,15 +37,20 @@ export default {
         !value && (parent?.spacer || parent?.reference),
     },
     {
+      name: 'filmtitle',
+      title: 'Film Title',
+      type: 'string',
+    },
+    {
       name: 'film',
       title: 'Film link',
       type: 'string',
     },
-    {
-      name: "imaget",
-      title: "Team Image",
-      type: "image",
-    },
+    // {
+    //   name: "imaget",
+    //   title: "Team Image",
+    //   type: "image",
+    // },
     {  
       name: 'grid7',
       title: 'Grid',

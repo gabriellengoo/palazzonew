@@ -294,6 +294,21 @@ html {
   /* animation: scale-up 3s forwards; */
 }
 
+.yeartn {
+  font-family: "MinionPro-Regular";
+  font-family: "RomainHeadlineTrial";
+  /* font-family: 'GT-SuperBook'; */
+  font-size: medium;
+  font-size: 1vw;
+  line-height: normal;
+  padding: 0.2vw;
+  /* top: 0.15vh !important; */
+  position: relative;
+  animation: fade-in 2s forwards;
+  /* transform: scale(0.7); */
+  /* animation: scale-up 3s forwards; */
+}
+
 .rightimg {
   z-index: 0 !important;
 }
@@ -774,6 +789,11 @@ html {
     /* font-family: 'GT-SuperBook'; */
   }
 
+  .yeartn {
+    font-family: "GT-SuperBook";
+    /* font-family: 'GT-SuperBook'; */
+  }
+
   .headbar {
     width: 4.4vw;
     width: 2.4vh;
@@ -944,6 +964,11 @@ html {
   }
 
   .yeart {
+    font-size: inherit !important;
+    top: 0 !important;
+  }
+
+  .yeartn {
     font-size: inherit !important;
     top: 0 !important;
   }

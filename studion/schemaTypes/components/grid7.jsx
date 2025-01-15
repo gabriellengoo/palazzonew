@@ -34,18 +34,28 @@ export default {
               collapsed: true,  // Set to `true` to keep it collapsed by default
             },
           },
+
+               {
+                name: 'teamimg',
+                title: 'Team Image',
+                type: 'boolean',
+                description:
+                  'Toggle if on last Image to set team group image',
+                initialValue: false,
+                // hidden: ({parent}) => parent?.layout2 ,
+              },
         {
           name: "image",
           title: "Person Image",
           type: "image",
-          hidden: ({ parent, value }) =>
-            (!value && parent?.spacer) || (!value && parent?.video),
+   
         },
       
         {
           name: "imageh",
           title: "Hover Image",
           type: "image",
+          hidden: ({parent}) => parent?.teamimg ,
         },
 
        
@@ -64,12 +74,14 @@ export default {
           name: "month",
           title: "Person Role",
           type: "string",
+          hidden: ({parent}) => parent?.teamimg ,
         },
 
         {
           name: "year",
           title: "Person Role Sub-title",
           type: "string",
+      
         },
         {
           name: "content3",
@@ -80,9 +92,10 @@ export default {
           name: "content4",
           title: "Person Email",
           type: "blockContent",
+          hidden: ({parent}) => parent?.teamimg ,
         },
 
-
+ 
        
       ],
       preview: {

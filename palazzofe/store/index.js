@@ -243,6 +243,8 @@ _key, double, spacer,
 
 const gridQuery6 = groq`*[_type == "products" ] 
 {
+  film,
+  filmtitle,
   grid8[] {
 _key, double, spacer, 
 "video" : {"id" : video.asset->playbackId, 
@@ -283,6 +285,7 @@ _key, double, spacer,
 const gridQuery5 = groq`*[_type == "team" ]
 {  titlec,
   film,
+  filmtitle, 
   grid7[] {
     seo {
       title,

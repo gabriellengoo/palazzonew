@@ -61,14 +61,14 @@ export default {
       type: "blockContent",
     },
     {
-      name: "location",
-      title: "Location",
-      type: "string",
+      name: 'location',
+      title: 'Video Text',
+      type: 'string',
     },
     {
-      name: "locationlink",
-      title: "Location Link",
-      type: "string",
+      name: 'locationlink',
+      title: 'Video Link',
+      type: 'string',
     },
     // {
     //   name: "meta",

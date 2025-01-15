@@ -28,6 +28,16 @@ export default {
       title: 'Title',
       type: 'string',
     },
+    {
+      name: 'filmtitle',
+      title: 'Film Title',
+      type: 'string',
+    },
+    {
+      name: 'film',
+      title: 'Film link',
+      type: 'string',
+    },
     {  
       name: 'grid8',
       title: 'Grid',
