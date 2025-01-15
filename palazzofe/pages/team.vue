@@ -23,12 +23,33 @@
           </div> 
           <button
           class="bttn"
+           @click="toggleIframe"
         >
-          Play Film
+        <p class="textsumf">Play Film</p>
+          {{ gridteam.filmtitle }}
         </button>
         </div>
       </div>
  
+
+       <!-- Draggable Iframe Pop-Up -->
+       <div
+        v-if="isIframeOpen"
+        class="iframe-container"
+        ref="iframeContainer"
+        @mousedown="startDrag"
+      >
+        <div class="iframe-header">
+          <button @click="closeIframe" class="clocon absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer">   <!-- <SvgClose class=""/> -->
+          <svg class="close-btn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
+       </button>
+        </div>
+        <iframe
+          :src="gridteam.film"
+          class="iframe-content"
+          frameborder="0"
+        ></iframe>
+      </div>
  
       <!-- Right Static Content -->
       <div class="right-content overflow-y-scroll flex-1 p-8">
@@ -50,6 +71,17 @@ import { groq } from "@nuxtjs/sanity";
 export default {
   name: "IndexPage",
 
+  data() {
+    return {
+      isIframeOpen: false,
+      dragData: {
+        isDragging: false,
+        offsetX: 0,
+        offsetY: 0,
+      },
+    };
+  },
+
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "team"]{
     title,
@@ -68,10 +100,108 @@ export default {
   computed: {
     ...mapState(["gridteam"]),
   },
+
+  methods: {
+    toggleIframe() {
+      this.isIframeOpen = !this.isIframeOpen;
+    },
+    closeIframe() {
+      this.isIframeOpen = false;
+    },
+    startDrag(event) {
+      const container = this.$refs.iframeContainer;
+      const rect = container.getBoundingClientRect();
+
+      // Record the offset between the mouse and the container's top-left corner
+      this.dragData.isDragging = true;
+      this.dragData.offsetX = event.clientX - rect.left;
+      this.dragData.offsetY = event.clientY - rect.top;
+
+      // Add event listeners for dragging and stopping
+      document.addEventListener("mousemove", this.onDrag);
+      document.addEventListener("mouseup", this.stopDrag);
+    },
+    onDrag(event) {
+      if (!this.dragData.isDragging) return;
+
+      const container = this.$refs.iframeContainer;
+
+      // Calculate new positions while keeping the container within the viewport
+      const newLeft = Math.max(0, Math.min(window.innerWidth - container.offsetWidth, event.clientX - this.dragData.offsetX));
+      const newTop = Math.max(0, Math.min(window.innerHeight - container.offsetHeight, event.clientY - this.dragData.offsetY));
+
+      // Apply new positions
+      container.style.left = `${newLeft}px`;
+      container.style.top = `${newTop}px`;
+    },
+    stopDrag() {
+      this.dragData.isDragging = false;
+
+      // Remove event listeners to prevent memory leaks
+      document.removeEventListener("mousemove", this.onDrag);
+      document.removeEventListener("mouseup", this.stopDrag);
+    },
+  },
 };
 </script>
 
 <style scoped>
+
+.iframe-container {
+  position: absolute;
+  top: 20%; /* Default position */
+  left: 20%; /* Default position */
+  height: 25vw;
+    /* display: flex; */
+    width: 40vw;
+    border: 0.5px solid black;
+  background: white;
+  background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1000;
+  cursor: grab;
+  display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.textsumf{
+    font-family: "GT-Bold";
+}
+
+.iframe-header {
+
+  /* padding: 0.5rem; */
+  /* background: #f0f0f0; */
+  /* background-image: url("./static/background.jpg"); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 0.5px solid black;
+}
+
+/* .close-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+} */
+
+.close-btn{
+  width: 1.4vw;
+}
+
+.iframe-content {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: calc(100% - 2rem); /* Adjust height to account for header */
+}
+
+
 .headingspagesb {
   font-family: "GT-Bold";
 }
@@ -194,9 +324,38 @@ a:hover {
     transition: color 0.8s ease;
     font-size: 1vw;
     left: 0;
+    font-size: 0.8vw;
 }
 
 @media only screen and (max-width: 768px) {
+
+  .close-btn{
+  width: 4.4vw;
+}
+
+ 
+.iframe-container {
+    position: absolute;
+    top: 22%;
+    left: 6%;
+    height: 51vw;
+    width: 88vw;
+    border: 0.5px solid black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1000;
+    cursor: grab;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.clocon{
+    top: 1.5vw;
+    right: 1.5vw;
+}
+
   .bttn {
     position: absolute;
     border-radius: 0%;
@@ -217,6 +376,8 @@ a:hover {
     /* font-family: "NHaas" !important; */
     transition: color 0.8s ease;
     font-size: 3vw;
+    font-size: 2.1vw;
+    bottom: 0;
 }
 
   .bgmobile {
