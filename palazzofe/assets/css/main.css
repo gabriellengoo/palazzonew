@@ -337,6 +337,10 @@ html {
   font-family: "NHaas";
 }
 
+.fontsubpubn {
+  font-family: 'GT-SuperBook';
+}
+
 .textnewardesk {
   display: flex;
   width: 100%;

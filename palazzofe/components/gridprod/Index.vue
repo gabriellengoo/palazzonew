@@ -62,7 +62,7 @@
                         <span class="textsumf">{{
                           item.title || "Name"
                         }}</span>
-                        <span class="fontsubpub capitalize pt-[.5vw]">{{
+                        <span class="fontsubpubn capitalize pt-[.5vw]">{{
                           item.month || "Position"
                         }}</span>
                       </figcaption>
@@ -248,11 +248,13 @@ export default {
 }
 
 .linkateam:hover {
+  opacity: .5;
   filter: grayscale(0%);
   transition-duration: 1s;
 }
 
 .grayscale-off {
+  opacity: .5;
   filter: grayscale(0%) !important;
   transition-duration: 1s;
 }
