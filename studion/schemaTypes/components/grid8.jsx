@@ -58,7 +58,7 @@ export default {
 
         {
           name: "month",
-          title: "Month",
+          title: "Sub-title Small",
           type: "string",
         },
 

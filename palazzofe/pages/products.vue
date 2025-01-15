@@ -7,7 +7,7 @@
         <HeaderComponent />
       </h1>
       <p class="navmbno yeart text-center text-4xl  uppercase ">
-        Products
+        exclusivity
       </p>
       <p
         class="navmbno yeart w-[5vw] text-center text-4xl  uppercase "

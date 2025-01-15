@@ -69,6 +69,11 @@
                     </div>
 
 
+                    <!-- <button
+          class="bttn"
+        >
+          Awards
+        </button> -->
      
 
                  
@@ -130,13 +135,6 @@
               </div>
             </div>
           </div>
-
-
-          <button
-          class="bttn"
-        >
-          Play Film
-        </button>
 
           <div v-if="gridteam.titlec" class="spanning-text nomb">
             {{ gridteam.titlec }}
@@ -231,13 +229,13 @@ export default {
 <style scoped>
 
 .bttn {
-  position: fixed;
+position: fixed;
     background-color: white;
     font-family: "GT-Sectra-Book", sans-serif;
     transition: background-color 0.3s ease;
     position: absolute;
-    /* border-top: 0.05vw solid black;
-    border: 0.05vw solid black; */
+    border-top: 0.05vw solid black;
+    border: 0.05vw solid black;
     border-radius: 0%;
     background-image: url(/_nuxt/static/LeftBG.png);
     background-size: cover;
@@ -250,6 +248,7 @@ export default {
     transition: background-color 0.3s;
     position: fixed;
     bottom: 0;
+    /* width: 100%; */
     width: 50%;
     text-transform: uppercase;
     font-family: "GT-Sectra-Book";
@@ -258,6 +257,31 @@ export default {
     font-size: 1vw;
 }
 
+.bttn{
+  position: absolute;
+    width: 94%;
+    border-top: 0.05vw solid black;
+    border: 0.05vw solid black;
+    border-radius: 0%;
+    background-image: url("./static/LeftBG.png");
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    padding: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 2.5vh;
+    /* width: 100%; */
+    width: 98%;
+    text-transform: uppercase;
+    font-family: "GT-Sectra-Book";
+    font-family: "NHaas" !important;
+    transition: color 0.8s ease;
+    font-size: 1vw;
+}
 
 .modal {
   z-index: 1000;
