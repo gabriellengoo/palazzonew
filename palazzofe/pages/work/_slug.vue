@@ -175,7 +175,7 @@
                     <!-- Location Link -->
     <div v-if="project.location" class="w-full flex items-center text-center flex-col md:pt-5 locationtext">
       <!-- <p class="loctext">Location,</p> -->
-      <p class="loctext">Film</p>
+      <p class="loctext">Play Film</p>
       <div class="flex flex-col normal-case italic loctextlink">
         <a href="javascript:void(0)" @click="openModal">{{ project.location }}</a>
       </div>
@@ -252,7 +252,7 @@
                     v-if="project.location"
                     class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
                   >
-                    <p class="loctext">Film</p>
+                    <p class="loctext">Play Film</p>
                     <div class="flex flex-col normal-case italic loctextlink">
                       <a
                         href="javascript:void(0)" @click="openModal"

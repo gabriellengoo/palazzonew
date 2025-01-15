@@ -208,7 +208,7 @@
                     v-if="project.location"
                     class="w-full flex items-center text-center flex-col pt-10 md:pt-[6vh] locationtext"
                   >
-                    <p class="loctext">Film</p>
+                    <p class="loctext">Play Film</p>
                     <div class="flex flex-col normal-case italic loctextlink">
                       <a
                         href="javascript:void(0)" @click="openModal"
@@ -219,13 +219,13 @@
 
                      <!-- Draggable Iframe Modal -->
     <div
-      v-if="isModalOpen"
+      v-if="isModalOpen2"
       class="modal-container fixed inset-0 z-50 flex items-center justify-center"
     >
       <!-- Draggable Modal -->
       <div
         class="modal-content bg-white  overflow-hidden relative"
-        ref="modal"
+        ref="modal2"
         @mousedown="startDragging"
         @mouseup="stopDragging"
         @mousemove="drag"
@@ -238,7 +238,7 @@
           <!-- Close -->
           <button
           class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
-          @click="closeModal"
+          @click="closeModal2"
         > 
           <!-- <SvgClose class=""/> -->
           <svg class="w-[1.4vw]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
@@ -293,8 +293,8 @@
                   <div
                     v-if="project.location"
                     class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
-                  >
-                    <p class="loctext">Film</p>
+                  > 
+                    <p class="loctext">Play Film</p>
                     <div class="flex flex-col normal-case italic loctextlink">
                       <a
                          href="javascript:void(0)" @click="openModal"
@@ -305,13 +305,13 @@
 
                      <!-- Draggable Iframe Modal -->
     <div
-      v-if="isModalOpen"
+      v-if="isModalOpen2"
       class="modal-container fixed inset-0 z-50 flex items-center justify-center"
     >
       <!-- Draggable Modal -->
       <div
-        class="modal-content bg-white  overflow-hidden relative"
-        ref="modal"
+        class="modal-content2 bg-white  overflow-hidden relative"
+        ref="modal2"
         
         :style="{ top: `20vh`, left: `2vw` }"
       >
@@ -322,7 +322,7 @@
           <!-- Close -->
           <button
           class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
-          @click="closeModal"
+          @click="closeModal2"
         > 
           <!-- <SvgClose class=""/> -->
           <svg class="w-[4.4vw]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
@@ -572,8 +572,8 @@ export default {
       scrolled: false,
       back: false,
       searchQuery: "", // Initialize search query
-      isModalOpen: false,
-      isDragging: false,
+      isModalOpen2: false,
+      isDragging2: false,
       position: { top: 100, left: 100 }, // Initial position of the modal
       offset: { x: 0, y: 0 },
     };
@@ -640,10 +640,10 @@ export default {
   },
   methods: {
     openModal() {
-      this.isModalOpen = true;
+      this.isModalOpen2 = true;
     },
-    closeModal() {
-      this.isModalOpen = false;
+    closeModal2() {
+      this.isModalOpen2 = false;
     },
     playSegment() {
       // Play from frame 11 to 20
@@ -991,14 +991,9 @@ export default {
 }
 
 .previous:hover {
-  cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e")
-      16 16,
-    pointer;
-  cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 512 512'%3e%3cg transform='rotate(-45 256 256)'%3e%3crect id='r' x='16' y='216' width='480' height='80' rx='14'/%3e%3cuse href='%23r' transform='rotate(90 256 256)'/%3e%3c/g%3e%3c/svg%3e")
-      16 16,
-    pointer;
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
     auto !important;
+    
   /* cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto; */
 }
 
@@ -1495,6 +1490,7 @@ a {
     overflow-y: none;
     flex: none;
     padding-top: 6vh;
+    z-index: 0;
   }
 
   .right-content {
@@ -1507,6 +1503,7 @@ a {
     /* height: auto;
     height: 40vh; */
     flex: none;
+    z-index: 1;
   }
 
   .footout {

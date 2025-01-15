@@ -35,6 +35,11 @@ export default {
       hidden: ({ parent, value }) =>
         !value && (parent?.spacer || parent?.reference),
     },
+    {
+      name: "imaget",
+      title: "Team Image",
+      type: "image",
+    },
     {  
       name: 'grid7',
       title: 'Grid',

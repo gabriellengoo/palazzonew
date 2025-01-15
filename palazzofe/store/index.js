@@ -282,11 +282,20 @@ _key, double, spacer,
 
 const gridQuery5 = groq`*[_type == "team" ]
 {  titlec,
+ 
   grid7[] {
     seo {
       title,
       keywords
     },
+
+          "imaget" : 
+  { "imaget" : imaget.asset._ref,
+  "aspect" : image.asset->metadata.dimensions.aspectRatio, 
+  "size" : {"width" : image.asset->metadata.dimensions.width, 
+  "height" : image.asset->metadata.dimensions.height}, 
+  "position" : position }, 
+  
 _key, double, spacer, 
 "video" : {"id" : video.asset->playbackId, 
 "aspect" : video.asset->data.aspect_ratio , 
@@ -304,9 +313,11 @@ _key, double, spacer,
   "height" : image.asset->metadata.dimensions.height}, 
   "position" : position }, 
   portrait, day,
-  link, title, year, private, month,
+  link, title, year, private, month, 
      content3,
       content4,
+    
+ 
 "reference": reference->{
     _id,
     title,

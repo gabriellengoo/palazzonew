@@ -68,17 +68,17 @@ export default {
           type: "string",
         },
 
-        {
-          name: "years",
-          title: "Sub-title Small",
-          type: "string",
-        },
+        // {
+        //   name: "years",
+        //   title: "Sub-title Small",
+        //   type: "string",
+        // },
 
-        {
-          name: "yeart",
-          title: "Sub-title Tiny",
-          type: "string",
-        },
+        // {
+        //   name: "yeart",
+        //   title: "Sub-title Tiny",
+        //   type: "string",
+        // },
       
         {
           name: "content3",

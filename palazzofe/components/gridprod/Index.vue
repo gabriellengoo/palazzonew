@@ -275,6 +275,7 @@ export default {
   top: 0vh;
   width: 50vw;
   height: 100vh;
+  overflow: scroll;
   opacity: 0; /* Start with opacity 0 */
   transition: opacity 0.5s ease; /* Transition for fade effect */
 }

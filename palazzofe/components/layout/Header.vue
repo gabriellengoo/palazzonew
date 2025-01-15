@@ -111,11 +111,12 @@
                       <a href="./team"> TEAM </a>
                     </li>
                     <li>
-                      <a href="./contact"> CONTACT </a>
-                    </li>
-                    <li>
                       <a href="./products"> products </a>
                     </li>
+                    <li>
+                      <a href="./contact"> CONTACT </a>
+                    </li>
+                    
                     <!-- <li   class=" opacity-0">
                     <a
                       @click="setActiveSection('production')"

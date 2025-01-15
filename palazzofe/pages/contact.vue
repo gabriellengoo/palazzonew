@@ -229,8 +229,8 @@
             <!-- <div class="w-[31vw]"> -->
             <!-- Instagram SVG Icon -->
             
-            <div class="flex contamb">
-          <div v-for="social in contact.socialMedia" class="social-icons contact flex text-left mt-[2vh]">
+            <div  v-for="social in contact.socialMedia"   class="flex ">
+          <div   v-if="social.show" class="social-icons contamb contact flex text-left mt-[2vh]">
     <a
     v-if="social.show"
       :key="social.platform"
@@ -254,7 +254,7 @@
            
 
             <!-- </div> -->
-            <div class="email ml-[5vw] text-left">
+            <div class="email ml-[4vw] text-left">
               <!-- <p class="italic underline">Email</p>
               <div class="w-max">
                 <p>natalya@palazzoeventi.com</p>
@@ -895,6 +895,7 @@ input::placeholder {
     height: 100vh;
     top: 57vh;
     top:122vw;
+    top:110vw;
   }
 
   @keyframes bounce {

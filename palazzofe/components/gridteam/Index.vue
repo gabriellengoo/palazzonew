@@ -68,6 +68,10 @@
                       </figcaption>
                     </div>
 
+
+
+                 
+
                     <div
                       v-show="hoveredIndex === item._key"
                       class="sideim"
@@ -77,6 +81,7 @@
                       }"
                     >
                       <figure class="deskimgl">
+                        
                         <MediaImage
                           :src="item.imageh.imageh"
                           v-if="item.imageh.imageh"
@@ -167,6 +172,9 @@ export default {
     firstItemKey() {
       return this.items.length > 0 ? this.items[0]._key : null;
     },
+    lastItemKey() {
+  return this.items.length > 0 ? this.items[this.items.length - 1]._key : null;
+},
   },
   mounted() {
     this.isDesktop = window.innerWidth > 768;
@@ -185,14 +193,29 @@ export default {
     handleResize() {
       this.isDesktop = window.innerWidth > 768;
     },
-  clickHandler(key) {
-    // Set hoveredIndex to apply the grayscale-off class on the clicked item
-    this.hoveredIndex = this.hoveredIndex === key ? null : key;
-  },
+  // clickHandler(key) {
+  //   // Set hoveredIndex to apply the grayscale-off class on the clicked item
+  //   this.hoveredIndex = this.hoveredIndex === key ? null : key;
+  // },
+  //   clickHandler(key) {
+  //     // Check if clicked item is already active; if so, go back to the first item
+  //     this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
+  //   },
     clickHandler(key) {
-      // Check if clicked item is already active; if so, go back to the first item
-      this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
-    },
+  // Check if the clicked item is already active; if so, go to the last item
+  this.hoveredIndex = this.hoveredIndex === key ? this.lastItemKey : key;
+},
+
+  // clickHandler(key) {
+  //   // Toggle between clicked, default, and specific image states
+  //   if (this.hoveredIndex === key) {
+  //     // Show a specific image when clicked again
+  //     this.hoveredIndex = 'specificImage';
+  //   } else {
+  //     // Show the clicked item's image
+  //     this.hoveredIndex = key;
+  //   }
+  // },
   },
 };
 </script>
@@ -219,31 +242,26 @@ export default {
   position: relative;
 }
 
-/* .image-item:nth-child(1){
-  padding: .5vw;
-  padding-right: 2vw;
-} */
-
-/* .item-wrapper.image-item:nth-child(1){
-  padding: .5vw;
-  padding-right: 2vw;
-}
-
-.item-wrapper.image-item:nth-child(2){
-  padding: .5vw;
-  padding-left: 2vw;
-} */
-
-/* .chunk-container:nth-child(2) {
-  border-top: 0.07vw solid rgba(0, 0, 0, 0.137) !important;
-} */
 
 .image-grid {
   padding-top: 4vw;
 }
 
+/* .image-grid::nth-last-child.chunk-container.image-row::nth-last-child.image-item figure div .linkateam {
+  display: none !important;
+}  */
+
+.image-grid:last-child .chunk-container:last-child .image-row:last-child .item-wrapper:nth-child(2)  .linkateam {
+  display: none !important;
+}
+
+
+/* .image-item figure .linkateam::nth-last-child {
+  display: none !important;
+} */
+
 .linkateam {
-  /* filter: grayscale(100%); */
+  filter: grayscale(100%);
   transition-duration: 1s;
 }
 
@@ -275,6 +293,7 @@ export default {
   top: 0vh;
   width: 50vw;
   height: 100vh;
+  overflow: scroll;
   opacity: 0; /* Start with opacity 0 */
   transition: opacity 0.5s ease; /* Transition for fade effect */
 }
@@ -444,10 +463,6 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-  /* .linkateam:hover {
-  filter: grayscale(0%);
-  transition-duration: 1s;
-} */
 
   .sideim img {
     display: none !important;

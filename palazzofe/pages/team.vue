@@ -53,7 +53,7 @@ export default {
 
     const about = await $sanity.fetch(query);
 
-    return { about };
+    return { about }; 
   },
 
   components: {
