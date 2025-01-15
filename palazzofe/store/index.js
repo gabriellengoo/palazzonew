@@ -282,7 +282,7 @@ _key, double, spacer,
 
 const gridQuery5 = groq`*[_type == "team" ]
 {  titlec,
- 
+  film,
   grid7[] {
     seo {
       title,

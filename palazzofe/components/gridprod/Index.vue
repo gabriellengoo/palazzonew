@@ -155,7 +155,7 @@ export default {
     ...mapState(["activeProject", "activeTalent", "gridteam"]),
     chunkedItems() {
       return this.items.reduce((resultArray, item, index) => {
-        const chunkIndex = Math.floor(index / 2);
+        const chunkIndex = Math.floor(index / 3);
         if (!resultArray[chunkIndex]) {
           resultArray[chunkIndex] = [];
         }
@@ -315,13 +315,13 @@ export default {
   overflow: hidden;
 }
 
-.image-row .item-wrapper:nth-child(1) {
+/* .image-row .item-wrapper:nth-child(1) {
   margin-right: 1.5vw;
 }
 
 .image-row .item-wrapper:nth-child(2) {
   margin-left: 1.5vw;
-}
+} */
 
 .deskimgl img {
   object-fit: cover;

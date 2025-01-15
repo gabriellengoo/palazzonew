@@ -20,7 +20,12 @@
         <div class="content">
           <div v-if="gridteam.grid7" class="">
             <Gridteam class="" :items="gridteam.grid7" size="small"></Gridteam>
-          </div>
+          </div> 
+          <button
+          class="bttn"
+        >
+          Play Film
+        </button>
         </div>
       </div>
  
@@ -161,7 +166,57 @@ a:hover {
   text-decoration: underline;
 }
 
+.bttn {
+  position: fixed;
+    background-color: white;
+    font-family: "GT-Sectra-Book", sans-serif;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    /* border-top: 0.05vw solid black;
+    border: 0.05vw solid black; */
+    border-radius: 0%;
+    background-image: url("./static/LeftBG.png");
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    padding: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    text-transform: uppercase;
+    font-family: "GT-Sectra-Book";
+    font-family: "NHaas" !important;
+    transition: color 0.8s ease;
+    font-size: 1vw;
+}
+
 @media only screen and (max-width: 768px) {
+  .bttn {
+    position: absolute;
+    border-radius: 0%;
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    padding: 2.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 2.5vh;
+    /* width: 100%; */
+    width: 98%;
+    text-transform: uppercase;
+    font-family: "GT-Sectra-Book";
+    font-family: "NHaas" !important;
+    transition: color 0.8s ease;
+    font-size: 3vw;
+}
+
   .bgmobile {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }

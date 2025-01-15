@@ -69,6 +69,7 @@
                     </div>
 
 
+     
 
                  
 
@@ -129,6 +130,13 @@
               </div>
             </div>
           </div>
+
+
+          <button
+          class="bttn"
+        >
+          Play Film
+        </button>
 
           <div v-if="gridteam.titlec" class="spanning-text nomb">
             {{ gridteam.titlec }}
@@ -221,6 +229,36 @@ export default {
 </script>
 
 <style scoped>
+
+.bttn {
+  position: fixed;
+    background-color: white;
+    font-family: "GT-Sectra-Book", sans-serif;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    /* border-top: 0.05vw solid black;
+    border: 0.05vw solid black; */
+    border-radius: 0%;
+    background-image: url(/_nuxt/static/LeftBG.png);
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    padding: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    text-transform: uppercase;
+    font-family: "GT-Sectra-Book";
+    font-family: "NHaas" !important;
+    transition: color 0.8s ease;
+    font-size: 1vw;
+}
+
+
 .modal {
   z-index: 1000;
 }
@@ -261,16 +299,18 @@ export default {
 } */
 
 .linkateam {
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   transition-duration: 1s;
 }
 
 .linkateam:hover {
   filter: grayscale(0%);
+  opacity: .5;
   transition-duration: 1s;
 }
 
 .grayscale-off {
+  opacity: .5;
   filter: grayscale(0%) !important;
   transition-duration: 1s;
 }
@@ -463,6 +503,29 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
+  .bttn {
+    position: absolute;
+    border-top: 0.05vw solid black;
+    border: 0.05vw solid black;
+    border-radius: 0%;
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    padding: 2.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 2.5vh;
+    /* width: 100%; */
+    width: 98%;
+    text-transform: uppercase;
+    font-family: "GT-Sectra-Book";
+    font-family: "NHaas" !important;
+    transition: color 0.8s ease;
+    font-size: 3vw;
+}
 
   .sideim img {
     display: none !important;

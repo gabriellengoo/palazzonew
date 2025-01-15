@@ -147,7 +147,7 @@ export default {
 }
 
 .right-content {
-  background-image: url("./static/BLUEbg.png");
+  background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

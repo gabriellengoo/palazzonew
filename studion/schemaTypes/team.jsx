@@ -28,12 +28,18 @@ export default {
       title: 'Title',
       type: 'string',
     },
+ 
     {
       name: "titlec",
       title: "Caption",
       type: "string",
       hidden: ({ parent, value }) =>
         !value && (parent?.spacer || parent?.reference),
+    },
+    {
+      name: 'film',
+      title: 'Film link',
+      type: 'string',
     },
     {
       name: "imaget",
