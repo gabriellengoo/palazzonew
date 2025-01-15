@@ -179,7 +179,7 @@
       <div class="flex flex-col normal-case italic loctextlink">
         <a href="javascript:void(0)" @click="openModal">{{ project.location }}</a>
       </div>
-    </div>
+    </div> 
 
     <!-- Draggable Iframe Modal -->
     <div
