@@ -149,8 +149,8 @@ export default {
 
 .iframe-container {
   position: absolute;
-  top: 20%; /* Default position */
-  left: 20%; /* Default position */
+  top: 10%; /* Default position */
+  left: 5vw; /* Default position */
   height: 25vw;
     /* display: flex; */
     width: 40vw;
