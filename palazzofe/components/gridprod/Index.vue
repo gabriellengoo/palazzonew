@@ -104,20 +104,45 @@
                           />
                         </div>
                         <div
-                          v-if="item.content4"
+                          v-if="item.filmtitle"
                           class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]"
                         >
-                          <p class="loctext uppercase">Email</p>
-                          <div
+                          <p class="loctext uppercase">Play Film</p>
+                          <!-- <div
                             class="flex flex-col normal-case italic loctextlink"
                           >
-                            <Richtext
-                              class="contactinner teamemail"
-                              :blocks="item.content4"
-                            />
-                          </div>
+                            <p>{{ item.filmtitle }}</p>
+                          </div> -->
+                          <button
+          class="flex flex-col normal-case italic loctextlink"
+           @click="toggleIframe"
+        >
+        <!-- <p class="">Play Film</p> -->
+          {{ item.filmtitle }}
+        </button>
+        
                         </div>
                       </div>
+
+                <!-- Draggable Iframe Pop-Up -->
+                    <div
+        v-if="isIframeOpen"
+        class="iframe-container"
+        ref="iframeContainer"
+        @mousedown="startDrag"
+      >
+        <div class="iframe-header">
+          <button @click="closeIframe" class="clocon absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer">  
+          <svg class="close-btn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
+       </button>
+        </div>
+        <iframe
+           v-for="(item, index) in chunk"
+          :src="item.film"
+          class="iframe-content"
+          frameborder="0"
+        ></iframe>
+      </div>
                     </div>
                   </div>
                 </figure>
@@ -125,11 +150,19 @@
             </div>
           </div>
 
+
+          
           <div v-if="gridteam.titlec" class="spanning-text nomb">
             {{ gridteam.titlec }}
           </div>
         </div>
+
+
+    
       </div>
+
+
+               
     </div>
   </client-only>
 </template>
@@ -146,6 +179,12 @@ export default {
       isDesktop: false,
       hoveredIndex: null,
       isDefaultActive: true,
+      isIframeOpen: false,
+      dragData: {
+        isDragging: false,
+        offsetX: 0,
+        offsetY: 0,
+      },
     };
   },
   computed: {
@@ -193,6 +232,58 @@ export default {
       // Check if clicked item is already active; if so, go back to the first item
       this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
     },
+
+
+
+
+    toggleIframe() {
+      this.isIframeOpen = !this.isIframeOpen;
+    },
+    closeIframe() {
+      this.isIframeOpen = false;
+    },
+    startDrag(event) {
+  // Ensure the reference exists
+  const container = this.$refs.iframeContainer;
+
+  if (container) {
+    // Record the offset between the mouse and the container's top-left corner
+    this.dragData.isDragging = true;
+    this.dragData.offsetX = event.clientX - container.offsetLeft;
+    this.dragData.offsetY = event.clientY - container.offsetTop;
+
+    // Add event listeners for dragging and stopping
+    document.addEventListener("mousemove", this.onDrag);
+    document.addEventListener("mouseup", this.stopDrag);
+  } else {
+    console.error("iframeContainer reference not found.");
+  }
+},
+
+onDrag(event) {
+  if (!this.dragData.isDragging) return;
+
+  const container = this.$refs.iframeContainer;
+
+  if (container) {
+    // Calculate the new position
+    const newX = event.clientX - this.dragData.offsetX;
+    const newY = event.clientY - this.dragData.offsetY;
+
+    // Update the container's position
+    container.style.left = `${newX}px`;
+    container.style.top = `${newY}px`;
+  }
+},
+
+stopDrag() {
+  // Stop dragging
+  this.dragData.isDragging = false;
+
+  // Remove event listeners
+  document.removeEventListener("mousemove", this.onDrag);
+  document.removeEventListener("mouseup", this.stopDrag);
+}
   },
 };
 </script>
@@ -252,7 +343,7 @@ export default {
   filter: grayscale(0%);
   transition-duration: 1s;
 }
-
+ 
 .grayscale-off {
   opacity: .5;
   filter: grayscale(0%) !important;
@@ -446,6 +537,74 @@ export default {
   font-family: "GT-Bold";
 }
 
+
+
+
+
+
+.iframe-container {
+  position: absolute;
+  top: 10%; /* Default position */
+  left: 5vw; /* Default position */
+  height: 25vw;
+    /* display: flex; */
+    width: 40vw;
+    border: 0.5px solid black;
+  background: white;
+  background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1000;
+  cursor: grab;
+  display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.textsumf{
+    font-family: "GT-Bold";
+}
+
+
+
+
+.iframe-header {
+
+  /* padding: 0.5rem; */
+  /* background: #f0f0f0; */
+  /* background-image: url("./static/background.jpg"); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 0.5px solid black;
+}
+
+/* .close-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+} */
+
+.close-btn{
+  width: 1.4vw;
+}
+
+.iframe-content {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: calc(100% - 2rem); /* Adjust height to account for header */
+}
+
+
+
+
+
+
 @media only screen and (max-width: 768px) {
   /* .linkateam:hover {
   filter: grayscale(0%);
@@ -482,5 +641,36 @@ export default {
   .image-grid {
     padding: 10vw 3vw 2vw 3vw;
   }
+
+
+
+
+
+    
+.iframe-container {
+    position: absolute;
+    top: 22%;
+    left: 6%;
+    height: 51vw;
+    width: 88vw;
+    border: 0.5px solid black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1000;
+    cursor: grab;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.clocon{
+    top: 1.5vw;
+    right: 1.5vw;
+}
+
+  .close-btn{
+  width: 4.4vw;
+}
 }
 </style>

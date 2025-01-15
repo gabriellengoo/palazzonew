@@ -246,6 +246,8 @@ const gridQuery6 = groq`*[_type == "products" ]
   film,
   filmtitle,
   grid8[] {
+  film,
+  filmtitle, 
 _key, double, spacer, 
 "video" : {"id" : video.asset->playbackId, 
 "aspect" : video.asset->data.aspect_ratio , 

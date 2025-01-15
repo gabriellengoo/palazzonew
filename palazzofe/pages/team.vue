@@ -22,11 +22,11 @@
             <Gridteam class="" :items="gridteam.grid7" size="small"></Gridteam>
           </div> 
           <button
-          class="bttn"
+          class="bttn "
            @click="toggleIframe"
         >
-        <p class="textsumf">Play Film</p>
-          {{ gridteam.filmtitle }}
+        <p class="textsumf">{{ gridteam.filmtitle }}</p>
+          
         </button>
         </div>
       </div>
@@ -324,8 +324,10 @@ a:hover {
     transition: color 0.8s ease;
     font-size: 1vw;
     left: 0;
-    font-size: 0.8vw;
+    /* font-size: 0.8vw; */
 }
+
+
 
 @media only screen and (max-width: 768px) {
 

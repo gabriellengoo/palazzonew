@@ -78,7 +78,17 @@ export default {
         //   name: "yeart",
         //   title: "Sub-title Tiny",
         //   type: "string",
-        // },
+        // }, 
+        {
+          name: 'filmtitle',
+          title: 'Film Title',
+          type: 'string',
+        },
+        {
+          name: 'film',
+          title: 'Film link',
+          type: 'string',
+        },
       
         {
           name: "content3",
