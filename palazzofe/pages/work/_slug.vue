@@ -1072,6 +1072,9 @@ display: none;
   height: 50%;
   /* background: #f1f1f1; */
   background-image: url("./static/Navbar.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 2px solid #000;
   z-index: 100000000 !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -1084,6 +1087,9 @@ display: none;
   padding: 0.5rem;
   /* background: #f1f1f1; */
   background-image: url("./static/Navbar.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   cursor: grab;
 }
 
@@ -1125,6 +1131,9 @@ display: none;
   width: 50vw;
   /* background: #f1f1f1; */
   background-image: url("./static/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   align-items: flex-end;
   pointer-events: auto;
 

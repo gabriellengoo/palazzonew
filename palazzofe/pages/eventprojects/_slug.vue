@@ -1109,6 +1109,9 @@ export default {
   height: 50%;
  /* background: #f1f1f1; */
  background-image: url("./static/Navbar.jpg");
+ background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 2px solid #000;
   z-index: 100000000 !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -1121,6 +1124,9 @@ export default {
   padding: 0.5rem;
   /* background: #f1f1f1; */
   background-image: url("./static/Navbar.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   cursor: grab;
 }
 
@@ -1164,7 +1170,9 @@ export default {
     background-image: url("./static/background.jpg");
     align-items: flex-end;
     pointer-events: auto;
-
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
     height: 25vw;
     display: flex;
