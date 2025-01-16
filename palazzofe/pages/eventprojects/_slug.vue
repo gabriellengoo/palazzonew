@@ -505,18 +505,25 @@ export default {
       isGalleryExpanded: true,
       isBlueBoxActive: false,
       clickedImageIndex: null, // Initially set to null
+      // swiperOptions: {
+      //   slidesPerView: "auto",
+      // },
+      // swiperOptions2: {
+      //   slidesPerView: "auto",
+      // },
       swiperOptions: {
+        zoom: {
+          maxRatio: 5, // Allow zooming up to 5x
+          toggle: true,
+        },
         slidesPerView: "auto",
-        // keyboard: {
-        //   enabled: true,
-        // },
+        touchRatio: 1, // Ensure touch interactions are enabled
       },
       swiperOptions2: {
-        slidesPerView: "auto",
-        // keyboard: {
-        //   enabled: true,
-        // },
-      },
+        zoom: {
+          maxRatio: 5, // Allow zooming up to 5x
+          toggle: true,
+        },
       lottieInstance: null,
       imageOpacity: 1, // Add this property
       scrolled: false,
