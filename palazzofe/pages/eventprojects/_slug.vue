@@ -209,23 +209,138 @@
                     class="w-full flex items-center text-center flex-col pt-10 md:pt-[6vh] locationtext"
                   >
                     <p class="loctext">Play Film</p>
-                     <!-- pop -->
-                     <button class="flex flex-col normal-case italic loctextlink" @click="openIframe(project.location)">{{ project.location }}</button>
-                        
-                    <!-- <div class="flex flex-col normal-case italic loctextlink">
+                   
+                    <div class="flex flex-col normal-case italic loctextlink">
                       <a
                         href="javascript:void(0)" @click="openModal"
                         >{{ project.location }}</a
                       >
-                    </div> -->
+                    </div>
                   </div>
 
-                     <!-- Draggable Iframe Modal -->
-    <draggable-iframe
-                              v-if="iframeVisible"
-                              :iframeSrc="iframeUrl"
-                              @close="iframeVisible = false"
-                            />
+                <!-- Draggable Iframe Modal -->
+                <div
+                    v-if="isModalOpen"
+                    class="modal-container fixed inset-0 z-50 flex items-center justify-center"
+                  >
+                    <!-- Draggable Modal -->
+                    <div
+                      class="modal-content bg-white overflow-hidden relative"
+                      ref="modal"
+                      @mousedown="startDragging"
+                      @mouseup="stopDragging"
+                      @mousemove="drag"
+                      :style="{
+                        top: `${position.top}px`,
+                        left: `${position.left}px`,
+                      }"
+                    >
+                   
+                      <!-- Close -->
+                      <button
+                        class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
+                        @click="closeModal"
+                      >
+                        <!-- <SvgClose class=""/> -->
+                        <svg
+                          class="w-[1.4vw]"
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          viewBox="0 0 500 500"
+                          width="500"
+                          height="500"
+                          preserveAspectRatio="xMidYMid meet"
+                          style="
+                            height: 100%;
+                            transform: translate3d(0px, 0px, 0px);
+                            content-visibility: visible;
+                          "
+                        >
+                          <defs>
+                            <clipPath id="__lottie_element_2">
+                              <rect width="500" height="500" x="0" y="0"></rect>
+                            </clipPath>
+                          </defs>
+                          <g clip-path="url(#__lottie_element_2)">
+                            <g
+                              transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
+                              opacity="1"
+                              style="display: block"
+                            >
+                              <g
+                                opacity="1"
+                                transform="matrix(1.4112499952316284,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M-10,-10 C-10,-10 10,10 10,10"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M-10,-10 C-10,-10 10,10 10,10"
+                                ></path>
+                              </g>
+                              <g
+                                opacity="0"
+                                transform="matrix(1.389361023902893,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M10,0 C10,0 10,0 10,0"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M10,0 C10,0 10,0 10,0"
+                                ></path>
+                              </g>
+                              <g
+                                opacity="1"
+                                transform="matrix(1.3872150182724,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M-10,10 C-10,10 10,-10 10,-10"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M-10,10 C-10,10 10,-10 10,-10"
+                                ></path>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </button>
+                      <!-- </button> -->
+
+                      <iframe
+                        :src="`${project.locationlink}?autoplay=1&fullscreen=1`"
+                        frameborder="0"
+                        class="w-full h-full"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
                   
                 </div>
               </div>
@@ -268,23 +383,133 @@
                     class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
                   > 
                     <p class="loctext">Play Film</p>
-                       <!-- pop -->
-                       <button lass="flex flex-col normal-case italic loctextlink" @click="openIframe(project.location)">{{ project.location }}</button>
-                        
-                    <!-- <div class="flex flex-col normal-case italic loctextlink">
+                      
+                    <div class="flex flex-col normal-case italic loctextlink">
                       <a
                          href="javascript:void(0)" @click="openModal"
                         >{{ project.location }}</a
                       >
-                    </div> -->
-                  </div>
+                    </div>
+                  </div> 
 
-                     <!-- Draggable Iframe Modal -->
-                     <draggable-iframe
-                              v-if="iframeVisible"
-                              :iframeSrc="iframeUrl"
-                              @close="iframeVisible = false"
-                            />
+                   <!-- Draggable Iframe Modal -->
+                   <div
+                    v-if="isModalOpen"
+                    class="modal-container fixed inset-0 z-50 flex items-center justify-center"
+                  >
+                    <!-- Draggable Modal -->
+                    <div
+                      class="modal-content bg-white overflow-hidden relative"
+                      ref="modal"
+                      :style="{ top: `20vh`, left: `2vw` }"
+                    >
+                     
+                      <!-- Close -->
+                      <button
+                        class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
+                        @click="closeModal"
+                      >
+                        <!-- <SvgClose class=""/> -->
+                        <svg
+                          class="w-[4.4vw]"
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          viewBox="0 0 500 500"
+                          width="500"
+                          height="500"
+                          preserveAspectRatio="xMidYMid meet"
+                          style="
+                            height: 100%;
+                            transform: translate3d(0px, 0px, 0px);
+                            content-visibility: visible;
+                          "
+                        >
+                          <defs>
+                            <clipPath id="__lottie_element_2">
+                              <rect width="500" height="500" x="0" y="0"></rect>
+                            </clipPath>
+                          </defs>
+                          <g clip-path="url(#__lottie_element_2)">
+                            <g
+                              transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
+                              opacity="1"
+                              style="display: block"
+                            >
+                              <g
+                                opacity="1"
+                                transform="matrix(1.4112499952316284,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M-10,-10 C-10,-10 10,10 10,10"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M-10,-10 C-10,-10 10,10 10,10"
+                                ></path>
+                              </g>
+                              <g
+                                opacity="0"
+                                transform="matrix(1.389361023902893,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M10,0 C10,0 10,0 10,0"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M10,0 C10,0 10,0 10,0"
+                                ></path>
+                              </g>
+                              <g
+                                opacity="1"
+                                transform="matrix(1.3872150182724,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M-10,10 C-10,10 10,-10 10,-10"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M-10,10 C-10,10 10,-10 10,-10"
+                                ></path>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </button>
+                      <!-- </button> -->
+
+                      <iframe
+                        :src="`${project.locationlink}?autoplay=1&fullscreen=1`"
+                        frameborder="0"
+                        class="w-full h-full"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
+                   
                 </div>
               </div>
               <!-- <span class="hover-move">Rose.co</span> -->
@@ -532,8 +757,9 @@ export default {
       scrolled: false,
       back: false,
       searchQuery: "", // Initialize search query
-      isModalOpen2: false,
-      isDragging2: false,
+      // pop
+      isModalOpen: false,
+      isDragging: false,
       position: { top: 100, left: 100 }, // Initial position of the modal
       offset: { x: 0, y: 0 },
 
@@ -605,28 +831,38 @@ export default {
   methods: {
 
     // pop
-    openIframe(url) {
-      this.iframeUrl = url;
-      this.iframeVisible = true;
+    openModal() {
+      this.isModalOpen = true;
     },
-
-  clickHandler(key) {
-    // Set hoveredIndex to apply the grayscale-off class on the clicked item
-    this.hoveredIndex = this.hoveredIndex === key ? null : key;
-  },
-    clickHandler(key) {
-      // Check if clicked item is already active; if so, go back to the first item
-      this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
+    closeModal() {
+      this.isModalOpen = false;
     },
-
+    startDragging(event) {
+      this.isDragging = true;
+      this.offset = {
+        x: event.clientX - event.target.closest(".modal-content").offsetLeft,
+        y: event.clientY - event.target.closest(".modal-content").offsetTop,
+      };
+    },
+    stopDragging() {
+      this.isDragging = false;
+    },
+    drag(event) {
+      if (this.isDragging) {
+        this.position = {
+          top: event.clientY - this.offset.y,
+          left: event.clientX - this.offset.x,
+        };
+      }
+    },
 
     // other
-    openModal() {
-      this.isModalOpen2 = true;
-    },
-    closeModal2() {
-      this.isModalOpen2 = false;
-    },
+    // openModal() {
+    //   this.isModalOpen2 = true;
+    // },
+    // closeModal2() {
+    //   this.isModalOpen2 = false;
+    // },
     playSegment() {
       // Play from frame 11 to 20
       if (this.lottieInstance) {
