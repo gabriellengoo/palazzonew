@@ -1167,7 +1167,7 @@ export default {
     display: flex;
     width: 50vw;
     /* background: #f1f1f1; */
-    background-image: url("./static/background.jpg");
+    background-image: url("./static/popbg.jpeg");
     align-items: flex-end;
     pointer-events: auto;
     background-size: cover;

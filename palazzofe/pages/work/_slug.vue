@@ -1130,7 +1130,7 @@ display: none;
   display: flex;
   width: 50vw;
   /* background: #f1f1f1; */
-  background-image: url("./static/background.jpg");
+  background-image: url("./static/popbg.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
