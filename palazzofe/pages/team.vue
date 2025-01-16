@@ -160,7 +160,7 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 1000;
+  z-index: 99;
   cursor: grab;
   display: flex;
     justify-content: flex-end;
@@ -172,7 +172,7 @@ export default {
 }
 
 .iframe-header {
-
+  height: 3vw;
   /* padding: 0.5rem; */
   /* background: #f0f0f0; */
   /* background-image: url("./static/background.jpg"); */
