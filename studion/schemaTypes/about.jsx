@@ -12,7 +12,7 @@ export default {
   // icon: '🏠',
   // liveEdit: true,
   fields: [
-    {
+    { 
       name: 'seo',
       title: 'CLICK HERE FOR SEO METADATA',
       type: 'seo',  // Reusing the `seo` object schema
@@ -30,6 +30,12 @@ export default {
     {
       name: "about",
       title: "About",
+      type: "blockContent",
+    },
+
+    {
+      name: "moni",
+      title: "Testimonials",
       type: "blockContent",
     },
    

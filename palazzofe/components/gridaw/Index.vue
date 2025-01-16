@@ -364,6 +364,7 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 90%;
+  width:82%;
   /* border-bottom: 0.07vw solid black; */
 }
 

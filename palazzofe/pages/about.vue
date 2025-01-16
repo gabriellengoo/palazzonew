@@ -1,155 +1,156 @@
 <template>
   <div>
     <div>
-    <!-- <HeaderComponent /> -->
-    <div class="headera content flex w-full justify-between overflow-y-hidden">
-      <h1 class="navmb">
-        <HeaderComponent />
-      </h1>
-      <p class="navmbno yeart text-center text-4xl uppercase">About</p>
-      <p class="navmbno yeart w-[5vw] text-center text-4xl uppercase"></p>
-      <p class="navmbno headingspages text-center text-4xl uppercase">
-        palazzo eventi
-      </p>
-      <h1 class="navmbno w-[2vw]"></h1>
-    </div>
-
-    <div class="nodes contmbhead pointer-events-none">
-          <p
-            :class="[
-              '',
-              { sheadera: !isMenuOpen },
-              { sheaderaopen: isMenuOpen },
-            ]"
-            class="headingspages pointer-events-none text-center text-4xl uppercase"
-          >
-            About
-          </p>
-        </div>
-
-
-    <div class="bgmobile relative min-h-screen flex">
-      <!-- Left Scrollable Content -->
+      <!-- <HeaderComponent /> -->
       <div
-        class="left-content flex-1 flex justify-center items-center overflow-y-scroll p-8"
+        class="headera content flex w-full justify-between overflow-y-hidden"
       >
-        <div class="content">
-          <div class="nomb">
-            <div class="imgsa">
-  <div class="scroll-container">
-    <img class="ania2" src="/1.png" />
-    <img class="ania2" src="/2.png" />
-    <img class="ania2" src="/3.png" />
-    <img class="ania2" src="/4.png" />
-    <img class="ania2" src="/1.png" /> <!-- Duplicate first image for looping -->
-  </div>
-</div>
+        <h1 class="navmb">
+          <HeaderComponent />
+        </h1>
+        <p class="navmbno yeart text-center text-4xl uppercase">About</p>
+        <p class="navmbno yeart w-[5vw] text-center text-4xl uppercase"></p>
+        <p class="navmbno headingspages text-center text-4xl uppercase">
+          palazzo eventi
+        </p>
+        <h1 class="navmbno w-[2vw]"></h1>
+      </div>
 
-            <!-- <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" /> -->
-            <img class="w-[26.5vw]" src="/leftaboutt.png" />
-            <!-- <img class="w-[26.5vw]" src="/wind.png" /> -->
+      <div class="nodes contmbhead pointer-events-none">
+        <p
+          :class="['', { sheadera: !isMenuOpen }, { sheaderaopen: isMenuOpen }]"
+          class="headingspages pointer-events-none text-center text-4xl uppercase"
+        >
+          About
+        </p>
+      </div>
+
+      <div class="bgmobile relative min-h-screen flex">
+        <!-- Left Scrollable Content -->
+        <div
+          class="left-content flex-1 flex justify-center items-center overflow-y-scroll p-8"
+        >
+          <div class="content">
+            <div class="nomb">
+              <!-- <div class="imgsa">
+                <div class="scroll-container">
+                  <img class="ania2" src="/1.png" />
+                  <img class="ania2" src="/2.png" />
+                  <img class="ania2" src="/3.png" />
+                  <img class="ania2" src="/4.png" />
+                  <img class="ania2" src="/1.png" />
+                </div>
+              </div>
+
+              <img class="w-[26.5vw]" src="/leftaboutt.png" /> -->
+              <img class="w-[26.5vw]" src="/leftaboutt.png" />
+            </div>
           </div>
-        </div>
 
-        
+          <div class="content">
+            <div class="nomb covercont pointer-events-none">
+           <img class="coverabout nomb" src="/wind.png" />
 
-        <div class="content">
-          <div class="nomb covercont pointer-events-none">
-            <!-- <LottieAnimation class="ania" :animationData="animationData" :loop="true" :autoplay="true" /> -->
-            <!-- <img class="coverabout nomb" src="/abneww.png" /> -->
-            <img class="coverabout nomb" src="/wind.png" />
-          </div> 
-        </div>
 
-        <div class="content nodes">
-          <div class=" pointer-events-none">
-            <img class="rightimg" src="/aboutrighta.png" />
+           <div class="nomb anicolle pointer-events-none">
+              <img class="logo" src="/I.png" />
+            </div>
+          <div class="email ml-[5vw] richcontle text-left">
+            <Richtext class="richcont3le" :blocks="about.moni"></Richtext>
+            <div class="richcont2le"><SvgBack /></div>
           </div>
-          <div class=" anicol pointer-events-none">
-            <img class="rightimg fade-img" src="/j.png" />
-            <img class="rightimg fade-img" src="/I.png" />
-            <!-- <img class="rightimg fade-img" src="/j.png" /> -->
-          </div>
-        </div>
-       
 
- 
-       <!-- <div class="butcon">
+          
+            </div>
+          </div>
+
+          <div class="content nodes">
+            <div class="pointer-events-none">
+              <img class="rightimg" src="/aboutrighta.png" />
+            </div>
+            <div class="pointer-events-none anicol">
+              <img class="rightimg " src="/j.png" />
+              <!-- <img class="rightimg fade-img" src="/I.png" /> -->
+              <!-- <img class="rightimg fade-img" src="/j.png" /> -->
+            </div>
+          </div>
+
+          <!-- <div class="butcon">
         <button
           class="bttn"
         >
           Awards
         </button>
        </div> -->
-        <!-- @mousemove="handleMouseHover" @mouseleave="stopScrolling" -->
-        <div class="email ml-[5vw] richcont text-left" >
-          <Richtext class="richcont3 aboutbot" :blocks="about.about"></Richtext>
-          <div class="richcont2" ><SvgBack/></div>
-        </div>
-      </div>
-
-      <!-- Right Static Content -->
-      <div
-        class="right-content overflow-y-scroll flex-1 p-8 flex justify-center items-center"
-      >
-        <div class="content">
-          <div class="nomb pointer-events-none">
-            <img class="rightimg" src="/aboutrighta.png" />
+          <!-- @mousemove="handleMouseHover" @mouseleave="stopScrolling" -->
+          <div class="email ml-[5vw] richcont text-left">
+            <Richtext
+              class="richcont3 aboutbot"
+              :blocks="about.about"
+            ></Richtext>
+            <div class="richcont2"><SvgBack /></div>
           </div>
-          <div class="nomb anicol pointer-events-none">
+        </div>
+
+        <!-- Right Static Content -->
+        <div
+          class="right-content overflow-y-scroll flex-1 p-8 flex justify-center items-center"
+        >
+          <div class="content">
+            <div class="nomb pointer-events-none">
+              <img class="rightimg" src="/aboutrighta.png" />
+            </div>
+            <div class="nomb anicol pointer-events-none">
+              <img class="logo" src="/J.png" />
+            </div>
+            <!-- <div class="nomb anicol pointer-events-none">
             <img class="rightimg fade-img" src="/J.png" />
             <img class="rightimg fade-img" src="/I.png" />
-            <!-- <img class="rightimg fade-img" src="/j.png" /> -->
+          </div> -->
           </div>
-        </div>
-        <div class="email ml-[5vw] richcont text-left">
-          <Richtext class="richcont3" :blocks="about.about"></Richtext>
-          <div class="richcont2" ><SvgBack/></div>
+          <div class="email ml-[5vw] richcont text-left">
+            <Richtext class="richcont3" :blocks="about.about"></Richtext>
+            <div class="richcont2"><SvgBack /></div>
+          </div>
         </div>
       </div>
     </div>
 
-  </div>
-
-
-          <!-- Awards Button -->
-          <div class="butcon">
-            <button class="bttn" @click="toggleAwards">
-          {{ isAwardsOpen ? 'About' : 'Awards' }}
-        </button>
+    <!-- Awards Button -->
+    <div class="butcon">
+      <button class="bttn" @click="toggleAwards">
+        {{ isAwardsOpen ? "About" : "Awards" }}
+      </button>
     </div>
-
 
     <!-- Awards Content -->
     <div
-      :class="['awards-content', { 'visible': isAwardsOpen }]"
-      class="fixed top-0 left-full w-full h-full bg-white  transition-transform duration-700 ease-in-out"
+ :class="['awards-content', { visible: isAwardsOpen }]"
+  v-show="awardsLoaded"
+      class="fixed top-0 left-full w-full h-full bg-white transition-transform duration-700 ease-in-out"
     >
       <!-- <h2 class="text-4xl font-bold mb-4">Awards Section</h2>
       <p>Here is the text for the awards section!</p> -->
       <div class="bgmobileaw relative min-h-screen flex">
-      <!-- Left Scrollable Content -->
-      <div class="left-contentaw flex-1 overflow-y-scroll p-8">
-        <div class="content gridcontentaw ">
-      
-
-          <div v-if="gridaw.grid6" class="">
-            <Gridaw class="" :items="gridaw.grid6" size="small"></Gridaw>
+        <!-- Left Scrollable Content -->
+        <div class="left-contentaw flex-1 overflow-y-scroll p-8">
+          <div class="content gridcontentaw">
+            <div v-if="gridaw.grid6" class="">
+              <Gridaw class="" :items="gridaw.grid6" size="small"></Gridaw>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Right Static Content -->
-      <div class="right-contentaw nomb overflow-hidden flex-1 p-8 flex justify-center items-center">
-      
-        <!-- <div class="static-box w-full h-full"> -->
-        
-        <!-- </div> -->
+        <!-- Right Static Content -->
+        <div
+          class="right-contentaw nomb overflow-hidden flex-1 p-8 flex justify-center items-center"
+        >
+          <!-- <div class="static-box w-full h-full"> -->
+
+          <!-- </div> -->
+        </div>
       </div>
     </div>
-    </div>
-
-   
   </div>
 </template>
 
@@ -157,9 +158,9 @@
 import HeaderComponent from "@/components/layout/Header.vue";
 import { mapState } from "vuex";
 import { groq } from "@nuxtjs/sanity";
-import animationData from '~/static/animations/aboutani.json';
-import LottieAnimation from '~/components/LottieAnimation.vue';
-import SvgBack from '~/components/svg/Back.vue';
+import animationData from "~/static/animations/aboutani.json";
+import LottieAnimation from "~/components/LottieAnimation.vue";
+import SvgBack from "~/components/svg/Back.vue";
 import { mapMutations } from "vuex";
 
 export default {
@@ -170,14 +171,16 @@ export default {
       animationData,
       scrollInterval: null,
       scrollOffset: 0,
-      isAwardsOpen: false, 
+      isAwardsOpen: false,
+      awardsLoaded: false,
     };
   },
-  
+
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "about"]{
     title,
     about,
+    moni,
   } | order(_updatedAt desc)[0]`;
 
     const about = await $sanity.fetch(query);
@@ -192,66 +195,72 @@ export default {
   },
 
   mounted() {
-    this.startAutoScroll();
+    // this.startAutoScroll();
   },
 
   methods: {
     ...mapMutations(["toggleMenu", "setMenuState"]),
 
     toggleAwards() {
-      this.isAwardsOpen = !this.isAwardsOpen;
-    },
+    if (!this.awardsLoaded) {
+      this.loadAwardsContent(); // Load the content first
+    }
+    this.isAwardsOpen = !this.isAwardsOpen;
+  },
+  loadAwardsContent() {
+    this.awardsLoaded = true;
+  },
 
-    startAutoScroll() {
-      const container = document.querySelector('.scroll-container');
-      const images = container.children;
-      const imageWidth = window.innerWidth * .215;// Get the width of a single image
-      const totalWidth = imageWidth * images.length;
+    // startAutoScroll() {
+    //   const container = document.querySelector(".scroll-container");
+    //   const images = container.children;
+    //   const imageWidth = window.innerWidth * 0.215; // Get the width of a single image
+    //   const totalWidth = imageWidth * images.length;
 
-      setInterval(() => {
-        this.scrollOffset -= imageWidth;
+    //   setInterval(() => {
+    //     this.scrollOffset -= imageWidth;
 
-        // If the offset goes beyond the total width, reset it for looping
-        if (Math.abs(this.scrollOffset) >= totalWidth - imageWidth) {
-          this.scrollOffset = 0;
-        }
+    //     // If the offset goes beyond the total width, reset it for looping
+    //     if (Math.abs(this.scrollOffset) >= totalWidth - imageWidth) {
+    //       this.scrollOffset = 0;
+    //     }
 
-        container.style.transform = `translateX(${this.scrollOffset}px)`;
-      }, 1000); // Adjust interval duration for scrolling speed
-    },
+    //     container.style.transform = `translateX(${this.scrollOffset}px)`;
+    //   }, 1000); // Adjust interval duration for scrolling speed
+    // },
 
-    handleMouseHover(event) {
-      const container = event.currentTarget;
-      const rect = container.getBoundingClientRect();
-      const containerHeight = rect.height;
-      const mouseY = event.clientY - rect.top; // Mouse Y position relative to the container
-      const scrollSpeed = 95; // Adjust this to control the scrolling speed
-      
-      // Scroll up if the mouse is near the top
-      if (mouseY < containerHeight * 0.3) {
-        this.scrollContainer(container, -scrollSpeed);
-      }
-      // Scroll down if the mouse is near the bottom
-      else if (mouseY > containerHeight * 0.7) {
-        this.scrollContainer(container, scrollSpeed);
-      }
-    },
-    scrollContainer(container, speed) {
-      // Clear any existing interval to avoid multiple overlaps
-      if (this.scrollInterval) clearInterval(this.scrollInterval);
+    // handleMouseHover(event) {
+    //   const container = event.currentTarget;
+    //   const rect = container.getBoundingClientRect();
+    //   const containerHeight = rect.height;
+    //   const mouseY = event.clientY - rect.top; // Mouse Y position relative to the container
+    //   const scrollSpeed = 95; // Adjust this to control the scrolling speed
 
-      // Start a new interval to scroll
-      this.scrollInterval = setInterval(() => {
-        container.scrollTop += speed;
-      }, 100); // Adjust interval time for smoother scrolling
-    },
-    stopScrolling() {
-      // Stop the scrolling when the mouse leaves the container
-      if (this.scrollInterval) {
-        clearInterval(this.scrollInterval);
-        this.scrollInterval = null;
-      }
-    },
+    //   // Scroll up if the mouse is near the top
+    //   if (mouseY < containerHeight * 0.3) {
+    //     this.scrollContainer(container, -scrollSpeed);
+    //   }
+    //   // Scroll down if the mouse is near the bottom
+    //   else if (mouseY > containerHeight * 0.7) {
+    //     this.scrollContainer(container, scrollSpeed);
+    //   }
+    // },
+    // scrollContainer(container, speed) {
+    //   // Clear any existing interval to avoid multiple overlaps
+    //   if (this.scrollInterval) clearInterval(this.scrollInterval);
+
+    //   // Start a new interval to scroll
+    //   this.scrollInterval = setInterval(() => {
+    //     container.scrollTop += speed;
+    //   }, 100); // Adjust interval time for smoother scrolling
+    // },
+    // stopScrolling() {
+    //   // Stop the scrolling when the mouse leaves the container
+    //   if (this.scrollInterval) {
+    //     clearInterval(this.scrollInterval);
+    //     this.scrollInterval = null;
+    //   }
+    // },
   },
 
   computed: {
@@ -261,13 +270,10 @@ export default {
     // ...mapState(["gridd"]),
     ...mapState(["gridaw"]),
   },
-
- 
 };
 </script>
 
 <style scoped>
-
 .page-wrapper {
   transform: translateX(0);
   transition: transform 0.7s ease-in-out;
@@ -284,6 +290,7 @@ export default {
   transition: transform 0.7s ease-in-out;
   z-index: 20;
 }
+
 
 .awards-content.visible {
   transform: translateX(-100%);
@@ -314,36 +321,36 @@ export default {
 }
 
 .butcon {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
 }
 
-.bttn{
+.bttn {
   position: absolute;
-    width: 94%;
-    border-top: 0.05vw solid black;
-    border: 0.05vw solid black;
-    border-radius: 0%;
-    background-image: url("./static/LeftBG.png");
-    background-size: cover;
-    background-position: 0 0;
-    background-position: initial;
-    background-repeat: no-repeat;
-    padding: 1rem;
-    padding: 0.5vw;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: fixed;
-    bottom: 2.5vh;
-    /* width: 100%; */
-    width: 98%;
-    text-transform: uppercase;
-    font-family: "GT-Sectra-Book";
-    font-family: "NHaas" !important;
-    transition: color 0.8s ease;
-    font-size: 1vw;
+  width: 94%;
+  border-top: 0.05vw solid black;
+  border: 0.05vw solid black;
+  border-radius: 0%;
+  background-image: url("./static/LeftBG.png");
+  background-size: cover;
+  background-position: 0 0;
+  background-position: initial;
+  background-repeat: no-repeat;
+  padding: 1rem;
+  padding: 0.5vw;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: fixed;
+  bottom: 2.5vh;
+  /* width: 100%; */
+  width: 98%;
+  text-transform: uppercase;
+  font-family: "GT-Sectra-Book";
+  font-family: "NHaas" !important;
+  transition: color 0.8s ease;
+  font-size: 1vw;
 }
 
 .headingspagesb {
@@ -378,38 +385,36 @@ export default {
   padding: 10px; /* Padding around the inner image */
 }
 
-.right-content{
+.right-content {
   z-index: 20;
 }
 
-.ania{
+.ania {
   position: absolute;
-    width: 54vw;
-    left: -1.9vw;
-    top: 0.9vw;
-    height: 100vh;
-    display: flex;
-    justify-items: center;
-    justify-content: center;
+  width: 54vw;
+  left: -1.9vw;
+  top: 0.9vw;
+  height: 100vh;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
 }
 
-.imgsa{
+.imgsa {
   position: fixed;
-    width: auto;
-    left: 13.5vw;
-    top: 16vh;
-    top: 39vh;
-    overflow-y: scroll;
-    height: 67.4vh;
-    display: flex;
-    justify-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    scroll-behavior: smooth;
+  width: auto;
+  left: 13.5vw;
+  top: 16vh;
+  top: 39vh;
+  overflow-y: scroll;
+  height: 67.4vh;
+  display: flex;
+  justify-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  scroll-behavior: smooth;
 }
-
-
 
 .scroll-container {
   z-index: 1;
@@ -427,8 +432,6 @@ export default {
   /* flex-shrink: 0; */
 }
 
-
-
 /* Styles for text inside the frame */
 .textframe {
   z-index: 3; /* Ensure text appears on top */
@@ -439,7 +442,6 @@ export default {
 }
 
 /* Flexbox layout for the image grid */
-
 
 .bgmobile {
   background-size: cover;
@@ -476,81 +478,131 @@ a:hover {
   text-decoration: underline;
 }
 
-.anicol{
+.anicol {
   position: relative;
-    z-index: 99;
-    left: 10vw;
-    top: -38vw;
-    width: 43%;
+  z-index: 9;
+  left: 10vw;
+  top: -38vw;
+  width: 43%;
 }
 
-.coverabout{
+.coverabout {
   width: 45vw;
   width: 60vw;
-    height: 51vw;
-    height: auto;
-    position: absolute;
-}
-
-.covercont{
+  height: 51vw;
+  height: auto;
   position: absolute;
-    left: 2.5vw;
-    top: -2vh;
-    height: 100vh;
-    width: 50vw;
-    display: flex !important;
-    align-items: center;
 }
 
 .covercont {
-    position: absolute;
-    left: -0.5vw;
-    top: 0vh;
-    height: 100vh;
-    width: 60vw;
-    display: flex !important;
-    align-items: center;
+  position: absolute;
+  left: 2.5vw;
+  top: -2vh;
+  height: 100vh;
+  width: 50vw;
+  display: flex !important;
+  align-items: center;
+}
+
+.covercont {
+  position: absolute;
+  left: -0.5vw;
+  top: 0vh;
+  height: 100vh;
+  width: 60vw;
+  display: flex !important;
+  align-items: center;
 }
 
 .rightimg {
   width: 27vw;
-  /* top: -2vh; */
-  left: 2vw;
+    /* top: -2vh; */
+    top: 6vw;
+    left: 2vw;
+  position: relative;
+}
+
+.logo{
+  width: 11vw;
+  top: 5vw;
   position: relative;
 }
 
 .richcont {
   position: absolute;
-    top: 42vh;
-    left: 64vw;
-    width: 20vw;
-    font-size: 1.2vw;
-    height: 24vw;
-    overflow: scroll;
+  top: 42vh;
+  left: 64vw;
+  width: 20vw;
+  font-size: 1.2vw;
+  height: 24vw;
+  overflow: scroll;
 }
 
 .richcont3 {
   position: fixed;
-    top: 40vh;
-    left: 66.2vw;
-    width: 22vw;
-    /* font-size: 1.3vw; */
-    height: 21vw;
-    overflow: scroll;
+  top: 40vh;
+  left: 66.2vw;
+  width: 22vw;
+  /* font-size: 1.3vw; */
+  height: 21vw;
+  overflow: scroll;
 }
 
 .richcont2 {
   position: relative;
-    top: 9vw;
-    left: -5.5vw;
-    transform: rotateZ(270deg);
-    width: 27vw;
-    /* overflow: hidden; */
-    pointer-events: none;
-    z-index: 10;
-    padding-left: .3vw;
-    height: max-content;
+  top: 9vw;
+  left: -5.5vw;
+  transform: rotateZ(270deg);
+  width: 27vw;
+  /* overflow: hidden; */
+  pointer-events: none;
+  z-index: 10;
+  padding-left: 0.3vw;
+  height: max-content;
 }
+
+
+.anicolle{
+  position: relative;
+  z-index: 9;
+    left: 20vw;
+    top: -18vw;
+    width: 19%;  
+    }
+
+.richcontle {
+  position: absolute;
+  top: 42vh;
+  left: 12vw;
+  width: 20vw;
+  font-size: 1.2vw;
+  height: 24vw;
+  overflow: scroll;
+}
+
+.richcont3le {
+  position: fixed;
+  top: 40vh;
+  left: 14.2vw;
+  width: 22vw;
+  /* font-size: 1.3vw; */
+  height: 21vw;
+  overflow: scroll;
+}
+
+.richcont2le {
+  position: relative;
+  top: 9vw;
+  left: -5.5vw;
+  transform: rotateZ(270deg);
+  width: 27vw;
+  /* overflow: hidden; */
+  pointer-events: none;
+  z-index: 10;
+  padding-left: 0.3vw;
+  height: max-content;
+}
+
 
 .fade-img {
   position: absolute;
@@ -588,21 +640,17 @@ a:hover {
 }
 
 .sheadera {
-        pointer-events: none;
+  pointer-events: none;
   opacity: 1;
 }
 
 .sheaderaopen {
-        left: 39vw;
-        pointer-events: none;
+  left: 39vw;
+  pointer-events: none;
   opacity: 0;
 }
 
-
-
-
 @media only screen and (max-width: 768px) {
-
   .bttn {
     position: absolute;
     border-top: 0.05vw solid black;
@@ -625,29 +673,29 @@ a:hover {
     font-family: "NHaas" !important;
     transition: color 0.8s ease;
     font-size: 3vw;
-}
+  }
 
-.richcont {
-  position: absolute;
-        top: 35vh;
-        left: 9vw;
-        width: 73vw;
-        font-size: 1.8vw;
-        height: 82vw;
-        overflow: scroll;
-} 
+  .richcont {
+    position: absolute;
+    top: 35vh;
+    left: 9vw;
+    width: 73vw;
+    font-size: 1.8vw;
+    height: 82vw;
+    overflow: scroll;
+  }
 
-.richcont3 {
-  position: relative;
-        top: 0;
-        left: 0;
-        width: auto;
-        font-size: 3.4vw;
-        height: 69vw;
-        overflow: scroll;
-} 
+  .richcont3 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: auto;
+    font-size: 3.4vw;
+    height: 69vw;
+    overflow: scroll;
+  }
 
-.richcont2 {
+  .richcont2 {
     position: relative;
     top: -4vw;
     left: 21.5vw;
@@ -656,22 +704,21 @@ a:hover {
     /* overflow: hidden; */
     pointer-events: none;
     z-index: 20;
-    padding-left: .3vw;
+    padding-left: 0.3vw;
     height: -moz-max-content;
     height: max-content;
-}
+  }
 
-.anicol{
-        position: absolute;
-        z-index: 20;
-        left: 30vw;
-        top: 53vw;
-        width: 39%;
-    }
-
+  .anicol {
+    position: absolute;
+    z-index: 20;
+    left: 30vw;
+    top: 53vw;
+    width: 39%;
+  }
 
   .bgmobile {
-    flex-direction: column; 
+    flex-direction: column;
   }
 
   .rightimg {
@@ -695,12 +742,11 @@ a:hover {
   }
 }
 
-
 /* ------- */
-.gridcontentaw{
+.gridcontentaw {
   height: 100vh;
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .headingspagesb {
@@ -798,9 +844,9 @@ a:hover {
 }
 
 @media only screen and (max-width: 768px) {
-    .image-rowaw:last-child {
-        border-bottom: 0.07vw solid rgba(0, 0, 0, 0) !important;
-    }
+  .image-rowaw:last-child {
+    border-bottom: 0.07vw solid rgba(0, 0, 0, 0) !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -814,27 +860,26 @@ a:hover {
   } */
 
   .left-contentaw {
-  background-image: url("./static/background.jpg");
-  background-size: cover;
-  background-position: unset;
-  background-repeat: no-repeat;
-  height: 100vh;
-  overflow-y: scroll;
-}
+    background-image: url("./static/background.jpg");
+    background-size: cover;
+    background-position: unset;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow-y: scroll;
+  }
 
   .right-contentaw {
     display: none;
   }
 
-
-  .left-contentaw{
+  .left-contentaw {
     padding: 0 !important;
     padding-top: 4vh !important;
     padding-top: 6vh !important;
   }
 
-.gridcontentaw {
+  .gridcontentaw {
     height: auto;
-}
+  }
 }
 </style>
