@@ -86,14 +86,14 @@
                         :sizes="'sm:200vw md:150vw lg:200vw'"
                       ></MediaImage>
 
-                           <!-- video -->
-                           <iframe
-                          v-if="image.vimeoUrl"
-                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
-                          frameborder="0"
-                          allowfullscreen
-                          class="landscape gallery-image w-auto h-full"
-                        ></iframe>
+                      <!-- video -->
+                      <iframe
+                        v-if="image.vimeoUrl"
+                        :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                        frameborder="0"
+                        allowfullscreen
+                        class="landscape gallery-image w-auto h-full"
+                      ></iframe>
 
                       <!-- New Day Display -->
                       <div v-if="image.newDay" class="new-day-info">
@@ -172,51 +172,146 @@
                       :blocks="project.content"
                     ></Richtext>
                   </div>
-                    <!-- Location Link -->
-    <div v-if="project.location" class="w-full flex items-center text-center flex-col md:pt-5 locationtext">
-      <!-- <p class="loctext">Location,</p> -->
-      <p class="loctext">Play Film</p>
-      <div class="flex flex-col normal-case italic loctextlink">
-        <a href="javascript:void(0)" @click="openModal">{{ project.location }}</a>
-      </div>
-    </div> 
+                  <!-- Location Link -->
+                  <div
+                    v-if="project.location"
+                    class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
+                  >
+                    <!-- <p class="loctext">Location,</p> -->
+                    <p class="loctext">Play Film</p>
+                    <div class="flex flex-col normal-case italic loctextlink">
+                      <a href="javascript:void(0)" @click="openModal">{{
+                        project.location
+                      }}</a>
+                    </div>
+                  </div>
 
-    <!-- Draggable Iframe Modal -->
-    <div
-      v-if="isModalOpen"
-      class="modal-container fixed inset-0 z-50 flex items-center justify-center"
-    >
-      <!-- Draggable Modal -->
-      <div
-        class="modal-content bg-white  overflow-hidden relative"
-        ref="modal"
-        @mousedown="startDragging"
-        @mouseup="stopDragging"
-        @mousemove="drag"
-        :style="{ top: `${position.top}px`, left: `${position.left}px` }"
-      >
-        <!-- <button
+                  <!-- Draggable Iframe Modal -->
+                  <div
+                    v-if="isModalOpen"
+                    class="modal-container fixed inset-0 z-50 flex items-center justify-center"
+                  >
+                    <!-- Draggable Modal -->
+                    <div
+                      class="modal-content bg-white overflow-hidden relative"
+                      ref="modal"
+                      @mousedown="startDragging"
+                      @mouseup="stopDragging"
+                      @mousemove="drag"
+                      :style="{
+                        top: `${position.top}px`,
+                        left: `${position.left}px`,
+                      }"
+                    >
+                      <!-- <button
           class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
           @click="closeModal"
         > -->
-          <!-- Close -->
-          <button
-          class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
-          @click="closeModal"
-        > 
-          <!-- <SvgClose class=""/> -->
-          <svg class="w-[1.4vw]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
-        </button>
-        <!-- </button> -->
-     
-        <iframe
-      :src="`${project.locationlink}?autoplay=1&fullscreen=1`"
-      frameborder="0"
-      class="w-full h-full"
-      allowfullscreen
-    ></iframe>
-      </div>
-    </div>
+                      <!-- Close -->
+                      <button
+                        class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
+                        @click="closeModal"
+                      >
+                        <!-- <SvgClose class=""/> -->
+                        <svg
+                          class="w-[1.4vw]"
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          viewBox="0 0 500 500"
+                          width="500"
+                          height="500"
+                          preserveAspectRatio="xMidYMid meet"
+                          style="
+                            height: 100%;
+                            transform: translate3d(0px, 0px, 0px);
+                            content-visibility: visible;
+                          "
+                        >
+                          <defs>
+                            <clipPath id="__lottie_element_2">
+                              <rect width="500" height="500" x="0" y="0"></rect>
+                            </clipPath>
+                          </defs>
+                          <g clip-path="url(#__lottie_element_2)">
+                            <g
+                              transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
+                              opacity="1"
+                              style="display: block"
+                            >
+                              <g
+                                opacity="1"
+                                transform="matrix(1.4112499952316284,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M-10,-10 C-10,-10 10,10 10,10"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M-10,-10 C-10,-10 10,10 10,10"
+                                ></path>
+                              </g>
+                              <g
+                                opacity="0"
+                                transform="matrix(1.389361023902893,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M10,0 C10,0 10,0 10,0"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M10,0 C10,0 10,0 10,0"
+                                ></path>
+                              </g>
+                              <g
+                                opacity="1"
+                                transform="matrix(1.3872150182724,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M-10,10 C-10,10 10,-10 10,-10"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M-10,10 C-10,10 10,-10 10,-10"
+                                ></path>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </button>
+                      <!-- </button> -->
+
+                      <iframe
+                        :src="`${project.locationlink}?autoplay=1&fullscreen=1`"
+                        frameborder="0"
+                        class="w-full h-full"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -254,47 +349,132 @@
                   >
                     <p class="loctext">Play Film</p>
                     <div class="flex flex-col normal-case italic loctextlink">
-                      <a
-                        href="javascript:void(0)" @click="openModal"
-                        >{{ project.location }}</a
-                      >
+                      <a href="javascript:void(0)" @click="openModal">{{
+                        project.location
+                      }}</a>
                     </div>
                   </div>
 
-                    <!-- Draggable Iframe Modal -->
-    <div
-      v-if="isModalOpen"
-      class="modal-container fixed inset-0 z-50 flex items-center justify-center"
-    >
-      <!-- Draggable Modal -->
-      <div
-        class="modal-content bg-white  overflow-hidden relative"
-        ref="modal"
-        
-        :style="{ top: `20vh`, left: `2vw` }"
-      >
-        <!-- <button
+                  <!-- Draggable Iframe Modal -->
+                  <div
+                    v-if="isModalOpen"
+                    class="modal-container fixed inset-0 z-50 flex items-center justify-center"
+                  >
+                    <!-- Draggable Modal -->
+                    <div
+                      class="modal-content bg-white overflow-hidden relative"
+                      ref="modal"
+                      :style="{ top: `20vh`, left: `2vw` }"
+                    >
+                      <!-- <button
           class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
           @click="closeModal"
         > -->
-          <!-- Close -->
-          <button
-          class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
-          @click="closeModal"
-        > 
-          <!-- <SvgClose class=""/> -->
-          <svg class="w-[4.4vw]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
-        </button>
-        <!-- </button> -->
-     
-        <iframe
-      :src="`${project.locationlink}?autoplay=1&fullscreen=1`"
-      frameborder="0"
-      class="w-full h-full"
-      allowfullscreen
-    ></iframe>
-      </div>
-    </div>
+                      <!-- Close -->
+                      <button
+                        class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
+                        @click="closeModal"
+                      >
+                        <!-- <SvgClose class=""/> -->
+                        <svg
+                          class="w-[4.4vw]"
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          viewBox="0 0 500 500"
+                          width="500"
+                          height="500"
+                          preserveAspectRatio="xMidYMid meet"
+                          style="
+                            height: 100%;
+                            transform: translate3d(0px, 0px, 0px);
+                            content-visibility: visible;
+                          "
+                        >
+                          <defs>
+                            <clipPath id="__lottie_element_2">
+                              <rect width="500" height="500" x="0" y="0"></rect>
+                            </clipPath>
+                          </defs>
+                          <g clip-path="url(#__lottie_element_2)">
+                            <g
+                              transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
+                              opacity="1"
+                              style="display: block"
+                            >
+                              <g
+                                opacity="1"
+                                transform="matrix(1.4112499952316284,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M-10,-10 C-10,-10 10,10 10,10"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M-10,-10 C-10,-10 10,10 10,10"
+                                ></path>
+                              </g>
+                              <g
+                                opacity="0"
+                                transform="matrix(1.389361023902893,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M10,0 C10,0 10,0 10,0"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M10,0 C10,0 10,0 10,0"
+                                ></path>
+                              </g>
+                              <g
+                                opacity="1"
+                                transform="matrix(1.3872150182724,0,0,1,0,0)"
+                              >
+                                <path
+                                  fill="rgb(255,0,0)"
+                                  fill-opacity="1"
+                                  d=" M-10,10 C-10,10 10,-10 10,-10"
+                                ></path>
+                                <path
+                                  stroke-linecap="butt"
+                                  stroke-linejoin="miter"
+                                  fill-opacity="0"
+                                  stroke-miterlimit="4"
+                                  stroke="rgb(0,0,0)"
+                                  stroke-opacity="1"
+                                  stroke-width="1"
+                                  d=" M-10,10 C-10,10 10,-10 10,-10"
+                                ></path>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </button>
+                      <!-- </button> -->
+
+                      <iframe
+                        :src="`${project.locationlink}?autoplay=1&fullscreen=1`"
+                        frameborder="0"
+                        class="w-full h-full"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -302,7 +482,6 @@
 
           <div class="nomb static-box w-full h-full">
             <!-- desktop -->
-           
 
             <header
               class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block"
@@ -315,7 +494,7 @@
               </div>
             </header>
             <button
-            v-if="!isLastSlide" 
+              v-if="!isLastSlide"
               class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
               :class="back ? '' : ''"
               @click="prev"
@@ -323,14 +502,13 @@
               aria-label="Previous"
             ></button>
             <button
-            v-if="!isLastSlide" 
+              v-if="!isLastSlide"
               class="nomb absolute top-0 right-0 z-30 w-[25%] h-full next"
               @click="next"
               aria-label="Next"
             ></button>
 
             <div class="nomb nombgal gallery-images">
-          
               <section
                 class="top-0 left-0 hidden w-full h-full md:block cursor-grab slider"
                 v-swiper:mySwiper="swiperOptions"
@@ -407,9 +585,6 @@
                     </div>
                   </div>
                 </div>
-
-                               
-                                
               </section>
 
               <div class="footcon nodes">
@@ -444,7 +619,7 @@ import lottie from "lottie-web";
 export default {
   components: {
     TransitionComponent,
-  }, 
+  },
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "project" && slug.current == "${params.slug}"] {
     ...,
@@ -495,21 +670,21 @@ export default {
       isBlueBoxActive: false,
       clickedImageIndex: null, // Initially set to null
       swiperOptions: {
-  zoom: {
-    maxRatio: 5, // Allow zooming up to 5x
-    toggle: true,
-  },
-  slidesPerView: "auto",
-  touchRatio: 1, // Ensure touch interactions are enabled
-},
-swiperOptions2: {
-  zoom: {
-    maxRatio: 5, // Allow zooming up to 5x
-    toggle: true,
-  },
-  slidesPerView: "auto",
-  touchRatio: 1, // Ensure touch interactions are enabled
-},
+        zoom: {
+          maxRatio: 5, // Allow zooming up to 5x
+          toggle: true,
+        },
+        slidesPerView: "auto",
+        touchRatio: 1, // Ensure touch interactions are enabled
+      },
+      swiperOptions2: {
+        zoom: {
+          maxRatio: 5, // Allow zooming up to 5x
+          toggle: true,
+        },
+        slidesPerView: "auto",
+        touchRatio: 1, // Ensure touch interactions are enabled
+      },
       // swiperOptions2: {
       //   slidesPerView: "auto",
       // },
@@ -526,9 +701,8 @@ swiperOptions2: {
   },
   computed: {
     isLastSlide() {
-    return this.realIndex === this.project.slider.length - 1;
-    
-  },
+      return this.realIndex === this.project.slider.length - 1;
+    },
     ...mapState(["meta", "metaemails", "projects"]), // Map Vuex state to local computed properties
   },
   created() {
@@ -541,31 +715,30 @@ swiperOptions2: {
   },
 
   mounted() {
-      // Select all elements with the class "gallery-image"
-   // Function to update z-index based on the active slide
-   const updateZIndexForActiveSlide = () => {
-    const activeSlide = document.querySelector('.gallery-image.active');
-    const galleryImages = document.querySelectorAll('.gallery-image');
+    // Select all elements with the class "gallery-image"
+    // Function to update z-index based on the active slide
+    const updateZIndexForActiveSlide = () => {
+      const activeSlide = document.querySelector(".gallery-image.active");
+      const galleryImages = document.querySelectorAll(".gallery-image");
 
-    // Reset all z-index values
-    galleryImages.forEach((galleryImage) => {
-      galleryImage.style.zIndex = '';
-    });
+      // Reset all z-index values
+      galleryImages.forEach((galleryImage) => {
+        galleryImage.style.zIndex = "";
+      });
 
-    if (activeSlide) {
-      const iframe = activeSlide.querySelector('iframe');
-      if (iframe) {
-        activeSlide.style.zIndex = '10000';
+      if (activeSlide) {
+        const iframe = activeSlide.querySelector("iframe");
+        if (iframe) {
+          activeSlide.style.zIndex = "10000";
+        }
       }
-    }
-  };
+    };
 
-  // Call the function initially
-  updateZIndexForActiveSlide();
+    // Call the function initially
+    updateZIndexForActiveSlide();
 
-  // Example: Listening for a slide change event
-  document.addEventListener('slideChange', updateZIndexForActiveSlide);
-
+    // Example: Listening for a slide change event
+    document.addEventListener("slideChange", updateZIndexForActiveSlide);
 
     console.log("Lottie animation initialized:", this.lottieInstance);
 
@@ -639,7 +812,7 @@ swiperOptions2: {
         };
       }
     },
-  
+
     getVimeoEmbedUrl(vimeoUrl) {
       // Extract Vimeo video ID from the URL
       const videoId = vimeoUrl.split("/").pop();
@@ -679,28 +852,28 @@ swiperOptions2: {
     },
 
     onSlideChange(swiper) {
-  this.index = swiper.activeIndex + 1;
-  this.realIndex = swiper.activeIndex;
+      this.index = swiper.activeIndex + 1;
+      this.realIndex = swiper.activeIndex;
 
-  const gsap = this.$gsap;
+      const gsap = this.$gsap;
 
-  // Toggle "previous" button visibility
-  if (swiper.activeIndex === 0 && !this.back) {
-    this.$refs["prev"].classList.add("disabled");
-  } else if (this.isLastSlide) {
-    this.$refs["prev"].style.display = "none"; // Hide "previous" button
-  } else {
-    this.$refs["prev"].classList.remove("disabled");
-    this.$refs["prev"].style.display = ""; // Reset to default
-  }
+      // Toggle "previous" button visibility
+      if (swiper.activeIndex === 0 && !this.back) {
+        this.$refs["prev"].classList.add("disabled");
+      } else if (this.isLastSlide) {
+        this.$refs["prev"].style.display = "none"; // Hide "previous" button
+      } else {
+        this.$refs["prev"].classList.remove("disabled");
+        this.$refs["prev"].style.display = ""; // Reset to default
+      }
 
-  // Adjust skew animation
-  if (this.index > 1) {
-    gsap.to(this.$refs["skew"], { x: "-150%" });
-  } else {
-    gsap.to(this.$refs["skew"], { x: "0%" });
-  }
-},
+      // Adjust skew animation
+      if (this.index > 1) {
+        gsap.to(this.$refs["skew"], { x: "-150%" });
+      } else {
+        gsap.to(this.$refs["skew"], { x: "0%" });
+      }
+    },
     onSlideChange2(swiper) {
       this.index = swiper.activeIndex + 1;
       this.realIndex = swiper.activeIndex;
@@ -897,8 +1070,8 @@ display: none;
   position: fixed;
   width: 50%;
   height: 50%;
- /* background: #f1f1f1; */
- background-image: url("./static/Navbar.jpg");
+  /* background: #f1f1f1; */
+  background-image: url("./static/Navbar.jpg");
   border: 2px solid #000;
   z-index: 100000000 !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -945,22 +1118,21 @@ display: none;
 
 .modal-content {
   position: absolute;
-    cursor: grab;
-    z-index: 1000;
-    height: 45vh;
-    display: flex;
-    width: 50vw;
-    /* background: #f1f1f1; */
-    background-image: url("./static/background.jpg");
-    align-items: flex-end;
-    pointer-events: auto;
+  cursor: grab;
+  z-index: 1000;
+  height: 45vh;
+  display: flex;
+  width: 50vw;
+  /* background: #f1f1f1; */
+  background-image: url("./static/background.jpg");
+  align-items: flex-end;
+  pointer-events: auto;
 
-
-    height: 25vw;
-    display: flex;
-    width: 40vw;
-    border: 0.5px solid black;
-    /* position: absolute;
+  height: 25vw;
+  display: flex;
+  width: 40vw;
+  border: 0.5px solid black;
+  /* position: absolute;
     cursor: grab;
     z-index: 1000;
     height: 45vh;
@@ -981,7 +1153,7 @@ display: none;
   object-fit: cover;
   width: 100%;
   height: 90%;
-    border: none;
+  border: none;
   /* height: 40vh;
     width: 50vw;
     object-fit: cover;
@@ -998,13 +1170,9 @@ display: none;
   z-index: 1000;
 }
 
-
-
-.last{
-cursor: crosshair;
+.last {
+  cursor: crosshair;
 }
-
-
 
 /* .previous:hover {
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
@@ -1024,7 +1192,6 @@ cursor: crosshair;
     z-index: 30;
 } */
 
-
 /* .previous{
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
     auto !important;
@@ -1034,21 +1201,19 @@ cursor: crosshair;
 
 .previous {
   z-index: 30;
-  cursor: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ3IDMwIiB3aWR0aD0iNDciIGhlaWdodD0iMzAiPjxkZWZzPjxpbWFnZSB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIGlkPSJpbWcxIiBocmVmPSJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNalFpSUdobGFXZG9kRDBpTWpRaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJZ1ptbHNiQzF5ZFd4bFBTSmxkbVZ1YjJSa0lpQmpiR2x3TFhKMWJHVTlJbVYyWlc1dlpHUWlQanh3WVhSb0lHUTlJazB5TGpFeE55QXhNbXczTGpVeU55QTJMakl6TlMwdU5qUTBMamMyTlMwNUxUY3VOVEl4SURrdE55NDBOemt1TmpRMUxqYzJOQzAzTGpVeU9TQTJMakl6Tm1neU1TNDRPRFIyTVdndE1qRXVPRGd6ZWlJdlBqd3ZjM1puUGc9PSIvPjwvZGVmcz48c3R5bGU+PC9zdHlsZT48dXNlICBocmVmPSIjaW1nMSIgdHJhbnNmb3JtPSJtYXRyaXgoLjk1MSwwLDAsLjk1MSwxLC03KSIvPjwvc3ZnPg=='),  auto !important;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ3IDMwIiB3aWR0aD0iNDciIGhlaWdodD0iMzAiPjxkZWZzPjxpbWFnZSB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIGlkPSJpbWcxIiBocmVmPSJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNalFpSUdobGFXZG9kRDBpTWpRaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJZ1ptbHNiQzF5ZFd4bFBTSmxkbVZ1YjJSa0lpQmpiR2x3TFhKMWJHVTlJbVYyWlc1dlpHUWlQanh3WVhSb0lHUTlJazB5TGpFeE55QXhNbXczTGpVeU55QTJMakl6TlMwdU5qUTBMamMyTlMwNUxUY3VOVEl4SURrdE55NDBOemt1TmpRMUxqYzJOQzAzTGpVeU9TQTJMakl6Tm1neU1TNDRPRFIyTVdndE1qRXVPRGd6ZWlJdlBqd3ZjM1puUGc9PSIvPjwvZGVmcz48c3R5bGU+PC9zdHlsZT48dXNlICBocmVmPSIjaW1nMSIgdHJhbnNmb3JtPSJtYXRyaXgoLjk1MSwwLDAsLjk1MSwxLC03KSIvPjwvc3ZnPg=="),
+    auto !important;
 }
 
 .next {
   z-index: 30;
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ1IDI4IiB3aWR0aD0iNDUiIGhlaWdodD0iMjgiPjxkZWZzPjxpbWFnZSB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgaWQ9ImltZzEiIGhyZWY9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1qUWlJR2hsYVdkb2REMGlNalFpSUhodGJHNXpQU0pvZEhSd09pOHZkM2QzTG5jekxtOXlaeTh5TURBd0wzTjJaeUlnWm1sc2JDMXlkV3hsUFNKbGRtVnViMlJrSWlCamJHbHdMWEoxYkdVOUltVjJaVzV2WkdRaVBqeHdZWFJvSUdROUlrMHlNUzQ0T0RNZ01USnNMVGN1TlRJM0lEWXVNak0xTGpZME5DNDNOalVnT1MwM0xqVXlNUzA1TFRjdU5EYzVMUzQyTkRVdU56WTBJRGN1TlRJNUlEWXVNak0yYUMweU1TNDRPRFIyTVdneU1TNDRPRE42SWk4K1BDOXpkbWMrIi8+PC9kZWZzPjxzdHlsZT48L3N0eWxlPjx1c2UgIGhyZWY9IiNpbWcxIiB0cmFuc2Zvcm09Im1hdHJpeCguMjI3LC4wMDEsLTAuMDAxLC4yMjcsLjk1MywtNykiLz48L3N2Zz4="), auto !important;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ1IDI4IiB3aWR0aD0iNDUiIGhlaWdodD0iMjgiPjxkZWZzPjxpbWFnZSB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgaWQ9ImltZzEiIGhyZWY9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1qUWlJR2hsYVdkb2REMGlNalFpSUhodGJHNXpQU0pvZEhSd09pOHZkM2QzTG5jekxtOXlaeTh5TURBd0wzTjJaeUlnWm1sc2JDMXlkV3hsUFNKbGRtVnViMlJrSWlCamJHbHdMWEoxYkdVOUltVjJaVzV2WkdRaVBqeHdZWFJvSUdROUlrMHlNUzQ0T0RNZ01USnNMVGN1TlRJM0lEWXVNak0xTGpZME5DNDNOalVnT1MwM0xqVXlNUzA1TFRjdU5EYzVMUzQyTkRVdU56WTBJRGN1TlRJNUlEWXVNak0yYUMweU1TNDRPRFIyTVdneU1TNDRPRE42SWk4K1BDOXpkbWMrIi8+PC9kZWZzPjxzdHlsZT48L3N0eWxlPjx1c2UgIGhyZWY9IiNpbWcxIiB0cmFuc2Zvcm09Im1hdHJpeCguMjI3LC4wMDEsLTAuMDAxLC4yMjcsLjk1MywtNykiLz48L3N2Zz4="),
+    auto !important;
 }
-
-
-
 
 .disabled {
-display: none;
+  display: none;
 }
-
 
 .portrait {
   margin-right: 1.5vw;
@@ -1181,8 +1346,6 @@ display: none;
   position: absolute;
   left: 65vw;
 }
-
-
 
 .gallery-images {
   display: flex;
@@ -1449,17 +1612,15 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-
   .landscape {
-  height: 55vh;
-  width: 90vw !important;
-  /* display: flex; */
-  position: sticky !important;
-  top: 20vh;
-  object-fit: cover;
-  object-position: center;
- 
-}
+    height: 55vh;
+    width: 90vw !important;
+    /* display: flex; */
+    position: sticky !important;
+    top: 20vh;
+    object-fit: cover;
+    object-position: center;
+  }
 
   .overlaydiv {
     /* padding-top: 6vh; */
@@ -1514,7 +1675,7 @@ a {
     flex: none;
   }
 
-  .modal-content{
+  .modal-content {
     position: absolute;
     cursor: grab;
     z-index: 1000;
@@ -1522,10 +1683,10 @@ a {
     align-items: flex-end;
     pointer-events: auto;
     height: 60vw;
-        display: flex;
-   width: 96vw;
+    display: flex;
+    width: 96vw;
     border: 0.5px solid black;
-}
+  }
 
   .footout {
     padding-top: 0;

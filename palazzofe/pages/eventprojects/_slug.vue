@@ -524,6 +524,9 @@ export default {
           maxRatio: 5, // Allow zooming up to 5x
           toggle: true,
         },
+        slidesPerView: "auto",
+        touchRatio: 1, // Ensure touch interactions are enabled
+      },
       lottieInstance: null,
       imageOpacity: 1, // Add this property
       scrolled: false,
