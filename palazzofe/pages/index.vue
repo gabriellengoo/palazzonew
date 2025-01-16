@@ -7,34 +7,38 @@
     </div>
 
     <div class="allgal">
-      
+      <!-- <transition name="fade" mode="out-in">
+         v-show="currentSlideIndex === index" -->
         <div
           v-for="(slide, index) in home.slider"
-          v-show="currentSlideIndex === index"
+          :style="{ opacity: currentSlideIndex === index ? 1 : 0, transition: 'opacity 3s ease-out' }"
           :key="slide._key"
           class="homegal flex justify-center w-full h-full"
         >
           <div class="overlaycont flex h-full pb-0 w-13/16">
-            <div class="gallery-images-container flex flex-wrap">
-              <transition name="fade" mode="out-in">
-              <figure
-                v-for="(image, i) in slide.images"
-                :key="image._key"
-                class="overlaydiv flex flex-col flex-1 h-full"
-              >
-                <MediaImage
-                  :src="image.image.asset._ref"
-                  v-if="image.image"
-                  class="gallery-image w-auto h-full"
-                  :sizes="'sm:200vw md:150vw lg:200vw'"
-                />
-              </figure>
+            <div  class=" gallery-images-container flex flex-wrap">
+      <transition-group name="fade" mode="out-in" tag="figure">
+    <figure
+  
+      v-for="(image, i) in slide.images"
+       v-show="currentSlideIndex === index"
+      :key="image._key"
+      class=" overlaydiv flex flex-col flex-1 h-full"
+    >
+      <MediaImage
+        :src="image.image.asset._ref"
+        v-if="image.image"
+        class="gallery-image w-auto h-full"
+        :sizes="'sm:200vw md:150vw lg:200vw'"
+      />
+    </figure>
+  </transition-group>
 
-            </transition>
             </div>
           </div>
         </div>
-    
+      <!-- </transition> -->
+
     </div>
 
     <div
@@ -43,18 +47,15 @@
       class="md:flex mainconhome mbmain justify-center md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen"
     >
       <div v-if="home" class="textmainpg text-center">
-        <!-- <h1 class="maintext text-[14vw] lg:text-[8vw] xl:text-[8vw] text-white leading-tight relative z-0">
-          PALAZZO EVENTI
-        </h1>
-        <h1 class="maintext subtx text-[1.5vw] text-white leading-tight relative z-0 uppercase">
-          Wedding & Event  •  Planning Italy
-        </h1> -->
-        <!-- <img class="w-[80vw]" src="/homelo.png" /> -->
+        <transition name="logo-animation" >
         <MediaImage
                   :src="home.image.asset._ref"
                   class="w-[80vw]"
                   :sizes="'sm:200vw md:150vw lg:200vw'"
                 />
+        </transition>
+        <!-- <div ref="element" class="disintegrate">Disintegrate Me</div> -->
+
       </div>
     </div>
   </div>
@@ -67,6 +68,7 @@
 import HeaderComponent from "@/components/layout/Header.vue";
 import { mapState } from "vuex";
 import { groq } from "@nuxtjs/sanity";
+import gsap from "gsap";
 
 export default {
   name: "IndexPage",
@@ -119,6 +121,21 @@ export default {
     if (this.home.slider && this.home.slider.length > 0) {
       this.startGallery();
     }
+
+
+    const element = this.$refs.element;
+
+    gsap.to(element, {
+      duration: 2,
+      opacity: 0,
+      filter: "blur(10px)",
+      onComplete: () => {
+        gsap.to(element, {
+          duration: 3,
+          clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+        });
+      },
+    });
   },
 
   beforeDestroy() {
@@ -136,8 +153,29 @@ export default {
 
 
 <style scoped>
+.disintegrate {
+  background: #000;
+  color: white;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.logo-animation-enter-active {
+  transition: opacity 1s ease, transform 1s ease;
+  transition-delay: 1s; /* Delay the animation */
+}
 
+.logo-animation-leave-active {
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.logo-animation-enter, .logo-animation-leave-to {
+  opacity: 0;
+  transform: translateY(20px); /* Example: starting with a slight slide */
+}
 
 .gallery-images-container{
   width: 100vw;
@@ -203,6 +241,26 @@ export default {
 }
 
 
+.slider {
+  position: relative;
+  width: 100%; /* Set your slider width */
+  height: 100%; /* Set your slider height */
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Start hidden */
+  transition: opacity 1s ease-in-out; /* Smooth fade transition */
+}
+
+.slide.active {
+  opacity: 1; /* Fully visible slide */
+}
+
 
 
 
@@ -223,21 +281,6 @@ export default {
     align-items: center;
 }
 
-/* .headera {
-  display: flex;
-    align-items: center;
-    border-bottom: 0.5px solid black;
-    border-bottom: 0.05vw solid black;
-    background-image: url("./static/Navbar.jpg");
-    background-size: cover;
-    background-position: 0 0;
-    background-position: initial;
-    background-repeat: no-repeat;
-    padding: 0.4vw;
-    position: absolute;
-    top: 0;
-    z-index: 100;
-} */
 
 .headbar{
   padding: 0.2vw;
@@ -251,30 +294,24 @@ export default {
   transition: opacity 0.5s ease-in-out;
 }
 
-.fade-enter-active,
-.fade-leave-active {
+
+.fade-enter-active {
   transition: opacity 1s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+
+.fade-leave-active {
+  transition: opacity 5s;
+}
+.fade-enter, .fade-leave-to{
   opacity: 0;
 }
 
-/* Add this class to set the width to 100vw */
-/* .w-[100vw] {
-  width: 100vw;
-} */
 
-/* .w-full {
-  width: 100vw !important;
-} */
 .maintext {
   font-family: 'RomainHeadlineTrial';
   }
 
   .subtx{
-    
-    /* font-family: 'GT-Sectra-Book'; */
-    /* font-family: 'TAN-PEARL-Regular'; */
     letter-spacing: 0.1vw;
   }
 
@@ -290,11 +327,6 @@ export default {
   object-fit: contain;
 }
 
-/* .bgmobile {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-} */
 
 .headera {
   display: flex;
@@ -397,39 +429,17 @@ export default {
   }
 
   .navmbbord{
-    /* width: 90vw;
-    width: 100vw;
-    width: 100%;
-    border-bottom: .05vw solid #0000004f;
-    padding: 2vw;
-    display: flex; */
-    /* justify-content: center; */
   }
 
-
-  /* .textmainpg{
-    position: absolute;
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-        align-content: center;
-        align-items: center;
-  } */
 
 
   .bgmobile {
     background-size: contain;
     background-position: center top;
     min-height: 50vh; /* Optional: Adjust the height */
-
-    /* background-size: contain;
-        background-position: center top;
-        background-repeat: repeat-y; */
-        /* min-height: 100vh; */
         height: max-content;
         overflow: hidden;
         position: absolute;
-
         top: 0;
         background-size: cover;
     background-position: 0 0;

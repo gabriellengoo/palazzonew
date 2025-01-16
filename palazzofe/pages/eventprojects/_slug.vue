@@ -209,50 +209,23 @@
                     class="w-full flex items-center text-center flex-col pt-10 md:pt-[6vh] locationtext"
                   >
                     <p class="loctext">Play Film</p>
-                    <div class="flex flex-col normal-case italic loctextlink">
+                     <!-- pop -->
+                     <button class="flex flex-col normal-case italic loctextlink" @click="openIframe(project.location)">{{ project.location }}</button>
+                        
+                    <!-- <div class="flex flex-col normal-case italic loctextlink">
                       <a
                         href="javascript:void(0)" @click="openModal"
                         >{{ project.location }}</a
                       >
-                    </div>
+                    </div> -->
                   </div>
 
                      <!-- Draggable Iframe Modal -->
-    <div
-      v-if="isModalOpen2"
-      class="modal-container fixed inset-0 z-50 flex items-center justify-center"
-    >
-      <!-- Draggable Modal -->
-      <div
-        class="modal-content bg-white  overflow-hidden relative"
-        ref="modal2"
-        @mousedown="startDragging"
-        @mouseup="stopDragging"
-        @mousemove="drag"
-        :style="{ top: `${position.top}px`, left: `${position.left}px` }"
-      >
-        <!-- <button
-          class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
-          @click="closeModal"
-        > -->
-          <!-- Close -->
-          <button
-          class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
-          @click="closeModal2"
-        > 
-          <!-- <SvgClose class=""/> -->
-          <svg class="w-[1.4vw]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
-        </button>
-        <!-- </button> -->
-     
-        <iframe
-      :src="`${project.locationlink}?autoplay=1&fullscreen=1`"
-      frameborder="0"
-      class="w-full h-full"
-      allowfullscreen
-    ></iframe>
-      </div>
-    </div>
+    <draggable-iframe
+                              v-if="iframeVisible"
+                              :iframeSrc="iframeUrl"
+                              @close="iframeVisible = false"
+                            />
                   
                 </div>
               </div>
@@ -295,48 +268,23 @@
                     class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
                   > 
                     <p class="loctext">Play Film</p>
-                    <div class="flex flex-col normal-case italic loctextlink">
+                       <!-- pop -->
+                       <button lass="flex flex-col normal-case italic loctextlink" @click="openIframe(project.location)">{{ project.location }}</button>
+                        
+                    <!-- <div class="flex flex-col normal-case italic loctextlink">
                       <a
                          href="javascript:void(0)" @click="openModal"
                         >{{ project.location }}</a
                       >
-                    </div>
+                    </div> -->
                   </div>
 
                      <!-- Draggable Iframe Modal -->
-    <div
-      v-if="isModalOpen2"
-      class="modal-container fixed inset-0 z-50 flex items-center justify-center"
-    >
-      <!-- Draggable Modal -->
-      <div
-        class="modal-content2 bg-white  overflow-hidden relative"
-        ref="modal2"
-        
-        :style="{ top: `20vh`, left: `2vw` }"
-      >
-        <!-- <button
-          class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
-          @click="closeModal"
-        > -->
-          <!-- Close -->
-          <button
-          class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
-          @click="closeModal2"
-        > 
-          <!-- <SvgClose class=""/> -->
-          <svg class="w-[4.4vw]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
-        </button>
-        <!-- </button> -->
-     
-        <iframe
-      :src="`${project.locationlink}?autoplay=1&fullscreen=1`"
-      frameborder="0"
-      class="w-full h-full"
-      allowfullscreen
-    ></iframe>
-      </div>
-    </div>
+                     <draggable-iframe
+                              v-if="iframeVisible"
+                              :iframeSrc="iframeUrl"
+                              @close="iframeVisible = false"
+                            />
                 </div>
               </div>
               <!-- <span class="hover-move">Rose.co</span> -->
@@ -492,6 +440,8 @@ import { mapMutations, mapState } from "vuex";
 // import LenisComponent from "~/components/LenisComponent.vue";
 import TransitionComponent from "~/components/TransitionComponent.vue";
 import lottie from "lottie-web";
+// pop
+import DraggableIframe from '~/components/DraggableIframe.vue';
 
 export default {
   components: {
@@ -576,6 +526,10 @@ export default {
       isDragging2: false,
       position: { top: 100, left: 100 }, // Initial position of the modal
       offset: { x: 0, y: 0 },
+
+      // pop
+      iframeVisible: false,
+      iframeUrl: '',
     };
   },
   computed: {
@@ -598,7 +552,7 @@ export default {
       window.scrollTo(0, 0);
     }
 
-    this.$nextTick(() => {
+    this.$nextTick(() => { 
       // Wait for animation to finish
       setTimeout(() => {
         // Add a check for screen width
@@ -639,6 +593,24 @@ export default {
     next();
   },
   methods: {
+
+    // pop
+    openIframe(url) {
+      this.iframeUrl = url;
+      this.iframeVisible = true;
+    },
+
+  clickHandler(key) {
+    // Set hoveredIndex to apply the grayscale-off class on the clicked item
+    this.hoveredIndex = this.hoveredIndex === key ? null : key;
+  },
+    clickHandler(key) {
+      // Check if clicked item is already active; if so, go back to the first item
+      this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
+    },
+
+
+    // other
     openModal() {
       this.isModalOpen2 = true;
     },
