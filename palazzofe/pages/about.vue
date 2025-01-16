@@ -48,11 +48,11 @@
           </div>
 
           <div class="content">
-            <div class="nomb covercont pointer-events-none">
+            <div class="nomb covercont ">
            <img class="coverabout nomb" src="/wind.png" />
 
 
-           <div class="nomb anicolle pointer-events-none">
+           <div class="nomb anicolle ">
               <img class="logo" src="/I.png" />
             </div>
           <div class="email ml-[5vw] richcontle text-left">
