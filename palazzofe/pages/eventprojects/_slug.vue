@@ -208,7 +208,7 @@
                     v-if="project.location"
                     class="w-full flex items-center text-center flex-col pt-10 md:pt-[6vh] locationtext"
                   >
-                    <p class="loctext">Play Film</p>
+                    <p v-if="project.location" class="loctext">Play Film</p>
                    
                     <div class="flex flex-col normal-case italic loctextlink">
                       <a
@@ -382,7 +382,7 @@
                     v-if="project.location"
                     class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
                   > 
-                    <p class="loctext">Play Film</p>
+                    <p v-if="project.location" class="loctext">Play Film</p>
                       
                     <div class="flex flex-col normal-case italic loctextlink">
                       <a

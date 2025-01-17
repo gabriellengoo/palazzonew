@@ -43,12 +43,12 @@
                           : 'linkateam',
                       ]" -->
                     <div
+                     
                       class="link-animation linkateam"
-                      :class="[
-                        hoveredIndex === item._key
-                          ? 'grayscale-off'
-                          : 'linkateam',
-                      ]" 
+:class="[
+  hoveredIndex === item._key && item._key !== items[0]._key ? 'grayscale-off' : 'linkateam',
+]"
+ 
                     >
                       <figure class="inner-image">
                         <MediaImage
@@ -186,10 +186,15 @@ export default {
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener("resize", this.handleResize);
 
+    // if (this.items.length > 0) {
+    //   this.hoveredIndex = this.items[0]._key;
+    //   this.isDefaultActive = true;
+    // }
     if (this.items.length > 0) {
-      this.hoveredIndex = this.items[0]._key;
-      this.isDefaultActive = true;
-    }
+  this.hoveredIndex = this.items[this.items.length - 1]._key;
+  this.isDefaultActive = true;
+}
+
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);

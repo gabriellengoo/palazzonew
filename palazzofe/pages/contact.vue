@@ -66,6 +66,10 @@
             class="email adsize ml-[5vw] text-left mt-[2vh]"
             :blocks="contact.email"
           ></Richtext>
+          <Richtext
+            class="email adsize ml-[5vw] text-left mt-[2vh]"
+            :blocks="contact.vemail"
+          ></Richtext>
         </div>
 
         <div class="flex w-[31vw] instagram-icona">
@@ -94,7 +98,7 @@
      
 
       <!-- Right Content: Form Section -->
-      <div class="right-content w-1/2 p-[5vw] pl-[20vw] pt-[4vw]">
+      <div class="right-content w-1/2 p-[5vw] pl-[10vw] pt-[4vw]">
         <form
           action="https://formspree.io/f/xwpkkljw"
           method="POST"
@@ -260,8 +264,14 @@
                 <p>natalya@palazzoeventi.com</p>
               </div> -->
               <Richtext
+                   v-if="contact.email"
                 class="richcontt adsizemb"
                 :blocks="contact.email"
+              ></Richtext>
+              <Richtext
+              v-if="contact.vemail"
+                class="richcontt adsizemb"
+                :blocks="contact.vemail"
               ></Richtext>
             </div>
           </div>
@@ -416,6 +426,7 @@ export default {
     address2,
     contact,
     email,
+    vemail,
     socialMedia[] {
       platform,
       url,

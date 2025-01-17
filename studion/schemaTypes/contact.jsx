@@ -34,7 +34,7 @@ export default {
     },
     {
       name: "address2",
-      title: "Address text desktop",
+      title: "Address text desktop", 
       type: "blockContent",
     },
     {
@@ -48,7 +48,53 @@ export default {
       type: "blockContent",
     },
 
+    {
+      name: "vemail",
+      title: "Vendor Email",
+      type: "blockContent",
+    },
 
+    {
+      name: 'socialMedia',
+      type: 'array',
+      title: 'Social Media Links',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'platform',
+              type: 'string',
+              title: 'Platform',
+            },
+            {
+              name: 'url',
+              type: 'url',
+              title: 'URL',
+              validation: Rule => Rule.uri({
+                scheme: ['http', 'https'],
+                allowRelative: false
+              }),
+            },
+            {
+              name: 'icon',
+              type: 'image',
+              title: 'Icon',
+              options: {
+                hotspot: true,
+              },
+            },
+            {
+              name: 'show',
+              type: 'boolean',
+              title: 'Show on Website',
+              description: 'Toggle to show or hide this social media link.',
+              initialValue: true,
+            },
+          ],
+        },
+      ],
+    },
  
   
   

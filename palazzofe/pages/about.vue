@@ -524,7 +524,7 @@ a:hover {
 
 .logo{
   width: 11vw;
-  top: 5vw;
+  top: 6vw;
   position: relative;
 }
 
@@ -567,7 +567,7 @@ a:hover {
   z-index: 9;
     left: 20vw;
     top: -18vw;
-    width: 19%;  
+    width: 18%;  
     }
 
 .richcontle {

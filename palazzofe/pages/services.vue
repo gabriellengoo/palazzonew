@@ -107,7 +107,7 @@
                     </a>
                   </li>
                   <li>
-                    <a :class="{ active: activeSection === 'more' }" @click="setActiveSection('more')" href="#more"> More </a>
+                    <a :class="{ active: activeSection === 'more' }" @click="setActiveSection('more')" href="#more"> Photoshoots </a>
                   </li>
                 </ul>
               </nav>

@@ -29,43 +29,15 @@
           <div v-if="gridprod.grid8" class="">
             <Gridprod class="" :items="gridprod.grid8" size="small"></Gridprod>
           </div>
-        
-          <!-- <button
-          class="bttn"
-           @click="toggleIframe"
-        >
-        <p class="textsumf">Play Film</p>
-          {{ gridprod.filmtitle }}
-        </button> -->
+  
         </div>
       </div>
 
 
-       <!-- Draggable Iframe Pop-Up -->
-       <!-- <div
-        v-if="isIframeOpen"
-        class="iframe-container"
-        ref="iframeContainer"
-        @mousedown="startDrag"
-      >
-        <div class="iframe-header">
-          <button @click="closeIframe" class="clocon absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer">  
-          <svg class="close-btn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
-       </button>
-        </div>
-        <iframe
-          :src="gridprod.film"
-          class="iframe-content"
-          frameborder="0"
-        ></iframe>
-      </div> -->
-
       <!-- Right Static Content -->
       <div class="right-content nomb overflow-hidden flex-1 p-8 flex justify-center items-center">
       
-        <!-- <div class="static-box w-full h-full"> -->
-        
-        <!-- </div> -->
+      
       </div>
     </div>
   </div>

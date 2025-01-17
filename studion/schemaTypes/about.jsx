@@ -29,13 +29,13 @@ export default {
     },
     {
       name: "about",
-      title: "About",
+      title: "Testimonials",
       type: "blockContent",
     },
 
     {
       name: "moni",
-      title: "Testimonials",
+      title: "About",
       type: "blockContent",
     },
    

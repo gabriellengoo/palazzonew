@@ -37,18 +37,13 @@
               >
                 <figure class="flex flex-col">
                   <div class="relative">
-                    <!--  :class="[
-                        hoveredIndex === item._key
-                          ? 'grayscale-off'
-                          : 'linkateam',
-                      ]" -->
+                 
                     <div
-                      class="link-animation linkateam"
-                      :class="[
-                        hoveredIndex === item._key
-                          ? 'grayscale-off'
-                          : 'linkateam',
-                      ]" 
+                    class="link-animation"
+                    :class="[
+                      hoveredIndex === item._key && item._key !== items[0]._key ? 'grayscale-off' : 'linkateam',
+                    ]"
+
                     >
                       <figure class="inner-image">
                         <MediaImage
@@ -108,11 +103,7 @@
                           class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]"
                         >
                           <p class="loctext uppercase">Play Film</p>
-                          <!-- <div
-                            class="flex flex-col normal-case italic loctextlink"
-                          >
-                            <p>{{ item.filmtitle }}</p>
-                          </div> -->
+                      
                           <!-- pop -->
                           <button @click="openIframe(item.film)">{{ item.filmtitle }}</button>
                           <draggable-iframe
@@ -199,6 +190,8 @@ export default {
       this.hoveredIndex = this.items[0]._key;
       this.isDefaultActive = true;
     }
+    
+    
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);
@@ -210,20 +203,26 @@ export default {
     },
 
 
+    clickHandler(key) {
+    // Activate fade effect when user clicks
+    this.hoveredIndex = this.hoveredIndex === key ? null : key;
+  },
 // pop
     openIframe(url) {
       this.iframeUrl = url;
       this.iframeVisible = true;
     },
 
-  clickHandler(key) {
-    // Set hoveredIndex to apply the grayscale-off class on the clicked item
-    this.hoveredIndex = this.hoveredIndex === key ? null : key;
-  },
-    clickHandler(key) {
-      // Check if clicked item is already active; if so, go back to the first item
-      this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
-    },
+  // clickHandler(key) {
+  //   if (key !== 0) {
+  //   // Set hoveredIndex to apply the grayscale-off class on the clicked item
+  //   this.hoveredIndex = this.hoveredIndex === key ? null : key;
+  //   }
+  // },
+    // clickHandler(key) {
+    //   // Check if clicked item is already active; if so, go back to the first item
+    //   this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
+    // },
 
 
 
@@ -260,31 +259,15 @@ export default {
   position: relative;
 }
 
-/* .image-item:nth-child(1){
-  padding: .5vw;
-  padding-right: 2vw;
-} */
-
-/* .item-wrapper.image-item:nth-child(1){
-  padding: .5vw;
-  padding-right: 2vw;
-}
-
-.item-wrapper.image-item:nth-child(2){
-  padding: .5vw;
-  padding-left: 2vw;
-} */
-
-/* .chunk-container:nth-child(2) {
-  border-top: 0.07vw solid rgba(0, 0, 0, 0.137) !important;
-} */
 
 .image-grid {
   padding-top: 4vw;
 }
 
+
+
 .linkateam {
-  /* filter: grayscale(100%); */
+  opacity: 1;
   transition-duration: 1s;
 }
 
@@ -325,12 +308,12 @@ export default {
 
 .sideim.fade-in {
   transition: opacity 0.5s ease;
-  opacity: 1; /* Fully visible when hovered */
+  opacity: 1; 
 }
 
 .sideim.fade-out {
   transition: opacity 0.5s ease;
-  opacity: 0; /* Fade out when not hovered */
+  opacity: 0; 
 }
 
 .sideim img {
@@ -358,13 +341,7 @@ export default {
   overflow: hidden;
 }
 
-/* .image-row .item-wrapper:nth-child(1) {
-  margin-right: 1.5vw;
-}
 
-.image-row .item-wrapper:nth-child(2) {
-  margin-left: 1.5vw;
-} */
 
 .deskimgl img {
   object-fit: cover;
@@ -382,8 +359,6 @@ export default {
   font-size: 1.7rem;
   font-size: 1.5vw;
   width: 100%;
-  /* border-top: solid;
-  border-top-width: 0.7px; */
 }
 
 .loctext {
@@ -489,9 +464,6 @@ export default {
 
 
 
-
-
-
 .iframe-container {
   position: absolute;
   top: 10%; /* Default position */
@@ -520,23 +492,12 @@ export default {
 
 
 .iframe-header {
-
-  /* padding: 0.5rem; */
-  /* background: #f0f0f0; */
-  /* background-image: url("./static/background.jpg"); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-bottom: 0.5px solid black;
 }
 
-/* .close-btn {
-  background: red;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-} */
 
 .close-btn{
   width: 1.4vw;
@@ -556,10 +517,6 @@ export default {
 
 
 @media only screen and (max-width: 768px) {
-  /* .linkateam:hover {
-  filter: grayscale(0%);
-  transition-duration: 1s;
-} */
 
   .sideim img {
     display: none !important;
@@ -591,10 +548,6 @@ export default {
   .image-grid {
     padding: 10vw 3vw 2vw 3vw;
   }
-
-
-
-
 
     
 .iframe-container {
