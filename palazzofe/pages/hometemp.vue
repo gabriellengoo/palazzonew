@@ -1,26 +1,65 @@
 <template>
-  <div class="bgmobile relative min-h-screen" :style="{ backgroundImage: 'url(/passpg.jpg)' }">
-    <div class="relative top-[20vh] flex flex-col items-center justify-center min-h-screen">
-      <div class="text-center">
-        <!-- <h1 class="text-2xl font-bold mb-4">Enter Password</h1> -->
-        <input
-          v-model="password"
-          type="password"
-          class="border border-gray-300 p-2 rounded w-64 mb-4"
-          placeholder="Enter password"
-        />
-        <button
-          @click="checkPassword"
-          class="bg-[red] text-white px-4 py-2 rounded hover:bg-[red]"
+  <div class="bgmobile relative min-h-screen" :style="{ backgroundImage: 'url(/background.jpg)' }">
+    <div class="headera content flex w-full justify-between">
+      <h1 class="navmb navmbbord">
+        <HeaderComponent />
+      </h1>
+    </div>
+
+    <div class="allgal">
+      <!-- <transition name="fade" mode="out-in">
+         v-show="currentSlideIndex === index" -->
+        <div
+          v-for="(slide, index) in home.slider"
+          :style="{ opacity: currentSlideIndex === index ? 1 : 0, transition: 'opacity 3s ease-out' }"
+          :key="slide._key"
+          class="homegal flex justify-center w-full h-full"
         >
-          Submit
-        </button>
-        <p v-if="error" class="text-red-500 mt-2">{{ error }}</p>
+          <div class="overlaycont flex h-full pb-0 w-13/16">
+            <div  class=" gallery-images-container flex flex-wrap">
+      <transition-group name="fade" mode="out-in" tag="figure">
+    <figure
+  
+      v-for="(image, i) in slide.images"
+       v-show="currentSlideIndex === index"
+      :key="image._key"
+      class=" overlaydiv flex flex-col flex-1 h-full"
+    >
+      <MediaImage
+        :src="image.image.asset._ref"
+        v-if="image.image"
+        class="gallery-image w-auto h-full"
+        :sizes="'sm:200vw md:150vw lg:200vw'"
+      />
+    </figure>
+  </transition-group>
+
+            </div>
+          </div>
+        </div>
+      <!-- </transition> -->
+
+    </div>
+
+    <div
+      :class="{ 'hidden-content': isMenuOpen }"
+      id="main-content"
+      class="md:flex mainconhome mbmain justify-center md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen"
+    >
+      <div v-if="home" class="textmainpg text-center">
+        <transition name="logo-animation" >
+        <MediaImage
+                  :src="home.image.asset._ref"
+                  class="w-[80vw]"
+                  :sizes="'sm:200vw md:150vw lg:200vw'"
+                />
+        </transition>
+        <!-- <div ref="element" class="disintegrate">Disintegrate Me</div> -->
+
       </div>
     </div>
   </div>
 </template>
-
 
 
 
@@ -56,10 +95,6 @@ export default {
       currentSlideIndex: 0, // Track the current slide index
       isMenuOpen: false,
       intervalId: null, // Store the interval reference
-
-
-      password: "", // Bind input value to this data property
-      error: null, // Store error message
     };
   },
 
@@ -78,15 +113,6 @@ export default {
 
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-    },
-
-    checkPassword() {
-      const correctPassword = "mypassword"; // Replace with your desired password
-      if (this.password === correctPassword) {
-        this.$router.push("./hometemp"); // Redirect to hometemp.vue
-      } else {
-        this.error = "Incorrect password. Please try again.";
-      }
     },
   },
 

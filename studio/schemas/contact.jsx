@@ -8,7 +8,7 @@ export default {
   title: 'Contact',
   type: 'document',
   // icon: "🏠",
-  // icon: '🏠',
+  // icon: '🏠', 
   // liveEdit: true,
   fields: [
     {
