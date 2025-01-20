@@ -151,9 +151,8 @@ export default {
   position: absolute;
   top: 10%; /* Default position */
   left: 5vw; /* Default position */
-  height: 25vw;
-    /* display: flex; */
-    width: 40vw;
+  height: 39vw;
+    width: 21vw;
     border: 0.5px solid black;
   background: white;
   background-image: url("./static/background.jpg");

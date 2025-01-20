@@ -43,12 +43,13 @@
                           : 'linkateam',
                       ]" -->
                     <div
-                     
                       class="link-animation linkateam"
-:class="[
-  hoveredIndex === item._key && item._key !== items[0]._key ? 'grayscale-off' : 'linkateam',
-]"
- 
+                      :class="[
+                        hoveredIndex === item._key &&
+                        item._key !== items[0]._key
+                          ? 'grayscale-off'
+                          : 'linkateam',
+                      ]"
                     >
                       <figure class="inner-image">
                         <MediaImage
@@ -68,15 +69,11 @@
                       </figcaption>
                     </div>
 
-
                     <!-- <button
           class="bttn"
         >
           Awards
         </button> -->
-     
-
-                 
 
                     <div
                       v-show="hoveredIndex === item._key"
@@ -87,7 +84,6 @@
                       }"
                     >
                       <figure class="deskimgl">
-                        
                         <MediaImage
                           :src="item.imageh.imageh"
                           v-if="item.imageh.imageh"
@@ -179,113 +175,104 @@ export default {
       return this.items.length > 0 ? this.items[0]._key : null;
     },
     lastItemKey() {
-  return this.items.length > 0 ? this.items[this.items.length - 1]._key : null;
-},
+      return this.items.length > 0
+        ? this.items[this.items.length - 1]._key
+        : null;
+    },
   },
   mounted() {
+  this.isDesktop = window.innerWidth > 768;
+  window.addEventListener("resize", this.handleResize);
+  document.addEventListener("click", this.handleGlobalClick);
+
+  if (this.items.length > 0) {
+    this.hoveredIndex = this.items[this.items.length - 1]._key;
+    this.isDefaultActive = true;
+  }
+},
+beforeDestroy() {
+  window.removeEventListener("resize", this.handleResize);
+  document.removeEventListener("click", this.handleGlobalClick);
+},
+methods: {
+  ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
+
+  handleResize() {
     this.isDesktop = window.innerWidth > 768;
-    window.addEventListener("resize", this.handleResize);
-
-    // if (this.items.length > 0) {
-    //   this.hoveredIndex = this.items[0]._key;
-    //   this.isDefaultActive = true;
-    // }
-    if (this.items.length > 0) {
-  this.hoveredIndex = this.items[this.items.length - 1]._key;
-  this.isDefaultActive = true;
-}
-
   },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.handleResize);
+
+  clickHandler(key) {
+    // Toggle the item or set the active item
+    this.hoveredIndex = this.hoveredIndex === key ? this.lastItemKey : key;
   },
-  methods: {
-    ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
-    handleResize() {
-      this.isDesktop = window.innerWidth > 768;
-    },
-  // clickHandler(key) {
-  //   // Set hoveredIndex to apply the grayscale-off class on the clicked item
-  //   this.hoveredIndex = this.hoveredIndex === key ? null : key;
-  // },
-  //   clickHandler(key) {
-  //     // Check if clicked item is already active; if so, go back to the first item
-  //     this.hoveredIndex = this.hoveredIndex === key ? this.firstItemKey : key;
-  //   },
-    clickHandler(key) {
-  // Check if the clicked item is already active; if so, go to the last item
-  this.hoveredIndex = this.hoveredIndex === key ? this.lastItemKey : key;
+
+  handleGlobalClick(event) {
+    const isInsideItem = event.target.closest(".item-wrapper");
+
+    // If the click is outside any `.item-wrapper`, reset to the last item
+    if (!isInsideItem) {
+      this.hoveredIndex = this.lastItemKey;
+    }
+  },
 },
 
-  // clickHandler(key) {
-  //   // Toggle between clicked, default, and specific image states
-  //   if (this.hoveredIndex === key) {
-  //     // Show a specific image when clicked again
-  //     this.hoveredIndex = 'specificImage';
-  //   } else {
-  //     // Show the clicked item's image
-  //     this.hoveredIndex = key;
-  //   }
-  // },
-  },
 };
 </script>
 
 <style scoped>
-
 .bttn {
-position: fixed;
-    background-color: white;
-    font-family: "GT-Sectra-Book", sans-serif;
-    transition: background-color 0.3s ease;
-    position: absolute;
-    border-top: 0.05vw solid black;
-    border: 0.05vw solid black;
-    border-radius: 0%;
-    background-image: url(/_nuxt/static/LeftBG.png);
-    background-size: cover;
-    background-position: 0 0;
-    background-position: initial;
-    background-repeat: no-repeat;
-    padding: 1rem;
-    padding: 0.5vw;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: fixed;
-    bottom: 0;
-    /* width: 100%; */
-    width: 50%;
-    text-transform: uppercase;
-    font-family: "GT-Sectra-Book";
-    font-family: "NHaas" !important;
-    transition: color 0.8s ease;
-    font-size: 1vw;
+  position: fixed;
+  background-color: white;
+  font-family: "GT-Sectra-Book", sans-serif;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  border-top: 0.05vw solid black;
+  border: 0.05vw solid black;
+  border-radius: 0%;
+  background-image: url(/_nuxt/static/LeftBG.png);
+  background-size: cover;
+  background-position: 0 0;
+  background-position: initial;
+  background-repeat: no-repeat;
+  padding: 1rem;
+  padding: 0.5vw;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: fixed;
+  bottom: 0;
+  /* width: 100%; */
+  width: 50%;
+  text-transform: uppercase;
+  font-family: "GT-Sectra-Book";
+  font-family: "NHaas" !important;
+  transition: color 0.8s ease;
+  font-size: 1vw;
 }
 
-.bttn{
+.bttn {
   position: absolute;
-    width: 94%;
-    border-top: 0.05vw solid black;
-    border: 0.05vw solid black;
-    border-radius: 0%;
-    background-image: url("./static/LeftBG.png");
-    background-size: cover;
-    background-position: 0 0;
-    background-position: initial;
-    background-repeat: no-repeat;
-    padding: 1rem;
-    padding: 0.5vw;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: fixed;
-    bottom: 2.5vh;
-    /* width: 100%; */
-    width: 98%;
-    text-transform: uppercase;
-    font-family: "GT-Sectra-Book";
-    font-family: "NHaas" !important;
-    transition: color 0.8s ease;
-    font-size: 1vw;
+  width: 94%;
+  border-top: 0.05vw solid black;
+  border: 0.05vw solid black;
+  border-radius: 0%;
+  background-image: url("./static/LeftBG.png");
+  background-size: cover;
+  background-position: 0 0;
+  background-position: initial;
+  background-repeat: no-repeat;
+  padding: 1rem;
+  padding: 0.5vw;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: fixed;
+  bottom: 2.5vh;
+  /* width: 100%; */
+  width: 98%;
+  text-transform: uppercase;
+  font-family: "GT-Sectra-Book";
+  font-family: "NHaas" !important;
+  transition: color 0.8s ease;
+  font-size: 1vw;
 }
 
 .modal {
@@ -309,7 +296,6 @@ position: fixed;
   position: relative;
 }
 
-
 .image-grid {
   padding-top: 4vw;
 }
@@ -318,10 +304,32 @@ position: fixed;
   display: none !important;
 }  */
 
-.image-grid:last-child .chunk-container:last-child .image-row:last-child .item-wrapper:nth-child(2)  .linkateam {
+.image-grid:last-child
+  .chunk-container:last-child
+  .image-row:last-child
+  .item-wrapper:nth-child(2)
+  .linkateam {
   display: none !important;
 }
 
+.image-grid:last-child
+  .chunk-container:last-child
+  .image-row:last-child
+  .item-wrapper:nth-child(2)
+  .sideim
+  .footerstuff {
+  display: none !important;
+}
+
+.image-grid:last-child
+  .chunk-container:last-child
+  .image-row:last-child
+  .item-wrapper:nth-child(2)
+  .sideim
+  .deskimgl {
+  /* display: none !important; */
+  height: 100vh;
+}
 
 /* .image-item figure .linkateam::nth-last-child {
   display: none !important;
@@ -334,12 +342,12 @@ position: fixed;
 
 .linkateam:hover {
   filter: grayscale(0%);
-  opacity: .5;
+  opacity: 0.5;
   transition-duration: 1s;
 }
 
 .grayscale-off {
-  opacity: .5;
+  opacity: 0.5;
   filter: grayscale(0%) !important;
   transition-duration: 1s;
 }
@@ -488,11 +496,11 @@ position: fixed;
   width: 15vw;
 
   text-align: center;
-    font-size: 1.8vw;
-    margin-top: 10px;
-    text-transform: uppercase;
-    font-family: "NHaas";
-    width: 18vw;
+  font-size: 1.8vw;
+  margin-top: 10px;
+  text-transform: uppercase;
+  font-family: "NHaas";
+  width: 18vw;
 }
 
 .chunk-container:last-child .spanning-text {
@@ -554,7 +562,7 @@ position: fixed;
     font-family: "NHaas" !important;
     transition: color 0.8s ease;
     font-size: 3vw;
-}
+  }
 
   .sideim img {
     display: none !important;
