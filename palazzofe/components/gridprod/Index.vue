@@ -205,7 +205,7 @@ export default {
 
     clickHandler(key) {
     // Activate fade effect when user clicks
-    this.hoveredIndex = this.hoveredIndex === key ? null : key;
+    this.hoveredIndex = key;
   },
 // pop
     openIframe(url) {
