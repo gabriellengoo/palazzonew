@@ -69,7 +69,7 @@
               <img class="rightimg" src="/aboutrighta.png" />
             </div>
             <div class="pointer-events-none anicol">
-              <img class="rightimg " src="/j.png" />
+              <img class="rightimg " src="/J.png" />
               <!-- <img class="rightimg fade-img" src="/I.png" /> -->
               <!-- <img class="rightimg fade-img" src="/j.png" /> -->
             </div>
@@ -708,6 +708,10 @@ a:hover {
     height: -moz-max-content;
     height: max-content;
   }
+
+  .richcontle {
+    display: none;
+}
 
   .anicol {
     position: absolute;
