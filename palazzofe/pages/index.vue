@@ -323,6 +323,21 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
+  .bgmobile {
+        background-size: cover;
+        /* background-position: center top; */
+        min-height: 50vh;
+        width: 100vw;
+        height: -moz-max-content;
+        height: 100vh;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        /* background-size: cover; */
+        /* background-position: 0 0; */
+        /* background-position: initial; */
+        /* background-repeat: no-repeat; */
+    }
 
   .allgal {
     object-fit: cover;
@@ -408,10 +423,10 @@ export default {
 
 
 
-  .bgmobile {
+  /* .bgmobile {
     background-size: contain;
     background-position: center top;
-    min-height: 50vh; /* Optional: Adjust the height */
+    min-height: 50vh; 
         height: max-content;
         overflow: hidden;
         position: absolute;
@@ -420,7 +435,7 @@ export default {
     background-position: 0 0;
     background-position: initial;
     background-repeat: no-repeat;
-  }
+  } */
 
  
 }
