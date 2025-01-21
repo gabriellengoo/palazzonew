@@ -1,5 +1,5 @@
 <template>
-  <div class="bgmobile relative min-h-screen" :style="{ backgroundImage: 'url(/passpg.jpg)' }">
+  <div class="bgmobile relative min-h-screen">
     <div class="relative top-[20vh] flex flex-col items-center justify-center min-h-screen">
       <div class="text-center">
         <!-- <h1 class="text-2xl font-bold mb-4">Enter Password</h1> -->
@@ -81,7 +81,7 @@ export default {
     },
 
     checkPassword() {
-      const correctPassword = "mypassword"; // Replace with your desired password
+      const correctPassword = "20_PalazzoEventi_25"; // Replace with your desired password
       if (this.password === correctPassword) {
         this.$router.push("./hometemp"); // Redirect to hometemp.vue
       } else {
@@ -210,6 +210,8 @@ export default {
 }
 
 .bgmobile {
+  /* background-image: passpgmb.jpg; */
+  background-image: url("./static/passpg.jpg");
   background-size: cover;
   background-position: center;
   transition: background-image 1s ease-in-out;
@@ -325,6 +327,7 @@ export default {
 @media only screen and (max-width: 768px) {
   .bgmobile {
         background-size: cover;
+        background-image: url("./static/passpgmb.jpg");
         /* background-position: center top; */
         min-height: 50vh;
         width: 100vw;

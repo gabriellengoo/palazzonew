@@ -518,6 +518,7 @@ formFields.forEach(field => {
     resetImage() {
       this.currentImage = this.defaultImage; // Revert to default image on mouseleave
     },
+
     toggleSection() {
       if (!this.isOpen) {
         this.openSection();
