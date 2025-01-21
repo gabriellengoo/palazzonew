@@ -704,7 +704,7 @@ methods: {
 
 .innerstyle{
   background-image: url("./static/BLUEbg.png");
-  height: 100%;
+  height: 100vh;
 }
 
 .teambios{
