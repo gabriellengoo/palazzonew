@@ -37,11 +37,7 @@
               >
                 <figure class="flex flex-col">
                   <div class="relative">
-                    <!--  :class="[
-                        hoveredIndex === item._key
-                          ? 'grayscale-off'
-                          : 'linkateam',
-                      ]" -->
+                
                     <div
                       class="link-animation linkateam"
                       :class="[
@@ -69,15 +65,10 @@
                       </figcaption>
                     </div>
 
-                    <!-- <button
-          class="bttn"
-        >
-          Awards
-        </button> -->
 
                     <div
                       v-show="hoveredIndex === item._key"
-                      class="sideim"
+                      class="sideim nomb"
                       :class="{
                         'fade-in': hoveredIndex === item._key,
                         'fade-out': hoveredIndex !== item._key,
@@ -125,6 +116,67 @@
                           </div>
                         </div>
                       </div>
+                    </div>
+
+
+                    <div
+                      v-show="hoveredIndex === item._key"
+                      class="sideim nodes"
+         
+                    >
+                    <!-- ]:class="{
+    'slide-in': hoveredIndex === item._key,
+    'slide-out': hoveredIndex !== item._key,
+  }" -->
+                  <div class="sideim" :class="{
+    'slide-in': hoveredIndex === item._key,
+    'slide-out': hoveredIndex !== item._key,
+  }"  >
+                    <div class="innerstyle">
+                      <figure class="deskimgl">
+                        <MediaImage
+                          :src="item.imageh.imageh"
+                          v-if="item.imageh.imageh"
+                        />
+                        <MediaImage
+                          :src="item.image.image"
+                          v-else-if="item.image.image"
+                        />
+                      </figure>
+
+                      <div class="footerstuff">
+                        <div class="textnewardesk teambio ttdesk animate-hover">
+                          <p v-if="item" class="uppercase">
+                            {{ item.title || "Employee Name" }}
+                          </p>
+                          <p v-if="item" class="yeartdesk mb-6 capitalize">
+                            {{ item.year || "Job Title" }}
+                          </p>
+                        </div>
+
+                        <div v-if="item.content3" class="pt-[3vw] text-[4vw">
+                          <Richtext
+                            class="contactinner teambios"
+                            :blocks="item.content3"
+                          />
+                        </div>
+                        <div
+                          v-if="item.content4"
+                          class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[3.3vw]"
+                        >
+                          <p class="loctext uppercase">Email</p>
+                          <div
+                            class="flex flex-col normal-case italic loctextlink"
+                          >
+                            <Richtext
+                              class="contactinner teamemail"
+                              :blocks="item.content4"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                     </div>
                   </div>
                 </figure>
@@ -197,14 +249,35 @@ beforeDestroy() {
 methods: {
   ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
 
+  toggleSlide(key) {
+      this.hoveredIndex = this.hoveredIndex === key ? null : key;
+    },
+
   handleResize() {
     this.isDesktop = window.innerWidth > 768;
   },
 
   clickHandler(key) {
-    // Toggle the item or set the active item
-    this.hoveredIndex = this.hoveredIndex === key ? this.lastItemKey : key;
-  },
+  const isMobile = window.innerWidth <= 768; // Adjust the breakpoint as per your design
+
+  if (isMobile) {
+    if (this.hoveredIndex === key) {
+      // Slide out if already active
+      this.hoveredIndex = null; 
+        } else {
+      // Slide in the selected `.sideim`
+      this.hoveredIndex = key;
+    }
+  } else {
+    if (this.hoveredIndex === key) {
+      // Slide out if already active
+      this.hoveredIndex = this.hoveredIndex === key ? this.lastItemKey : key;
+    } else {
+      // Slide in the selected `.sideim`
+      this.hoveredIndex = key;
+    }
+  }
+},
 
   handleGlobalClick(event) {
     const isInsideItem = event.target.closest(".item-wrapper");
@@ -229,7 +302,8 @@ methods: {
   border-top: 0.05vw solid black;
   border: 0.05vw solid black;
   border-radius: 0%;
-  background-image: url(/_nuxt/static/LeftBG.png);
+  /* background-image: url(/_nuxt/static/LeftBG.png); */
+  background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: 0 0;
   background-position: initial;
@@ -540,6 +614,29 @@ methods: {
 }
 
 @media only screen and (max-width: 768px) {
+  .image-grid:last-child
+  .chunk-container:last-child
+  .image-row:last-child
+  .item-wrapper:nth-child(2)
+  .sideim
+  .deskimgl {
+  display: none !important;
+  /* height: 100vh; */
+}
+
+
+.deskimgl {
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    height: auto;
+    /* height: 37vw; */
+    padding: 3vw;
+    padding-top: 4vw;
+    overflow: hidden;
+}
+
   .bttn {
     position: absolute;
     border-top: 0.05vw solid black;
@@ -564,13 +661,72 @@ methods: {
     font-size: 3vw;
   }
 
-  .sideim img {
+  /* .sideim img {
     display: none !important;
-  }
+  } */
 
   .sideim {
-    display: none !important;
-  }
+    position: fixed;
+        left: 0;
+        z-index: 10;
+        top: auto;
+        bottom: 0;
+        width: 100vw;
+        height: 50vh;
+        overflow: scroll;
+        opacity: unset;
+        /* transition: all 0.5s ease; */
+        /* background-image: url("./static/BLUEbg.png"); */
+        transition: bottom 0.5s ease-in-out;
+}
+
+
+.slide-in {
+  /* background-image: url("./static/BLUEbg.png"); */
+  /* transform: translateY(-65vh);  */
+  transition: bottom 0.5s ease-in-out;
+  /* top: 35vh;  */
+  bottom: -35vh;
+  height: 100%;
+  /* opacity: 1; */
+}
+
+.slide-out {
+  /* transform: translateY(100vh);  */
+  bottom: 0;
+  transition: bottom 0.5s ease-in-out;
+  /* background-image: url("./static/BLUEbg.png"); */
+  /* top: 100vh;  */
+  /* opacity: 0;  */
+}
+
+
+.innerstyle{
+  background-image: url("./static/BLUEbg.png");
+  height: 100%;
+}
+
+.teambios{
+  line-height:normal !important;
+}
+
+.loctext {
+    font-family: "GT-Bold" !important;
+    font-size: 3.1vw !important;
+}
+
+.ttdesk{
+  font-size: 4vw !important;
+}
+
+.yeartdesk{
+  font-size: 3.5vw  !important;
+}
+
+.footerstuff{
+    font-size: 3.5vw;
+    padding: 3vw;
+}
 
   .eventtype {
     font-size: 1.8vw;
