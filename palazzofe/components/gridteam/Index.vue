@@ -121,7 +121,7 @@
 
                     <div
                       v-show="hoveredIndex === item._key"
-                      class="sideim nodes"
+                      class=" nodes"
          
                     >
                     <!-- ]:class="{
@@ -129,10 +129,10 @@
     'slide-out': hoveredIndex !== item._key,
   }" -->
                   <div class="sideim" :class="{
-    'slide-in': hoveredIndex === item._key,
-    'slide-out': hoveredIndex !== item._key,
+    'slide-in': hoveredIndex === null,
+    'slide-out': !hoveredIndex === null,
   }"  >
-                    <div class="innerstyle">
+                    <div  v-if="item.imageh.imageh" class="innerstyle">
                       <figure class="deskimgl">
                         <MediaImage
                           :src="item.imageh.imageh"
@@ -669,10 +669,11 @@ methods: {
     position: fixed;
         left: 0;
         z-index: 10;
-        top: auto;
-        bottom: 0;
+        top: 36vh;
+        /* bottom: -34vh; */
         width: 100vw;
         height: 50vh;
+        height: max-content;
         overflow: scroll;
         opacity: unset;
         /* transition: all 0.5s ease; */
