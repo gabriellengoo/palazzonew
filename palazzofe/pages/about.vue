@@ -90,6 +90,17 @@
         >
         <div class="pt-[35vw]">   </div>
 
+        <div class="a2">
+            <div class="contentmb">
+              <img class="logo" src="/I.png" />
+              <div class=" text-left">
+                <Richtext class="textcon2" :blocks="about.moni"></Richtext>
+             
+              </div>
+              <div class="arrowmb"><SvgBack /></div>
+            </div>
+          </div>
+          
           <div class="mb-[3vh] a1">
             <div class="contentmb">
               <img class="logo" src="/J.png" />
@@ -101,16 +112,7 @@
             </div>
           </div>
 
-          <div class="a2">
-            <div class="contentmb">
-              <img class="logo" src="/I.png" />
-              <div class=" text-left">
-                <Richtext class="textcon2" :blocks="about.moni"></Richtext>
-             
-              </div>
-              <div class="arrowmb"><SvgBack /></div>
-            </div>
-          </div>
+       
 
           <div class="pb-[5vh]">   </div>
         </div>

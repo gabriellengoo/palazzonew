@@ -669,7 +669,8 @@ methods: {
     position: fixed;
         left: 0;
         z-index: 10;
-        top: 36vh;
+        /* top: 36vh; */
+        padding-top: 5vh;
         /* bottom: -34vh; */
         width: 100vw;
         height: 50vh;
