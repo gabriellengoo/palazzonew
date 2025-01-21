@@ -124,15 +124,30 @@
                       class=" nodes"
          
                     >
+                    <div v-if="item.imageh.imageh" class="headeramb mbpad content flex w-full justify-between">
+        <h1 class="md:w-[1.4vw] w-auto">
+          <!-- events -->
+          <!-- <button  class="headbarmb" @click="resetHoveredIndex(item._key)">
+           
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
+          </button> -->
+          <a href="../team" class="headbarmb">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
+          </a>
+        </h1>
+     
+        
+      </div>
                     <!-- ]:class="{
     'slide-in': hoveredIndex === item._key,
     'slide-out': hoveredIndex !== item._key,
   }" -->
-                  <div class="sideim" :class="{
-    'slide-in': hoveredIndex === null,
-    'slide-out': !hoveredIndex === null,
-  }"  >
+                  <div class="sideim"    :class="{
+                        'fade-in': hoveredIndex === item._key,
+                        'fade-out': hoveredIndex !== item._key,
+                      }" >
                     <div  v-if="item.imageh.imageh" class="innerstyle">
+                     <div class="imgarea">
                       <figure class="deskimgl">
                         <MediaImage
                           :src="item.imageh.imageh"
@@ -143,6 +158,7 @@
                           v-else-if="item.image.image"
                         />
                       </figure>
+                     </div>
 
                       <div class="footerstuff">
                         <div class="textnewardesk teambio ttdesk animate-hover">
@@ -162,7 +178,7 @@
                         </div>
                         <div
                           v-if="item.content4"
-                          class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[3.3vw]"
+                          class="w-full flex items-center text-center flex-col pt-[1.25rem] locationtext text-[3.3vw]"
                         >
                           <p class="loctext uppercase">Email</p>
                           <div
@@ -249,6 +265,18 @@ beforeDestroy() {
 methods: {
   ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
 
+
+  resetHoveredIndex(key) {
+  console.log("Current hoveredIndex:", this.hoveredIndex, "Clicked key:", key);
+  if (this.hoveredIndex === key) {
+    this.hoveredIndex = this.lastItemKey; // Slide out if already active
+    console.log("Hovered index reset to null");
+  } else {
+    this.hoveredIndex = key; // Slide in the selected `.sideim`
+    console.log("Hovered index set to:", key);
+  }
+},
+
   toggleSlide(key) {
       this.hoveredIndex = this.hoveredIndex === key ? null : key;
     },
@@ -263,7 +291,7 @@ methods: {
   if (isMobile) {
     if (this.hoveredIndex === key) {
       // Slide out if already active
-      this.hoveredIndex = null; 
+      // this.hoveredIndex = key; 
         } else {
       // Slide in the selected `.sideim`
       this.hoveredIndex = key;
@@ -279,14 +307,16 @@ methods: {
   }
 },
 
-  handleGlobalClick(event) {
-    const isInsideItem = event.target.closest(".item-wrapper");
+handleGlobalClick(event) {
+  const isInsideItem = event.target.closest(".item-wrapper");
+  const isInsideButton = event.target.closest(".headbarmb");
 
-    // If the click is outside any `.item-wrapper`, reset to the last item
-    if (!isInsideItem) {
-      this.hoveredIndex = this.lastItemKey;
-    }
-  },
+  if (!isInsideItem && !isInsideButton) {
+    this.hoveredIndex = this.lastItemKey;
+  }
+},
+
+
 },
 
 };
@@ -683,6 +713,75 @@ methods: {
 }
 
 
+
+.teambio {
+    padding-top: 0.5vw;
+    border-top: 0;
+
+    /* border-top: 0.9vw solid rgba(0, 0, 0, 0.327);
+    border-top-width: 0.7px; */
+}
+
+.teambios {
+  font-size: 1.95vh;
+}
+
+.imgarea{
+  height: 56vh;
+  width: 100vw;
+  display: flex;
+        align-items: center;
+}
+
+.footerstuff{
+  background-image: url("./static/LeftBG.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+}
+
+.headeramb{
+  display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid black;
+    border-bottom: 0.05vw solid black;
+    background-image: url("./static/Navbar.jpg");
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: 0.4vw;
+    position: absolute;
+    top: 0vh;
+    z-index: 100;
+    padding-top: 2.5vw;
+        padding-bottom: 2.5vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        flex-direction: column;
+        position: relative;
+        position: fixed;
+        align-items: flex-start;
+        position: fixed;
+        left: 0;
+        height: 5.5vh;
+}
+
+.headbarmb{
+  width: 4.4vw;
+        width: 3.4vh;
+        width: 3.9vw;
+        margin-top: 1vw;
+        display: block;
+}
+
+.deskimgl{
+  /* border-top: 0.9vw solid rgba(0, 0, 0, 0.327);
+  border-top-width: 0.7px;  */
+}
+
+
 .slide-in {
   /* background-image: url("./static/BLUEbg.png"); */
   /* transform: translateY(-65vh);  */
@@ -706,6 +805,7 @@ methods: {
 .innerstyle{
   background-image: url("./static/BLUEbg.png");
   height: 100vh;
+  overflow: hidden;
 }
 
 .teambios{
