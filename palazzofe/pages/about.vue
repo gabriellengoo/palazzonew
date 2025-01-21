@@ -26,41 +26,25 @@
       </div>
 
       <div class="bgmobile relative min-h-screen flex">
-        <!-- Left Scrollable Content -->
+        <!-- Left Scrollable Content desk -->
         <div
-          class="left-content flex-1 flex justify-center items-center overflow-y-scroll p-8"
+          class="left-content nomb flex-1 flex justify-center items-center overflow-y-scroll p-8"
         >
           <div class="content">
             <div class="nomb">
-              <!-- <div class="imgsa">
-                <div class="scroll-container">
-                  <img class="ania2" src="/1.png" />
-                  <img class="ania2" src="/2.png" />
-                  <img class="ania2" src="/3.png" />
-                  <img class="ania2" src="/4.png" />
-                  <img class="ania2" src="/1.png" />
-                </div>
-              </div>
-
-              <img class="w-[26.5vw]" src="/leftaboutt.png" /> -->
               <img class="w-[26.5vw]" src="/leftaboutt.png" />
             </div>
           </div>
 
           <div class="content">
-            <div class="nomb covercont ">
-           <img class="coverabout nomb" src="/wind.png" />
-
-
-           <div class="nomb anicolle ">
-              <img class="logo" src="/I.png" />
-            </div>
-          <div class="email ml-[5vw] richcontle text-left">
-            <Richtext class="richcont3le" :blocks="about.moni"></Richtext>
-            <div class="richcont2le"><SvgBack /></div>
-          </div>
-
-          
+            <div class="nomb covercont">
+              <div class="nomb anicolle">
+                <img class="logo" src="/I.png" />
+              </div>
+              <div class="email ml-[5vw] richcontle text-left">
+                <Richtext class="richcont3le" :blocks="about.moni"></Richtext>
+                <div class="richcont2le"><SvgBack /></div>
+              </div>
             </div>
           </div>
 
@@ -69,20 +53,10 @@
               <img class="rightimg" src="/aboutrighta.png" />
             </div>
             <div class="pointer-events-none anicol">
-              <img class="rightimg " src="/J.png" />
-              <!-- <img class="rightimg fade-img" src="/I.png" /> -->
-              <!-- <img class="rightimg fade-img" src="/j.png" /> -->
+              <img class="rightimg" src="/J.png" />
             </div>
           </div>
 
-          <!-- <div class="butcon">
-        <button
-          class="bttn"
-        >
-          Awards
-        </button>
-       </div> -->
-          <!-- @mousemove="handleMouseHover" @mouseleave="stopScrolling" -->
           <div class="email ml-[5vw] richcont text-left">
             <Richtext
               class="richcont3 aboutbot"
@@ -94,27 +68,58 @@
 
         <!-- Right Static Content -->
         <div
-          class="right-content overflow-y-scroll flex-1 p-8 flex justify-center items-center"
+          class="right-content nomb overflow-y-scroll flex-1 p-8 flex justify-center items-center"
         >
           <div class="content">
-            <div class="nomb pointer-events-none">
+            <div class="pointer-events-none">
               <img class="rightimg" src="/aboutrighta.png" />
             </div>
-            <div class="nomb anicol pointer-events-none">
+            <div class="anicol pointer-events-none">
               <img class="logo" src="/J.png" />
             </div>
-            <!-- <div class="nomb anicol pointer-events-none">
-            <img class="rightimg fade-img" src="/J.png" />
-            <img class="rightimg fade-img" src="/I.png" />
-          </div> -->
           </div>
           <div class="email ml-[5vw] richcont text-left">
             <Richtext class="richcont3" :blocks="about.about"></Richtext>
             <div class="richcont2"><SvgBack /></div>
           </div>
         </div>
+
+        <!-- Right Static Content -->
+        <div
+          class="right-content pt-[55vh] nodesdots flex-col overflow-y-scroll flex-1 p-8 flex justify-center items-center"
+        >
+        <div class="pt-[35vw]">   </div>
+
+          <div class="mb-[3vh] a1">
+            <div class="contentmb">
+              <img class="logo" src="/J.png" />
+              <div class=" text-left">
+                <Richtext class="textcon1" :blocks="about.about"></Richtext>
+                
+              </div>
+              <div class="arrowmb"><SvgBack /></div>
+            </div>
+          </div>
+
+          <div class="a2">
+            <div class="contentmb">
+              <img class="logo" src="/I.png" />
+              <div class=" text-left">
+                <Richtext class="textcon2" :blocks="about.moni"></Richtext>
+             
+              </div>
+              <div class="arrowmb"><SvgBack /></div>
+            </div>
+          </div>
+
+          <div class="pb-[5vh]">   </div>
+        </div>
       </div>
     </div>
+
+
+
+ 
 
     <!-- Awards Button -->
     <div class="butcon">
@@ -125,8 +130,8 @@
 
     <!-- Awards Content -->
     <div
- :class="['awards-content', { visible: isAwardsOpen }]"
-  v-show="awardsLoaded"
+      :class="['awards-content', { visible: isAwardsOpen }]"
+      v-show="awardsLoaded"
       class="fixed top-0 left-full w-full h-full bg-white transition-transform duration-700 ease-in-out"
     >
       <!-- <h2 class="text-4xl font-bold mb-4">Awards Section</h2>
@@ -202,16 +207,14 @@ export default {
     ...mapMutations(["toggleMenu", "setMenuState"]),
 
     toggleAwards() {
-    if (!this.awardsLoaded) {
-      this.loadAwardsContent(); // Load the content first
-    }
-    this.isAwardsOpen = !this.isAwardsOpen;
-  },
-  loadAwardsContent() {
-    this.awardsLoaded = true;
-  },
-
-  
+      if (!this.awardsLoaded) {
+        this.loadAwardsContent(); // Load the content first
+      }
+      this.isAwardsOpen = !this.isAwardsOpen;
+    },
+    loadAwardsContent() {
+      this.awardsLoaded = true;
+    },
   },
 
   computed: {
@@ -241,7 +244,6 @@ export default {
   transition: transform 0.7s ease-in-out;
   z-index: 20;
 }
-
 
 .awards-content.visible {
   transform: translateX(-100%);
@@ -467,13 +469,13 @@ a:hover {
 
 .rightimg {
   width: 27vw;
-    /* top: -2vh; */
-    top: 6vw;
-    left: 2vw;
+  /* top: -2vh; */
+  top: 6vw;
+  left: 2vw;
   position: relative;
 }
 
-.logo{
+.logo {
   width: 11vw;
   top: 6vw;
   position: relative;
@@ -512,14 +514,13 @@ a:hover {
   height: max-content;
 }
 
-
-.anicolle{
+.anicolle {
   position: relative;
   z-index: 9;
-    left: 20vw;
-    top: -18vw;
-    width: 18%;  
-    }
+  left: 20vw;
+  top: -18vw;
+  width: 18%;
+}
 
 .richcontle {
   position: absolute;
@@ -553,7 +554,6 @@ a:hover {
   padding-left: 0.3vw;
   height: max-content;
 }
-
 
 .fade-img {
   position: absolute;
@@ -626,6 +626,93 @@ a:hover {
     font-size: 3vw;
   }
 
+  .a1 {
+    background-image: url("./static/aboutrighta.png");
+    background-size: 84vw;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .a2 {
+    background-image: url("./static/leftaboutt.png");
+    background-size: 84vw;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .contentmb {
+    /* width: 85vw; */
+    height: fit-content;
+    padding: 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .textcon1 {
+    position: relative;
+    height: 27vh;
+    /* top: 24vh; */
+    width: 73vw;
+    width: 99%;
+    font-size: 3.4vw;
+    /* left: 2vw; */
+    overflow: scroll;
+    padding-bottom: 3%;
+    z-index: 100;
+  }
+
+  .textcon2 {
+    position: relative;
+    height: 27vh;
+    font-size: 3.4vw;
+    /* top: 24vh; */
+    width: 73vw;
+    width: 99%;
+    padding-bottom: 3%;
+    /* left: 2vw; */
+    overflow: scroll;
+    z-index: 100;
+  }
+
+  .logo {
+    left: 20%;
+    width: 54%;
+    /* padding-top: 20%; */
+    padding-top: 1%;
+    top: 0;
+    padding-bottom: 6vw;
+    /* top: 29vw; */
+    position: relative;
+    height: max-content;
+  }
+
+
+  .arrowmb {
+    /* position: relative;
+    left: 31vw;
+    padding-top: 3vh;
+    z-index: 1000; */
+
+
+    position: relative;
+        top: -11vh;
+        padding: 6%;
+        z-index: 100;
+        transform: rotateZ(270deg);
+  }
+
+
+
+  .rightimgmb {
+    width: 89vw;
+    top: 20vh;
+    /* left: 5vw; */
+    position: relative;
+  }
+
   .richcont {
     position: absolute;
     top: 35vh;
@@ -662,7 +749,7 @@ a:hover {
 
   .richcontle {
     display: none;
-}
+  }
 
   .anicol {
     position: absolute;
