@@ -211,56 +211,7 @@ export default {
     this.awardsLoaded = true;
   },
 
-    // startAutoScroll() {
-    //   const container = document.querySelector(".scroll-container");
-    //   const images = container.children;
-    //   const imageWidth = window.innerWidth * 0.215; // Get the width of a single image
-    //   const totalWidth = imageWidth * images.length;
-
-    //   setInterval(() => {
-    //     this.scrollOffset -= imageWidth;
-
-    //     // If the offset goes beyond the total width, reset it for looping
-    //     if (Math.abs(this.scrollOffset) >= totalWidth - imageWidth) {
-    //       this.scrollOffset = 0;
-    //     }
-
-    //     container.style.transform = `translateX(${this.scrollOffset}px)`;
-    //   }, 1000); // Adjust interval duration for scrolling speed
-    // },
-
-    // handleMouseHover(event) {
-    //   const container = event.currentTarget;
-    //   const rect = container.getBoundingClientRect();
-    //   const containerHeight = rect.height;
-    //   const mouseY = event.clientY - rect.top; // Mouse Y position relative to the container
-    //   const scrollSpeed = 95; // Adjust this to control the scrolling speed
-
-    //   // Scroll up if the mouse is near the top
-    //   if (mouseY < containerHeight * 0.3) {
-    //     this.scrollContainer(container, -scrollSpeed);
-    //   }
-    //   // Scroll down if the mouse is near the bottom
-    //   else if (mouseY > containerHeight * 0.7) {
-    //     this.scrollContainer(container, scrollSpeed);
-    //   }
-    // },
-    // scrollContainer(container, speed) {
-    //   // Clear any existing interval to avoid multiple overlaps
-    //   if (this.scrollInterval) clearInterval(this.scrollInterval);
-
-    //   // Start a new interval to scroll
-    //   this.scrollInterval = setInterval(() => {
-    //     container.scrollTop += speed;
-    //   }, 100); // Adjust interval time for smoother scrolling
-    // },
-    // stopScrolling() {
-    //   // Stop the scrolling when the mouse leaves the container
-    //   if (this.scrollInterval) {
-    //     clearInterval(this.scrollInterval);
-    //     this.scrollInterval = null;
-    //   }
-    // },
+  
   },
 
   computed: {

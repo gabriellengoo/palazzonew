@@ -154,8 +154,8 @@
           <input
             class="col-span-1"
             type="text"
-            name="More info"
-            placeholder="More Info *"
+            name="Additional info"
+            placeholder="Additional info *"
           />
           <input
             class="col-span-1"
@@ -232,8 +232,51 @@
           <div class="contact flex text-left mt-[2vh]">
             <!-- <div class="w-[31vw]"> -->
             <!-- Instagram SVG Icon -->
-            
-            <div  v-for="social in contact.socialMedia"   class="flex ">
+         
+           
+
+            <!-- </div> -->
+            <div class="email ml-[4vw] text-left">
+              <!-- <p class="italic underline">Email</p>
+              <div class="w-max">
+                <p>natalya@palazzoeventi.com</p>
+              </div> -->
+              <Richtext
+                   v-if="contact.email"
+                class="richcontt adsizemb"
+                :blocks="contact.email"
+              ></Richtext>
+              <!-- <Richtext
+              v-if="contact.vemail"
+                class="richcontt adsizemb"
+                :blocks="contact.vemail"
+              ></Richtext> -->
+            </div>
+
+
+            <div class="email ml-[4vw] text-left">
+              <!-- <p class="italic underline">Email</p>
+              <div class="w-max">
+                <p>natalya@palazzoeventi.com</p>
+              </div> -->
+              <!-- <Richtext
+                   v-if="contact.email"
+                class="richcontt adsizemb"
+                :blocks="contact.email"
+              ></Richtext> -->
+              <Richtext
+              v-if="contact.vemail"
+                class="richcontt adsizemb"
+                :blocks="contact.vemail"
+              ></Richtext>
+            </div>
+          </div>
+        </div>
+
+        
+   
+        <div class="flex ml-[4vw]">
+          <div  v-for="social in contact.socialMedia"   class="flex ">
           <div   v-if="social.show" class="social-icons contamb contact flex text-left mt-[2vh]">
     <a
     v-if="social.show"
@@ -255,28 +298,7 @@
   </div>
              
             </div>
-           
-
-            <!-- </div> -->
-            <div class="email ml-[4vw] text-left">
-              <!-- <p class="italic underline">Email</p>
-              <div class="w-max">
-                <p>natalya@palazzoeventi.com</p>
-              </div> -->
-              <Richtext
-                   v-if="contact.email"
-                class="richcontt adsizemb"
-                :blocks="contact.email"
-              ></Richtext>
-              <Richtext
-              v-if="contact.vemail"
-                class="richcontt adsizemb"
-                :blocks="contact.vemail"
-              ></Richtext>
-            </div>
-          </div>
         </div>
-
       
 
         <div class="ml-[8.2vw]">
@@ -373,7 +395,7 @@
               class="col-span-1"
               type="text"
               name="info"
-              placeholder="More Info *"
+              placeholder="Additional info *"
             />
             <input
               class="col-span-1"
@@ -508,7 +530,7 @@ formFields.forEach(field => {
       const rightContent = document.querySelector(".allrcont");
       if (rightContent && !this.isOpen) {
         rightContent.classList.add("slide-in");
-        this.lottieInstance.playSegments([0, 11], true); // Open animation
+        this.lottieInstance.playSegments([11, 20], true); // Open animation
         this.isOpen = true;
       }
     },
@@ -517,7 +539,7 @@ formFields.forEach(field => {
       const rightContent = document.querySelector(".allrcont");
       if (rightContent && this.isOpen) {
         rightContent.classList.remove("slide-in");
-        this.lottieInstance.playSegments([11, 20], true); // Close animation
+        this.lottieInstance.playSegments([0, 11], true); // Close animation
         this.isOpen = false;
       }
     },
@@ -768,7 +790,7 @@ input::placeholder {
 @media only screen and (max-width: 768px) {
 
   .instagram-icon {
-  width: 7vw;
+    width: 10vw;
   height: auto;
 }
   .contact-form {
@@ -831,6 +853,11 @@ input::placeholder {
     padding-top: 0vh;
     padding-left: 4vw;
     padding-bottom: 1vh;
+
+    padding: 0;
+        padding-top: 0vh;
+        padding-left: 4vw;
+        padding-bottom: 1vh;
   }
 
   .headbarc {
@@ -883,6 +910,7 @@ input::placeholder {
     /* Animates it up */
     transition: top 0.5s ease-in-out;
     top: 0vh;
+    top:100vw;
     /* top: calc(50% - 100px); */
     /* top: auto; */
     /* margin-top: 30vh; */
@@ -907,6 +935,7 @@ input::placeholder {
     top: 57vh;
     top:122vw;
     top:110vw;
+    top: 0vh;
   }
 
   @keyframes bounce {
@@ -918,7 +947,7 @@ input::placeholder {
       transform: translateY(0);
     }
     40% {
-      transform: translateY(-80px);
+      transform: translateY(-40px);
     }
     60% {
       transform: translateY(-40px);
