@@ -427,6 +427,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding-bottom: 25vw;
+  margin-bottom: 20vw;
 }
   /* .left-content{
     padding: 0 !important;

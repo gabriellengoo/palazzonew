@@ -100,7 +100,9 @@
               <div class="arrowmb"><SvgBack /></div>
             </div>
           </div>
-          
+
+          <div class="pt-[10vw]"></div>
+
           <div class="mb-[3vh] a1">
             <div class="contentmb">
               <img class="logo" src="/J.png" />

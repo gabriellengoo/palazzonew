@@ -65,7 +65,7 @@
 
                     <div
                       v-show="hoveredIndex === item._key"
-                      class="sideim"
+                      class="sideim nomb"
                       :class="{
                         'fade-in': hoveredIndex === item._key,
                         'fade-out': hoveredIndex !== item._key,
@@ -115,6 +115,168 @@
                         </div>
                       </div>
 
+             
+                    </div>
+
+
+
+                    <div
+                      v-show="hoveredIndex === item._key"
+                      class="sideim nodes"
+                      :class="{
+                        'fade-in': hoveredIndex === item._key,
+                        'fade-out': hoveredIndex !== item._key,
+                      }"
+                    >
+                    <div
+                        v-if="item.imageh.imageh"
+                        class="headeramb content flex w-full justify-between"
+                      >
+                        <h1 class="md:w-[1.4vw] w-auto">
+                          <a href="../products" class="headbarmb">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlns:xlink="http://www.w3.org/1999/xlink"
+                              viewBox="0 0 500 500"
+                              width="500"
+                              height="500"
+                              preserveAspectRatio="xMidYMid meet"
+                              style="
+                                width: 100%;
+                                height: 100%;
+                                transform: translate3d(0px, 0px, 0px);
+                                content-visibility: visible;
+                              "
+                            >
+                              <defs>
+                                <clipPath id="__lottie_element_2">
+                                  <rect
+                                    width="500"
+                                    height="500"
+                                    x="0"
+                                    y="0"
+                                  ></rect>
+                                </clipPath>
+                              </defs>
+                              <g clip-path="url(#__lottie_element_2)">
+                                <g
+                                  transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
+                                  opacity="1"
+                                  style="display: block"
+                                >
+                                  <g
+                                    opacity="1"
+                                    transform="matrix(1.4112499952316284,0,0,1,0,0)"
+                                  >
+                                    <path
+                                      fill="rgb(255,0,0)"
+                                      fill-opacity="1"
+                                      d=" M-10,-10 C-10,-10 10,10 10,10"
+                                    ></path>
+                                    <path
+                                      stroke-linecap="butt"
+                                      stroke-linejoin="miter"
+                                      fill-opacity="0"
+                                      stroke-miterlimit="4"
+                                      stroke="rgb(0,0,0)"
+                                      stroke-opacity="1"
+                                      stroke-width="1"
+                                      d=" M-10,-10 C-10,-10 10,10 10,10"
+                                    ></path>
+                                  </g>
+                                  <g
+                                    opacity="0"
+                                    transform="matrix(1.389361023902893,0,0,1,0,0)"
+                                  >
+                                    <path
+                                      fill="rgb(255,0,0)"
+                                      fill-opacity="1"
+                                      d=" M10,0 C10,0 10,0 10,0"
+                                    ></path>
+                                    <path
+                                      stroke-linecap="butt"
+                                      stroke-linejoin="miter"
+                                      fill-opacity="0"
+                                      stroke-miterlimit="4"
+                                      stroke="rgb(0,0,0)"
+                                      stroke-opacity="1"
+                                      stroke-width="1"
+                                      d=" M10,0 C10,0 10,0 10,0"
+                                    ></path>
+                                  </g>
+                                  <g
+                                    opacity="1"
+                                    transform="matrix(1.3872150182724,0,0,1,0,0)"
+                                  >
+                                    <path
+                                      fill="rgb(255,0,0)"
+                                      fill-opacity="1"
+                                      d=" M-10,10 C-10,10 10,-10 10,-10"
+                                    ></path>
+                                    <path
+                                      stroke-linecap="butt"
+                                      stroke-linejoin="miter"
+                                      fill-opacity="0"
+                                      stroke-miterlimit="4"
+                                      stroke="rgb(0,0,0)"
+                                      stroke-opacity="1"
+                                      stroke-width="1"
+                                      d=" M-10,10 C-10,10 10,-10 10,-10"
+                                    ></path>
+                                  </g>
+                                </g>
+                              </g>
+                            </svg>
+                          </a>
+                        </h1>
+                      </div>
+                    <div  v-if="item.imageh.imageh" class="innerstyle">
+                      <div class="imgarea">
+                      <figure class="deskimgl">
+                        <MediaImage
+                          :src="item.imageh.imageh"
+                          v-if="item.imageh.imageh"
+                        />
+                        <MediaImage
+                          :src="item.image.image"
+                          v-else-if="item.image.image"
+                        />
+                      </figure>
+                    </div>
+
+                      <div class="footerstuff">
+                        <div class="textnewardesk teambio ttdesk animate-hover">
+                          <p v-if="item" class="uppercase">
+                            {{ item.title || "Name" }}
+                          </p>
+                          <p v-if="item" class="yeartdesk mb-6 capitalize">
+                            {{ item.year || "Title" }}
+                          </p>
+                        </div>
+
+                        <div v-if="item.content3" class="pt-[1vw] text-[1.3vw]">
+                          <Richtext
+                            class="contactinner teambios"
+                            :blocks="item.content3"
+                          />
+                        </div>
+                        <div
+                          v-if="item.filmtitle"
+                          class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]"
+                        >
+                          <p class="loctext uppercase">Play Film</p>
+                      
+                          <!-- pop -->
+                          <button @click="openIframe(item.film)">{{ item.filmtitle }}</button>
+                          <draggable-iframe
+                              v-if="iframeVisible"
+                              :iframeSrc="iframeUrl"
+                              @close="iframeVisible = false"
+                            />
+        
+                        </div>
+                      </div>
+                    </div>
              
                     </div>
                   </div>
@@ -186,10 +348,11 @@ export default {
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener("resize", this.handleResize);
 
-    if (this.items.length > 0) {
-      this.hoveredIndex = this.items[0]._key;
-      this.isDefaultActive = true;
-    }
+    // Only set the default active item if it's on desktop
+    if (this.isDesktop && this.items.length > 0) {
+    this.hoveredIndex = this.items[0]._key;
+    this.isDefaultActive = true;
+  }
     
     
   },
@@ -207,6 +370,8 @@ export default {
     // Activate fade effect when user clicks
     this.hoveredIndex = key;
   },
+
+  
 // pop
     openIframe(url) {
       this.iframeUrl = url;
@@ -518,13 +683,185 @@ export default {
 
 @media only screen and (max-width: 768px) {
 
-  .sideim img {
+  /* .sideim img {
     display: none !important;
   }
 
   .sideim {
     display: none !important;
+  } */
+
+  .sideim {
+    position: fixed;
+        left: 0;
+        z-index: 100;
+        /* top: 36vh; */
+        /* padding-top: 5vh; */
+        /* bottom: -34vh; */
+        width: 100vw;
+        height: 50vh;
+        height: max-content;
+        overflow: scroll;
+        opacity: unset;
+        /* transition: all 0.5s ease; */
+        /* background-image: url("./static/BLUEbg.png"); */
+        transition: bottom 0.5s ease-in-out;
+}
+
+
+.deskimgl {
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    height: auto;
+    /* height: 37vw; */
+    padding: 3vw;
+    padding-top: 9vw;
+    overflow: hidden;
+}
+
+.bttn {
+    position: absolute;
+    border-top: 0.05vw solid black;
+    border: 0.05vw solid black;
+    border-radius: 0%;
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    padding: 2.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 2.5vh;
+    /* width: 100%; */
+    width: 98%;
+    text-transform: uppercase;
+    font-family: "GT-Sectra-Book";
+    font-family: "NHaas" !important;
+    transition: color 0.8s ease;
+    font-size: 3vw;
   }
+
+
+.teambio {
+    padding-top: 0.5vw;
+    border-top: 0;
+
+    /* border-top: 0.9vw solid rgba(0, 0, 0, 0.327);
+    border-top-width: 0.7px; */
+}
+
+.teambios {
+  font-size: 1.95vh;
+}
+
+.imgarea{
+  height: 56vh;
+  width: 100vw;
+  display: flex;
+        align-items: center;
+        /* z-index: 100000000000; */
+        position: relative;
+ background-image: url("./static/BLUEbg.png");
+}
+
+.footerstuff{
+  background-image: url("./static/LeftBG.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+}
+
+
+
+.headeramb{
+  display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid black;
+    border-bottom: 0.05vw solid black;
+    background-image: url("./static/Navbar.jpg");
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
+    padding: 0.4vw;
+    position: absolute;
+    top: 0vh;
+    z-index: 1000;
+    padding-top: 2.5vw;
+        padding-bottom: 2.5vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        flex-direction: column;
+        position: relative;
+        position: fixed;
+        align-items: flex-start;
+        position: fixed;
+        left: 0;
+        height: 12vw;
+}
+
+.headbarmb{
+  width: 4.4vw;
+        width: 3.4vh;
+        width: 3.9vw;
+        margin-top: 1vw;
+        display: block;
+}
+
+
+
+.innerstyle{
+  background-image: url("./static/BLUEbg.png");
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+        left: 0;
+}
+
+.teambios{
+  line-height:normal !important;
+}
+
+.loctext {
+    font-family: "GT-Bold" !important;
+    font-size: 3.1vw !important;
+}
+
+.ttdesk{
+  font-size: 4vw !important;
+}
+
+.yeartdesk{
+  font-size: 3.5vw  !important;
+}
+
+.footerstuff{
+    font-size: 3.5vw;
+    padding: 3vw;
+}
+
+  .eventtype {
+    font-size: 1.8vw;
+  }
+
+  .image-row {
+    border-bottom: 0vw solid black;
+    border-bottom: 0.07vw solid rgba(0, 0, 0, 0.137) !important;
+    width: 100%;
+  }
+
+  .textsum {
+    padding-top: 5vw;
+  }
+
+ 
 
   .eventtype {
     font-size: 1.8vw;
