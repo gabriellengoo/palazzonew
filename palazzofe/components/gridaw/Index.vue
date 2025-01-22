@@ -358,7 +358,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 25vw;
 }
 
 .image-rowaw {
@@ -405,7 +404,7 @@ export default {
   .image-rowaw:last-child {
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 82%;
     border-bottom: 0.07vw solid rgba(0, 0, 0, 0) !important;
   }
 }
@@ -422,6 +421,13 @@ export default {
   .image-item {
     padding: 4vw;
   }
+
+  .image-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 25vw;
+}
   /* .left-content{
     padding: 0 !important;
   } */

@@ -133,18 +133,21 @@
     <!-- Awards Content -->
     <div
       :class="['awards-content', { visible: isAwardsOpen }]"
-      v-show="awardsLoaded"
       class="fixed top-0 left-full w-full h-full bg-white transition-transform duration-700 ease-in-out"
     >
-      <!-- <h2 class="text-4xl font-bold mb-4">Awards Section</h2>
-      <p>Here is the text for the awards section!</p> -->
       <div class="bgmobileaw relative min-h-screen flex">
         <!-- Left Scrollable Content -->
         <div class="left-contentaw flex-1 overflow-y-scroll p-8">
           <div class="content gridcontentaw">
-            <div v-if="gridaw.grid6" class="">
-              <Gridaw class="" :items="gridaw.grid6" size="small"></Gridaw>
-            </div>
+            <div v-if="!gridaw.grid6 || gridaw.grid6.length === 0">
+  <SkeletonLoader />
+   <!-- loadding -->
+</div>
+<div v-else class="">
+  <Gridaw class="" :items="gridaw.grid6" size="small"></Gridaw>
+</div>
+
+
           </div>
         </div>
 
@@ -168,6 +171,7 @@ import { groq } from "@nuxtjs/sanity";
 import animationData from "~/static/animations/aboutani.json";
 import LottieAnimation from "~/components/LottieAnimation.vue";
 import SvgBack from "~/components/svg/Back.vue";
+import SkeletonLoader from "~/components/SkeletonLoader.vue";
 import { mapMutations } from "vuex";
 
 export default {
@@ -182,6 +186,7 @@ export default {
       awardsLoaded: false,
     };
   },
+
 
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "about"]{
@@ -209,14 +214,9 @@ export default {
     ...mapMutations(["toggleMenu", "setMenuState"]),
 
     toggleAwards() {
-      if (!this.awardsLoaded) {
-        this.loadAwardsContent(); // Load the content first
-      }
-      this.isAwardsOpen = !this.isAwardsOpen;
-    },
-    loadAwardsContent() {
-      this.awardsLoaded = true;
-    },
+    this.isAwardsOpen = !this.isAwardsOpen;
+  },
+
   },
 
   computed: {
@@ -249,8 +249,11 @@ export default {
 
 .awards-content.visible {
   transform: translateX(-100%);
+  transition: transform 0.7s ease-in-out;
   z-index: 20;
 }
+
+
 
 /* Button styling */
 .butcon {
