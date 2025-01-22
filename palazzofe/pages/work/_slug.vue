@@ -494,15 +494,16 @@
               </div>
             </header>
             <button
-              v-if="!isLastSlide"
+           
               class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
               :class="back ? '' : ''"
               @click="prev"
               ref="prev"
               aria-label="Previous"
             ></button>
+            <!-- v-if="!isLastSlide" -->
             <button
-              v-if="!isLastSlide"
+             
               class="nomb absolute top-0 right-0 z-30 w-[25%] h-full next"
               @click="next"
               aria-label="Next"
