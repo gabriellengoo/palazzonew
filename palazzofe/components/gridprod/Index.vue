@@ -246,7 +246,7 @@
 
                       <div class="footerstuff">
                         <div class="textnewardesk teambio ttdesk animate-hover">
-                          <p v-if="item" class="uppercase">
+                          <p v-if="item" class="uppercase biotitle">
                             {{ item.title || "Name" }}
                           </p>
                           <p v-if="item" class="yeartdesk mb-6 capitalize">
@@ -267,7 +267,7 @@
                           <p class="loctext uppercase">Play Film</p>
                       
                           <!-- pop -->
-                          <button @click="openIframe(item.film)">{{ item.filmtitle }}</button>
+                          <button class="flex flex-col normal-case italic loctextlink" @click="openIframe(item.film)">{{ item.filmtitle }}</button>
                           <draggable-iframe
                               v-if="iframeVisible"
                               :iframeSrc="iframeUrl"
@@ -773,7 +773,7 @@ export default {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 100vh;
+        height: 55vh;
 }
 
 
@@ -822,16 +822,24 @@ export default {
   position: fixed;
   z-index: 100;
   top: 0;
+  overflow-y: scroll;
         left: 0;
 }
 
 .teambios{
   line-height:normal !important;
+  padding: 1vh;
+  padding-bottom: 4vh;
+  padding-top: 1.25rem;
+}
+
+.biotitle{
+  font-size: 2.2vh;
 }
 
 .loctext {
     font-family: "GT-Bold" !important;
-    font-size: 3.1vw !important;
+    font-size: 3.5vw !important;
 }
 
 .ttdesk{
@@ -862,6 +870,11 @@ export default {
   }
 
  
+  .loctextlink {
+    font-size: 4vw;
+    text-decoration: underline;
+    padding-top: 1.2vw;
+  }
 
   .eventtype {
     font-size: 1.8vw;

@@ -891,7 +891,8 @@ export default {
   .innerstyle {
     background-image: url("./static/BLUEbg.png");
     height: 100vh;
-    overflow: scroll;
+    overflow: hidden;
+    overflow-y: scroll;
   }
 
   .teambios {
