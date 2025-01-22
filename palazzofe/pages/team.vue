@@ -338,9 +338,9 @@ a:hover {
 .iframe-container {
     position: absolute;
     top: 10%;
-        left: 6%;
-        height: 160vw;
-    width: 88vw;
+    left: 16%;
+        height: 127vw;
+        width: 68vw;
     border: 0.5px solid black;
     background-size: cover;
     background-position: center;

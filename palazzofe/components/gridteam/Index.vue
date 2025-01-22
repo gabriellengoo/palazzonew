@@ -859,7 +859,7 @@ export default {
   .headbarmb {
     width: 4.4vw;
     width: 3.4vh;
-    width: 3.9vw;
+    width: 4.9vw;
     margin-top: 1vw;
     display: block;
   }
