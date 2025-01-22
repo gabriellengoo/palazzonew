@@ -105,7 +105,7 @@
                           <p class="loctext uppercase">Play Film</p>
                       
                           <!-- pop -->
-                          <button @click="openIframe(item.film)">{{ item.filmtitle }}</button>
+                          <button class="filmlink" @click="openIframe(item.film)">{{ item.filmtitle }}</button>
                           <draggable-iframe
                               v-if="iframeVisible"
                               :iframeSrc="iframeUrl"
@@ -351,6 +351,7 @@ export default {
     // Only set the default active item if it's on desktop
     if (this.isDesktop && this.items.length > 0) {
     this.hoveredIndex = this.items[0]._key;
+    // this.hoveredIndex = this.items[this.items.length - 1]._key;
     this.isDefaultActive = true;
   }
     
@@ -469,6 +470,11 @@ export default {
   overflow: scroll;
   opacity: 0; /* Start with opacity 0 */
   transition: opacity 0.5s ease; /* Transition for fade effect */
+  pointer-events: none;
+}
+
+.filmlink{
+  pointer-events: auto !important;
 }
 
 .sideim.fade-in {
@@ -647,6 +653,7 @@ export default {
   display: flex;
     justify-content: flex-end;
     flex-direction: column;
+    pointer-events: all;
 }
 
 .textsumf{
