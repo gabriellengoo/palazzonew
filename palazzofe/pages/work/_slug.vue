@@ -1584,6 +1584,7 @@ a {
   background-position: center;
   background-repeat: no-repeat; */
   background-color: #e6e5e4;
+  background-color: #fff;
   height: 100vh;
   z-index: 0;
   position: initial;
