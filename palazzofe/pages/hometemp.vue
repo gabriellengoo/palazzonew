@@ -48,11 +48,19 @@
     >
       <div v-if="home" class="textmainpg text-center">
         <transition name="logo-animation" >
-        <MediaImage
+        <!-- <MediaImage
                   :src="home.image.asset._ref"
                   class="w-[80vw]"
                   :sizes="'sm:200vw md:150vw lg:200vw'"
-                />
+                /> -->
+                <div class="textmainpg text-center">
+        <h1
+          class="maintext text-[13vw] lg:text-[4rem] xl:text-[16rem] text-[white] leading-tight relative z-0"
+        >
+          PALAZZO EVENTI
+        </h1>
+      </div>
+
         </transition>
         <!-- <div ref="element" class="disintegrate">Disintegrate Me</div> -->
 

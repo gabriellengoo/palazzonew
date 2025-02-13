@@ -138,19 +138,21 @@ export default {
 }
 
 .left-content {
-  background-image: url("./static/LeftBG.png");
+  /* background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #e6e5e4;
   height: 100vh;
   overflow-y: scroll;
 }
 
 .right-content {
-  background-image: url("./static/PINKBG.png");
+  /* background-image: url("./static/PINKBG.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #e6e5e4;
   height: 100vh;
 }
 

@@ -362,7 +362,7 @@
                   >
                     <!-- Draggable Modal -->
                     <div
-                      class="modal-content bg-white overflow-hidden relative"
+                      class="modal-content  overflow-hidden relative"
                       ref="modal"
                       :style="{ top: `20vh`, left: `2vw` }"
                     >
@@ -1131,7 +1131,7 @@ display: none;
   display: flex;
   width: 50vw;
   /* background: #f1f1f1; */
-  background-image: url("./static/popbg.jpeg");
+  /* background-image: url("./static/popbg.jpeg"); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1141,7 +1141,7 @@ display: none;
   height: 25vw;
   display: flex;
   width: 40vw;
-  border: 0.5px solid black;
+  /* border: 0.5px solid black; */
   /* position: absolute;
     cursor: grab;
     z-index: 1000;
@@ -1566,10 +1566,11 @@ a {
 }
 
 .left-content {
-  background-image: url("./static/LeftBG.png");
+  /* background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #e6e5e4;
   height: 100vh;
   /* height: max-content; */
   overflow-y: hidden;
@@ -1578,10 +1579,11 @@ a {
 }
 
 .right-content {
-  background-image: url("./static/PINKBG.png");
+  /* background-image: url("./static/PINKBG.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #e6e5e4;
   height: 100vh;
   z-index: 0;
   position: initial;
@@ -1677,6 +1679,7 @@ a {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    
     height: 100%;
     /* height: auto;
     height: 40vh; */

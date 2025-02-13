@@ -714,7 +714,7 @@ input[type="date"] {
 .contact-form {
   font-size: 0.9vw;
   /* font-size: 1vw; */
-  font-family: "NHaas";
+   /*  font-family: "NHaas";  */
   column-gap: 4vw;
   width: max-content;
   letter-spacing: 0.05vw;
