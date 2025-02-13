@@ -647,10 +647,12 @@ export default {
 .nav-menu {
   top: v-bind(menuTopPosition);
   transition: top 0.5s ease;
-  background-image: url("./static/navbg.jpg");
+  /* background-image: url("./static/navbg.jpg");
   background-size: cover;
   background-position: initial;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+
+  background-color: #e6e5e4;
   /* display: flex;
   justify-content: center; */
 }

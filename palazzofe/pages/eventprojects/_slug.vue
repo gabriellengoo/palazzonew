@@ -1612,21 +1612,23 @@ a {
 }
 
 .left-content {
-  background-image: url("./static/LeftBG.png");
+  /* background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   height: 100vh;
   /* height: max-content; */
+  background-color: #e6e5e4;
   overflow-y: hidden;
   z-index: 1;
 }
 
 .right-content {
-  background-image: url("./static/BLUEbg.png");
+  /* background-image: url("./static/BLUEbg.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #bcc2cb;
   height: 100vh;
   z-index: 0;
 }
@@ -1715,11 +1717,14 @@ a {
     width: 100vw;
   }
   .left-content {
-    background-image: url("./static/LeftBG.png");
+    /* background-image: url("./static/LeftBG.png");
     background-image: url("./static/BLUEbg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    background-repeat: no-repeat; */
+    background-color: #bcc2cb;
     height: 60vh;
     height: max-content;
     overflow-y: none;
@@ -1729,8 +1734,9 @@ a {
   }
 
   .right-content {
-    background-image: url("./static/PINKBG.png");
-    background-image: url("./static/LeftBG.png");
+    /* background-image: url("./static/PINKBG.png");
+    background-image: url("./static/LeftBG.png"); */
+    background-color: #e6e5e4;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

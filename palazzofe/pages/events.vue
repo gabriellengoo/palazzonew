@@ -131,19 +131,21 @@ export default {
 }
 
 .left-content {
-  background-image: url("./static/LeftBG.png");
+  /* background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #e6e5e4;
   height: 100vh;
   overflow-y: scroll;
 }
 
 .right-content {
-  background-image: url("./static/BLUEbg.png");
+  /* background-image: url("./static/BLUEbg.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #bcc2cb;
   height: 100vh;
 }
 
@@ -174,7 +176,8 @@ a:hover {
     padding: 0 !important;
     padding-top: 4vh !important;
     padding-top: 6vh !important;
-    background-image: url("./static/BLUEbg.png");
+    /* background-image: url("./static/BLUEbg.png"); */
+    background-color: #bcc2cb;
   }
 }
 </style>

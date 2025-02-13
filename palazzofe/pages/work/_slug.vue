@@ -174,17 +174,20 @@
                   </div>
                   <!-- Location Link -->
                   <div
-                    v-if="project.location"
-                    class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
-                  >
-                    <!-- <p class="loctext">Location,</p> -->
-                    <p v-if="project.location" class="loctext">Play Film</p>
-                    <div class="flex flex-col normal-case italic loctextlink">
-                      <a href="javascript:void(0)" @click="openModal">{{
-                        project.location
-                      }}</a>
-                    </div>
-                  </div>
+  v-if="project.location"
+  class="w-full flex items-center text-center md:pt-5 locationtext"
+  @mouseover="isHovered = true"
+  @mouseleave="isHovered = false"
+>
+  <p class="loctext">Play Film</p>
+  <img
+    src="/playf.png"
+    alt="play Image"
+    :class="{'scale-125 transition-transform duration-300': isHovered, 'w-[4vw] h-auto': !isHovered}"
+    class="w-[4vw] h-auto"
+  />
+</div>
+
 
                   <!-- Draggable Iframe Modal -->
                   <div
@@ -637,6 +640,10 @@ export default {
   } 
   | order(_updatedAt desc)[0]`;
 
+
+
+
+
     const project = await $sanity.fetch(query);
 
     // Modify the 'day' field for images after fetching the data
@@ -698,6 +705,7 @@ export default {
       isDragging: false,
       position: { top: 100, left: 100 }, // Initial position of the modal
       offset: { x: 0, y: 0 },
+      isHovered: false,
     };
   },
   computed: {
@@ -1662,11 +1670,12 @@ a {
     width: 100vw;
   }
   .left-content {
-    background-image: url("./static/LeftBG.png");
+    /* background-image: url("./static/LeftBG.png");
     background-image: url("./static/PINKBG.png");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    background-color: #e6e5e4;
     height: 60vh;
     height: max-content;
     overflow-y: none;
@@ -1675,11 +1684,11 @@ a {
   }
 
   .right-content {
-    background-image: url("./static/PINKBG.png");
+    /* background-image: url("./static/PINKBG.png");
     background-image: url("./static/LeftBG.png");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     
     height: 100%;
     /* height: auto;

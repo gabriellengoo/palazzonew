@@ -694,10 +694,11 @@ input[type="date"] {
 }
 
 .pagbg {
-  background-image: url("./static/LeftBG.png");
+  /* background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #e6e5e4;
   height: 100vh;
   background-position: 0 0;
   background-position: initial;
