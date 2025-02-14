@@ -149,6 +149,8 @@ export default {
   height: 100vh;
 }
 
+
+
 a {
   color: #a29585;
   text-decoration: none;

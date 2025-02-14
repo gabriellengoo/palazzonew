@@ -204,7 +204,7 @@
                       :blocks="project.content"
                     ></Richtext>
                   </div>
-                  <div
+                  <!-- <div
                     v-if="project.location"
                     class="w-full flex items-center text-center flex-col pt-10 md:pt-[6vh] locationtext"
                   >
@@ -216,7 +216,29 @@
                         >{{ project.location }}</a
                       >
                     </div>
-                  </div>
+                  </div> -->
+                   <!-- Location Link -->
+                   <a
+                  class="noline"
+                        href="javascript:void(0)" @click="openModal"
+                        ><div
+  v-if="project.location"
+  class="w-full flex items-center text-center md:pt-5 locationtext"
+  @mouseover="isHovered = true"
+  @mouseleave="isHovered = false"
+>
+
+  <img
+    src="/playf.png"
+    alt="play Image"
+    :class="{
+  'scale-125 transition-transform duration-300 ease-out': isHovered,
+  'w-[4vw] h-auto transition-all duration-300 ease-out': !isHovered
+}"
+    class="w-[4vw] h-auto"
+  />
+  <p class="loctext">Play Film</p>
+</div></a>
 
                 <!-- Draggable Iframe Modal -->
                 <div
@@ -225,7 +247,7 @@
                   >
                     <!-- Draggable Modal -->
                     <div
-                      class="modal-content bg-white overflow-hidden relative"
+                      class="modal-content  overflow-hidden relative"
                       ref="modal"
                       @mousedown="startDragging"
                       @mouseup="stopDragging"
@@ -378,7 +400,7 @@
                       :blocks="project.content"
                     ></Richtext>
                   </div>
-                  <div
+                  <!-- <div
                     v-if="project.location"
                     class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
                   > 
@@ -390,7 +412,26 @@
                         >{{ project.location }}</a
                       >
                     </div>
-                  </div> 
+                  </div>  -->
+                  <a
+                  class="noline"
+                        href="javascript:void(0)" @click="openModal"
+                        ><div
+  v-if="project.location"
+  class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
+>
+
+  <img
+    src="/playf.png"
+    alt="play Image"
+    :class="{
+  'scale-125 transition-transform duration-300 ease-out': isHovered,
+  'w-[11vw] h-auto transition-all duration-300 ease-out': !isHovered
+}"
+    class="w-[11vw] h-auto"
+  />
+  <p class="loctext">Play Film</p>
+</div></a>
 
                    <!-- Draggable Iframe Modal -->
                    <div
@@ -399,7 +440,7 @@
                   >
                     <!-- Draggable Modal -->
                     <div
-                      class="modal-content bg-white overflow-hidden relative"
+                      class="modal-content  overflow-hidden relative"
                       ref="modal"
                       :style="{ top: `20vh`, left: `2vw` }"
                     >
@@ -766,6 +807,7 @@ export default {
       // pop
       iframeVisible: false,
       iframeUrl: '',
+      isHovered: false,
     };
   },
   computed: {
@@ -1167,17 +1209,17 @@ export default {
     display: flex;
     width: 50vw;
     /* background: #f1f1f1; */
-    background-image: url("./static/popbg.jpeg");
+    /* background-image: url("./static/popbg.jpeg");
     align-items: flex-end;
     pointer-events: auto;
     background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 
     height: 25vw;
     display: flex;
     width: 40vw;
-    border: 0.5px solid black;
+    /* border: 0.5px solid black; */
     /* position: absolute;
     cursor: grab;
     z-index: 1000;
@@ -1678,7 +1720,7 @@ a {
     height: 60vw;
         display: flex;
    width: 96vw;
-    border: 0.5px solid black;
+    /* border: 0.5px solid black; */
 }
   .landscape {
   height: 55vh;

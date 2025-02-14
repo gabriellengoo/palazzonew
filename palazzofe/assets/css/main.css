@@ -388,15 +388,26 @@ html {
   padding-right: 0.7vw; */
   border-bottom: 0.5px solid black;
   border-bottom: 0.05vw solid black;
-  background-image: url("./static/Navbar.jpg");
+  /* background-image: url("./static/Navbar.jpg");
   background-size: cover;
   background-position: initial;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #bcc2cb;
   padding: 0.4vw;
   position: absolute;
   top: 0;
   z-index: 1;
   z-index: 100;
+}
+
+.locationtext{
+  display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.noline {
+  text-decoration: none !important;
 }
 
 .headbar {

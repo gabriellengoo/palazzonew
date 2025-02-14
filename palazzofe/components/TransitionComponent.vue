@@ -3,7 +3,16 @@
     <transition name="screen-transition" mode="out-in">
       <div v-if="isTransitionActive" class="black-screen">
         <div class="flex h-screen w-screen justify-center align-middle items-center mx-auto">
-          <h1 class="loading-text">Loading...</h1>
+          <!-- <h1 class="loading-text">Loading...</h1> -->
+          <img
+    src="/loadspin.gif"
+    alt="loadings"
+    :class="{
+  'scale-125 transition-transform duration-300 ease-out': isHovered,
+  'w-[11vw] h-auto transition-all duration-300 ease-out': !isHovered
+}"
+    class="w-[6vw] h-auto"
+  />
         </div>
       </div>
     </transition>
@@ -13,13 +22,7 @@
     <div class="text-content" :class="{ 'active': isTextVisible }">
       <div class="flex uppercase w-screen content-center flex-wrap text-[#2a2a2a] h-screen justify-center p-10">
         <div>
-          <!-- <h1 :class="{ 'active': isTextVisible }" class="titleText text-[4rem] leading-[4rem] md:text-[4rem] md:leading-[4.5rem] text-center uppercase">
-            Coralie rose
-            
-          </h1> -->
-          <!-- <h1 :class="{ 'active': isTextVisible }" class="titleText text-[2rem] leading-[2rem] md:text-[2rem] md:leading-[2.5rem] text-center uppercase">
-            Loading..
-          </h1>  -->
+       
         </div>
       </div>
     </div>
@@ -54,13 +57,13 @@ export default {
       // Set a timeout to show the text after 1.5 seconds
       setTimeout(() => {
         this.isTextVisible = true;
-      }, 1500); // Delay text visibility by 1.5 seconds
+      }, 1000); // Delay text visibility by 1.5 seconds
 
       // Set a timeout to hide the text and end the transition after 3.5 seconds
       setTimeout(() => {
         this.isTextVisible = false;
         this.isTransitionActive = false;
-      }, 1500); // Adjust the duration of text visibility as needed
+      }, 1000); // Adjust the duration of text visibility as needed
     }
   },
 
