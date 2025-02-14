@@ -2,11 +2,11 @@
   <div class="reveal-container relative md:min-h-fit md:overflow-hidden">
     <HeaderComponent />
     <div class="headera mbpad content flex w-full justify-between">
-      <h1 class="md:w-[1.4vw] w-auto">
+      <h1 class="md:w-[1.7vw] w-auto">
         <a class="headbar" href="../press">
           <div
             ref="lottieAnimation"
-            class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+            class="lottie-container headbarc w-[1.7vw] hover:cursor-pointer"
           ></div>
         </a>
       </h1>

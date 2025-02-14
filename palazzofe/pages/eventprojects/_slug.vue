@@ -13,7 +13,7 @@
           <a class="headbar" href="../events">
             <div
               ref="lottieAnimation"
-              class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+              class="lottie-container headbarc w-[1.7vw] hover:cursor-pointer"
             ></div>
             <!-- <SvgBack class="svgmb hover:cursor-pointer"/> -->
           </a>
@@ -265,7 +265,7 @@
                       >
                         <!-- <SvgClose class=""/> -->
                         <svg
-                          class="w-[1.4vw]"
+                          class="w-[1.7vw]"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
                           viewBox="0 0 500 500"
