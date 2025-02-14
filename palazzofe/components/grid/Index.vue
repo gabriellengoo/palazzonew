@@ -76,7 +76,8 @@
 
 
 <script>
-import { mapMutations, mapState, mapGetters } from "vuex";
+import { mapMutations, mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   props: ["items", "size"],
@@ -87,10 +88,9 @@ export default {
       hoveredIndex: null,
       isDefaultActive: true,
       hoverEffectStyle: {
-        left: "0px",
-        top: "0px",
-      },
-      chunkedItems: [], // Initialize as an empty array
+        left: '0px',
+        top: '0px',
+      }
     };
   },
   computed: {
@@ -98,18 +98,8 @@ export default {
       isMenuOpen: "isMenuOpen",
     }),
     ...mapState(["activeProject", "activeTalent"]),
-  },
-  methods: {
-    ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
-    
-    handleResize() {
-      this.isDesktop = window.innerWidth > 768;
-    },
-
-    chunkArray(items) {
-      if (!Array.isArray(items)) return []; // Prevent errors
-
-      return items.reduce((resultArray, item, index) => {
+    chunkedItems() {
+      return this.items.reduce((resultArray, item, index) => {
         const chunkIndex = Math.floor(index / 2);
         if (!resultArray[chunkIndex]) {
           resultArray[chunkIndex] = [];
@@ -119,30 +109,31 @@ export default {
       }, []);
     },
   },
+  methods: {
+    ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
+    onMouseMove(event) {
+      const boundingRect = event.currentTarget.getBoundingClientRect();
+      const offsetX = event.clientX - boundingRect.left;
+      const offsetY = event.clientY - boundingRect.top;
+
+      this.hoverEffectStyle = {
+        left: `${offsetX}px`,
+        top: `${offsetY}px`,
+      };
+    },
+    handleResize() {
+      this.isDesktop = window.innerWidth > 768;
+    },
+  },
   mounted() {
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener("resize", this.handleResize);
-
-    if (Array.isArray(this.items) && this.items.length) {
-      this.chunkedItems = this.chunkArray(this.items);
-    }
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);
   },
-  watch: {
-    items: {
-      handler(newItems) {
-        if (Array.isArray(newItems) && newItems.length) {
-          this.chunkedItems = this.chunkArray(newItems);
-        }
-      },
-      immediate: true,
-    },
-  },
 };
 </script>
-
 
 
 
