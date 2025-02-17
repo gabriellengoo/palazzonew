@@ -55,7 +55,7 @@
                 /> -->
                 <div class="textmainpg text-center">
         <h1
-          class="maintext text-[13vw] lg:text-[4rem] xl:text-[16rem] text-[white] leading-tight relative z-0"
+          class="maintext text-[white] leading-tight relative z-0"
         >
           PALAZZO EVENTI
         </h1>
@@ -318,6 +318,7 @@ export default {
 
 .maintext {
   font-family: 'RomainHeadlineTrial';
+  font-size: 8vw;
   }
 
   .subtx{
@@ -357,6 +358,11 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
+
+  .maintext {
+  font-family: 'RomainHeadlineTrial';
+  font-size: 16vw;
+  }
 
   .allgal {
     object-fit: cover;
