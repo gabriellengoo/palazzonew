@@ -225,8 +225,8 @@
                         class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
                         @click="closeModal"
                       >
-                        <!-- <SvgClose class=""/> -->
-                        <svg
+                        <SvgClose class=""/>
+                        <!-- <svg
                           class="w-[1.7vw]"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -313,7 +313,7 @@
                               </g>
                             </g>
                           </g>
-                        </svg>
+                        </svg> -->
                       </button>
                       <!-- </button> -->
 
@@ -408,8 +408,8 @@
                         class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
                         @click="closeModal"
                       >
-                        <!-- <SvgClose class=""/> -->
-                        <svg
+                        <SvgClose class=""/>
+                        <!-- <svg
                           class="w-[4.4vw]"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -496,7 +496,7 @@
                               </g>
                             </g>
                           </g>
-                        </svg>
+                        </svg> -->
                       </button>
                       <!-- </button> -->
 
