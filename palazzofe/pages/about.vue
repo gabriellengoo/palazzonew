@@ -141,11 +141,11 @@
         <!-- Left Scrollable Content -->
         <div class="left-contentaw flex-1 overflow-y-scroll p-8">
           <div class="content gridcontentaw">
-            <div v-if="!gridaw.grid6 || gridaw.grid6.length === 0">
+            <div>
   <SkeletonLoader />
    <!-- loadding -->
 </div>
-<div v-else class="">
+<div v-if="isAwardsOpen && showGridaw" >
   <Gridaw class="" :items="gridaw.grid6" size="small"></Gridaw>
 </div>
 
@@ -186,6 +186,7 @@ export default {
       scrollOffset: 0,
       isAwardsOpen: false,
       awardsLoaded: false,
+      showGridaw: false,
     };
   },
 
@@ -209,13 +210,24 @@ export default {
   },
 
   mounted() {
-    // this.startAutoScroll();
-  },
+  // Start loading the content immediately on mount
+  setTimeout(() => {
+    this.showGridaw = true; // Load Grid in the background
+  }, 1500); // Delay before it gets ready
+},
+
 
   methods: {
     ...mapMutations(["toggleMenu", "setMenuState"]),
 
     toggleAwards() {
+    if (!this.isAwardsOpen) {
+      // Only start the delay when opening the awards section
+      this.showGridaw = false; // Reset visibility
+      setTimeout(() => {
+        this.showGridaw = true;
+      }, 1500); // Delay starts when opening
+    }
     this.isAwardsOpen = !this.isAwardsOpen;
   },
 
@@ -232,6 +244,16 @@ export default {
 </script>
 
 <style scoped>
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in[style*="opacity: 1"] {
+  opacity: 1;
+}
+
 .page-wrapper {
   transform: translateX(0);
   transition: transform 0.7s ease-in-out;

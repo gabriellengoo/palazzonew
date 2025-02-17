@@ -49,6 +49,14 @@
   height: auto;
 }
 
+@media only screen and (max-width: 768px) {
+
+  .closesvg {
+    width: 4.4vw;
+  height: auto;
+}
+}
+
 /* .closesvg path {
   stroke: black; 
   stroke-width: 2; 

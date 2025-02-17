@@ -28,7 +28,9 @@ img.loaded {
   filter: none; 
 } */
 
-
+button{
+  cursor: pointer;
+}
 
 iframe {
   z-index: 200;

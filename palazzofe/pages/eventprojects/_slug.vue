@@ -232,12 +232,15 @@
     src="/playf.png"
     alt="play Image"
     :class="{
-  'scale-125 transition-transform duration-300 ease-out': isHovered,
+  'scale-110 transition-transform duration-300 ease-out': isHovered,
   'w-[4vw] h-auto transition-all duration-300 ease-out': !isHovered
 }"
     class="w-[4vw] h-auto"
   />
-  <p class="loctext">Play Film</p>
+  <p  :class="{
+  ' opacity-40 transition-all duration-300 ease-out': isHovered,
+  'opacity-100 transition-all duration-300 ease-out': !isHovered
+}" class="loctext">Play Film</p>
 </div></a>
 
                 <!-- Draggable Iframe Modal -->
@@ -263,8 +266,8 @@
                         class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
                         @click="closeModal"
                       >
-                        <!-- <SvgClose class=""/> -->
-                        <svg
+                        <SvgClose class=""/>
+                        <!-- <svg
                           class="w-[1.7vw]"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -351,7 +354,7 @@
                               </g>
                             </g>
                           </g>
-                        </svg>
+                        </svg> -->
                       </button>
                       <!-- </button> -->
 
@@ -425,12 +428,12 @@
     src="/playf.png"
     alt="play Image"
     :class="{
-  'scale-125 transition-transform duration-300 ease-out': isHovered,
+  ' transition-transform duration-300 ease-out': isHovered,
   'w-[11vw] h-auto transition-all duration-300 ease-out': !isHovered
 }"
     class="w-[11vw] h-auto"
   />
-  <p class="loctext">Play Film</p>
+  <p   class="loctext">Play Film</p>
 </div></a>
 
                    <!-- Draggable Iframe Modal -->
@@ -450,8 +453,8 @@
                         class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
                         @click="closeModal"
                       >
-                        <!-- <SvgClose class=""/> -->
-                        <svg
+                        <SvgClose class=""/>
+                        <!-- <svg
                           class="w-[4.4vw]"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -538,7 +541,7 @@
                               </g>
                             </g>
                           </g>
-                        </svg>
+                        </svg> -->
                       </button>
                       <!-- </button> -->
 
@@ -1198,7 +1201,7 @@ export default {
   width: 100vw;
   height: 100vh;
   /* cursor: grab; */
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .modal-content {
@@ -1216,6 +1219,7 @@ export default {
   background-position: center;
   background-repeat: no-repeat; */
 
+  align-items: flex-end;
     height: 25vw;
     display: flex;
     width: 40vw;

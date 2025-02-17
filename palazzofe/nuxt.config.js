@@ -65,7 +65,17 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['vue-scrollto/nuxt', "nuxt-gsap-module"],
+  modules: ['vue-scrollto/nuxt', "nuxt-gsap-module", 
+    // "@nuxtjs/preload"
+  ],
+
+  // preload: {
+  //   fonts: true,
+  //   images: true, // Auto-preload images
+  //   videos: true,
+  //   scripts: true,
+  //   links: true,
+  // },
 
   sanity: {
     // module options
