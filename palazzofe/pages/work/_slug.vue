@@ -343,9 +343,28 @@
                 class="ttmb uppercase animate-hover text-[1.2rem] pr-[1vw] pl-[1vw]"
               >
                 <p v-if="project">{{ project.title }}</p>
-                <p class="yeart mb-6 uppercase" v-if="project">
+                <!-- <p class="yeart mb-6 uppercase" v-if="project">
                   {{ project.year }}
-                </p>
+                </p> -->
+                <a
+                  class="noline"
+                        href="javascript:void(0)" @click="openModal"
+                        ><div
+  v-if="project.location"
+  class="w-full flex items-center text-center md:pt-5"
+>
+<p class="loctext">Play Film</p>
+  <img
+    src="/playf.png"
+    alt="play Image"
+    :class="{
+  ' transition-transform duration-300 ease-out': isHovered,
+  'w-[11vw] h-auto transition-all duration-300 ease-out': !isHovered
+}"
+    class="w-[11vw] h-auto"
+  />
+ 
+</div></a>
               </div>
 
               <div class="nodes mbfootout pt-[6vh] footout">
@@ -368,7 +387,7 @@
                     </div>
                   </div> -->
                    <!-- Location Link -->
-                   <a
+                   <!-- <a
                   class="noline"
                         href="javascript:void(0)" @click="openModal"
                         ><div
@@ -386,7 +405,7 @@
     class="w-[11vw] h-auto"
   />
   <p class="loctext">Play Film</p>
-</div></a>
+</div></a> -->
 
                   <!-- Draggable Iframe Modal -->
                   <div
@@ -397,9 +416,10 @@
                     <div
                       class="modal-content  overflow-hidden relative"
                       ref="modal"
-                      :style="{ top: `20vh`, left: `2vw` }"
+                   
                     >
                       <!-- <button
+                          :style="{ top: `20vh`, left: `2vw` }"
           class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
           @click="closeModal"
         > -->
@@ -834,14 +854,14 @@ export default {
       this.isModalOpen = false;
     },
     startDragging(event) {
-      this.isDragging = true;
+      // this.isDragging = true;
       this.offset = {
         x: event.clientX - event.target.closest(".modal-content").offsetLeft,
         y: event.clientY - event.target.closest(".modal-content").offsetTop,
       };
     },
     stopDragging() {
-      this.isDragging = false;
+      // this.isDragging = false;
     },
     drag(event) {
       if (this.isDragging) {
@@ -1163,13 +1183,11 @@ display: none;
 
 .modal-content {
   position: absolute;
-  cursor: grab;
+  /* cursor: grab;
   z-index: 1000;
   height: 45vh;
   display: flex;
   width: 50vw;
-  /* background: #f1f1f1; */
-  /* background-image: url("./static/popbg.jpeg"); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1179,20 +1197,25 @@ display: none;
   height: 25vw;
   display: flex;
   width: 40vw;
-  /* border: 0.5px solid black; */
-  /* position: absolute;
-    cursor: grab;
+  top: 24vw !important;
+  left: 1vw !important;
+     */
+
+     position: absolute;
+    /* cursor: grab; */
     z-index: 1000;
-    height: 45vh;
-    display: flex;
-    width: max-content;
-    background-image: url("./static/background.jpg");
+    height: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     align-items: flex-end;
     pointer-events: auto;
-    width: 50%;
-    height: 55%;
-    position: relative; */
-    
+    /* height: 25vw; */
+    display: flex;
+    width: 46vw;
+    top: 9vw !important;
+    left: 6vw !important;
+    left: 2vw !important;
 }
 
 .modal-content iframe {
@@ -1216,7 +1239,7 @@ display: none;
 }
 
 .modal-content:active {
-  cursor: grabbing;
+  /* cursor: grabbing; */
   z-index: 1000;
 }
 
@@ -1251,14 +1274,14 @@ display: none;
 
 .previous {
   z-index: 30;
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ3IDMwIiB3aWR0aD0iNDciIGhlaWdodD0iMzAiPjxkZWZzPjxpbWFnZSB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIGlkPSJpbWcxIiBocmVmPSJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNalFpSUdobGFXZG9kRDBpTWpRaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJZ1ptbHNiQzF5ZFd4bFBTSmxkbVZ1YjJSa0lpQmpiR2x3TFhKMWJHVTlJbVYyWlc1dlpHUWlQanh3WVhSb0lHUTlJazB5TGpFeE55QXhNbXczTGpVeU55QTJMakl6TlMwdU5qUTBMamMyTlMwNUxUY3VOVEl4SURrdE55NDBOemt1TmpRMUxqYzJOQzAzTGpVeU9TQTJMakl6Tm1neU1TNDRPRFIyTVdndE1qRXVPRGd6ZWlJdlBqd3ZjM1puUGc9PSIvPjwvZGVmcz48c3R5bGU+PC9zdHlsZT48dXNlICBocmVmPSIjaW1nMSIgdHJhbnNmb3JtPSJtYXRyaXgoLjk1MSwwLDAsLjk1MSwxLC03KSIvPjwvc3ZnPg=="),
+  cursor: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 30' width='34' height='30'%3E%3Cdefs%3E%3Cimage width='34' height='30' id='img1' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAeCAMAAAB+ITwmAAAAAXNSR0IB2cksfwAAAQtQTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4co3XAAAAFl0Uk5TABQ+Dgii724X2v/+q0jl+XoC9WRt+vMzpKcZyf26EEbj/H0EDGjqf4rsKsjBChEutL8yYPSTNlDeHff46Ob71Cx33F1xWYAfx7wGhOKm8uSG4agS0Ch0s9u4XIivAAABKklEQVR4nIXSzUsCYRAG8HnKhUUSXSuWPlBiKyLQkIg26BCVSEHX/seIroHkQbZLRgcpFAr6oKIoqCArNnfFlhBb3313ek/D8INneGdAwgPQEjqCiHjkmyWqJ/DBkRhcBQ0mSHP7HBUvgel89RA+B9B8Cydq4p3ieBCBj2hRvA7iNii6JI1nHbiUiA6ZBO7HcS4DHaLpj04adbn4Jf0zNzSBsxDhkSxwkRyGGyY8Mo+6Mi2uqocshgZ0iXn6L1lClXJgg4hGpk4WUGZJyjhum7UnjhCtHUZmEyWWUL5VieYsmyNUgJXMHAVOxU9oE+X26pV0TX/3smw5plLkCNHcnb3+JRna/2cr8QPkm/scISNbRAF7HKHRsRo2sMsRou2SvbXDEyOlX1d6Wz+2PEXUdbjugAAAAABJRU5ErkJggg=='/%3E%3C/defs%3E%3Cstyle%3E%3C/style%3E%3Cuse href='%23img1' x='0' y='0'/%3E%3C/svg%3E"),
     auto !important;
     transform: scale(1.5);
 }
 
 .next {
   z-index: 30;
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ1IDI4IiB3aWR0aD0iNDUiIGhlaWdodD0iMjgiPjxkZWZzPjxpbWFnZSB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgaWQ9ImltZzEiIGhyZWY9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1qUWlJR2hsYVdkb2REMGlNalFpSUhodGJHNXpQU0pvZEhSd09pOHZkM2QzTG5jekxtOXlaeTh5TURBd0wzTjJaeUlnWm1sc2JDMXlkV3hsUFNKbGRtVnViMlJrSWlCamJHbHdMWEoxYkdVOUltVjJaVzV2WkdRaVBqeHdZWFJvSUdROUlrMHlNUzQ0T0RNZ01USnNMVGN1TlRJM0lEWXVNak0xTGpZME5DNDNOalVnT1MwM0xqVXlNUzA1TFRjdU5EYzVMUzQyTkRVdU56WTBJRGN1TlRJNUlEWXVNak0yYUMweU1TNDRPRFIyTVdneU1TNDRPRE42SWk4K1BDOXpkbWMrIi8+PC9kZWZzPjxzdHlsZT48L3N0eWxlPjx1c2UgIGhyZWY9IiNpbWcxIiB0cmFuc2Zvcm09Im1hdHJpeCguMjI3LC4wMDEsLTAuMDAxLC4yMjcsLjk1MywtNykiLz48L3N2Zz4="),
+  cursor: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 30' width='35' height='30'%3E%3Cdefs%3E%3Cimage width='35' height='30' id='img1' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAeCAMAAACR41cYAAAAAXNSR0IB2cksfwAAASBQTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3op92gAAAGB0Uk5TAFDadwSz//V0KdD+kxkTqOAHhuMscfIuINz5pgIq4oQGA7z9xx8XgPpZ9O9dMxDU+6fk5ebo+Pce3gFRNzZhETK+tC8KwMgP64t+6eppDXxHucmlGPFuY0kOeanuoz4VaXZq2gAAAStJREFUeJyF071Lw1AUBfBzwBS0JLTwCgWt4EdFLG1RcbLqIg6Kq1L869wd1M0PBAVDnVJUrGAg2hZUSKGgQyUZjDolNrdne/f9uO/e4RHhMIgfrUXOWmB6A8ww6SX4IRoY9L2RT180SPPL0+mKBsiwy9S7bJBlR5Ft0SDHN03xWTSYIFvjfBINZgJkpBqiCSbP2HneywZFt6P1CreigRptzNEKzEJ/9lsk65hnjUlP6PSTRQ42S9es9L34e98y3Gl1Ba7FNiCbrQr9S2GvdZpY5gmE3XOFC1V+dCCYTZ5tkMeIN0NbLw/6ymFogUhKU6fZsuVAMLrR9bZ5gHgzlp49miy1TQhm985WqzcO4k2Vdr2Yb5oQzF6t5SfDX/Cf2Unw9RyyqWrcj074DSWGS1lnpRCCAAAAAElFTkSuQmCC'/%3E%3C/defs%3E%3Cstyle%3E%3C/style%3E%3Cuse href='%23img1' x='0' y='0'/%3E%3C/svg%3E"),
     auto !important;
     transform: scale(1.5);
 }
@@ -1546,6 +1569,7 @@ a {
     font-size: smaller;
     font-family: "GT-Bold";
     text-transform: uppercase;
+
   }
 }
 
@@ -1745,6 +1769,7 @@ a {
     height: 60vw;
     display: flex;
     width: 96vw;
+    top: 19vh !important;
     /* border: 0.5px solid black; */
   }
 
@@ -1857,6 +1882,13 @@ a {
 
   .loctext {
     line-height: normal;
+  }
+
+  .loctext {
+    font-size: smaller;
+    font-family: "GT-Bold";
+    text-transform: uppercase;
+    font-size: 3vw;
   }
 }
 </style>

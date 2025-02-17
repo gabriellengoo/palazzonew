@@ -4,36 +4,16 @@
       <div v-if="isTransitionActive" class="black-screen">
         <div class="flex h-screen w-screen justify-center align-middle items-center mx-auto">
           <!-- <h1 class="loading-text">Loading...</h1> -->
-          <!-- <img
-    src="/loadspin.gif"
+          <img
+    src="/balls.gif"
     alt="loadings"
     :class="{
   'scale-125 transition-transform duration-300 ease-out': isHovered,
   'w-[11vw] h-auto transition-all duration-300 ease-out': !isHovered
 }"
     class="w-[6vw] h-auto"
-  /> -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="shape-rendering: auto; display: block; background: rgba(210, 211, 212, 0); pointer-events: auto;"><g data-idx="1"><circle fill="rgb(0, 0, 0)" r="5" cy="61.1273307800293" cx="71.91551971435547" data-idx="2">
-  
-  
-  
-</circle><circle fill="rgb(0, 0, 0)" r="5" cy="74.28143310546875" cx="46.189544677734375" data-idx="6">
-  
-  
-  
-</circle><circle fill="rgb(0, 0, 0)" r="5" cy="53.87942123413086" cx="25.729490280151367" data-idx="10">
-  
-  
-  
-</circle><circle fill="rgb(0, 0, 0)" r="5" cy="28.116180419921875" cx="38.810455322265625" data-idx="14">
-  
-  
-  
-</circle><circle fill="rgb(0, 0, 0)" r="5" cy="32.59563446044922" cx="67.35498809814453" data-idx="18">
-  
-  
-  
-</circle><g data-idx="22"></g></g><text data-watermark="true" text-anchor="middle" dominant-baseline="middle" stroke-opacity="0.1" fill="black" fill-opacity="0.1" stroke="white" stroke-width="1" font-size="5.0" x="50" y="50" data-idx="23" style="opacity: 1; font-size: 5px;">LOADING.IO</text></svg>
+  />
+
         </div>
       </div>
     </transition>

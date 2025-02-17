@@ -306,7 +306,7 @@ export default {
   padding: 0.2rem 0;
   /* border-bottom: black;
     border-bottom-width: 2px; */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
 }
 
 .link-container a {
@@ -328,8 +328,8 @@ export default {
 }
 
 .link-container {
-  border: 1px solid rgba(0, 0, 0, 0.257);
-  border-radius: 150px 150px 2px 2px;
+  /* border: 1px solid rgba(0, 0, 0, 0.257); */
+  /* border-radius: 150px 150px 2px 2px; */
   /* width: 90vw;
   width: 84vw; */
   margin: auto;
@@ -337,10 +337,10 @@ export default {
 
   /* background-color: rgba(255, 255, 255, 0.14);
     background-color: rgb(255 255 255 / 25%); */
-  background-color: rgb(255 255 255 / 13%);
+  /* background-color: rgb(255 255 255 / 13%); */
 
-  border: 1px solid rgba(0, 0, 0, 0.257);
-  border-radius: 190px 190px 2px 2px;
+  /* border: 1px solid rgba(0, 0, 0, 0.257); */
+  /* border-radius: 190px 190px 2px 2px; */
   width: max-content;
   margin: auto;
   font-family: "RomainHeadlineTrial";
@@ -366,13 +366,13 @@ export default {
 }
 
 .link-container li {
-  background-color: rgba(255, 255, 255, 0.13);
+  /* background-color: rgba(255, 255, 255, 0.13); */
   text-align: center;
   /* padding: 1.5rem 0; */
   padding: 0.2rem 0;
   /* border-bottom: black;
     border-bottom-width: 2px; */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
 }
 
 .link-container li:hover {
@@ -405,20 +405,20 @@ export default {
 }
 
 .link-container {
-  border: 1px solid rgba(0, 0, 0, 0.257);
+  /* border: 1px solid rgba(0, 0, 0, 0.257); */
   margin: auto;
   font-family: "RomainHeadlineTrial";
-  background-color: hsla(0, 0%, 100%, 0.13);
+  /* background-color: hsla(0, 0%, 100%, 0.13); */
   /* background-color: 1px solid rgba(0,0,0,.257);
     background-color: rgb(255 255 255 / 25%); */
-  border: 1px solid rgba(0, 0, 0, 0.257);
-  border-radius: 590px 590px 2px 2px;
+  /* border: 1px solid rgba(0, 0, 0, 0.257); */
+  /* border-radius: 590px 590px 2px 2px; */
   margin: auto;
   font-family: "RomainHeadlineTrial";
-  background-image: url("./static/background.jpg");
+  /* background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: initial;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   overflow: hidden;
   /* width: 24vw; */
 }
@@ -444,6 +444,7 @@ export default {
   text-decoration: none;
   font-size: 9.2vw;
   font-size: 4.2vh;
+  font-size: 11.2vw;
   /* font-size: 4vw; */
   color: black;
   font-weight: 100;
@@ -763,6 +764,8 @@ export default {
 @media only screen and (max-width: 768px) {
   .lottie-container {
     width: 4.5vw;
+    width: 5.5vw;
+
   }
 
   .mobilemenu {
@@ -773,17 +776,19 @@ export default {
     background-position: initial;
     background-repeat: no-repeat;
     overflow: hidden; */
-    background-size: auto;
+    /* background-size: auto;
     background-size: cover;
     background-image: url("./static/background.jpg");
     background-position: initial;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     height: 100vh;
     overflow-y: scroll;
 
-    background-position: 0 0;
+    /* background-position: 0 0;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+    background-color: #bcc2cb;
+    background-color: #e6e5e4;
     transition: max-height 0.5s ease-in-out;
     overflow: hidden;
     /* padding-top: 3vh; */

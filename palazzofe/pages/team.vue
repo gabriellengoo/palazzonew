@@ -25,7 +25,21 @@
           class="bttn "
            @click="toggleIframe"
         >
-        <p class="textsumf">{{ gridteam.filmtitle }}</p>
+        <!-- <p class="textsumf">{{ gridteam.filmtitle }}</p> -->
+                    
+                      <p
+                   
+                        class="loctext"
+                      >
+                        Play Film
+                      </p>
+                      <img
+                        src="/playf.png"
+                        alt="play Image"
+                    
+                  
+                        class="w-[4vw] h-auto"
+                      />
           
         </button>
         </div>
@@ -325,6 +339,11 @@ a:hover {
     transition: color 0.8s ease;
     font-size: 1vw;
     left: 0;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
     /* font-size: 0.8vw; */
 }
 
