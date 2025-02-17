@@ -1,0 +1,83 @@
+import {
+  gridQuery,
+  gridQuery2,
+  gridQuery3,
+  gridQuery4,
+  gridQuery5,
+  gridQuery6,
+  gridQuery7,
+  gridQuerypress
+} from '@/utils/sanityQueries.js';
+
+export const state = () => ({
+  grid: [],
+  gridd: [],
+  gridpub: [],
+  gridaw: [],
+  gridteam: [],
+  gridprod: [],
+  gridpress: []
+});
+
+export const mutations = {
+  SET_GRID(state, data) {
+    state.grid = data || [];
+  },
+  SET_GRIDD(state, data) {
+    state.gridd = data || [];
+  },
+  SET_GRIDPUB(state, data) {
+    state.gridpub = data || [];
+  },
+  SET_GRIDAW(state, data) {
+    state.gridaw = data || [];
+  },
+  SET_GRIDTEAM(state, data) {
+    state.gridteam = data || [];
+  },
+  SET_GRIDPROD(state, data) {
+    state.gridprod = data || [];
+  },
+  SET_GRIDPRESS(state, data) {
+    state.gridpress = data || [];
+  }
+};
+
+export const actions = {
+  async nuxtServerInit({ commit }, { $sanity }) {
+    try {
+      // Fetch all data in parallel
+      const [
+        gridData,
+        gridData2,
+        gridData3,
+        gridData4,
+        gridData5,
+        gridData6,
+        gridData7,
+        gridDataPress
+      ] = await Promise.all([
+        $sanity.fetch(gridQuery),  
+        $sanity.fetch(gridQuery2), 
+        $sanity.fetch(gridQuery3),
+        $sanity.fetch(gridQuery4),
+        $sanity.fetch(gridQuery5),
+        $sanity.fetch(gridQuery6),
+        $sanity.fetch(gridQuery7),
+        $sanity.fetch(gridQuerypress)
+      ]);
+
+      // Commit fetched data
+      commit('SET_GRID', gridData);
+      commit('SET_GRIDD', gridData2);
+      commit('SET_GRIDPUB', gridData3);
+      commit('SET_GRIDAW', gridData4);
+      commit('SET_GRIDTEAM', gridData5);
+      commit('SET_GRIDPROD', gridData6);
+      commit('SET_GRIDPRESS', gridDataPress);
+      
+    } catch (error) {
+      console.error('Error fetching grids:', error);
+    }
+  }
+};

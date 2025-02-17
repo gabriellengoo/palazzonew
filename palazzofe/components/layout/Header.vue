@@ -77,6 +77,7 @@
             name="slide-down"
             @after-enter="fadeInAllImg"
           >
+         
             <div
               class="mobilemenu2 relative mb-auto z-50 flex flex-col justify-center items-center"
             >
@@ -84,13 +85,10 @@
                 <div class="headerr flex justify-center">
                   <h1 class="border-t-[1px] border-[#0003] w-[100vw]"></h1>
                 </div>
+                <!-- <div class="mbspace"></div> -->
                 <nav class="link-container uppercase">
                   <ul>
-                    <li class="pointer-events-none">
-                      <a class="svgleft pointer-events-none" href=""
-                        ><SvgArchstar class=""
-                      /></a>
-                    </li>
+                   
 
                     <li>
                       <a href="./weddings"> WEDDINGS </a>
@@ -787,8 +785,8 @@ export default {
     /* background-position: 0 0;
     background-repeat: no-repeat;
     background-size: cover; */
-    background-color: #bcc2cb;
-    background-color: #e6e5e4;
+    /* background-color: #bcc2cb;
+    background-color: #e6e5e4; */
     transition: max-height 0.5s ease-in-out;
     overflow: hidden;
     /* padding-top: 3vh; */
@@ -817,11 +815,22 @@ export default {
   .left-content {
     flex-direction: column;
     padding: 0 !important;
-    padding-top: 6vh !important;
-
+    /* padding-top: 6vh !important; */
+    position: relative;
+    background-color: #e6e5e4;
+    top: 11.7vw !important;
     height: 100vh;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
+  }
+
+  .mbspace{
+    background-color: #bcc2cb;
+        height: 11.7vw !important;
+        top: 0;
+        position: fixed;
+        width: 100vw;
+        left: 0;
   }
 }
 </style>

@@ -1698,15 +1698,21 @@ export default {
 }
 
 .next-button {
-  width: 94%;
   border-top: 0.05vw solid black;
   border: 0.05vw solid black;
   border-radius: 0%;
-  background-image: url("./static/LeftBG.png");
+  /* background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: 0 0;
   background-position: initial;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  transition: background-color 0.8s ease;
+  background-color: #e6e5e4;
+}
+
+.next-button:hover {
+  transition: background-color 0.8s ease;
+  background-color: #121212;
 }
 
 .fade-enter-active {
@@ -2086,6 +2092,7 @@ opacity: 0;
   bottom: 2.5vh;
   /* width: 100%; */
   width: 97%;
+  width: 100%;
   text-transform: uppercase;
   font-family: "GT-Sectra-Book";
   font-family: "NHaas" !important;

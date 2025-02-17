@@ -11,7 +11,7 @@
   'scale-125 transition-transform duration-300 ease-out': isHovered,
   'w-[11vw] h-auto transition-all duration-300 ease-out': !isHovered
 }"
-    class="w-[6vw] h-auto"
+    class="w-[6vw] loader h-auto"
   />
 
         </div>
@@ -92,6 +92,9 @@ export default {
     text-transform: uppercase;
     color: rgb(13, 13, 13); /* Adjust color if needed */
     animation: flash 1.5s ease-in-out infinite;
+  }
+  .loader{
+    width: 20vw;
   }
 }
 
