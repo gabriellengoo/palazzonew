@@ -186,7 +186,7 @@ animateLinksIn() {
 gsap.fromTo(
   ".mobilemenu li",
   { opacity: 0, y: 20 }, // Start state
-  { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" } // End state
+  { opacity: 1, y: 0,  delay: 0.5, duration: 1.6, stagger: 0.1, ease: "power2.out" } // End state
 );
 },
 

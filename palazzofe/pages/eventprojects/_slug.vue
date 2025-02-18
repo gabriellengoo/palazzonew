@@ -218,30 +218,37 @@
                     </div>
                   </div> -->
                   <!-- Location Link -->
-                  <a
-                  class="noline"
-                        href="javascript:void(0)" @click="openModal"
-                        ><div
-  v-if="project.locationlink"
-  class="w-full flex items-center text-center md:pt-5 locationtext"
-  @mouseover="isHovered = true"
-  @mouseleave="isHovered = false"
->
-
-  <img
-      :src="isHovered ? '/playh.png' : '/playf.png'"
-    alt="play Image"
-    :class="{
-  ' scale-110  transition-transform duration-300 ease-out': isHovered,
-  ' h-auto transition-all duration-300 ease-out': !isHovered
-}"
-    class="w-[3vw] pb-[.5vw] h-auto"
-  />
-  <p  :class="{
-  ' opacity-40 transition-all duration-300 ease-out': isHovered,
-  'opacity-100 transition-all duration-300 ease-out': !isHovered
-}" class="loctext">Play Film</p>
-</div></a>
+                  <a class="noline" href="javascript:void(0)" @click="openModal"
+                    ><div
+                      v-if="project.locationlink"
+                      class="w-full flex items-center text-center md:pt-5 locationtext"
+                      @mouseover="isHovered = true"
+                      @mouseleave="isHovered = false"
+                    >
+                      <img
+                        src="/playf.png"
+                        alt="play Image"
+                        :class="{
+                          'scale-110 transition-transform duration-300 ease-out':
+                            isHovered,
+                          'w-[4vw] h-auto transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="w-[4vw] h-auto"
+                      />
+                      <p
+                        :class="{
+                          ' opacity-40 transition-all duration-300 ease-out':
+                            isHovered,
+                          'opacity-100 transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="loctext"
+                      >
+                        Play Film
+                      </p>
+                    </div></a
+                  >
 
                   <!-- Draggable Iframe Modal -->
                   <div
@@ -389,25 +396,23 @@
               >
                 <p v-if="project">{{ project.title }}</p>
                 <a class="noline" href="javascript:void(0)" @click="openModal"
-                    ><div
-                      v-if="project.locationlink"
-                      class="w-full flex items-center text-center md:pt-5"
-                    >
-                    <p class="loctext">Play Film</p>
-                      <img
-                        src="/playf.png"
-                        alt="play Image"
-                        :class="{
-                          ' transition-transform duration-300 ease-out':
-                            isHovered,
-                          'w-[11vw] h-auto transition-all duration-300 ease-out':
-                            !isHovered,
-                        }"
-                        class="w-[11vw] h-auto"
-                      />
-                    
-                    </div></a
+                  ><div
+                    v-if="project.locationlink"
+                    class="w-full flex items-center text-center md:pt-5"
                   >
+                    <p class="loctext">Play Film</p>
+                    <img
+                      src="/playf.png"
+                      alt="play Image"
+                      :class="{
+                        ' transition-transform duration-300 ease-out':
+                          isHovered,
+                        'w-[11vw] h-auto transition-all duration-300 ease-out':
+                          !isHovered,
+                      }"
+                      class="w-[11vw] h-auto"
+                    /></div
+                ></a>
                 <!-- <p class="yeart mb-6 uppercase" v-if="project">
                   {{ project.year }}
                 </p> -->
@@ -434,7 +439,6 @@
                       >
                     </div>
                   </div>  -->
-                 
 
                   <!-- Draggable Iframe Modal -->
                   <div
@@ -1201,7 +1205,7 @@ export default {
 
 .modal-content {
   position: absolute;
-  /* cursor: grab;
+  /* cursor: grab; */
   z-index: 1000;
   height: 45vh;
   display: flex;
@@ -1212,15 +1216,13 @@ export default {
   align-items: flex-end;
   pointer-events: auto;
 
-  height: 25vw;
+  height: 28vw;
   display: flex;
-  width: 40vw;
-  top: 24vw !important;
-  left: 1vw !important;
-     */
+  width: 45vw;
+  /* top: 24vw !important;
+  left: 1vw !important; */
 
-     position: absolute;
-    /* cursor: grab; */
+  /* position: absolute;
     z-index: 1000;
     height: 50%;
     background-size: cover;
@@ -1228,14 +1230,13 @@ export default {
     background-repeat: no-repeat;
     align-items: flex-end;
     pointer-events: auto;
-    /* height: 25vw; */
     display: flex;
     width: 46vw;
     background-color: #e6e5e4;
-    border: #000 solid .5px;
-    top: 9vw !important;
-    left: 6vw !important;
-    left: 2vw !important;
+    border: #000 solid .5px; */
+  top: 9vw !important;
+  left: 6vw !important;
+  left: 2vw !important;
 }
 
 .modal-content iframe {
@@ -1255,15 +1256,12 @@ export default {
     position: absolute;
     top: 0;
     left: 0; */
-    
 }
 
 .modal-content:active {
   /* cursor: grabbing; */
   z-index: 1000;
 }
-
-
 
 /* .previous {
   z-index: 30;
@@ -1280,14 +1278,14 @@ export default {
   z-index: 30;
   cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDM5IDIyIiB3aWR0aD0iMzkiIGhlaWdodD0iMjIiPjxkZWZzPjxpbWFnZSB3aWR0aD0iMTI4IiBoZWlnaHQ9IjcyIiBpZD0iaW1nMSIgaHJlZj0iZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCMlpYSnphVzl1UFNJeExqSWlJSGh0Ykc1elBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWdkbWxsZDBKdmVEMGlNQ0F3SURZMElETTJJaUIzYVdSMGFEMGlOalFpSUdobGFXZG9kRDBpTXpZaVBqeGtaV1p6UGp4cGJXRm5aU0FnZDJsa2RHZzlJalkwSWlCb1pXbG5hSFE5SWpZMElpQnBaRDBpYVcxbk1TSWdhSEpsWmowaVpHRjBZVHBwYldGblpTOXdibWM3WW1GelpUWTBMR2xXUWs5U2R6QkxSMmR2UVVGQlFVNVRWV2hGVldkQlFVRkZRVUZCUVVKQlEwRk5RVUZCUTJSME5FaHpRVUZCUVVGWVRsTlNNRWxDTW1OcmMyWjNRVUZCUkZwUlZFWlNSaTh2THk5QlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVko1SzJweVowRkJRVUpLTUZWck5WUkJRVVpQYlM4clFXMVRiakZSVlVFdk9VUTBPVGgzYUVWcUx6UkVOMUZCUVVGTWNFcFNSVVpWWlVwNmRERnpSVTluYWtGUlVsWkhaV3RTWnpGRlVDOHZVRFF3YlVkTVFVeHBTMVpzVFROT1RuVm9iakpRWVZSMGJUVnRjV2MxT0VORFEwTkJSbTlCTUVrd1FXNWhVVXRCSzNaVUwxVnlRVUZHTXpJMlUycENkRFJpY2xWbmRUQlJSSGRVYWs1a04yMVZja1J0YjBKTVRWRmljbkoyVWxCelUxTjNSVkkxVTBoS1VtTTRkR0pCVkZoTlYxVkROelZ4U0ZCWVkwSkhZelV2ZDFFNVprbEtaV0Y0TlRBNVowZGlUVEJGWjNSYWFrZFJUbTlEVUd0VVppdDFkMkUwWm04eVZXRmlSbEpOZFZwT2FGUmhNRzFvVkhCWE1tUkVhRmsyTW5aQ2QzaGxUV1JRZWtRMFJTdG1VVVJEUTBGQlVEUkVaa0ZGVERGVk5VdzRkVUY1WjFGQlFVRkJRa3BTVlRWRmNtdEtaMmRuUFQwaUx6NDhMMlJsWm5NK1BITjBlV3hsUGp3dmMzUjViR1UrUEhWelpTQWdhSEpsWmowaUkybHRaekVpSUhnOUlqQWlJSGs5SWkweE5DSXZQand2YzNablBnPT0iLz48L2RlZnM+PHN0eWxlPjwvc3R5bGU+PHVzZSAgaHJlZj0iI2ltZzEiIHRyYW5zZm9ybT0ibWF0cml4KC0wLjMwNSwwLDAsLTAuMzA1LDM5LDIxLjk1MykiLz48L3N2Zz4="),
     auto !important;
-    transform: scale(1.5);
+  transform: scale(1.5);
 }
 
 .next {
   z-index: 30;
   cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDM5IDIyIiB3aWR0aD0iMzkiIGhlaWdodD0iMjIiPjxkZWZzPjxpbWFnZSB3aWR0aD0iMTI4IiBoZWlnaHQ9IjcyIiBpZD0iaW1nMSIgaHJlZj0iZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCMlpYSnphVzl1UFNJeExqSWlJSGh0Ykc1elBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWdkbWxsZDBKdmVEMGlNQ0F3SURZMElETTJJaUIzYVdSMGFEMGlOalFpSUdobGFXZG9kRDBpTXpZaVBqeGtaV1p6UGp4cGJXRm5aU0FnZDJsa2RHZzlJalkwSWlCb1pXbG5hSFE5SWpZMElpQnBaRDBpYVcxbk1TSWdhSEpsWmowaVpHRjBZVHBwYldGblpTOXdibWM3WW1GelpUWTBMR2xXUWs5U2R6QkxSMmR2UVVGQlFVNVRWV2hGVldkQlFVRkZRVUZCUVVKQlEwRk5RVUZCUTJSME5FaHpRVUZCUVVGWVRsTlNNRWxDTW1OcmMyWjNRVUZCUkZwUlZFWlNSaTh2THk5QlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVko1SzJweVowRkJRVUpLTUZWck5WUkJRVVpQYlM4clFXMVRiakZSVlVFdk9VUTBPVGgzYUVWcUx6UkVOMUZCUVVGTWNFcFNSVVpWWlVwNmRERnpSVTluYWtGUlVsWkhaV3RTWnpGRlVDOHZVRFF3YlVkTVFVeHBTMVpzVFROT1RuVm9iakpRWVZSMGJUVnRjV2MxT0VORFEwTkJSbTlCTUVrd1FXNWhVVXRCSzNaVUwxVnlRVUZHTXpJMlUycENkRFJpY2xWbmRUQlJSSGRVYWs1a04yMVZja1J0YjBKTVRWRmljbkoyVWxCelUxTjNSVkkxVTBoS1VtTTRkR0pCVkZoTlYxVkROelZ4U0ZCWVkwSkhZelV2ZDFFNVprbEtaV0Y0TlRBNVowZGlUVEJGWjNSYWFrZFJUbTlEVUd0VVppdDFkMkUwWm04eVZXRmlSbEpOZFZwT2FGUmhNRzFvVkhCWE1tUkVhRmsyTW5aQ2QzaGxUV1JRZWtRMFJTdG1VVVJEUTBGQlVEUkVaa0ZGVERGVk5VdzRkVUY1WjFGQlFVRkJRa3BTVlRWRmNtdEtaMmRuUFQwaUx6NDhMMlJsWm5NK1BITjBlV3hsUGp3dmMzUjViR1UrUEhWelpTQWdhSEpsWmowaUkybHRaekVpSUhnOUlqQWlJSGs5SWkweE5DSXZQand2YzNablBnPT0iLz48L2RlZnM+PHN0eWxlPjwvc3R5bGU+PHVzZSAgaHJlZj0iI2ltZzEiIHRyYW5zZm9ybT0ibWF0cml4KC4zMDUsMCwwLC4zMDUsMCwwKSIvPjwvc3ZnPg=="),
     auto !important;
-    transform: scale(1.5);
+  transform: scale(1.5);
 }
 
 /* Fallback for non-custom cursors */
@@ -1598,7 +1596,6 @@ a {
     font-size: smaller;
     font-family: "GT-Bold";
     text-transform: uppercase;
-    
   }
 }
 
@@ -1721,6 +1718,18 @@ a {
 
 @media only screen and (max-width: 768px) {
   .modal-content {
+    position: absolute;
+    z-index: 1000;
+    height: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-items: flex-end;
+    pointer-events: auto;
+    display: flex;
+    width: 46vw;
+    background-color: #e6e5e4;
+    border: #000 solid 0.5px;
     position: absolute;
     cursor: grab;
     z-index: 1000;

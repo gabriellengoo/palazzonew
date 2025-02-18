@@ -13,52 +13,125 @@
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
 
-
     <div class="bgmobile relative min-h-screen flex">
       <!-- Left Scrollable Content -->
       <div class="left-content flex-1 overflow-y-scroll p-8">
         <div class="content">
           <div v-if="gridteam.grid7" class="">
             <Gridteam class="" :items="gridteam.grid7" size="small"></Gridteam>
-          </div> 
+          </div>
           <button
-          class="bttn "
-           @click="toggleIframe"
-           @mouseover="isHovered = true"
-  @mouseleave="isHovered = false"
-        >
-        <!-- <p class="textsumf">{{ gridteam.filmtitle }}</p> -->
-                    
-                      <p
-                   
-                        class="loctext"
-                      >
-                        Play Film
-                      </p>
-                      <img
-                          :src="isHovered ? '/playh.png' : '/playf.png'"
-                        alt="play Image"
-                    
-                  
-                        class="w-[2.5vw] pl-[.5vw] h-auto"
-                      />
-          
-        </button>
+            class="bttn"
+            @click="toggleIframe"
+            @mouseover="isHovered = true"
+            @mouseleave="isHovered = false"
+          >
+            <!-- <p class="textsumf">{{ gridteam.filmtitle }}</p> -->
+            <p class="loctext">Play Film</p>
+            <img src="/playf.png" alt="play Image" class="w-[3vw] h-auto" />
+          </button>
         </div>
       </div>
- 
 
-       <!-- Draggable Iframe Pop-Up -->
-       <div
+      <!-- Draggable Iframe Pop-Up -->
+      <div
         v-if="isIframeOpen"
         class="iframe-container"
         ref="iframeContainer"
         @mousedown="startDrag"
       >
         <div class="iframe-header">
-          <button @click="closeIframe" class="clocon absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer">   <!-- <SvgClose class=""/> -->
-          <svg class="close-btn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet" style=" height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="500" height="500" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.4112499952316284,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,-10 C-10,-10 10,10 10,10"></path></g><g opacity="0" transform="matrix(1.389361023902893,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M10,0 C10,0 10,0 10,0"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M10,0 C10,0 10,0 10,0"></path></g><g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)"><path fill="rgb(255,0,0)" fill-opacity="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="1" d=" M-10,10 C-10,10 10,-10 10,-10"></path></g></g></g></svg>
-       </button>
+          <button
+            @click="closeIframe"
+            class="clocon absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
+          >
+            <!-- <SvgClose class=""/> -->
+            <svg
+              class="close-btn"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 500 500"
+              width="500"
+              height="500"
+              preserveAspectRatio="xMidYMid meet"
+              style="
+                height: 100%;
+                transform: translate3d(0px, 0px, 0px);
+                content-visibility: visible;
+              "
+            >
+              <defs>
+                <clipPath id="__lottie_element_2">
+                  <rect width="500" height="500" x="0" y="0"></rect>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#__lottie_element_2)">
+                <g
+                  transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
+                  opacity="1"
+                  style="display: block"
+                >
+                  <g
+                    opacity="1"
+                    transform="matrix(1.4112499952316284,0,0,1,0,0)"
+                  >
+                    <path
+                      fill="rgb(255,0,0)"
+                      fill-opacity="1"
+                      d=" M-10,-10 C-10,-10 10,10 10,10"
+                    ></path>
+                    <path
+                      stroke-linecap="butt"
+                      stroke-linejoin="miter"
+                      fill-opacity="0"
+                      stroke-miterlimit="4"
+                      stroke="rgb(0,0,0)"
+                      stroke-opacity="1"
+                      stroke-width="1"
+                      d=" M-10,-10 C-10,-10 10,10 10,10"
+                    ></path>
+                  </g>
+                  <g
+                    opacity="0"
+                    transform="matrix(1.389361023902893,0,0,1,0,0)"
+                  >
+                    <path
+                      fill="rgb(255,0,0)"
+                      fill-opacity="1"
+                      d=" M10,0 C10,0 10,0 10,0"
+                    ></path>
+                    <path
+                      stroke-linecap="butt"
+                      stroke-linejoin="miter"
+                      fill-opacity="0"
+                      stroke-miterlimit="4"
+                      stroke="rgb(0,0,0)"
+                      stroke-opacity="1"
+                      stroke-width="1"
+                      d=" M10,0 C10,0 10,0 10,0"
+                    ></path>
+                  </g>
+                  <g opacity="1" transform="matrix(1.3872150182724,0,0,1,0,0)">
+                    <path
+                      fill="rgb(255,0,0)"
+                      fill-opacity="1"
+                      d=" M-10,10 C-10,10 10,-10 10,-10"
+                    ></path>
+                    <path
+                      stroke-linecap="butt"
+                      stroke-linejoin="miter"
+                      fill-opacity="0"
+                      stroke-miterlimit="4"
+                      stroke="rgb(0,0,0)"
+                      stroke-opacity="1"
+                      stroke-width="1"
+                      d=" M-10,10 C-10,10 10,-10 10,-10"
+                    ></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </button>
         </div>
         <iframe
           :src="gridteam.film"
@@ -66,7 +139,7 @@
           frameborder="0"
         ></iframe>
       </div>
- 
+
       <!-- Right Static Content -->
       <div class="right-content overflow-y-scroll flex-1 p-8">
         <!-- <div class="static-box w-full h-full">
@@ -107,7 +180,7 @@ export default {
 
     const about = await $sanity.fetch(query);
 
-    return { about }; 
+    return { about };
   },
 
   components: {
@@ -144,8 +217,20 @@ export default {
       const container = this.$refs.iframeContainer;
 
       // Calculate new positions while keeping the container within the viewport
-      const newLeft = Math.max(0, Math.min(window.innerWidth - container.offsetWidth, event.clientX - this.dragData.offsetX));
-      const newTop = Math.max(0, Math.min(window.innerHeight - container.offsetHeight, event.clientY - this.dragData.offsetY));
+      const newLeft = Math.max(
+        0,
+        Math.min(
+          window.innerWidth - container.offsetWidth,
+          event.clientX - this.dragData.offsetX
+        )
+      );
+      const newTop = Math.max(
+        0,
+        Math.min(
+          window.innerHeight - container.offsetHeight,
+          event.clientY - this.dragData.offsetY
+        )
+      );
 
       // Apply new positions
       container.style.left = `${newLeft}px`;
@@ -163,14 +248,13 @@ export default {
 </script>
 
 <style scoped>
-
 .iframe-container {
   position: absolute;
   top: 10%; /* Default position */
   left: 5vw; /* Default position */
   height: 39vw;
-    width: 21vw;
-    border: 0.5px solid black;
+  width: 21vw;
+  border: 0.5px solid black;
   background: white;
   background-image: url("./static/background.jpg");
   background-size: cover;
@@ -179,12 +263,12 @@ export default {
   z-index: 99;
   cursor: grab;
   display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
+  justify-content: flex-end;
+  flex-direction: column;
 }
 
-.textsumf{
-    font-family: "GT-Bold";
+.textsumf {
+  font-family: "GT-Bold";
 }
 
 .iframe-header {
@@ -206,7 +290,7 @@ export default {
   cursor: pointer;
 } */
 
-.close-btn{
+.close-btn {
   width: 1.4vw;
 }
 
@@ -217,11 +301,9 @@ export default {
   height: calc(100% - 2rem); /* Adjust height to account for header */
 }
 
-
 .headingspagesb {
   font-family: "GT-Bold";
 }
-
 
 .image-item {
   position: relative;
@@ -316,55 +398,51 @@ a:hover {
 
 .bttn {
   position: fixed;
-    background-color: white;
-    font-family: "GT-Sectra-Book", sans-serif;
-    transition: background-color 0.3s ease;
-    position: absolute;
-    border-top: 0.05vw solid black;
-    /* border-top: 0.05vw solid black;
+  background-color: white;
+  font-family: "GT-Sectra-Book", sans-serif;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  border-top: 0.05vw solid black;
+  /* border-top: 0.05vw solid black;
     border: 0.05vw solid black; */
-    border-radius: 0%;
-    background-image: url("./static/LeftBG.png");
-    background-size: cover;
-    background-position: 0 0;
-    background-position: initial;
-    background-repeat: no-repeat;
-    padding: 1rem;
-    padding: 0.5vw;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: fixed;
-    bottom: 0;
-    width: 50%;
-    text-transform: uppercase;
-    /* font-family: "GT-Sectra-Book"; */
-    /* font-family: "NHaas" !important; */
-    transition: color 0.8s ease;
-    font-size: 1vw;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    /* font-size: 0.8vw; */
+  border-radius: 0%;
+  background-image: url("./static/LeftBG.png");
+  background-size: cover;
+  background-position: 0 0;
+  background-position: initial;
+  background-repeat: no-repeat;
+  padding: 1rem;
+  padding: 0.5vw;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: fixed;
+  bottom: 0;
+  width: 50%;
+  text-transform: uppercase;
+  /* font-family: "GT-Sectra-Book"; */
+  /* font-family: "NHaas" !important; */
+  transition: color 0.8s ease;
+  font-size: 1vw;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 0.8vw; */
 }
-
-
 
 @media only screen and (max-width: 768px) {
+  .close-btn {
+    width: 4.4vw;
+  }
 
-  .close-btn{
-  width: 4.4vw;
-}
-
- 
-.iframe-container {
+  .iframe-container {
     position: absolute;
     top: 10%;
     left: 16%;
-        height: 127vw;
-        width: 68vw;
+    height: 127vw;
+    width: 68vw;
     border: 0.5px solid black;
     background-size: cover;
     background-position: center;
@@ -374,12 +452,12 @@ a:hover {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-}
+  }
 
-.clocon{
+  .clocon {
     top: 1.5vw;
     right: 1.5vw;
-}
+  }
 
   .bttn {
     position: absolute;
@@ -403,7 +481,7 @@ a:hover {
     font-size: 3vw;
     font-size: 2.1vw;
     bottom: 0;
-}
+  }
 
   .bgmobile {
     flex-direction: column; /* Stacks the two sides vertically on small screens */
