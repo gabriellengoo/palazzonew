@@ -890,11 +890,12 @@ a:hover {
 }
 
 .left-contentaw {
-  background-image: url("./static/background.jpg");
+  /* background-image: url("./static/background.jpg");
   background-size: 102vw;
   background-size: 192vh;
   background-position: unset;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: #bcc2cb;
   height: 100vh;
   overflow-y: scroll;
 }
@@ -933,10 +934,11 @@ a:hover {
   } */
 
   .left-contentaw {
-    background-image: url("./static/background.jpg");
+    /* background-image: url("./static/background.jpg");
     background-size: cover;
     background-position: unset;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    background-color: #bcc2cb;
     height: 100vh;
     overflow-y: scroll;
   }

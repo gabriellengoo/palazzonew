@@ -225,7 +225,7 @@ export default {
     z-index: 9000 !important;
 }
 
-.textsumf2 {
+/* .textsumf2 {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -241,6 +241,47 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+} */
+
+
+
+.textsumf2 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1vw;
+  font-style: italic;
+  text-decoration: underline;
+  z-index: 10;
+  height: 20vw;
+  width: 20vw;
+  
+  /* Make it a perfect white circle */
+  background-color: #eec0c3;
+  border-radius: 50%;
+  
+  /* Center text inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-family: 'RomainHeadlineTrial', serif;
+  font-family: 'GT-Sectra-Book-Italic', serif;
+  flex-direction: column;
+  
+  /* Optional: Add a subtle shadow for better visibility */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Create the inner circular line */
+.textsumf2::before {
+  content: "";
+  position: absolute;
+  width: 90%; /* Slightly smaller than the parent */
+  height: 90%;
+  border-radius: 50%;
+  border: .1vw solid black; /* Adjust thickness & color */
+  box-sizing: border-box;
 }
 
 /* .pinkcircle {

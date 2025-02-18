@@ -27,8 +27,8 @@
             @mouseleave="isHovered = false"
           >
             <!-- <p class="textsumf">{{ gridteam.filmtitle }}</p> -->
-            <p class="loctext">Play Film</p>
-            <img src="/playf.png" alt="play Image" class="w-[3vw] h-auto" />
+            <p class="loctext mbfilmtext">Play Film</p>
+            <img src="/playf.png" alt="play Image" class="w-[3vw] mbfilm h-auto" />
           </button>
         </div>
       </div>
@@ -45,8 +45,8 @@
             @click="closeIframe"
             class="clocon absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
           >
-            <!-- <SvgClose class=""/> -->
-            <svg
+            <SvgClose class=""/>
+            <!-- <svg
               class="close-btn"
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -130,7 +130,7 @@
                   </g>
                 </g>
               </g>
-            </svg>
+            </svg> -->
           </button>
         </div>
         <iframe
@@ -254,12 +254,12 @@ export default {
   left: 5vw; /* Default position */
   height: 39vw;
   width: 21vw;
-  border: 0.5px solid black;
-  background: white;
-  background-image: url("./static/background.jpg");
+  /* border: 0.5px solid black; */
+  /* background: #e6e5e4; */
+  /* background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   z-index: 99;
   cursor: grab;
   display: flex;
@@ -279,7 +279,7 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-bottom: 0.5px solid black;
+  /* border-bottom: 0.5px solid black; */
 }
 
 /* .close-btn {
@@ -444,9 +444,10 @@ a:hover {
     height: 127vw;
     width: 68vw;
     border: 0.5px solid black;
-    background-size: cover;
+    background: #e6e5e4;
+    /* background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     z-index: 1000;
     cursor: grab;
     display: flex;
@@ -474,13 +475,15 @@ a:hover {
     bottom: 2.5vh;
     /* width: 100%; */
     width: 98%;
+    width: 100%;
     text-transform: uppercase;
     /* font-family: "GT-Sectra-Book"; */
     /* font-family: "NHaas" !important; */
     transition: color 0.8s ease;
     font-size: 3vw;
     font-size: 2.1vw;
-    bottom: 0;
+    bottom: 50vh;
+    border: 0.05vw solid black;
   }
 
   .bgmobile {
