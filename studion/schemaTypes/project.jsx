@@ -43,11 +43,11 @@ export default {
       title: 'Content',
       type: 'blockContent',
     },
-    {
-      name: 'location',
-      title: 'Video Text',
-      type: 'string',
-    },
+    // {
+    //   name: 'location',
+    //   title: 'Video Text',
+    //   type: 'string',
+    // },
     {
       name: 'locationlink',
       title: 'Video Link',

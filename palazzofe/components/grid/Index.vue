@@ -7,6 +7,7 @@
         <div class="nodes contmbhead">
           <!-- <p>d</p> -->
           <p
+           :class="{ 'opacity-0': isMenuOpen, 'opacity-100': !isMenuOpen }"
           class="headingspages text-center text-4xl  uppercase "
         >
           Weddings

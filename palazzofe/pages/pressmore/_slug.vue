@@ -2085,11 +2085,12 @@ opacity: 0;
 
 .next-button {
   padding: 1rem;
-  padding: 0.5vw;
+  padding: 0.4vw;
   cursor: pointer;
   transition: background-color 0.3s;
   position: fixed;
   bottom: 2.5vh;
+  bottom: 0vh;
   /* width: 100%; */
   width: 97%;
   width: 100%;

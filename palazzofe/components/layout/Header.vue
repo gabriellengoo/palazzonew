@@ -133,47 +133,13 @@
       </div>
     </transition>
 
-    <!-- <transition
-      class="mobilemenu"
-      name="slide-down"
-      @after-enter="fadeInAllImg"
-    >
-      <div
-        v-if="isMenuOpen"
-        class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center"
-      >
-        <div class="  ">
-          <div class="headerr pt-[2.9vh] flex justify-center">
-            <h1 class="border-t-[1px] border-[#0003] pt-[0.5vh] w-[100vw]"></h1>
-          </div>
-          <nav class="link-container">
-            <ul>
-            <li>
-                <a class="svgleft pointer-events-none" href=""
-                  ><SvgArchstar class=""
-                /></a>
-              </li>
-              <li><a href="./weddings">WEDDINGS</a></li>
-              <li><a href="./events">EVENTS</a></li>
-              <li><a href="./services">SERVICES</a></li>
-              <li><a href="./about">ABOUT</a></li>
-              <li><a href="./press">PRESS</a></li>
-              <li><a href="./team">TEAM</a></li>
-              <li><a href="./contact">CONTACT</a></li>
-              <li><a href="./awards">AWARDS</a></li>
-             
-            </ul>
-          </nav>
-        </div>
-
-     
-      </div>
-    </transition> -->
+    
   </div>
 </template>
 
 <script>
 import lottie from "lottie-web";
+import gsap from "gsap";
 
 export default {
   data() {
@@ -204,12 +170,26 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-      if (this.isMenuOpen) {
-        this.lottieInstance.playSegments([0, 97], true); // Play forward (hamburger to close)
-      } else {
-        this.lottieInstance.playSegments([97, 0], true); // Play reverse (close to hamburger)
-      }
-    },
+      
+
+
+if (this.isMenuOpen) {
+  this.lottieInstance.playSegments([0, 97], true);
+  this.$nextTick(() => {
+    this.animateLinksIn(); // 🔥 Animate links when menu opens
+  });
+} else {
+  this.lottieInstance.playSegments([97, 0], true);
+}
+},
+animateLinksIn() {
+gsap.fromTo(
+  ".mobilemenu li",
+  { opacity: 0, y: 20 }, // Start state
+  { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" } // End state
+);
+},
+
     fadeInAllImg() {
       this.fadeInAllImgClass = true;
     },

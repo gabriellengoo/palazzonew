@@ -24,6 +24,8 @@
           <button
           class="bttn "
            @click="toggleIframe"
+           @mouseover="isHovered = true"
+  @mouseleave="isHovered = false"
         >
         <!-- <p class="textsumf">{{ gridteam.filmtitle }}</p> -->
                     
@@ -34,11 +36,11 @@
                         Play Film
                       </p>
                       <img
-                        src="/playf.png"
+                          :src="isHovered ? '/playh.png' : '/playf.png'"
                         alt="play Image"
                     
                   
-                        class="w-[4vw] h-auto"
+                        class="w-[2.5vw] pl-[.5vw] h-auto"
                       />
           
         </button>
@@ -93,6 +95,7 @@ export default {
         offsetX: 0,
         offsetY: 0,
       },
+      isHovered: false,
     };
   },
 

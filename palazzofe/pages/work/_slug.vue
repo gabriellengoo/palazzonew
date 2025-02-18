@@ -177,20 +177,20 @@
                   class="noline"
                         href="javascript:void(0)" @click="openModal"
                         ><div
-  v-if="project.location"
+  v-if="project.locationlink"
   class="w-full flex items-center text-center md:pt-5 locationtext"
   @mouseover="isHovered = true"
   @mouseleave="isHovered = false"
 >
 
   <img
-    src="/playf.png"
+      :src="isHovered ? '/playh.png' : '/playf.png'"
     alt="play Image"
     :class="{
-  'scale-110 transition-transform duration-300 ease-out': isHovered,
-  'w-[4vw] h-auto transition-all duration-300 ease-out': !isHovered
+  ' scale-110  transition-transform duration-300 ease-out': isHovered,
+  ' h-auto transition-all duration-300 ease-out': !isHovered
 }"
-    class="w-[4vw] h-auto"
+    class="w-[3vw] pb-[.5vw] h-auto"
   />
   <p  :class="{
   ' opacity-40 transition-all duration-300 ease-out': isHovered,
@@ -350,7 +350,7 @@
                   class="noline"
                         href="javascript:void(0)" @click="openModal"
                         ><div
-  v-if="project.location"
+  v-if="project.locationlink"
   class="w-full flex items-center text-center md:pt-5"
 >
 <p class="loctext">Play Film</p>
@@ -1213,7 +1213,8 @@ display: none;
     /* height: 25vw; */
     display: flex;
     width: 46vw;
-    background-color: #ffffff;
+    background-color: #e6e5e4;
+    border: #000 solid .5px;
     top: 9vw !important;
     left: 6vw !important;
     left: 2vw !important;
@@ -1225,7 +1226,7 @@ display: none;
 
   object-fit: cover;
   width: 100%;
-  height: 92%;
+  height: 90%;
   border: none;
   /* height: 40vh;
     width: 50vw;
@@ -1275,14 +1276,14 @@ display: none;
 
 .previous {
   z-index: 30;
-  cursor: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 23' width='25' height='23'%3E%3Cdefs%3E%3Cimage width='48' height='48' id='img1' href='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tIFVwbG9hZGVkIHRvOiBTVkcgUmVwbywgd3d3LnN2Z3JlcG8uY29tLCBHZW5lcmF0b3I6IFNWRyBSZXBvIE1peGVyIFRvb2xzIC0tPg0KPHN2ZyB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNzA3MSA0LjI5Mjg5QzEyLjA5NzYgNC42ODM0MiAxMi4wOTc2IDUuMzE2NTggMTEuNzA3MSA1LjcwNzExTDYuNDE0MjEgMTFIMjBDMjAuNTUyMyAxMSAyMSAxMS40NDc3IDIxIDEyQzIxIDEyLjU1MjMgMjAuNTUyMyAxMyAyMCAxM0g2LjQxNDIxTDExLjcwNzEgMTguMjkyOUMxMi4wOTc2IDE4LjY4MzQgMTIuMDk3NiAxOS4zMTY2IDExLjcwNzEgMTkuNzA3MUMxMS4zMTY2IDIwLjA5NzYgMTAuNjgzNCAyMC4wOTc2IDEwLjI5MjkgMTkuNzA3MUwzLjI5Mjg5IDEyLjcwNzFDMy4xMDUzNiAxMi41MTk2IDMgMTIuMjY1MiAzIDEyQzMgMTEuNzM0OCAzLjEwNTM2IDExLjQ4MDQgMy4yOTI4OSAxMS4yOTI5TDEwLjI5MjkgNC4yOTI4OUMxMC42ODM0IDMuOTAyMzcgMTEuMzE2NiAzLjkwMjM3IDExLjcwNzEgNC4yOTI4OVoiIGZpbGw9IiMwMDAwMDAiLz4NCjwvc3ZnPg=='/%3E%3C/defs%3E%3Cstyle%3E%3C/style%3E%3Cuse href='%23img1' transform='matrix(.688,0,0,.688,-4,-5)'/%3E%3C/svg%3E"),
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDM5IDIyIiB3aWR0aD0iMzkiIGhlaWdodD0iMjIiPjxkZWZzPjxpbWFnZSB3aWR0aD0iMTI4IiBoZWlnaHQ9IjcyIiBpZD0iaW1nMSIgaHJlZj0iZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCMlpYSnphVzl1UFNJeExqSWlJSGh0Ykc1elBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWdkbWxsZDBKdmVEMGlNQ0F3SURZMElETTJJaUIzYVdSMGFEMGlOalFpSUdobGFXZG9kRDBpTXpZaVBqeGtaV1p6UGp4cGJXRm5aU0FnZDJsa2RHZzlJalkwSWlCb1pXbG5hSFE5SWpZMElpQnBaRDBpYVcxbk1TSWdhSEpsWmowaVpHRjBZVHBwYldGblpTOXdibWM3WW1GelpUWTBMR2xXUWs5U2R6QkxSMmR2UVVGQlFVNVRWV2hGVldkQlFVRkZRVUZCUVVKQlEwRk5RVUZCUTJSME5FaHpRVUZCUVVGWVRsTlNNRWxDTW1OcmMyWjNRVUZCUkZwUlZFWlNSaTh2THk5QlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVko1SzJweVowRkJRVUpLTUZWck5WUkJRVVpQYlM4clFXMVRiakZSVlVFdk9VUTBPVGgzYUVWcUx6UkVOMUZCUVVGTWNFcFNSVVpWWlVwNmRERnpSVTluYWtGUlVsWkhaV3RTWnpGRlVDOHZVRFF3YlVkTVFVeHBTMVpzVFROT1RuVm9iakpRWVZSMGJUVnRjV2MxT0VORFEwTkJSbTlCTUVrd1FXNWhVVXRCSzNaVUwxVnlRVUZHTXpJMlUycENkRFJpY2xWbmRUQlJSSGRVYWs1a04yMVZja1J0YjBKTVRWRmljbkoyVWxCelUxTjNSVkkxVTBoS1VtTTRkR0pCVkZoTlYxVkROelZ4U0ZCWVkwSkhZelV2ZDFFNVprbEtaV0Y0TlRBNVowZGlUVEJGWjNSYWFrZFJUbTlEVUd0VVppdDFkMkUwWm04eVZXRmlSbEpOZFZwT2FGUmhNRzFvVkhCWE1tUkVhRmsyTW5aQ2QzaGxUV1JRZWtRMFJTdG1VVVJEUTBGQlVEUkVaa0ZGVERGVk5VdzRkVUY1WjFGQlFVRkJRa3BTVlRWRmNtdEtaMmRuUFQwaUx6NDhMMlJsWm5NK1BITjBlV3hsUGp3dmMzUjViR1UrUEhWelpTQWdhSEpsWmowaUkybHRaekVpSUhnOUlqQWlJSGs5SWkweE5DSXZQand2YzNablBnPT0iLz48L2RlZnM+PHN0eWxlPjwvc3R5bGU+PHVzZSAgaHJlZj0iI2ltZzEiIHRyYW5zZm9ybT0ibWF0cml4KC0wLjMwNSwwLDAsLTAuMzA1LDM5LDIxLjk1MykiLz48L3N2Zz4="),
     auto !important;
     transform: scale(1.5);
 }
 
 .next {
   z-index: 30;
-  cursor: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 23' width='25' height='23'%3E%3Cdefs%3E%3Cimage width='72' height='72' id='img1' href='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tIFVwbG9hZGVkIHRvOiBTVkcgUmVwbywgd3d3LnN2Z3JlcG8uY29tLCBHZW5lcmF0b3I6IFNWRyBSZXBvIE1peGVyIFRvb2xzIC0tPg0KPHN2ZyB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNzA3MSA0LjI5Mjg5QzEyLjA5NzYgNC42ODM0MiAxMi4wOTc2IDUuMzE2NTggMTEuNzA3MSA1LjcwNzExTDYuNDE0MjEgMTFIMjBDMjAuNTUyMyAxMSAyMSAxMS40NDc3IDIxIDEyQzIxIDEyLjU1MjMgMjAuNTUyMyAxMyAyMCAxM0g2LjQxNDIxTDExLjcwNzEgMTguMjkyOUMxMi4wOTc2IDE4LjY4MzQgMTIuMDk3NiAxOS4zMTY2IDExLjcwNzEgMTkuNzA3MUMxMS4zMTY2IDIwLjA5NzYgMTAuNjgzNCAyMC4wOTc2IDEwLjI5MjkgMTkuNzA3MUwzLjI5Mjg5IDEyLjcwNzFDMy4xMDUzNiAxMi41MTk2IDMgMTIuMjY1MiAzIDEyQzMgMTEuNzM0OCAzLjEwNTM2IDExLjQ4MDQgMy4yOTI4OSAxMS4yOTI5TDEwLjI5MjkgNC4yOTI4OUMxMC42ODM0IDMuOTAyMzcgMTEuMzE2NiAzLjkwMjM3IDExLjcwNzEgNC4yOTI4OVoiIGZpbGw9IiMwMDAwMDAiLz4NCjwvc3ZnPg=='/%3E%3C/defs%3E%3Cstyle%3E%3C/style%3E%3Cuse href='%23img1' transform='matrix(-0.458,0,0,-0.458,29.001,27.999)'/%3E%3C/svg%3E"),
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDM5IDIyIiB3aWR0aD0iMzkiIGhlaWdodD0iMjIiPjxkZWZzPjxpbWFnZSB3aWR0aD0iMTI4IiBoZWlnaHQ9IjcyIiBpZD0iaW1nMSIgaHJlZj0iZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCMlpYSnphVzl1UFNJeExqSWlJSGh0Ykc1elBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWdkbWxsZDBKdmVEMGlNQ0F3SURZMElETTJJaUIzYVdSMGFEMGlOalFpSUdobGFXZG9kRDBpTXpZaVBqeGtaV1p6UGp4cGJXRm5aU0FnZDJsa2RHZzlJalkwSWlCb1pXbG5hSFE5SWpZMElpQnBaRDBpYVcxbk1TSWdhSEpsWmowaVpHRjBZVHBwYldGblpTOXdibWM3WW1GelpUWTBMR2xXUWs5U2R6QkxSMmR2UVVGQlFVNVRWV2hGVldkQlFVRkZRVUZCUVVKQlEwRk5RVUZCUTJSME5FaHpRVUZCUVVGWVRsTlNNRWxDTW1OcmMyWjNRVUZCUkZwUlZFWlNSaTh2THk5QlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVko1SzJweVowRkJRVUpLTUZWck5WUkJRVVpQYlM4clFXMVRiakZSVlVFdk9VUTBPVGgzYUVWcUx6UkVOMUZCUVVGTWNFcFNSVVpWWlVwNmRERnpSVTluYWtGUlVsWkhaV3RTWnpGRlVDOHZVRFF3YlVkTVFVeHBTMVpzVFROT1RuVm9iakpRWVZSMGJUVnRjV2MxT0VORFEwTkJSbTlCTUVrd1FXNWhVVXRCSzNaVUwxVnlRVUZHTXpJMlUycENkRFJpY2xWbmRUQlJSSGRVYWs1a04yMVZja1J0YjBKTVRWRmljbkoyVWxCelUxTjNSVkkxVTBoS1VtTTRkR0pCVkZoTlYxVkROelZ4U0ZCWVkwSkhZelV2ZDFFNVprbEtaV0Y0TlRBNVowZGlUVEJGWjNSYWFrZFJUbTlEVUd0VVppdDFkMkUwWm04eVZXRmlSbEpOZFZwT2FGUmhNRzFvVkhCWE1tUkVhRmsyTW5aQ2QzaGxUV1JRZWtRMFJTdG1VVVJEUTBGQlVEUkVaa0ZGVERGVk5VdzRkVUY1WjFGQlFVRkJRa3BTVlRWRmNtdEtaMmRuUFQwaUx6NDhMMlJsWm5NK1BITjBlV3hsUGp3dmMzUjViR1UrUEhWelpTQWdhSEpsWmowaUkybHRaekVpSUhnOUlqQWlJSGs5SWkweE5DSXZQand2YzNablBnPT0iLz48L2RlZnM+PHN0eWxlPjwvc3R5bGU+PHVzZSAgaHJlZj0iI2ltZzEiIHRyYW5zZm9ybT0ibWF0cml4KC4zMDUsMCwwLC4zMDUsMCwwKSIvPjwvc3ZnPg=="),
     auto !important;
     transform: scale(1.5);
 }
