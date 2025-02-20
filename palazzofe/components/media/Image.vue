@@ -1,5 +1,5 @@
 <template>
-  <div class="image-wrapper">
+  <!-- <div class="image-wrapper"> -->
     <!-- Main Image -->
     <nuxt-img
       provider="sanity"
@@ -7,24 +7,25 @@
             :modifiers="{ auto: 'format', fm: 'webp', w: 1000, fit: 'crop' }"
       fit="cover"
       :style="`aspect-ratio: ${aspect}`"
-      :width="size ? size.width : ''"
-      :height="size ? size.height : ''"
+      :width="size?.width || undefined"
+      :height="size?.height || undefined"
       :sizes="sizes ? sizes : 'sm:100vw md:100vw lg:3000px'"
       :preload="true"
       loading="lazy"
       fetchpriority="high"
       @load="handleLoad"
-     
-      :class="{ loaded: isLoaded }"
+   
     />
+    <!--   
+      :class="{ loaded: isLoaded }" -->
 
     <!-- Placeholder Image -->
-    <nuxt-img
+    <!-- <nuxt-img
       :src="src.replace('https://cdn.sanity.io/images/0i1cdi6a/production/', '')"
       class="blur-placeholder"
       :class="{ hidden: isLoaded }"
     />
-  </div>
+  </div> -->
 </template>
 
 
@@ -47,14 +48,14 @@ export default {
 
 <style scoped>
 .image-wrapper {
-  position: relative;
-  overflow: hidden;
+  /* position: inherit;
+  overflow: hidden; */
 }
 
 .blur-placeholder {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: inherit;
+  width:inherit;
+  height: inherit;
   filter: blur(2px);
   transition: opacity 0.5s ease-in-out;
 }

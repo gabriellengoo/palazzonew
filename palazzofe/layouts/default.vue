@@ -1,11 +1,11 @@
 <template>
   <main class="min-h-full">
       <!-- <LenisComponent /> -->
-      <!-- <TransitionComponent /> -->
+      <TransitionComponent />
       
-    <!-- <transition name="fade"> -->
+    <transition name="fade">
       <Nuxt />
-    <!-- </transition>  -->
+    </transition> 
 
     <!-- <transition name="fade"> -->
       <!-- <LayoutHeader 

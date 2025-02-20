@@ -2440,22 +2440,19 @@ height: auto;
     display: none;
   }
 
-  .next-button {
+  /* .next-button {
     padding: 1rem;
-    /* border: none;
-  border-radius: 5px; */
     cursor: pointer;
     transition: background-color 0.3s;
     position: fixed;
     bottom: 3.5vh;
-    /* width: 100%; */
     width: 95%;
     text-transform: uppercase;
     font-family: "GT-Sectra-Book";
     font-family: "NHaas" !important;
     transition: color 0.8s ease;
     color: black  !important;
-  }
+  } */
 
   .biglay4 {
     font-size: 9.5vw;
@@ -2638,9 +2635,11 @@ height: auto;
   }
 
   .next-button {
-    width: 94%;
+    padding: 2.5vw;
+    font-size: 3vw;
+    width: 100%;
+    border: 0.05vw solid rgba(0, 0, 0, 0);
     border-top: 0.05vw solid black;
-    border: 0.05vw solid black;
     border-radius: 0%;
     background-image: url("./static/LeftBG.png");
     background-size: cover;
@@ -2895,9 +2894,6 @@ height: auto;
     padding-left: 0vw;
   }
 
-  .next-button {
-    padding: 2vw;
-    width: 97%;
-  }
+
 }
 </style>

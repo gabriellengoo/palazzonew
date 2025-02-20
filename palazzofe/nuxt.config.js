@@ -21,16 +21,8 @@ export default {
         href: '/static/background.jpg',
         as: 'image'
       },
-      {
-        rel: 'preload',
-        href: '/static/newnav,png',
-        as: 'image'
-      },
-      {
-        rel: 'preload',
-        href: '/static/newnavt,png',
-        as: 'image'
-      }
+      { rel: 'preload', href: '/Navn.webp', as: 'image', type: 'image/webp' },
+      { rel: 'preload', href: '/Navnt.webp', as: 'image', type: 'image/webp' }      
     ]
   },
 

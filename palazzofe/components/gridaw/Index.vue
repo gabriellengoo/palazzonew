@@ -257,7 +257,7 @@ export default {
   width: 20vw;
   
   /* Make it a perfect white circle */
-  background-color: #eec0c3;
+  background-color: #bcc2cb;
   border-radius: 50%;
   
   /* Center text inside */

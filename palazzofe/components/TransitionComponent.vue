@@ -58,13 +58,13 @@ export default {
       // Set a timeout to show the text after 1.5 seconds
       setTimeout(() => {
         this.isTextVisible = true;
-      }, 1000); // Delay text visibility by 1.5 seconds
+      }, 500); // Delay text visibility by 1.5 seconds
 
       // Set a timeout to hide the text and end the transition after 3.5 seconds
       setTimeout(() => {
         this.isTextVisible = false;
         this.isTransitionActive = false;
-      }, 1000); // Adjust the duration of text visibility as needed
+      }, 500); // Adjust the duration of text visibility as needed
     }
   },
 

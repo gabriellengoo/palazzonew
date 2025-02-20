@@ -146,8 +146,8 @@ export default {
     return {
       isMenuOpen: false,
       isHovered: false,
-      defaultImage: "/Navn.png",
-      hoverImage: "/Navnt.png",
+      defaultImage: "/Navn.webp", // Change to WebP version
+      hoverImage: "/Navnt.webp",  // Change to WebP version
       menuTopPosition: "0",
       lottieInstance: null,
     };

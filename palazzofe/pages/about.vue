@@ -32,7 +32,7 @@
         >
           <div class="content">
             <div class="nomb">
-              <img class="w-[26.5vw]" src="/leftaboutt.png" />
+              <img class="w-[27.5vw]" src="/leftaboutt.png" />
             </div>
           </div>
 
@@ -290,17 +290,30 @@ export default {
 }
 
 .bttn {
+  padding: 1rem;
+  padding: 0.4vw;
+  cursor: pointer;
+  transition: background-color 0.3s;
   position: fixed;
   bottom: 2.5vh;
-  width: 48%;
-  padding: 0.5vw;
-  border: 0.05vw solid black;
-  background-color: white;
+  bottom: 0vh;
+  /* width: 100%; */
+  border-top: 0.05vw solid black;
+  width: 97%;
+  width: 100%;
   text-transform: uppercase;
-  font-family: "GT-Sectra-Book", sans-serif;
-  font-size: 1vw;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-family: "GT-Sectra-Book";
+  font-family: "NHaas" !important;
+  transition-duration: color 0.8s ease;
+  background-color: #e6e5e4;
+  font-size: 1.1vw;
+}
+
+.bttn:hover {
+  /* background-color: #0056b3; */
+  background-color: #121212;
+  transition-duration: background-color 0.8s ease;
+  color: #ccc;
 }
 
 .butcon {
@@ -310,7 +323,7 @@ export default {
   position: absolute;
 }
 
-.bttn {
+/* .bttn {
   position: absolute;
   width: 94%;
   border-top: 0.05vw solid black;
@@ -327,14 +340,13 @@ export default {
   transition: background-color 0.3s;
   position: fixed;
   bottom: 2.5vh;
-  /* width: 100%; */
   width: 98%;
   text-transform: uppercase;
   font-family: "GT-Sectra-Book";
   font-family: "NHaas" !important;
   transition: color 0.8s ease;
   font-size: 1vw;
-}
+} */
 
 .headingspagesb {
   font-family: "GT-Bold";
@@ -500,7 +512,7 @@ a:hover {
 }
 
 .rightimg {
-  width: 27vw;
+  width: 28vw;
   /* top: -2vh; */
   top: 6vw;
   left: 2vw;
@@ -635,7 +647,7 @@ a:hover {
 
 @media only screen and (max-width: 768px) {
   .bttn {
-    position: absolute;
+    /* position: absolute;
     border-top: 0.05vw solid black;
     border: 0.05vw solid black;
     border-radius: 0%;
@@ -649,13 +661,23 @@ a:hover {
     transition: background-color 0.3s;
     position: fixed;
     bottom: 2.5vh;
-    /* width: 100%; */
     width: 98%;
     text-transform: uppercase;
     font-family: "GT-Sectra-Book";
     font-family: "NHaas" !important;
     transition: color 0.8s ease;
+    font-size: 3vw; */
+    padding: 2.5vw;
     font-size: 3vw;
+    width: 100%;
+    border: 0.05vw solid rgba(0, 0, 0, 0);
+    border-top: 0.05vw solid black;
+    border-radius: 0%;
+    background-image: url("./static/LeftBG.png");
+    background-size: cover;
+    background-position: 0 0;
+    background-position: initial;
+    background-repeat: no-repeat;
   }
 
   .a1 {

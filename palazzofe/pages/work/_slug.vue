@@ -204,7 +204,7 @@
                       </p>
                     </div></a
                   >
-                  <div
+                  <!-- <div
                     v-if="project.location && !project.locationlink"
                     class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
                   >
@@ -215,7 +215,7 @@
                         project.location
                       }}</a>
                     </div>
-                  </div>
+                  </div> -->
 
                   <!-- Draggable Iframe Modal -->
                   <div
