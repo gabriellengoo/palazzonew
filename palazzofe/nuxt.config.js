@@ -130,7 +130,38 @@ export default {
       projectId: '0i1cdi6a',
       dataset: 'production',
     },
+  //      domains: ['cdn.sanity.io'], // ✅ Allow remote Sanity images
+  //   providers: {
+  //     sanity: {
+  //       baseURL: 'https://cdn.sanity.io', // ✅ Fix incorrect baseURL
+  //     },
+  //   },
+  //   presets: {
+  //     default: {
+  //       modifiers: {
+  //         format: 'webp',
+  //         quality: 75,
+  //       },
+  //     },
+  //   },
   },
+
+  // image: {
+  //   domains: ['cdn.sanity.io'], // ✅ Allow remote Sanity images
+  //   providers: {
+  //     sanity: {
+  //       baseURL: 'https://cdn.sanity.io', // ✅ Fix incorrect baseURL
+  //     },
+  //   },
+  //   presets: {
+  //     default: {
+  //       modifiers: {
+  //         format: 'webp',
+  //         quality: 75,
+  //       },
+  //     },
+  //   },
+  // },
 
   // sanity: {
   //   withCredentials: true,

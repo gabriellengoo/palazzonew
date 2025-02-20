@@ -145,7 +145,8 @@
   <SkeletonLoader />
    <!-- loadding -->
 </div>
-<div v-if="isAwardsOpen && showGridaw" >
+<!-- <div v-if="isAwardsOpen && showGridaw" > -->
+<div >
   <Gridaw class="" :items="gridaw.grid6" size="small"></Gridaw>
 </div>
 
@@ -211,9 +212,9 @@ export default {
 
   mounted() {
   // Start loading the content immediately on mount
-  setTimeout(() => {
-    this.showGridaw = true; // Load Grid in the background
-  }, 1500); // Delay before it gets ready
+  // setTimeout(() => {
+  //   this.showGridaw = true; // Load Grid in the background
+  // }, 1500); // Delay before it gets ready
 },
 
 
