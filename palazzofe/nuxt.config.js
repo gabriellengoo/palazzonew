@@ -50,6 +50,10 @@ export default {
     { src: '@plugins/lazy', mode: 'client' },
     { src: '@plugins/slider', mode: 'client' },
     '~/plugins/preview.client.js',
+    '~/plugins/image-builder.js',
+    '~/plugins/sanity.js',
+    '~/plugins/sanity-client.js',
+    '~/plugins/preload.js',
   ],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

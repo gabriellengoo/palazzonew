@@ -34,8 +34,8 @@
                     class="flex flex-col items-end h-full link-animation linka"   
                   >
                     <figure>
-                      <div class="hover-effect" :style="hoverEffectStyle"></div>
-                      <MediaImage :src="item.image.image" v-if="item.image.image" />
+                      <!-- <div class="hover-effect" :style="hoverEffectStyle"></div> -->
+                      <MediaImage :image="image" :src="item.image.image" v-if="item.image.image" />
                     </figure>
                     <figcaption class="textsum block text-center uppercase w-full pt-2">
                       <span class="textsumf">{{ item.title || item.reference.title }}</span>
@@ -50,6 +50,7 @@
                   >
                     <figure class="deskimgl">
                       <MediaImage
+                      :image="image"
                         :src="item.imageh.imageh"
                         v-if="item.imageh.imageh"
                         :class="{
@@ -109,6 +110,9 @@ export default {
         return resultArray;
       }, []);
     },
+    grid() {
+      return this.$store.getters.grid;
+    }
   },
   methods: {
     ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
@@ -129,6 +133,9 @@ export default {
   mounted() {
     this.isDesktop = window.innerWidth > 768;
     window.addEventListener("resize", this.handleResize);
+    if (!this.grid.length) {
+      this.$store.dispatch('fetchGrid');
+    }
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);

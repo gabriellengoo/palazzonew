@@ -1,0 +1,65 @@
+<template>
+  <div>
+    <p>Sanity URL: {{ sanityUrl }}</p>
+    <nuxt-img
+     :key="key"
+  :src="sanityUrl"
+      provider="sanity"
+      :modifiers="{ auto: 'format' }"
+      fit="cover"
+      :style="`aspect-ratio: ${aspect}`"
+      :width="size?.width || undefined"
+      :height="size?.height || undefined"
+      :sizes="sizes ? sizes : 'sm:100vw md:100vw lg:3000px'"
+      :preload="true"
+      fetchpriority="high"
+      loading="eager"
+    />
+  </div>
+</template>
+
+
+
+<script>
+import { urlFor } from '~/plugins/image-builder'
+
+export default {
+  props: ['src', 'crop', 'hotspot', 'aspect', 'sizes', 'size'],
+  data() {
+  return {
+    sanityUrl: '',
+    key: 0 // Force re-render key
+  };
+},
+watch: {
+  src: {
+    immediate: true,
+    async handler(newSrc) {
+      if (!newSrc) {
+        this.sanityUrl = '';
+        return;
+      }
+
+      await this.$nextTick();
+
+      const imageSource = newSrc.asset ? newSrc : { asset: { _ref: newSrc } };
+      this.sanityUrl = urlFor(imageSource)
+        .auto('format')
+        .width(this.size?.width || 800)
+        .height(this.size?.height || 600)
+        .url();
+
+      console.log('Generated Sanity URL:', this.sanityUrl);
+
+      this.key++; // Force component to update
+    }
+  }
+}
+
+
+}
+</script>
+
+
+
+

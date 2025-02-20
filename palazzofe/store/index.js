@@ -68,17 +68,16 @@ export const mutations = {
 
 
 
-export const getters = {
-  isMenuOpen: (state) => state.isMenuOpen,
-};
+
 
 
 import { groq } from '@nuxtjs/sanity'
 
 export const actions = {
   async nuxtServerInit({ commit }) {
+    try {
 
-
+      
     const gridQuerypress = groq`*[_type == "pressindi" ] {
 
    "slider": slider[]{
@@ -90,10 +89,9 @@ export const actions = {
   },
 } `
     
- 
     // weddings Grid
     const gridQuery = groq`*[_type == "works" ] 
-
+ 
     {title, grid[] {
     _key, double, spacer, 
     "video" : {"id" : video.asset->playbackId, 
@@ -101,12 +99,24 @@ export const actions = {
     "thumbTime" : video.asset->thumbTime }, 
     "image" : 
       {"image" : image.asset._ref, 
-      "aspect" : image.asset->metadata.dimensions.aspectRatio, 
-      "size" : {"width" : image.asset->metadata.dimensions.width, 
-      "height" : image.asset->metadata.dimensions.height}, 
+        _type,
+        asset -> {
+      _id,
+      url,
+      metadata
+    },
+      "aspect" : imageh.asset->metadata.dimensions.aspectRatio, 
+      "size" : {"width" : imageh.asset->metadata.dimensions.width, 
+      "height" : imageh.asset->metadata.dimensions.height}, 
       "position" : position }, 
       "imageh" : 
       { "imageh" : imageh.asset._ref,
+        _type,
+        asset -> {
+      _id,
+      url,
+      metadata
+    },
       "aspect" : image.asset->metadata.dimensions.aspectRatio, 
       "size" : {"width" : image.asset->metadata.dimensions.width, 
       "height" : image.asset->metadata.dimensions.height}, 
@@ -130,7 +140,6 @@ export const actions = {
          }
   } | order(_updatedAt desc)[0]`
     
-  
 
   const gridQuery2 = groq`*[_type == "events" ] 
   {
@@ -342,10 +351,6 @@ _key, double, spacer,
 } | order(_updatedAt desc)[0]`
 
 
-
-
-
-
 const gridQuery3 = groq`*[_type == "publications" ] 
 {
   grid4[] {
@@ -425,18 +430,46 @@ _key, double, spacer,
      }
 } | order(_updatedAt desc)[0]`
 
+    
 
+   // Preload images
+   function preloadImages(images) {
+    images.forEach((imageUrl) => {
+      const img = new Image();
+      img.src = imageUrl;
+    });
+  }
 
 
   const grid = await this.$sanity.fetch(gridQuery)
-  // console.log('Grid Query Result:', grid) 
+  const gridd = await this.$sanity.fetch(gridQuery2)
+
+  if (grid) {
     commit('SET_GRID', grid)
+  }
+  if (gridd) {
+    commit('SET_GRIDD', gridd) // Assuming "grid3" is the correct field
+  }
+    
+  // commit('SET_GRID', grid)
+  // commit('SET_GRIDD', gridd) 
+  // const grid = await this.$sanity.fetch(gridQuery)
+  // // console.log('Grid Query Result:', grid) 
 
+  //   // commit('SET_GRID', Array.isArray(grid) ? grid : [])
 
-    const gridd = await this.$sanity.fetch(gridQuery2)
-    // console.log('Grid2 Query Result:', grid2)
-    commit('SET_GRIDD', gridd)
-    // commit('SET_GRID3', grid2.grid3);
+  //     // Preload images
+  //     grid.forEach(image => {
+  //       const img = new Image();
+  //       img.src = image.src; // Preload image
+  //     });
+
+  //     commit('SET_GRID', grid)
+
+  //   const gridd = await this.$sanity.fetch(gridQuery2)
+  //   // console.log('Grid2 Data:', gridd)    
+  //   // commit('SET_GRIDD', Array.isArray(gridd) ? gridd : [])
+  //   commit('SET_GRIDD', gridd);
 
 
     const gridpub = await this.$sanity.fetch(gridQuery3)
@@ -465,15 +498,14 @@ _key, double, spacer,
     // console.log('Grid2 Query Result:', grid2)
     commit('SET_GRIDPRESS', gridpubindi)
     // commit('SET_GRID3', grid2.grid3);
-
-  
-    // Contact
-    // const contactQuery = groq`*[_type == "about" ] {contactDetails} | order(_updatedAt desc)[0]`
-    // const contact = await this.$sanity.fetch(contactQuery)
-    // commit('SET_CONTACT', contact.contactDetails)
-  },
-
-  setTitle({ commit }, title) {
-    commit('SET_TITLE', title)
-  },
+  } catch (error) {
+    console.error('Error fetching data:', error)
+  }
 }
+}
+
+export const getters = {
+  isMenuOpen: (state) => state.isMenuOpen,
+
+  grid: (state) => state.grid,
+};
