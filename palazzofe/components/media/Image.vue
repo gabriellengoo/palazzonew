@@ -4,7 +4,7 @@
     <nuxt-img
       provider="sanity"
       :src="src"
-            :modifiers="{ auto: 'format', fm: 'webp', w: 1000, fit: 'crop' }"
+      :modifiers="{ auto: 'format', fm: 'webp', w: 1200, fit: 'crop' }"
       fit="cover"
       :style="`aspect-ratio: ${aspect}`"
       :width="size?.width || undefined"
@@ -50,6 +50,7 @@ export default {
 .image-wrapper {
   /* position: inherit;
   overflow: hidden; */
+  /* hovercrop 1200px */
 }
 
 .blur-placeholder {

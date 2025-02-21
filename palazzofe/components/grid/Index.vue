@@ -150,7 +150,7 @@ export default {
 <style scoped>
 
 .link-animation {
-  transform: scale(0); /* Start small */
+  transform: scale(0.8); /* Start small */
   animation: scale-up 3s forwards; /* Animate scale */
 }
 

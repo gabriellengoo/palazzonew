@@ -1712,7 +1712,8 @@ export default {
 
 .next-button:hover {
   transition: background-color 0.8s ease;
-  background-color: #121212;
+  /* background-color: #121212; */
+  background-color: #bcc2cb;
 }
 
 .fade-enter-active {
@@ -2103,7 +2104,7 @@ opacity: 0;
 .next-button:hover {
   /* background-color: #0056b3; */
   transition: color 0.8s ease;
-  color: #ccc;
+  /* color: #ccc; */
 }
 
 .next-button:disabled {

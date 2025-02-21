@@ -311,9 +311,9 @@ export default {
 
 .bttn:hover {
   /* background-color: #0056b3; */
-  background-color: #121212;
+  background-color: #bcc2cb;
   transition-duration: background-color 0.8s ease;
-  color: #ccc;
+  /* color: #ccc; */
 }
 
 .butcon {
