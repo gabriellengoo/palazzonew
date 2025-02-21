@@ -16,7 +16,7 @@
           :key="chunkIndex"
           class="chunk-container"
         >
-          <div class="image-row">
+          <div class="image-row"  >
             <div
               v-for="(item, index) in chunk"
               :key="item._key"
@@ -102,10 +102,42 @@
                           v-if="item.filmtitle"
                           class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]"
                         >
-                          <p class="loctext uppercase">Play Film</p>
+                          <!-- <p class="loctext uppercase">Play Film</p> -->
                       
                           <!-- pop -->
-                          <button class="filmlink" @click="openIframe(item.film)">{{ item.filmtitle }}</button>
+                          <!-- <button class="filmlink" @click="openIframe(item.film)">{{ item.filmtitle }}</button> -->
+                          
+                          <button class="filmlink" @click="openIframe(item.film)">
+                          <div
+                      class="w-full flex items-center text-center locationtext"
+                      @mouseover="isHovered = true"
+                      @mouseleave="isHovered = false"
+                    >
+                      <img
+                        src="/playf.png"
+                        alt="play Image"
+                        :class="{
+                          'scale-110 transition-transform duration-300 ease-out':
+                            isHovered,
+                          'w-[4vw] h-auto transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="w-[4vw] h-auto"
+                      />
+                      <p
+                        :class="{
+                          ' opacity-40 transition-all duration-300 ease-out':
+                            isHovered,
+                          'opacity-100 transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="loctext"
+                      >
+                        Play Film
+                      </p>
+                    </div>
+                  </button> 
+                          
                           <draggable-iframe
                               v-if="iframeVisible"
                               :iframeSrc="iframeUrl"
@@ -132,7 +164,7 @@
                         v-if="item.imageh.imageh"
                         class="headeramb content flex w-full justify-between"
                       >
-                        <h1 class="md:w-[1.4vw] w-auto">
+                        <h1 class="md:w-[1.4vw] close-btn w-auto">
                           <a href="../products" class="headbarmb">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -264,10 +296,41 @@
                           v-if="item.filmtitle"
                           class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]"
                         >
-                          <p class="loctext uppercase">Play Film</p>
+                          <!-- <p class="loctext uppercase">Play Film</p> -->
                       
                           <!-- pop -->
-                          <button class="flex flex-col normal-case italic loctextlink" @click="openIframe(item.film)">{{ item.filmtitle }}</button>
+                          <!-- <button class="flex flex-col normal-case italic loctextlink" @click="openIframe(item.film)">{{ item.filmtitle }}</button> -->
+                          <button class="filmlink" @click="openIframe(item.film)">
+                          <div
+                      class="w-full flex items-center text-center locationtext"
+                      @mouseover="isHovered = true"
+                      @mouseleave="isHovered = false"
+                    >
+                      <img
+                        src="/playf.png"
+                        alt="play Image"
+                        :class="{
+                          'scale-110 transition-transform duration-300 ease-out':
+                            isHovered,
+                          'w-[15vw] h-auto transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="w-[15vw] h-auto"
+                      />
+                      <p
+                        :class="{
+                          ' opacity-40 transition-all duration-300 ease-out':
+                            isHovered,
+                          'opacity-100 transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="loctext"
+                      >
+                        Play Film
+                      </p>
+                    </div>
+                  </button> 
+
                           <draggable-iframe
                               v-if="iframeVisible"
                               :iframeSrc="iframeUrl"
@@ -318,7 +381,7 @@ export default {
       isDesktop: false,
       hoveredIndex: null,
       isDefaultActive: true,
-      
+      isHovered: false,
 // pop
       iframeVisible: false,
       iframeUrl: '',
@@ -471,6 +534,7 @@ export default {
   opacity: 0; /* Start with opacity 0 */
   transition: opacity 0.5s ease; /* Transition for fade effect */
   pointer-events: none;
+  /* width: 1.4vw; */
 }
 
 .filmlink{
@@ -673,6 +737,8 @@ export default {
 
 .close-btn{
   width: 1.4vw;
+  z-index: 10000000000 !important;
+  position: relative;
 }
 
 .iframe-content {
@@ -684,7 +750,9 @@ export default {
 }
 
 
-
+/* .header{
+  pointer-events: all;
+} */
 
 
 
@@ -701,7 +769,7 @@ export default {
   .sideim {
     position: fixed;
         left: 0;
-        z-index: 100;
+        z-index: 10000000000 !important;
         /* top: 36vh; */
         /* padding-top: 5vh; */
         /* bottom: -34vh; */
@@ -710,6 +778,7 @@ export default {
         height: max-content;
         overflow: scroll;
         opacity: unset;
+        width: 1.4vw; 
         /* transition: all 0.5s ease; */
         /* background-image: url("./static/BLUEbg.png"); */
         transition: bottom 0.5s ease-in-out;
@@ -723,10 +792,13 @@ export default {
     object-position: center;
     height: auto;
     /* height: 37vw; */
+    width: 100%;
     padding: 3vw;
     padding-top: 9vw;
     overflow: hidden;
 }
+
+/*     .headeramb */
 
 .bttn {
     position: absolute;
@@ -810,6 +882,7 @@ export default {
         position: fixed;
         left: 0;
         height: 12vw;
+        z-index: 10000000000 !important;
 }
 
 .headbarmb{
@@ -818,6 +891,7 @@ export default {
         width: 4.9vw;
         margin-top: 1vw;
         display: block;
+        pointer-events: all;
 }
 
 
@@ -831,6 +905,8 @@ export default {
   top: 0;
   overflow-y: scroll;
         left: 0;
+                /* z-index: 1000000000000000 !important; */
+                pointer-events: all;
 }
 
 .teambios{

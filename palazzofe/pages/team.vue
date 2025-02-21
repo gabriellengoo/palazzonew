@@ -138,7 +138,7 @@
           class="iframe-content"
           frameborder="0"
         ></iframe>
-      </div>
+      </div> 
 
       <!-- Right Static Content -->
       <div class="right-content overflow-y-scroll flex-1 p-8">

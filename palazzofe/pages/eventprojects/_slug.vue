@@ -219,7 +219,8 @@
                   </div> -->
                   <!-- Location Link -->
                   <a class="noline" href="javascript:void(0)" @click="openModal"
-                    ><div
+                    >
+                    <div
                       v-if="project.locationlink"
                       class="w-full flex items-center text-center md:pt-5 locationtext"
                       @mouseover="isHovered = true"

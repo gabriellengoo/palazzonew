@@ -268,10 +268,11 @@
                             >
                               <p class="loctext uppercase">Email</p>
                               <div
+                              
                                 class="flex flex-col normal-case italic loctextlink"
                               >
                                 <Richtext
-                                  class="contactinner teamemail"
+                                  class="contactinner teamemail underimglay1 "
                                   :blocks="item.content4"
                                 />
                               </div>
@@ -325,9 +326,10 @@ export default {
       }, []);
     },
     // Add a computed property for the first item's key
-    firstItemKey() {
-      return this.items.length > 0 ? this.items[0]._key : null;
-    },
+    // firstItemKey() {
+    //   return this.items.length > 0 ? this.items[0]._key : null;
+    // },
+    // sets click active to last
     lastItemKey() {
       return this.items.length > 0
         ? this.items[this.items.length - 1]._key
@@ -339,9 +341,10 @@ export default {
     window.addEventListener("resize", this.handleResize);
     document.addEventListener("click", this.handleGlobalClick);
 
+    // sets defult load in img to last 
     if (this.items.length > 0) {
       this.hoveredIndex = this.items[this.items.length - 1]._key;
-      this.isDefaultActive = true;
+      // this.isDefaultActive = true;
     }
   },
   beforeDestroy() {
@@ -352,12 +355,6 @@ export default {
     ...mapMutations(["SET_ACTIVE_PROJECT", "SET_ACTIVE_TALENT"]),
 
     resetHoveredIndex(key) {
-      console.log(
-        "Current hoveredIndex:",
-        this.hoveredIndex,
-        "Clicked key:",
-        key
-      );
       if (this.hoveredIndex === key) {
         this.hoveredIndex = this.lastItemKey; // Slide out if already active
         console.log("Hovered index reset to null");
@@ -366,6 +363,7 @@ export default {
         console.log("Hovered index set to:", key);
       }
     },
+    
 
     toggleSlide(key) {
       this.hoveredIndex = this.hoveredIndex === key ? null : key;
@@ -386,13 +384,15 @@ export default {
           // Slide in the selected `.sideim`
           this.hoveredIndex = key;
         }
-      } else {
+      }
+       else {
         if (this.hoveredIndex === key) {
-          // Slide out if already active
+          // if already active show whats key has already been clicked on
           this.hoveredIndex =
             this.hoveredIndex === key ? this.lastItemKey : key;
+            // this.hoveredIndex = key;
         } else {
-          // Slide in the selected `.sideim`
+          // if not active already show whats key clicked on
           this.hoveredIndex = key;
         }
       }
@@ -502,6 +502,9 @@ export default {
   .item-wrapper:nth-child(2)
   .linkateam {
   display: none !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  position: relative;
 }
 
 .image-grid:last-child
@@ -511,6 +514,9 @@ export default {
   .sideim
   .footerstuff {
   display: none !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  position: relative;
 }
 
 .image-grid:last-child
@@ -521,6 +527,9 @@ export default {
   .deskimgl {
   /* display: none !important; */
   height: 100vh;
+  pointer-events: none !important;
+      z-index: 1 !important;
+    position: relative;
 }
 
 /* .image-item figure .linkateam::nth-last-child {
@@ -565,20 +574,31 @@ export default {
   overflow: scroll;
   opacity: 0; /* Start with opacity 0 */
   transition: opacity 0.5s ease; /* Transition for fade effect */
+  pointer-events: all;
+  /* pointer-events: none !important; */
+  z-index: 10 !important;
+  /* background-image: url("./static/background.jpg");
+  background-size: 102vw;
+  background-size: 192vh;
+  background-position: unset;
+  background-repeat: no-repeat; */
+  background-color: #bcc2cb;
 }
 
 .sideim.fade-in {
-  transition: opacity 0.5s ease;
+  transition:  0.5s ease;
   opacity: 1; /* Fully visible when hovered */
+  z-index: 10 !important;
 }
 
 .sideim.fade-out {
-  transition: opacity 0.5s ease;
+  transition: 0.5s ease;
   opacity: 0; /* Fade out when not hovered */
+  z-index: 1 !important;
 }
 
 .sideim img {
-  cursor: pointer !important;
+  /* cursor: pointer !important; */
 }
 
 .portraitw {
@@ -608,6 +628,7 @@ export default {
 
 .image-row .item-wrapper:nth-child(2) {
   margin-left: 1.5vw;
+  
 }
 
 .deskimgl img {
@@ -739,6 +760,7 @@ export default {
     .sideim
     .deskimgl {
     display: none !important;
+    pointer-events: none !important;
     /* height: 100vh; */
   }
 
@@ -797,6 +819,7 @@ export default {
     /* transition: all 0.5s ease; */
     /* background-image: url("./static/BLUEbg.png"); */
     transition: bottom 0.5s ease-in-out;
+    background-color: #bcc2cb;
   }
 
   .teambio {
@@ -818,7 +841,8 @@ export default {
     align-items: center;
     /* z-index: 100000000000; */
     position: relative;
-    background-image: url("./static/BLUEbg.png");
+    /* background-image: url("./static/BLUEbg.png"); */
+    background-color: #bcc2cb;
   }
 
   .footerstuff {
@@ -939,5 +963,40 @@ export default {
   .image-grid {
     padding: 10vw 3vw 2vw 3vw;
   }
+
+
+  .sideim {
+pointer-events: all;
 }
+
+.deskimgl {
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    height: auto;
+    /* height: 37vw; */
+    width: 100%;
+    padding: 3vw;
+    padding-top: 9vw;
+    overflow: hidden;
+}
+
+.sideim.fade-in {
+  transition:  0.5s ease;
+  opacity: 1; /* Fully visible when hovered */
+  z-index: 100 !important;
+}
+
+.sideim.fade-out {
+  transition: 0.5s ease;
+  opacity: 0; /* Fade out when not hovered */
+  z-index: 1 !important;
+}
+}
+
+
+
+
+
 </style>

@@ -758,7 +758,7 @@ a .inner-image {
   width: 400px;
   height: 300px;
   border: 1px solid #ccc;
-  background: #fff;
+  /* background: #fff; */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   cursor: move;
   position: absolute;
@@ -767,11 +767,11 @@ a .inner-image {
   height: 25vw;
   width: 40vw;
   border: 0.5px solid black;
-  background: white;
+  /* background: white;
   background-image: url("./static/background.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   z-index: 1000 !important;
   cursor: grab;
   display: flex;
@@ -815,6 +815,10 @@ a .inner-image {
     display: none;
   }
 
+  .chunk-container{
+    width: 100%;
+  }
+  
 
   #__nuxt,
 #__layout,
