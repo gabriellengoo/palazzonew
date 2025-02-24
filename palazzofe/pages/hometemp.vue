@@ -1,44 +1,81 @@
 <template>
-  <div class="bgmobile relative min-h-screen" :style="{ backgroundImage: 'url(/background.jpg)' }">
+  <div
+    class="bgmobile relative min-h-screen"
+    :style="{ backgroundImage: 'url(/background.jpg)' }"
+  >
     <div class="headera content flex w-full justify-between">
       <h1 class="navmb navmbbord">
         <HeaderComponent />
       </h1>
     </div>
 
-    <div class="allgal">
+    <div class="allgal nomb">
       <!-- <transition name="fade" mode="out-in">
          v-show="currentSlideIndex === index" -->
-        <div
-          v-for="(slide, index) in home.slider"
-          :style="{ opacity: currentSlideIndex === index ? 1 : 0, transition: 'opacity 3s ease-out' }"
-          :key="slide._key"
-          class="homegal flex justify-center w-full h-full"
-        >
-          <div class="overlaycont flex h-full pb-0 w-13/16">
-            <div  class=" gallery-images-container flex flex-wrap">
-      <transition-group name="fade" mode="out-in" tag="figure">
-    <figure
-  
-      v-for="(image, i) in slide.images"
-       v-show="currentSlideIndex === index"
-      :key="image._key"
-      class=" overlaydiv flex flex-col flex-1 h-full"
-    >
-      <MediaImage
-        :src="image.image.asset._ref"
-        v-if="image.image"
-        class="gallery-image w-auto h-full"
-        :sizes="'sm:200vw md:150vw lg:200vw'"
-      />
-    </figure>
-  </transition-group>
-
-            </div>
+      <div
+        v-for="(slide, index) in home.slider"
+        :style="{
+          opacity: currentSlideIndex === index ? 1 : 0,
+          transition: 'opacity 3s ease-out',
+        }"
+        :key="slide._key"
+        class="homegal  flex justify-center w-full h-full"
+      >
+        <div class="overlaycont flex h-full pb-0 w-13/16">
+          <div class="gallery-images-container flex flex-wrap">
+            <transition-group name="fade" mode="out-in" tag="figure">
+              <figure
+                v-for="(image, i) in slide.images"
+                v-show="currentSlideIndex === index"
+                :key="image._key"
+                class="overlaydiv flex flex-col flex-1 h-full"
+              >
+                <MediaImage
+                  :src="image.image.asset._ref"
+                  v-if="image.image"
+                  class="gallery-image w-[100vw] h-full"
+                  :sizes="'sm:200vw md:150vw lg:200vw'"
+                />
+              </figure>
+            </transition-group>
           </div>
         </div>
+      </div>
       <!-- </transition> -->
+     
+    </div>
 
+    <div class="allgal nodesk">
+        <!-- MOBILE -->
+        <div
+        v-for="(slide, index) in home.slider2"
+        :style="{
+          opacity: currentSlideIndex === index ? 1 : 0,
+          transition: 'opacity 3s ease-out',
+        }"
+        :key="slide._key"
+        class="homegal  flex justify-center w-full h-full"
+      >
+        <div class="overlaycont flex h-full pb-0 w-13/16">
+          <div class="gallery-images-container flex flex-wrap">
+            <transition-group name="fade" mode="out-in" tag="figure">
+              <figure
+                v-for="(image, i) in slide.images"
+                v-show="currentSlideIndex === index"
+                :key="image._key"
+                class="overlaydiv flex flex-col flex-1 h-full"
+              >
+                <MediaImage
+                  :src="image.image.asset._ref"
+                  v-if="image.image"
+                  class="gallery-image w-[100vw] h-full"
+                  :sizes="'sm:200vw md:150vw lg:200vw'"
+                />
+              </figure>
+            </transition-group>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div
@@ -47,30 +84,23 @@
       class="md:flex mainconhome mbmain justify-center md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen"
     >
       <div v-if="home" class="textmainpg text-center">
-        <transition name="logo-animation" >
-        <!-- <MediaImage
+        <transition name="logo-animation">
+          <!-- <MediaImage
                   :src="home.image.asset._ref"
                   class="w-[80vw]"
                   :sizes="'sm:200vw md:150vw lg:200vw'"
                 /> -->
-                <div class="textmainpg text-center">
-        <h1
-          class="maintext text-[white] leading-tight relative z-0"
-        >
-          PALAZZO EVENTI
-        </h1>
-      </div>
-
+          <div class="textmainpg text-center">
+            <h1 class="maintext text-[white] leading-tight relative z-0">
+              PALAZZO EVENTI
+            </h1>
+          </div>
         </transition>
         <!-- <div ref="element" class="disintegrate">Disintegrate Me</div> -->
-
       </div>
     </div>
   </div>
 </template>
-
-
-
 
 <script>
 import HeaderComponent from "@/components/layout/Header.vue";
@@ -88,6 +118,11 @@ export default {
     const query = groq`*[_type == "home"] {
       ...,
       slider[] {
+        images[] {
+          ...,
+        }
+      },
+       slider2[] {
         images[] {
           ...,
         }
@@ -130,7 +165,6 @@ export default {
       this.startGallery();
     }
 
-
     const element = this.$refs.element;
 
     gsap.to(element, {
@@ -144,7 +178,6 @@ export default {
         });
       },
     });
-    
   },
 
   beforeDestroy() {
@@ -153,13 +186,6 @@ export default {
   },
 };
 </script>
-
-
-
-
-
-
-
 
 <style scoped>
 .disintegrate {
@@ -181,19 +207,20 @@ export default {
   transition: opacity 1s ease, transform 1s ease;
 }
 
-.logo-animation-enter, .logo-animation-leave-to {
+.logo-animation-enter,
+.logo-animation-leave-to {
   opacity: 0;
   transform: translateY(20px); /* Example: starting with a slight slide */
 }
 
-.gallery-images-container{
+.gallery-images-container {
   width: 100vw;
   object-fit: cover;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .fade-enter, 
@@ -201,12 +228,11 @@ export default {
   opacity: 0;
 }
 
-
-.allgal{
+.allgal {
   pointer-events: none;
 }
 
-.mainconhome{
+.mainconhome {
   z-index: 10;
   position: absolute;
   pointer-events: none;
@@ -214,10 +240,9 @@ export default {
   height: 100vh;
 }
 
-.homegal{
+.homegal {
   z-index: 10;
   position: absolute;
-
 }
 
 .gallery-container {
@@ -238,7 +263,7 @@ export default {
   transition: opacity 1s;
 }
 
-.fade-enter, 
+.fade-enter,
 .fade-leave-to {
   opacity: 0;
 }
@@ -248,7 +273,6 @@ export default {
   background-position: center;
   transition: background-image 1s ease-in-out;
 }
-
 
 .slider {
   position: relative;
@@ -270,28 +294,24 @@ export default {
   opacity: 1; /* Fully visible slide */
 }
 
-
-
-
-.flowset{
+.flowset {
   padding: 4vw;
-    padding-bottom: 10vw;
-    width: 95vw;
-    height: auto;
+  padding-bottom: 10vw;
+  width: 95vw;
+  height: auto;
 }
 
-.contflower{
+.contflower {
   height: 95vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100vw;
-    align-items: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  align-items: center;
 }
 
-
-.headbar{
+.headbar {
   padding: 0.2vw;
   padding-left: 0.5vw;
   padding-top: 0.5vw;
@@ -303,7 +323,6 @@ export default {
   transition: opacity 0.5s ease-in-out;
 }
 
-
 .fade-enter-active {
   transition: opacity 1s;
 }
@@ -311,19 +330,19 @@ export default {
 .fade-leave-active {
   transition: opacity 5s;
 }
-.fade-enter, .fade-leave-to{
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
-
 .maintext {
-  font-family: 'RomainHeadlineTrial';
+  font-family: "RomainHeadlineTrial";
   font-size: 8vw;
-  }
+}
 
-  .subtx{
-    letter-spacing: 0.1vw;
-  }
+.subtx {
+  letter-spacing: 0.1vw;
+}
 
 .absolute-center {
   position: absolute;
@@ -336,7 +355,6 @@ export default {
   object-fit: cover; /* Ensure the image covers the container */
   object-fit: contain;
 }
-
 
 .headera {
   display: flex;
@@ -358,10 +376,9 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-
   .maintext {
-  font-family: 'RomainHeadlineTrial';
-  font-size: 16vw;
+    font-family: "RomainHeadlineTrial";
+    font-size: 16vw;
   }
 
   .allgal {
@@ -370,9 +387,9 @@ export default {
     height: 100vh;
     z-index: 0;
     position: relative;
-}
+  }
 
-.mainconhome {
+  .mainconhome {
     z-index: 10;
     position: absolute;
     pointer-events: none;
@@ -380,36 +397,35 @@ export default {
     height: 100vh;
     top: 0;
     left: 0;
-}
+  }
 
-.textmainpg {
-        /* position: absolute; */
-        top: 36vh;
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-        align-content: center;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-    }
+  .textmainpg {
+    /* position: absolute; */
+    top: 36vh;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    .subtx{
-      font-size: 2.5vw !important;
-}
-    .maintext{
-      font-size: 9vw;
-    }
+  .subtx {
+    font-size: 2.5vw !important;
+  }
+  .maintext {
+    font-size: 9vw;
+  }
 
   .gallery-image {
     object-fit: cover;
     width: 100vw;
     height: 100vh;
     transition: opacity 1s ease-in-out;
-}
+  }
 
   .headera {
-  
     flex-direction: column;
     position: relative;
     position: fixed;
@@ -421,48 +437,44 @@ export default {
         padding: 2.5vw !important;
     } */
 
-    .navmbbord {
-      padding: 2.5vw !important;
-        /* justify-content: center; */
-    }
-
-  .textmbhead{
-    font-size: 4.4vw;
-        top: 1.2vh !important;
-        z-index: 1000;
-        position: absolute;
-        line-height: normal;
-        left: 32.9vw;
-        left: 32.2vw;
-        display:none;
+  .navmbbord {
+    padding: 2.5vw !important;
+    /* justify-content: center; */
   }
 
-  .mbmain{
+  .textmbhead {
+    font-size: 4.4vw;
+    top: 1.2vh !important;
+    z-index: 1000;
+    position: absolute;
+    line-height: normal;
+    left: 32.9vw;
+    left: 32.2vw;
+    display: none;
+  }
+
+  .mbmain {
     overflow: scroll;
     display: flex;
     flex-direction: column;
   }
 
-  .navmbbord{
+  .navmbbord {
   }
-
-
 
   .bgmobile {
     background-size: contain;
     background-position: center top;
     min-height: 50vh; /* Optional: Adjust the height */
-        height: max-content;
-        overflow: hidden;
-        position: absolute;
-        top: 0;
-        background-size: cover;
+    height: max-content;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    background-size: cover;
     background-position: 0 0;
     background-position: initial;
     background-repeat: no-repeat;
   }
-
- 
 }
 
 @media (min-width: 1440px) and (max-width: 1544px) {
