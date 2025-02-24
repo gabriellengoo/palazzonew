@@ -4,7 +4,7 @@
     <nuxt-img
       provider="sanity"
       :src="src"
-      :modifiers="{ auto: 'format', fm: 'webp', w: 600, fit: 'crop' }"
+      :modifiers="{ auto: 'format', fm: 'webp', w: 200, fit: 'crop' }"
       fit="cover"
       :style="`aspect-ratio: ${aspect}`"
       :width="size?.width || undefined"
