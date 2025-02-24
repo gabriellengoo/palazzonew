@@ -24,7 +24,7 @@
       :src="src.replace('https://cdn.sanity.io/images/0i1cdi6a/production/', '')"
       class="blur-placeholder"
       :class="{ hidden: isLoaded }"
-    />
+    /> 
   </div> -->
 </template>
 
