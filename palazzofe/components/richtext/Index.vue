@@ -353,10 +353,7 @@ padding-bottom: 1.5vh;
   padding-top: 4vw;
 }
 
-.teamemail p a{
-  font-size: 5vw;
-      
-}
+
 
 }
 
@@ -371,10 +368,7 @@ p{
   /* text-align: justify; */
 }
 
-.teamemail p a{
-  font-size: 2vw;
-  
-}
+
 
 </style>
 <!-- <style scoped lang="css">
