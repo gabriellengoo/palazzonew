@@ -632,6 +632,7 @@ gsap.fromTo(
   background-repeat: no-repeat; */
 
   background-color: #e6e5e4;
+  background-color: #bcc2cb;
   /* display: flex;
   justify-content: center; */
 }

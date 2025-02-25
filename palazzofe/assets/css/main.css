@@ -7,6 +7,10 @@
       height: auto !important;
  } */
 
+ img{
+  width: 40vw;
+ }
+
 /* Hide vertical scrollbar */
 ::-webkit-scrollbar {
   width: 0;
@@ -226,6 +230,10 @@ html {
   font-size: 1.2vw;
   text-transform: uppercase;
   font-family: 'NHaasGrotesk' !important;
+}
+
+.closeservpg svg{
+  transform: rotate(45deg) !important;
 }
 
 .yearsmall{
@@ -797,7 +805,16 @@ a .inner-image {
   display: block;
 }
 
+.nodeshome{
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
+
+  .nodeshome{
+    display: flex;
+  }
+
   .image-grid{
     width: 100vw;
   }

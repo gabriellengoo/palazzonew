@@ -399,6 +399,7 @@ a:hover {
 .bttn {
   position: fixed;
   background-color: white;
+  background-color: #bcc2cb;
   font-family: "GT-Sectra-Book", sans-serif;
   transition: background-color 0.3s ease;
   position: absolute;
@@ -406,11 +407,11 @@ a:hover {
   /* border-top: 0.05vw solid black;
     border: 0.05vw solid black; */
   border-radius: 0%;
-  background-image: url("./static/LeftBG.png");
+  /* background-image: url("./static/LeftBG.png");
   background-size: cover;
   background-position: 0 0;
   background-position: initial;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   padding: 1rem;
   padding: 0.5vw;
   cursor: pointer;
@@ -482,7 +483,7 @@ a:hover {
     transition: color 0.8s ease;
     font-size: 3vw;
     font-size: 2.1vw;
-    bottom: 116vw;
+    bottom: 105vw;
     border: 0.05vw solid black;
   }
 

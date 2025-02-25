@@ -30,7 +30,7 @@
                 :key="image._key"
                 class="overlaydiv flex flex-col flex-1 h-full"
               >
-                <MediaImage
+                <MediaImageh
                   :src="image.image.asset._ref"
                   v-if="image.image"
                   class="gallery-image w-[100vw] h-full"
@@ -45,7 +45,7 @@
      
     </div>
 
-    <div class="allgal nodesk">
+    <div class="allgal nodeshome">
         <!-- MOBILE -->
         <div
         v-for="(slide, index) in home.slider2"
@@ -54,7 +54,7 @@
           transition: 'opacity 3s ease-out',
         }"
         :key="slide._key"
-        class="homegal  flex justify-center w-full h-full"
+        class="homegal flex justify-center w-full h-full"
       >
         <div class="overlaycont flex h-full pb-0 w-13/16">
           <div class="gallery-images-container flex flex-wrap">
@@ -65,7 +65,7 @@
                 :key="image._key"
                 class="overlaydiv flex flex-col flex-1 h-full"
               >
-                <MediaImage
+                <MediaImageh
                   :src="image.image.asset._ref"
                   v-if="image.image"
                   class="gallery-image w-[100vw] h-full"
@@ -85,7 +85,7 @@
     >
       <div v-if="home" class="textmainpg text-center">
         <transition name="logo-animation">
-          <!-- <MediaImage
+          <!-- <MediaImageh
                   :src="home.image.asset._ref"
                   class="w-[80vw]"
                   :sizes="'sm:200vw md:150vw lg:200vw'"
@@ -168,7 +168,7 @@ export default {
     const element = this.$refs.element;
 
     gsap.to(element, {
-      duration: 2,
+      duration: 1,
       opacity: 0,
       filter: "blur(10px)",
       onComplete: () => {

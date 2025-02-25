@@ -1,6 +1,5 @@
 <template>
-  <div class="pagbg all">
-    <!-- <HeaderComponent /> -->
+  <div>
     <div class="headera content flex w-full justify-between">
       <h1 class="navmb">
         <HeaderComponent />
@@ -12,312 +11,96 @@
       </p>
       <h1 class="navmbno w-[2vw]"></h1>
     </div>
-
-    <div class="nodes contmbhead pointer-events-none">
-      <p
-        :class="['', { sheadera: !isMenuOpen }, { sheaderaopen: isMenuOpen }]"
-        class="headingspages pointer-events-none text-center text-4xl uppercase"
-      >
-        Contact
-      </p>
-    </div>
-    <!-- <div
-        class="mbhead absolute top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[10] pointer-events-none"
-      >
-        <img class="w-[30vw]" src="/conflower.png" />
-      </div> -->
-
-    <!-- desktop -->
-    <div class="bgcream nomb relative min-h-screen flex"></div>
-
-    <div class="nomballbot flex p-[5vw] pl-[3vw] min-h-screen">
-      <!-- Left Content: Address and Contact Info -->
-      <div class="left-content w-1/2 p-[3vw] pl-[0vw]">
-        <div class="address text-left flex">
-          <Richtext class="w-[7vw] adsize" :blocks="contact.address"></Richtext>
-          <div class="ml-[6vw]">
-            <Richtext
-              class="w-[20vw] text-[1.05vw]"
-              :blocks="contact.address2"
-            ></Richtext>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="contact text-left mt-[2vh]">
-            <Richtext
-              class="w-[8vw] adsize"
-              :blocks="contact.contact"
-            ></Richtext>
-            <!-- <a href="#" class="instagram-icona w-[31vw]">
-              <img
-                src="insta.png"
-                alt="Angel Artwork"
-                class="instagram-icon mr-2"
-              />
-            </a> -->
-          </div>
-
-          <!-- <div class="email ml-[5vw] text-left mt-[2vh]">
-            <p class="italic underline">Email</p>
-            <p>natalya@palazzoeventi.com</p>
-          </div> -->
-          <Richtext
-            class="email adsize ml-[5vw] text-left mt-[2vh]"
-            :blocks="contact.email"
-          ></Richtext>
-          <Richtext
-            class="email adsize ml-[5vw] text-left mt-[2vh]"
-            :blocks="contact.vemail"
-          ></Richtext>
-        </div>
-
-        <div class="flex w-[31vw] instagram-icona">
-          <div
-            v-for="social in contact.socialMedia"
-            class="social-icons flex mt-4"
-          >
-            <a
-              v-if="social.show"
-              :key="social.platform"
-              :href="social.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link mr-4"
-            >
-              <img
-                :src="social.icon"
-                :alt="`${social.platform} Icon`"
-                class="social-icon instagram-icon"
-              />
-              <!-- <span v-else>{{ social.platform }}</span> -->
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Content: Form Section -->
-      <div class="right-content w-1/2 p-[5vw] pl-[10vw] pt-[4vw]">
-        <form
-          action="https://formspree.io/f/xwpkkljw"
-          method="POST"
-          class="contact-form grid grid-cols-2 gap-4"
-        >
-          <input
-            class="col-span-1"
-            type="text"
-            name="name"
-            placeholder="Full Name *"
-            required
-          />
-          <input
-            class="col-span-1"
-            type="date"
-            name="date"
-            placeholder="Date of Celebration *"
-            required
-            min="2024-01-01"
-            max="3030-12-31"
-          />
-          <input
-            class="col-span-1"
-            type="number"
-            name="telephone"
-            placeholder="Telephone *"
-            required
-            pattern="[0-9]{10,15}"
-            inputmode="numeric"
-          />
-          <input
-            class="col-span-1"
-            type="text"
-            name="days"
-            placeholder="No. of Days of Celebration *"
-          />
-          <input
-            class="col-span-1"
-            type="email"
-            name="email"
-            placeholder="Email *"
-            required
-          />
-          <input
-            class="col-span-1"
-            type="number"
-            name="guests"
-            placeholder="No. of Guests *"
-            required
-            min="0"
-            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-          />
-          <input
-            class="col-span-1"
-            type="text"
-            name="Additional info"
-            placeholder="Additional info *"
-          />
-          <input
-            class="col-span-1"
-            type="number"
-            name="budget"
-            placeholder="Estimated Budget *"
-            required
-            min="0"
-            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-          />
-
-          <div class="flex justify-center col-span-2">
-            <button
-              type="submit"
-              class="mt-[3vw] w-auto send-button"
-              @mouseover="changeImage"
-              @mouseout="resetImage"
-            >
-              <img
-                :src="currentImage"
-                alt="Send"
-                class="sendb w-[10vw] h-auto"
-              />
+        <div class="allrcont">
+          <div class="titcont titmb">
+            <button class="pt-[4vw]" @click="toggleSection">
+              <div
+                ref="lottieAnimation"
+                class="lottie-container headbarc w-[1.4vw] hover:cursor-pointer"
+              ></div>
             </button>
+            <h1 class="loctext uppercase pt-2" @click="toggleSection">
+              Get in touch
+            </h1>
           </div>
-        </form>
-      </div>
-    </div>
 
-    <!-- Central Artwork Image (Angel) -->
-    <div
-      class="nomb absolute bottom-[29vh] left-[49vw] transform -translate-x-1/2 z-10"
-    >
-      <img src="contactbird.png" alt="Angel Artwork" class="w-auto h-[30vh]" />
-    </div>
-
-    <!-- mobile -->
-    <div class="bgcream nodes relative min-h-screen flex"></div>
-
-    <div class="nodes contentamb flex h-max">
-      <!-- Left Content: Address and Contact Info -->
-      <div class="left-content">
-        <div class="address text-left flex">
-          <!-- <div>
-            <p class="italic underline">Address</p>
-            <p class="w-[58%]">10 Cromwell Road, Hove East</p>
-          </div> -->
-          <Richtext
-            class="richcontt adsizemb w-[34%]"
-            :blocks="contact.address"
-          ></Richtext>
-          <div class="">
-            <div class="contact text-left">
-              <!-- <p class="italic underline">Contact</p>
-              <div class="w-[23vw]">
-                <p>Natalya Zelentsova</p>
-                <p>+39 347 6999121</p>
-              </div> -->
-              <Richtext
-                class="richcontt adsizemb w-[23vw] ml-[7vw]"
-                :blocks="contact.contact"
-              ></Richtext>
-            </div>
-            <!-- <p>
-              For more comprehensive conversation with one of our expert
-              advisors, please fill in the form opposite and we will contact you
-              asap. Pallazo Eventi Consultant Team.
-            </p> -->
-          </div>
-        </div>
-        <div class="flex contamb">
-          <div class="contact flex text-left mt-[2vh]">
-            <!-- <div class="w-[31vw]"> -->
-            <!-- Instagram SVG Icon -->
-
-            <!-- </div> -->
-            <div class="email ml-[4vw] text-left">
-              <!-- <p class="italic underline">Email</p>
-              <div class="w-max">
-                <p>natalya@palazzoeventi.com</p>
-              </div> -->
-              <Richtext
-                v-if="contact.email"
-                class="richcontt adsizemb"
-                :blocks="contact.email"
-              ></Richtext>
-              <!-- <Richtext
-              v-if="contact.vemail"
-                class="richcontt adsizemb"
-                :blocks="contact.vemail"
-              ></Richtext> -->
-            </div>
-
-            <div class="email ml-[4vw] text-left">
-              <!-- <p class="italic underline">Email</p>
-              <div class="w-max">
-                <p>natalya@palazzoeventi.com</p>
-              </div> -->
-              <!-- <Richtext
-                   v-if="contact.email"
-                class="richcontt adsizemb"
-                :blocks="contact.email"
-              ></Richtext> -->
-              <Richtext
-                v-if="contact.vemail"
-                class="richcontt adsizemb"
-                :blocks="contact.vemail"
-              ></Richtext>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex ml-[4vw]">
-          <div v-for="social in contact.socialMedia" class="flex">
-            <div
-              v-if="social.show"
-              class="social-icons contamb contact flex text-left mt-[2vh]"
-            >
-              <a
-                v-if="social.show"
-                :key="social.platform"
-                :href="social.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link mr-4"
-              >
-                <img
-                  :src="social.icon"
-                  :alt="`${social.platform} Icon`"
-                  class="social-icon instagram-icon"
-                />
-                <!-- <span v-else>{{ social.platform }}</span> -->
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="ml-[8.2vw]">
-          <Richtext
-            class="w-[84vw] pt-[2vh] mbcontexx"
-            :blocks="contact.address2"
-          ></Richtext>
-        </div>
-
-        <!-- <img
-          src="bird.png"
-          class="p-[10vw]"
-          alt="Cherubs"
-        /> -->
-        <div class="butcon">
-          <a href="./getintouch"
-          class="bttn"
+          <form
+            action="https://formspree.io/f/xwpkkljw"
+            method="POST"
+            class="contact-form pb-[5vh] w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
           >
-          Get in touch
-        </a>
+            <input
+              class="col-span-1"
+              type="text"
+              name="name"
+              placeholder="Full Name *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="date"
+              placeholder="Date of Celebration *"
+              required
+              min="2024-01-01"
+              max="3030-12-31"
+            />
+            <input
+              class="col-span-1"
+              type="number"
+              name="telephone"
+              placeholder="Telephone *"
+              required
+              pattern="[0-9]{10,15}"
+              inputmode="numeric"
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="days"
+              placeholder="No. of Days of Celebration *"
+            />
+            <input
+              class="col-span-1"
+              type="email"
+              name="email"
+              placeholder="Email *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="number"
+              name="guests"
+              placeholder="No. of Guests *"
+              required
+              min="0"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="info"
+              placeholder="Additional info *"
+            />
+            <input
+              class="col-span-1"
+              type="number"
+              name="budget"
+              placeholder="Estimated Budget *"
+              required
+              min="0"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
+
+            <div class="flex justify-center mt-[4vw]">
+              <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
+                <img src="sendb.png" alt="Send" class="w-auto h-auto" />
+              </button>
+            </div>
+          </form>
         </div>
-
-        <img src="contactbird.png" class="p-[10vw] w-[100%]" alt="Cherubs" />
-      </div>
-
-     
-     
-    </div>
   </div>
+
 </template>
 
 <script>
@@ -333,9 +116,9 @@ export default {
   data() {
     return {
       isSectionVisible: false,
-      defaultImage: "sendb.png",
-      hoverImage: "sendb.png",
-      currentImage: "sendb.png",
+      defaultImage: "send.png",
+      hoverImage: "sendh.png",
+      currentImage: "send.png",
       isBouncing: false,
       isOpen: false,
       lottieInstance: null,
@@ -482,6 +265,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 input[type="date"] {
   display: block; /* Ensure it's set to block or inline-block */
@@ -617,6 +401,9 @@ input[type="date"] {
   background-color: #e6e5e4;
   font-size: 5vw;
   font-family: "GT-Bold";
+}
+
+.bttn a{
   color: black;
   text-align: center;
 }
@@ -637,10 +424,6 @@ input[type="date"] {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-}
-
-.bttn:hover{
-  text-decoration: none;
 }
 
 .pagbg {
@@ -677,7 +460,6 @@ input[type="date"] {
   border-bottom: 0.5px solid #a29585;
   padding: 0.1vw;
   background-color: #ffffff00;
-  background-color: #bcc2cb;
   width: 17vw;
   min-width: max-content;
   text-transform: uppercase;
@@ -863,6 +645,7 @@ input::placeholder {
     transition: top 0.5s ease-in-out;
     top: 0vh;
     top: 5vh;
+    top: 0vh;
     /* top: calc(50% - 100px); */
     /* top: auto; */
     /* margin-top: 30vh; */
@@ -888,6 +671,9 @@ input::placeholder {
     top: 122vw;
     top: 110vw;
     top: 59vh;
+    top: 0vh;
+    justify-content: flex-start;
+    justify-content: center;
   }
 
   @keyframes bounce {
@@ -936,7 +722,7 @@ input::placeholder {
     /* top: 88vh; */
     height: max-content;
     /* top: 100vh; */
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
   }
 
   .contentamb {

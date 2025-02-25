@@ -555,7 +555,7 @@ export default {
             renderer: "svg",
             loop: false,
             autoplay: false,
-            path: "/animations/plus.json",
+            path: "/animations/plus2.json",
           });
         }
       });
@@ -715,6 +715,8 @@ export default {
 .all{
   height: 95vh !important;
 }
+
+
 
 .locdesk{
   height: 4vh;
