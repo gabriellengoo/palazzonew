@@ -305,7 +305,6 @@ export default {
 
 
 
-
 .butcon {
   display: flex;
   width: 100%;
@@ -635,6 +634,11 @@ a:hover {
   opacity: 0;
 }
 
+.bttn.active {
+  background-color: #96a6bf; /* Change this to your preferred blue color */
+  transition: background-color 0.3s ease-in-out;
+}
+
 @media only screen and (max-width: 768px) {
   .bttn.active {
   background-color: #96a6bf; /* Change this to your preferred blue color */
@@ -669,11 +673,11 @@ a:hover {
     border: 0.05vw solid rgba(0, 0, 0, 0);
     border-top: 0.05vw solid black;
     border-radius: 0%;
-    background-image: url("./static/LeftBG.png");
+    /* background-image: url("./static/LeftBG.png");
     background-size: cover;
     background-position: 0 0;
     background-position: initial;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
   }
 
   .a1 {
