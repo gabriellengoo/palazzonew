@@ -88,14 +88,13 @@
         <div
           class="right-content pt-[55vh] nodesdots flex-col overflow-y-scroll flex-1 p-8 flex justify-center items-center"
         >
-        <div class="pt-[35vw]">   </div>
+          <div class="pt-[35vw]"></div>
 
-        <div class="a2">
+          <div class="a2">
             <div class="contentmb">
               <img class="logo" src="/I.png" />
-              <div class=" text-left">
+              <div class="text-left">
                 <Richtext class="textcon2" :blocks="about.moni"></Richtext>
-             
               </div>
               <div class="arrowmb"><SvgBack /></div>
             </div>
@@ -106,30 +105,26 @@
           <div class="mb-[3vh] a1">
             <div class="contentmb">
               <img class="logo" src="/J.png" />
-              <div class=" text-left">
+              <div class="text-left">
                 <Richtext class="textcon1" :blocks="about.about"></Richtext>
-                
               </div>
               <div class="arrowmb"><SvgBack /></div>
             </div>
           </div>
 
-       
-
-          <div class="pb-[5vh]">   </div>
+          <div class="pb-[5vh]"></div>
         </div>
       </div>
     </div>
 
-
-
- 
-
     <!-- Awards Button -->
     <div class="butcon">
-      <button class="bttn" @click="toggleAwards">
-        {{ isAwardsOpen ? "About" : "Awards" }}
-      </button>
+      <button 
+  :class="['bttn', { 'active': isAwardsOpen }]" 
+  @click="toggleAwards">
+  {{ isAwardsOpen ? "About" : "Awards" }}
+</button>
+
     </div>
 
     <!-- Awards Content -->
@@ -142,15 +137,13 @@
         <div class="left-contentaw flex-1 overflow-y-scroll p-8">
           <div class="content gridcontentaw">
             <div>
-  <SkeletonLoader />
-   <!-- loadding -->
-</div>
-<!-- <div v-if="isAwardsOpen && showGridaw" > -->
-<div >
-  <Gridaw class="" :items="gridaw.grid6" size="small"></Gridaw>
-</div>
-
-
+              <SkeletonLoader />
+              <!-- loadding -->
+            </div>
+            <!-- <div v-if="isAwardsOpen && showGridaw" > -->
+            <div>
+              <Gridaw class="" :items="gridaw.grid6" size="small"></Gridaw>
+            </div>
           </div>
         </div>
 
@@ -191,7 +184,6 @@ export default {
     };
   },
 
-
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "about"]{
     title,
@@ -211,27 +203,25 @@ export default {
   },
 
   mounted() {
-  // Start loading the content immediately on mount
-  // setTimeout(() => {
-  //   this.showGridaw = true; // Load Grid in the background
-  // }, 1500); // Delay before it gets ready
-},
-
+    // Start loading the content immediately on mount
+    // setTimeout(() => {
+    //   this.showGridaw = true; // Load Grid in the background
+    // }, 1500); // Delay before it gets ready
+  },
 
   methods: {
     ...mapMutations(["toggleMenu", "setMenuState"]),
 
     toggleAwards() {
-    if (!this.isAwardsOpen) {
-      // Only start the delay when opening the awards section
-      this.showGridaw = false; // Reset visibility
-      setTimeout(() => {
-        this.showGridaw = true;
-      }, 1500); // Delay starts when opening
-    }
-    this.isAwardsOpen = !this.isAwardsOpen;
-  },
-
+      if (!this.isAwardsOpen) {
+        // Only start the delay when opening the awards section
+        this.showGridaw = false; // Reset visibility
+        setTimeout(() => {
+          this.showGridaw = true;
+        }, 1500); // Delay starts when opening
+      }
+      this.isAwardsOpen = !this.isAwardsOpen;
+    },
   },
 
   computed: {
@@ -245,7 +235,6 @@ export default {
 </script>
 
 <style scoped>
-
 .fade-in {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
@@ -277,8 +266,6 @@ export default {
   transition: transform 0.7s ease-in-out;
   z-index: 20;
 }
-
-
 
 /* Button styling */
 .butcon {
@@ -315,6 +302,9 @@ export default {
   transition-duration: background-color 0.8s ease;
   /* color: #ccc; */
 }
+
+
+
 
 .butcon {
   display: flex;
@@ -646,6 +636,12 @@ a:hover {
 }
 
 @media only screen and (max-width: 768px) {
+  .bttn.active {
+  background-color: #96a6bf; /* Change this to your preferred blue color */
+  transition: background-color 0.3s ease-in-out;
+}
+
+
   .bttn {
     /* position: absolute;
     border-top: 0.05vw solid black;
@@ -743,22 +739,18 @@ a:hover {
     height: max-content;
   }
 
-
   .arrowmb {
     /* position: relative;
     left: 31vw;
     padding-top: 3vh;
     z-index: 1000; */
 
-
     position: relative;
-        top: -11vh;
-        padding: 6%;
-        z-index: 100;
-        transform: rotateZ(270deg);
+    top: -11vh;
+    padding: 6%;
+    z-index: 100;
+    transform: rotateZ(270deg);
   }
-
-
 
   .rightimgmb {
     width: 89vw;

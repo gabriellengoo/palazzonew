@@ -712,7 +712,9 @@ export default {
     padding-left: 0.85vw;
 }
 
-
+.all{
+  height: 95vh !important;
+}
 
 .locdesk{
   height: 4vh;

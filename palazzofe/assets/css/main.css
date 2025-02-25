@@ -798,6 +798,9 @@ a .inner-image {
 }
 
 @media only screen and (max-width: 768px) {
+  .image-grid{
+    width: 100vw;
+  }
 
   .mbfilm{
     width: 8vw;

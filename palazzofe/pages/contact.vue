@@ -531,7 +531,7 @@ formFields.forEach(field => {
       const rightContent = document.querySelector(".allrcont");
       if (rightContent && !this.isOpen) {
         rightContent.classList.add("slide-in");
-        this.lottieInstance.playSegments([11, 20], true); // Open animation
+        this.lottieInstance.playSegments([0, 11], true); // Open animation
         this.isOpen = true;
       }
     },
@@ -540,7 +540,7 @@ formFields.forEach(field => {
       const rightContent = document.querySelector(".allrcont");
       if (rightContent && this.isOpen) {
         rightContent.classList.remove("slide-in");
-        this.lottieInstance.playSegments([0, 11], true); // Close animation
+        this.lottieInstance.playSegments([11, 20], true); // Close animation
         this.isOpen = false;
       }
     },
@@ -801,7 +801,7 @@ input::placeholder {
 }
 
   .instagram-icon {
-    width: 5vw;
+    width: 6vw;
     height: auto;
   }
 
@@ -912,7 +912,7 @@ input::placeholder {
     /* Animates it up */
     transition: top 0.5s ease-in-out;
     top: 0vh;
-    top:100vw;
+    top:5vh;
     /* top: calc(50% - 100px); */
     /* top: auto; */
     /* margin-top: 30vh; */
@@ -933,11 +933,11 @@ input::placeholder {
     border-top: 0.05vw solid black;
     box-shadow: none;
     transition: top 0.5s ease-in-out;
-    height: 100vh;
+    height: 100vh !important;
     top: 57vh;
     top:122vw;
     top:110vw;
-    top: 0vh;
+    top:59vh;
   }
 
   @keyframes bounce {
@@ -958,16 +958,17 @@ input::placeholder {
 
   .right-content {
     position: absolute;
-    top: 0vh;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    align-items: flex-end;
-    height: 100vh;
-    width: 100vw;
-    align-content: flex-end;
-    flex-direction: column;
-    justify-content: flex-end;
+        top: 96vh;
+        transition: all 0.3sease;
+        cursor: pointer;
+        display: flex
+;
+        align-items: flex-end;
+        height: 0;
+        width: 100vw;
+        align-content: flex-end;
+        flex-direction: column;
+        justify-content: flex-end;
   }
 
   .bounce-on-load {

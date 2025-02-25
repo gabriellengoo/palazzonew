@@ -108,7 +108,7 @@
                             class="flex flex-col normal-case italic loctextlink"
                           >
                             <Richtext
-                              class="contactinner teamemail"
+                              class="contactinner teamemail teamemails"
                               :blocks="item.content4"
                             />
                           </div>
@@ -272,7 +272,7 @@
                                 class="flex flex-col normal-case italic loctextlink"
                               >
                                 <Richtext
-                                  class="contactinner teamemail underimglay1 "
+                                  class="contactinner teamemail teamemails "
                                   :blocks="item.content4"
                                 />
                               </div>

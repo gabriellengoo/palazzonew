@@ -71,11 +71,20 @@ a:hover {
 /* a {
     position: relative;
 } */
+
+.teamemails p a{
+  font-size: 1.5vw !important;
+}
+
 @media only screen and (max-width: 768px) {
   .underimglay1 p a{
   font-size: 2.5vw !important;
   /* font-family: 'RomainHeadlineTrial'; */
   font-family: 'GT-Sectra-Book-Italic';
+}
+
+.teamemails p a{
+  font-size: 3.5vw !important;
 }
 
 .underimglay2 div p:nth-child(1){
