@@ -281,9 +281,40 @@
                           <p v-if="item" class="uppercase biotitle">
                             {{ item.title || "Name" }}
                           </p>
-                          <p v-if="item" class="yeartdesk mb-6 capitalize">
+                          <p v-if="!item.filmtitle" class="yeartdesk mb-6 capitalize">
                             {{ item.year || "Title" }}
                           </p>
+                          <button v-if="item.filmtitle" class="filmlink" @click="openIframe(item.film)">
+                          <div
+                        class="w-full flex items-center  text-center md:pt-5 "
+                      @mouseover="isHovered = true"
+                      @mouseleave="isHovered = false"
+                    >
+                    <p
+                        :class="{
+                          ' opacity-40 transition-all duration-300 ease-out':
+                            isHovered,
+                          'opacity-100 transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="loctext"
+                      >
+                        Play Film 
+                      </p>
+                      <img
+                        src="/playf.png"
+                        alt="play Image"
+                        :class="{
+                          'scale-110 transition-transform duration-300 ease-out':
+                            isHovered,
+                          'w-[11vw] h-auto transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="w-[11vw] h-auto"
+                      />
+                   
+                    </div>
+                  </button>
                         </div>
 
                         <div v-if="item.content3" class="pt-[1vw] text-[1.3vw]">
@@ -300,36 +331,7 @@
                       
                           <!-- pop -->
                           <!-- <button class="flex flex-col normal-case italic loctextlink" @click="openIframe(item.film)">{{ item.filmtitle }}</button> -->
-                          <button class="filmlink" @click="openIframe(item.film)">
-                          <div
-                      class="w-full flex items-center text-center locationtext"
-                      @mouseover="isHovered = true"
-                      @mouseleave="isHovered = false"
-                    >
-                      <img
-                        src="/playf.png"
-                        alt="play Image"
-                        :class="{
-                          'scale-110 transition-transform duration-300 ease-out':
-                            isHovered,
-                          'w-[15vw] h-auto transition-all duration-300 ease-out':
-                            !isHovered,
-                        }"
-                        class="w-[15vw] h-auto"
-                      />
-                      <p
-                        :class="{
-                          ' opacity-40 transition-all duration-300 ease-out':
-                            isHovered,
-                          'opacity-100 transition-all duration-300 ease-out':
-                            !isHovered,
-                        }"
-                        class="loctext"
-                      >
-                        Play Film
-                      </p>
-                    </div>
-                  </button> 
+                       
 
                           <draggable-iframe
                               v-if="iframeVisible"
