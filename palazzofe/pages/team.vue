@@ -28,7 +28,16 @@
           >
             <!-- <p class="textsumf">{{ gridteam.filmtitle }}</p> -->
             <p class="loctext mbfilmtext">Play Film</p>
-            <img src="/playf.png" alt="play Image" class="w-[3vw] mbfilm h-auto" />
+            <img
+              src="/playf.png"
+              alt="play Image"
+              :class="{
+                'w-[3.5vw] transition-transform duration-300 ease-out': isHovered,
+                'w-[3vw] h-auto transition-all duration-300 ease-out':
+                  !isHovered,
+              }"
+              class="w mbfilm h-auto"
+            />
           </button>
         </div>
       </div>
@@ -45,7 +54,7 @@
             @click="closeIframe"
             class="clocon absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
           >
-            <SvgClose class=""/>
+            <SvgClose class="" />
             <!-- <svg
               class="close-btn"
               xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +147,7 @@
           class="iframe-content"
           frameborder="0"
         ></iframe>
-      </div> 
+      </div>
 
       <!-- Right Static Content -->
       <div class="right-content overflow-y-scroll flex-1 p-8">

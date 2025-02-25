@@ -617,8 +617,9 @@ export default {
   object-position: center;
   height: 68vh;
   /* height: 37vw ; */
-  padding: 1vw;
-  padding-top: 4vw;
+  padding: 0vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   overflow: hidden;
 }
 

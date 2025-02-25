@@ -988,6 +988,7 @@ html {
   .all{
     display: flex;
   flex-direction: column;
+  background-color: #e3e2e0;
   }
 
   .headbarc2 {

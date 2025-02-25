@@ -87,9 +87,40 @@
                           <p v-if="item" class="uppercase">
                             {{ item.title || "Name" }}
                           </p>
-                          <p v-if="item" class="yeartdesk mb-6 capitalize">
+                          <!-- <p v-if="item" class="yeartdesk mb-6 capitalize">
                             {{ item.year || "Title" }}
-                          </p>
+                          </p> -->
+                          <button v-if="item.filmtitle" class="filmlink" @click="openIframe(item.film)">
+                          <div
+                        class="w-full flex items-center  text-center md:pt-5 "
+                      @mouseover="isHovered = true"
+                      @mouseleave="isHovered = false"
+                    >
+                    <p
+                        :class="{
+                          ' opacity-40 transition-all duration-300 ease-out':
+                            isHovered,
+                          'opacity-100 transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="loctext"
+                      >
+                        Play Film 
+                      </p>
+                      <img
+                        src="/playf.png"
+                        alt="play Image"
+                        :class="{
+                          'scale-110 transition-transform duration-300 ease-out':
+                            isHovered,
+                          'w-[4vw] h-auto transition-all duration-300 ease-out':
+                            !isHovered,
+                        }"
+                        class="w-[4vw] h-auto"
+                      />
+                   
+                    </div>
+                  </button>
                         </div>
 
                         <div v-if="item.content3" class="pt-[1vw] text-[1.3vw]">
@@ -102,12 +133,8 @@
                           v-if="item.filmtitle"
                           class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]"
                         >
-                          <!-- <p class="loctext uppercase">Play Film</p> -->
-                      
-                          <!-- pop -->
-                          <!-- <button class="filmlink" @click="openIframe(item.film)">{{ item.filmtitle }}</button> -->
-                          
-                          <button class="filmlink" @click="openIframe(item.film)">
+                        
+                          <!-- <button class="filmlink" @click="openIframe(item.film)">
                           <div
                       class="w-full flex items-center text-center locationtext"
                       @mouseover="isHovered = true"
@@ -136,8 +163,10 @@
                         Play Film
                       </p>
                     </div>
-                  </button> 
-                          
+                  </button>  -->
+                  <p v-if="item" class="yeartdesk mb-6 capitalize">
+                            {{ item.year || "Title" }}
+                          </p>
                           <draggable-iframe
                               v-if="iframeVisible"
                               :iframeSrc="iframeUrl"
@@ -469,6 +498,14 @@ export default {
   left: 0;
 }
 
+.loctext {
+        line-height: normal;
+        font-size: smaller;
+        font-family: "GT-Bold";
+        text-transform: uppercase;
+        font-size: 3vw;
+    }
+
 .modal {
   z-index: 1000;
 }
@@ -537,6 +574,7 @@ export default {
   transition: opacity 0.5s ease; /* Transition for fade effect */
   pointer-events: none;
   /* width: 1.4vw; */
+  z-index: 10 !important;
 }
 
 .filmlink{
@@ -544,13 +582,15 @@ export default {
 }
 
 .sideim.fade-in {
-  transition: opacity 0.5s ease;
-  opacity: 1; 
+  transition:  0.5s ease;
+  opacity: 1; /* Fully visible when hovered */
+  z-index: 10 !important;
 }
 
 .sideim.fade-out {
-  transition: opacity 0.5s ease;
-  opacity: 0; 
+  transition: 0.5s ease;
+  opacity: 0; /* Fade out when not hovered */
+  z-index: 1 !important;
 }
 
 .sideim img {
@@ -600,7 +640,7 @@ export default {
 
 .loctext {
   font-family: "GT-Bold" !important;
-  font-size: 1.1vw !important;
+  font-size: 1.1vw;
 }
 
 .yeartdesk {
@@ -924,7 +964,7 @@ export default {
 
 .loctext {
     font-family: "GT-Bold" !important;
-    font-size: 3.5vw !important;
+    font-size: 3vw !important;
 }
 
 .ttdesk{

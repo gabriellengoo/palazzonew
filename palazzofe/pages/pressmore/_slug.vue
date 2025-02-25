@@ -197,7 +197,7 @@
                   ></Richtext>
                   <Richtext
                     v-if="section.layout12bodymb"
-                    class="contactinnerpressslug p-[.5vw] left-[4vw] relative pl-[4vw] w-[46vw] deskno "
+                    class="contactinnerpressslug p-[.5vw] left-[4vw] relative pl-[4vw] w-[46vw] deskno"
                     :blocks="section.layout12bodymb"
                   ></Richtext>
                   <div class="mblcol2lay1 deskno">
@@ -374,11 +374,11 @@
 
                   <div class="imgntextlay22 deskl2textflex p-[.5vw]">
                     <Richtext
-                        v-if="section.layout22bodymb"
-                        class=" deskno p-[.5vw] w-[100vw] imgntextlay22 aboveflower "
-                        :blocks="section.layout22bodymb"
-                      ></Richtext>
-                  
+                      v-if="section.layout22bodymb"
+                      class="deskno p-[.5vw] w-[100vw] imgntextlay22 aboveflower"
+                      :blocks="section.layout22bodymb"
+                    ></Richtext>
+
                     <div class="mbflex flowerimgcon">
                       <img
                         class="imgntextlay22 floimg p-[.5vw] mblay2imgsize"
@@ -442,9 +442,9 @@
                 <div
                   class="deskno contactinnerpressslug imgntextlay22 deskl2textflex p-[.5vw]"
                 >
-                  <div class="flex h-[70%] ">
+                  <div class="flex h-[70%]">
                     <img
-                      class=" object-cover"
+                      class="object-cover"
                       :src="section.layout2Column5Image"
                       v-if="section.layout2Column5Image"
                       alt="Main Image"
@@ -770,7 +770,7 @@
             </div>
 
             <!-- Layout 5 -->
-            <div class="layout layout-5 " v-if="section.layout5 === true">
+            <div class="layout layout-5" v-if="section.layout5 === true">
               <div
                 class="deskno column layout-5-col-1 w-[30vw] lastcollay5 pop-in pop-in-4"
               >
@@ -841,7 +841,6 @@
                   class="contactinnerpressslug p-[.5vw] pop-in pop-in-3 pt-[0]"
                   :blocks="section.layout5bbodymb"
                 ></Richtext>
-
 
                 <div class="flex pb-[15vw] pt-[5vw]">
                   <img
@@ -951,7 +950,10 @@
             </div>
 
             <!-- Layout 6 -->
-            <div class="layout layout-5 layout-5mbv" v-if="section.layout6 === true">
+            <div
+              class="layout layout-5 layout-5mbv"
+              v-if="section.layout6 === true"
+            >
               <div
                 class="mbnob column layout-5-col-1 w-[30vw] mblay6colsize pop-in pop-in-4"
               >
@@ -981,7 +983,7 @@
                 ></Richtext>
                 <div class="imglay1cont">
                   <img
-                    class="p-[.5vw]  lay6imsizembv"
+                    class="p-[.5vw] lay6imsizembv"
                     :src="section.layout6logo"
                     v-if="section.layout6logo"
                     alt="Main Image"
@@ -992,10 +994,7 @@
                   class="contactinnerpressslug mbfullwidth pb-[.5vw] pt-[3vw] imtitle2 colmb pop-in pop-in-4"
                   :blocks="section.layout6col3sub"
                 ></Richtext>
-               
               </div>
-
-             
 
               <div class="column deskno col-2 pop-in pop-in-2 w-[57vw]">
                 <img
@@ -1029,7 +1028,7 @@
               </div>
 
               <div class="column deskno col-3 pop-in pop-in-3">
-                <div class="flex mblay6col5padone pt-[1vw] ">
+                <div class="flex mblay6col5padone pt-[1vw]">
                   <Richtext
                     v-if="section.layout6col6bodymb"
                     class="contactinnerpressslug pop-in pop-in-1 pt-[0]"
@@ -1037,7 +1036,7 @@
                   ></Richtext>
                 </div>
 
-                <div class="flex justify-between ">
+                <div class="flex justify-between">
                   <img
                     class="pb-[1vw] w-[47.5%]"
                     :src="section.layout6Imagesp"
@@ -1216,14 +1215,16 @@
 
       <div class="butcon">
         <button
-          @click="handleButtonClick"
-          @mousemove="updateCursorStyle"
-          @mouseleave="resetCursorStyle"
-          :class="['next-button', buttonCursorClass]"
-        >
-          {{ currentLayoutIndex + 1 }} / {{ totalLayouts }}
-        </button>
+  @click="handleButtonClick"
+  @mousemove="updateCursorStyle"
+  @mouseleave="resetCursorStyle"
+  :class="['bttn', 'next-button', buttonCursorClass, { 'active': isButtonActive }]"
+>
+  {{ currentLayoutIndex + 1 }} / {{ totalLayouts }}
+</button>
+
       </div>
+
       <!-- <button
         @click="handleButtonClick"
         @mousemove="updateCursorStyle"
@@ -1395,6 +1396,8 @@ export default {
       currentLayoutIndex: 0,
       buttonCursorClass: "cursor-default",
       currentLayoutIndex: 0,
+      isButtonActive: false, // Add this
+      currentLayoutIndex: 0,
       // totalLayouts: '3'
     };
   },
@@ -1436,26 +1439,29 @@ export default {
       }
     },
 
+    
     handleButtonClick(event) {
-      const buttonWidth = event.currentTarget.offsetWidth;
-      const clickPosition = event.offsetX;
+    const buttonWidth = event.currentTarget.offsetWidth;
+    const clickPosition = event.offsetX;
 
-      if (clickPosition < buttonWidth / 2) {
-        this.prevLayout();
-      } else {
-        this.nextLayout();
-      }
-    },
-    prevLayout() {
-      if (this.currentLayoutIndex > 0) {
-        this.currentLayoutIndex--;
-      }
-    },
-    nextLayout() {
-      if (this.currentLayoutIndex < this.totalLayouts - 1) {
-        this.currentLayoutIndex++;
-      }
-    },
+    this.isButtonActive = !this.isButtonActive; // Toggle class on click
+
+    if (clickPosition < buttonWidth / 2) {
+      this.prevLayout();
+    } else {
+      this.nextLayout();
+    }
+  },
+  prevLayout() {
+    if (this.currentLayoutIndex > 0) {
+      this.currentLayoutIndex--;
+    }
+  },
+  nextLayout() {
+    if (this.currentLayoutIndex < this.totalLayouts - 1) {
+      this.currentLayoutIndex++;
+    }
+  },
     updateCursorStyle(event) {
       const buttonWidth = event.currentTarget.offsetWidth;
       this.buttonCursorClass =
@@ -1685,6 +1691,10 @@ export default {
   cursor: default; /* Default cursor */
 }
 
+.next-button.active {
+  background-color: #bcc2cb;
+}
+
 .next-button.cursor-left {
   cursor: w-resize; /* Left arrow cursor */
   cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
@@ -1708,6 +1718,10 @@ export default {
   background-repeat: no-repeat; */
   transition: background-color 0.8s ease;
   background-color: #e6e5e4;
+  padding-bottom: 4vw;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+  padding-top: 3.5vw;
 }
 
 .next-button:hover {
@@ -2387,24 +2401,24 @@ opacity: 0;
   width: auto;
 }
 
-.desknob{
-display: none;
+.desknob {
+  display: none;
 }
 /* Additional responsive styling */
 @media (max-width: 768px) {
-  .desknob{
-display: block;
+  .desknob {
+    display: block;
   }
 
-  .lay6imsizembv{
-object-fit: contain;
-height: auto;
-        width: auto;
-        padding-top: 4vw;
-        padding-bottom: 4vw;
+  .lay6imsizembv {
+    object-fit: contain;
+    height: auto;
+    width: auto;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
   }
 
-  .layout-5mbv{
+  .layout-5mbv {
     padding-top: 4vh !important;
     column-gap: 3.5vw !important;
   }
@@ -2441,19 +2455,13 @@ height: auto;
     display: none;
   }
 
-  /* .next-button {
-    padding: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: fixed;
-    bottom: 3.5vh;
-    width: 95%;
-    text-transform: uppercase;
-    font-family: "GT-Sectra-Book";
-    font-family: "NHaas" !important;
-    transition: color 0.8s ease;
-    color: black  !important;
-  } */
+  .next-button {
+    padding-bottom: 4vw !important;
+    padding-bottom: 4vw !important;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    padding-top: 3.5vw;
+  }
 
   .biglay4 {
     font-size: 9.5vw;
@@ -2636,17 +2644,17 @@ height: auto;
   }
 
   .next-button {
-    padding: 2.5vw;
+    /* padding: 2.5vw; */
     font-size: 3vw;
     width: 100%;
     border: 0.05vw solid rgba(0, 0, 0, 0);
     border-top: 0.05vw solid black;
     border-radius: 0%;
-    background-image: url("./static/LeftBG.png");
+    /* background-image: url("./static/LeftBG.png");
     background-size: cover;
     background-position: 0 0;
     background-position: initial;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
   }
 
   .top-right-element {
@@ -2894,7 +2902,5 @@ height: auto;
     padding-bottom: 4vw;
     padding-left: 0vw;
   }
-
-
 }
 </style>

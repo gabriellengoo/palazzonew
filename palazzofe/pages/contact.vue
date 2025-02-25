@@ -311,7 +311,9 @@
         </a>
         </div>
 
-        <img src="contactbird.png" class="p-[10vw] w-[100%]" alt="Cherubs" />
+        <div class="flex justify-center w-full ">
+          <img src="contactbird.png" class="p-[10vw] pt-[5vw] w-[95%]" alt="Cherubs" />
+        </div>
       </div>
 
      
@@ -334,7 +336,7 @@ export default {
     return {
       isSectionVisible: false,
       defaultImage: "sendb.png",
-      hoverImage: "sendb.png",
+      hoverImage: "sendh.png",
       currentImage: "sendb.png",
       isBouncing: false,
       isOpen: false,
@@ -489,7 +491,8 @@ input[type="date"] {
 }
 
 .contact-form {
-  opacity: 0.4;
+  /* opacity: 0.4; */
+  opacity: 1;
   transition: opacity 0.5s ease; /* Smooth transition */
 }
 
@@ -591,7 +594,8 @@ input[type="date"] {
   width: 100%;
   justify-content: center;
   /* position: absolute; */
-  padding: 8vw;
+  /* padding: 8vw; */
+  padding-top: 8vw;
     /* padding-top: 11vh; */
     padding-bottom: 0vh;
 }
@@ -615,6 +619,7 @@ input[type="date"] {
   transition-duration: color 0.8s ease;
   background-color: #e6e5e4;
   background-color: #e6e5e4;
+  border: solid black .05vw;
   font-size: 5vw;
   font-family: "GT-Bold";
   color: black;
@@ -675,12 +680,16 @@ input[type="date"] {
 
 .contact-form input {
   border-bottom: 0.5px solid #a29585;
-  padding: 0.1vw;
-  background-color: #ffffff00;
-  background-color: #bcc2cb;
-  width: 17vw;
-  min-width: max-content;
-  text-transform: uppercase;
+    padding: 0.3vw;
+    padding-top: .4vw;
+    background-color: rgba(255, 255, 255, 0);
+    background-color: #bcc2cb;
+    width: 17vw;
+    display: flex;
+    min-width: -moz-max-content;
+    min-width: max-content;
+    text-transform: uppercase;
+    align-items: center;
 }
 
 .contact-form input:focus {

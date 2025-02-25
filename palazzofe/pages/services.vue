@@ -1373,9 +1373,10 @@ a {
     height: max-content;
     /* height: 52.2vh; */
     /* background-image: url(/_nuxt/static/LeftBG.png); */
-    background-image: url("./static/LeftBG.png");
+    /* background-image: url("./static/LeftBG.png");
     background-size: cover;
-    background-position: center;
+    background-position: center; */
+    background-color: #e3e2e0;
     /* background-size: auto auto; */
     /* background-size: initial; */
     background-repeat: no-repeat;
