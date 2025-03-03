@@ -364,52 +364,63 @@ export default {
 
     return { contact };
   },
-  mounted() {
-    const contactForm = this.$el.querySelector(".contact-form");
+mounted() {
+  const contactForm = this.$el.querySelector(".contact-form");
 
-    // Function to set opacity to 1
-    const setOpacityToFull = () => {
-      contactForm.style.opacity = 1;
+  // Function to set opacity to 1
+  const setOpacityToFull = () => {
+    contactForm.style.opacity = 1;
+  };
+
+  // Change opacity to 1 when the form is clicked
+  contactForm.addEventListener("click", (event) => {
+    setOpacityToFull();
+    event.stopPropagation(); // Prevent event bubbling
+  });
+
+  // Select all form fields
+  const formFields = contactForm.querySelectorAll("input, textarea, select, button");
+
+  formFields.forEach((field) => {
+    const originalPlaceholder = field.placeholder; // Store original placeholder
+
+    // Remove placeholder on focus (desktop) and touchstart (mobile)
+    const removePlaceholder = () => {
+      setOpacityToFull();
+      field.placeholder = ""; 
     };
 
-    // Change opacity to 1 when clicked
-    contactForm.addEventListener("click", (event) => {
-      setOpacityToFull();
-      event.stopPropagation(); // Prevent event bubbling
-    });
+    field.addEventListener("focus", removePlaceholder);
+    field.addEventListener("touchstart", removePlaceholder);
 
-    // Change opacity to 1 when any input is focused
-    const formFields = contactForm.querySelectorAll(
-      "input, textarea, select, button"
-    );
-    formFields.forEach((field) => {
-      field.addEventListener("focus", setOpacityToFull);
-      field.addEventListener("touchend", (event) => {
-        setOpacityToFull();
-        event.preventDefault(); // Prevent default behavior
-      });
+    // Restore placeholder when focus is lost
+    field.addEventListener("blur", () => {
+      field.placeholder = originalPlaceholder;
     });
-    // Delay the start of the bounce animation by 3 seconds
+  });
+
+  // Delay the start of the bounce animation by 3 seconds
+  setTimeout(() => {
+    this.isBouncing = true;
+
+    // Optional: Remove the bounce class after animation completes
     setTimeout(() => {
-      this.isBouncing = true;
+      this.isBouncing = false;
+    }, 8000);
+  }, 4000);
 
-      // Optional: Remove the bounce class after animation completes (1s duration)
-      setTimeout(() => {
-        this.isBouncing = false;
-      }, 8000); // Duration of the bounce animation (1s)
-    }, 4000); // 3 second delay before starting the bounce
+  console.log("Lottie Container:", this.$refs.lottieAnimation);
+  console.log("Lottie animation initialized:", this.lottieInstance);
 
-    console.log("Lottie Container:", this.$refs.lottieAnimation);
-    console.log("Lottie animation initialized:", this.lottieInstance);
-
-    this.lottieInstance = lottie.loadAnimation({
-      container: this.$refs.lottieAnimation, // the DOM element
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: "/animations/plus.json", // your Lottie animation JSON file path
-    });
-  },
+  // Initialize Lottie animation
+  this.lottieInstance = lottie.loadAnimation({
+    container: this.$refs.lottieAnimation, 
+    renderer: "svg",
+    loop: false,
+    autoplay: false,
+    path: "/animations/plus.json", 
+  });
+},
 
   beforeDestroy() {
     // Clean up the event listener when the component is destroyed
