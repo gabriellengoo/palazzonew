@@ -24,81 +24,32 @@
             </h1>
           </div>
 
-          <form
-            action="https://formspree.io/f/xyzkrlga"
-            method="POST"
-            v-if="!isSubmitted" @submit.prevent="submitForm"
-            class="contact-form pb-[5vh] w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
-          >
-            <input
-              class="col-span-1"
-              type="text"
-              name="name"
-              placeholder="Full Name *"
-              required
-            />
-            <input
-              class="col-span-1"
-              type="text"
-              name="date"
-              placeholder="Date of Celebration *"
-              required
-              min="2024-01-01"
-              max="3030-12-31"
-            />
-            <input
-              class="col-span-1"
-              type="number"
-              name="telephone"
-              placeholder="Telephone *"
-              required
-              pattern="[0-9]{10,15}"
-              inputmode="numeric"
-            />
-            <input
-              class="col-span-1"
-              type="text"
-              name="days"
-              placeholder="No. of Days of Celebration *"
-            />
-            <input
-              class="col-span-1"
-              type="email"
-              name="email"
-              placeholder="Email *"
-              required
-            />
-            <input
-              class="col-span-1"
-              type="number"
-              name="guests"
-              placeholder="No. of Guests *"
-              required
-              min="0"
-              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-            />
-            <input
-              class="col-span-1"
-              type="text"
-              name="info"
-              placeholder="Additional info *"
-            />
-            <input
-              class="col-span-1"
-              type="number"
-              name="budget"
-              placeholder="Estimated Budget *"
-              required
-              min="0"
-              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-            />
+         <form
+  v-if="!isSubmitted"
+  @submit.prevent="submitForm"
+  class="contact-form pb-[5vh] w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
+>
+  <input type="text" name="name" placeholder="Full Name *" required />
+  <input type="text" name="date" placeholder="Date of Celebration *" required />
+  <input type="number" name="telephone" placeholder="Telephone *" required />
+  <input type="text" name="days" placeholder="No. of Days of Celebration *" />
+  <input type="email" name="email" placeholder="Email *" required />
+  <input type="number" name="guests" placeholder="No. of Guests *" required />
+  <input type="text" name="info" placeholder="Additional info *" />
+  <input type="number" name="budget" placeholder="Estimated Budget *" required />
 
-            <div class="flex justify-center mt-[4vw]">
-              <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
-                <img src="sendb.png" alt="Send" class="w-auto h-auto" />
-              </button>
-            </div>
-          </form>
+  <div class="flex justify-center mt-[4vw]">
+    <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
+      <img src="sendb.png" alt="Send" class="w-auto h-auto" />
+    </button>
+  </div>
+</form>
+
+<!-- Thank you message -->
+<div v-else class="thank-you-message text-center text-xl mt-6">
+  <p>Thank you for your submission! <br />Palazzo will be in contact soon!</p>
+</div>
+
 
             <div v-else class="thank-you-message">
       <p>Thank you for your submission! <br />Palazzo will be in contact soon!</p>
@@ -127,6 +78,7 @@ export default {
       isBouncing: false,
       isOpen: false,
       lottieInstance: null,
+      isSubmitted: false,
     };
   },
 
@@ -200,6 +152,26 @@ mounted() {
   },
 
   methods: {
+     async submitForm(event) {
+    const form = event.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xyzkrlga", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        this.isSubmitted = true; // Show thank-you message
+      } else {
+        console.error("Form submission failed.");
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+    }
+  },
     hoverImage() {
       this.currentImage = this.hoverImage; // Change to hover image on mouseover
     },
