@@ -24,97 +24,80 @@
             </h1>
           </div>
 
-    <form
-  action="https://formspree.io/f/xwpkkljw"
-  method="POST"
-  class="contact-form pb-[5vh] w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
->
-  <input
-    class="col-span-1"
-    type="text"
-    name="name"
-    :placeholder="namePlaceholder"
-    required
-    @focus="namePlaceholder = ''"
-    @blur="namePlaceholder = 'Full Name *'"
-  />
-  <input
-    class="col-span-1"
-    type="text"
-    name="date"
-    :placeholder="datePlaceholder"
-    required
-    min="2024-01-01"
-    max="3030-12-31"
-    @focus="datePlaceholder = ''"
-    @blur="datePlaceholder = 'Date of Celebration *'"
-  />
-  <input
-    class="col-span-1"
-    type="number"
-    name="telephone"
-    :placeholder="telephonePlaceholder"
-    required
-    pattern="[0-9]{10,15}"
-    inputmode="numeric"
-    @focus="telephonePlaceholder = ''"
-    @blur="telephonePlaceholder = 'Telephone *'"
-  />
-  <input
-    class="col-span-1"
-    type="text"
-    name="days"
-    :placeholder="daysPlaceholder"
-    @focus="daysPlaceholder = ''"
-    @blur="daysPlaceholder = 'No. of Days of Celebration *'"
-  />
-  <input
-    class="col-span-1"
-    type="email"
-    name="email"
-    :placeholder="emailPlaceholder"
-    required
-    @focus="emailPlaceholder = ''"
-    @blur="emailPlaceholder = 'Email *'"
-  />
-  <input
-    class="col-span-1"
-    type="number"
-    name="guests"
-    :placeholder="guestsPlaceholder"
-    required
-    min="0"
-    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-    @focus="guestsPlaceholder = ''"
-    @blur="guestsPlaceholder = 'No. of Guests *'"
-  />
-  <input
-    class="col-span-1"
-    type="text"
-    name="info"
-    :placeholder="infoPlaceholder"
-    @focus="infoPlaceholder = ''"
-    @blur="infoPlaceholder = 'Additional info *'"
-  />
-  <input
-    class="col-span-1"
-    type="number"
-    name="budget"
-    :placeholder="budgetPlaceholder"
-    required
-    min="0"
-    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-    @focus="budgetPlaceholder = ''"
-    @blur="budgetPlaceholder = 'Estimated Budget *'"
-  />
+          <form
+            action="https://formspree.io/f/xwpkkljw"
+            method="POST"
+            class="contact-form pb-[5vh] w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
+          >
+            <input
+              class="col-span-1"
+              type="text"
+              name="name"
+              placeholder="Full Name *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="date"
+              placeholder="Date of Celebration *"
+              required
+              min="2024-01-01"
+              max="3030-12-31"
+            />
+            <input
+              class="col-span-1"
+              type="number"
+              name="telephone"
+              placeholder="Telephone *"
+              required
+              pattern="[0-9]{10,15}"
+              inputmode="numeric"
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="days"
+              placeholder="No. of Days of Celebration *"
+            />
+            <input
+              class="col-span-1"
+              type="email"
+              name="email"
+              placeholder="Email *"
+              required
+            />
+            <input
+              class="col-span-1"
+              type="number"
+              name="guests"
+              placeholder="No. of Guests *"
+              required
+              min="0"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
+            <input
+              class="col-span-1"
+              type="text"
+              name="info"
+              placeholder="Additional info *"
+            />
+            <input
+              class="col-span-1"
+              type="number"
+              name="budget"
+              placeholder="Estimated Budget *"
+              required
+              min="0"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
 
-  <div class="flex justify-center mt-[4vw]">
-    <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
-      <img src="sendb.png" alt="Send" class="w-auto h-auto" />
-    </button>
-  </div>
-</form>
-
+            <div class="flex justify-center mt-[4vw]">
+              <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
+                <img src="sendb.png" alt="Send" class="w-auto h-auto" />
+              </button>
+            </div>
+          </form>
         </div>
   </div>
 
@@ -162,52 +145,50 @@ export default {
 
     return { contact };
   },
-  mounted() {
-    const contactForm = this.$el.querySelector(".contact-form");
+mounted() {
+  const contactForm = this.$el.querySelector(".contact-form");
 
-    // Function to set opacity to 1
-    const setOpacityToFull = () => {
-      contactForm.style.opacity = 1;
-    };
+  const setOpacityToFull = () => {
+    contactForm.style.opacity = 1;
+  };
 
-    // Change opacity to 1 when clicked
-    contactForm.addEventListener("click", (event) => {
+  contactForm.addEventListener("click", (event) => {
+    setOpacityToFull();
+    event.stopPropagation();
+  });
+
+  const formFields = contactForm.querySelectorAll("input, textarea");
+
+  formFields.forEach((field) => {
+    const originalPlaceholder = field.placeholder; // Store the original placeholder
+
+    field.addEventListener("focus", () => {
       setOpacityToFull();
-      event.stopPropagation(); // Prevent event bubbling
+      field.placeholder = ""; // Remove placeholder on focus
     });
 
-    // Change opacity to 1 when any input is focused
-    const formFields = contactForm.querySelectorAll(
-      "input, textarea, select, button"
-    );
-    formFields.forEach((field) => {
-      field.addEventListener("focus", setOpacityToFull);
-      field.addEventListener("touchend", (event) => {
-        setOpacityToFull();
-        event.preventDefault(); // Prevent default behavior
-      });
+    field.addEventListener("touchstart", () => {
+      setOpacityToFull();
+      field.placeholder = ""; // Remove placeholder on touch
     });
-    // Delay the start of the bounce animation by 3 seconds
-    setTimeout(() => {
-      this.isBouncing = true;
 
-      // Optional: Remove the bounce class after animation completes (1s duration)
-      setTimeout(() => {
-        this.isBouncing = false;
-      }, 8000); // Duration of the bounce animation (1s)
-    }, 4000); // 3 second delay before starting the bounce
-
-    console.log("Lottie Container:", this.$refs.lottieAnimation);
-    console.log("Lottie animation initialized:", this.lottieInstance);
-
-    this.lottieInstance = lottie.loadAnimation({
-      container: this.$refs.lottieAnimation, // the DOM element
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: "/animations/plus.json", // your Lottie animation JSON file path
+    field.addEventListener("blur", () => {
+      field.placeholder = originalPlaceholder; // Restore placeholder on blur
     });
-  },
+  });
+
+  console.log("Lottie Container:", this.$refs.lottieAnimation);
+  console.log("Lottie animation initialized:", this.lottieInstance);
+
+  this.lottieInstance = lottie.loadAnimation({
+    container: this.$refs.lottieAnimation,
+    renderer: "svg",
+    loop: false,
+    autoplay: false,
+    path: "/animations/plus.json",
+  });
+}
+,
 
   beforeDestroy() {
     // Clean up the event listener when the component is destroyed
@@ -290,8 +271,10 @@ input[type="date"] {
 }
 
 .contact-form {
-  opacity: 0.4;
-  transition: opacity 0.5s ease; /* Smooth transition */
+opacity: 0.4;
+  transition: opacity 0.5s ease;
+  cursor: default;
+   z-index: 10;
 }
 
 /* Optional: Add a hover effect */
@@ -302,13 +285,13 @@ input[type="date"] {
 .sheadera {
   /* display: unset;  */
   /* left: 39vw; */
-  pointer-events: none;
+/*   pointer-events: none; */
   opacity: 1;
 }
 
 .sheader {
   left: 39vw;
-  pointer-events: none;
+/*   pointer-events: none; */
   /* z-index: 1000 !important; */
   /* display: none;  */
   opacity: 0;
@@ -439,7 +422,7 @@ input[type="date"] {
   clip-path: ellipse(55% 62% at 50% 100%);
   position: fixed;
   z-index: 0;
-  pointer-events: none;
+/*   pointer-events: none; */
   overflow: hidden;
 }
 
@@ -474,17 +457,12 @@ input[type="date"] {
 }
 
 .contact-form input {
- border-bottom: 0.5px solid #a29585;
-    padding: 0.3vw;
-    padding-top: .4vw;
-    background-color: rgba(255, 255, 255, 0);
-    background-color: #bcc2cb;
-    width: 17vw;
-    display: flex;
-    min-width: -moz-max-content;
-    min-width: max-content;
-    text-transform: uppercase;
-    align-items: center;
+  border-bottom: 0.5px solid #a29585;
+  padding: 0.1vw;
+  background-color: #ffffff00;
+  width: 17vw;
+  min-width: max-content;
+  text-transform: uppercase;
 }
 
 .contact-form input:focus {
@@ -576,7 +554,7 @@ input::placeholder {
     clip-path: ellipse(57% 17% at 50% 100%);
     position: absolute;
     z-index: 0;
-    pointer-events: none;
+/*     pointer-events: none; */
     display: none;
   }
 
