@@ -98,7 +98,7 @@
       <!-- Right Content: Form Section -->
       <div class="right-content w-1/2 p-[5vw] pl-[10vw] pt-[4vw]">
         <form
-          action="https://formspree.io/f/xwpkkljw"
+          action="https://formspree.io/f/xyzkrlga"
           method="POST"
           class="contact-form grid grid-cols-2 gap-4"
         >
