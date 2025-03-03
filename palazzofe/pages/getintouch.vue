@@ -187,8 +187,7 @@ mounted() {
     autoplay: false,
     path: "/animations/plus.json",
   });
-}
-,
+},
 
   beforeDestroy() {
     // Clean up the event listener when the component is destroyed
