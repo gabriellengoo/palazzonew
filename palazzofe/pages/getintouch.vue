@@ -27,6 +27,7 @@
           <form
             action="https://formspree.io/f/xyzkrlga"
             method="POST"
+            v-if="!isSubmitted" @submit.prevent="submitForm"
             class="contact-form pb-[5vh] w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
           >
             <input
@@ -98,6 +99,10 @@
               </button>
             </div>
           </form>
+
+            <div v-else class="thank-you-message">
+      <p>Thank you for your submission! <br />Palazzo will be in contact soon!</p>
+    </div>
         </div>
   </div>
 
