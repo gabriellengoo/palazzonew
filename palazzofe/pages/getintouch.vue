@@ -755,6 +755,7 @@ input::placeholder {
 
   .contact-form input {
     font-size: 4vw;
+        height: 4.5vh;
     /* padding-bottom: .5vh; */
     text-align: center;
     text-transform: uppercase;
