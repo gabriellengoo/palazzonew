@@ -98,6 +98,8 @@
       <!-- Right Content: Form Section -->
       <div class="right-content w-1/2 p-[5vw] pl-[10vw] pt-[4vw]">
         <form
+            v-if="!isSubmitted"
+  @submit.prevent="submitForm"
           action="https://formspree.io/f/xyzkrlga"
           method="POST"
           class="contact-form grid grid-cols-2 gap-4"
@@ -180,6 +182,11 @@
             </button>
           </div>
         </form>
+
+        <!-- Thank you message -->
+<div v-else class="thank-you-message text-center text-xl mt-6">
+  <p>Thank you for your submission! <br />Palazzo will be in contact soon!</p>
+</div>
       </div>
     </div>
 
@@ -341,6 +348,7 @@ export default {
       isBouncing: false,
       isOpen: false,
       lottieInstance: null,
+      isSubmitted: false,
     };
   },
 
@@ -428,6 +436,26 @@ mounted() {
   },
 
   methods: {
+    async submitForm(event) {
+    const form = event.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xyzkrlga", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        this.isSubmitted = true; // Show thank-you message
+      } else {
+        console.error("Form submission failed.");
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+    }
+  },
     hoverImage() {
       this.currentImage = this.hoverImage; // Change to hover image on mouseover
     },
