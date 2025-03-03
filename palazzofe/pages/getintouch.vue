@@ -457,12 +457,17 @@ input[type="date"] {
 }
 
 .contact-form input {
-  border-bottom: 0.5px solid #a29585;
-  padding: 0.1vw;
-  background-color: #ffffff00;
-  width: 17vw;
-  min-width: max-content;
-  text-transform: uppercase;
+ border-bottom: 0.5px solid #a29585;
+    padding: 0.3vw;
+    padding-top: .4vw;
+    background-color: rgba(255, 255, 255, 0);
+    background-color: #bcc2cb;
+    width: 17vw;
+    display: flex;
+    min-width: -moz-max-content;
+    min-width: max-content;
+    text-transform: uppercase;
+    align-items: center;
 }
 
 .contact-form input:focus {
