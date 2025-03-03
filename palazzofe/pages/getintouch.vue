@@ -27,7 +27,7 @@
           <form
             action="https://formspree.io/f/xyzkrlga"
             method="POST"
-            v-if="!isSubmitted" @submit.prevent="submitForm"
+            v-if="!isSubmitted" @submit.prevent="submitForm($event)"
             class="contact-form pb-[5vh] w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
           >
             <input
@@ -202,7 +202,12 @@ mounted() {
 
   methods: {
     async submitForm(event) {
-      const form = event.target; // Get the form element
+
+       event.preventDefault(); // Ensure default behavior is prevented
+  const form = event.target; // Ensure form exists
+  if (!form) return console.error("Form is undefined");
+      
+    
       const formData = new FormData(form); // Collect form data
 
       try {
