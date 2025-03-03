@@ -25,7 +25,7 @@
           </div>
 
           <form
-            action="https://formspree.io/f/xwpkkljw"
+            action="https://formspree.io/f/xyzkrlga"
             method="POST"
             class="contact-form pb-[5vh] w-full grid grid-cols-1 sm:grid-cols-2 gap-[5vw] px-4"
           >
