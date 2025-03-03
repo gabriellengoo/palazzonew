@@ -127,6 +127,7 @@ export default {
       isBouncing: false,
       isOpen: false,
       lottieInstance: null,
+        isSubmitted: false, 
     };
   },
 
@@ -200,6 +201,28 @@ mounted() {
   },
 
   methods: {
+    async submitForm(event) {
+      const form = event.target; // Get the form element
+      const formData = new FormData(form); // Collect form data
+
+      try {
+        const response = await fetch("https://formspree.io/f/xyzkrlga", {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          this.isSubmitted = true; // Hide form, show message
+        } else {
+          console.error("Form submission failed");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    },
+  },
+    
     hoverImage() {
       this.currentImage = this.hoverImage; // Change to hover image on mouseover
     },
@@ -269,6 +292,13 @@ mounted() {
 
 
 <style scoped>
+
+  .thank-you-message {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+}
+  
 input[type="date"] {
   display: block; /* Ensure it's set to block or inline-block */
   opacity: 1; /* Ensure it’s fully visible */
