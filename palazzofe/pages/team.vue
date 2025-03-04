@@ -181,7 +181,7 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
-  background:  #e6e5e4;
+  /* background:  #e6e5e4; */
   z-index: 99;
   cursor: grab;
   display: flex;
@@ -321,7 +321,7 @@ a:hover {
 .bttn {
   position: fixed;
   background-color: white;
-  background-color: #bcc2cb;
+  /* background-color: #bcc2cb; */
   font-family: "GT-Sectra-Book", sans-serif;
   transition: background-color 0.3s ease;
   position: absolute;
@@ -385,6 +385,7 @@ a:hover {
 
   .bttn {
     position: absolute;
+    background-color: #bcc2cb;
     border-radius: 0%;
     background-size: cover;
     background-position: 0 0;

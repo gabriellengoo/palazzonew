@@ -146,8 +146,10 @@ export default {
     return {
       isMenuOpen: false,
       isHovered: false,
-      defaultImage: "/Navn.webp", // Change to WebP version
-      hoverImage: "/Navnt.webp",  // Change to WebP version
+      defaultImage: "/Navn.webp", 
+      hoverImage: "/Navnt.webp", 
+      // defaultImage: "/newnavt.jpg", 
+      // hoverImage: "/newnav.jpg", 
       menuTopPosition: "0",
       lottieInstance: null,
     };
@@ -384,6 +386,7 @@ gsap.fromTo(
   font-size: 5vh;
   /* font-size: 4vw; */
   color: black;
+  color: white;
   font-weight: 100;
   padding-left: 4vw;
   height: max-content;
@@ -442,6 +445,7 @@ gsap.fromTo(
   font-size: 11.2vw;
   /* font-size: 4vw; */
   color: black;
+  /* color: white; */
   font-weight: 100;
   padding-left: 16vw;
   padding-right: 16vw;
@@ -643,13 +647,13 @@ gsap.fromTo(
 .nav-menu {
   top: v-bind(menuTopPosition);
   transition: top 0.5s ease;
-  /* background-image: url("./static/navbg.jpg");
+  background-image: url("./static/navbg.jpg");
   background-size: cover;
   background-position: initial;
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat;
 
-  background-color: #e6e5e4;
-  background-color: #bcc2cb;
+  /* background-color: #e6e5e4;
+  background-color: #bcc2cb; */
   /* display: flex;
   justify-content: center; */
 }
@@ -815,7 +819,11 @@ gsap.fromTo(
     padding: 0 !important;
     /* padding-top: 6vh !important; */
     position: relative;
-    background-color: #e6e5e4;
+    /* background-color: #e6e5e4; */
+    background-image: url("./static/navbg.jpg");
+  background-size: cover;
+  background-position: initial;
+  background-repeat: no-repeat; 
     top: 11.7vw !important;
     height: 100vh;
     overflow: hidden;

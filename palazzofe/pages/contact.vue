@@ -161,7 +161,7 @@
             class="col-span-1"
             type="number"
             name="budget"
-            placeholder="Estimated Budget ( Euros ) *"
+            placeholder="Estimated Budget ( € ) *"
             required
             min="0"
             oninput="this.value = this.value.replace(/[^0-9]/g, '')"
@@ -185,7 +185,8 @@
 
         <!-- Thank you message -->
 <div v-else class="thank-you-message text-center text-xl mt-6">
-  <p>Thank you for your submission! <br />Palazzo will be in contact soon.</p>
+  <p>Thank you for you submission!
+    <br />Palazzo Eventi will contact you soon.</p>
 </div>
       </div>
     </div>

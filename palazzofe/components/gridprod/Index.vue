@@ -9,6 +9,12 @@
           >
             Products
           </p>
+          <p
+            v-if="isMenuOpen"
+            class="headingspages text-center text-4xl uppercase"
+          >
+            Palazzo
+          </p>
         </div>
 
         <div
@@ -87,12 +93,12 @@
                           <p v-if="item" class="uppercase">
                             {{ item.title || "Name" }}
                           </p>
-                          <!-- <p v-if="item" class="yeartdesk mb-6 capitalize">
+                          <p v-if="!item.filmtitle" class="yeartdesk mb-6 capitalize">
                             {{ item.year || "Title" }}
-                          </p> -->
+                          </p>
                           <button v-if="item.filmtitle" class="filmlink" @click="openIframe(item.film)">
                           <div
-                        class="w-full flex items-center  text-center md:pt-5 "
+                        class="w-full flex items-center  text-center "
                       @mouseover="isHovered = true"
                       @mouseleave="isHovered = false"
                     >
@@ -134,36 +140,7 @@
                           class="w-full flex items-center text-center flex-col pt-[3vh] locationtext text-[1.3vw]"
                         >
                         
-                          <!-- <button class="filmlink" @click="openIframe(item.film)">
-                          <div
-                      class="w-full flex items-center text-center locationtext"
-                      @mouseover="isHovered = true"
-                      @mouseleave="isHovered = false"
-                    >
-                      <img
-                        src="/playf.png"
-                        alt="play Image"
-                        :class="{
-                          'scale-110 transition-transform duration-300 ease-out':
-                            isHovered,
-                          'w-[4vw] h-auto transition-all duration-300 ease-out':
-                            !isHovered,
-                        }"
-                        class="w-[4vw] h-auto"
-                      />
-                      <p
-                        :class="{
-                          ' opacity-40 transition-all duration-300 ease-out':
-                            isHovered,
-                          'opacity-100 transition-all duration-300 ease-out':
-                            !isHovered,
-                        }"
-                        class="loctext"
-                      >
-                        Play Film
-                      </p>
-                    </div>
-                  </button>  -->
+                        
                   <p v-if="item" class="yeartdesk mb-6 capitalize">
                             {{ item.year || "Title" }}
                           </p>
@@ -419,9 +396,11 @@ export default {
     };
   },
   computed: {
+    
     ...mapGetters({
       isMenuOpen: "isMenuOpen",
     }),
+
     ...mapState(["activeProject", "activeTalent", "gridteam"]),
     chunkedItems() {
       return this.items.reduce((resultArray, item, index) => {
@@ -645,6 +624,8 @@ export default {
 
 .yeartdesk {
   font-size: 1.3vw !important;
+  padding: 1vw;
+  padding-right: 0;
 }
 
 .teamemail {
@@ -973,6 +954,7 @@ export default {
 
 .yeartdesk{
   font-size: 3.5vw  !important;
+  padding: 0vw;
 }
 
 .footerstuff{

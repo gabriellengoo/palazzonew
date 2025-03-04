@@ -90,13 +90,17 @@
                   class="w-[80vw]"
                   :sizes="'sm:200vw md:150vw lg:200vw'"
                 /> -->
+              
           <div class="textmainpg text-center">
-            <h1 class="maintext text-[white] leading-tight relative z-0">
+            <h1 class="nodesnav maintext2 text-[white] leading-tight relative z-0 uppercase">
+              weddings & event planning in italy
+            </h1>
+            <h1 class="maintext text-[white] leading-tight relative z-0 uppercase">
               PALAZZO EVENTI
             </h1>
-            <!-- <h1 class="maintext2 text-[white] leading-tight relative z-0">
-              PALAZZO EVENTI
-            </h1> -->
+            <h1 class="nomb maintext2 text-[white] leading-tight relative z-0 uppercase">
+              weddings & event planning in italy
+            </h1>
           </div>
         </transition>
         <!-- <div ref="element" class="disintegrate">Disintegrate Me</div> -->
@@ -240,7 +244,7 @@ export default {
   position: absolute;
   pointer-events: none;
   width: 100vw;
-  height: 100vh;
+  height: 96vh;
 }
 
 .homegal {
@@ -340,12 +344,12 @@ export default {
 
 .maintext {
   font-family: "RomainHeadlineTrial";
-  font-size: 8vw;
+  font-size: 8.5vw;
 }
 
 .maintext2 {
   font-family: "RomainHeadlineTrial";
-  font-size: 5vw;
+  font-size: 2.5vw;
 }
 
 .subtx {
@@ -391,13 +395,15 @@ export default {
 
   .maintext {
     font-family: "RomainHeadlineTrial";
-    font-size: 13vw;
-    width: 71vw;
+    font-size: 15vw;
+    width: 100vw;
+
   }
 
   .maintext2 {
     font-family: "RomainHeadlineTrial";
-    font-size: 7vw;
+    font-size: 3.5vw;
+    padding-top: 20vw;
   }
 
   .allgal {
@@ -428,6 +434,7 @@ export default {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    justify-content: flex-start;
   }
 
   .subtx {
