@@ -7,10 +7,16 @@
         <div class="nodes contmbhead">
           <!-- <p>d</p> -->
           <p
-           :class="{ 'opacity-0': isMenuOpen, 'opacity-100': !isMenuOpen }"
-          class="headingspages text-center text-4xl  uppercase "
+          v-if="!isMenuOpen"
+         class="headingspages text-center text-4xl  uppercase "
         >
           Weddings
+        </p>
+        <p
+          v-if="isMenuOpen"
+         class="headingspages text-center text-4xl  uppercase "
+        >
+        Palazzo Eventi
         </p>
         </div>
 

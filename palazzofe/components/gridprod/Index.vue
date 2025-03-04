@@ -13,7 +13,7 @@
             v-if="isMenuOpen"
             class="headingspages text-center text-4xl uppercase"
           >
-            Palazzo
+            Palazzo Eventi
           </p>
         </div>
 
@@ -396,7 +396,7 @@ export default {
     };
   },
   computed: {
-    
+
     ...mapGetters({
       isMenuOpen: "isMenuOpen",
     }),

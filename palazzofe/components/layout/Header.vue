@@ -1,46 +1,24 @@
 <template>
   <div>
-    <header
-      class="header top-[1rem] md:top-4 lg:top-[2rem] flex items-center p-6"
-    >
-      <div
-        class="flex md:justify-between lg:justify-between xl:justify-between"
-        ref="headerDiv"
-      >
+    <header class="header top-[1rem] md:top-4 lg:top-[2rem] flex items-center p-6">
+      <div class="flex md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
         <div class="headbar hover:cursor-pointer">
           <!-- <SvgMenu v-if="!isMenuOpen" class="headbar w-[1.4vw] hover:cursor-pointer" />
       <SvgClose v-else class="headbar w-[1.4vw] hover:cursor-pointer" /> -->
           <button @click="toggleMenu" class="hamburger-button">
-            <div
-              ref="lottieAnimation"
-              class="lottie-container w-[1.5vw] hover:cursor-pointer"
-            ></div>
+            <div ref="lottieAnimation" class="lottie-container w-[1.5vw] hover:cursor-pointer"></div>
           </button>
         </div>
       </div>
 
       <!-- desktop -->
       <transition name="slide-down" @after-enter="fadeInAllImg">
-        <nav
-          v-if="isMenuOpen"
-          class="nav-menu fixed left-0 w-full h-screen z-[500] object-cover"
-        >
-          <div
-            class="image-container  inset-0 w-full h-full object-cover"
-            @mouseenter="isHovered = true"
-            @mouseleave="isHovered = false"
-          >
-            <img
-              :src="defaultImage"
-              alt="Default Image"
-              class="default-image-display"
-              :class="{ 'faded-out': isHovered }"
-            />
-            <img
-              :src="hoverImage"
-              alt="Hover Image"
-              class="hover-image-display"
-            />
+        <nav v-if="isMenuOpen" class="nav-menu fixed left-0 w-full h-screen z-[500] object-cover">
+          <div class="image-container  inset-0 w-full h-full object-cover" @mouseenter="isHovered = true"
+            @mouseleave="isHovered = false">
+            <img :src="defaultImage" alt="Default Image" class="default-image-display"
+              :class="{ 'faded-out': isHovered }" />
+            <img :src="hoverImage" alt="Hover Image" class="hover-image-display" />
 
             <!-- Invisible 3x3 Grid -->
             <div class="grid-container">
@@ -59,28 +37,13 @@
 
     <!-- mobile -->
     <!-- name="slide-down" -->
-    <transition
-      class="mobilemenu"
-      name="slide-down"
-      @after-enter="fadeInAllImg"
-    >
-      <div
-        v-if="isMenuOpen"
-        class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center"
-      >
-        <div
-          v-if="isMenuOpen"
-          class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8"
-        >
-          <transition
-            class="mobilemenu2"
-            name="slide-down"
-            @after-enter="fadeInAllImg"
-          >
-         
-            <div
-              class="mobilemenu2 relative mb-auto z-50 flex flex-col justify-center items-center"
-            >
+    <transition class="mobilemenu" name="slide-down" @after-enter="fadeInAllImg">
+      <div v-if="isMenuOpen"
+        class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center">
+        <div v-if="isMenuOpen" class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8">
+          <transition class="mobilemenu2" name="slide-down" @after-enter="fadeInAllImg">
+
+            <div class="mobilemenu2 relative mb-auto z-50 flex flex-col justify-center items-center">
               <div class="  ">
                 <div class="headerr flex justify-center">
                   <h1 class="border-t-[1px] border-[#0003] w-[100vw]"></h1>
@@ -88,7 +51,7 @@
                 <!-- <div class="mbspace"></div> -->
                 <nav class="link-container uppercase">
                   <ul>
-                   
+
 
                     <li>
                       <a href="./weddings"> WEDDINGS </a>
@@ -114,7 +77,7 @@
                     <li>
                       <a href="./contact"> CONTACT </a>
                     </li>
-                    
+
                     <!-- <li   class=" opacity-0">
                     <a
                       @click="setActiveSection('production')"
@@ -133,7 +96,7 @@
       </div>
     </transition>
 
-    
+
   </div>
 </template>
 
@@ -146,8 +109,8 @@ export default {
     return {
       isMenuOpen: false,
       isHovered: false,
-      defaultImage: "/Navn.webp", 
-      hoverImage: "/Navnt.webp", 
+      defaultImage: "/Navn.webp",
+      hoverImage: "/Navnt.webp",
       // defaultImage: "/newnavt.jpg", 
       // hoverImage: "/newnav.jpg", 
       menuTopPosition: "0",
@@ -160,54 +123,66 @@ export default {
 
 
     if (process.client) {
-    import("lottie-web").then((lottie) => {
-      this.lottieInstance = lottie.loadAnimation({
-      container: this.$refs.lottieAnimation, // the DOM element
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: "/animations/hamburger.json", // your Lottie animation JSON file path
-    });
+      import("lottie-web").then((lottie) => {
+        this.lottieInstance = lottie.loadAnimation({
+          container: this.$refs.lottieAnimation, // the DOM element
+          renderer: "svg",
+          loop: false,
+          autoplay: false,
+          path: "/animations/hamburger.json", // your Lottie animation JSON file path
+        });
 
-      if (this.lottieInstance) {
-        console.log("Lottie instance created:", this.lottieInstance);
-      } else {
-        console.error("Failed to initialize Lottie animation.");
-      }
+        if (this.lottieInstance) {
+          console.log("Lottie instance created:", this.lottieInstance);
+        } else {
+          console.error("Failed to initialize Lottie animation.");
+        }
 
-      this.lottieInstance.addEventListener("DOMLoaded", () => {
-        console.log("Lottie animation SVG has been loaded successfully!");
+        this.lottieInstance.addEventListener("DOMLoaded", () => {
+          console.log("Lottie animation SVG has been loaded successfully!");
+        });
       });
-    });
-  }
+    }
 
-    
+
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.updateNavMenuPosition);
   },
   methods: {
+
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-      
+    this.$store.commit("toggleMenu"); // Use Vuex mutation
+    if (this.$store.state.isMenuOpen) {
+      this.lottieInstance.playSegments([0, 97], true);
+      this.$nextTick(() => {
+        this.animateLinksIn();
+      });
+    } else {
+      this.lottieInstance.playSegments([97, 0], true);
+    }
+  },
 
+    // toggleMenu() {
+    //   this.isMenuOpen = !this.isMenuOpen;
 
-if (this.isMenuOpen) {
-  this.lottieInstance.playSegments([0, 97], true);
-  this.$nextTick(() => {
-    this.animateLinksIn(); // 🔥 Animate links when menu opens
-  });
-} else {
-  this.lottieInstance.playSegments([97, 0], true);
-}
-},
-animateLinksIn() {
-gsap.fromTo(
-  ".mobilemenu li",
-  { opacity: 0, y: 20 }, // Start state
-  { opacity: 1, y: 0,  delay: 0.5, duration: 1.6, stagger: 0.1, ease: "power2.out" } // End state
-);
-},
+    //   if (this.isMenuOpen) {
+    //     this.lottieInstance.playSegments([0, 97], true);
+    //     this.$nextTick(() => {
+    //       this.animateLinksIn(); // 🔥 Animate links when menu opens
+    //     });
+    //   } else {
+    //     this.lottieInstance.playSegments([97, 0], true);
+    //   }
+    // },
+    animateLinksIn() {
+      gsap.fromTo(
+        ".mobilemenu li",
+        { opacity: 0, y: 20 }, // Start state
+        { opacity: 1, y: 0, delay: 0.5, duration: 1.6, stagger: 0.1, ease: "power2.out" } // End state
+      );
+    },
 
     fadeInAllImg() {
       this.fadeInAllImgClass = true;
@@ -261,11 +236,13 @@ gsap.fromTo(
   position: absolute;
   inset: 0;
   z-index: 10;
-  pointer-events: none; /* Prevent grid from blocking other interactions */
+  pointer-events: none;
+  /* Prevent grid from blocking other interactions */
 }
 
 .grid-item {
-  pointer-events: auto; /* Make each grid area clickable */
+  pointer-events: auto;
+  /* Make each grid area clickable */
 }
 
 .hover-areal {
@@ -321,7 +298,8 @@ gsap.fromTo(
 }
 
 .link-container a:hover {
-  color: #333; /* Optional hover effect */
+  color: #333;
+  /* Optional hover effect */
 }
 
 .link-container {
@@ -506,7 +484,8 @@ gsap.fromTo(
 }
 
 .hover-area:hover {
-  opacity: 1; /* Show on hover */
+  opacity: 1;
+  /* Show on hover */
 }
 
 /* Ensure SVG is hidden by default and only shown on hover */
@@ -531,7 +510,7 @@ gsap.fromTo(
 }
 
 .image-container {
-    /* width: 80vw;
+  /* width: 80vw;
     overflow: hidden;
     height: 100%;
     display: flex;
@@ -541,22 +520,22 @@ gsap.fromTo(
     transform: translateX(-50%); */
 
 
-    width: 80vw;
-    overflow: hidden !important;
-    height: 95vh;
+  width: 80vw;
+  overflow: hidden !important;
+  height: 95vh;
 
 
-    width: 80vw;
-    overflow: hidden !important;
-    height: 51vw;
+  width: 80vw;
+  overflow: hidden !important;
+  height: 51vw;
 
 
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .default-image-display,
@@ -570,14 +549,14 @@ gsap.fromTo(
   object-fit: contain; */
 
   position: absolute;
-    /* top: 0; */
-    /* left: 0; */
-    width: auto;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-    -o-object-fit: contain;
-    object-fit: contain;
+  /* top: 0; */
+  /* left: 0; */
+  width: auto;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-fit: contain;
+  object-fit: contain;
 }
 
 .default-image-display {
@@ -821,22 +800,22 @@ gsap.fromTo(
     position: relative;
     /* background-color: #e6e5e4; */
     background-image: url("./static/navbg.jpg");
-  background-size: cover;
-  background-position: initial;
-  background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: initial;
+    background-repeat: no-repeat;
     top: 11.7vw !important;
     height: 100vh;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
   }
 
-  .mbspace{
+  .mbspace {
     background-color: #bcc2cb;
-        height: 11.7vw !important;
-        top: 0;
-        position: fixed;
-        width: 100vw;
-        left: 0;
+    height: 11.7vw !important;
+    top: 0;
+    position: fixed;
+    width: 100vw;
+    left: 0;
   }
 }
 </style>

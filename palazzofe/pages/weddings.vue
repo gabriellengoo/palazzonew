@@ -13,7 +13,7 @@
         class="navmbno yeart w-[5vw] text-center text-4xl  uppercase "
       ></p>
       <p class="navmbno  headingspages text-center text-4xl uppercase">
-        palazzo eventi
+        Palazzo Eventi
       </p>
       <h1 class="navmbno w-[2vw]">
    

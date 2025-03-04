@@ -9,6 +9,12 @@
           >
             Team
           </p>
+          <p
+            v-if="isMenuOpen"
+            class="headingspages text-center text-4xl uppercase"
+          >
+            Palazzo Eventi
+          </p>
         </div>
 
         <div

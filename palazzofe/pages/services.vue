@@ -23,14 +23,16 @@
         <div class="nodes contmbhead">
           <!-- <p>d</p> -->
           <p
-            :class="[
-              '',
-              { sheadera: !isMenuOpen },
-              { sheaderaopen: isMenuOpen },
-            ]"
+             v-if="!isMenuOpen"
+           class="headingspages text-center text-4xl uppercase"
+         >
+           Services
+         </p>
+          <p
+              v-if="isMenuOpen"
             class="headingspages text-center text-4xl uppercase"
           >
-            Services
+          Palazzo Eventi
           </p>
         </div>
         <transition name="slide-out" @after-enter="fadeInAllImg">

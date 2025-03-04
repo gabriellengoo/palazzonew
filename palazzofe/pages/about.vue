@@ -18,10 +18,16 @@
 
       <div class="nodes contmbhead pointer-events-none">
         <p
-          :class="['', { sheadera: !isMenuOpen }, { sheaderaopen: isMenuOpen }]"
+           v-if="!isMenuOpen"
           class="headingspages pointer-events-none text-center text-4xl uppercase"
         >
           About
+        </p>
+        <p
+           v-if="isMenuOpen"
+          class="headingspages pointer-events-none text-center text-4xl uppercase"
+        >
+        Palazzo Eventi
         </p>
       </div>
 
