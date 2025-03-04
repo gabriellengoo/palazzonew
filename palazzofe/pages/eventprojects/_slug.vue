@@ -714,7 +714,7 @@ import { mapMutations, mapState } from "vuex";
 // import Lenis from '@studio-freight/lenis';
 // import LenisComponent from "~/components/LenisComponent.vue";
 import TransitionComponent from "~/components/TransitionComponent.vue";
-import lottie from "lottie-web";
+// import lottie from "lottie-web";
 // pop
 import DraggableIframe from "~/components/DraggableIframe.vue";
 
@@ -855,7 +855,8 @@ export default {
 
     console.log("Lottie animation initialized:", this.lottieInstance);
 
-    this.lottieInstance = lottie.loadAnimation({
+    import("lottie-web").then((lottie) => {
+    this.lottieInstance = lottie.default.loadAnimation({
       container: this.$refs.lottieAnimation, // the DOM element
       renderer: "svg",
       loop: false,
@@ -865,6 +866,7 @@ export default {
 
     // Set the animation to frame 11 without playing
     this.lottieInstance.goToAndStop(55, true);
+  });
   },
 
   watch: {

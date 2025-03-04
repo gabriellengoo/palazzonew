@@ -276,7 +276,7 @@
 import HeaderComponent from "@/components/layout/Header.vue";
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
-import lottie from "lottie-web";
+// import lottie from "lottie-web";
 
 export default {
   name: "IndexPage",
@@ -486,24 +486,27 @@ export default {
     console.log("Lottie Container Reference:", this.$refs.lottieAnimation4);
     console.log("Lottie animation initialized:", this.lottieInstance);
 
-    this.lottieInstance = lottie.loadAnimation({
-      container: this.$refs.lottieAnimation4, // the DOM element
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      animationData: this.lottieJSON,
-    });
+    console.log("Lottie Container Reference:", this.$refs.lottieAnimation4);
 
-    if (this.lottieInstance) {
-      console.log("Lottie instance created:", this.lottieInstance);
-    } else {
-      console.error("Failed to initialize Lottie animation.");
-    }
+import("lottie-web").then((lottie) => {
+  this.lottieInstance = lottie.loadAnimation({
+    container: this.$refs.lottieAnimation4,
+    renderer: "svg",
+    loop: false,
+    autoplay: false,
+    animationData: this.lottieJSON,
+  });
 
-    // Listen for the 'DOMLoaded' event
-    this.lottieInstance.addEventListener("DOMLoaded", () => {
-      console.log("Lottie animation SVG has been loaded successfully!");
-    });
+  if (this.lottieInstance) {
+    console.log("Lottie instance created:", this.lottieInstance);
+  } else {
+    console.error("Failed to initialize Lottie animation.");
+  }
+
+  this.lottieInstance.addEventListener("DOMLoaded", () => {
+    console.log("Lottie animation SVG has been loaded successfully!");
+  });
+});
 
     this.checkViewport(); // Set the initial value based on viewport
     window.addEventListener("resize", this.checkViewport); // Add event listener for resizing
@@ -550,12 +553,14 @@ export default {
     beforeEnter() {
       this.$nextTick(() => {
         if (this.$refs.lottieAnimation4) {
-          this.lottieInstance = lottie.loadAnimation({
-            container: this.$refs.lottieAnimation4,
-            renderer: "svg",
-            loop: false,
-            autoplay: false,
-            path: "/animations/plus2.json",
+          import("lottie-web").then((lottie) => {
+            this.lottieInstance = lottie.loadAnimation({
+              container: this.$refs.lottieAnimation4,
+              renderer: "svg",
+              loop: false,
+              autoplay: false,
+              path: "/animations/plus2.json",
+            });
           });
         }
       });

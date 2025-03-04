@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import lottie from "lottie-web";
+// import lottie from "lottie-web";
 import gsap from "gsap";
 
 export default {
@@ -156,13 +156,30 @@ export default {
     // this.updateNavMenuPosition();
     window.addEventListener("resize", this.updateNavMenuPosition);
 
-    this.lottieInstance = lottie.loadAnimation({
+
+    if (process.client) {
+    import("lottie-web").then((lottie) => {
+      this.lottieInstance = lottie.loadAnimation({
       container: this.$refs.lottieAnimation, // the DOM element
       renderer: "svg",
       loop: false,
       autoplay: false,
       path: "/animations/hamburger.json", // your Lottie animation JSON file path
     });
+
+      if (this.lottieInstance) {
+        console.log("Lottie instance created:", this.lottieInstance);
+      } else {
+        console.error("Failed to initialize Lottie animation.");
+      }
+
+      this.lottieInstance.addEventListener("DOMLoaded", () => {
+        console.log("Lottie animation SVG has been loaded successfully!");
+      });
+    });
+  }
+
+    
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.updateNavMenuPosition);

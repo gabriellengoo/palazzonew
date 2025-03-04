@@ -526,6 +526,7 @@ export default {
   .sideim
   .deskimgl {
   /* display: none !important; */
+  padding-bottom: 0vw;
   height: 100vh;
   pointer-events: none !important;
       z-index: 1 !important;

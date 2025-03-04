@@ -36,7 +36,7 @@
   <input type="email" name="email" placeholder="Email *" required />
   <input type="number" name="guests" placeholder="No. of Guests *" required />
   <input type="text" name="info" placeholder="Additional info *" />
-  <input type="number" name="budget" placeholder="Estimated Budget *" required />
+  <input type="number" name="budget" placeholder="Estimated Budget ( Euros ) *" required />
 
   <div class="flex justify-center mt-[4vw]">
     <button type="submit" class="mt-6 w-[33vw] sm:w-[26vw]">
@@ -47,12 +47,12 @@
 
 <!-- Thank you message -->
 <div v-else class="thank-you-message text-center text-xl mt-6">
-  <p>Thank you for your submission! <br />Palazzo will be in contact soon!</p>
+  <p>Thank you for your submission! <br />Palazzo will be in contact soon.</p>
 </div>
 
 
             <div v-else class="thank-you-message">
-      <p>Thank you for your submission! <br />Palazzo will be in contact soon!</p>
+      <p>Thank you for your submission! <br />Palazzo will be in contact soon.</p>
     </div>
         </div>
   </div>
@@ -64,7 +64,7 @@ import HeaderComponent from "@/components/layout/Header.vue";
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
 import { groq } from "@nuxtjs/sanity";
-import lottie from "lottie-web";
+// import lottie from "lottie-web";
 
 export default {
   name: "IndexPage",
@@ -137,13 +137,25 @@ mounted() {
   console.log("Lottie Container:", this.$refs.lottieAnimation);
   console.log("Lottie animation initialized:", this.lottieInstance);
 
-  this.lottieInstance = lottie.loadAnimation({
-    container: this.$refs.lottieAnimation,
-    renderer: "svg",
-    loop: false,
-    autoplay: false,
-    path: "/animations/plus.json",
-  });
+  // this.lottieInstance = lottie.loadAnimation({
+  //   container: this.$refs.lottieAnimation,
+  //   renderer: "svg",
+  //   loop: false,
+  //   autoplay: false,
+  //   path: "/animations/plus.json",
+  // });
+
+  if (process.client) {
+    import("lottie-web").then((lottie) => {
+      this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation, // the DOM element
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "/animations/plus.json",  // your Lottie animation JSON file path
+    });
+    });
+  }
 },
 
   beforeDestroy() {

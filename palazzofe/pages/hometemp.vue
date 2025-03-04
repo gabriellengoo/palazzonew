@@ -94,6 +94,9 @@
             <h1 class="maintext text-[white] leading-tight relative z-0">
               PALAZZO EVENTI
             </h1>
+            <!-- <h1 class="maintext2 text-[white] leading-tight relative z-0">
+              PALAZZO EVENTI
+            </h1> -->
           </div>
         </transition>
         <!-- <div ref="element" class="disintegrate">Disintegrate Me</div> -->
@@ -340,6 +343,11 @@ export default {
   font-size: 8vw;
 }
 
+.maintext2 {
+  font-family: "RomainHeadlineTrial";
+  font-size: 5vw;
+}
+
 .subtx {
   letter-spacing: 0.1vw;
 }
@@ -376,9 +384,20 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-  .maintext {
+  /* .maintext {
     font-family: "RomainHeadlineTrial";
     font-size: 16vw;
+  } */
+
+  .maintext {
+    font-family: "RomainHeadlineTrial";
+    font-size: 13vw;
+    width: 71vw;
+  }
+
+  .maintext2 {
+    font-family: "RomainHeadlineTrial";
+    font-size: 7vw;
   }
 
   .allgal {
@@ -414,9 +433,7 @@ export default {
   .subtx {
     font-size: 2.5vw !important;
   }
-  .maintext {
-    font-size: 9vw;
-  }
+ 
 
   .gallery-image {
     object-fit: cover;

@@ -161,7 +161,7 @@
             class="col-span-1"
             type="number"
             name="budget"
-            placeholder="Estimated Budget *"
+            placeholder="Estimated Budget ( Euros ) *"
             required
             min="0"
             oninput="this.value = this.value.replace(/[^0-9]/g, '')"
@@ -185,7 +185,7 @@
 
         <!-- Thank you message -->
 <div v-else class="thank-you-message text-center text-xl mt-6">
-  <p>Thank you for your submission! <br />Palazzo will be in contact soon!</p>
+  <p>Thank you for your submission! <br />Palazzo will be in contact soon.</p>
 </div>
       </div>
     </div>
@@ -334,7 +334,7 @@ import HeaderComponent from "@/components/layout/Header.vue";
 import { mapMutations, mapState } from "vuex";
 import { mapGetters } from "vuex";
 import { groq } from "@nuxtjs/sanity";
-import lottie from "lottie-web";
+// import lottie from "lottie-web";
 
 export default {
   name: "IndexPage",
@@ -421,13 +421,26 @@ mounted() {
   console.log("Lottie animation initialized:", this.lottieInstance);
 
   // Initialize Lottie animation
-  this.lottieInstance = lottie.loadAnimation({
-    container: this.$refs.lottieAnimation, 
-    renderer: "svg",
-    loop: false,
-    autoplay: false,
-    path: "/animations/plus.json", 
-  });
+  // this.lottieInstance = lottie.loadAnimation({
+  //   container: this.$refs.lottieAnimation, 
+  //   renderer: "svg",
+  //   loop: false,
+  //   autoplay: false,
+  //   path: "/animations/plus.json", 
+  // });
+
+
+  if (process.client) {
+    import("lottie-web").then((lottie) => {
+      this.lottieInstance = lottie.loadAnimation({
+      container: this.$refs.lottieAnimation, // the DOM element
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "/animations/plus.json",  // your Lottie animation JSON file path
+    });
+    });
+  }
 },
 
   beforeDestroy() {
