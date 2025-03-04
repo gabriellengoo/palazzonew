@@ -626,11 +626,11 @@ export default {
 .nav-menu {
   top: v-bind(menuTopPosition);
   transition: top 0.5s ease;
-  background-image: url("./static/navbg.jpg");
+  /* background-image: url("./static/navbg.jpg");
   background-size: cover;
   background-position: initial;
-  background-repeat: no-repeat;
-
+  background-repeat: no-repeat; */
+  background-color: #bcc2cb;
   /* background-color: #e6e5e4;
   background-color: #bcc2cb; */
   /* display: flex;
@@ -798,11 +798,11 @@ export default {
     padding: 0 !important;
     /* padding-top: 6vh !important; */
     position: relative;
-    /* background-color: #e6e5e4; */
-    background-image: url("./static/navbg.jpg");
+    background-color: #e6e5e4;
+    /* background-image: url("./static/navbg.jpg");
     background-size: cover;
     background-position: initial;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     top: 11.7vw !important;
     height: 100vh;
     overflow: hidden;

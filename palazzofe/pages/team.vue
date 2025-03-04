@@ -320,7 +320,7 @@ a:hover {
 
 .bttn {
   position: fixed;
-  background-color: white;
+  background-color: #e6e5e4;
   /* background-color: #bcc2cb; */
   font-family: "GT-Sectra-Book", sans-serif;
   transition: background-color 0.3s ease;
