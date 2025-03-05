@@ -1597,9 +1597,7 @@ export default {
 }
 
 .lay1imsize {
-  height: 30vh;
-  height: auto;
-  max-height: 30vh;
+  width: 30vw;
 }
 
 .lay6imsize {
