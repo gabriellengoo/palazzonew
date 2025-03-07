@@ -1603,13 +1603,13 @@ export default {
 .lay6imsize {
   height: 30vh;
   height: auto;
-  max-height: 15vh;
+  /* max-height: 15vh; */
 }
 
 .lay5imsize {
   height: 10vh;
   height: auto;
-  max-height: 10vh;
+  /* max-height: 10vh; */
 }
 
 .lay5logocenter {
