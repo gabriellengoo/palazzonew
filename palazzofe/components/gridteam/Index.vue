@@ -894,6 +894,8 @@ export default {
     width: 4.9vw;
     margin-top: 1vw;
     display: block;
+    left: 89vw;
+    position: relative;
   }
 
   .deskimgl {

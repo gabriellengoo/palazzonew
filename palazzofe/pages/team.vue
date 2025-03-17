@@ -406,7 +406,7 @@ a:hover {
     transition: color 0.8s ease;
     font-size: 3vw;
     font-size: 2.1vw;
-    bottom: 105vw;
+    /* bottom: 105vw; */
     border: 0.05vw solid black;
   }
 

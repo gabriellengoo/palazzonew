@@ -916,6 +916,8 @@ export default {
         margin-top: 1vw;
         display: block;
         pointer-events: all;
+        left: 89vw;
+        position: relative;
 }
 
 

@@ -595,6 +595,8 @@ input::placeholder {
     display: block;
     stroke-width: 0vw;
     stroke: black;
+    left: 0;
+    z-index: 10;
   }
 
   /* .right-content {

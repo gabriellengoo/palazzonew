@@ -688,6 +688,8 @@ a .inner-image {
   
   /* Optional: Add a subtle shadow for better visibility */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+
 }
 
 /* Create the inner circular line */
@@ -731,6 +733,7 @@ a .inner-image {
   
   /* Optional: Add a subtle shadow for better visibility */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Create the inner circular line */
@@ -813,6 +816,15 @@ a .inner-image {
 }
 
 @media only screen and (max-width: 768px) {
+  .hamburger-button {
+    position: relative;
+    top: 0.3vh;
+    left: 90vw;
+  }
+
+  .fontsubpub{
+    font-size: 1.8vw;
+  }
 
   .nodeshome{
     display: flex;
@@ -885,6 +897,9 @@ html {
     height: 40vw;
     display: flex;
     width: 40vw;
+
+    text-align: center;
+    padding: 7vw;
   }
 
   .new-day-textevent{
@@ -897,6 +912,9 @@ html {
     height: 40vw;
     display: flex;
     width: 40vw;
+
+    text-align: center;
+    padding: 7vw;
   }
 
   .new-day-image {
@@ -960,6 +978,8 @@ html {
     height: auto;
     display: block;
     stroke-width: 0.5vw;
+    left: 89vw;
+    position: relative;
     /* stroke: black; */
   }
 
@@ -974,7 +994,7 @@ html {
   }
 
   .btnsvgserv{
-    background-image: url("./static/LeftBG.png");
+    /* background-image: url("./static/LeftBG.png"); */
     background-size: cover;
     background-position: center;
     /* background-size: auto auto; */
