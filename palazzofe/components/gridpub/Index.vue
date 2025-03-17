@@ -62,7 +62,7 @@
                   > -->
                   <NuxtLink
                     v-if="item.reference && item.reference.slug"
-                    :to="`/pressmore/${item.reference.slug}`"
+                    :to="`/presspublications/${item.reference.slug}`"
                     class="flex flex-col items-end h-full linkae link-animationn"
                   >
                     <figure class="inner-image">

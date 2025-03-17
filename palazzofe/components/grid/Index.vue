@@ -36,7 +36,7 @@
                 <div class="relative inner-image" ref="innerImage">
                   <NuxtLink 
                     v-if="item.reference.slug"
-                    :to="`/work/${item.reference.slug}`"
+                    :to="`wedding/${item.reference.slug}`"
                     class="flex flex-col items-end h-full link-animation linka"   
                   >
                     <figure>

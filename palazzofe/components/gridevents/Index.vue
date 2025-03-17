@@ -50,9 +50,9 @@
             >
               <figure class="flex flex-col">
                 <div class="relative">
-                  <NuxtLink
+                  <NuxtLink 
                     v-if="item.reference.slug"
-                    :to="`/events/${item.reference.slug}`"
+                    :to="`/event/${item.reference.slug}`"
                     class="flex flex-col items-end h-full linkae link-animationn"
                   >
                     <figure class="inner-image">

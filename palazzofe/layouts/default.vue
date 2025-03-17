@@ -36,7 +36,7 @@ export default {
       const routeName = this.$route.name;
       return routeName !== 'index' && 
              routeName !== 'work' && 
-             routeName !== 'eventprojects';
+             routeName !== 'ourevents';
     }
   },
   data() {

@@ -154,18 +154,7 @@
                         Play Film
                       </p>
                     </div>
-                  <!-- <div
-                    v-if="project.location && !project.locationlink"
-                    class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
-                  >
-                    <p class="loctext">Location,</p>
-                   
-                    <div class="flex flex-col normal-case italic loctextlink">
-                      <a>{{
-                        project.location
-                      }}</a>
-                    </div>
-                  </div> -->
+          
 
                   <!-- Draggable Iframe Modal -->
                   <div v-if="isModalOpen" class="modal-container fixed inset-0 z-50 flex items-center justify-center">
@@ -175,102 +164,12 @@
                         top: `${position.top}px`,
                         left: `${position.left}px`,
                       }">
-                      <!-- <button
-          class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
-          @click="closeModal"
-        > -->
+              
                       <!-- Close -->
                       <button class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
                         @click="closeModal">
                         <SvgClose class="" />
-                        <!-- <svg
-                          class="w-[1.7vw]"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          viewBox="0 0 500 500"
-                          width="500"
-                          height="500"
-                          preserveAspectRatio="xMidYMid meet"
-                          style="
-                            height: 100%;
-                            transform: translate3d(0px, 0px, 0px);
-                            content-visibility: visible;
-                          "
-                        >
-                          <defs>
-                            <clipPath id="__lottie_element_2">
-                              <rect width="500" height="500" x="0" y="0"></rect>
-                            </clipPath>
-                          </defs>
-                          <g clip-path="url(#__lottie_element_2)">
-                            <g
-                              transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
-                              opacity="1"
-                              style="display: block"
-                            >
-                              <g
-                                opacity="1"
-                                transform="matrix(1.4112499952316284,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M-10,-10 C-10,-10 10,10 10,10"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M-10,-10 C-10,-10 10,10 10,10"
-                                ></path>
-                              </g>
-                              <g
-                                opacity="0"
-                                transform="matrix(1.389361023902893,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M10,0 C10,0 10,0 10,0"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M10,0 C10,0 10,0 10,0"
-                                ></path>
-                              </g>
-                              <g
-                                opacity="1"
-                                transform="matrix(1.3872150182724,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M-10,10 C-10,10 10,-10 10,-10"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M-10,10 C-10,10 10,-10 10,-10"
-                                ></path>
-                              </g>
-                            </g>
-                          </g>
-                        </svg> -->
+             
                       </button>
                       <!-- </button> -->
 
@@ -312,139 +211,17 @@
                   <div v-if="project.content" class="pt-5">
                     <Richtext class="contactinner" :blocks="project.content"></Richtext>
                   </div>
-                  <!-- <div
-                    v-if="project.location"
-                    class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
-                  >
-                    <p v-if="project.location" class="loctext">Play Film</p>
-                    <div class="flex flex-col normal-case italic loctextlink">
-                      <a href="javascript:void(0)" @click="openModal">{{
-                        project.location
-                      }}</a>
-                    </div>
-                  </div> -->
-                  <!-- Location Link -->
-                  <!-- <a
-                  class="noline"
-                        href="javascript:void(0)" @click="openModal"
-                        ><div
-  v-if="project.location"
-  class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
->
-
-  <img
-    src="/playf.png"
-    alt="play Image"
-    :class="{
-  ' transition-transform duration-300 ease-out': isHovered,
-  'w-[11vw] h-auto transition-all duration-300 ease-out': !isHovered
-}"
-    class="w-[11vw] h-auto"
-  />
-  <p class="loctext">Play Film</p>
-</div></a> -->
-
+          
                   <!-- Draggable Iframe Modal -->
                   <div v-if="isModalOpen" class="modal-container fixed inset-0 z-50 flex items-center justify-center">
                     <!-- Draggable Modal -->
                     <div class="modal-content overflow-hidden relative" ref="modal">
-                      <!-- <button
-                          :style="{ top: `20vh`, left: `2vw` }"
-          class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
-          @click="closeModal"
-        > -->
+                  
                       <!-- Close -->
                       <button class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
                         @click="closeModal">
                         <SvgClose class="" />
-                        <!-- <svg
-                          class="w-[4.4vw]"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          viewBox="0 0 500 500"
-                          width="500"
-                          height="500"
-                          preserveAspectRatio="xMidYMid meet"
-                          style="
-                            height: 100%;
-                            transform: translate3d(0px, 0px, 0px);
-                            content-visibility: visible;
-                          "
-                        >
-                          <defs>
-                            <clipPath id="__lottie_element_2">
-                              <rect width="500" height="500" x="0" y="0"></rect>
-                            </clipPath>
-                          </defs>
-                          <g clip-path="url(#__lottie_element_2)">
-                            <g
-                              transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
-                              opacity="1"
-                              style="display: block"
-                            >
-                              <g
-                                opacity="1"
-                                transform="matrix(1.4112499952316284,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M-10,-10 C-10,-10 10,10 10,10"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M-10,-10 C-10,-10 10,10 10,10"
-                                ></path>
-                              </g>
-                              <g
-                                opacity="0"
-                                transform="matrix(1.389361023902893,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M10,0 C10,0 10,0 10,0"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M10,0 C10,0 10,0 10,0"
-                                ></path>
-                              </g>
-                              <g
-                                opacity="1"
-                                transform="matrix(1.3872150182724,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M-10,10 C-10,10 10,-10 10,-10"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M-10,10 C-10,10 10,-10 10,-10"
-                                ></path>
-                              </g>
-                            </g>
-                          </g>
-                        </svg> -->
+                   
                       </button>
                       <!-- </button> -->
 
