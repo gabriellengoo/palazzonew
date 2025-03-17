@@ -52,7 +52,7 @@
                 <div class="relative">
                   <NuxtLink
                     v-if="item.reference.slug"
-                    :to="`/eventprojects/${item.reference.slug}`"
+                    :to="`/events/${item.reference.slug}`"
                     class="flex flex-col items-end h-full linkae link-animationn"
                   >
                     <figure class="inner-image">

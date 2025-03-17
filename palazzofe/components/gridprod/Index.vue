@@ -16,7 +16,7 @@
             Palazzo Eventi
           </p>
         </div>
-
+ 
         <div
           v-for="(chunk, chunkIndex) in chunkedItems"
           :key="chunkIndex"
@@ -63,9 +63,9 @@
                         <span class="textsumf">{{
                           item.title || "Name"
                         }}</span>
-                        <span class="fontsubpubn capitalize pt-[.5vw]">{{
+                        <!-- <span class="fontsubpubn capitalize pt-[.5vw]">{{
                           item.month || "Position"
-                        }}</span>
+                        }}</span> -->
                       </figcaption>
                     </div>
 
@@ -129,7 +129,7 @@
                   </button>
                         </div>
 
-                        <div v-if="item.content3" class="pt-[1vw] text-[1.3vw]">
+                        <div v-if="item.content3" class=" text-[1.3vw]">
                           <Richtext
                             class="contactinner teambios"
                             :blocks="item.content3"
@@ -633,7 +633,7 @@ export default {
 }
 
 .teambio {
-  padding-top: 0.5vw;
+  /* padding-top: 0.5vw; */
   border-top: 0.9vw solid rgba(0, 0, 0, 0.327);
   border-top-width: 0.7px;
 }
@@ -651,6 +651,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 90vh;
 }
 
 .chunk-container {
@@ -697,8 +698,8 @@ export default {
   margin-bottom: 20px;
   padding: 1vw;
   padding: 2vw;
-  padding-bottom: 1vw;
-  padding-top: 2vw;
+  padding-bottom: 0vw;
+  padding-top: 0vw;
 }
 
 .overlay-image {

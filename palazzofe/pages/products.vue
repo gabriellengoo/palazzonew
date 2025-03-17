@@ -16,7 +16,7 @@
         palazzo eventi
       </p>
       <h1 class="navmbno w-[2vw]">
-   
+    
       </h1>
     </div>
  
@@ -175,6 +175,7 @@ export default {
 
 .gridcontent{
   height: 100vh;
+  height: 90vh;
     display: flex;
     align-items: center;
 }
@@ -249,7 +250,7 @@ export default {
 .left-content {
   background-image: url("./static/background.jpg");
   background-size: 102vw;
-  background-size: 192vh;
+  /* background-size: 192vh; */
   background-position: unset;
   background-repeat: no-repeat;
   height: 100vh;

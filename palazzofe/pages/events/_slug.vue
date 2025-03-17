@@ -1,33 +1,41 @@
 <template>
+  <!-- md:h-screen -->
   <div class="reveal-container relative md:min-h-fit md:overflow-hidden">
+    <!-- <Headerproject /> -->
+    <!-- <LenisComponent />  -->
     <TransitionComponent />
-
     <div>
+      <!-- Header (optional) -->
       <HeaderComponent />
       <div class="headera mbpad content flex w-full justify-between">
         <h1 class="md:w-[1.4vw] w-auto">
-          <!-- weddings -->
-          <a class="headbar" href="../weddings">
-            <!-- <SvgBack class="svgmb hover:cursor-pointer"/> -->
+          <!-- events -->
+          <a class="headbar" href="../events">
             <div
               ref="lottieAnimation"
               class="lottie-container headbarc w-[1.7vw] hover:cursor-pointer"
             ></div>
+            <!-- <SvgBack class="svgmb hover:cursor-pointer"/> -->
           </a>
         </h1>
         <p class="yeart navmbno text-center text-4xl uppercase" v-if="project">
           {{ project.title }}
         </p>
         <p
-          class="yeart navmbno navop opacity-0 text-center text-4xl uppercase"
+          class="yeart navmbno opacity-0 navop text-center text-4xl uppercase"
           v-if="project"
         >
           {{ project.year }}
         </p>
         <p class="headingspages navmbno text-center text-4xl uppercase">
-          Weddings
+          events
         </p>
-        <h1 class="w-[2vw] navmbno"></h1>
+        <h1 class="w-[2vw] navmbno">
+          <!-- events -->
+          <!-- <a href="../events"
+                ><SvgClose class="headbar hover:cursor-pointer"
+              /></a> -->
+        </h1>
       </div>
 
       <div class="bgmobile relative min-h-screen flex">
@@ -37,10 +45,22 @@
             <p
               class="headingspagesslug pt-[2vw] nodes text-center text-4xl uppercase"
             >
-              Weddings
+              events
             </p>
           </div>
-
+          <!-- mobile  -->
+          <!-- <button
+              class="nodes absolute top-0 left-[0] z-30 w-[50%] h-[60vh] previous"
+              :class="back ? '' : 'disabled'"
+              @click="prev"
+              ref="prev"
+              aria-label="Previous"
+            ></button>
+            <button
+              class="nodes absolute top-0 right-0 z-30 w-[50%] h-[60vh] next"
+              @click="next"
+              aria-label="Next"
+            ></button> -->
           <div class="nodes nodesgal">
             <section
               class="top-0 left-0 w-full md:block cursor-grab slider"
@@ -102,8 +122,7 @@
                           :src="image.newDayImage.asset._ref"
                           class="new-day-image"
                         ></MediaImage>
-
-                        <p class="new-day-text">
+                        <p class="new-day-textevent">
                           {{ image.newDayText }}
                         </p>
                       </div>
@@ -117,6 +136,14 @@
               class="nodesdots absolute dotsmb top-0 right-0 p-2 text-xs block"
             >
               <span class="dots" v-if="project.slider">
+                <!-- <span
+                  v-for="n in 3"
+                  :key="n"
+                  class="dot"
+                  :class="{ 'active-dot': index % 3 === n - 1 }"
+                >
+                  •
+                </span> -->
                 <span
                   v-for="n in 3"
                   :key="n"
@@ -148,6 +175,11 @@
           <div class="allbotindi nomballbot md:p-8">
             <div class="bottom">
               <div class="archimg">
+                <!-- <img
+                  src="/indiangels.png"
+                  alt="Arch Frame"
+                  class="arch-frame"
+                /> -->
                 <MediaImage
                   :src="project.image"
                   v-if="project.image"
@@ -172,9 +204,14 @@
                       :blocks="project.content"
                     ></Richtext>
                   </div>
+                
                   <!-- Location Link -->
-                  <a class="noline" href="javascript:void(0)" @click="openModal"
-                    ><div
+                  <a
+                    class="noline"
+                    href="javascript:void(0)"
+                    @click="openModal"
+                  >
+                    <div
                       v-if="project.locationlink"
                       class="w-full flex items-center text-center md:pt-5 locationtext"
                       @mouseover="isHovered = true"
@@ -204,18 +241,23 @@
                       </p>
                     </div></a
                   >
-                  <!-- <div
-                    v-if="project.location && !project.locationlink"
-                    class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
-                  >
-                    <p class="loctext">Location,</p>
-                   
-                    <div class="flex flex-col normal-case italic loctextlink">
-                      <a>{{
-                        project.location
-                      }}</a>
+                  <div v-if="!project.locationlink" class=" opacity-0 pointer-events-none w-full flex items-center text-center md:pt-5 locationtext"
+                      @mouseover="isHovered = true" @mouseleave="isHovered = false">
+                      <img src="/playf.png" alt="play Image" :class="{
+                        'scale-110 transition-transform pointer-events-none duration-300 ease-out':
+                          isHovered,
+                        'w-[4vw] h-auto transition-all pointer-events-none duration-300 ease-out':
+                          !isHovered,
+                      }" class="w-[4vw] h-auto" />
+                      <p :class="{
+                        ' opacity-40 transition-all pointer-events-none duration-300 ease-out':
+                          isHovered,
+                        'opacity-100 transition-all pointer-events-none duration-300 ease-out':
+                          !isHovered,
+                      }" class="loctext">
+                        Play Film
+                      </p>
                     </div>
-                  </div> -->
 
                   <!-- Draggable Iframe Modal -->
                   <div
@@ -234,104 +276,13 @@
                         left: `${position.left}px`,
                       }"
                     >
-                      <!-- <button
-          class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
-          @click="closeModal"
-        > -->
                       <!-- Close -->
                       <button
                         class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
                         @click="closeModal"
                       >
                         <SvgClose class="" />
-                        <!-- <svg
-                          class="w-[1.7vw]"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          viewBox="0 0 500 500"
-                          width="500"
-                          height="500"
-                          preserveAspectRatio="xMidYMid meet"
-                          style="
-                            height: 100%;
-                            transform: translate3d(0px, 0px, 0px);
-                            content-visibility: visible;
-                          "
-                        >
-                          <defs>
-                            <clipPath id="__lottie_element_2">
-                              <rect width="500" height="500" x="0" y="0"></rect>
-                            </clipPath>
-                          </defs>
-                          <g clip-path="url(#__lottie_element_2)">
-                            <g
-                              transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
-                              opacity="1"
-                              style="display: block"
-                            >
-                              <g
-                                opacity="1"
-                                transform="matrix(1.4112499952316284,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M-10,-10 C-10,-10 10,10 10,10"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M-10,-10 C-10,-10 10,10 10,10"
-                                ></path>
-                              </g>
-                              <g
-                                opacity="0"
-                                transform="matrix(1.389361023902893,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M10,0 C10,0 10,0 10,0"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M10,0 C10,0 10,0 10,0"
-                                ></path>
-                              </g>
-                              <g
-                                opacity="1"
-                                transform="matrix(1.3872150182724,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M-10,10 C-10,10 10,-10 10,-10"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M-10,10 C-10,10 10,-10 10,-10"
-                                ></path>
-                              </g>
-                            </g>
-                          </g>
-                        </svg> -->
+                       
                       </button>
                       <!-- </button> -->
 
@@ -351,19 +302,18 @@
 
         <!-- Right Static Content -->
         <div class="right-content overflow-hidden flex-1">
+      
           <div
             class="copyrtex copyrtexmb items-baseline w-[96.5vw] justify-between flex pt-10 md:pt-0 pb-5 text-[1rem] md:text-[2rem]"
           >
             <div
               class="titleTextt flex flex-col items-baseline justify-between md:text-6xl text-2xl align-baseline"
             >
+              <!-- md:text-[1.2rem] text-[1rem] -->
               <div
                 class="ttmb uppercase animate-hover text-[1.2rem] pr-[1vw] pl-[1vw]"
               >
                 <p v-if="project">{{ project.title }}</p>
-                <!-- <p class="yeart mb-6 uppercase" v-if="project">
-                  {{ project.year }}
-                </p> -->
                 <a class="noline" href="javascript:void(0)" @click="openModal"
                   ><div
                     v-if="project.locationlink"
@@ -382,6 +332,9 @@
                       class="w-[11vw] h-auto"
                     /></div
                 ></a>
+                <!-- <p class="yeart mb-6 uppercase" v-if="project">
+                  {{ project.year }}
+                </p> -->
               </div>
 
               <div class="nodes mbfootout pt-[6vh] footout">
@@ -392,37 +345,7 @@
                       :blocks="project.content"
                     ></Richtext>
                   </div>
-                  <!-- <div
-                    v-if="project.location"
-                    class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
-                  >
-                    <p v-if="project.location" class="loctext">Play Film</p>
-                    <div class="flex flex-col normal-case italic loctextlink">
-                      <a href="javascript:void(0)" @click="openModal">{{
-                        project.location
-                      }}</a>
-                    </div>
-                  </div> -->
-                  <!-- Location Link -->
-                  <!-- <a
-                  class="noline"
-                        href="javascript:void(0)" @click="openModal"
-                        ><div
-  v-if="project.location"
-  class="w-full flex items-center text-center flex-col md:pt-5 locationtext"
->
-
-  <img
-    src="/playf.png"
-    alt="play Image"
-    :class="{
-  ' transition-transform duration-300 ease-out': isHovered,
-  'w-[11vw] h-auto transition-all duration-300 ease-out': !isHovered
-}"
-    class="w-[11vw] h-auto"
-  />
-  <p class="loctext">Play Film</p>
-</div></a> -->
+                 
 
                   <!-- Draggable Iframe Modal -->
                   <div
@@ -433,106 +356,15 @@
                     <div
                       class="modal-content overflow-hidden relative"
                       ref="modal"
+                      :style="{ top: `20vh`, left: `2vw` }"
                     >
-                      <!-- <button
-                          :style="{ top: `20vh`, left: `2vw` }"
-          class="absolute uppercase top-2 right-2 text-gray-700 hover:text-red-500"
-          @click="closeModal"
-        > -->
                       <!-- Close -->
                       <button
                         class="absolute uppercase top-[.5vw] right-[.5vw] hover:cursor-pointer"
                         @click="closeModal"
                       >
                         <SvgClose class="" />
-                        <!-- <svg
-                          class="w-[4.4vw]"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                          viewBox="0 0 500 500"
-                          width="500"
-                          height="500"
-                          preserveAspectRatio="xMidYMid meet"
-                          style="
-                            height: 100%;
-                            transform: translate3d(0px, 0px, 0px);
-                            content-visibility: visible;
-                          "
-                        >
-                          <defs>
-                            <clipPath id="__lottie_element_2">
-                              <rect width="500" height="500" x="0" y="0"></rect>
-                            </clipPath>
-                          </defs>
-                          <g clip-path="url(#__lottie_element_2)">
-                            <g
-                              transform="matrix(15.158522605895996,0,0,22.34870147705078,249.99996948242188,250.00001525878906)"
-                              opacity="1"
-                              style="display: block"
-                            >
-                              <g
-                                opacity="1"
-                                transform="matrix(1.4112499952316284,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M-10,-10 C-10,-10 10,10 10,10"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M-10,-10 C-10,-10 10,10 10,10"
-                                ></path>
-                              </g>
-                              <g
-                                opacity="0"
-                                transform="matrix(1.389361023902893,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M10,0 C10,0 10,0 10,0"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M10,0 C10,0 10,0 10,0"
-                                ></path>
-                              </g>
-                              <g
-                                opacity="1"
-                                transform="matrix(1.3872150182724,0,0,1,0,0)"
-                              >
-                                <path
-                                  fill="rgb(255,0,0)"
-                                  fill-opacity="1"
-                                  d=" M-10,10 C-10,10 10,-10 10,-10"
-                                ></path>
-                                <path
-                                  stroke-linecap="butt"
-                                  stroke-linejoin="miter"
-                                  fill-opacity="0"
-                                  stroke-miterlimit="4"
-                                  stroke="rgb(0,0,0)"
-                                  stroke-opacity="1"
-                                  stroke-width="1"
-                                  d=" M-10,10 C-10,10 10,-10 10,-10"
-                                ></path>
-                              </g>
-                            </g>
-                          </g>
-                        </svg> -->
+                       
                       </button>
                       <!-- </button> -->
 
@@ -546,35 +378,41 @@
                   </div>
                 </div>
               </div>
+              <!-- <span class="hover-move">Rose.co</span> -->
+              <!-- <p class="crtext text-[1.2rem]">
+                  COPYRIGHT ©2024
+                </p> -->
             </div>
+
+            <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
           </div>
 
           <div class="nomb static-box w-full h-full">
+            <!-- Static Content (e.g., Image, Text, etc.) -->
             <!-- desktop -->
+            <button
+              class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
+              :class="back ? '' : 'disabled'"
+              @click="prev"
+              ref="prev"
+              aria-label="Previous"
+            ></button>
+            <button
+              class="nomb absolute top-0 right-0 z-30 w-[25%] h-full next"
+              @click="next"
+              aria-label="Next"
+            ></button>
 
             <header
               class="absolute text-day2 top-0 right-0 hidden p-2 text-xs md:block"
             >
               <div class="numcon">
                 <span class="numg" v-if="project.slider">
-                  ( {{ String(index).padStart(0, "") }} of
-                  {{ String(project.slider.length).padStart(0, "") }} )</span
+                  ( {{ String(index).padStart(1, "") }} of
+                  {{ String(project.slider.length).padStart(1, "") }} )</span
                 >
               </div>
             </header>
-            <button
-              class="nomb absolute top-0 left-[49vw] z-30 w-[25%] h-full previous"
-              :class="back ? '' : ''"
-              @click="prev"
-              ref="prev"
-              aria-label="Previous"
-            ></button>
-            <!-- v-if="!isLastSlide" -->
-            <button
-              class="nomb absolute top-0 right-0 z-30 w-[25%] h-full next"
-              @click="next"
-              aria-label="Next"
-            ></button>
 
             <div class="nomb nombgal gallery-images">
               <section
@@ -594,11 +432,11 @@
                       <figure
                         v-for="image in slide.images"
                         :key="image._key"
+                        class="overlaydiv flex flex-col flex-1 h-full"
                         :class="{
                           portraitcon: image.portrait,
                           landscapecon: !image.portrait,
                         }"
-                        class="overlaydiv flex flex-col flex-1 h-full"
                       >
                         <MediaImage
                           :src="image.image.asset._ref"
@@ -621,10 +459,8 @@
                           }"
                           class="absolute top-0 left-0 text-day1 z-50"
                         >
-                          <!-- <p
-                            v-if="image.image && !image.newDay"
-                            class="numgday capitalize"
-                          >
+                          <!-- Display the day number of the active slide -->
+                          <!-- <p v-if="image.image && !image.newDay" class="numgday capitalize">
                             {{ image.day ? image.day : "Day 1" }}
                           </p> -->
                         </div>
@@ -635,6 +471,7 @@
                           :src="getVimeoEmbedUrl(image.vimeoUrl)"
                           frameborder="0"
                           allowfullscreen
+                          @click="openVimeoLink(image.vimeoUrl)"
                           class="landscape gallery-image w-auto h-full"
                         ></iframe>
 
@@ -645,7 +482,7 @@
                             :src="image.newDayImage.asset._ref"
                             class="new-day-image"
                           ></MediaImage>
-                          <p class="new-day-text">
+                          <p class="new-day-textevent">
                             {{ image.newDayText }}
                           </p>
                         </div>
@@ -663,10 +500,18 @@
                     <div
                       class="titleTextt flex items-baseline justify-between md:text-6xl text-2xl align-baseline text-center uppercase"
                     >
+                      <!-- md:text-[1.2rem] text-[1rem] -->
                       <div class="animate-hover text-[1.2rem] pr-5">
                         <p v-if="project">{{ project.title }}</p>
                       </div>
+
+                      <!-- <span class="hover-move">Rose.co</span> -->
+                      <!-- <p class="crtext text-[1.2rem]">
+                  COPYRIGHT ©2024
+                </p> -->
                     </div>
+
+                    <!-- <p class=" text-[1.2rem] text-end titleTextt">©2024 Coralie Rose Casting</p> -->
                   </div>
                 </div>
               </div>
@@ -677,36 +522,43 @@
     </div>
   </div>
 </template>
-
 <script>
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
+// import Header from "~/components/layout/Header.vue";
+// import About from "~/components/Aboutpage.vue";
+// import Lenis from '@studio-freight/lenis';
+// import LenisComponent from "~/components/LenisComponent.vue";
 import TransitionComponent from "~/components/TransitionComponent.vue";
 // import lottie from "lottie-web";
+// pop
+import DraggableIframe from "~/components/DraggableIframe.vue";
 
 export default {
   components: {
+    // Headerproject,
+    // LenisComponent,
     TransitionComponent,
   },
   async asyncData({ params, $sanity, store }) {
-    const query = groq`*[_type == "project" && slug.current == "${params.slug}"] {
-    ...,
-    "archiveSlug": archive->slug.current,
-
-    slider[] {
+    const query = groq`*[_type == "projectevents" && slug.current == "${params.slug}" ] {
+      ..., "archiveSlug": archive->slug.current,
+     
+      slider[] { 
       images[] {
         ...,
         "day": coalesce(day, "Day 1") 
       }
     },
  
-    "image": image.asset._ref,
-  } 
-  | order(_updatedAt desc)[0]`;
+   "image": image.asset._ref,
+     
+      
+    }
+     | order(_updatedAt desc)[0]`;
 
     const project = await $sanity.fetch(query);
 
-    // Modify the 'day' field for images after fetching the data
     if (project && project.slider) {
       project.slider = project.slider.map((slide) => {
         if (slide.images) {
@@ -723,9 +575,16 @@ export default {
       });
     }
 
+    //    // Debugging: Log the fetched data
+    //    console.log('Fetched meta:', project.meta);
+    // console.log('Fetched metaemails:', project.metaemails);
+
+    // // Commit meta and metaemails to the Vuex store
+    // store.commit('setMeta', project.meta);
+    // store.commit('setMetaEmails', project.metaemails);
+
     return { project };
   },
-
   data() {
     return {
       index: 1,
@@ -737,6 +596,12 @@ export default {
       isGalleryExpanded: true,
       isBlueBoxActive: false,
       clickedImageIndex: null, // Initially set to null
+      // swiperOptions: {
+      //   slidesPerView: "auto",
+      // },
+      // swiperOptions2: {
+      //   slidesPerView: "auto",
+      // },
       swiperOptions: {
         zoom: {
           maxRatio: 5, // Allow zooming up to 5x
@@ -753,25 +618,24 @@ export default {
         slidesPerView: "auto",
         touchRatio: 1, // Ensure touch interactions are enabled
       },
-      // swiperOptions2: {
-      //   slidesPerView: "auto",
-      // },
+      lottieInstance: null,
       imageOpacity: 1, // Add this property
       scrolled: false,
       back: false,
       searchQuery: "", // Initialize search query
-      lottieInstance: null,
+      // pop
       isModalOpen: false,
       isDragging: false,
       position: { top: 100, left: 100 }, // Initial position of the modal
       offset: { x: 0, y: 0 },
+
+      // pop
+      iframeVisible: false,
+      iframeUrl: "",
       isHovered: false,
     };
   },
   computed: {
-    isLastSlide() {
-      return this.realIndex === this.project.slider.length - 1;
-    },
     ...mapState(["meta", "metaemails", "projects"]), // Map Vuex state to local computed properties
   },
   created() {
@@ -784,47 +648,6 @@ export default {
   },
 
   mounted() {
-    // Select all elements with the class "gallery-image"
-    // Function to update z-index based on the active slide
-    const updateZIndexForActiveSlide = () => {
-      const activeSlide = document.querySelector(".gallery-image.active");
-      const galleryImages = document.querySelectorAll(".gallery-image");
-
-      // Reset all z-index values
-      galleryImages.forEach((galleryImage) => {
-        galleryImage.style.zIndex = "";
-      });
-
-      if (activeSlide) {
-        const iframe = activeSlide.querySelector("iframe");
-        if (iframe) {
-          activeSlide.style.zIndex = "10000";
-        }
-      }
-    };
-
-    // Call the function initially
-    updateZIndexForActiveSlide();
-
-    // Example: Listening for a slide change event
-    document.addEventListener("slideChange", updateZIndexForActiveSlide);
-
-    console.log("Lottie animation initialized:", this.lottieInstance);
-
-    import("lottie-web").then((lottie) => {
-    this.lottieInstance = lottie.default.loadAnimation({
-      container: this.$refs.lottieAnimation, // the DOM element
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: "/animations/hamburger.json", // your Lottie animation JSON file path
-    });
-
-    // Set the animation to frame 11 without playing
-    this.lottieInstance.goToAndStop(55, true);
-  });
-
- 
     const previousScrollPosition = sessionStorage.getItem(
       "previousScrollPosition"
     );
@@ -845,6 +668,21 @@ export default {
         }
       }, 1000); // Adjust timeout to match the duration of your animation
     });
+
+    console.log("Lottie animation initialized:", this.lottieInstance);
+
+    import("lottie-web").then((lottie) => {
+    this.lottieInstance = lottie.default.loadAnimation({
+      container: this.$refs.lottieAnimation, // the DOM element
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "/animations/hamburger.json", // your Lottie animation JSON file path
+    });
+
+    // Set the animation to frame 11 without playing
+    this.lottieInstance.goToAndStop(55, true);
+  });
   },
 
   watch: {
@@ -860,6 +698,7 @@ export default {
     next();
   },
   methods: {
+    // pop
     openModal() {
       this.isModalOpen = true;
     },
@@ -885,12 +724,13 @@ export default {
       }
     },
 
-    getVimeoEmbedUrl(vimeoUrl) {
-      // Extract Vimeo video ID from the URL
-      const videoId = vimeoUrl.split("/").pop();
-      // Generate the Vimeo embed URL
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0&muted=1&background=1`;
-    },
+    // other
+    // openModal() {
+    //   this.isModalOpen2 = true;
+    // },
+    // closeModal2() {
+    //   this.isModalOpen2 = false;
+    // },
     playSegment() {
       // Play from frame 11 to 20
       if (this.lottieInstance) {
@@ -922,24 +762,27 @@ export default {
     closeGallery() {
       this.$store.commit("setGalleryState", false); // Set gallery state as closed
     },
-
+    getYouTubeEmbedUrl(youtubeUrl) {
+      // Extract YouTube video ID from the URL
+      const videoId = youtubeUrl.split("v=")[1];
+      // Generate the YouTube embed URL with autoplay, mute, loop, and hide controls on hover parameters
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&showinfo=0`;
+    },
+    getVimeoEmbedUrl(vimeoUrl) {
+      // Extract Vimeo video ID from the URL
+      const videoId = vimeoUrl.split("/").pop();
+      // Generate the Vimeo embed URL
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0&muted=1&background=1`;
+    },
     onSlideChange(swiper) {
       this.index = swiper.activeIndex + 1;
       this.realIndex = swiper.activeIndex;
-
       const gsap = this.$gsap;
-
-      // Toggle "previous" button visibility
-      if (swiper.activeIndex === 0 && !this.back) {
+      if (swiper.activeIndex == 0 && !this.back) {
         this.$refs["prev"].classList.add("disabled");
-      } else if (this.isLastSlide) {
-        this.$refs["prev"].style.display = "none"; // Hide "previous" button
       } else {
         this.$refs["prev"].classList.remove("disabled");
-        this.$refs["prev"].style.display = ""; // Reset to default
       }
-
-      // Adjust skew animation
       if (this.index > 1) {
         gsap.to(this.$refs["skew"], { x: "-150%" });
       } else {
@@ -960,6 +803,10 @@ export default {
       } else {
         gsap.to(this.$refs["skew"], { x: "0%" });
       }
+    },
+    handleVideoClick(videoId) {
+      // Call the playVideo() method of your MediaVideoPlayPlay component
+      this.$refs.mediaVideoPlayPlay.playVideo(videoId);
     },
 
     showGalleryOnHover() {
@@ -1085,22 +932,22 @@ export default {
       }
     },
 
-    next2() {
-      if (this.mySwiperMobile.isEnd) {
-        if (this.project.nextProject) {
-          this.mySwiperMobile.slideTo(0);
-        }
-      } else {
-        this.mySwiperMobile.slideNext();
-      }
-    },
-    prev2() {
-      if (this.mySwiperMobile.isBeginning && this.back) {
-        this.$router.go(-1);
-      } else {
-        this.mySwiperMobile.slidePrev();
-      }
-    },
+    // next2() {
+    //   if (this.mySwiper2.isEnd) {
+    //     if (this.project.nextProject) {
+    //       this.mySwiper2.slideTo(0);
+    //     }
+    //   } else {
+    //     this.mySwiper2.slideNext();
+    //   }
+    // },
+    // prev2() {
+    //   if (this.mySwiper2.isBeginning && this.back) {
+    //     this.$router.go(-1);
+    //   } else {
+    //     this.mySwiper2.slidePrev();
+    //   }
+    // },
 
     async searchProjects() {
       const searchQuery = this.searchQuery.trim(); // Remove leading and trailing spaces
@@ -1122,22 +969,6 @@ export default {
 </script>
 
 <style scoped>
-/* .dots span:last-child{
-display: none;
-} */
-
-/* .location-container a {
-  cursor: pointer;
-  color: blue;
-  text-decoration: underline;
-} */
-
-.gallery-image {
-  touch-action: auto; /* Allow gestures like pinch-to-zoom */
-  pointer-events: auto; /* Ensure interaction */
-  user-select: auto; /* Allow text or element selection if needed */
-}
-
 .iframe-modal {
   position: fixed;
   width: 50%;
@@ -1174,7 +1005,7 @@ display: none;
   background: none;
   border: none;
   font-size: 1.5rem;
-  cursor: pointer !important;
+  cursor: pointer;
 }
 
 .iframe-content {
@@ -1254,35 +1085,17 @@ display: none;
   z-index: 1000;
 }
 
-.last {
-  cursor: crosshair;
-}
-
-/* .previous:hover {
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
-    auto !important;
-    z-index: 30;
-  cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto;
-} */
-
 /* .previous {
- z-index: 30;
-  cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto;
+  z-index: 30;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ3IDMwIiB3aWR0aD0iNDciIGhlaWdodD0iMzAiPjxkZWZzPjxpbWFnZSB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIGlkPSJpbWcxIiBocmVmPSJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNalFpSUdobGFXZG9kRDBpTWpRaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJZ1ptbHNiQzF5ZFd4bFBTSmxkbVZ1YjJSa0lpQmpiR2x3TFhKMWJHVTlJbVYyWlc1dlpHUWlQanh3WVhSb0lHUTlJazB5TGpFeE55QXhNbXczTGpVeU55QTJMakl6TlMwdU5qUTBMamMyTlMwNUxUY3VOVEl4SURrdE55NDBOemt1TmpRMUxqYzJOQzAzTGpVeU9TQTJMakl6Tm1neU1TNDRPRFIyTVdndE1qRXVPRGd6ZWlJdlBqd3ZjM1puUGc9PSIvPjwvZGVmcz48c3R5bGU+PC9zdHlsZT48dXNlICBocmVmPSIjaW1nMSIgdHJhbnNmb3JtPSJtYXRyaXgoLjk1MSwwLDAsLjk1MSwxLC03KSIvPjwvc3ZnPg=="),
+    auto !important;
 }
 
 .next {
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMS44ODMgMTJsLTcuNTI3IDYuMjM1LjY0NC43NjUgOS03LjUyMS05LTcuNDc5LS42NDUuNzY0IDcuNTI5IDYuMjM2aC0yMS44ODR2MWgyMS44ODN6Ii8+PC9zdmc+"),
+  z-index: 30;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ1IDI4IiB3aWR0aD0iNDUiIGhlaWdodD0iMjgiPjxkZWZzPjxpbWFnZSB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgaWQ9ImltZzEiIGhyZWY9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1qUWlJR2hsYVdkb2REMGlNalFpSUhodGJHNXpQU0pvZEhSd09pOHZkM2QzTG5jekxtOXlaeTh5TURBd0wzTjJaeUlnWm1sc2JDMXlkV3hsUFNKbGRtVnViMlJrSWlCamJHbHdMWEoxYkdVOUltVjJaVzV2WkdRaVBqeHdZWFJvSUdROUlrMHlNUzQ0T0RNZ01USnNMVGN1TlRJM0lEWXVNak0xTGpZME5DNDNOalVnT1MwM0xqVXlNUzA1TFRjdU5EYzVMUzQyTkRVdU56WTBJRGN1TlRJNUlEWXVNak0yYUMweU1TNDRPRFIyTVdneU1TNDRPRE42SWk4K1BDOXpkbWMrIi8+PC9kZWZzPjxzdHlsZT48L3N0eWxlPjx1c2UgIGhyZWY9IiNpbWcxIiB0cmFuc2Zvcm09Im1hdHJpeCguMjI3LC4wMDEsLTAuMDAxLC4yMjcsLjk1MywtNykiLz48L3N2Zz4="),
     auto !important;
-    z-index: 30;
 } */
-
-/* .previous{
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjExNyAxMmw3LjUyNyA2LjIzNS0uNjQ0Ljc2NS05LTcuNTIxIDktNy40NzkuNjQ1Ljc2NC03LjUyOSA2LjIzNmgyMS44ODR2MWgtMjEuODgzeiIvPjwvc3ZnPg=="),
-    auto !important;
-    z-index: 30;
-  cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIyMCwyIDgsMTYgMjAsMzAiIHN0eWxlPSJmaWxsOmJsYWNrOyIvPjwvc3ZnPg==') 16 16, auto;
-} */
-
 .previous {
   z-index: 30;
   cursor: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDM5IDIyIiB3aWR0aD0iMzkiIGhlaWdodD0iMjIiPjxkZWZzPjxpbWFnZSB3aWR0aD0iMTI4IiBoZWlnaHQ9IjcyIiBpZD0iaW1nMSIgaHJlZj0iZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCMlpYSnphVzl1UFNJeExqSWlJSGh0Ykc1elBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWdkbWxsZDBKdmVEMGlNQ0F3SURZMElETTJJaUIzYVdSMGFEMGlOalFpSUdobGFXZG9kRDBpTXpZaVBqeGtaV1p6UGp4cGJXRm5aU0FnZDJsa2RHZzlJalkwSWlCb1pXbG5hSFE5SWpZMElpQnBaRDBpYVcxbk1TSWdhSEpsWmowaVpHRjBZVHBwYldGblpTOXdibWM3WW1GelpUWTBMR2xXUWs5U2R6QkxSMmR2UVVGQlFVNVRWV2hGVldkQlFVRkZRVUZCUVVKQlEwRk5RVUZCUTJSME5FaHpRVUZCUVVGWVRsTlNNRWxDTW1OcmMyWjNRVUZCUkZwUlZFWlNSaTh2THk5QlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVko1SzJweVowRkJRVUpLTUZWck5WUkJRVVpQYlM4clFXMVRiakZSVlVFdk9VUTBPVGgzYUVWcUx6UkVOMUZCUVVGTWNFcFNSVVpWWlVwNmRERnpSVTluYWtGUlVsWkhaV3RTWnpGRlVDOHZVRFF3YlVkTVFVeHBTMVpzVFROT1RuVm9iakpRWVZSMGJUVnRjV2MxT0VORFEwTkJSbTlCTUVrd1FXNWhVVXRCSzNaVUwxVnlRVUZHTXpJMlUycENkRFJpY2xWbmRUQlJSSGRVYWs1a04yMVZja1J0YjBKTVRWRmljbkoyVWxCelUxTjNSVkkxVTBoS1VtTTRkR0pCVkZoTlYxVkROelZ4U0ZCWVkwSkhZelV2ZDFFNVprbEtaV0Y0TlRBNVowZGlUVEJGWjNSYWFrZFJUbTlEVUd0VVppdDFkMkUwWm04eVZXRmlSbEpOZFZwT2FGUmhNRzFvVkhCWE1tUkVhRmsyTW5aQ2QzaGxUV1JRZWtRMFJTdG1VVVJEUTBGQlVEUkVaa0ZGVERGVk5VdzRkVUY1WjFGQlFVRkJRa3BTVlRWRmNtdEtaMmRuUFQwaUx6NDhMMlJsWm5NK1BITjBlV3hsUGp3dmMzUjViR1UrUEhWelpTQWdhSEpsWmowaUkybHRaekVpSUhnOUlqQWlJSGs5SWkweE5DSXZQand2YzNablBnPT0iLz48L2RlZnM+PHN0eWxlPjwvc3R5bGU+PHVzZSAgaHJlZj0iI2ltZzEiIHRyYW5zZm9ybT0ibWF0cml4KC0wLjMwNSwwLDAsLTAuMzA1LDM5LDIxLjk1MykiLz48L3N2Zz4="),
@@ -1297,9 +1110,27 @@ display: none;
   transform: scale(1.5);
 }
 
-.disabled {
-  display: none;
-}
+/* Fallback for non-custom cursors */
+/* .previous:hover {
+    cursor: pointer;
+  }
+
+  .next:hover {
+    cursor: pointer;
+  } */
+
+/* .portrait {
+  height: auto;
+    width: 34vw;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 1vw;
+    margin-right: 1vw;
+    position: absolute;
+
+    height: 90vh;
+    width: auto;
+} */
 
 .portrait {
   margin-right: 1.5vw;
@@ -1312,6 +1143,16 @@ display: none;
 }
 
 .landscape {
+  /* height: auto;
+  width: auto;
+  height: auto;
+  width: 44vw;
+  width: 47vw;
+  position: relative;
+  top: 20vh;
+  margin-right: auto;
+  margin-left: auto; */
+
   height: 55vh;
   width: 47vw !important;
   /* display: flex; */
@@ -1354,11 +1195,10 @@ display: none;
 .headera {
   display: flex;
   border-bottom: 0.5px solid black;
-  /* background-image: url("./static/Navbar.jpg");
+  background-image: url("./static/Navbar.jpg");
   background-size: cover;
   background-position: initial;
-  background-repeat: no-repeat; */
-  background-color: #bcc2cb;
+  background-repeat: no-repeat;
 }
 
 .archimg {
@@ -1435,6 +1275,17 @@ display: none;
 }
 
 .gallery-images {
+  /* display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 48vw;
+    width: 49vw;
+    left: 50vw;
+    left: 49vw;
+    position: sticky; */
+
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -1443,17 +1294,6 @@ display: none;
   width: 50vw;
   left: 50vw;
   position: sticky;
-  z-index: auto;
-
-  /* display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 100vh;
-    width: 49vw;
-    left: 51vw;
-    position: fixed;
-    overflow: hidden; */
-  /* align-content: center; */
 }
 
 .gallery-image {
@@ -1466,7 +1306,7 @@ display: none;
   align-items: center;
   /* height: 90vh; */
   /* padding: 2vh; */
-  pointer-events: none;
+  pointer-events: none !important;
 }
 
 .allbotindi {
@@ -1647,24 +1487,21 @@ a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
-  background-color: #e6e5e4;
   height: 100vh;
   /* height: max-content; */
+  background-color: #e6e5e4;
   overflow-y: hidden;
   z-index: 1;
-  position: initial;
 }
 
 .right-content {
-  /* background-image: url("./static/PINKBG.png");
+  /* background-image: url("./static/BLUEbg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
-  background-color: #e6e5e4;
-  background-color: #fff;
+  background-color: #bcc2cb;
   height: 100vh;
   z-index: 0;
-  position: initial;
 }
 
 .copyrtexd {
@@ -1702,71 +1539,6 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-  .landscape {
-    height: 55vh;
-    width: 90vw !important;
-    /* display: flex; */
-    position: sticky !important;
-    top: 20vh;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .overlaydiv {
-    /* padding-top: 6vh; */
-    padding-bottom: 7vw;
-    display: flex;
-    justify-content: center;
-  }
-
-  .nomb {
-    display: none;
-  }
-
-  .nodes {
-    display: inherit;
-  }
-
-  .nodesgal {
-    /* display: flex;
-    height: 60vh;
-    width: 100vw;
-    left: 0;
-    position: absolute; */
-
-    display: flex;
-    height: 56vh;
-    width: 100vw;
-  }
-  .left-content {
-    /* background-image: url("./static/LeftBG.png");
-    background-image: url("./static/PINKBG.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
-    background-color: #e6e5e4;
-    height: 60vh;
-    height: max-content;
-    overflow-y: none;
-    flex: none;
-    padding-top: 6vh;
-  }
-
-  .right-content {
-    /* background-image: url("./static/PINKBG.png");
-    background-image: url("./static/LeftBG.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
-
-    height: 100%;
-    /* height: auto;
-    height: 40vh; */
-    z-index: 1;
-    position: relative;
-    flex: none;
-  }
-
   .modal-content {
     position: absolute;
     z-index: 1000;
@@ -1791,6 +1563,71 @@ a {
     width: 96vw;
     top: 19vh !important;
     /* border: 0.5px solid black; */
+  }
+  .landscape {
+    height: 55vh;
+    width: 90vw !important;
+    /* display: flex; */
+    position: sticky !important;
+    top: 20vh;
+    object-fit: cover;
+    object-position: center;
+  }
+  .overlaydiv {
+    /* padding-top: 6vh; */
+    display: flex;
+    justify-content: center;
+    padding-bottom: 7vw;
+  }
+
+  .nomb {
+    display: none;
+  }
+
+  .nodes {
+    display: inherit;
+  }
+
+  .nodesgal {
+    /* display: flex;
+    height: 60vh;
+    width: 100vw;
+    left: 0;
+    position: absolute; */
+
+    display: flex;
+    height: 56vh;
+    width: 100vw;
+  }
+  .left-content {
+    /* background-image: url("./static/LeftBG.png");
+    background-image: url("./static/BLUEbg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-repeat: no-repeat; */
+    background-color: #bcc2cb;
+    height: 60vh;
+    height: max-content;
+    overflow-y: none;
+    flex: none;
+    padding-top: 6vh;
+    z-index: 0;
+  }
+
+  .right-content {
+    /* background-image: url("./static/PINKBG.png");
+    background-image: url("./static/LeftBG.png"); */
+    background-color: #e6e5e4;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    /* height: auto;
+    height: 40vh; */
+    flex: none;
+    z-index: 1;
   }
 
   .footout {
@@ -1847,7 +1684,6 @@ a {
 
   .bgmobile {
     /* padding-top: 2.8vh; */
-    overflow: hidden !important;
     flex-direction: column; /* Stacks the two sides vertically on small screens */
   }
 
@@ -1875,17 +1711,6 @@ a {
     z-index: 100;
   }
 
-  .headera {
-    padding-top: 3.5vw;
-    padding-bottom: 3.5vw !important;
-    padding-left: 2.5vw;
-    padding-right: 2.5vw;
-  }
-
-  .svgmb {
-    top: 0vw !important;
-  }
-
   /* .headmb{
     display: contents;
     display: flex;
@@ -1895,6 +1720,18 @@ a {
   background-position: initial;
   background-repeat: no-repeat;
   } */
+
+  .headera {
+    padding-top: 3.5vw;
+    padding-bottom: 3.5vw;
+    padding-bottom: 3.5vw !important;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+  }
+
+  .svgmb {
+    top: 0vw !important;
+  }
 
   .archimg {
     display: none;

@@ -74,7 +74,7 @@
 
         <!-- Right Static Content -->
         <div
-          class="right-content nomb overflow-y-scroll flex-1 p-8 flex justify-center items-center"
+          class="right-content nomb  flex-1 p-8 flex justify-center items-center"
         >
           <div class="content">
             <div class="pointer-events-none">
@@ -843,8 +843,11 @@ a:hover {
 /* ------- */
 .gridcontentaw {
   height: 100vh;
+  height: 90vh;
+  /* overflow-y: hidden; */
   display: flex;
   align-items: center;
+  /* justify-content: center; */
 }
 
 .headingspagesb {
@@ -957,6 +960,14 @@ a:hover {
   .right-content {
     height: auto;
   } */
+  .gridcontentaw {
+  height: 100vh;
+  /* height: 90vh; */
+  /* overflow-y: hidden; */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
 
   .left-contentaw {
     /* background-image: url("./static/background.jpg");

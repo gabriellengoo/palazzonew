@@ -35,7 +35,7 @@
   <input type="text" name="days" placeholder="No. of Days of Celebration *" />
   <input type="email" name="email" placeholder="Email *" required />
   <input type="number" name="guests" placeholder="No. of Guests *" required />
-  <input type="text" name="info" placeholder="Additional info *" />
+  <input type="text" name="info" placeholder="Additional info" />
   <input type="number" name="budget" placeholder="Estimated Budget ( € ) *" required />
 
   <div class="flex justify-center mt-[4vw]">

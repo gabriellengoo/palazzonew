@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="bgmobile relative min-h-screen"
-    :style="{ backgroundImage: 'url(/background.jpg)' }"
-  >
+  <div class="bgmobile relative min-h-screen" :style="{ backgroundImage: 'url(/background.jpg)' }">
     <div class="headera content flex w-full justify-between">
       <h1 class="navmb navmbbord">
         <HeaderComponent />
@@ -12,65 +9,39 @@
     <div class="allgal nomb">
       <!-- <transition name="fade" mode="out-in">
          v-show="currentSlideIndex === index" -->
-      <div
-        v-for="(slide, index) in home.slider"
-        :style="{
-          opacity: currentSlideIndex === index ? 1 : 0,
-          transition: 'opacity 3s ease-out',
-        }"
-        :key="slide._key"
-        class="homegal  flex justify-center w-full h-full"
-      >
+      <div v-for="(slide, index) in home.slider" :style="{
+        opacity: currentSlideIndex === index ? 1 : 0,
+        transition: 'opacity 3s ease-out',
+      }" :key="slide._key" class="homegal  flex justify-center w-full h-full">
         <div class="overlaycont flex h-full pb-0 w-13/16">
           <div class="gallery-images-container flex flex-wrap">
             <transition-group name="fade" mode="out-in" tag="figure">
-              <figure
-                v-for="(image, i) in slide.images"
-                v-show="currentSlideIndex === index"
-                :key="image._key"
-                class="overlaydiv flex flex-col flex-1 h-full"
-              >
-                <MediaImageh
-                  :src="image.image.asset._ref"
-                  v-if="image.image"
-                  class="gallery-image w-[100vw] h-full"
-                  :sizes="'sm:200vw md:150vw lg:200vw'"
-                />
+              <figure v-for="(image, i) in slide.images" v-show="currentSlideIndex === index" :key="image._key"
+                class="overlaydiv flex flex-col flex-1 h-full">
+                <MediaImageh :src="image.image.asset._ref" v-if="image.image" class="gallery-image w-[100vw] h-full"
+                  :sizes="'sm:200vw md:150vw lg:200vw'" />
               </figure>
             </transition-group>
           </div>
         </div>
       </div>
       <!-- </transition> -->
-     
+
     </div>
 
     <div class="allgal nodeshome">
-        <!-- MOBILE -->
-        <div
-        v-for="(slide, index) in home.slider2"
-        :style="{
-          opacity: currentSlideIndex === index ? 1 : 0,
-          transition: 'opacity 3s ease-out',
-        }"
-        :key="slide._key"
-        class="homegal flex justify-center w-full h-full"
-      >
+      <!-- MOBILE -->
+      <div v-for="(slide, index) in home.slider2" :style="{
+        opacity: currentSlideIndex === index ? 1 : 0,
+        transition: 'opacity 3s ease-out',
+      }" :key="slide._key" class="homegal flex justify-center w-full h-full">
         <div class="overlaycont flex h-full pb-0 w-13/16">
           <div class="gallery-images-container flex flex-wrap">
             <transition-group name="fade" mode="out-in" tag="figure">
-              <figure
-                v-for="(image, i) in slide.images"
-                v-show="currentSlideIndex === index"
-                :key="image._key"
-                class="overlaydiv flex flex-col flex-1 h-full"
-              >
-                <MediaImageh
-                  :src="image.image.asset._ref"
-                  v-if="image.image"
-                  class="gallery-image w-[100vw] h-full"
-                  :sizes="'sm:200vw md:150vw lg:200vw'"
-                />
+              <figure v-for="(image, i) in slide.images" v-show="currentSlideIndex === index" :key="image._key"
+                class="overlaydiv flex flex-col flex-1 h-full">
+                <MediaImageh :src="image.image.asset._ref" v-if="image.image" class="gallery-image w-[100vw] h-full"
+                  :sizes="'sm:200vw md:150vw lg:200vw'" />
               </figure>
             </transition-group>
           </div>
@@ -78,11 +49,8 @@
       </div>
     </div>
 
-    <div
-      :class="{ 'hidden-content': isMenuOpen }"
-      id="main-content"
-      class="md:flex mainconhome mbmain justify-center md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen"
-    >
+    <div :class="{ 'hidden-content': isMenuOpen }" id="main-content"
+      class="md:flex mainconhome mbmain justify-center md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen">
       <div v-if="home" class="textmainpg text-center">
         <transition name="logo-animation">
           <!-- <MediaImageh
@@ -90,7 +58,7 @@
                   class="w-[80vw]"
                   :sizes="'sm:200vw md:150vw lg:200vw'"
                 /> -->
-              
+
           <div class="textmainpg text-center">
             <h1 class="nodesnav maintext2 text-[white] leading-tight relative z-0 uppercase">
               weddings & event planning in italy
@@ -98,9 +66,12 @@
             <h1 class="maintext text-[white] leading-tight relative z-0 uppercase">
               PALAZZO EVENTI
             </h1>
-            <h1 class="nomb maintext2 text-[white] leading-tight relative z-0 uppercase">
+            <h1 class="nomb maintext2 text-[white] leading-tight relative z-0 uppercase pb-[2vw]">
               weddings & event planning in italy
             </h1>
+            <NuxtLink to="/weddings" class="bttn px-[2vw] py-[3vw] uppercase transition-all duration-300">
+              Enter
+            </NuxtLink>
           </div>
         </transition>
         <!-- <div ref="element" class="disintegrate">Disintegrate Me</div> -->
@@ -158,7 +129,7 @@ export default {
       this.intervalId = setInterval(() => {
         this.currentSlideIndex =
           (this.currentSlideIndex + 1) % this.home.slider.length;
-      }, 5000);
+      }, 2500);
     },
 
     toggleMenu() {
@@ -207,7 +178,8 @@ export default {
 
 .logo-animation-enter-active {
   transition: opacity 1s ease, transform 1s ease;
-  transition-delay: 1s; /* Delay the animation */
+  transition-delay: 1s;
+  /* Delay the animation */
 }
 
 .logo-animation-leave-active {
@@ -217,7 +189,8 @@ export default {
 .logo-animation-enter,
 .logo-animation-leave-to {
   opacity: 0;
-  transform: translateY(20px); /* Example: starting with a slight slide */
+  transform: translateY(20px);
+  /* Example: starting with a slight slide */
 }
 
 .gallery-images-container {
@@ -230,8 +203,11 @@ export default {
   transition: opacity 0.5s ease-in-out;
 }
 
-.fade-enter, 
-.fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active in <2.1.8 */
+  {
   opacity: 0;
 }
 
@@ -283,8 +259,10 @@ export default {
 
 .slider {
   position: relative;
-  width: 100%; /* Set your slider width */
-  height: 100%; /* Set your slider height */
+  width: 100%;
+  /* Set your slider width */
+  height: 100%;
+  /* Set your slider height */
 }
 
 .slide {
@@ -293,12 +271,15 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0; /* Start hidden */
-  transition: opacity 1s ease-in-out; /* Smooth fade transition */
+  opacity: 0;
+  /* Start hidden */
+  transition: opacity 1s ease-in-out;
+  /* Smooth fade transition */
 }
 
 .slide.active {
-  opacity: 1; /* Fully visible slide */
+  opacity: 1;
+  /* Fully visible slide */
 }
 
 .flowset {
@@ -337,6 +318,7 @@ export default {
 .fade-leave-active {
   transition: opacity 5s;
 }
+
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
@@ -362,9 +344,12 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  object-fit: cover; /* Ensure the image covers the container */
+  width: 100vw;
+  /* Full viewport width */
+  height: 100vh;
+  /* Full viewport height */
+  object-fit: cover;
+  /* Ensure the image covers the container */
   object-fit: contain;
 }
 
@@ -387,11 +372,80 @@ export default {
   z-index: 100;
 }
 
+
+.butcon {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  z-index: 30;
+}
+
+.bttn {
+  padding: 1rem;
+  padding: 0.7vw;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+  border: 0.05vw solid black;
+  width: 10%;
+  display: flex;
+  margin: auto;
+  text-transform: uppercase;
+  font-family: "GT-Sectra-Book";
+  /* font-family: "NHaas" !important; */
+  transition-duration: color 0.8s ease;
+  background-color: #e6e5e4;
+  font-size: 1.3vw;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  pointer-events: all;
+  /* z-index: 10000000; */
+}
+
+.bttn:hover {
+  /* background-color: #0056b3; */
+  background-color: #bcc2cb;
+  transition-duration: background-color 0.8s ease;
+  /* color: #ccc; */
+}
+
+.butcon {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+}
+
 @media only screen and (max-width: 768px) {
+
   /* .maintext {
     font-family: "RomainHeadlineTrial";
     font-size: 16vw;
   } */
+  .bttn {
+    padding: 1rem;
+    padding: 1.4vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+    border: 0.05vw solid black;
+    width: 30%;
+    display: flex;
+    margin: unset;
+    text-transform: uppercase;
+    /* font-family: "GT-Sectra-Book"; */
+    /* font-family: "NHaas" !important; */
+    transition-duration: color 0.8s ease;
+    background-color: #e6e5e4;
+    font-size: 3.3vw;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    pointer-events: all;
+    /* z-index: 10000000; */
+  }
 
   .maintext {
     font-family: "RomainHeadlineTrial";
@@ -440,7 +494,7 @@ export default {
   .subtx {
     font-size: 2.5vw !important;
   }
- 
+
 
   .gallery-image {
     object-fit: cover;
@@ -483,13 +537,13 @@ export default {
     flex-direction: column;
   }
 
-  .navmbbord {
-  }
+  .navmbbord {}
 
   .bgmobile {
     background-size: contain;
     background-position: center top;
-    min-height: 50vh; /* Optional: Adjust the height */
+    min-height: 50vh;
+    /* Optional: Adjust the height */
     height: max-content;
     overflow: hidden;
     position: absolute;
@@ -503,13 +557,15 @@ export default {
 
 @media (min-width: 1440px) and (max-width: 1544px) {
   .maintext {
-    font-size: 8rem; /* Adjust to the desired size for laptops */
+    font-size: 8rem;
+    /* Adjust to the desired size for laptops */
   }
 }
 
 @media (min-width: 2195px) and (max-width: 1457px) {
   .maintext {
-    font-size: 7rem; /* Adjust to the desired size for laptops */
+    font-size: 7rem;
+    /* Adjust to the desired size for laptops */
   }
 }
 

@@ -161,7 +161,7 @@
             class="col-span-1"
             type="text"
             name="Additional info"
-            placeholder="Additional info *"
+            placeholder="Additional info"
           />
           <input
             class="col-span-1"

@@ -360,6 +360,9 @@ html {
 
 .fontsubpub {
   font-family: "NHaas";
+  font-size: 0.8vw;
+  line-height: normal;
+  font-family: "GT-SuperBook";
 }
 
 .fontsubpubn {

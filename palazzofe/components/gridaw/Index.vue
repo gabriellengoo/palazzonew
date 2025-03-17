@@ -3,15 +3,14 @@
     <div>
       <!-- Images Section -->
       <div class="image-grid pt-[1vh]">
-        <div class="nodes contmbhead">
-          <!-- <p>d</p> -->
+        <!-- <div class="nodes contmbhead">
           <p
             v-if="!isMenuOpen"
             class="headingspages text-center text-4xl uppercase"
           >
             Awards
           </p>
-        </div>
+        </div> -->
 
         <!-- Loop through the items array in chunks of two -->
         <div
@@ -397,8 +396,13 @@ export default {
 
 .image-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    top: 0;
+    width: 45vw;
+    position: relative;
+    justify-content: flex-start;
 }
 
 .image-rowaw {
@@ -406,6 +410,7 @@ export default {
   justify-content: space-between;
   width: 90%;
   width:82%;
+  width: 60vh;
   /* border-bottom: 0.07vw solid black; */
 }
 
@@ -442,12 +447,24 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
+  .image-rowaw {
+  display: flex;
+  justify-content: space-between;
+  width:82%;
+}
+
+
   .image-rowaw:last-child {
     display: flex;
     justify-content: space-between;
     width: 82%;
     border-bottom: 0.07vw solid rgba(0, 0, 0, 0) !important;
+    padding-bottom: 10vh;
   }
+
+  .image-grid {
+    width: 100vw;
+}
 }
 
 @media only screen and (max-width: 768px) {

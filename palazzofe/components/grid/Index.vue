@@ -257,7 +257,7 @@ export default {
     width: 100%;
     position: relative;
     /* top: 20vh; */
-    left: 1vw;
+    /* left: 1vw; */
     margin: 0 auto;
     object-fit: cover;
 }

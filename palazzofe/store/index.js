@@ -9,7 +9,7 @@ export const state = () => ({
   title: false,
   activeProject: false,
   activeTalent: false,
-  footer: false,
+  footer: false, 
   contact: false,
   menu: false,
   isMenuOpen: false,
