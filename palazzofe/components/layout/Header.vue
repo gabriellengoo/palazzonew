@@ -63,7 +63,7 @@
                       <a href="./services"> SERVICES </a>
                     </li>
                     <li>
-                      <a href="./about"> ABOUT </a>
+                      <a href="./about-awards"> ABOUT </a>
                     </li>
                     <li>
                       <a href="./press"> PRESS </a>
@@ -193,7 +193,7 @@ export default {
         "./weddings",
         "./events",
         "./services",
-        "/about",
+        "/about-awards",
         "./",
         "./press",
         "./contact",
@@ -560,7 +560,7 @@ export default {
 }
 
 .default-image-display {
-  transition: opacity 2s ease-in-out;
+  transition: opacity 1s ease-in-out;
   opacity: 1;
 }
 
@@ -570,7 +570,7 @@ export default {
 
 .hover-image-display {
   opacity: 0;
-  transition: opacity 2s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
 .image-container:hover .hover-image-display {

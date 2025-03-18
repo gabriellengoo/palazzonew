@@ -53,11 +53,7 @@
       class="md:flex mainconhome mbmain justify-center md:pt-0 lg:pt-0 xl:pt-0 items-start md:items-center lg:items-center xl:items-center h-screen">
       <div v-if="home" class="textmainpg text-center">
         <transition name="logo-animation">
-          <!-- <MediaImageh
-                  :src="home.image.asset._ref"
-                  class="w-[80vw]"
-                  :sizes="'sm:200vw md:150vw lg:200vw'"
-                /> -->
+
 
           <div class="textmainpg text-center">
             <h1 class="nodesnav maintext2 text-[white] leading-tight relative z-0 uppercase">
@@ -69,9 +65,14 @@
             <h1 class="nomb maintext2 text-[white] leading-tight relative z-0 uppercase pb-[2vw]">
               weddings & event planning in italy
             </h1>
-            <NuxtLink to="/weddings" class="bttn px-[2vw] py-[3vw] uppercase transition-all duration-300">
-              Enter
-            </NuxtLink>
+            <!-- <button 
+  class="bttn px-[2vw] py-[3vw] uppercase transition-all duration-300"
+  @click="toggleMenu"
+>
+  Enter
+</button> -->
+            <div class="butcon"><button class="bttn px-[2vw] py-[3vw] uppercase transition-all duration-300"
+                @click="$store.commit('toggleMenu')">Enter</button></div>
           </div>
         </transition>
         <!-- <div ref="element" class="disintegrate">Disintegrate Me</div> -->
@@ -129,7 +130,7 @@ export default {
       this.intervalId = setInterval(() => {
         this.currentSlideIndex =
           (this.currentSlideIndex + 1) % this.home.slider.length;
-      }, 2500);
+      }, 5000);
     },
 
     toggleMenu() {
@@ -376,9 +377,14 @@ export default {
 .butcon {
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: baseline;
   position: absolute;
   z-index: 30;
+  display: flex;
+  width: 85%;
+  height: 40%;
+  justify-content: center;
+  position: absolute;
 }
 
 .bttn {
@@ -392,8 +398,8 @@ export default {
   display: flex;
   margin: auto;
   text-transform: uppercase;
-  font-family: "GT-Sectra-Book";
-  /* font-family: "NHaas" !important; */
+  /* font-family: "GT-Sectra-Book"; */
+  font-family: "NHaas" !important;
   transition-duration: color 0.8s ease;
   background-color: #e6e5e4;
   font-size: 1.3vw;
@@ -411,14 +417,19 @@ export default {
   /* color: #ccc; */
 }
 
-.butcon {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  position: absolute;
-}
+
 
 @media only screen and (max-width: 768px) {
+
+  .butcon {
+    display: flex;
+    width: 100%;
+    height: 40%;
+    justify-content: center;
+    /* align-content: flex-end; */
+    align-items: center;
+    position: relative;
+  }
 
   /* .maintext {
     font-family: "RomainHeadlineTrial";
@@ -432,6 +443,7 @@ export default {
     position: relative;
     border: 0.05vw solid black;
     width: 30%;
+    height: max-content;
     display: flex;
     margin: unset;
     text-transform: uppercase;
