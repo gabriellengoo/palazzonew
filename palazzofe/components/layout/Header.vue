@@ -3,14 +3,14 @@
     <header class="header top-[1rem] md:top-4 lg:top-[2rem] flex items-center p-6">
       <div class="flex md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
         <div class="headbar hover:cursor-pointer">
-          <button @click="toggleMenu" class="hamburger-button">
+        <button @click="toggleMenu" class="hamburger-button">
             <div ref="lottieAnimation" class="lottie-container w-[1.5vw] hover:cursor-pointer"></div>
           </button>
         </div>
       </div>
 
       <!-- desktop -->
-      <!-- <transition name="slide-down" @after-enter="fadeInAllImg"> -->
+      <transition name="slide-down" @after-enter="fadeInAllImg">
         <nav v-if="isMenuOpen" class="nav-menu fixed left-0 w-full h-screen z-[500] object-cover">
           <div class="image-container  inset-0 w-full h-full object-cover" @mouseenter="isHovered = true"
             @mouseleave="isHovered = false">
@@ -27,12 +27,12 @@
           </div>
 
         </nav>
-      <!-- </transition> -->
+      </transition>
     </header>
 
     <!-- mobile -->
     <!-- name="slide-down" -->
-    <!-- <transition class="mobilemenu" name="slide-down" @after-enter="fadeInAllImg"> -->
+    <transition class="mobilemenu" name="slide-down" @after-enter="fadeInAllImg">
       <div v-if="isMenuOpen"
         class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center">
         <div v-if="isMenuOpen" class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8">
@@ -72,7 +72,15 @@
                       <a href="./contact"> CONTACT </a>
                     </li>
 
-
+                    <!-- <li   class=" opacity-0">
+                    <a
+                      @click="setActiveSection('production')"
+                
+                      href="javascript:void(0)"
+                    >
+                      Production
+                    </a>
+                  </li> -->
                   </ul>
                 </nav>
               </div>
@@ -80,7 +88,7 @@
           </transition>
         </div>
       </div>
-    <!-- </transition> -->
+    </transition>
 
 
   </div>
@@ -97,6 +105,8 @@ export default {
       isHovered: false,
       defaultImage: "/Navn.webp",
       hoverImage: "/Navnt.webp",
+      // defaultImage: "/newnavt.jpg", 
+      // hoverImage: "/newnav.jpg", 
       menuTopPosition: "0",
       lottieInstance: null,
     };
@@ -105,8 +115,6 @@ export default {
     // this.updateNavMenuPosition();
     window.addEventListener("resize", this.updateNavMenuPosition);
 
-    // Listen for event from the home page
-    this.$root.$on("open-menu", this.openMenu);
 
     if (process.client) {
       import("lottie-web").then((lottie) => {
@@ -134,32 +142,34 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.updateNavMenuPosition);
-    this.$root.$off("open-menu", this.openMenu);
   },
   methods: {
-    // openMenu() {
-    //   this.isMenuOpen = true;
-    //   this.$store.commit("toggleMenu");
-    //   this.lottieInstance.playSegments([0, 97], true);
-    //   this.$nextTick(() => {
-    //     this.animateLinksIn();
-    //   });
-    // },
 
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-      this.$store.commit("toggleMenu"); // Use Vuex mutation
-      if (this.$store.state.isMenuOpen) {
-        this.lottieInstance.playSegments([0, 97], true);
-        this.$nextTick(() => {
-          this.animateLinksIn();
-        });
-      } else {
-        this.lottieInstance.playSegments([97, 0], true);
-      }
-    },
+    this.$store.commit("toggleMenu"); // Use Vuex mutation
+    if (this.$store.state.isMenuOpen) {
+      this.lottieInstance.playSegments([0, 97], true);
+      this.$nextTick(() => {
+        this.animateLinksIn();
+      });
+    } else {
+      this.lottieInstance.playSegments([97, 0], true);
+    }
+  },
 
+    // toggleMenu() {
+    //   this.isMenuOpen = !this.isMenuOpen;
 
+    //   if (this.isMenuOpen) {
+    //     this.lottieInstance.playSegments([0, 97], true);
+    //     this.$nextTick(() => {
+    //       this.animateLinksIn(); // 🔥 Animate links when menu opens
+    //     });
+    //   } else {
+    //     this.lottieInstance.playSegments([97, 0], true);
+    //   }
+    // },
     animateLinksIn() {
       gsap.fromTo(
         ".mobilemenu li",
@@ -186,7 +196,13 @@ export default {
       ];
       return links[index - 1]; // Adjust index for 1-based loop
     },
-
+    // updateNavMenuPosition() {
+    //   const headerDiv = this.$refs.headerDiv;
+    //   if (headerDiv) {
+    //     const headerBottom = headerDiv.getBoundingClientRect().bottom;
+    //     this.menuTopPosition = `calc(${headerBottom}px + 3.5vh)`;
+    //   }
+    // },
     computed: {
       currentTitle() {
         return this.$store.state.title;

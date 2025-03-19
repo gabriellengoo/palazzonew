@@ -416,7 +416,7 @@ export default {
   position: absolute;
   z-index: 30;
   display: flex;
-  width: 85%;
+  width: 90vw;
   height: 40%;
   justify-content: center;
   position: absolute;
