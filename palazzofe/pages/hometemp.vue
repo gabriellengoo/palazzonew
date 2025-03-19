@@ -7,8 +7,6 @@
     </div>
 
     <div class="allgal nomb">
-      <!-- <transition name="fade" mode="out-in">
-         v-show="currentSlideIndex === index" -->
       <div v-for="(slide, index) in home.slider" :style="{
         opacity: currentSlideIndex === index ? 1 : 0,
         transition: 'opacity 3s ease-out',
@@ -25,7 +23,6 @@
           </div>
         </div>
       </div>
-      <!-- </transition> -->
 
     </div>
 
@@ -65,17 +62,24 @@
             <h1 class="nomb maintext2 text-[white] leading-tight relative z-0 uppercase pb-[2vw]">
               weddings & event planning in italy
             </h1>
-            <!-- <button 
-  class="bttn px-[2vw] py-[3vw] uppercase transition-all duration-300"
-  @click="toggleMenu"
->
-  Enter
-</button> -->
-            <div class="butcon"><button class="bttn px-[2vw] py-[3vw] uppercase transition-all duration-300"
-                @click="$store.commit('toggleMenu')">Enter</button></div>
+
+
+      
+
+            <div class="butcon">
+              <button  @click="showHeader = true" class="bttn px-[2vw] py-[3vw] uppercase transition-all duration-300"
+              >Enter
+            </button>
+            </div>
+
+
+            <transition name="slide-fade">
+      <Headerhome v-if="showHeader" />
+    </transition>
+
           </div>
+        
         </transition>
-        <!-- <div ref="element" class="disintegrate">Disintegrate Me</div> -->
       </div>
     </div>
   </div>
@@ -83,6 +87,7 @@
 
 <script>
 import HeaderComponent from "@/components/layout/Header.vue";
+import Headerhome from "@/components/Headerhome.vue";
 import { mapState } from "vuex";
 import { groq } from "@nuxtjs/sanity";
 import gsap from "gsap";
@@ -91,6 +96,7 @@ export default {
   name: "IndexPage",
   components: {
     HeaderComponent,
+    Headerhome,
   },
 
   async asyncData({ $sanity }) {
@@ -114,6 +120,7 @@ export default {
 
   data() {
     return {
+      showHeader: false,
       currentSlideIndex: 0, // Track the current slide index
       isMenuOpen: false,
       intervalId: null, // Store the interval reference
@@ -122,9 +129,15 @@ export default {
 
   computed: {
     ...mapState(["gridd"]),
+    ...mapState(["isMenuOpen"]),
   },
 
   methods: {
+
+    openMenu() {
+      this.$emit("open-menu"); // Emit event when button is clicked
+    },
+
     startGallery() {
       // Automatically change slides every 5 seconds
       this.intervalId = setInterval(() => {
@@ -167,6 +180,28 @@ export default {
 </script>
 
 <style scoped>
+
+/* Initial hidden state for the component */
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: opacity 0.8s ease-in-out;
+  /* transition: max-height 0.5s ease-in-out; */
+  opacity: 1;
+}
+.slide-fade-enter, .slide-fade-leave-to /* .slide-fade-leave-active in <2.1.8 */ {
+  /* transform: translateY(100%); Slide from the right */
+  opacity: 0;
+  /* max-height: 100vh; */
+}
+
+/* Ensure the header stays in position once it has slid in */
+.Headerhome {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+
+
 .disintegrate {
   background: #000;
   color: white;

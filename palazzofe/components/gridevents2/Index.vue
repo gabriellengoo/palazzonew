@@ -5,7 +5,7 @@
       <div class="image-grid pt-[1vh]">
 
         <div class="nodes contmbhead">
-          <!-- <p>d</p> -->
+  
           <p
                  v-if="!isMenuOpen"
           class="headingspages text-center text-4xl  uppercase "

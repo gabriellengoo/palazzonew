@@ -61,8 +61,8 @@ export const mutations = {
   toggleMenu(state) {
     state.isMenuOpen = !state.isMenuOpen;
   },
-  setMenuState(state, status) {
-    state.isMenuOpen = status;
+  setMenuState(state, isOpen) {
+    state.isMenuOpen = isOpen;
   },
 }
 

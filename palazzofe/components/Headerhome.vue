@@ -1,16 +1,16 @@
 <template>
   <div>
     <header class="header top-[1rem] md:top-4 lg:top-[2rem] flex items-center p-6">
-      <div class="flex md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
+      <!-- <div class="flex md:justify-between lg:justify-between xl:justify-between" ref="headerDiv">
         <div class="headbar hover:cursor-pointer">
           <button @click="toggleMenu" class="hamburger-button">
             <div ref="lottieAnimation" class="lottie-container w-[1.5vw] hover:cursor-pointer"></div>
           </button>
         </div>
-      </div>
+      </div> -->
 
       <!-- desktop -->
-      <!-- <transition name="slide-down" @after-enter="fadeInAllImg"> -->
+      <transition name="slide-down" @after-enter="fadeInAllImg">
         <nav v-if="isMenuOpen" class="nav-menu fixed left-0 w-full h-screen z-[500] object-cover">
           <div class="image-container  inset-0 w-full h-full object-cover" @mouseenter="isHovered = true"
             @mouseleave="isHovered = false">
@@ -27,12 +27,12 @@
           </div>
 
         </nav>
-      <!-- </transition> -->
+      </transition>
     </header>
 
     <!-- mobile -->
     <!-- name="slide-down" -->
-    <!-- <transition class="mobilemenu" name="slide-down" @after-enter="fadeInAllImg"> -->
+    <transition class="mobilemenu" name="slide-down" @after-enter="fadeInAllImg">
       <div v-if="isMenuOpen"
         class="mobilemenu top-[0vh] fixed left-0 h-screen w-full z-50 flex flex-col justify-center items-center">
         <div v-if="isMenuOpen" class="left-content flex-1 flex items-center justify-center overflow-y-scroll p-8">
@@ -80,7 +80,7 @@
           </transition>
         </div>
       </div>
-    <!-- </transition> -->
+    </transition>
 
 
   </div>
@@ -93,7 +93,7 @@ import gsap from "gsap";
 export default {
   data() {
     return {
-      isMenuOpen: false,
+      isMenuOpen: true,
       isHovered: false,
       defaultImage: "/Navn.webp",
       hoverImage: "/Navnt.webp",
