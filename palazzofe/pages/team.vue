@@ -93,8 +93,31 @@ export default {
     };
   },
 
+  head() {
+    return {
+      title: this.team?.seo?.title || "Palazzo",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.team?.seo?.description || "Default description",
+        },
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: this.team?.seo?.keywords?.join(", ") || "default, keywords",
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.team?.seo?.image?.asset?.url || "",
+        },
+      ],
+    };
+  },
+
   async asyncData({ params, $sanity, store }) {
-    const query = groq`*[_type == "team"]{
+    const query = groq`*[_type == "team"]{ ...,
     title,
     titlec,
   } | order(_updatedAt desc)[0]`;

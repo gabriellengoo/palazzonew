@@ -102,6 +102,12 @@ export default {
   async asyncData({ $sanity }) {
     const query = groq`*[_type == "home"] {
       ...,
+      seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },
       slider[] {
         images[] {
           ...,
@@ -118,6 +124,29 @@ export default {
     return { home };
   },
 
+  head() {
+    return {
+      title: this.home?.seo?.title || "Palazzo",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.home?.seo?.description || "Default description",
+        },
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: this.home?.seo?.keywords?.join(", ") || "default, keywords",
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.home?.seo?.image?.asset?.url || "",
+        },
+      ],
+    };
+  },
+
   data() {
     return {
       showHeader: false,
@@ -131,6 +160,7 @@ export default {
     ...mapState(["gridd"]),
     ...mapState(["isMenuOpen"]),
   },
+  
 
   methods: {
 

@@ -190,8 +190,31 @@ export default {
     };
   },
 
+  head() {
+    return {
+      title: this.about?.seo?.title || "Palazzo",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.about?.seo?.description || "Default description",
+        },
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: this.about?.seo?.keywords?.join(", ") || "default, keywords",
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.about?.seo?.image?.asset?.url || "",
+        },
+      ],
+    };
+  },
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "about"]{
+    ...,
     title,
     about,
     moni,

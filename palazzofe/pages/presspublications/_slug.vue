@@ -46,53 +46,7 @@
           (section.layout6 && currentLayoutIndex === index)
         "
       >
-        <!-- <Richtext
-          v-if="section.layout1 === true"
-          class="headingspages navmbno text-center text-4xl uppercase"
-          :blocks="section.column0Text"
-        ></Richtext>
-        <Richtext
-          v-if="section.layout2 === true"
-          class="headingspages navmbno text-center text-4xl uppercase"
-          :blocks="section.layout2Column1Text"
-        ></Richtext>
-        <Richtext
-          v-if="section.layout3 === true"
-          class="headingspages navmbno text-center text-4xl uppercase"
-          :blocks="section.layout3Column3Text"
-        ></Richtext>
-        <Richtext
-          v-if="section.layout4bigtext === true"
-          class="headingspages navmbno text-center text-4xl uppercase"
-          :blocks="section.layout4bigtext"
-        ></Richtext> -->
-        <!-- <p  v-if="section.layout1 === true"
-          class="headingspages navmbno text-center text-4xl uppercase">
-                  {{ section.location }}
-                </p>
-                <p  v-if="section.layout2 === true"
-          class="headingspages navmbno text-center text-4xl uppercase">
-                  {{ section.location }}
-                </p>
-                <p  v-if="section.layout3 === true"
-          class="headingspages navmbno text-center text-4xl uppercase">
-                  {{ section.location }}
-                </p>
-                <p  v-if="section.layout4 === true"
-          class="headingspages navmbno text-center text-4xl uppercase">
-                  {{ section.location }}
-                </p>
-              
-                <Richtext
-                v-if="section.layout5 === true"
-          class="headingspages navmbno text-center text-4xl uppercase"
-          :blocks="section.layout5subtitle"
-        ></Richtext>
-                <Richtext
-                v-if="section.layout6 === true"
-          class="headingspages navmbno text-center text-4xl uppercase"
-          :blocks="section.layout6subtitle"
-        ></Richtext> -->
+ 
       </div>
 
       <div class="navmbno">
@@ -1251,6 +1205,13 @@ export default {
     const query = groq`*[_type == "pressindi" && slug.current == "${params.slug}"] { ...,
         title,
         stitle,
+
+           seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },
      
         "archiveSlug": archive->slug.current,
 
@@ -1370,8 +1331,24 @@ export default {
 
     const project = await $sanity.fetch(query);
 
-    return { project };
+    return { project,  seo: project?.seo || {} };
   },
+
+
+  head() {
+    const seo = this.seo || {}; // Fallback to empty object if no seo data
+
+    return {
+      title: seo.title || 'Press', // Set the title dynamically
+      meta: [
+        { hid: 'description', name: 'description', content: seo.description || 'Default Description' }, // Set the description
+        { hid: 'keywords', name: 'keywords', content: seo.keywords || 'default, keywords' }, // Set the keywords
+        { hid: 'og:image', property: 'og:image', content: seo.image?.asset?.url || '/default-image.jpg' }, // Set the image for Open Graph
+        { hid: 'twitter:image', name: 'twitter:image', content: seo.image?.asset?.url || '/default-image.jpg' } // Set the image for Twitter
+      ]
+    };
+  },
+
   data() {
     return {
       randomPositions: [],

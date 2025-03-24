@@ -79,7 +79,13 @@ export const actions = {
 
       
     const gridQuerypress = groq`*[_type == "pressindi" ] {
-
+...,
+  seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },
    "slider": slider[]{
     _key,
     "images": images[]{
@@ -92,7 +98,13 @@ export const actions = {
     // weddings Grid
     const gridQuery = groq`*[_type == "works" ] 
  
-    {title, grid[] {
+    { ...,
+  seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      }, title, grid[] {
     _key, double, spacer, 
     "video" : {"id" : video.asset->playbackId, 
     "aspect" : video.asset->data.aspect_ratio , 
@@ -142,7 +154,13 @@ export const actions = {
     
 
   const gridQuery2 = groq`*[_type == "events" ] 
-  {
+  { ...,
+  seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },
     grid3[] {
   _key, double, spacer, 
   "video" : {"id" : video.asset->playbackId, 
@@ -213,7 +231,13 @@ export const actions = {
 } | order(_updatedAt desc)[0]`
 
 const gridQuery4 = groq`*[_type == "awards" ] 
-{
+{ ...,
+  seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },
   grid6[] {
 _key, double, spacer, 
 "video" : {"id" : video.asset->playbackId, 
@@ -251,7 +275,13 @@ _key, double, spacer,
 
 
 const gridQuery6 = groq`*[_type == "products" ] 
-{
+{ ...,
+  seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },
   film,
   filmtitle,
   grid8[] {
@@ -294,7 +324,13 @@ _key, double, spacer,
 
 
 const gridQuery5 = groq`*[_type == "team" ]
-{  titlec,
+{ ...,
+  seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },  titlec,
   film,
   filmtitle, 
   grid7[] {
@@ -352,7 +388,13 @@ _key, double, spacer,
 
 
 const gridQuery3 = groq`*[_type == "publications" ] 
-{
+{ ...,
+  seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },
   grid4[] {
     seo {
       title,
@@ -451,27 +493,6 @@ _key, double, spacer,
     commit('SET_GRIDD', gridd) // Assuming "grid3" is the correct field
   }
     
-  // commit('SET_GRID', grid)
-  // commit('SET_GRIDD', gridd) 
-  // const grid = await this.$sanity.fetch(gridQuery)
-  // // console.log('Grid Query Result:', grid) 
-
-  //   // commit('SET_GRID', Array.isArray(grid) ? grid : [])
-
-  //     // Preload images
-  //     grid.forEach(image => {
-  //       const img = new Image();
-  //       img.src = image.src; // Preload image
-  //     });
-
-  //     commit('SET_GRID', grid)
-
-  //   const gridd = await this.$sanity.fetch(gridQuery2)
-  //   // console.log('Grid2 Data:', gridd)    
-  //   // commit('SET_GRIDD', Array.isArray(gridd) ? gridd : [])
-  //   commit('SET_GRIDD', gridd);
-
-
     const gridpub = await this.$sanity.fetch(gridQuery3)
     // console.log('Grid2 Query Result:', grid2)
     commit('SET_GRIDPUB', gridpub)

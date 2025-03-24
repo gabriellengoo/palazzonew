@@ -336,6 +336,13 @@ export default {
     ...,
     "archiveSlug": archive->slug.current,
 
+         seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },
+
     slider[] {
       images[] {
         ...,
@@ -366,7 +373,21 @@ export default {
       });
     }
 
-    return { project };
+    return { project, seo: project?.seo || {}  };
+  },
+
+  head() {
+    const seo = this.seo || {}; // Fallback to empty object if no seo data
+
+    return {
+      title: seo.title || 'Press', // Set the title dynamically
+      meta: [
+        { hid: 'description', name: 'description', content: seo.description || 'Default Description' }, // Set the description
+        { hid: 'keywords', name: 'keywords', content: seo.keywords || 'default, keywords' }, // Set the keywords
+        { hid: 'og:image', property: 'og:image', content: seo.image?.asset?.url || '/default-image.jpg' }, // Set the image for Open Graph
+        { hid: 'twitter:image', name: 'twitter:image', content: seo.image?.asset?.url || '/default-image.jpg' } // Set the image for Twitter
+      ]
+    };
   },
 
   data() {

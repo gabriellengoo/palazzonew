@@ -46,6 +46,7 @@
 <script>
 import HeaderComponent from "@/components/layout/Header.vue";
 import { mapState } from "vuex";
+import { groq } from '@nuxtjs/sanity'
 
 export default {
   name: "IndexPage",
@@ -62,6 +63,47 @@ export default {
         offsetX: 0,
         offsetY: 0,
       },
+    };
+  },
+
+  async asyncData({ params, $sanity }) {
+  const query = groq`*[_type == "products"] { 
+    ...,
+    seo {
+      title,
+      description,
+      image { asset->{url} },
+      keywords
+    },
+  }  | order(_updatedAt desc)[0]`;
+
+  const project = await $sanity.fetch(query);
+  return {
+    project,
+   
+  };
+},
+
+head() {
+    return {
+      title: this.project?.seo?.title || "Palazzo",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.project?.seo?.description || "Default description",
+        },
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: this.project?.seo?.keywords?.join(", ") || "default, keywords",
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.project?.seo?.image?.asset?.url || "",
+        },
+      ],
     };
   },
 

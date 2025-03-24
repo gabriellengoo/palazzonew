@@ -634,6 +634,29 @@ import("lottie-web").then((lottie) => {
     },
   },
 
+  head() {
+    return {
+      title: this.services?.seo?.title || "Palazzo",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.home?.seo?.description || "Default description",
+        },
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: this.home?.seo?.keywords?.join(", ") || "default, keywords",
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.home?.seo?.image?.asset?.url || "",
+        },
+      ],
+    };
+  },
+
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "services"]{ ...,
       _key,

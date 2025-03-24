@@ -544,6 +544,14 @@ export default {
     const query = groq`*[_type == "projectevents" && slug.current == "${params.slug}" ] {
       ..., "archiveSlug": archive->slug.current,
      
+
+           seo { 
+        title, 
+        description, 
+        image { asset->{url} },
+        keywords
+      },
+
       slider[] { 
       images[] {
         ...,
@@ -575,16 +583,26 @@ export default {
       });
     }
 
-    //    // Debugging: Log the fetched data
-    //    console.log('Fetched meta:', project.meta);
-    // console.log('Fetched metaemails:', project.metaemails);
-
-    // // Commit meta and metaemails to the Vuex store
-    // store.commit('setMeta', project.meta);
-    // store.commit('setMetaEmails', project.metaemails);
-
-    return { project };
+  
+    return { project, seo: project?.seo || {} };
   },
+
+
+
+  head() {
+    const seo = this.seo || {}; // Fallback to empty object if no seo data
+
+    return {
+      title: seo.title || 'Events', // Set the title dynamically
+      meta: [
+        { hid: 'description', name: 'description', content: seo.description || 'Default Description' }, // Set the description
+        { hid: 'keywords', name: 'keywords', content: seo.keywords || 'default, keywords' }, // Set the keywords
+        { hid: 'og:image', property: 'og:image', content: seo.image?.asset?.url || '/default-image.jpg' }, // Set the image for Open Graph
+        { hid: 'twitter:image', name: 'twitter:image', content: seo.image?.asset?.url || '/default-image.jpg' } // Set the image for Twitter
+      ]
+    };
+  },
+
   data() {
     return {
       index: 1,

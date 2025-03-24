@@ -358,9 +358,35 @@ export default {
       isSubmitted: false,
     };
   },
+  
+
+  head() {
+    return {
+      title: this.contact?.seo?.title || "Palazzo",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.contact?.seo?.description || "Default description",
+        },
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: this.contact?.seo?.keywords?.join(", ") || "default, keywords",
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.contact?.seo?.image?.asset?.url || "",
+        },
+      ],
+    };
+  },
 
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "contact"]{
+    ...,
+    
     title,
     address,
     address2,
