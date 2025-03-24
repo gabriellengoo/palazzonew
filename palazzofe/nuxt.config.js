@@ -11,20 +11,34 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: 'Palazzo is a sophisticated event venue offering exquisite spaces for weddings, corporate events, and more. Discover elegance and class at Palazzo.' },
+      { hid: 'keywords', name: 'keywords', content: 'Palazzo, event venue, wedding venue, corporate events, elegant venue, sophisticated spaces' },
+      { name: 'format-detection', content: 'telephone=no' },
+      
+      // Open Graph meta tags for better social sharing
+      { property: 'og:title', content: 'Palazzo' },
+      { property: 'og:description', content: 'Palazzo is a sophisticated event venue offering exquisite spaces for weddings, corporate events, and more. Discover elegance and class at Palazzo.' },
+      { property: 'og:image', content: '/static/favicon.ico' },
+      { property: 'og:url', content: 'https://www.palazzoeventi.com/' },
+      { property: 'og:type', content: 'website' },
+  
+      // Twitter Card meta tags for better Twitter sharing
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Palazzo' },
+      { name: 'twitter:description', content: 'Palazzo is a sophisticated event venue offering exquisite spaces for weddings, corporate events, and more. Discover elegance and class at Palazzo.' },
+      { name: 'twitter:image', content: '/static/favicon.ico' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'preload',
-        href: '/static/background.jpg',
+        href: '/static/favicon.ico',
         as: 'image'
       },
       { rel: 'preload', href: '/Navn.webp', as: 'image', type: 'image/webp' },
-      { rel: 'preload', href: '/Navnt.webp', as: 'image', type: 'image/webp' }      
+      { rel: 'preload', href: '/Navnt.webp', as: 'image', type: 'image/webp' }
     ]
-  },
+  },  
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
