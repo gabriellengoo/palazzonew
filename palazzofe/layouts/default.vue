@@ -39,6 +39,7 @@ export default {
              routeName !== 'ourevents';
     }
   },
+
   data() {
     return {
       lenis: null,
@@ -47,7 +48,22 @@ export default {
     };
   },
   mounted() {
-    // const lenis = new Lenis()
+    console.log('%c ██╗ ██████╗ ', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c ██║ ██╔══██╗', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c ██║ ██████╔╝', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c ██║ ██╔═══╝ ', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c ██║ ██║     ', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c ╚═╝ ╚═╝     ', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+
+console.log('%c ██╗   ██╗  █████╗ ', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c ██║   ██║ ██╔══██╗', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c ██║   ██║ ███████║', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c ██║   ██║ ██╔══██║', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c ╚██████╔╝ ██║  ██║', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+console.log('%c  ╚═════╝  ╚═╝  ╚═╝', 'color: #ff6600; font-weight: bold; font-size: 12px;');
+
+console.log('%c Site created by @is_this_gabrielle | The Internet Architect | 2025', 'color: #ff6600; font-size: 14px; font-weight: bold; text-shadow: 1px 1px #000;');
+// const lenis = new Lenis()
     // lenis.on('scroll', (e) => {
     //   console.log(e)
     // })

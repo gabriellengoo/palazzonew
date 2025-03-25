@@ -5,6 +5,15 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Palazzo',
+
+    // script: [
+    //   {
+    //     innerHTML: `console.log('%cSite created by Your Name', 'color: #ff6600; font-size: 16px; font-weight: bold;');`,
+    //     type: 'text/javascript'
+    //   }
+    // ],
+    // __dangerouslyDisableSanitizers: ['script'],
+
     htmlAttrs: {
       lang: 'en'
     },
