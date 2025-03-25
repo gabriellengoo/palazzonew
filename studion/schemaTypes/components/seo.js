@@ -2,18 +2,18 @@ export default {
   name: 'seo',
   title: 'SEO',
   type: 'object',
-  fields: [
+  fields: [ 
     {
       name: 'title',
       title: 'Meta Title',
       type: 'string',
-      validation: (Rule) => Rule.max(60).warning('Title should be under 60 characters'),
+      // validation: (Rule) => Rule.max(60).warning('Title should be under 60 characters'),
     },
     {
       name: 'description',
       title: 'Meta Description',
       type: 'text',
-      validation: (Rule) => Rule.max(160).warning('Description should be under 160 characters'),
+      // validation: (Rule) => Rule.max(160).warning('Description should be under 160 characters'),
     },
     {
       name: 'keywords',

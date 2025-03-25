@@ -6,7 +6,7 @@ export default {
   type: 'document',
   icon: SparklesIcon,
   fields: [
-    {
+    { 
       name: 'seo',
       title: 'CLICK HERE FOR SEO METADATA',
       type: 'seo',  // Reusing the `seo` object schema
