@@ -450,6 +450,9 @@ export default {
   height: 40%;
   justify-content: center;
   position: absolute;
+  width: 100vw;
+    left: 0;
+    z-index: 30;
 }
 
 .bttn {
