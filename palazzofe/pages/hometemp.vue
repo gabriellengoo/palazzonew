@@ -462,7 +462,7 @@ export default {
   transition: background-color 0.3s;
   position: relative;
   border: 0.05vw solid black;
-  width: 10%;
+  width: 30%;
   display: flex;
   margin: auto;
   text-transform: uppercase;
@@ -510,7 +510,7 @@ export default {
     transition: background-color 0.3s;
     position: relative;
     border: 0.05vw solid black;
-    width: 30%;
+    width: 50%;
     height: max-content;
     display: flex;
     margin: unset;
